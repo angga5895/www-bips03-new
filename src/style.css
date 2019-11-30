@@ -1,0 +1,36 @@
+.scroll-tbody {
+    display: inline-block;
+    height: 145px;
+    overflow: auto
+}
+
+/* == Just general styling, not relevant :) == */
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #010101;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 1em .5em;
+}
+
+thead tr:nth-child(1) th {
+    position: -webkit-sticky!important;
+    position: sticky!important;
+    top: 0!important;
+    text-align: center!important;
+}
+
+thead tr:nth-child(2) th {
+    position: -webkit-sticky!important;
+    position: sticky!important;
+    top: 33px!important;
+    text-align: center!important;
+    border-top: #ffffff solid 1px!important;
+}

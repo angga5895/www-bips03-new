@@ -61,9 +61,9 @@ class App extends React.Component {
             'stockSummaryPage'
           ]
         }
-        initActions={[
-          ['switchPage', {instanceName: 'stockSummaryPage'}],
-        ]}
+        // initActions={[
+        //   ['switchPage', {instanceName: 'stockSummaryPage'}],
+        // ]}
       >
         {
           /* 

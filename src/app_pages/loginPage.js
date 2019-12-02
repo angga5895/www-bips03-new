@@ -380,8 +380,10 @@ class LoginUserPage_Base extends React.PureComponent {
         /*p.onLogin(r.userID.value, r.password.value);*/
         // console.log(r)
 
-        var user = $("#inputuser").val();
-        var pass = $("#inputpass").val();
+        // var user = $("#inputuser").val();
+        // var pass = $("#inputpass").val();
+        var user = r.userID.value;
+        var pass = r.password.value;
 
         if (user === '' && pass === ''){
             $("#input-user").addClass("d-border-danger");
@@ -402,12 +404,14 @@ class LoginUserPage_Base extends React.PureComponent {
             $("#req_pass").text("Required");
             $("#req_pass").css("display","block");
         } else {
-            if (user === "a" && pass === "b") {
-                this.props.getLogin(this.props.loginState);
-            } else {
-                $("#alert-wrong").removeClass("fade-out");
-                $("#alert-wrong").addClass("fade-in");
-            }
+            p.onLogin(r.userID.value, r.password.value);
+
+            // if (user === "a" && pass === "b") {
+            //     this.props.getLogin(this.props.loginState);
+            // } else {
+            //     $("#alert-wrong").removeClass("fade-out");
+            //     $("#alert-wrong").addClass("fade-in");
+            // }
         }
     }
 
@@ -542,12 +546,20 @@ class LoginUserPage_Base extends React.PureComponent {
                             <main>
                                 <div className="container-fluid p-login text-center">
                                     <div className={"card card-body d-border-active row bg-box-gradient mx-0"}>
-                                        <div id="alert-wrong" className={"col-sm-12 text-center fade-out mb-3 px-0 py-0"}>
+                                        {/* <div id="alert-wrong" className={"col-sm-12 text-center fade-out mb-3 px-0 py-0"}>
                                             <div id="content-alert" className={"py-2 text-white bg-danger "}>The user ID or password
                                                 did not match our records.
                                                 Please try again
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        {this.props.loginErrState === true ? 
+                                            <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
+                                                <div id="content-alert" className={"py-2 text-white bg-danger "}>
+                                                    {this.props.loginErrReason}. Please try again
+                                                </div>
+                                            </div>
+                                            :''
+                                        }
                                         <div className={"col-md-6 px-0"}>
                                             <img src={logo} width="100%"/>
                                         </div>
@@ -560,7 +572,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     <div className={"py-2"}>
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
-                                                                   onChange={this.onChangeUser}/>
+                                                                   onChange={this.onChangeUser}
+                                                                   value="user30"/>
                                                             <i aria-hidden="true" className="icon py-2">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -573,7 +586,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div className="buttonInside">
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
-                                                                       id="inputpass" onChange={this.onChangePass}/>
+                                                                       id="inputpass" onChange={this.onChangePass}
+                                                                       value="Testing30"/>
                                                                 <i aria-hidden="true" className="icon py-2">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
@@ -666,6 +680,10 @@ class LoginUserPage_Base extends React.PureComponent {
 
 const LoginUserPage = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
+        networkState:vars.networkState,
+        loginErrState: vars.loginErrState,
+        loginErrReason: vars.loginErrReason,
+
         loginState: vars.loginState,
         getLogin : (loginState)=> {actions.sendAction('getLogin', {loginState})},
         signupState: vars.signupState,

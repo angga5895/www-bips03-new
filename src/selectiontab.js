@@ -1,6 +1,8 @@
 import React from 'react';
 import { ContextConnector } from './appcontext.js';
 import { AppFrameContext } from './appframe.js';
+import { BIPSAppContext } from './AppData.js';
+
 import { Menu, Input, Dropdown } from 'semantic-ui-react';
 import Select from 'react-select';
 import user_avatar from './img/man.png';
@@ -8,38 +10,44 @@ import user_avatar from './img/man.png';
 import { Table, Navbar, Collapse } from 'react-bootstrap';
 import './selectiontab.css';
 
-const UISelectionTab_Base = (props) => {
+// const UISelectionTab_Base = (props) => {
+  class UISelectionTab_Base extends React.PureComponent {
   // expected in props:
   // instances: array of pageInstance object
   // activeInstance: current pageInstance object
   // activateFrame: (instanceName) => {} hook to activate selected frame ID
   // linkTitles: object, mapping instanceName to link title
-  return (
-    <div style={{display: (props.frameActive ? "block" : "none")}}>
-      <Menu>
-        {
-          Object.keys(props.instances).map((k) => {
-              var e = props.instances[k];
-              return (
-                <Menu.Item
-                  key={e.instanceName}
-                  name={e.instanceName}
-                  active={props.activeInstance === e}
-                  onClick={
-                    () => props.activateFrame(e.instanceName) 
+
+  render(){
+    var props = this.props
+    
+    return (
+      <div style={{display: (props.frameActive ? "block" : "none")}}>
+        <Menu>
+          {
+            Object.keys(props.instances).map((k) => {
+                var e = props.instances[k];
+                return (
+                  <Menu.Item
+                    key={e.instanceName}
+                    name={e.instanceName}
+                    active={props.activeInstance === e}
+                    onClick={
+                      () => props.activateFrame(e.instanceName) 
+                    }
+                  >
+                  {
+                    props.linkTitles[e.instanceName] || e.title
                   }
-                >
-                {
-                  props.linkTitles[e.instanceName] || e.title
-                }
-                </Menu.Item>
-              )
-            }
-          )
-        }
-      </Menu>
-    </div>
-  )
+                  </Menu.Item>
+                )
+              }
+            )
+          }
+        </Menu>
+      </div>
+    )
+}
 };
 
 function _connectFrameTree(vars, actions, ownProps) {
@@ -70,6 +78,10 @@ const UISelectionTab = ContextConnector(AppFrameContext,
         activateFrame: (instanceName) => act.sendAction('switchPage', {instanceName})
       }
   )
-)(UISelectionTab_Base);
+)(ContextConnector(BIPSAppContext,
+  (vars, actions)=>({
+      subscriptionFlags:vars.subscriptionFlags,
+  })
+)(UISelectionTab_Base));
 
 export default UISelectionTab;

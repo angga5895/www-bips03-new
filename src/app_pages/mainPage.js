@@ -523,7 +523,7 @@ class MainPage_Base extends React.Component {
                       </div>
                       <div style={{display: props.networkState && props.loginState ? "block" : "none"}}>*/
                       <div id="login-state" style={{display: !props.loginState ? "block" : "none"}}>
-                          <LoginUserPage/>
+                          <LoginUserPage onLogin={this.doLogin}/>
                       </div>
 
                 }

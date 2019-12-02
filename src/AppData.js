@@ -224,19 +224,19 @@ class BIPSAppProvider extends React.Component {
   }
 
   frameShow = (instance) => {
-    console.log(`Frame shown. Instance name ${instance.instanceName}, class name ${instance.className}`);
+    // console.log(`Frame shown. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: true});
   }
 
   frameClose = (instance) => {
-    console.log(`Frame closed. Instance name ${instance.instanceName}, class name ${instance.className}`);
+    // console.log(`Frame closed. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
   }
 
   frameHide = (instance) => {
-    console.log(`Frame hidden. Instance name ${instance.instanceName}, class name ${instance.className}`);
+    // console.log(`Frame hidden. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
   }
@@ -247,7 +247,7 @@ class BIPSAppProvider extends React.Component {
     this.appProvider.sendAction('setActionRefs', {netAction: this.netAction, frameAction: this.frameAction})
 
     /* set frame event handlers here */
-    console.log(this.frameAction);
+    // console.log(this.frameAction);
     this.frameAction.setEventHandlers({onShow: this.frameShow, onHide: this.frameHide, onClose: this.frameClose});
 
     /* set network event handlers here */
@@ -260,7 +260,7 @@ class BIPSAppProvider extends React.Component {
     this.netAction.createAndConnect({url: SERVER_URL}); 
 
     /* set frameActive status to false */
-    this.frameAction.setMainFrameActive(true);
+    this.frameAction.setMainFrameActive(false);
   }
 
   render () {

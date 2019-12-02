@@ -1,0 +1,3 @@
+#ignore folder named
+node_modules/
+build/

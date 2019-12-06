@@ -21,7 +21,7 @@
 }
 
 .stockPageSelect > div:first-child{
-    border-radius: 0px!important;
+  border-radius: 0px!important;
 }
 
 :root{
@@ -49,8 +49,8 @@
   --warna-hover-menu: #111111;
   --warna-table-striped: #272727;
 
-  --warna-navy-odd: #040421;
-  --warna-navy-even: #2D3866;
+  --warna-navy-odd: #0E0E20;
+  --warna-navy-even: #2E3354;
   --warna-text-danger: #EA0904;
   --warna-text-success: #05FE01;
   --warna-text-warning: #FFC107;

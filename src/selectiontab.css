@@ -44,7 +44,8 @@ input[type="radio"]:checked .radioAccount ~ label{
 .spanSymbol{
     color: white!important;
     background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
-    font-size: 20px !important;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 .lastColor{
     color: black!important;
@@ -92,9 +93,11 @@ input[type="radio"]:checked .radioAccount ~ label{
 }
 .card__face--front {
     background-image: linear-gradient(#8BC641,#1be25c);
+    border-radius:5px;
 }
 
 .card__face--back {
     background-image: linear-gradient(#8BC641, #1be25c);
     transform: rotateX(180deg);
+    border-radius:5px;
 }

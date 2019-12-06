@@ -1,23 +1,29 @@
 import React from 'react';
 import UISelectionTab from '../selectiontab.js';
+import FillHeaderTab from '../tabheaderfill.js';
 import { AppFrameAction, AppFrame, AppModal } from '../appframe.js';
 
 class PortfolioPage extends React.PureComponent {
 
   render () {
     return (
-      <div>
-        <div>
+      <div className="bg-black-trading d-border-top f-12">
+        <div className="col-sm-12 px-0 mx-0 d-border-bottom">
           <AppFrameAction ref="frameAction" />
-          <h1>PORTFOLIO LIST GOES HERE</h1>
-        </div>
-        <br />
-        <UISelectionTab treeName="/portfolioPage" linkTitles={
+          <FillHeaderTab tradeMode="atas" treeName="/portfolioPage" linkTitles={
             {
-              fixedIncomePage: 'Fixed income', 
-              stockPage: 'Stock', 
+              stockPage: 'Stock',
+              marketstatistikPage : 'Market'
             }
-          } 
+          }
+          />
+        </div>
+        <FillHeaderTab tradeMode="bawah" treeName="/portfolioPage" linkTitles={
+            {
+              fixedIncomePage: 'Fixed income',
+              marketstatistikPage : 'Market'
+            }
+          }
         />
         <AppFrame treeName="/portfolioPage" />
         <AppModal />

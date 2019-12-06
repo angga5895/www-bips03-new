@@ -6,7 +6,6 @@ import { AppFrameAction } from '../appframe.js';
 import { ContextConnector } from '../appcontext.js';
 import { BIPSAppContext } from '../AppData.js';
 
-import { CommentActions } from 'semantic-ui-react';
 import $ from "jquery";
 
 //Form signup
@@ -573,8 +572,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   value="user30"/>
-                                                            <i aria-hidden="true" className="icon py-2">
+                                                                   defaultValue="user30"/>
+                                                            <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
                                                         </div>
@@ -587,8 +586,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       value="Testing30"/>
-                                                                <i aria-hidden="true" className="icon py-2">
+                                                                       defaultValue="Testing30"/>
+                                                                <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
                                                             </div>
@@ -688,7 +687,6 @@ const LoginUserPage = ContextConnector(BIPSAppContext,
         getLogin : (loginState)=> {actions.sendAction('getLogin', {loginState})},
         signupState: vars.signupState,
         isSignup : (signupState)=> {actions.sendAction('isSignup', {signupState})},
-        networkState: vars.networkState,
         doLogin: (userID, password) => {actions.sendAction('doLogin', {userID, password})},
     }),
     ["doLogin"]

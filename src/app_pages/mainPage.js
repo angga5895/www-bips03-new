@@ -10,6 +10,7 @@ import { BIPSAppContext } from '../AppData.js';
 import UISelectionTab from '../selectiontab.js';
 import { ContextConnector } from '../appcontext.js';
 
+import SideBar from "../SideBar";
 import './../bootstrap-3.3.7/dark_chart_style.min';
 import LoginUserPage from './loginPage';
 import $ from 'jquery';
@@ -499,8 +500,8 @@ class MainPage_Base extends React.Component {
         document.body.style.setProperty('--warna-hover-menu', this.props.thememode === true  ? "#111111" : "#f4f4f4");
         document.body.style.setProperty('--warna-table-striped', this.props.thememode === true  ? "#272727" : "#E7E8E8");
 
-        document.body.style.setProperty('--warna-navy-odd', this.props.thememode === true  ? "#040421" : "#02ADEB");
-        document.body.style.setProperty('--warna-navy-even', this.props.thememode === true  ? "#2D3866" : "#efefef");
+        document.body.style.setProperty('--warna-navy-odd', this.props.thememode === true  ? "#0E0E20" : "#02ADEB");
+        document.body.style.setProperty('--warna-navy-even', this.props.thememode === true  ? "#2E3354" : "#efefef");
         document.body.style.setProperty('--warna-text-danger', this.props.thememode === true  ? "#EA0904" : "#eb404b");
         document.body.style.setProperty('--warna-text-success', this.props.thememode === true  ? "#05FE01" : "#449b52");
         document.body.style.setProperty('--warna-text-warning', this.props.thememode === true  ? "#FFC107" : "#f58f0d");
@@ -531,17 +532,72 @@ class MainPage_Base extends React.Component {
                     <div style={{display: props.loginState ? "block" : "none"}}>
                         <UISelectionTab treeName="/" linkTitles={
                             {
-                                landingPage: 'Home',
-                                portfolioPage: 'Portfolio',
-                                stockSummaryPage: 'Stock summary'
+                                landingPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-investment-board fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips">MY ACCOUNT</span>
+                                    </div>,
+                                marketstatistikPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-market-statistic fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 6.5px"}}>MARKET &</span><br/>
+                                        <span className="fs-text-bips">STATISTIC</span>
+                                    </div>,
+                                stockPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-stock-page fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                  STOCK
+                                </span>
+                                    </div>,
+                                tradePage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-trade-page fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                  TRADE
+                                </span>
+                                    </div>,
+                                analyticPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-analytic_page fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 7.8px"}}>ANALYTIC</span>
+                                    </div>,
+                                livetradePage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-live-trade fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 21.09px"}}>LIVE</span><br/>
+                                        <span className="fs-text-bips">TRADE</span>
+                                    </div>,
+                                esbnPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-fund fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                        E-SBN
+                                      </span>
+                                    </div>,
+                                mutualfundPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-inquiry fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 11.1px"}}>MUTUAL</span><br/>
+                                        <span className="fs-text-bips">FUND</span>
+                                    </div>,
+                                chatsupportPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips" style={{padding: "0px 11.1px"}}>CHATS &</span><br/>
+                                        <span className="fs-text-bips">SUPPORT</span>
+                                    </div>
                             }
                         }/>
 
                         <div className="d-sidebar-landscape">
                             <MarqueePage />
                         </div>
-                        <div className="row col-sm-12 px-0 mx-0 card card-575 d-border-bottom">
-                            <AppFrame treeName="/" headerComponent={CustomFrameHeader}/>
+                        <div className="col-sm-12 px-0 mx-0 card">
+                            <SideBar/>
+                            <div className="col-sm-contentbar px-0 mx-0 card-575 d-border-bottom">
+                                <AppFrame treeName="/" headerComponent={CustomFrameHeader}/>
+                            </div>
                         </div>
                         <div className="d-sidebar-potrait">
                             <MarqueePage />

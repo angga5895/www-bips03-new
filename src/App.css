@@ -1,3 +1,7 @@
+.bg-blue-white{
+    background-image: linear-gradient(#67AAD7,#0071BC) !important;
+}
+
 .card-695{
     height: 695px;
 }
@@ -2662,52 +2666,52 @@ button.bg-gold:hover {
 }
 
 .card-355{
-    height: var(--card-355);
+    height: var(--card-355)!important;
 }
 
 .card-500{
-    height: var(--card-500);
+    height: var(--card-500)!important;
 }
 
 
 .card-592{
-    height: var(--card-592);
+    height: var(--card-592)!important;
 }
 
 .card-580{
-    height: var(--card-580);
+    height: var(--card-580)!important;
 }
 
 .card-530{
-    height: var(--card-530);
+    height: var(--card-530)!important;
 }
 
 .card-170{
-    height: var(--card-170)
+    height: var(--card-170)!important;
 }
 
 .card-470{
-    height: var(--card-470);
+    height: var(--card-470)!important;
 }
 
 .card-558{
-    height: var(--card-558);
+    height: var(--card-558)!important;
 }
 
 .card-75{
-    height: var(--card-75);
+    height: var(--card-75)!important;
 }
 
 .card-600{
-    height: var(--card-600);
+    height: var(--card-600)!important;
 }
 
 .card-575{
-    height: var(--card-575);
+    height: var(--card-575) !important;
 }
 
 .card-527{
-    height: var(--card-527);
+    height: var(--card-527) !important;
 }
 
 .card-452{
@@ -2715,43 +2719,43 @@ button.bg-gold:hover {
 }
 
 .card-487{
-    height: var(--card-487);
+    height: var(--card-487) !important;
 }
 
 .card-305{
-    height: var(--card-305);
+    height: var(--card-305) !important;
 }
 
 .card-221{
-    height: var(--card-221);
+    height: var(--card-221) !important;
 }
 
 .card-194{
-    height: var(--card-194);
+    height: var(--card-194) !important;
 }
 
 .card-448{
-    height: var(--card-448);
+    height: var(--card-448) !important;
 }
 
 .card-478{
-    height: var(--card-478);
+    height: var(--card-478) !important;
 }
 
 .card-472{
-    height: var(--card-472);
+    height: var(--card-472) !important;
 }
 
 .card-381{
-    height: var(--card-381);
+    height: var(--card-381) !important;
 }
 
 .card-155{
-    height: var(--card-155);
+    height: var(--card-155) !important;
 }
 
 .card-233{
-    height: var(--card-233);
+    height: var(--card-233) !important;
 }
 
 .card-202{
@@ -2759,35 +2763,35 @@ button.bg-gold:hover {
 }
 
 .card-515{
-    height: var(--card-515);
+    height: var(--card-515) !important;
 }
 
 .card-334{
-    height: var(--card-334);
+    height: var(--card-334) !important;
 }
 
 .card-230 {
-    height: var(--card-230);
+    height: var(--card-230) !important;
 }
 
 .card-175 {
-    height: var(--card-175);
+    height: var(--card-175) !important;
 }
 
 .card-138 {
-    height: var(--card-138);
+    height: var(--card-138) !important;
 }
 
 .card-479 {
-    height: var(--card-479);
+    height: var(--card-479)!important;
 }
 
 .card-406 {
-    height: var(--card-406);
+    height: var(--card-406)!important;
 }
 
 .card-282 {
-    height: var(--card-282);
+    height: var(--card-282) !important;
 }
 
 .card-160{
@@ -2799,130 +2803,130 @@ button.bg-gold:hover {
 }
 
 .card-156{
-    height: var(--card-156);
+    height: var(--card-156) !important;
 }
 
 .card-111{
-    height: var(--card-111);
+    height: var(--card-111) !important;
 }
 
 .card-158{
-    height: var(--card-158);
+    height: var(--card-158) !important;
 }
 
 .card-324{
-    height: var(--card-324);
+    height: var(--card-324) !important;
 }
 
 .card-372{
-    height: var(--card-372);
+    height: var(--card-372) !important;
 }
 
 .card-129{
-    height: var(--card-129);
+    height: var(--card-129) !important;
 }
 
 .card-257{
-    height: var(--card-257);
+    height: var(--card-257) !important;
 }
 
 .card-475{
-    height: var(--card-475);
+    height: var(--card-475) !important;
 }
 
 .card-169{
-    height: var(--card-169);
+    height: var(--card-169) !important;
 }
 
 .card-113{
-    height: var(--card-113);
+    height: var(--card-113) !important;
 }
 
 .card-281{
-    height: var(--card-281);
+    height: var(--card-281) !important;
 }
 
 
 
 
 .card-520{
-    height: var(--card-520);
+    height: var(--card-520)!important;
 }
 
 .card-392{
-    height: var(--card-392);
+    height: var(--card-392)!important;
 }
 
 .card-490{
-    height: var(--card-490);
+    height: var(--card-490)!important;
 }
 
 .card-400{
-    height: var(--card-400);
+    height: var(--card-400)!important;
 }
 
 .card-540{
-    height: var(--card-540);
+    height: var(--card-540)!important;
 }
 
 .card-265{
-    height: var(--card-265);
+    height: var(--card-265)!important;
 }
 
 .card-560 {
-    height: var(--card-560);
+    height: var(--card-560)!important;
 }
 
 .card-398 {
-    height: var(--card-398);
+    height: var(--card-398)!important;
 }
 
 .card-196 {
-    height: var(--card-196);
+    height: var(--card-196)!important;
 }
 
 .card-167 {
-    height: var(--card-167);
+    height: var(--card-167)!important;
 }
 
 .card-440{
-    height: var(--card-440);
+    height: var(--card-440)!important;
 }
 
 .card-121{
-    height: var(--card-121);
+    height: var(--card-121)!important;
 }
 
 .card-345{
-    height: var(--card-345);
+    height: var(--card-345)!important;
 }
 
 .card-297{
-    height: var(--card-297);
+    height: var(--card-297)!important;
 }
 
 .card-511{
-    height: var(--card-511);
+    height: var(--card-511)!important;
 }
 
 .card-433{
-    height: var(--card-433);
+    height: var(--card-433)!important;
 }
 
 .card-149{
-    height: var(--card-149);
+    height: var(--card-149)!important;
 }
 
 .card-586{
-    height: var(--card-586);
+    height: var(--card-586)!important;
 }
 
 .card-559{
-    height: var(--card-559);
+    height: var(--card-559)!important;
 }
 
 .card-279{
-    height: var(--card-279);
+    height: var(--card-279)!important;
 }
 
 .card-501{
@@ -2932,35 +2936,35 @@ button.bg-gold:hover {
 /*}*/
 
 .card-292{
-    height: var(--card-292);
+    height: var(--card-292)!important;
 }
 
 .card-213 {
-    height: var(--card-213);
+    height: var(--card-213)!important;
 }
 
 .card-199 {
-    height: var(--card-199);
+    height: var(--card-199)!important;
 }
 
 .card-249 {
-    height: var(--card-249);
+    height: var(--card-249)!important;
 }
 
 .card-225 {
-    height: var(--card-225);
+    height: var(--card-225)!important;
 }
 
 .card-grafik{
-    height: var(--card-grafik);
+    height: var(--card-grafik)!important;
 }
 
 .card-589 {
-    height: var(--card-589);
+    height: var(--card-589)!important;
 }
 
 .card-537 {
-    height: var(--card-537);
+    height: var(--card-537)!important;
 }
 
 .py-2-scale {
@@ -3006,7 +3010,7 @@ button.bg-gold:hover {
 }
 
 .card-375{
-    height: 375px;
+    height: 375px!important;
 }
 
 .card-mini{
@@ -3022,11 +3026,11 @@ button.bg-gold:hover {
 }
 
 .card-xmini{
-    height: 135px;
+    height: 135px!important;
 }
 
 .card-xs{
-    height: 90px;
+    height: 90px!important;
 }
 
 .card-475{
@@ -3520,7 +3524,7 @@ padding-left: 8px !important;
 }
 
 .ui.menu .item {
-    border-right: 0.25px solid var(--warna-text-header) !important;
+    /*border-right: 0.25px solid var(--warna-text-header) !important;*/
     color:var(--warna-text-header) !important;
 }
 

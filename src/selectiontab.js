@@ -99,7 +99,7 @@ const UISelectionTab_Base = (props) => {
                     </div>
                     <div className="header-scale-menu">
                         <Navbar className="navbar-trading my-0">
-                            <div className="col-sm-12 px-0 mx-0 row">
+                            <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd bg-navy-gradient-odd">
                                 <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
                                     <Navbar.Brand href="/" className="mr-auto text-white">
                                         <h2>BIPS</h2>
@@ -136,7 +136,7 @@ const UISelectionTab_Base = (props) => {
 
                 <div className="d-sml-none d-sml-block d-border-bottom mb-1">
                     <Navbar className="navbar-trading my-0">
-                        <div className="col-sm-12 px-0 mx-0 row">
+                        <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd">
                             <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
                                 <Navbar.Brand href="/" className="mr-auto text-white">
                                     <h2>BIPS</h2>
@@ -172,7 +172,7 @@ const UISelectionTab_Base = (props) => {
 
                 <div className="d-xsml-none d-xsml-block d-border-bottom mb-1">
                     <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row">
+                        <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
                             <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
                                 <Navbar.Brand href="/" className="mr-auto text-white">
                                     <h2>BIPS</h2>
@@ -208,7 +208,7 @@ const UISelectionTab_Base = (props) => {
 
                 <div className="d-xxsml-none d-xxsml-block d-border-bottom mb-1">
                     <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row">
+                        <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
                             <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
                                 <Navbar.Brand href="/" className="mr-auto text-white">
                                     <h2>BIPS</h2>
@@ -243,7 +243,7 @@ const UISelectionTab_Base = (props) => {
 
                 <div className="d-xsm-none d-xsm-block d-border-bottom mb-1">
                     <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row text-center align-self-center">
+                        <div className="col-smb-12 px-0 mx-0 row text-center align-self-center bg-navy-gradient-odd">
                             <div className="col-smb-3 px-2 text-center align-self-center click-pointer">
                                 <Navbar.Brand href="/" className="mr-auto text-white">
                                     <h2>BIPS</h2>

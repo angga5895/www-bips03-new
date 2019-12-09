@@ -438,7 +438,7 @@ div.main-header > .ui.menu .item{
         display: none!important;
     } .d-sidebar-landscape{
         display: block!important;
-    } .d-sidebar-landscape:hover{
+    } .d-sidebar-landscape-hover:hover{
         background-color: var(--warna-btn-dark-hover) !important;
     }
 }
@@ -2003,6 +2003,12 @@ button.bg-gold:hover {
     }
 }
 
+.col-sm-tab-scale {
+    flex: 0 0 10.8% !important;
+    max-width: 10.8%!important;
+    display: inline-block!important;
+}
+
 @media (min-width: 1316px) {
     :root{
         --header-menu-scale: none;
@@ -2035,12 +2041,6 @@ button.bg-gold:hover {
 
     .fs-text-bips{
         font-size: 8px!important;
-    }
-
-    .col-sm-tab-scale {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
-        display: inline-block!important;
     }
 
     .mr-nav{

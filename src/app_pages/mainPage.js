@@ -595,7 +595,7 @@ class MainPage_Base extends React.Component {
                         </div>
                         <div className="col-sm-12 px-0 mx-0 card-575">
                             <SideBar/>
-                            <div className="col-sm-contentbar px-0 mx-0 card-575 d-border-top d-border-bottom">
+                            <div className="col-sm-contentbar px-0 mx-0 d-border-top d-border-bottom card-575">
                                 <AppFrame treeName="/" headerComponent={CustomFrameHeader}/>
                             </div>
                         </div>

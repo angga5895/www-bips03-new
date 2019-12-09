@@ -163,7 +163,7 @@ const UISelectionTab_Base = (props) => {
                             </div>
                             <MenuCollapse>
                                 <Menu className="row col-sm-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props}/>
+                                    <MenuHeader id={props} ms="menuscale"/>
                                 </Menu>
                             </MenuCollapse>
                         </div>
@@ -199,7 +199,7 @@ const UISelectionTab_Base = (props) => {
                             </div>
                             <MenuCollapse>
                                 <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props}/>
+                                    <MenuHeader id={props} ms="menuscale"/>
                                 </Menu>
                             </MenuCollapse>
                         </div>
@@ -234,7 +234,7 @@ const UISelectionTab_Base = (props) => {
                             </div>
                             <MenuCollapse>
                                 <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props}/>
+                                    <MenuHeader id={props} ms="menuscale"/>
                                 </Menu>
                             </MenuCollapse>
                         </div>
@@ -262,7 +262,7 @@ const UISelectionTab_Base = (props) => {
 
                             <MenuCollapse>
                                 <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props}/>
+                                    <MenuHeader id={props} ms="menuscale"/>
                                 </Menu>
                             </MenuCollapse>
                         </div>

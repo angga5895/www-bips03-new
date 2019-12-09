@@ -82,7 +82,7 @@ class SideBar extends React.Component{
         return(
             <>
                 <AppFrameAction ref="frameAction" />
-                <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom">
+                <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom d-sidebar-potrait">
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">
                             <div className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
@@ -127,24 +127,43 @@ class SideBar extends React.Component{
                                     </tfoot>
                                 </Table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top d-border-bottom d-sidebar-landscape">
+                    <div className="flex-grow-1">
+                        <div className="flex-lg-column mb-1 cssmenu">
+                            <div className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
+                                <i className="fa-2x icon-icon-stock-list"></i>
+                            </div>
+                        </div>
+                        <div className="align-self-center text-center px-1 py-0 h-25">
+                            <buttom className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
+                                <i className="icofont icofont-edit"></i> &nbsp; Modify
+                            </buttom>
+                        </div>
+                        <div className="nav flex-lg-column">
+                            <div className="nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0">
+                                <Dropdown placeholder='Group' search selection options={option} className={"f-9 text-center align-self-center col-sm-12 grey h-31"} defaultValue="groupA"/>
+                            </div>
 
-                                {
-                                    this.state.rowData.map((charx, index) => {
-                                        return (
-                                            <div
-                                                className="align-self-center text-center px-sidebar my-sidebar click-pointer d-border-bottom d-sidebar-landscape">
-                                                <h5 className="mb-2">{charx.name}</h5>
-                                                <p className="f-11-center mb-1 text-danger">{charx.last}</p>
-                                            </div>
-                                        )
-                                    })
-                                }
+                            {
+                                this.state.rowData.map((charx, index) => {
+                                    return (
+                                        <div
+                                            className="align-self-center text-center px-sidebar my-sidebar click-pointer d-border-bottom d-sidebar-landscape-hover">
+                                            <h5 className="mb-2">{charx.name}</h5>
+                                            <p className="f-11-center mb-1 text-danger">{charx.last}</p>
+                                        </div>
+                                    )
+                                })
+                            }
 
-                                <div className="align-self-center text-center px-sidebar py-0 d-sidebar-landscape">
-                                    <div className="align-self-center text-center click-pointer">
-                                        <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
-                                    </div>
+                            <div className="align-self-center text-center px-sidebar py-0 d-sidebar-landscape-hover">
+                                <div className="align-self-center text-center click-pointer">
+                                    <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

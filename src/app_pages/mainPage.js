@@ -1,7 +1,7 @@
 import React from 'react';
 
 // internal framework libraries
-import { AppFrameAction, AppFrame, AppModal } from '../appframe.js';
+import { AppFrame, AppModal } from '../appframe.js';
 
 // application-logic libraries
 import { BIPSAppContext } from '../AppData.js';
@@ -18,8 +18,8 @@ window.$ = window.jQuery = $;
 
 const CustomFrameHeader = (props) => {
   return (
-    <div style={{color: "white", backgroundColor: "black"}}>
-      <h2>{props.title}</h2>
+    <div className="bg-black-trading f-12">
+      {props.title}
     </div>
   );
 }
@@ -514,7 +514,7 @@ class MainPage_Base extends React.Component {
 
         var props = this.props;
         return (
-            <div>
+            <>
                 {
                       /*<div style={{display: !props.networkState ? "block" : "none"}}>
                       <h1>Connecting...</h1>
@@ -593,9 +593,9 @@ class MainPage_Base extends React.Component {
                         <div className="d-sidebar-landscape">
                             <MarqueePage />
                         </div>
-                        <div className="col-sm-12 px-0 mx-0 card">
+                        <div className="col-sm-12 px-0 mx-0 card-575">
                             <SideBar/>
-                            <div className="col-sm-contentbar px-0 mx-0 card-575 d-border-bottom">
+                            <div className="col-sm-contentbar px-0 mx-0 card-575 d-border-top d-border-bottom">
                                 <AppFrame treeName="/" headerComponent={CustomFrameHeader}/>
                             </div>
                         </div>
@@ -607,7 +607,7 @@ class MainPage_Base extends React.Component {
                         <AppModal />
                     </div>
                 }
-            </div>
+            </>
         );
     }
 }

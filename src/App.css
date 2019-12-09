@@ -2682,10 +2682,6 @@ button.bg-gold:hover {
     height: var(--card-580)!important;
 }
 
-.card-530{
-    height: var(--card-530)!important;
-}
-
 .card-170{
     height: var(--card-170)!important;
 }
@@ -3786,7 +3782,7 @@ padding-left: 8px !important;
 } */
 
 .table-bordered{
-    border: 1px solid var(--warna-gray);
+    border: 1px solid var(--warna-gray)!important;
 }
 /*.btn-file {
     position: relative;
@@ -3915,7 +3911,7 @@ textarea {
     min-height: 12px !important;
 }
 .card-530{
-    height: 410px;
+    height: 410px !important;
 }
 .radio {
     margin-top: 4px;

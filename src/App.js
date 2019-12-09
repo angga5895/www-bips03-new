@@ -25,12 +25,20 @@ import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     NewResearchMarketStatistikPage,TopBrokerMarketStatistikPage,IndiceMarketStatistikPage,StatisticMarketStatistikPage,
     GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage} from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
-import TradePage from './app_pages/tradePage.js';
-import AnalyticPage from './app_pages/analyticPage.js';
+import { Trade, CustomFrameHeaderTrade, OrderbookPage,
+    TradeWatchlist, SettingInWatchlist,
+    OrderSetting,SentOrder } from './app_pages/tradePage';
+import AnalyticPage, { CustomFrameHeaderAnalytic, Analytic,
+    StockAnalyticPage,
+    IndiceAnalyticPage,
+    RelativePerformanceAnalyticPage
+} from './app_pages/analyticPage';
 import LiveTradePage from './app_pages/livetradePage.js';
 import EsbnPage from './app_pages/esbnPage.js';
 import MutualFundPage from './app_pages/mutualfundPage.js';
-import ChatSupportPage from './app_pages/chatsupportPage.js';
+import ChatSupportPage, { CustomFrameHeaderChatSupportPage,
+    ChatUserPage, ChatSuppPage, ChatCommentPage
+} from './app_pages/chatsupportPage';
 
 
 class App extends React.Component {
@@ -43,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <AppFrameProvider 
-        initialClasses={{Landing, MarketStatistik, Stocks, TradePage, AnalyticPage, LiveTradePage, EsbnPage, MutualFundPage, ChatSupportPage,
+        initialClasses={{Landing, MarketStatistik, Stocks, Trade, Analytic, LiveTradePage, EsbnPage, MutualFundPage, ChatSupportPage,
             PortfolioPage, StockSummaryPage, FixedIncomePage, AccountAPage, AccountBPage,
             //Landing Page
             /*tree1*/ LandingPage, StockCash, TradeListHistory, FundTransfer, InquryAccount, tcAndSoe,
@@ -53,18 +61,28 @@ class App extends React.Component {
             //StockPage
             /*tree2*/ StockPage, StockWatchlist, StockHistoryPage,
             /*tree3*/ TableStockInfo, TableProfil, TableCorpAction,
+            //TradePage
+            /*tree2*/
+            OrderbookPage, TradeWatchlist, SettingInWatchlist,
+            OrderSetting,SentOrder,
+            //AnalyticPage
+            /*tree1*/
+            AnalyticPage, StockAnalyticPage, IndiceAnalyticPage, RelativePerformanceAnalyticPage,
+            //ChatUserPage
+            /*tree1*/
+            ChatUserPage, ChatSuppPage, ChatCommentPage
         }}
         initialFrames={
           [
             { className: 'Landing', title: <CustomFrameHeaderLanding/>, instanceName: 'landingPage'},
             { className: 'MarketStatistik', title: <CustomFrameHeaderMarketStatistik/>, instanceName: 'marketstatistikPage' },
             { className: 'Stocks', title: <CustomFrameHeaderStock/>, instanceName: 'stockPage' },
-            { className: 'TradePage', title: '', instanceName: 'tradePage' },
-            { className: 'AnalyticPage', title: '', instanceName: 'analyticPage' },
+            { className: 'Trade', title: <CustomFrameHeaderTrade />, instanceName: 'tradePage' },
+            { className: 'Analytic', title: <CustomFrameHeaderAnalytic />, instanceName: 'analyticPage' },
             { className: 'LiveTradePage', title: '', instanceName: 'livetradePage' },
             { className: 'EsbnPage', title: '', instanceName: 'esbnPage' },
             { className: 'MutualFundPage', title: '', instanceName: 'mutualfundPage' },
-            { className: 'ChatSupportPage', title: '', instanceName: 'chatsupportPage' },
+            { className: 'ChatSupportPage', title: <CustomFrameHeaderChatSupportPage />, instanceName: 'chatsupportPage' },
 
             {className: 'PortfolioPage', title: '', instanceName: 'portfolioPage'},
             {className: 'StockSummaryPage', title: 'STOCK SUMMARY', instanceName: 'stockSummaryPage'},
@@ -103,23 +121,42 @@ class App extends React.Component {
             {className: 'TableStockInfo', title: '', instanceName: 'stockInfoTable'},
             {className: 'TableProfil', title: '', instanceName: 'profilTable'},
             {className: 'TableCorpAction', title: '', instanceName: 'corpActionTable'},
+
+            //tree 2 In Trade
+            {className: 'TradeWatchlist', title: 'WATCHLIST PAGES', instanceName: 'tradePageManOrderbook'},
+            {className: 'OrderbookPage', title: 'ORDERBOOK PAGE', instanceName: 'tradePageManWatchlist'},
+            {className: 'SettingInWatchlist', title: 'WATCHLIST', instanceName: 'tradePageManWatchList2'},
+
+            {className: 'OrderSetting', title: 'ORDER SETTING', instanceName: 'AutOrderSetting'},
+            {className: 'SentOrder', title: 'SEND ORDER', instanceName: 'AutSentOrder'},
+
+            //tree 2 In Analytic
+            { className: 'StockAnalyticPage', title: 'STOCK CHART PAGE', instanceName: 'StockAnalyticPage' },
+            { className: 'AnalyticPage', title: 'MULTI CHART PAGE', instanceName: 'AnalyticPage' },
+            { className: 'IndiceAnalyticPage', title: 'INDICE CHART PAGE', instanceName: 'IndiceAnalyticPage' },
+            { className: 'RelativePerformanceAnalyticPage', title: 'RELATIVE PERFORMANCE PAGE', instanceName: 'RelativePerformanceAnalyticPage' },
+
+            //tree 2 In ChatSupport
+            {className: 'ChatUserPage', title: 'Chat User', instanceName: 'ChatUserPage'},
+            {className: 'ChatSuppPage', title: 'Chat Support', instanceName: 'ChatSuppPage'},
+            {className: 'ChatCommentPage', title: 'Chat Comment', instanceName: 'ChatCommentPage'},
           ]
         }
         treeData={
           /*[
-            'landingPage', 
+            'landingPage',
             {
-              name: 'portfolioPage', 
+              name: 'portfolioPage',
               pages: [
-                'fixedIncomePage', 
+                'fixedIncomePage',
                 {
-                  name: 'stockPage', 
+                  name: 'stockPage',
                   pages: [
-                    'accountAPage', 
+                    'accountAPage',
                     'accountBPage'
                   ]
                 }
-              ], 
+              ],
             },
             'stockSummaryPage'
           ]*/
@@ -168,12 +205,36 @@ class App extends React.Component {
                         'stockHistoryPage'
                     ]
                 },
-                'tradePage',
-                'analyticPage',
+                {
+                    name: 'tradePage',
+                    pages : [
+                        'tradePageManOrderbook',
+                        'tradePageManWatchlist',
+                        'tradePageManWatchList2',
+                        'AutOrderSetting',
+                        'AutSentOrder'
+                    ]
+                },
+                {
+                    name: 'analyticPage',
+                    pages : [
+                        'StockAnalyticPage',
+                        'AnalyticPage',
+                        'IndiceAnalyticPage',
+                        'RelativePerformanceAnalyticPage'
+                    ]
+                },
                 'livetradePage',
                 'esbnPage',
                 'mutualfundPage',
-                'chatsupportPage'
+                {
+                    name: 'chatsupportPage',
+                    pages : [
+                        'ChatUserPage',
+                        'ChatSuppPage',
+                        'ChatCommentPage'
+                    ]
+                }
             ]
         }
         initActions={[

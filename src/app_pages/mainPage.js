@@ -19,7 +19,9 @@ window.$ = window.jQuery = $;
 const CustomFrameHeader = (props) => {
   return (
     <div className="bg-black-trading f-12">
-      {props.title}
+        <h2>
+            {props.title}
+        </h2>
     </div>
   );
 }

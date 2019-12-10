@@ -36,7 +36,7 @@ const CustomFrameHeaderAnalytic = (props) => {
                 </div>
             </div>
             <AppFrame treeName="/analyticPage" headerComponent={AnalyticFrameHeader} />
-            <AppModal />
+            {/*<AppModal />*/}
             {/*</BIPSAppProvider>*/}
         </div>
     );

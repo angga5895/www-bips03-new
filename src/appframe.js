@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {ContextProvider, ContextConnector} from './appcontext.js';
 import { Modal } from 'semantic-ui-react';
 

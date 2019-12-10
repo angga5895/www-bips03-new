@@ -50,7 +50,7 @@ const CustomFrameHeaderLanding = (props) =>{
                 </div>
             </div>
             <AppFrame treeName="/landingPage" headerComponent={LandingFrameHeader}/>
-            <AppModal/>
+            {/*<AppModal/>*/}
         </div>
     );
 }

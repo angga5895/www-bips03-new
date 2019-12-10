@@ -41,7 +41,7 @@ class MenuHeader extends React.PureComponent {
                             var e = this.props.id.instances[k];
                             return (
                                 <Menu.Item
-                                    className = {this.props.ms === "menuscale" ? "col-sm-tab-scale" : "col-sm-tab h-79"}
+                                    className = {this.props.ms === "menuscale" ? "col-sm-tab-scale" : "col-sm-tab h-72-77"}
                                     key={e.instanceName}
                                     name={e.instanceName}
                                     active={this.props.id.activeInstance === e}
@@ -69,72 +69,34 @@ const UISelectionTab_Base = (props) => {
     // activateFrame: (instanceName) => {} hook to activate selected frame ID
     // linkTitles: object, mapping instanceName to link title
     return (
-        <div style={{display: (props.frameActive ? "block" : "none")}}>
-            <div class="h-84 mb-1">
-                <div className="d-xxl-none d-xxl-block d-border-bottom mb-1">
-                    <div className="header-normal-menu">
-                        <Menu className="row">
-                            <div className="col-sm-header-logo px-0 text-center align-middle align-self-center text-white click-pointer">
-                                <Navbar.Brand href="/" className="text-white pr-0 pl-3"><h2>BIPS</h2></Navbar.Brand>
-                            </div>
-                            <div className="d-border-left d-border-right row main-header col-sm-header-menu px-0 mr-2">
-                                <MenuHeader id={props}/>
+        <div class="h-84 mb-1">
+            <div className="d-xxl-none d-xxl-block d-border-bottom mb-1">
+                <div className="header-normal-menu">
+                    <Menu className="row">
+                        <div className="col-sm-header-logo px-0 text-center align-middle align-self-center text-white click-pointer">
+                            <Navbar.Brand href="/" className="text-white pr-0 pl-3"><h2>BIPS</h2></Navbar.Brand>
+                        </div>
+                        <div className="d-border-left d-border-right row main-header col-sm-header-menu px-0 mr-0 py-1 h-87">
+                            <MenuHeader id={props}/>
 
-                                {/*Zaky*/}
-                                <Menu.Menu className="px-1 align-self-center mx-0" style={{ flex:"auto" }}>
-                                    <SelectItem1 />
-                                </Menu.Menu>
-                            </div>
+                            {/*Zaky*/}
+                            <Menu.Menu className="px-1 align-self-center mx-0" style={{ flex:"auto" }}>
+                                <SelectItem1 />
+                            </Menu.Menu>
+                        </div>
 
-                            <div className="col-sm-header-user row mx-2">
-                                <Menu.Menu className="col-sm-8 px-4 mx-0">
-                                    <InfoCash/>
-                                </Menu.Menu>
+                        <div className="col-sm-header-user row mx-0">
+                            <Menu.Menu className="col-sm-8 px-2 mx-0">
+                                <InfoCash/>
+                            </Menu.Menu>
 
-                                <Menu.Menu className="px-0">
-                                    <UserInfo/>
-                                </Menu.Menu>
-                            </div>
-                        </Menu>
-                    </div>
-                    <div className="header-scale-menu">
-                        <Navbar className="navbar-trading my-0">
-                            <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd bg-navy-gradient-odd">
-                                <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
-                                    <Navbar.Brand href="/" className="mr-auto text-white">
-                                        <h2>BIPS</h2>
-                                    </Navbar.Brand>
-                                </div>
-                                <div className="col-sm-10 px-0 mx-0 align-self-center text-center">
-                                    <div className="col-sm-12 align-self-center text-center row">
-                                        <div className="col-sm-8 px-0 mx-0 row">
-                                            {/*Zaky*/}
-                                            <Menu.Menu className="col-sm-12 px-4 align-self-center">
-                                                <SelectItem1 />
-                                            </Menu.Menu>
-                                        </div>
-                                        <div className="col-sm-4 px-0 mx-0 row">
-                                            <Menu.Menu className="col-sm-8 px-4 mx-0">
-                                                <InfoCash/>
-                                            </Menu.Menu>
-
-                                            <Menu.Menu className="col-sm-4 px-1 mx-0">
-                                                <UserInfo/>
-                                            </Menu.Menu>
-                                        </div>
-                                    </div>
-                                </div>
-                                <MenuCollapse>
-                                    <Menu className="row col-sm-12" style={{zIndex:"1"}}>
-                                        <MenuHeader id={props} ms="menuscale"/>
-                                    </Menu>
-                                </MenuCollapse>
-                            </div>
-                        </Navbar>
-                    </div>
+                            <Menu.Menu className="px-0 mx-0">
+                                <UserInfo/>
+                            </Menu.Menu>
+                        </div>
+                    </Menu>
                 </div>
-
-                <div className="d-sml-none d-sml-block d-border-bottom mb-1">
+                <div className="header-scale-menu">
                     <Navbar className="navbar-trading my-0">
                         <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd">
                             <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
@@ -147,7 +109,7 @@ const UISelectionTab_Base = (props) => {
                                     <div className="col-sm-8 px-0 mx-0 row">
                                         {/*Zaky*/}
                                         <Menu.Menu className="col-sm-12 px-4 align-self-center">
-                                            <SelectItem1/>
+                                            <SelectItem1 />
                                         </Menu.Menu>
                                     </div>
                                     <div className="col-sm-4 px-0 mx-0 row">
@@ -169,114 +131,150 @@ const UISelectionTab_Base = (props) => {
                         </div>
                     </Navbar>
                 </div>
+            </div>
 
-                <div className="d-xsml-none d-xsml-block d-border-bottom mb-1">
-                    <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
-                            <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
-                                <Navbar.Brand href="/" className="mr-auto text-white">
-                                    <h2>BIPS</h2>
-                                </Navbar.Brand>
-                            </div>
-                            <div className="col-smb-10 px-0 mx-0 align-self-center text-center">
-                                <div className="col-smb-12 align-self-center text-center row">
-                                    <div className="col-smb-7 pr-0 pl-5 mx-0 row">
-                                        {/*Zaky*/}
-                                        <Menu.Menu className="col-smb-12 pl-2 pr-2 align-self-center">
-                                            <SelectItem1 />
-                                        </Menu.Menu>
-                                    </div>
-                                    <div className="col-smb-5 px-0 mx-0 row">
-                                        <Menu.Menu className="col-smb-8 px-4 mx-0">
-                                            <InfoCash/>
-                                        </Menu.Menu>
+            <div className="d-sml-none d-sml-block d-border-bottom mb-1">
+                <Navbar className="navbar-trading my-0">
+                    <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd">
+                        <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
+                            <Navbar.Brand href="/" className="mr-auto text-white">
+                                <h2>BIPS</h2>
+                            </Navbar.Brand>
+                        </div>
+                        <div className="col-sm-10 px-0 mx-0 align-self-center text-center">
+                            <div className="col-sm-12 align-self-center text-center row">
+                                <div className="col-sm-8 px-0 mx-0 row">
+                                    {/*Zaky*/}
+                                    <Menu.Menu className="col-sm-12 px-4 align-self-center">
+                                        <SelectItem1/>
+                                    </Menu.Menu>
+                                </div>
+                                <div className="col-sm-4 px-0 mx-0 row">
+                                    <Menu.Menu className="col-sm-8 px-4 mx-0">
+                                        <InfoCash/>
+                                    </Menu.Menu>
 
-                                        <Menu.Menu className="col-smb-4 px-1 mx-0">
-                                            <UserInfo/>
-                                        </Menu.Menu>
-                                    </div>
+                                    <Menu.Menu className="col-sm-4 px-1 mx-0">
+                                        <UserInfo/>
+                                    </Menu.Menu>
                                 </div>
                             </div>
-                            <MenuCollapse>
-                                <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props} ms="menuscale"/>
-                                </Menu>
-                            </MenuCollapse>
                         </div>
-                    </Navbar>
-                </div>
+                        <MenuCollapse>
+                            <Menu className="row col-sm-12" style={{zIndex:"1"}}>
+                                <MenuHeader id={props} ms="menuscale"/>
+                            </Menu>
+                        </MenuCollapse>
+                    </div>
+                </Navbar>
+            </div>
 
-                <div className="d-xxsml-none d-xxsml-block d-border-bottom mb-1">
-                    <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
-                            <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
-                                <Navbar.Brand href="/" className="mr-auto text-white">
-                                    <h2>BIPS</h2>
-                                </Navbar.Brand>
-                            </div>
-                            <div className="col-smb-10 px-4 mx-0 align-self-center text-center">
-                                <div className="col-smb-12 align-self-center text-center row">
-                                    <div className="col-smb-7 pr-0 pl-5 mx-0 row">
-                                        <Menu.Menu className="col-smb-12 pl-0 pr-2 align-self-center">
-                                            <SelectItem1 />
-                                        </Menu.Menu>
-                                    </div>
-                                    <div className="col-smb-5 px-0 mx-0 row">
-                                        <Menu.Menu className="col-smb-8 px-1 mx-0">
-                                            <InfoCash/>
-                                        </Menu.Menu>
+            <div className="d-xsml-none d-xsml-block d-border-bottom mb-1">
+                <Navbar className="navbar-trading my-0">
+                    <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
+                        <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
+                            <Navbar.Brand href="/" className="mr-auto text-white">
+                                <h2>BIPS</h2>
+                            </Navbar.Brand>
+                        </div>
+                        <div className="col-smb-10 px-0 mx-0 align-self-center text-center">
+                            <div className="col-smb-12 align-self-center text-center row">
+                                <div className="col-smb-7 pr-0 pl-5 mx-0 row">
+                                    {/*Zaky*/}
+                                    <Menu.Menu className="col-smb-12 pl-2 pr-2 align-self-center">
+                                        <SelectItem1 />
+                                    </Menu.Menu>
+                                </div>
+                                <div className="col-smb-5 px-0 mx-0 row">
+                                    <Menu.Menu className="col-smb-8 px-4 mx-0">
+                                        <InfoCash/>
+                                    </Menu.Menu>
 
-                                        <Menu.Menu className="col-smb-4 px-1 mx-0">
-                                            <UserInfo/>
-                                        </Menu.Menu>
-                                    </div>
+                                    <Menu.Menu className="col-smb-4 px-1 mx-0">
+                                        <UserInfo/>
+                                    </Menu.Menu>
                                 </div>
                             </div>
-                            <MenuCollapse>
-                                <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props} ms="menuscale"/>
-                                </Menu>
-                            </MenuCollapse>
                         </div>
-                    </Navbar>
-                </div>
+                        <MenuCollapse>
+                            <Menu className="row col-smb-12" style={{zIndex:"1"}}>
+                                <MenuHeader id={props} ms="menuscale"/>
+                            </Menu>
+                        </MenuCollapse>
+                    </div>
+                </Navbar>
+            </div>
 
-                <div className="d-xsm-none d-xsm-block d-border-bottom mb-1">
-                    <Navbar className="navbar-trading my-0">
-                        <div className="col-smb-12 px-0 mx-0 row text-center align-self-center bg-navy-gradient-odd">
-                            <div className="col-smb-3 px-2 text-center align-self-center click-pointer">
-                                <Navbar.Brand href="/" className="mr-auto text-white">
-                                    <h2>BIPS</h2>
-                                </Navbar.Brand>
-                            </div>
-                            <div className="col-smb-4 px-4 text-center align-self-center">
-                                <Menu.Menu>
-                                    <InfoCash/>
-                                </Menu.Menu>
-                            </div>
-                            <div className="col-smb-4 px-3 align-self-center">
-                                <Menu.Menu>
-                                    <UserInfo/>
-                                </Menu.Menu>
-                            </div>
-
-                            <MenuCollapse>
-                                <Menu className="row col-smb-12" style={{zIndex:"1"}}>
-                                    <MenuHeader id={props} ms="menuscale"/>
-                                </Menu>
-                            </MenuCollapse>
+            <div className="d-xxsml-none d-xxsml-block d-border-bottom mb-1">
+                <Navbar className="navbar-trading my-0">
+                    <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
+                        <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
+                            <Navbar.Brand href="/" className="mr-auto text-white">
+                                <h2>BIPS</h2>
+                            </Navbar.Brand>
                         </div>
+                        <div className="col-smb-10 px-4 mx-0 align-self-center text-center">
+                            <div className="col-smb-12 align-self-center text-center row">
+                                <div className="col-smb-7 pr-0 pl-5 mx-0 row">
+                                    <Menu.Menu className="col-smb-12 pl-0 pr-2 align-self-center">
+                                        <SelectItem1 />
+                                    </Menu.Menu>
+                                </div>
+                                <div className="col-smb-5 px-0 mx-0 row">
+                                    <Menu.Menu className="col-smb-8 px-1 mx-0">
+                                        <InfoCash/>
+                                    </Menu.Menu>
 
-                        <div className="col-smb-12 px-0 mx-0 row text-center align-self-center">
-                            {/*Zaky*/}
-                            <Menu.Menu className="col-smb-12 px-2 align-self-center text-center">
-                                <SelectItem1 />
+                                    <Menu.Menu className="col-smb-4 px-1 mx-0">
+                                        <UserInfo/>
+                                    </Menu.Menu>
+                                </div>
+                            </div>
+                        </div>
+                        <MenuCollapse>
+                            <Menu className="row col-smb-12" style={{zIndex:"1"}}>
+                                <MenuHeader id={props} ms="menuscale"/>
+                            </Menu>
+                        </MenuCollapse>
+                    </div>
+                </Navbar>
+            </div>
+
+            <div className="d-xsm-none d-xsm-block d-border-bottom mb-1">
+                <Navbar className="navbar-trading my-0">
+                    <div className="col-smb-12 px-0 mx-0 row text-center align-self-center bg-navy-gradient-odd">
+                        <div className="col-smb-3 px-2 text-center align-self-center click-pointer">
+                            <Navbar.Brand href="/" className="mr-auto text-white">
+                                <h2>BIPS</h2>
+                            </Navbar.Brand>
+                        </div>
+                        <div className="col-smb-4 px-4 text-center align-self-center">
+                            <Menu.Menu>
+                                <InfoCash/>
                             </Menu.Menu>
                         </div>
-                    </Navbar>
-                </div>
+                        <div className="col-smb-4 px-3 align-self-center">
+                            <Menu.Menu>
+                                <UserInfo/>
+                            </Menu.Menu>
+                        </div>
 
+                        <MenuCollapse>
+                            <Menu className="row col-smb-12" style={{zIndex:"1"}}>
+                                <MenuHeader id={props} ms="menuscale"/>
+                            </Menu>
+                        </MenuCollapse>
+                    </div>
+
+                    <div className="col-smb-12 px-0 mx-0 row text-center align-self-center">
+                        {/*Zaky*/}
+                        <Menu.Menu className="col-smb-12 px-2 align-self-center text-center">
+                            <SelectItem1 />
+                        </Menu.Menu>
+                    </div>
+                </Navbar>
             </div>
+
         </div>
     )
 };
@@ -324,17 +322,17 @@ class SelectItem1 extends React.PureComponent {
                 {
                     symbol: 'COMPOSITE INDEX',
                     last: '12849',
-                    change: -0.99293,
+                    change: -0.99,
                     percentage: -0.30,
                 },{
                     symbol: 'INFRASTRUCTUR',
                     last: '108.59',
-                    change: 0.06,
-                    percentage: 0.06,
+                    change: 0,
+                    percentage: 0,
                 },{
                     symbol: 'AGRI',
                     last: '0.9874',
-                    change: -0.00005,
+                    change: -0.05,
                     percentage: -0.04,
                 },{
                     symbol: 'MINING',
@@ -398,18 +396,31 @@ class SelectItem1 extends React.PureComponent {
         }
         //zaky
         //fungsi untuk warna
-        const colorLabel = (props) => {
+        const colorLabelFront = (props) => {
             if(props < 0){
-                return "red"
+                return "card__face--front-red"
+            }if(props > 0){
+                return "card__face--front"
             }else{
-                return "green"
+                return "card__face--front-yellow"
+            }
+        }
+        const colorLabelBack = (props) => {
+            if(props < 0){
+                return "card__face--back-red"
+            }if(props > 0){
+                return "card__face--back"
+            }else{
+                return "card__face--back-yellow"
             }
         }
         const colorIcon = (props) => {
             if(props < 0){
                 return "icofont icofont-caret-down"
-            }else{
+            }if(props > 0){
                 return "icofont icofont-caret-up"
+            }else{
+                return "icofont icofont-minus"
             }
         }
         //zaky
@@ -418,9 +429,9 @@ class SelectItem1 extends React.PureComponent {
             let info = this.state.barInfo[this.state.index];
             if(props === "front"){
                 if(this.state.flipped){
-                    return <div className="card__face card__face--front">&nbsp;</div>
+                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>&nbsp;</div>
                 }else{
-                    return <div className="card__face card__face--front">
+                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>
                         <table width="100%" height="100%">
                             <tr>
                                 <td rowSpan="2" className="spanSymbol px-0">{info.symbol}</td>
@@ -428,11 +439,11 @@ class SelectItem1 extends React.PureComponent {
                             </tr>
                             <tr>
                                 <td>
-                                    <span className={colorLabel(info.change)+' '+colorIcon(info.change)}>&nbsp;
+                                    <span className={'white '+colorIcon(info.change)}>&nbsp;
                                         {info.change}</span>&nbsp;
                                 </td>
                                 <td>
-                                    <span className={colorLabel(info.percentage)}>({info.percentage}%)</span>
+                                    <span className="white">({info.percentage}%)</span>
                                 </td>
                             </tr>
                         </table>
@@ -440,7 +451,7 @@ class SelectItem1 extends React.PureComponent {
                 }
             }else{
                 if(this.state.flipped){
-                    return <div className="card__face card__face--back">
+                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>
                         <table width="100%" height="100%">
                             <tr>
                                 <td rowSpan="2" className="spanSymbol px-0">{info.symbol}</td>
@@ -448,17 +459,17 @@ class SelectItem1 extends React.PureComponent {
                             </tr>
                             <tr>
                                 <td>
-                                    <span className={colorLabel(info.change)+' '+colorIcon(info.change)}>&nbsp;
+                                    <span className={'white '+colorIcon(info.change)}>&nbsp;
                                         {info.change}</span>&nbsp;
                                 </td>
                                 <td>
-                                    <span className={colorLabel(info.percentage)}>({info.percentage}%)</span>
+                                    <span className="white">({info.percentage}%)</span>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 }else{
-                    return <div className="card__face card__face--back">&nbsp;</div>
+                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>&nbsp;</div>
                 }
             }
         }
@@ -543,7 +554,7 @@ class InfoCash extends React.Component {
                                 <td rowSpan="2" className="py-2"><i className="f-11-center text-gray-tradding oi oi-caret-bottom"></i></td>
                             </tr>
                             <tr className="f-16 text-white">
-                                <td colSpan="2" className="text-center">15,911,198</td>
+                                <td colSpan="2" className="text-center">1,000,150,911,198</td>
                             </tr>
                             </tbody>
                         </Table>

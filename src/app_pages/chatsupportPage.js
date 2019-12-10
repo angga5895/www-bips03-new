@@ -42,7 +42,7 @@ class CustomFrameHeaderChatSupportPage_Base extends React.PureComponent{
                     </div>
                 </div>
                 <AppFrame treeName="/chatsupportPage" headerComponent={ChatSuppportPageFrameHeader}/>
-                <AppModal/>
+                {/*<AppModal/>*/}
                 {/*</BIPSAppProvider>*/}
             </div>
         );

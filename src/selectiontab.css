@@ -48,13 +48,16 @@ input[type="radio"]:checked .radioAccount ~ label{
     border-top-left-radius: 5px;
 }
 .lastColor{
-    color: black!important;
+    color: white!important;
 }
 .red {
     color: red;
 }
 .green {
     color: green;
+}
+.white {
+    color: white!important;
 }
 .scene {
     height: 70px;
@@ -92,12 +95,26 @@ input[type="radio"]:checked .radioAccount ~ label{
     padding:3px 15px;
 }
 .card__face--front {
-    background-image: linear-gradient(#8BC641,#1be25c);
+    background-image: linear-gradient(#8CC640,#119848);
     border-radius:5px;
-}
+}.card__face--front-red {
+     background-image: linear-gradient(#ED1D24,#78232A);
+     border-radius:5px;
+ }.card__face--front-yellow {
+      background-image: linear-gradient(#FCB03B,#F26427);
+      border-radius:5px;
+  }
 
 .card__face--back {
-    background-image: linear-gradient(#8BC641, #1be25c);
+    background-image: linear-gradient(#8CC640, #119848);
     transform: rotateX(180deg);
     border-radius:5px;
-}
+}.card__face--back-red {
+     background-image: linear-gradient(#ED1D24, #78232A);
+     transform: rotateX(180deg);
+     border-radius:5px;
+ }.card__face--back-yellow {
+      background-image: linear-gradient(#FCB03B, #F26427);
+      transform: rotateX(180deg);
+      border-radius:5px;
+  }

@@ -20788,14 +20788,14 @@ ol.ui.horizontal.list li:before {
     text-transform: none;
     color: #767171;
     border: #5f68ad solid 1px;
-    margin: 3px 1px;
+    margin: 3px 3px;
     border-radius: 5px!important;
     font-weight: 400;
     -webkit-transition: background .1s ease, color .1s ease, -webkit-box-shadow .1s ease;
     transition: background .1s ease, color .1s ease, -webkit-box-shadow .1s ease;
     transition: background .1s ease, box-shadow .1s ease, color .1s ease;
     transition: background .1s ease, box-shadow .1s ease, color .1s ease, -webkit-box-shadow .1s ease;
-    background-image: linear-gradient(var(--warna-navy-even),var(--warna-navy-odd));
+    background-image: linear-gradient(var(--warna-navy-odd),var(--warna-navy-even));
     box-shadow: 2px 2px black!important;
 }
 
@@ -22542,7 +22542,7 @@ ol.ui.horizontal.list li:before {
 .ui.menu {
     font-size: 1rem;
     /*background-image: linear-gradient(var(--warna-black-white-gradient),var(--warna-background-semantic-gradient));*/
-    background-image: linear-gradient(var(--warna-navy-even),var(--warna-navy-odd)) !important;
+    background-image: linear-gradient(var(--warna-navy-odd), var(--warna-navy-even)) !important;
 }
 
 .ui.vertical.menu {

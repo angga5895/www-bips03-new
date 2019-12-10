@@ -44,7 +44,7 @@ const CustomFrameHeaderStock = (props) => {
                 </div>
             </div>
             <AppFrame treeName="/stockPage" headerComponent={StockFrameHeader}/>
-            <AppModal/>
+            {/*<AppModal/>*/}
             {/* </BIPSAppProvider> */}
         </div>
     );
@@ -206,7 +206,7 @@ const StockWatchlist = (props) => {
             {/* <BIPSAppProvider> */}
             <div className="row col-sm-12 pl-2 mx-0 py-0">
                 <div className="col-sm-4 px-0 mx-0">
-                    <AppModal/>
+                    {/*<AppModal/>*/}
                     <TableStockWatchlist/>
                 </div>
                 <div className="col-sm-8 px-0 mx-0 card-527">

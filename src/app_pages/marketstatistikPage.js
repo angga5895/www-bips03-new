@@ -50,7 +50,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                 </div>
             </div>
             <AppFrame treeName="/marketstatistikPage" headerComponent={MarketStatistikFrameHeader}/>
-            <AppModal/>
+            {/*<AppModal/>*/}
             {/*</BIPSAppProvider>*/}
         </div>
     );

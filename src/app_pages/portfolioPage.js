@@ -26,7 +26,7 @@ class PortfolioPage extends React.PureComponent {
           }
         />
         <AppFrame treeName="/portfolioPage" />
-        <AppModal />
+        {/*<AppModal />*/}
     </div>
 
     );

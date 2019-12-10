@@ -23,7 +23,7 @@ class Stock extends React.PureComponent {
           } 
         />
         <AppFrame treeName="/portfolioPage/stockPage" />
-        <AppModal />
+        {/*<AppModal />*/}
       </div>
     );
   }

@@ -302,17 +302,17 @@ class LoginUserPage_Base extends React.PureComponent {
                 {
                     symbol: 'GBP/USD',
                     last: '12849',
-                    change: -0.99293,
+                    change: -0.99,
                     percentage: -0.30,
                 },{
                     symbol: 'USD/JPY',
                     last: '108.59',
-                    change: 0.06,
-                    percentage: 0.06,
+                    change: 0,
+                    percentage: 0,
                 },{
                     symbol: 'USD/CHF',
                     last: '0.9874',
-                    change: -0.00005,
+                    change: -0.05,
                     percentage: -0.04,
                 },{
                     symbol: 'AUD/JPY',
@@ -476,18 +476,31 @@ class LoginUserPage_Base extends React.PureComponent {
         }
         //zaky
         //fungsi untuk warna
-        const colorLabel = (props) => {
+        const colorLabelFront = (props) => {
             if(props < 0){
-                return "red"
+                return "card__face--front-red"
+            }if(props > 0){
+                return "card__face--front"
             }else{
-                return "green"
+                return "card__face--front-yellow"
+            }
+        }
+        const colorLabelBack = (props) => {
+            if(props < 0){
+                return "card__face--back-red"
+            }if(props > 0){
+                return "card__face--back"
+            }else{
+                return "card__face--back-yellow"
             }
         }
         const colorIcon = (props) => {
             if(props < 0){
                 return "icofont icofont-caret-down"
-            }else{
+            }if(props > 0){
                 return "icofont icofont-caret-up"
+            }else{
+                return "icofont icofont-minus"
             }
         }
         //zaky
@@ -496,19 +509,19 @@ class LoginUserPage_Base extends React.PureComponent {
             let info = this.state.barInfo[this.state.index];
             if(props === "front"){
                 if(this.state.flipped){
-                    return <div className="card__face card__face--front">&nbsp;</div>
+                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>&nbsp;</div>
                 }else{
-                    return <div className="card__face card__face--front">
+                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>
                         <table width="100%" height="100%">
                             <tr>
                                 <td className="spanSymbol">{info.symbol}</td>
                                 <td>Last: {info.last}</td>
 
                                 <td>
-                                    <span className={colorLabel(info.change) +" "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
+                                    <span className={"white "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
                                 </td>
                                 <td>
-                                    <span className={colorLabel(info.percentage)}>({info.percentage}%)</span>
+                                    <span className="white">({info.percentage}%)</span>
                                 </td>
                             </tr>
                         </table>
@@ -516,22 +529,22 @@ class LoginUserPage_Base extends React.PureComponent {
                 }
             }else{
                 if(this.state.flipped){
-                    return <div className="card__face card__face--back">
+                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>
                         <table width="100%" height="100%">
                             <tr>
                                 <td className="spanSymbol">{info.symbol}</td>
                                 <td>Last: {info.last}</td>
                                 <td>
-                                    <span className={colorLabel(info.change) +" "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
+                                    <span className={"white "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
                                 </td>
                                 <td>
-                                    <span className={colorLabel(info.percentage)}>({info.percentage}%)</span>
+                                    <span className="white">({info.percentage}%)</span>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 }else{
-                    return <div className="card__face card__face--back">&nbsp;</div>
+                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>&nbsp;</div>
                 }
             }
         }

@@ -252,6 +252,7 @@ class App extends React.Component {
               <BIPSAppProvider>
                   <WSConnection />
                   <MainPage />
+                  <AppModal />
               </BIPSAppProvider>
           </NetAppProvider>
       </AppFrameProvider>

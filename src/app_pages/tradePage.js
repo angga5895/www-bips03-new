@@ -91,7 +91,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                 </div>
             </div>
             <AppFrame treeName="/tradePage" headerComponent={TradeFrameHeader}/>
-            <AppModal/>
+            {/*<AppModal/>*/}
             {/* </BIPSAppProvider> */}
         </>
     );

@@ -16,12 +16,6 @@ class TableInfoTransaction extends React.PureComponent{
             <>
                 <div className="col-sm-12 row px-0 mx-0 h-30 my-2">
                     <div className="col-sm-3-6 px-0 mx-0">
-                        {/*<InputGroup size="sm">
-                            <Input className="col-sm-12 d-border bg-dark-grey" value="AALI" size="sm"/>
-                            <InputGroupAddon addonType="append">
-                                <InputGroupText className="bg-gold">90%</InputGroupText>
-                            </InputGroupAddon>
-                        </InputGroup>*/}
                         <Input label={{ color: 'bg-gold', content: '90%' }} defaultValue='AALI'
                                labelPosition='right' placeholder='Code' size='mini' style={{width:'50%'}}/>
                     </div>
@@ -111,7 +105,17 @@ class TableInfoTransaction extends React.PureComponent{
                     <div className="col-sm-12 row mx-0 px-0 d-border-gray">
                         <div className="col-sm-6 mx-0 px-0 d-border-right-half">
                             <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-324 mb-0 table-hover table-striped-trans">
+                                <Table
+                                    responsive
+                                    bordered size="sm"
+                                    className={`text-white bg-dark-grey px-0 mx-0
+                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
+                                          (this.props.lotshare == 'buyPage') ? 'card-bwt':
+                                            (this.props.lotshare == 'sellPage') ? 'card-swt' :
+                                                (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
+                                                    (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
+                                        }
+                                     mb-0 table-hover table-striped-trans`}>
                                 <thead className="d-border-top d-border-bottom bg-gray-tradding">
                                 <tr>
                                     <th className="no-wrap py-3 text-center bg-gray-tradding">
@@ -187,7 +191,17 @@ class TableInfoTransaction extends React.PureComponent{
                         </div>
                         <div className="col-sm-6 mx-0 px-0 d-border-left-half">
                             <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-324 mb-0 table-hover table-striped-trans">
+                                <Table
+                                    responsive
+                                    bordered size="sm"
+                                    className={`text-white bg-dark-grey px-0 mx-0
+                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
+                                        (this.props.lotshare == 'buyPage')? 'card-bwt':
+                                            (this.props.lotshare == 'sellPage') ? 'card-swt':
+                                            (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
+                                                (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
+                                    }
+                                        mb-0 table-hover table-striped-trans`}>
                                 <thead className="d-border-top d-border-bottom bg-gray-tradding">
                                 <tr>
                                     <th className="no-wrap py-3 text-center bg-gray-tradding">Offer</th>

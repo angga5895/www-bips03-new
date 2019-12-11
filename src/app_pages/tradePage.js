@@ -329,11 +329,26 @@ class SentOrder extends React.PureComponent{
         super(props);
 
     }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render(){
         return(
             <AppFrameProvider>
-                <div className="col-sm-12 pl-2 mt-2">
-                    <OrderHistoryAgGrid/>
+                <div className="col-sm-12 pl-2 mt-2 pr-3">
+                    <OrderHistoryAgGrid size={this.ceksize()}/>
                 </div>
             </AppFrameProvider>
         )
@@ -404,247 +419,7 @@ class TableInfoTransactionLayout extends React.PureComponent{
     render(){
         return(
             <>
-                <div className="col-sm-12 row px-0 mx-0 h-30 my-2 mt-3">
-                    <div className="col-sm-3-6 px-0 mx-0">
-                        <Input label={{ color: 'bg-gold', content: '90%' }} defaultValue='AALI'
-                               labelPosition='right' placeholder='Code' size='mini' style={{width:'50%'}}/>
-                    </div>
-
-                    <div className="col-sm-3-6 px-0 mx-0">
-                        <label className="col-sm-12 f-12 f-xs-14 px-0 mx-0 text-primary text-center">
-                            7,000,545,000,000
-                            <br/><span className="text-white f-9">Investment In AALI</span>
-                        </label>
-                    </div>
-
-                    <div className="col-sm-2-4 px-0 mx-0">
-                        <label className="col-sm-12 f-12 f-xs-14 px-0 mx-0 text-danger text-center">
-                            -1,18%
-                            <br/><span className="text-white f-9">%Change</span>
-                        </label>
-                    </div>
-
-                    <div className="col-sm-2-4 px-0 mx-0">
-                        <Popup content='600 Share' position='top center' trigger={
-                            <label className="col-sm-12 f-12 f-xs-14 px-0 mx-0 text-primary text-center" id={this.props.lotshare}>
-                                <span id="lotShare">6</span>
-                                <br/><span className="text-white f-9">Lot</span>
-                            </label>
-                        } />
-                    </div>
-
-                    <div className="col-sm-2-4 px-0 mx-0">
-                        <label className="col-sm-12 f-12 f-xs-14 px-0 mx-0 text-danger text-center">
-                            -90,240
-                            <br/><span className="text-white f-9">P/L</span>
-                        </label>
-                    </div>
-                </div>
-
-                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-111 mb-2">
-                    <thead></thead>
-                    <tbody>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Last</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1">12,650</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Previous</td>
-                        <td className="no-wrap text-warning d-border-tr-gray text-right py-1">12,650</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Freq</td>
-                        <td className="no-wrap d-border-tr-gray text-right py-1">779</td>
-                    </tr>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Change</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1"><i className="icofont icofont-caret-down"></i> -50</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Open</td>
-                        <td className="no-wrap text-success d-border-tr-gray text-right py-1">12,650</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Vol</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1">2 K</td>
-                    </tr>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">%</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1">-0.40%</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">High</td>
-                        <td className="no-wrap text-success d-border-tr-gray text-right py-1">12,800</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Val</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1">2.6 B</td>
-                    </tr>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Lower AR</td>
-                        <td className="no-wrap d-border-tr-gray text-right py-1">12,400</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Low</td>
-                        <td className="no-wrap text-danger d-border-tr-gray text-right py-1">12,350</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">F. Buy</td>
-                        <td className="no-wrap d-border-tr-gray text-right py-1">1.1 B</td>
-                    </tr>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding py-1">Upper AR</td>
-                        <td className="no-wrap text-right py-1">13,000</td>
-                        <td className="no-wrap bg-gray-tradding py-1">Avg.</td>
-                        <td className="no-wrap text-danger text-right py-1">12,639.92</td>
-                        <td className="no-wrap bg-gray-tradding py-1">F. Sell</td>
-                        <td className="no-wrap text-right py-1">825.5 M</td>
-                    </tr>
-                    </tbody>
-                </Table>
-
-                {/*<div className="my-3"></div>*/}
-
-                <div className="bg-dark-grey">
-                    <div className="col-sm-12 row mx-0 px-0 d-border-gray">
-                        <div className="col-sm-6 mx-0 px-0 d-border-right-half">
-                            <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-324 mb-0 table-hover table-striped-trans">
-                                    <thead className="d-border-top d-border-bottom bg-gray-tradding">
-                                    <tr>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">
-                                            <Popup content='Number Of Buy' position='top center' trigger={
-                                                <span>NoB</span>
-                                            } />
-                                        </th>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Bid Vol</th>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Bid</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">4</td>
-                                        <td className="no-wrap py-1 text-right">17</td>
-                                        <td className="no-wrap py-1 text-right text-warning">12,600</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">7</td>
-                                        <td className="no-wrap py-1 text-right">19</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,575</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">3</td>
-                                        <td className="no-wrap py-1 text-right">85</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,550</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">8</td>
-                                        <td className="no-wrap py-1 text-right">14</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,525</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">4</td>
-                                        <td className="no-wrap py-1 text-right">274</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,500</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">3</td>
-                                        <td className="no-wrap py-1 text-right">14</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,475</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">2</td>
-                                        <td className="no-wrap py-1 text-right">178</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">5</td>
-                                        <td className="no-wrap py-1 text-right">20</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,425</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">1</td>
-                                        <td className="no-wrap py-1 text-right">739</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,400</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right">2</td>
-                                        <td className="no-wrap py-1 text-right">22</td>
-                                        <td className="no-wrap py-1 text-right text-danger">12,350</td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot className="d-border-top bg-gray-tradding">
-                                    <tr>
-                                        <th className="no-wrap py-3 text-right bg-gray-tradding">34</th>
-                                        <th className="no-wrap py-3 text-right bg-gray-tradding">1,436</th>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Total</th>
-                                    </tr>
-                                    </tfoot>
-                                </Table>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 mx-0 px-0 d-border-left-half">
-                            <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-324 mb-0 table-hover table-striped-trans">
-                                    <thead className="d-border-top d-border-bottom bg-gray-tradding">
-                                    <tr>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Offer</th>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Offer Vol</th>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">
-                                            <Popup content='Number Of Sell' position='top center' trigger={
-                                                <span>NoS</span>
-                                            } />
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,625</td>
-                                        <td className="no-wrap py-1 text-right">35</td>
-                                        <td className="no-wrap py-1 text-right">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,650</td>
-                                        <td className="no-wrap py-1 text-right">15</td>
-                                        <td className="no-wrap py-1 text-right">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,675</td>
-                                        <td className="no-wrap py-1 text-right">681</td>
-                                        <td className="no-wrap py-1 text-right">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,700</td>
-                                        <td className="no-wrap py-1 text-right">25</td>
-                                        <td className="no-wrap py-1 text-right">7</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,725</td>
-                                        <td className="no-wrap py-1 text-right">121</td>
-                                        <td className="no-wrap py-1 text-right">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,750</td>
-                                        <td className="no-wrap py-1 text-right">316</td>
-                                        <td className="no-wrap py-1 text-right">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,775</td>
-                                        <td className="no-wrap py-1 text-right">228</td>
-                                        <td className="no-wrap py-1 text-right">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,800</td>
-                                        <td className="no-wrap py-1 text-right">224</td>
-                                        <td className="no-wrap py-1 text-right">5</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,825</td>
-                                        <td className="no-wrap py-1 text-right">10</td>
-                                        <td className="no-wrap py-1 text-right">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="no-wrap py-1 text-right text-success">12,850</td>
-                                        <td className="no-wrap py-1 text-right">158</td>
-                                        <td className="no-wrap py-1 text-right">2</td>
-                                    </tr>
-                                    </tbody>
-                                    <tfoot className="d-border-top bg-gray-tradding">
-                                    <tr>
-                                        <th className="no-wrap py-3 text-center bg-gray-tradding">Total</th>
-                                        <th className="no-wrap py-3 text-right bg-gray-tradding">1,813</th>
-                                        <th className="no-wrap py-3 text-right bg-gray-tradding">39</th>
-                                    </tr>
-                                    </tfoot>
-                                </Table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <TableInfoTransaction lotshare="autTradeOrd"/>
             </>
         );
     }
@@ -678,6 +453,21 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                 todayBtn: "linked",
             });
         });
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
     }
     render(){
         return(
@@ -816,7 +606,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                     </div>
                 </div>
                 <div className="col-sm-12 d-border mt-2 px-0">
-                    <OrderSettingListAgGrid/>
+                    <OrderSettingListAgGrid size={this.ceksize()}/>
                 </div>
 
             </>
@@ -828,6 +618,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             list: [42, 33, 68],
             columnDefs: [
@@ -849,7 +640,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                 },
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 100,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "cmd", headerName: "Cmd.", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 100,
                     cellClass : function (params) {
@@ -860,15 +651,18 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 80,
+                { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?170:s=="s80"?150:80,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 120,
+                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?190:s=="s80"?160:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "exp", headerName: "Expired Date", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "exp", headerName: "Expired Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?185:s=="s80"?165:s=="s90"?155:135,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     } },
@@ -1057,7 +851,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     <div className="bg-grey-tradding col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
                 </div>
                 <div
-                    className="card-194 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-233 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
 
@@ -1120,7 +914,21 @@ class TradeWatchlist extends React.PureComponent{
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
-
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render() {
         return (
             <div className="row col-sm-12 px-2 mx-0 py-0">
@@ -1137,7 +945,7 @@ class TradeWatchlist extends React.PureComponent{
                             <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                 <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 f-12" style={{backgroundColor: '#333f50'}}>TRADE LIST</div>
                             </div>
-                            <TradeListOrderListAgGrid/>
+                            <TradeListOrderListAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
                     <div className="col-sm-6 pl-2 pr-0">
@@ -1155,11 +963,11 @@ class TradeWatchlist extends React.PureComponent{
                                                         className="f-12">TRADE SUMMARY</span></a></li>
                             </ul>
                             <div style={{display: this.state.activeTab == 1 ? "block" : "none"}}>
-                                <TradeOrderSummaryAgGrid/>
+                                <TradeOrderSummaryAgGrid size={this.ceksize()}/>
 
                             </div>
                             <div style={{display: this.state.activeTab == 2 ? "block" : "none"}}>
-                                <TradeTradeSummaryAgGrid/>
+                                <TradeTradeSummaryAgGrid size={this.ceksize()}/>
                             </div>
                         </div>
                     </div>
@@ -1195,93 +1003,6 @@ class SettingInWatchlist extends React.Component{
 
 }
 
-class SettingInWatchlist2 extends React.Component{
-    render(){
-        return(
-            <>
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction /> {/* websocket connection component */}
-                <div className="row">
-                    <div className="col-md-12 pl-3">
-                        <SettingOrder
-                            type="full"
-                            lpSetting="setWatchlist"
-                            volSetting="volsetWatchlist"
-                            opSetting="opsetWatchlist"
-                            slpSetting="ssetWatchlist" svolSetting="svolsetWatchlist" sopSetting="sopsetWatchlist"/>
-                    </div>
-                </div>
-
-            </>
-        );
-    }
-
-}
-
-class SettingInTick extends React.Component{
-    render(){
-        return(
-            <>
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction /> {/* websocket connection component */}
-                <SettingOrder lpSetting="setTick" volSetting="volsetTick" opSetting="opsetTick" slpSetting="ssetTick" svolSetting="svolsetTick" sopSetting="sopsetTick"/>
-            </>
-        );
-    }
-
-}
-
-class SettingInDaily extends React.Component{
-    render(){
-        return(
-            <>
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction /> {/* websocket connection component */}
-                <SettingOrder lpSetting="setDaily" volSetting="volsetDaily" opSetting="opsetDaily" slpSetting="ssetDaily" svolSetting="svolsetDaily" sopSetting="sopsetDaily"/>
-            </>
-        );
-    }
-
-}
-
-/*const TableTradeWatchlist = ContextConnector(BIPSAppContext,
-    (vars, actions, props)=>({
-        subscribeMsg: vars.subscribeMsg,
-        stockSummary:vars.stockSummary,
-        sessionID:vars.sessionID,
-        subscribeStock:(sessionID) => {actions.sendAction('subscribeStock', {sessionID})}
-    })
-)(TableTradeWatchlist_Base)*/
-
-// TableTradeWatchlist_Base
-class TableTradeWatchlist extends React.Component{
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    buttonClickAmendRegister = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i></div>,
-            size: 'tiny',
-            contentClass: RegisterAmendModal,
-            onClose: (result) => {console.log('Modal 1 result = ', result)}
-        })
-    }
-
-    render(){
-        return(<>
-            <WSConnectionAction ref="wsAction" /> {/* websocket connection component */}
-            <div className="bg-black-trading f-12">
-                <AppFrameAction ref="frameAction" />
-                <div className="px-4 pt-2">
-                    <TradeWatchlistAgGrid />
-                </div>
-            </div>
-        </>);
-    }
-}
-
 const CustomFrameHeaderTrade = ContextConnector(BIPSAppContext,
     (vars, actions, props) => ({
         isManual:vars.isManual,
@@ -1298,7 +1019,7 @@ class TradeWatchlistAgGrid extends React.PureComponent {
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 80, minWidth: 80, lockPosition:true, lockVisible:true,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 80, minWidth: 80,
@@ -1593,7 +1314,7 @@ class TradeWatchlistAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-515 ag-theme-balham-dark ag-header-border d-border ml-2 ag-striped-odd"
+                    className="card-tradeAgW ag-theme-balham-dark ag-header-border d-border ml-2 ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -1609,53 +1330,12 @@ class TradeWatchlistAgGrid extends React.PureComponent {
         );
     }
 }
-
-class BuyPage extends React.Component{
-    render(){
-        return(
-            <>
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction /> {/* websocket connection component */}
-                <div className="col sm-8 px-0 mx-0 row">
-                    <div className="col-sm-6 pr-3 pl-0 mt-4 f-12">
-                        <TableInfoTransaction lotshare="buyPage" />
-                    </div>
-                    <div className="col-sm-6 mt-4 d-border-active bg-dark-grey pb-3">
-                        <FormBuy idPrice="tradeBuyPrice" idVol="tradeBuyVol" idValue="tradeBuyValue" columnSm="col-sm-12"/>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-}
-
-class SellPage extends React.Component{
-    render(){
-        return(
-            <>
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction /> {/* websocket connection component */}
-                <div className="col sm-8 px-0 mx-0 row">
-                    <div className="col-sm-6 pr-3 pl-0 mt-4 f-12">
-                        <TableInfoTransaction lotshare="sellPage" />
-                    </div>
-                    <div className="col-sm-6 mt-4 d-border-active bg-dark-grey pb-3">
-                        <FormSell idPrice="tradeSellPrice" idVol="tradeSellVol" idValue="tradeSellValue" columnSm="col-sm-12"/>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-}
-
-
 //Sent Order
 class OrderHistoryAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 90, lockPosition:true, lockVisible:true,
@@ -1672,7 +1352,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
                     },},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 75,
                     cellClass : function (params) {
-                        return "text-center text-primary grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 80,
                     cellClass : function (params) {
@@ -1692,19 +1372,23 @@ class OrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "mprice", headerName: "M Price", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 120,
+                { field: "mprice", headerName: "M Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?193:s=="s80"?173:s=="s90"?133:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "result", headerName: "Result", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 120,
+                { field: "result", headerName: "Result", sortable: true, filter: "agTextColumnFilter",
+                    resizable: true, width: s=="s75"?220:s=="s80"?200:s=="s90"?160:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "setdate", headerName: "Set Date", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
+                { field: "setdate", headerName: "Set Date", sortable: true, filter: "agTextColumnFilter",
+                    resizable: true, width: s=="s75"?240:s=="s80"?210:s=="s90"?160:110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "dateuntil", headerName: "Date Until", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
+                { field: "dateuntil", headerName: "Date Until", sortable: true, filter: "agTextColumnFilter",
+                    resizable: true, width: s=="s75"?240:s=="s80"?210:s=="s90"?160:110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
@@ -1806,9 +1490,8 @@ class OrderHistoryAgGrid extends React.PureComponent {
             <>
                 {/*senttttt*/}
                 <div
-                    className="card-530 ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
-                    style={{
-                        width: 'auto',height: '480px', }}>
+                    className="card-autSend ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
+                    >
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
@@ -1871,7 +1554,7 @@ class OrderListAgGrid extends React.PureComponent {
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:80, minWidth: 80,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center text-primary f-12";
+                        return " grid-table d-border-aggrid-right text-left text-primary f-12";
                     },
                 },
                 { field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -1954,7 +1637,7 @@ class OrderListAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:80, minWidth:80,
+                    width:140, minWidth:140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
@@ -2574,17 +2257,6 @@ class OrderListAgGrid extends React.PureComponent {
         params.api.sizeColumnsToFit();
     }
 
-    buttonClickOrderDetailOrderPage = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="col-sm-12 px-0 mx-0 text-right">
-                    <i className="icofont icofont-close text-icofont-close text-border click-pointer" onClick={this.closeClick}></i>
-                </div>,
-            size: 'large',
-            contentClass: OrderDetailModal,
-            onClose: (result) => {console.log('Modal 1 result = ', result)}
-        })
-    }
 
     render() {
 
@@ -2616,6 +2288,7 @@ class TradeListOrderListAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -2626,25 +2299,13 @@ class TradeListOrderListAgGrid extends React.PureComponent {
                 },{ field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:78, minWidth:78,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:140, minWidth: 140,
-                    cellClass : function (params) {
-                        var pl = params.data.change;
-                        return pl.includes('-') === true ? "text-danger text-center grid-table f-12 d-border-aggrid-right":
-                            "text-success text-center  grid-table f-12 d-border-aggrid-right";
-                    },
-                    cellRenderer : function (params) {
-                        var pl = params.data.change;
-                        return pl.includes('-') === true ? '<i class="icofont icofont-caret-down text-danger"></i> '+pl :
-                            '<i class="icofont icofont-caret-up text-success"></i> '+pl;
-                    }
                 },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:60, minWidth: 60,
                     cellClass : function (params) {
@@ -2661,12 +2322,12 @@ class TradeListOrderListAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:86, minWidth: 86,
+                    width: 86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "tradeId", headerName: "TradeID", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:90, minWidth: 90,
+                    width:s=="s75"?167:s=="s80"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
@@ -2823,11 +2484,12 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true, width:90,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "leaveVol", headerName: "Leave Vol", sortable: true, filter: "agTextColumnFilter", resizable: true, width:140,
                     cellClass : function (params) {
@@ -2837,11 +2499,13 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true, width:150,
+                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s75"?245:s=="s80"?205:s=="s90"?185:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true, width:97,
+                },{ field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?225:s=="s80"?210:s=="s90"?130:97,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
                         return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
@@ -2970,20 +2634,21 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:220,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:207,
+                    width: s=="s76"?467:s=="s80"?277:s=="s90"?227:207,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width:200,
+                    resizable: true, width: s=="s75"?416:s=="s80"?290:s=="s90"?250:200,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },

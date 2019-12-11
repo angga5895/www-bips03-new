@@ -80,15 +80,14 @@
                         <Checkbox label='All' className="f-12 text-white my-0 align-self-center" />
                     )
                 }
-
             }
             return(
                 <>
                     <AppFrameAction ref="frameAction" />
                     <WSConnectionAction /> {/* websocket connection component */}
                     <div className="col-sm-12 px-2 pt-2 mx-0 row">
-                        <div className="col-sm-6 pr-3 pl-0 f-12" style={{ marginTop: "8px" }}>
-                            <TableInfoTransaction lotshare="buyPage" />
+                        <div className="col-sm-6 pr-3 pl-0 f-12">
+                            <TableInfoTransaction lotshare="buyPageTrade"/>
                         </div>
                         <div className="col-sm-6 my-0 d-border-active bg-dark-grey py-0 px-0">
                             <div className="cssmenumodal bg-dark-grey pb-2 col-sm-12 mx-0 px-0">

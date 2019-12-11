@@ -6,6 +6,7 @@ import { AppFrameAction } from '../appframe.js';
 import { ContextConnector } from '../appcontext.js';
 import { BIPSAppContext } from '../AppData.js';
 
+import {Dropdown} from 'semantic-ui-react';
 import $ from "jquery";
 
 //Form signup
@@ -93,34 +94,65 @@ class FindIdModal extends React.Component {
     closeClick = (e) => {
         this.refs.frameAction.closeModal(100);
     }
+    copyClip(){
+        var copyText = document.getElementById("resultID");
+        // copyText.select();
+        document.execCommand("copy");
+        // alert("Copied the text: " + copyText.value);
+    }
+    findId(){
+        var result = document.getElementById("resultID");
+        result.value = "thisssmiy";
+    }
 
     render() {
         return (
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
+                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-16">Find ID</label>
                 <div className="text-white f-12">
-                    <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
-                        <div className="col-sm-4 pt-2">
-                            <label className="col-sm-12">Email</label></div>
-                        <div className="col-sm-8">
-                            <div className="ui small input gray px-0 col-sm-12 align-self-center"><input
-                                placeholder="" autoFocus={true} type="email"/>
-                            </div>
+                    <div className="form-group mb-0">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Enter your ID(KTP) number or Email, and we'll
+                            find your user ID.
+                        </label>
+                    </div>
+                    <div className="form-group mb-0 d-border row px-0 mr-1 pt-1 mx-5">
+                        <div className="col-sm-4 pl-0 pr-0 n-border">
+                            <Dropdown placeholder='Buy'
+                                      defaultValue={"Email"}
+                                      search selection options={[{key:'ID(KTP)',value:'(ID)KTP',text: '(ID)KTP'},{key:'Email',value:'Email',text: 'Email'}]}
+                                      className={"f-12 text-center align-self-center col-sm-12 n-border"}
+                            />
+                        </div>
+                        <div className="ui small n-border input col-sm-7 px-0 f-12 text-center align-self-center black">
+                            <input type="email" autoFocus={true} className="n-border" placeholder="bahana@gmail.com"/>
                         </div>
                     </div>
-                    <div className="col-sm-12 text-right">
-                        <button className="btn btn-primary col-sm-3">Find</button>
-                    </div>
-                    <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
-                        <div className="col-sm-4 pt-2">
-                            <label className="col-sm-12">User Id</label></div>
-                        <div className="col-sm-8 px-0">
-                            <div className="ui small input gray col-sm-12 align-self-center"><input
-                                placeholder="" type="text"/>
-                            </div>
+                    <div className="form-group py-2">
+                        <div className="justify-content-center align-items-center d-flex py-0 px-5">
+                            <button type="submit" className="btn btn-primary form-control py-0" onClick={()=>this.findId()}>
+                                Find ID
+                            </button>
                         </div>
                     </div>
+                    <div className={"py-2 mx-5 click-pointer"} onClick={()=>this.copyClip()}>
+                        <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 click-pointer dark mx-0 my-0">
+                            <input type="text" ref="userID" placeholder=""
+                                   id="resultID"
+                                 />
+                            <i aria-hidden="true" className="icon py-3">
+                                <i className="far fa-copy"></i>&nbsp;&nbsp;|
+                            </i>
+                        </div>
+                        <div className={"text-left click-pointer"} >
+                            <i><small className="text-danger" id="req_user" style={{"display": "none"}}></small></i>
+                        </div>
+                    </div>
+                    <div className="form-group text-center">
+                            <span className="click-pointer btn btn-link text-primary text-underline" onClick={this.closeClick}> Cancel</span>
+                    </div>
+
                 </div>
             </>
         );
@@ -148,7 +180,7 @@ class ForgotModal extends React.Component {
                     <div className="form-group mb-0">
                         <label className="col-sm-12 px-5 py-2 col-form-label">Email</label>
                         <div className="col-sm-12 px-5 py-0">
-                            <input type="email" className="text-white input-login col-sm-12"/>
+                            <input type="email" className="text-white input-login col-sm-12 py-3"/>
                         </div>
                     </div>
 
@@ -342,7 +374,7 @@ class LoginUserPage_Base extends React.PureComponent {
     }
     buttonFindHelp = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-white text-left">Find Id</div>,
+            headerClass: () => <div className="text-white text-center"><h1 className="text-center">BIPS</h1></div>,
             closeIcon: false,
             size: 'mini',
             contentClass: FindIdModal,
@@ -548,26 +580,21 @@ class LoginUserPage_Base extends React.PureComponent {
                 }
             }
         }
+        console.log("ini pesan"+this.props.loginErrState);
         return (
             <>
                 {
                     <div style={{display: !props.signupState ? "block" : "none"}}>
-                        <div className="bg-navy-gradient f-12 card-695" id="press_login">
+                        <div className="bg-navy-gradient f-12" id="press_login">
                             <AppFrameAction ref="frameAction"/>
                             <WSConnectionAction ref="wsAction"/>
                             <main>
                                 <div className="container-fluid p-login text-center">
                                     <div className={"card card-body d-border-active row bg-box-gradient mx-0"}>
-                                        {/* <div id="alert-wrong" className={"col-sm-12 text-center fade-out mb-3 px-0 py-0"}>
-                                            <div id="content-alert" className={"py-2 text-white bg-danger "}>The user ID or password
-                                                did not match our records.
-                                                Please try again
-                                            </div>
-                                        </div> */}
-                                        {this.props.loginErrState === true ? 
+                                        {this.props.loginErrState === true ?
                                             <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
                                                 <div id="content-alert" className={"py-2 text-white bg-danger "}>
-                                                    {this.props.loginErrReason}. Please try again
+                                                    {this.props.loginErrReason} Please try again
                                                 </div>
                                             </div>
                                             :''

@@ -1,17 +1,15 @@
 import React from 'react';
-import {Dropdown, Input} from 'semantic-ui-react';
+import {Dropdown} from 'semantic-ui-react';
 import { AppFrameAction } from '../appframe.js';
 import StreamChart from './streamChart.js';
-import {AppFrame, AppFrameProvider, AppModal} from "../appframe";
-import {BIPSAppContext, BIPSAppProvider} from "../AppData";
+import {AppFrame} from "../appframe";
+import {BIPSAppContext} from "../AppData";
 import FillHeaderTab from "../tabheaderfill";
-import { NetAppProvider, WSConnection} from './../appnetwork.js';
 import {WSConnectionAction} from "./../appnetwork";
 import {Table as TableBS, Button} from "react-bootstrap";
 import Select from "react-select";
 import ModalBuy from "./../app_modals/modal_buy";
 import ModalSell from "./../app_modals/modal_sell";
-import AmendArrow from "./../img/amend-arrow.svg";
 import {AgGridReact} from "ag-grid-react";
 import MenuOfContent from "../menuofcontent";
 import newsImg1 from './../img/noimage.png';
@@ -34,8 +32,6 @@ const stateOptions = [
 const CustomFrameHeaderMarketStatistik= (props) =>{
     return (
         <div>
-            {/*<BIPSAppProvider>*/}
-            {/*<WSConnectionAction />*/}
             <div className="col-sm-12 px-0 mx-0 align-self-center">
                 <div className="col-sm-12 pb-0 px-0 mx-0 d-border-bottom">
                     <FillHeaderTab treeName="/marketstatistikPage" linkTitles={
@@ -50,8 +46,6 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                 </div>
             </div>
             <AppFrame treeName="/marketstatistikPage" headerComponent={MarketStatistikFrameHeader}/>
-            {/*<AppModal/>*/}
-            {/*</BIPSAppProvider>*/}
         </div>
     );
 }
@@ -113,7 +107,21 @@ class MarketStatistikPage extends React.PureComponent {
     state = {
         top: "topactive"
     }
-
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render () {
         return (
             <>
@@ -177,7 +185,7 @@ class MarketStatistikPage extends React.PureComponent {
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="summary" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="summary" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                 </div>
             </>
@@ -209,7 +217,21 @@ class IndiceMarketStatistikPage extends React.PureComponent{
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
-
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render(){
         return(
             <>
@@ -217,7 +239,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                 <WSConnectionAction />
 
                 <div className="card grid-294 bg-black-trading f-12">
-                    <MarketIndicesAgGrid />
+                    <MarketIndicesAgGrid size={this.ceksize()}/>
                     {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
 
@@ -228,7 +250,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                     {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
@@ -303,17 +325,17 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                 <div className="px-1 mx-0 col-sm-12 row f-12 card-527">
                     <div className="col-sm-7 px-1 py-2 d-border-table-right">
                         <div className="card card-515 bg-black-trading">
-                            <div className="card-header py-3 pr-0 h-121">
-                                <div className="col-sm-12 mb-4 row text-center">
-                                    <label className="align-self-center col-sm-3 px-0 mx-0 f-16">Index</label>
+                            <div className="card-header py-3 pr-0 h-121 n-border-bottom">
+                                <div className="col-sm-12 mb-4 row text-left ml-1">
+                                    <label className="align-self-center col-sm-2 px-0 mx-0 f-16">Index</label>
                                     {/*<Input defaultValue='AGRI' placeholder='Code' size='small' className="col-sm-7 text-center align-self-center"/>*/}
-                                    <div className="col-sm-9 mr-0 pr-0 text-left align-self-center">
+                                    <div className="col-sm-10 mr-0 pl-0 pr-0 text-left align-self-center">
                                         <Select maxMenuHeight={150} styles={customStyles} size="small" placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                 </div>
                                 <div className="col-sm-12 mb-4 row">
-                                    <div className="col-sm-3 text-white f-16">6,384.90</div>
+                                    <div className="col-sm-2 text-white f-16">6,384.90</div>
                                     <div className="col-sm-4 text-success f-16">+5.21 (0.082%) <i className="icofont icofont-caret-up"></i></div>
                                 </div>
                                 <div className="col-sm-12 f-14">
@@ -332,8 +354,10 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
                     <div className="col-sm-5 px-1 py-2 d-border-table-left">
                         <div className="card card-515 bg-black-trading text-white">
-                            <div className="card-body px-3">
-                                <TableBS responsive bordered size="sm" className="table-hover table-striped text-center align-self-center align-middle card-230 mb-1 mt-0">
+                            <div className="card-body px-3 pt-3">
+                                <div className="bg-grey-0 text-center py-4 h-40"><span className="text-white">BOARD SUMMARY</span></div>
+                                <TableBS responsive bordered size="sm"
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 table-market">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
@@ -369,8 +393,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </tr>
                                     </tbody>
                                 </TableBS>
-                                <div className="bg-grey-0 text-center py-4 h-40"><a className="text-white text-underline">FOREIGN ACTIVITY</a></div>
-                                <TableBS responsive bordered size="sm" className="table-hover table-striped text-center align-self-center align-middle card-230 mb-0 mt-1">
+                                <div className="bg-grey-0 text-center py-4 h-40 mt-1">
+                                    <span className="text-white">FOREIGN ACTIVITY</span></div>
+                                <TableBS
+                                    responsive
+                                    bordered
+                                    size="sm"
+                                    className="table-hover table-striped text-center align-self-center align-middle table-market">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>
@@ -387,10 +416,10 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                         <td className="text-danger text-right py-1">63,578 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center">F.Sell</td>
-                                        <td className="text-success text-right py-1">3.02 T</td>
-                                        <td className="text-success text-right py-1">11.44 M</td>
-                                        <td className="text-success text-right py-1">84,982 </td>
+                                        <td className="text-center text-white py-1">F.Sell</td>
+                                        <td className="text-right text-success py-1">3.02 T</td>
+                                        <td className="text-right text-success py-1">11.44 M</td>
+                                        <td className="text-right text-success py-1">85,982 </td>
                                     </tr>
                                     <tr>
                                         <td className="text-center text-white py-1">F.TOTAL</td>
@@ -416,20 +445,35 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 }
 
 class TopBrokerMarketStatistikPage extends React.PureComponent {
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render(){
         return(
             <div className="f-12 px-2">
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
                 <div className="card card-175 bg-black-trading f-12">
-                    <TopBrokerAgGrid/>
+                    <TopBrokerAgGrid size={this.ceksize()}/>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
                     <div className="card-header bg-grey h-37">
                         TOP BUYER
                     </div>
                     <div className="card-body">
-                        <TopBrokerBAgGrid/>
+                        <TopBrokerBAgGrid size={this.ceksize()}/>
                     </div>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
@@ -437,7 +481,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                         TOP SELLER
                     </div>
                     <div className="card-body">
-                        <TopBrokerSAgGrid/>
+                        <TopBrokerSAgGrid size={this.ceksize()}/>
                     </div>
                 </div>
             </div>
@@ -900,6 +944,56 @@ const option = [
     { value: 'choose', label: 'Choose' },
 ];
 
+class SelectChoose extends React.Component {
+    selectStyleNight = theme => ({
+        ...theme,
+        borderRadius: 0,
+        colors: {
+            ...theme.colors,
+            neutral0  : '#181717',
+            neutral20 : '#565252',
+            neutral30 : '#565252',
+            neutral40 : '#cccccc',
+            neutral80 : '#FFFFFF',
+            primary75 : '#FFFFFF',
+            primary50 : '#4D4D4E',
+            primary25 : '#4D4D4E',
+            primary : '#0363A7',
+        },
+    });
+
+    selectStyleLight = theme => ({
+        ...theme,
+        borderRadius: 0,
+        colors: {
+            ...theme.colors,
+            neutral0  : '#E7E7E7',
+            neutral20 : '#9A9A9A',
+            neutral30 : '#9A9A9A',
+            neutral40 : '#767676',
+            neutral80 : '#888888',
+            primary75 : '#888888',
+            primary50 : '#F3F3F3',
+            primary25 : '#F3F3F3',
+            primary : '#0363A7',
+        },
+    });
+
+    render() {
+        return (
+            <div className="col-md-12 bg-black-grey px-0 text-center text-white">
+                <Select
+                    className="f-12"
+                    defaultValue={option[0]}
+                    label="Single select"
+                    options={option}
+                    theme={this.selectStyleNight}
+                />
+            </div>
+        );
+    }
+}
+
 class BuyModal extends React.Component {
     closeClick = (e) => {
         this.refs.frameAction.closeModal(100);
@@ -936,6 +1030,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
@@ -946,7 +1041,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 90, minWidth: 90,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "prev", headerName: "Prev.", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 85, minWidth: 85,
@@ -1067,7 +1162,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "financial", headerName: "Financial (M)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 140, minWidth: 140,
+                    resizable: true, width:s=="s75"?205:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -1768,10 +1863,11 @@ class MarketIndicesAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "sector", headerName: "Sector", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 125,
+                    width: s=="s75"?150:125,
                     lockVisible:true, lockPosition:true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12 text-primary locked-col locked-visible";
@@ -1797,7 +1893,8 @@ class MarketIndicesAgGrid extends React.PureComponent {
                             change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     }},
-                { field: "prevclosed", headerName: "Prev. Closed", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 122,
+                { field: "prevclosed", headerName: "Prev. Closed", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?132:122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -1829,19 +1926,23 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     } },
-                { field: "value", headerName: "Value (T)", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 122,
+                { field: "value", headerName: "Value (T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?162:122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "fbuy", headerName: "F.Buy (T)", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 122,
+                { field: "fbuy", headerName: "F.Buy (T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s75"?132:122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "fsell", headerName: "F.Sell (T)", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 122,
+                { field: "fsell", headerName: "F.Sell (T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?132:122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "fnet", headerName: "F.Net (T)", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 122,
+                { field: "fnet", headerName: "F.Net (T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?136:122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2062,6 +2163,7 @@ class TopBrokerAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
@@ -2073,25 +2175,25 @@ class TopBrokerAgGrid extends React.PureComponent {
                     width: 120,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12 locked-visible";
+                        return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 240,
+                    width: s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 150,
+                    width: s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 170,
+                    width: s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 175,
+                    width: s=="s75"?230:s=="s80"?210:s=="s90"?190:175,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     } },
@@ -2101,7 +2203,7 @@ class TopBrokerAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 170,
+                    width: s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2254,6 +2356,7 @@ class TopBrokerBAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, width: 50,
@@ -2263,20 +2366,20 @@ class TopBrokerBAgGrid extends React.PureComponent {
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 120, uppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12 locked-visible";
+                        return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 240,
+                    resizable: true, width: s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 150,
+                    resizable: true, width: s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 170,
+                    resizable: true, width: s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     }},
@@ -2286,7 +2389,7 @@ class TopBrokerBAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 275,
+                    resizable: true, width: s=="s75"?390:s=="s80"?350:s=="s90"?310:275,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2415,6 +2518,7 @@ class TopBrokerSAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, width: 50,
@@ -2425,20 +2529,20 @@ class TopBrokerSAgGrid extends React.PureComponent {
                     resizable: true, width: 120,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12 locked-visible";
+                        return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 240,
+                    width: s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 150,
+                    resizable: true, width: s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 170,
+                    resizable: true, width: s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     }},
@@ -2448,7 +2552,7 @@ class TopBrokerSAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: 275,
+                    resizable: true, width: s=="s75"?390:s=="s80"?350:s=="s90"?310:275,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },

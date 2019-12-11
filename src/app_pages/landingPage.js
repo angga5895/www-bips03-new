@@ -63,13 +63,20 @@ const LandingFrameHeader = (props) => {
 }
 
 class Landing extends React.PureComponent {
-
-  render () {
-    return (
-      <div className="bg-black-trading px-0 mx-0">
-      </div>
-    );
-  }
+    componentDidMount(){
+        $(".pincode-input-text").on('keypress',function(e) {
+            if(e.which == 13) {
+                $("#pin-click-verify").click();
+            }
+        });
+    }
+    render () {
+        return (
+            //hanya memanggil headernya saja
+            <div className="bg-black-trading px-0 mx-0">
+            </div>
+        );
+    }
 }
 
 class LandingPage_Base extends React.PureComponent {
@@ -80,13 +87,93 @@ class LandingPage_Base extends React.PureComponent {
     componentDidMount() {
         var props = this.props;
         $('#pieChart').css('height', '100%');
-
         // create data
         var data = [
-            {x: "Portfolio Equity", value: 207166 },
-            {x: "Pawnshop", value: 78662 },
-            {x: "Fixed Income", value: 148662 },
-            {x: "Mutual Fund", value: 142163 },
+            // {
+            //     x: "Portfolio Equity", value: 207166
+            // },
+            {
+                x: "Portfolio Equity", value: 298173,
+                normal:  {
+                    fill: "#64b5f6",
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },
+
+            {
+                x: "Pawnshop", value: 208173,
+                normal:  {
+                    fill: "#ef6c00",
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },
+
+            {
+                x: "Fixed Income", value: 198173,
+                normal:  {
+                    fill: "#455a64",
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },
+            {
+                x: "Mutual Fund", value: 66173,
+                normal:  {
+                    fill: "#ffd64f",
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },
+            {
+                x: "Cash", value: 100173,
+                normal:  {
+                    fill: "#1976d2",
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },
         ];
 
         var chart = anychart.pie(data);
@@ -136,34 +223,42 @@ class LandingPage_Base extends React.PureComponent {
                 if (points === 0){
                     props.changeStateLanding('0');
                     if (e.point.selected()) {
-                        chart.unselect([1,2,3]);
+                        chart.unselect([1,2,3,4]);
                     } else {
-                        chart.unselect([1,2,3]);
+                        chart.unselect([1,2,3,4]);
                         chart.select(0);
                     }
                 } else if (points === 1){
                     props.changeStateLanding('1');
                     if (e.point.selected()) {
-                        chart.unselect([0,2,3]);
+                        chart.unselect([0,2,3,4]);
                     } else {
-                        chart.unselect([0,2,3]);
+                        chart.unselect([0,2,3,4]);
                         chart.select(1);
                     }
                 } else if (points === 2){
                     props.changeStateLanding('2');
                     if (e.point.selected()) {
-                        chart.unselect([0,1,3]);
+                        chart.unselect([0,1,3,4]);
                     } else {
-                        chart.unselect([0,1,3]);
+                        chart.unselect([0,1,3,4]);
                         chart.select(2);
                     }
                 } else if (points === 3){
                     props.changeStateLanding('3');
                     if (e.point.selected()) {
-                        chart.unselect([0,1,2]);
+                        chart.unselect([0,1,2,4]);
                     } else {
-                        chart.unselect([0,1,2]);
+                        chart.unselect([0,1,2,4]);
                         chart.select(3);
+                    }
+                } else if (points === 4){
+                    props.changeStateLanding('4');
+                    if (e.point.selected()) {
+                        chart.unselect([0,1,2,3]);
+                    } else {
+                        chart.unselect([0,1,2,3]);
+                        chart.select(4);
                     }
                 }
             });
@@ -174,16 +269,19 @@ class LandingPage_Base extends React.PureComponent {
                 chart.select([4]);
                 if (legend === 0){
                     props.changeStateLanding('0');
-                    chart.unselect([1,2,3]);
+                    chart.unselect([1,2,3,4]);
                 } else if (legend === 1){
                     props.changeStateLanding('1');
-                    chart.unselect([0,2,3]);
+                    chart.unselect([0,2,3,4]);
                 } else if (legend === 2){
                     props.changeStateLanding('2');
-                    chart.unselect([0,1,3]);
+                    chart.unselect([0,1,3,4]);
                 } else if (legend === 3){
                     props.changeStateLanding('3');
-                    chart.unselect([0,1,2]);
+                    chart.unselect([0,1,2,4]);
+                } else if (legend === 4){
+                    props.changeStateLanding('4');
+                    chart.unselect([0,1,2,3]);
                 }
             });
 
@@ -1661,27 +1759,27 @@ class TradeControlPageAgGrid extends React.PureComponent{
                     },
                 },
                 { field: "settle", headerName: "Settlement Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?288:s=="s90"?240:220,
+                    width: s=="s75"?300:s=="s80"?288:s=="s90"?240:220,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "stockBuy", headerName: "Stock Buy", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?290:s=="s90"?245:210,
+                    width: s=="s75"?320:s=="s80"?290:s=="s90"?245:210,
                     cellClass : function (params) {
                         return " text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "stockSell", headerName: "Stock Sell", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?290:s=="s90"?245:210,
+                    width: s=="s75"?300:s=="s80"?290:s=="s90"?245:210,
                     cellClass : function (params) {
                         return " text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "amountBuy", headerName: "Amount Buy", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?290:s=="s90"?270:240,
+                    width: s=="s75"?310:s=="s80"?290:s=="s90"?270:240,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "amountSell", headerName: "Amount Sell", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?290:s=="s90"?270:240,
+                    width: s=="s75"?320:s=="s80"?290:s=="s90"?270:240,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
@@ -1849,6 +1947,22 @@ class WithdrawModal extends React.Component {
 }
 
 
+class PinModal extends React.Component {
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <VerifyPIN tipe = 'pinLanding'/>
+            </>
+        );
+    }
+}
+
+
 class OrderDetailModal extends React.Component {
 
     render() {
@@ -1872,7 +1986,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     width: 80,
                     minWidth: 80,
                     cellClass : function (params) {
-                        return " grid-table text-center f-12 d-border-aggrid-right";
+                        return " grid-table text-left f-12 d-border-aggrid-right";
                     }, suppressSizeToFit: true
                 },
                 { field: "avgprice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -2273,6 +2387,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
+                        rowHeight={32}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
@@ -2690,7 +2805,7 @@ class StockCashAgGrid extends React.PureComponent {
                         width: 85,
                         lockPosition: true, lockVisible: true,
                         cellClass : function (params) {
-                            return " grid-table text-center f-12 locked-visible locked-col d-border-aggrid-right";
+                            return " grid-table text-left f-12 locked-visible locked-col d-border-aggrid-right";
                         }, suppressSizeToFit: true
                     },]},
                 { field: "avgpriceTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -3083,7 +3198,7 @@ class TradeListAgGrid extends React.PureComponent {
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s50"?250:100,
                     cellClass : function (params) {
-                        return "text-center text-primary grid-table f-12 d-border-aggrid-right";
+                        return "text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -3297,7 +3412,7 @@ class TransactionAgGrid extends React.PureComponent {
                 },{ field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s50"?130:100,
                     cellClass : function (params) {
-                        return "text-center text-primary grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "inOut", headerName: "In/Out Qty", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s50"?150:130,
@@ -3335,7 +3450,7 @@ class TransactionAgGrid extends React.PureComponent {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "add", headerName: "Add Outstanding", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s50"?150:130,
+                    width: s=="s50"?190:160,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
@@ -3476,34 +3591,34 @@ class FundAgGrid extends React.PureComponent {
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 150, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?150:s=="s80"?110:100,
+                    width: s=="s75"?125:s=="s80"?110:100,
                     minWidth: 80,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?180:s=="s90"?160:130,
+                    width: s=="s75"?191:s=="s80"?180:s=="s90"?160:130,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "fee", headerName: "Fee", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?230:s=="s90"?190:130,
+                    width: s=="s75"?235:s=="s80"?230:s=="s90"?190:130,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "bank", headerName: "Bank", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?330:s=="s80"?280:s=="s90"?200:150,
+                    width: s=="s75"?285:s=="s80"?280:s=="s90"?200:150,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bankAcNo", headerName: "Bank Ac No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s80"?280:s=="s90"?210:170,
+                    width: s=="s75"?285:s=="s80"?280:s=="s90"?210:170,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -3933,14 +4048,23 @@ class VerifyPINPortofolio extends React.PureComponent{
     }
 
     componentDidMount(){
-        this.pin.clear();
+        //this.pin.clear();
         $(".pincode-input-text").on('keypress',function(e) {
             if(e.which == 13) {
                 $("#pin-click").click();
             }
         });
     }
-
+    buttonClickPin = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right">
+                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'mini',
+            contentClass: PinModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
     render(){
         const {value} = this.state;
         return(
@@ -3948,76 +4072,27 @@ class VerifyPINPortofolio extends React.PureComponent{
                 <AppFrameAction ref="frameAction" />
 
                 <div className={`text-white f-12 ${(this.props.pos == "portofolio") ? 'p-pinportofolio' : 'p-pinlanding' }`} style={{ paddingTop: "60px"}}>
+                    <div className="card-334 pt-5 mt-5">
+                        <div className="text-center align-self-center align-middle mb-3">
+                            <div className="d-border-bold img-round-icon">
+                                <i className="icofont icofont-lock icofont-4x"></i>
+                            </div>
+                        </div>
 
-                    <Table borderless className="card-334 mb-0">
-                        <tbody>
-                        <tr>
-                            <td className="py-0">
-
-                                <div className="text-center align-self-center align-middle">
-                                    <div className="d-border-bold img-round-icon">
-                                        <i className="icofont icofont-lock icofont-4x"></i>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="py-0">
-
-                                <div className="form-group text-center pt-2 mb-0">
-                                    <label className="col-sm-12 px-5 py-2 col-form-label f-14 font-weight-bold">Please enter security PIN</label>
-                                    <label className="col-sm-12 px-5 py-2 col-form-label">Please fullfill with 6 digit security
-                                        PIN to verify your transaction</label>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                <div className="form-group mb-0">
-                                    <PinInput
-                                        inputStyle={{"color":/*cssmode == 'night' ? '#FFFFFF':*/'#999999', "border":"#565252 1px solid","border-radius":"10%","width":"15.25%"}}
-                                        inputFocusStyle={{"color":/*cssmode == 'night' ? '#FFFFFF':*/'#999999', "border":"#065A96 1px solid", "border-radius":"10%","width":"15.25%"}}
-                                        length={6}
-                                        focus
-                                        secret
-                                        ref={p => this.pin = p}
-                                        type="numeric"
-                                        onChange={this.onChange}
-                                    />
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                <div className="form-group">
-                                    <label className="col-sm-12 py-2 px-1 col-form-label">Forgot your PIN?
-                                        <span className="click-pointer btn btn-link text-primary" onClick={this.forgotPIN}> Click here</span>
-                                    </label>
-                                </div>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                                <div className="form-group py-3 mb-0">
-                                    <div className="justify-content-center align-items-center d-flex py-0">
-                                        <button id="pin-click" type="submit" className={'btn btn-grey-gray form-control py-0'}
-                                                onClick={this.onClickSubmit}>
-                                            Submit
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </td>
-                        </tr>
-                        </tbody>
-                    </Table>
+                        <div className="form-group text-center pt-2 mb-3">
+                            <label className="col-sm-12 px-5 py-1 col-form-label f-16 font-weight-bold mb-2">ACCESS DENIED</label>
+                            <label className="col-sm-12 px-5 py-1 col-form-label">
+                                Seems like you are not allowed to access this page
+                            </label>
+                        </div>
+                        <div className="text-center">
+                            <button
+                                onClick={() => this.buttonClickPin()}
+                                id="pin-click" type="submit" className={'btn btn-danger form-control py-0 col-md-3'}>
+                                Unlock
+                            </button>
+                        </div>
+                    </div>
 
                     <div className={this.state.visible ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
                         <div className={/*{cssmode == 'night'? */"px-2 pt-2 text-right text-white" /*: "px-2 pt-2 text-right text-black"*/}><i className="click-pointer icofont icofont-close" onClick={this.onClickCloseAlert}></i></div>

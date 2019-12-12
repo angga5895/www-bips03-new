@@ -59,6 +59,9 @@ var BIPSAppVars = {
   //Penambahan untuk mode akun
   // zaky
   GeneralType: true,
+    balanceOpt: 'cashBalance',
+    balanceVal: '1,950,999,850,000',
+    buyLimitVal: '9,000,000,000'
 }
 
 var BIPSAppActions = {
@@ -138,6 +141,8 @@ var BIPSAppActions = {
   // zaky
   // chat bot state
   changeAccountType: (vars, { GeneralType }) => ({ ...vars, GeneralType: GeneralType }),
+
+  changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
 
 // subscribe
   subscribeMsgSukses:(vars,{mess})=>{

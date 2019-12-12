@@ -87,9 +87,10 @@ input[type="radio"]:checked .radioAccount ~ label{
     color: var(--warna-black-white-semantic);
     text-align: center;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
     backface-visibility: hidden;
     padding-top: 0px;
+    text-transform: uppercase!important;
 }
 .card__face table td{
     padding:3px 15px;

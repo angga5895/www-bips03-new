@@ -474,8 +474,8 @@ class SelectItem1 extends React.PureComponent {
             }
         }
         return (
-            <div className="nav-link col-sm-12 px-0 mx-0 py-2 text-white">
-                <div className="col-md-12 bg-black-trading px-0 text-center">
+            <div className="nav-link col-sm-12 px-0 mx-0 py-0 text-white">
+                <div className="col-sm-12 bg-black-trading px-0 text-center" style={{ borderRadius : "5px" }}>
                     {/*zaky
                     Element Flipped*/}
                     <div className="scene scene--card">
@@ -493,10 +493,16 @@ class SelectItem1 extends React.PureComponent {
                         theme={this.selectSelectionTab}
                     />*/}
                 </div>
-                {/*<label className="col-md-12 f-11-center">11/03/2019 | 09.45 <span className="text-success"> Open</span></label>*/}
+                <label className="col-sm-12 text-center pt-1 my-0 pb-0 f-12">{fullDate()} | <span className="text-success"> Open</span></label>
             </div>
         );
     }
+}
+
+function fullDate() {
+    var fullDate = new Date().toLocaleString();
+    var splitDate = fullDate.replace(/\./g,':')
+    return splitDate;
 }
 
 class SelectItem2_Base extends React.Component {
@@ -539,8 +545,25 @@ class SelectItem2_Base extends React.Component {
     }
 }
 
-class InfoCash extends React.Component {
+class InfoCash_Base extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            balanceOpt : this.props.balanceOpt,
+            balanceVal : this.props.balanceVal,
+        }
+    }
+
     render() {
+        const changeBalanceOpt = (props) => {
+            var value = (props == 'cashBalance') ? document.getElementById('cashBalanceVal').innerHTML:document.getElementById('buyLimitVal').innerHTML;
+
+            this.setState({
+                balanceOpt: props,
+                balanceVal: value,
+            });
+            // this.props.changeAccountType(props);
+        }
         return (
             <div className="nav-link px-0 mx-0 pt-1 pb-0 text-white align-self-center">
                 <Dropdown icon={null} text={
@@ -550,30 +573,37 @@ class InfoCash extends React.Component {
                             <tbody>
                             <tr className="f-12-fix text-center">
                                 <td className="text-success"><i className="fa fa-square"></i></td>
-                                <td>Cash Balance</td>
+                                <td>{this.state.balanceOpt == 'cashBalance' ? 'Cash Balance':'Buy Limit'}</td>
                                 <td rowSpan="2" className="py-2"><i className="f-11-center text-gray-tradding oi oi-caret-bottom"></i></td>
                             </tr>
                             <tr className="f-16 text-white">
-                                <td colSpan="2" className="text-center">1,000,150,911,198</td>
+                                <td colSpan="2" className="text-center">{this.state.balanceVal}</td>
                             </tr>
                             </tbody>
                         </Table>
                     </div>
-                } className="text-white align-self-center">
+                }
+                          className="text-white align-self-center">
                     <Dropdown.Menu className={'bg-black-trading f-14 w-100 d-border'}>
-                        <Dropdown.Item className="item-hover text-white text-left px-2" text={
+                        <Dropdown.Item
+                            className="item-hover text-white text-left px-2" text={
                             <div>
                                 Cash Balance
-                                <div className="text-primary text-right">5,911,198</div>
+                                <div className="text-primary text-right" id={"cashBalanceVal"}>{this.props.balanceVal}</div>
                             </div>
-                        } />
+                        }
+                            onClick={()=>changeBalanceOpt('cashBalance')}
+                        />
                         <Dropdown.Divider className='d-border' />
-                        <Dropdown.Item className="item-hover text-white text-left px-2" text={
-                            <div>
-                                Buy Limit
-                                <div className="text-primary text-right">15,000,981</div>
-                            </div>
-                        } />
+                        <Dropdown.Item
+                            className="item-hover text-white text-left px-2"
+                            onClick={()=>changeBalanceOpt('buyLimit')}
+                            text={
+                                <div>
+                                    Buy Limit
+                                    <div className="text-primary text-right" id={"buyLimitVal"}>{this.props.buyLimitVal}</div>
+                                </div>
+                            } />
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
@@ -1049,5 +1079,14 @@ const SelectItem2 = ContextConnector(BIPSAppContext,
         thememode : vars.thememode,
     }),
 )(SelectItem2_Base)
+
+const InfoCash = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        balanceOpt: vars.balanceOpt,
+        balanceVal: vars.balanceVal,
+        buyLimitVal: vars.buyLimitVal,
+        changeBalanceOpt : (balanceOpt) => {actions.sendAction('changeBalanceType', {balanceOpt})}
+    })
+)(InfoCash_Base);
 
 export default UISelectionTab;

@@ -194,6 +194,15 @@ class LandingPage_Base extends React.PureComponent {
             // set the layout of the legend
             chart.legend().itemsLayout("vertical-expandable");
 
+            var legends = chart.legend();
+            // background settings
+            legends.fontColor("white");
+            var backgrounds = legends.background();
+            // background inner color settings
+            /*backgrounds.fill(["#67AAD7","#0071BC"], 0);*/
+            backgrounds.fill("#8597B0");
+            backgrounds.enabled(true);
+
             // set the explosion range in different states
             /*chart.selected().explode("3%");
             chart.hovered().explode("3%");*/
@@ -266,7 +275,7 @@ class LandingPage_Base extends React.PureComponent {
             chart.legend().listen("legendItemClick", function(e) {
                 var legend = e.itemIndex;
                 // Set disturber.
-                chart.select([4]);
+                chart.select([5]);
                 if (legend === 0){
                     props.changeStateLanding('0');
                     chart.unselect([1,2,3,4]);

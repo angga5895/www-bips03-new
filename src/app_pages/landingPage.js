@@ -195,6 +195,8 @@ class LandingPage_Base extends React.PureComponent {
             chart.legend().itemsLayout("vertical-expandable");
 
             var legends = chart.legend();
+            // set the padding of the legend
+            legends.padding(10);
             // background settings
             legends.fontColor("white");
             var backgrounds = legends.background();
@@ -202,6 +204,9 @@ class LandingPage_Base extends React.PureComponent {
             /*backgrounds.fill(["#67AAD7","#0071BC"], 0);*/
             backgrounds.fill("#8597B0");
             backgrounds.enabled(true);
+            backgrounds.stroke("#96a6a6");
+            backgrounds.cornerType("round");
+            backgrounds.corners(10);
 
             // set the explosion range in different states
             /*chart.selected().explode("3%");

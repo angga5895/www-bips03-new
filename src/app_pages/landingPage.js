@@ -192,7 +192,7 @@ class LandingPage_Base extends React.PureComponent {
             chart.legend().align("center");
 
             // set the layout of the legend
-            chart.legend().itemsLayout("vertical-expandable");
+            chart.legend().itemsLayout("horizontal-expandable");
 
             var legends = chart.legend();
             // set the padding of the legend

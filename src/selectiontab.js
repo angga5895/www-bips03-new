@@ -493,16 +493,52 @@ class SelectItem1 extends React.PureComponent {
                         theme={this.selectSelectionTab}
                     />*/}
                 </div>
-                <label className="col-sm-12 text-center pt-0 my-0 pb-0 f-12">{fullDate()} | <span className="text-success"> Open</span></label>
+                <label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>
             </div>
         );
     }
 }
 
-function fullDate() {
-    var fullDate = new Date().toLocaleString();
-    var splitDate = fullDate.replace(/\./g,':')
-    return splitDate;
+function fullDate(params) {
+    var fullDate = new Date();
+    /*var splitDate = fullDate.replace(/\./g,':');*/
+    var month = new Array();
+    month[0] = "Jan";
+    month[1] = "Feb";
+    month[2] = "Mar";
+    month[3] = "Apr";
+    month[4] = "May";
+    month[5] = "Jun";
+    month[6] = "Jul";
+    month[7] = "Aug";
+    month[8] = "Sep";
+    month[9] = "Oct";
+    month[10] = "Nov";
+    month[11] = "Dec";
+    var m = month[fullDate.getMonth()];
+    var d = fullDate.getDate();
+    var day = d < 10 ? '0'+d : d;
+
+    var y = fullDate.getFullYear();
+
+    var h = fullDate.getHours();
+    var hours = h < 10 ? '0'+h : h;
+
+    var mnt = fullDate.getMinutes();
+    var minutes = mnt < 10 ? '0'+mnt : mnt;
+
+    var s = fullDate.getSeconds();
+    var seconds = s < 10 ? '0'+s : s;
+
+    var dateFull = day +"-"+ m +"-"+y +" "+ hours +":"+ minutes +":"+ seconds;
+
+    var time = hours > 8 && hours < 16 ? 'Open' : 'Close';
+
+    if(params === 0){
+        return dateFull;
+    } else {
+        return time;
+    }
 }
 
 class SelectItem2_Base extends React.Component {

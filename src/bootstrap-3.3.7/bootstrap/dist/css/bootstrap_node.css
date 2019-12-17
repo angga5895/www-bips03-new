@@ -55,6 +55,13 @@
   --warna-text-success: #05FE01;
   --warna-text-warning: #FFC107;
 
+  --warna-text-jam : #6DCCDC;
+  --warna-navy-headermenu-odd: #0E0E20;
+  --warna-navy-headermenu-even: #2E3354;
+  --warna-shadow : #000000;
+  --warna-border-headermenu : #5f68ad;
+
+  --warna-bg-data-orange : #e68c27;
 
   /*variabel column*/
   --column-col-sm-3-6 : 25%;
@@ -191,34 +198,34 @@
 .marquee span {
   display: inline-block;
   padding-left: 100%;
-  animation: marquee 100s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .marquee2 span {
-  animation-delay: 10s;
+  animation-delay: 5s;
 }
 .marquee3 span {
-  animation-delay: 20s;
+  animation-delay: 10s;
 }
 .marquee4 span {
-  animation-delay: 30s;
+  animation-delay: 15s;
 }
 .marquee5 span {
-  animation-delay: 40s;
+  animation-delay: 20s;
 }
 .marquee6 span {
-  animation-delay: 50s;
+  animation-delay: 25s;
 }
 .marquee7 span {
-  animation-delay: 60s;
+  animation-delay: 30s;
 }.marquee8 span {
-   animation-delay: 70s;
+   animation-delay: 35s;
  }
 .marquee9 span {
-  animation-delay: 80s;
+  animation-delay: 40s;
 }
 .marquee10 span {
-  animation-delay: 90s;
+  animation-delay: 45s;
 }
 
 @keyframes marquee {

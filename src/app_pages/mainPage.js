@@ -485,6 +485,7 @@ class MainPage_Base extends React.Component {
         document.body.style.setProperty('--warna-black-white', this.props.thememode === true  ? "#000000" : "#FCFCFC");
         document.body.style.setProperty('--warna-black-white-gradient', this.props.thememode === true  ? "#212121" : "#dcddde");
         document.body.style.setProperty('--warna-cssmenu', this.props.thememode === true  ? "#F7F7F7" : "#878787");
+
         document.body.style.setProperty('--warna-gray', this.props.thememode === true  ? "#4D4E4E" : "#999999");
         document.body.style.setProperty('--warna-inactive-gradient', this.props.thememode === true  ? "#0F0F10" : "#F9FAFB");
         document.body.style.setProperty('--warna-btn-dark', this.props.thememode === true  ? "#3D3E3F" : "#CDCDCE");
@@ -502,11 +503,18 @@ class MainPage_Base extends React.Component {
         document.body.style.setProperty('--warna-hover-menu', this.props.thememode === true  ? "#111111" : "#f4f4f4");
         document.body.style.setProperty('--warna-table-striped', this.props.thememode === true  ? "#272727" : "#E7E8E8");
 
-        document.body.style.setProperty('--warna-navy-odd', this.props.thememode === true  ? "#0E0E20" : "#02ADEB");
-        document.body.style.setProperty('--warna-navy-even', this.props.thememode === true  ? "#2E3354" : "#efefef");
-        document.body.style.setProperty('--warna-text-danger', this.props.thememode === true  ? "#EA0904" : "#eb404b");
+        document.body.style.setProperty('--warna-navy-odd', this.props.thememode === true  ? "#0E0E20" : "#ABACAC");
+        document.body.style.setProperty('--warna-navy-even', this.props.thememode === true  ? "#2E3354" : "#CBCBCA");
+        document.body.style.setProperty('--warna-text-danger', this.props.thememode === true  ? "#eb2720" : "#ea0500");
         document.body.style.setProperty('--warna-text-success', this.props.thememode === true  ? "#05FE01" : "#449b52");
-        document.body.style.setProperty('--warna-text-warning', this.props.thememode === true  ? "#FFC107" : "#f58f0d");
+        document.body.style.setProperty('--warna-text-warning', this.props.thememode === true  ? "#ffe222" : "#f59100");
+
+        document.body.style.setProperty('--warna-text-jam', this.props.thememode === true  ? "#6DCCDC" : "#09549A");
+        document.body.style.setProperty('--warna-navy-headermenu-odd', this.props.thememode === true  ? "#0E0E20" : "#F4F5F6");
+        document.body.style.setProperty('--warna-navy-headermenu-even', this.props.thememode === true  ? "#2E3354" : "#DFDFDE");
+        document.body.style.setProperty('--warna-shadow', this.props.thememode === true  ? "#000000" : "#ACACAC");
+        document.body.style.setProperty('--warna-border-headermenu', this.props.thememode === true  ? "#5f68ad" : "#F9F9F9");
+        document.body.style.setProperty('--warna-bg-data-orange', this.props.thememode === true  ? "#e68c27" : "#e6e027");
         /*
           Important system components:
 

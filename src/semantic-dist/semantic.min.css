@@ -20787,7 +20787,7 @@ ol.ui.horizontal.list li:before {
     padding: .92857143em .88em;
     text-transform: none;
     color: #767171;
-    border: #5f68ad solid 1px;
+    border: var(--warna-border-headermenu) solid 1px;
     margin: 3px 3px;
     border-radius: 5px!important;
     font-weight: 400;
@@ -20795,8 +20795,8 @@ ol.ui.horizontal.list li:before {
     transition: background .1s ease, color .1s ease, -webkit-box-shadow .1s ease;
     transition: background .1s ease, box-shadow .1s ease, color .1s ease;
     transition: background .1s ease, box-shadow .1s ease, color .1s ease, -webkit-box-shadow .1s ease;
-    background-image: linear-gradient(var(--warna-navy-odd),var(--warna-navy-even));
-    box-shadow: 2px 2px black!important;
+    background-image: linear-gradient(var(--warna-navy-headermenu-odd),var(--warna-navy-headermenu-even));
+    box-shadow: 2px 2px var(--warna-shadow)!important;
 }
 
 .ui.menu>.item:first-child {
@@ -21141,7 +21141,7 @@ ol.ui.horizontal.list li:before {
 
 .ui.vertical.menu .item {
     display: block;
-    background: 0 0;
+    /*background: 0 0;*/
     border-top: none;
     border-right: none
 }

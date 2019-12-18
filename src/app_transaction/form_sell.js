@@ -35,7 +35,8 @@ class FormSell extends React.PureComponent{
         return(
             <div className="f-12">
                 <AppFrameAction ref="frameAction" />
-                <Table borderless className="card-475 mb-0">
+                    <Table borderless className={`${(this.props.part == "stockInfo") ? 'card-sellBuy' : 'card-475' } mb-0`}>
+
                     <tbody>
                     <tr>
                         <td className="py-0">

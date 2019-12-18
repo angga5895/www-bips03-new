@@ -303,7 +303,7 @@ class StockPage_Base extends React.PureComponent {
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={150} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
+                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                     {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
@@ -488,7 +488,7 @@ class StockHistoryPage_Base extends React.PureComponent {
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={150} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
+                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                     {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
@@ -924,7 +924,7 @@ class RegisterAmendModal_Base extends React.Component {
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={150} styles={customStyles} placeholder={<div style={{color:"white"}}>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
+                                            maxMenuHeight={155} styles={customStyles} placeholder={<div style={{color:"white"}}>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
                                     </div>
                                     <div className="col-sm-1 px-0 mx-0 align-self-center align-middle">
                                         <button className="btn btn-sm bg-gray-tradding border-gray-tradding"><i className="fa fa-plus"></i></button>

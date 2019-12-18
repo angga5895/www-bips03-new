@@ -343,6 +343,13 @@ class MainPage_Base extends React.Component {
             }
         };
 
+        var ElementStockHistory = function(){
+            var height575 = $('html').height()-84-32-5;
+            var height527 = height575-$('.tabheaderfill').height()-3;
+            var height372 = (height527-40-40-30-45)+0.5;
+            $('.card-372').css('min-height', (height372));
+        };
+
         $(document).ready(function () {
             setElementHeightWeb();
             setElementLiveZoom();
@@ -354,9 +361,13 @@ class MainPage_Base extends React.Component {
         }).resize();
 
         $(window).on("click", function () {
+            ElementStockHistory();
+        }).resize();
+
+        /*$(window).on("click", function () {
             setElementHeightWeb();
             setElementLiveZoom();
-        }).resize();
+        }).resize();*/
     }
 
     doLogin = (userID, password) => {

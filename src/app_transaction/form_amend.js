@@ -40,7 +40,7 @@ class FormAmend extends React.PureComponent{
                     <tr>
                         <td className="py-0">
                             <div className="row mb-2">
-                                <div className="col-sm-6 f-18 text-success"><span className="text-primary">Amend</span> [Sell]</div>
+                                <div className="col-sm-6 f-18 text-success">{/*<span className="text-primary">Amend</span> [Sell]*/}</div>
                                 <div className="col-sm-6 text-right"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
                             </div>
                         </td>
@@ -96,7 +96,7 @@ class FormAmend extends React.PureComponent{
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">
-                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-dark-grey py-2 align-self-center text-left">Lot</label>
+                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-primary py-2 align-self-center text-left">Lot</label>
                                     <div className="col-sm-7 px-0 mx-0 py-2 align-self-center text-left">
                                         <Checkbox label='All' className="f-12 text-white my-0 align-self-center" />
                                     </div>

@@ -33,14 +33,14 @@ class FormBuy extends React.PureComponent{
 
     render(){
         return(
-            <div className="f-12">
+            <div className="f-12 px-3">
                 <AppFrameAction ref="frameAction" />
                 <Table borderless className={`${(this.props.part == "stockInfo") ? 'card-sellBuy' : 'card-475' } mb-0`}>
                     <tbody>
                     <tr>
                         <td className="py-0">
                             <div className="row mb-2">
-                                <div className="col-sm-6 f-18 text-danger">Buy</div>
+                                <div className="col-sm-6 f-18 text-danger"></div>
                                 <div className="col-sm-6 text-right"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
                             </div>
                         </td>
@@ -48,32 +48,32 @@ class FormBuy extends React.PureComponent{
                     <tr>
                         <td className="py-0">
                             <div className="row py-form mb-2">
-                            <div className="col-sm-2">Code</div>
-                            <div className="col-sm-10 row pr-0">
-                                <div className="col-sm-4 pr-0 text-center align-self-center">
-                                    <input type="text" placeholder="Code" defaultValue={"AALI"} className="form-control f-12" style={{"border-radius": "0px", }}/>
-                                </div>
-                                <div className="input-group col-sm-8 align-self-center pl-4">
+                                <div className="col-sm-2">Code</div>
+                                <div className="col-sm-10 row pr-0">
+                                    <div className="col-sm-4 pr-0 text-center align-self-center">
+                                        <input type="text" placeholder="Code" defaultValue={"AALI"} className="form-control f-12" style={{"border-radius": "0px", }}/>
+                                    </div>
+                                    <div className="input-group col-sm-8 align-self-center pl-4">
                             <span className="input-group-btn">
                                 <label className="form-control ui icon button bg-gold px-2 py-3" style={{"margin": "0px","border-bottom-left-radius": ".28571429rem","border-top-left-radius": ".28571429rem", "border-bottom-right-radius": "0px", "cursor": "default"}}>
                                     {"90%"}
                                 </label>
                             </span>
-                                    <input type="text" placeholder="Name" defaultValue={"Astra Argo Lestari Tbk."} className="form-control f-12" style={{"border-radius": "0px", }}/>
+                                        <input type="text" placeholder="Name" defaultValue={"Astra Argo Lestari Tbk."} className="form-control f-12" style={{"border-radius": "0px", }}/>
+                                    </div>
+                                    <div className="col-sm-12">
+                                        <Checkbox label='Prevent same order' className="f-12 text-white mt-2 mb-0 align-self-center" />
+                                    </div>
                                 </div>
-                                <div className="col-sm-12">
-                                    <Checkbox label='Prevent same order' className="f-12 text-white mt-2 mb-0 align-self-center" />
+                                <div className="col-sm-12 row">
+                                    <div className="col-sm-6">
+                                        <div className="pb-0"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="pb-0"><i className="fa fa-info-circle text-danger"></i>&nbsp; Not yet submit annual financial report</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-sm-12 row">
-                                <div className="col-sm-6">
-                                    <div className="pb-0"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
-                                </div>
-                                <div className="col-sm-6">
-                                    <div className="pb-0"><i className="fa fa-info-circle text-danger"></i>&nbsp; Not yet submit annual financial report</div>
-                                </div>
-                            </div>
-                        </div>
                         </td>
                     </tr>
                     <tr>
@@ -101,7 +101,7 @@ class FormBuy extends React.PureComponent{
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">
-                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-dark-grey py-2 align-self-center text-left">Lot</label>
+                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-danger py-2 align-self-center text-left">Lot</label>
                                     <button type="button"
                                             className="col-sm-7 px-0 btn btn-sm btn-dark py-2 align-self-center">Max
                                     </button>

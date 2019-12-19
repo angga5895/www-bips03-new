@@ -70,7 +70,9 @@ const CustomFrameHeaderTrade_Base = (props) => {
                             } />
                         </div>
                         <div className="col-sm-2 pr-4 mx-0 text-right d-border-bottom d-border-left cssmenu">
+                            <Popup content='Move to Automatic Order' position='bottom center' trigger={
                             <button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark" onClick={()=>{props.handleManual(props.isManual)}}>{"Manual Order"}</button>
+                            } />
                         </div>
                     </div>
                 </div>
@@ -85,7 +87,11 @@ const CustomFrameHeaderTrade_Base = (props) => {
                             } />
                         </div>
                         <div className="col-sm-2 pr-4 mx-0 text-right d-border-bottom d-border-left cssmenu">
-                            <button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark" onClick={()=>{props.handleManual(props.isManual)}}>{"Automatic Order"}</button>
+                            <Popup content='Move to Manual Order' position='bottom center' trigger={
+                                <button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark" onClick={() => {
+                                    props.handleManual(props.isManual)
+                                }}>{"Automatic Order"}</button>
+                            } />
                         </div>
                     </div>
                 </div>
@@ -690,7 +696,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
         return (
             <>
                 <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                    <div className="bg-grey-tradding col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
+                    <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
                 </div>
                 <div
                     className="card-233 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
@@ -785,7 +791,7 @@ class TradeWatchlist extends React.PureComponent{
                     <div className="col-sm-6 pl-0 pr-2">
                         <div className="col-sm-12 pl-0 pr-0">
                             <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 f-12" style={{backgroundColor: '#333f50'}}>TRADE LIST</div>
+                                <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 f-12 bg-tableheader">TRADE LIST</div>
                             </div>
                             <TradeListOrderListAgGrid size={this.ceksize()}/>
                         </div>

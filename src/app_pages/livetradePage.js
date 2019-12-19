@@ -195,44 +195,44 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                    width: s=="s75"?130:100, minWidth: 100, cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 70,
+                    width: s=="s75"?120:70,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-visible";
                     }},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 80, minWidth: 80, cellClass : function (params) {
+                    width: s=="s75"?120:80, minWidth: 80, cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 85,
+                    width: s=="s75"?120:85,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "percent", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 63, minWidth: 63,
+                    width: s=="s75"?100:63, minWidth: 63,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 70, minWidth: 70,
+                    width: s=="s75"?110:70, minWidth: 70,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?110:s=="s80"?110:s=="s90"?110:85,
+                    width: s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -244,7 +244,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span class="text-warning">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1];
                     } },
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?110:s=="s80"?110:s=="s90"?110:85,
+                    width: s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -256,7 +256,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span class="text-warning">'+sSeller[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sSeller[1];
                     } },
                 { field: "board", headerName: "Board", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="75"?120:s=="s80"?120:s=="s90"?120:90, minWidth: 90,
+                    width: s=="75"?130:s=="s80"?120:s=="s90"?120:90, minWidth: 90,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     } },

@@ -31,21 +31,9 @@ import Select from 'react-select';
 import '../../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css';
 import '../../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js';
 import $ from 'jquery';
+import {Dropdown} from "semantic-ui-react";
 window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
-
-const stockOptions = [
-    { value: 'aali', label: 'AALI' },
-    { value: 'adhi', label: 'ADHI' },
-    { value: 'antm', label: 'ANTM' },
-    { value: 'asii', label: 'ASII' },
-    { value: 'tlkm', label: 'TLKM' },
-    { value: 'wskt', label: 'WSKT' },
-    { value: 'indf', label: 'INDF' },
-    { value: 'bbca', label: 'BBCA' },
-    { value: 'smgr', label: 'SMGR' },
-    { value: 'bbri', label: 'BBRI' }
-]
 
 var $valueAnalyticChart = "";
 
@@ -60,7 +48,8 @@ class AnalyticChart_Base extends React.PureComponent {
             stockKey: props.key,
             modeView: props.viewMode,
             sessID: props.sessId,
-        };
+            default: '',
+        }
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -819,19 +808,30 @@ class AnalyticChart_Base extends React.PureComponent {
         },
     });
 
-    changelist(e){
+    // changelist = (e, {id,value}) => {
         // $("#stockoption "+selop).change();
-        // console.log(e.target.id);
-        if(e.target.value.length > 0) {
-            $valueAnalyticChart = e.target.value;
-            $("#" + (e.target.id)).change();
-        }else{
-            return false;
-        }
+        // console.log(e);
+        // if(e.target.value.length > 0) {
+        //     $valueAnalyticChart = value;
+            // $("#"+id).change();
+        // }else{
+        //     return false;
+        // }
+    // }
+
+    changelist = event => {
+        // $("#stockoption "+selop).change();
+        console.log(event);
+        // if(e.target.value.length > 0) {
+        $valueAnalyticChart = event.value;
+        $("#stockoption"+event.id).change();
+        // }else{
+        //     return false;
+        // }
     }
 
     render() {
-
+        const { selecteddd } = this.state.default;
         let styleses = {
             display: 'flex',
             padding: '5px 10px 0px 10px',
@@ -859,10 +859,39 @@ class AnalyticChart_Base extends React.PureComponent {
             marginLeft: '1px'
         }
 
+        const stockOptions = [
+            { value:'BMPT', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType},
+            { value:'BNMPT-PPT', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType},
+            { value:'BUMI', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType},
+            { value:'ASII', code: 'ASII', saham: 'Argo Astra Lestari ' , id: this.state.stockType},
+            { value:'TLKM', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' , id: this.state.stockType},
+            { value:'WSKT', code: 'WSKT', saham: 'Waskita ' , id: this.state.stockType},
+            { value:'INDF', code: 'INDF', saham: 'Indofood ' , id: this.state.stockType},
+            { value:'BBCA', code: 'BBCA', saham: 'Bank BCA ' , id: this.state.stockType},
+            { value:'SMRG', code: 'SMGR', saham: 'Semen Indonesia ' , id: this.state.stockType},
+            { value:'BBRI', code: 'BBRI', saham: 'Bank BRI ' , id: this.state.stockType}
+        ];
+
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
+
         const customStyles = {
             control: (base, state) => ({
                 ...base,
                 height: '34px',
+                width: '170px',
                 'min-height': '34px',
             }),
         };
@@ -944,25 +973,26 @@ more.
                                 <div className="form-inline">
                                     <div className="form-group">
                                         <li style={marginSelection}>
+                                                <Select
+                                                    maxMenuHeight={200}
+                                                    styles={customStyles}
+                                                    placeholder={<div>Search..</div>}
+                                                    options={stockOptions}
+                                                    getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                                    id={"stockoption"+this.state.stockType}
+                                                    className="stockPageSelect text-left"
+                                                    theme={this.selectSelectionTab}
+                                                    onChange={this.changelist}
+                                                    filterOption={customFilter}
+                                                    value={selecteddd}
+                                                />
+                                        </li>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <li style={marginSelection}>
                                             <input type="hidden" id={"chartDataSelect" + this.state.stockType} value={this.state.stockAlias} data-json={"./" + this.state.stockData} />
-                                            <div className="input-group mr-1 stockOptionInputGroup">
-                                                <input id={"stockoption"+this.state.stockType} style={{borderRight:'none'}} list="brow" className="select selectpicker show-tick stockOptionInput n-border-right form-control"
-                                                       onChange={this.changelist} placeholder="Search"/>
-                                                <datalist id="brow" className="text-basic listOpt">
-                                                    <option value="AALI"/>
-                                                    <option value="ADHI"/>
-                                                    <option value="ANTM"/>
-                                                    <option value="ASII"/>
-                                                    <option value="TLKM"/>
-                                                    <option value="WSKT"/>
-                                                    <option value="INDF"/>
-                                                    <option value="BBCA"/>
-                                                    <option value="SMGR"/>
-                                                    <option value="BBRI"/>
-                                                </datalist>
-                                                <span
-                                                    className="input-group-addon ml-0 pl-1 n-border-left"><i className="fa fa-search"></i></span>
-                                            </div>
+
                                             <select data-width={elemWidthanotation} data-size="10" data-dropup-auto="false" data-style="btn-dark" defaultValue={'default'} id={"typeSelect" + this.state.stockType} onclick="create()" className="select selectpicker show-tick form-control" title="Select Annotation Type">
                                                 <option value="default" selected>Annotation Type</option>
                                                 <option value="andrews-pitchfork">Andrews' Pitchfork</option>
@@ -986,7 +1016,11 @@ more.
 
                                     <div className="form-group">
                                         <li style={marginSelection}>
-                                            <select name="" id={"seriesTypeSelect" + this.state.stockType} data-width={elemWidthanotation} data-size="10" data-dropup-auto="false" data-style="btn-dark" className="select selectpicker show-tick form-control">
+                                            <select
+                                                name="" id={"seriesTypeSelect" + this.state.stockType}
+                                                data-width={elemWidthanotation}
+                                                data-size="10" data-dropup-auto="false"
+                                                data-style="btn-dark" className="select selectpicker show-tick form-control">
                                                 {/* <!--series constructors--> */}
                                                 <option value="area">Area Chart</option>
                                                 <option value="candlestick" selected>Candlestick Chart</option>
@@ -1011,7 +1045,7 @@ more.
 
                                     <div className="form-group">
                                         <li style={marginSelection}>
-                                            <select className="select show-tick form-control" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" data-width={elemWidthIndicator} id={"indicatorTypeSelect" + this.state.stockType}
+                                            <select className="select show-tick form-control" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" id={"indicatorTypeSelect" + this.state.stockType}
                                                 title="Add Indicator">
                                             </select>
                                         </li>
@@ -1060,7 +1094,6 @@ const AnalyticChart = ContextConnector(BIPSAppContext,
         thememode: vars.thememode,
         chartMode: vars.chartMode,
         sessId: vars.sessionID,
-
     }),
 )(AnalyticChart_Base);
 

@@ -111,7 +111,6 @@ class TableInfoTransaction extends React.PureComponent{
                                     className={`text-white bg-dark-grey px-0 mx-0
                                      ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
                                           (this.props.lotshare == 'buyPage') ? 'card-bwt':
-                                            (this.props.lotshare == 'sellPage') ? 'card-swt' :
                                                 (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
                                                     (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
                                         }
@@ -197,7 +196,6 @@ class TableInfoTransaction extends React.PureComponent{
                                     className={`text-white bg-dark-grey px-0 mx-0
                                      ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
                                         (this.props.lotshare == 'buyPage')? 'card-bwt':
-                                            (this.props.lotshare == 'sellPage') ? 'card-swt':
                                             (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
                                                 (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
                                     }

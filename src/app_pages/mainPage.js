@@ -5,6 +5,7 @@ import { AppFrame, AppModal } from '../appframe.js';
 
 // application-logic libraries
 import { BIPSAppContext } from '../AppData.js';
+import { AlertProvider, AlertWrapper } from "react-alerts-plus";
 
 // application-common-UI libraries goes here
 import UISelectionTab from '../selectiontab.js';
@@ -28,6 +29,7 @@ const CustomFrameHeader = (props) => {
 
 const ResizeResponsive = () => {
     var marquee = $('html').width();
+    marquee = marquee + 20;
     $('.runningText p').css('width', (marquee));
     $('.runningText').css('width', (marquee));
 
@@ -161,47 +163,12 @@ const ResizeResponsive = () => {
     }
 }
 
-class LoginPage extends React.Component {
-  /* 
-    expected props: onLogin(uid, password)
-  */
-
-  onButtonClick = () => {
-    this.props.onLogin(this.refs.userID.value, this.refs.password.value);
-  }
-
-  render () {
-
-    return <div>
-        <h1>Login to BIPS</h1>
-        <p>&nbsp;</p>
-        <label>User ID&nbsp;&nbsp;</label><input ref="userID" /><br />
-        <br />
-        <label>Password&nbsp;&nbsp;</label><input ref="password" type="password"/><br />
-        <br />
-        <button onClick={this.onButtonClick}>LOGIN</button>
-      </div>
-
-  }
-}
-
 class MainPage_Base extends React.Component {
     constructor (props) {
         super(props);
-
-        /*
-          expected props:
-
-          loginState,
-          networkState,
-          doLogin,
-        */
-
-          //zaky
-          this.state ={
+        this.state ={
               fullscreenmode:false,
-          }
-          //zaky
+        }
     }
 
     componentDidMount(){
@@ -209,6 +176,7 @@ class MainPage_Base extends React.Component {
 
         var setElementHeightWeb = function () {
             var marquee = $('html').width();
+            marquee = marquee + 20;
             $('.runningText p').css('width', (marquee));
             $('.runningText').css('width', (marquee));
 
@@ -364,10 +332,10 @@ class MainPage_Base extends React.Component {
             ElementStockHistory();
         }).resize();
 
-        /*$(window).on("click", function () {
-            setElementHeightWeb();
-            setElementLiveZoom();
-        }).resize();*/
+        // $(window).on("click", function () {
+        //     setElementHeightWeb();
+        //     setElementLiveZoom();
+        // }).resize();
     }
 
     doLogin = (userID, password) => {
@@ -443,7 +411,6 @@ class MainPage_Base extends React.Component {
         }
 
     }
-    //zaky
     tick() {
         this.setState(prevState => ({
             seconds: prevState.seconds + 1
@@ -526,24 +493,11 @@ class MainPage_Base extends React.Component {
         document.body.style.setProperty('--warna-shadow', this.props.thememode === true  ? "#000000" : "#ACACAC");
         document.body.style.setProperty('--warna-border-headermenu', this.props.thememode === true  ? "#5f68ad" : "#F9F9F9");
         document.body.style.setProperty('--warna-bg-data-orange', this.props.thememode === true  ? "#e68c27" : "#e6e027");
-        /*
-          Important system components:
-
-          AppFrame: frame viewer
-          AppModal: modal viewer
-        */
 
         var props = this.props;
         return (
             <>
                 {
-                      /*<div style={{display: !props.networkState ? "block" : "none"}}>
-                      <h1>Connecting...</h1>
-                      </div>
-                      <div style={{display: props.networkState && !props.loginState ? "block" : "none"}}>
-                          <LoginPage onLogin={this.doLogin} />
-                      </div>
-                      <div style={{display: props.networkState && props.loginState ? "block" : "none"}}>*/
                       <div id="login-state" style={{display: !props.loginState ? "block" : "none"}}>
                           <LoginUserPage onLogin={this.doLogin}/>
                       </div>
@@ -551,6 +505,7 @@ class MainPage_Base extends React.Component {
                 }
                 {
                     <div style={{display: props.loginState ? "block" : "none"}}>
+                        <AlertProvider>
                         <UISelectionTab treeName="/" linkTitles={
                             {
                                 landingPage:
@@ -625,9 +580,66 @@ class MainPage_Base extends React.Component {
                         </div>
                         <i onClick={this.state.fullscreenmode == false ? this.openContentFullscreen : this.closeContentFullscreen}
                            className={this.state.fullscreenmode == false ? "icon-icon-fullscreen-in myBtn" : "icon-exit-fullscreen myBtn"}></i>
-                        {/*<AppModal />*/}
+                        {props.loginState ? <AlertBips/> : ''}
+                        <AppModal/>
+                        </AlertProvider>
                     </div>
                 }
+            </>
+        );
+    }
+}
+class AlertBips extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state = {
+            alertMessage : "Default Message"
+        }
+    }
+
+    alertclick(){
+        $("#btn-alert").click();
+    }
+
+    componentDidMount(){
+        this.alertInterval = setInterval(() => this.alertclick(), 99000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+        clearInterval(this.alertInterval);
+    }
+
+    render() {
+        const offset = "25px";
+        const { alertMessage } = this.state;
+
+        const topRight = {
+            message: alertMessage,
+            style: {
+                borderColor: "navy",
+                borderRadius: 0
+            },
+            position: "top right",
+            offset,
+            duration: 5000,
+            showProgressBar: false
+        };
+
+        return (
+            <>
+                <AlertWrapper>
+                    {({ show, close }) => (
+                        <div>
+                            <button
+                                id="btn-alert"
+                                className="btn btn-primary d-none"
+                                onClick={() => show(topRight)}>
+                                Alert
+                            </button>
+                        </div>
+                    )}
+                </AlertWrapper>
             </>
         );
     }
@@ -875,6 +887,10 @@ class MarqueePage extends React.PureComponent{
                 <p className="marquee">
                                   <span>
                                       <kbd>{this.state.spanData[0].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[0].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[0].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[0].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -882,13 +898,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[0].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[0].change}&nbsp;{this.state.spanData[0].persen}%
+                                          {this.state.spanData[0].change}&nbsp;({this.state.spanData[0].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee2">
                                   <span>
                                       <kbd>{this.state.spanData[1].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[1].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[1].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[1].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -896,13 +916,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[1].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[1].change}&nbsp;{this.state.spanData[1].persen}%
+                                          {this.state.spanData[1].change}&nbsp;({this.state.spanData[1].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee3">
                                   <span>
                                       <kbd>{this.state.spanData[2].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[2].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[2].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[2].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -910,13 +934,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[2].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[2].change}&nbsp;{this.state.spanData[2].persen}%
+                                          {this.state.spanData[2].change}&nbsp;({this.state.spanData[2].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee4">
                                   <span>
                                       <kbd>{this.state.spanData[3].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[3].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[3].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[3].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -924,13 +952,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[3].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[3].change}&nbsp;{this.state.spanData[3].persen}%
+                                          {this.state.spanData[3].change}&nbsp;({this.state.spanData[3].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee5">
                                   <span>
-                                      <kbd>{this.state.spanData[4].code}</kbd>&nbsp;
+                                      <kbd>{this.state.spanData[4].code}</kbd>
+                                       <text
+                                           className={(this.state.spanData[4].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[4].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[4].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -938,13 +970,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[4].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[4].change}&nbsp;{this.state.spanData[4].persen}%
+                                          {this.state.spanData[4].change}&nbsp;({this.state.spanData[4].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee6">
                                   <span>
                                       <kbd>{this.state.spanData[5].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[5].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[5].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[5].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -952,13 +988,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[5].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[5].change}&nbsp;{this.state.spanData[5].persen}%
+                                          {this.state.spanData[5].change}&nbsp;({this.state.spanData[5].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee7">
                                   <span>
                                       <kbd>{this.state.spanData[6].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[6].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[6].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[6].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -966,13 +1006,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[6].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[6].change}&nbsp;{this.state.spanData[6].persen}%
+                                          {this.state.spanData[6].change}&nbsp;({this.state.spanData[6].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee8">
                                   <span>
                                       <kbd>{this.state.spanData[7].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[7].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[7].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[7].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -980,13 +1024,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[7].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[7].change}&nbsp;{this.state.spanData[7].persen}%
+                                          {this.state.spanData[7].change}&nbsp;({this.state.spanData[7].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee9">
                                   <span>
                                       <kbd>{this.state.spanData[8].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[8].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[8].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[8].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -994,13 +1042,17 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[8].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[8].change}&nbsp;{this.state.spanData[8].persen}%
+                                          {this.state.spanData[8].change}&nbsp;({this.state.spanData[8].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
                 <p className="marquee marquee10">
                                   <span>
                                       <kbd>{this.state.spanData[9].code}</kbd>&nbsp;
+                                      <text
+                                          className={(this.state.spanData[9].change.includes("-"))?"text-danger":"text-success"}>
+                                          {this.state.spanData[9].price}&nbsp;
+                                      </text>
                                       <i
                                           className={(this.state.spanData[9].change.includes("-"))
                                               ?"icofont icofont-caret-down text-danger":
@@ -1008,7 +1060,7 @@ class MarqueePage extends React.PureComponent{
                                       </i>
                                       <text
                                           className={(this.state.spanData[9].change.includes("-"))?"text-danger":"text-success"}>
-                                          {this.state.spanData[9].change}&nbsp;{this.state.spanData[9].persen}%
+                                          {this.state.spanData[9].change}&nbsp;({this.state.spanData[9].persen}%) &nbsp;
                                       </text>
                                   </span>
                 </p>
@@ -1022,7 +1074,7 @@ const MainPage = ContextConnector(BIPSAppContext,
     loginState: vars.loginState,
     networkState: vars.networkState,
     doLogin: (userID, password) => {actions.sendAction('doLogin', {userID, password})},
-    thememode : vars.thememode,
+     thememode : vars.thememode,
   }), 
   ["doLogin"]
 )(MainPage_Base);

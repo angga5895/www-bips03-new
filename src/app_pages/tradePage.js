@@ -173,14 +173,7 @@ class OrderbookPage extends React.PureComponent {
                 <WSConnectionAction ref="wsAction" /> {/* websocket connection component */}
                 <div className="bg-black-trading f-12 mt-1">
                     <AppFrameAction ref="frameAction" />
-                    {/*<div className="d-border-bottom">
-                        <div className="col-sm-4 px-0 row">
-                            <div className="col-sm-6 px-5 mx-0 text-left pt-3 pb-3">
-                                <button className="btn btn-sm btn-grey" onClick={this.buttonClickAmendRegister}>Modify Watchlist</button>
-                            </div>
-                            <div className="col-sm-6 px-0 mx-0 text-right pt-3 pb-1"></div>
-                        </div>
-                    </div>*/}
+
                     <div className="card-515 col-sm-12 pt-3 pr-2 mr-0 mt-3 row">
                         <div className="col-sm-4 pl-4 pr-0">
                             <div className={this.state.box1 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox1}>
@@ -204,101 +197,6 @@ class OrderbookPage extends React.PureComponent {
     }
 }
 
-class WatchList extends React.PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
-    state = {
-        box1 : 0,
-        box2 : 0,
-        box3 : 0
-    }
-
-    clickBox1 = (e) => {
-        this.setState({
-            box1: 1,
-            box2: 0,
-            box3: 0
-        })
-    }
-
-    clickBox2 = (e) => {
-        this.setState({
-            box2: 1,
-            box1: 0,
-            box3: 0
-        })
-    }
-
-    clickBox3 = (e) => {
-        this.setState({
-            box3: 1,
-            box2: 0,
-            box1: 0
-        })
-    }
-
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    buttonClickAmendRegister = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i></div>,
-            size: 'tiny',
-            contentClass: RegisterAmendModal,
-            onClose: (result) => {console.log('Modal 1 result = ', result)}
-        })
-    }
-
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <div className="col-sm-12 px-2 mx-0 pt-1">
-                <WSConnectionAction ref="wsAction" /> {/* websocket connection component */}
-                <div className="bg-black-trading f-12">
-                    <AppFrameAction ref="frameAction" />
-                    {/*<div className="d-border-bottom">
-                        <div className="col-sm-4 px-0 row">
-                            <div className="col-sm-6 px-5 mx-0 text-left pt-3 pb-3">
-                                <button className="btn btn-sm btn-grey" onClick={this.buttonClickAmendRegister}>Modify Watchlist</button>
-                            </div>
-                            <div className="col-sm-6 px-0 mx-0 text-right pt-3 pb-1"></div>
-                        </div>
-                    </div>*/}
-                    <div className="card-515 col-sm-12 pt-3 pr-2 mr-0 row">
-                        <div className="col-sm-4 pl-4 pr-0">
-                            <div className={this.state.box1 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox1}>
-                                <TableInfoTransactionWithButton saham="AALI"/>
-                            </div>
-                        </div>
-                        <div className="col-sm-4 pl-4 pr-0">
-                            <div className={this.state.box2 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox2}>
-                                <TableInfoTransactionWithButton saham="TLKM"/>
-                            </div>
-                        </div>
-                        <div className="col-sm-4 pl-4 pr-0">
-                            <div className={this.state.box3 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox3}>
-                                <TableInfoTransactionWithButton saham="BMRI"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-const TradeWatchlistFrameHeader = (props) => {
-    return (
-        <></>
-    );
-}
 class OrderSetting extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -354,62 +252,6 @@ class SentOrder extends React.PureComponent{
         )
     }
 
-}
-class AutomaticOrderPage extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeTab: 1,
-        };
-
-    }
-
-    render() {
-        return (
-            <AppFrameProvider>
-                {/* <BIPSAppProvider> */}
-                <div className="row col-sm-12 pl-2 mx-0 pt-1">
-                    <div className="col-sm-8 px-0 mx-0">
-                        <div className="cssmenu d-border-bottom d-border-top d-border-left small h-30">
-                            <ul className="ul-menu h-27">
-                                <li name="stockDaily"
-                                    className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 1) ? ' active' : ''}`}
-                                    onClick={() => this.setState({activeTab: 1})}>
-                                    <a className="linkCustomStockTab h-27">
-                                                    <span
-                                                        className="f-12">ORDER SETTINGS</span></a></li>
-                                <li name="stockPage"
-                                    className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 2) ? ' active' : ''}`}
-                                    onClick={() => this.setState({activeTab: 2})}>
-                                    <a className="linkCustomStockTab h-27">
-                                                    <span
-                                                        className="f-12">SENT ORDER</span></a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid pl-2">
-                    <div style={{display: this.state.activeTab == 1 ? "block" : "none"}} className="col-sm-12 pl-2">
-                        {/*laggggi kerjain ini*/}
-                        {/*<TradeOrderSummaryAgGrid/>*/}
-                        <div className="row">
-                            <div className="col-sm-4 pr-3 pl-3 f-12">
-                                <TableInfoTransactionLayout/>
-                            </div>
-                            <div className="col-sm-8 pr-0 mt-2">
-                                <TableInfoTransactionLayout2/>
-                            </div>
-                        </div>
-                    </div>
-                    <div style={{display: this.state.activeTab == 2 ? "block" : "none"}} className="col-sm-12 pl-0 pr-0">
-                        <OrderHistoryAgGrid/>
-                    </div>
-                </div>
-                {/* </BIPSAppProvider> */}
-            </AppFrameProvider>
-        );
-    }
 }
 class TableInfoTransactionLayout extends React.PureComponent{
     constructor(props) {
@@ -1368,12 +1210,13 @@ class OrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "mqty", headerName: "M Qty", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
+                { field: "mqty", headerName: "M Qty", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?130:110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "mprice", headerName: "M Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?193:s=="s80"?173:s=="s90"?133:120,
+                    width: s=="s75"?200:s=="s80"?173:s=="s90"?133:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
@@ -1529,7 +1372,8 @@ class OrderListAgGrid extends React.PureComponent {
                         return <text>&nbsp;</text>
                     },
                     suppressSizeToFit: true
-                }, { field: "-", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                },
+                { field: "-", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:85, minWidth: 85,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center text-primary f-12 click-pointer";
@@ -2292,44 +2136,44 @@ class TradeListOrderListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:80, minWidth: 80,
+                    width:s=="s75"?110:80, minWidth: 80,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:78, minWidth:78,
+                    width:s=="s75"?110:78, minWidth:78,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:86, minWidth: 86,
+                    width:s=="s75"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:60, minWidth: 60,
+                    width:s=="s75"?90:60, minWidth: 60,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "val", headerName: "Val", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:60, minWidth: 60,
+                    width:s=="s75"?100:60, minWidth: 60,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:86, minWidth: 86,
+                    width:s=="s75"?100:86, minWidth: 86,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 86, minWidth: 86,
+                    width: s=="s75"?100:86, minWidth: 86,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "tradeId", headerName: "TradeID", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:s=="s75"?167:s=="s80"?100:90, minWidth: 90,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },
             ],
@@ -2499,7 +2343,13 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: 80,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12";
+                    },
+                },
+                { field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:s=="s75"?245:s=="s80"?205:s=="s90"?185:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
@@ -2524,30 +2374,35 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
                     tradeVol : "5",
                     avgPrice : "12,635.00",
                     cmd :"BUY",
+                    vol: 1,
                 },{
                     code : "AALI",
                     leaveVol :"3",
                     tradeVol : "5",
                     avgPrice : "13,635.00",
                     cmd :"SELL",
+                    vol: 12,
                 },{
                     code : "AALI",
                     leaveVol :"2",
                     tradeVol : "5",
                     avgPrice : "12,635.00",
                     cmd :"SELL",
+                    vol: 5,
                 },{
                     code : "AALI",
                     leaveVol :"7",
                     tradeVol : "1",
                     avgPrice : "9,635.00",
                     cmd :"BUY",
+                    vol: 8,
                 },{
                     code : "AALI",
                     leaveVol :"1",
                     tradeVol : "2",
                     avgPrice : "5,135.00",
                     cmd :"SELL",
+                    vol: 21,
                 },
             ],
             getRowHeight : function (params) {

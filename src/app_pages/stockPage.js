@@ -170,6 +170,21 @@ class TableProfil extends React.PureComponent{
 }
 
 class TableCorpAction extends React.PureComponent{
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+            return "s67";
+        }else if(window.innerWidth > 2701){
+            return "s50";
+        }else{
+            return "s100";
+        }
+    }
     render() {
         return (
             <>
@@ -178,7 +193,7 @@ class TableCorpAction extends React.PureComponent{
                 <main>
                     <div className="container px-0 mx-0 col-sm-12">
                         <div className="bg-black-inactive card card-156">
-                            <CorpActionAgGrid />
+                            <CorpActionAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
                 </main>
@@ -583,7 +598,7 @@ class StockHistoryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-4 px-1 pt-2 pb-0">
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
-                                        <HistoryPriceAgGrid size={this.ceksize()}/>
+                                        <HistoryPriceAgGrid size={this.ceksize()} startRow={this.state.minRow}/>
                                     </div>
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
                                         <HistoryBuyerAgGrid size={this.ceksize()}/>
@@ -1414,7 +1429,8 @@ class HistoryBrokerAgGridThird extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
-                { field: 'volume', headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 220,
+                { field: 'volume', headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?305:s=="s80"?290:s=="s90"?250:220,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
@@ -2315,7 +2331,7 @@ class HistorySellerAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 100, minWidth: 100, suppressSizeToFit:true, lockPosition:true, lockVisible:true,
+                    width: s=="s75"?130:s=="s80"?120:s=="s90"?110:95, minWidth: 95, suppressSizeToFit:true, lockPosition:true, lockVisible:true,
                     cellClass : function (params) {
                         var volume = parseInt(params.data.volume);
                         if (volume < 22 || volume > 26) {
@@ -2454,28 +2470,34 @@ class CorpActionAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
         const self = this;
+        const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "type", headerName: "Type", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "type", headerName: "Type", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?200:135,
                     suppressSizeToFit:true, lockVisible:true, lockPosition:true,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     },},
-                { field: "cumdate", headerName: "Cum Date", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "cumdate", headerName: "Cum Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?200:135,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "distdate", headerName: "Dist. Date", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "distdate", headerName: "Dist. Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?210:135,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "ratio", headerName: "Ratio", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "ratio", headerName: "Ratio", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?210:135,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "exprice", headerName: "Ex. Price", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 135,
+                { field: "exprice", headerName: "Ex. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s75"?210:135,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
             ],
             defaultColDef: {

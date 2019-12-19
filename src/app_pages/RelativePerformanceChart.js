@@ -37,18 +37,7 @@ require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 var $valueAnalyticChart = "";
 var $valueAnalyticChart2 = "";
 
-const stockOptions = [
-    { value: 'aali', label: 'AALI' },
-    { value: 'adhi', label: 'ADHI' },
-    { value: 'antm', label: 'ANTM' },
-    { value: 'asii', label: 'ASII' },
-    { value: 'tlkm', label: 'TLKM' },
-    { value: 'wskt', label: 'WSKT' },
-    { value: 'indf', label: 'INDF' },
-    { value: 'bbca', label: 'BBCA' },
-    { value: 'smgr', label: 'SMGR' },
-    { value: 'bbri', label: 'BBRI' }
-]
+
 
 class RelativePerfomanceChart_Base extends React.PureComponent {
 
@@ -59,6 +48,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             stockKey: props.key,
             modeView: props.viewMode,
             sessId: props.sessId,
+            defaultStock: '',
+            defaultStock2: '',
         };
     }
 
@@ -319,25 +310,6 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             });
             $("#rc2").change(function() {
                 getStock($valueAnalyticChart,$valueAnalyticChart2);
-            });
-
-
-            $("#relativeChart").on('keypress', function(e){
-                if(e.which === 13){
-                    e.preventDefault();
-                    var data1 = $("#stockChart1").children().children().children().html();
-                    var data2 = $("#stockChart2").children().children().children().html();
-                    getStock(data1,data2);
-                }
-            });
-
-            $("#relativeChart2").on('keypress', function(e){
-                if(e.which === 13){
-                    e.preventDefault();
-                    var data1 = $("#stockChart1").children().children().children().html();
-                    var data2 = $("#stockChart2").children().children().children().html();
-                    getStock(data1,data2);
-                }
             });
 
             function getStock(stok,stok2){
@@ -821,35 +793,57 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
         borderRadius: 5,
         colors: {
             ...theme.colors,
-            neutral0: this.props.thememode === true ? '#516198' : '#CDCDCE',
-            neutral20: this.props.thememode === true ? '#2D3866' : '#E9E9E9',
-            neutral30: this.props.thememode === true ? '#2D3866' : '#E9E9E9',
-            neutral40: this.props.thememode === true ? '#202542' : '#1A1A1A',
-            neutral80: this.props.thememode === true ? '#A1A7C4' : '#878787',
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#CDCDCE',
+            neutral20: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral30: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#878787',
             primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
-            primary50: this.props.thememode === true ? '#2D3866' : '#4D4D4E',
-            primary25: this.props.thememode === true ? '#758bcf' : '#F5F5F5',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#ece9ea',
             primary: '#0071BC',
         },
     });
 
-    changelist(e){
-        if(e.target.value.length > 0) {
-            if(e.target.id == "rc"){
-                $valueAnalyticChart = e.target.value;
-                $("#rc").change();
-                console.log('he');
-            }else{
-                $valueAnalyticChart2 = e.target.value;
-                $("#rc2").change();
-                console.log('ha');
-            }
-        }else{
-            return false;
-        }
+    // changelist(e){
+    //     if(e.target.value.length > 0) {
+    //         if(e.target.id == "rc"){
+    //             $valueAnalyticChart = e.target.value;
+    //             $("#rc").change();
+    //             console.log('he');
+    //         }else{
+    //             $valueAnalyticChart2 = e.target.value;
+    //             $("#rc2").change();
+    //             console.log('ha');
+    //         }
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
+    changelist = event => {
+        $valueAnalyticChart = event.value;
+        $("#rc").change();
+    }
+    changelist2 = event => {
+        $valueAnalyticChart2 = event.value;
+        $("#rc2").change();
     }
 
     render() {
+
+        const stockOptions = [
+            { value:'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType},
+            { value:'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType},
+            { value:'bumi', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType},
+            { value:'asii', code: 'ASII', saham: 'Argo Astra Lestari ' , id: this.state.stockType},
+            { value:'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' , id: this.state.stockType},
+            { value:'wskt', code: 'WSKT', saham: 'Waskita ' , id: this.state.stockType},
+            { value:'indf', code: 'INDF', saham: 'Indofood ' , id: this.state.stockType},
+            { value:'bbca', code: 'BBCA', saham: 'Bank BCA ' , id: this.state.stockType},
+            { value:'smrg', code: 'SMGR', saham: 'Semen Indonesia ' , id: this.state.stockType},
+            { value:'bbri', code: 'BBRI', saham: 'Bank BRI ' , id: this.state.stockType}
+        ];
 
         let styleses = {
             display: 'flex',
@@ -888,6 +882,24 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
 
         let elemWidthIndicator = (this.props.chartMode) ? 350 : 180;
         let elemWidthanotation = (this.props.chartMode) ? 250 : 147;
+
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
+
+        const { selectedStock } = this.state.defaultStock;
+        const { selectedStock2 } = this.state.defaultStock2;
 
         return (
             <div>
@@ -946,49 +958,49 @@ more.
                     <div className="row" id={"formInputIndicators" + this.state.stockType}>
                         <div className="col-xs-12 col-sm-6 col-md-12">
                             <ul className="list list-unstyled list-nav" id={"indicatorNavPanel" + this.state.stockType} style={styleses}>
+                                <div className="form-group col-sm-2 px-0 pt-1 mb-0">
+                                    <li style={marginSelection}>
+                                        <Select
+                                            maxMenuHeight={200}
+                                            maxMenuWidth={300}
+                                            styles={customStyles}
+                                            placeholder={<div>Search..</div>}
+                                            options={stockOptions}
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            id={"rc"}
+                                            className="stockPageSelect text-left"
+                                            theme={this.selectSelectionTab}
+                                            onChange={this.changelist}
+                                            filterOption={customFilter}
+                                            value={selectedStock}
+                                        />
+                                    </li>
+                                </div>
+                                <div className="form-group col-sm-2 px-0 pt-1 mb-0">
+                                    <li style={marginSelection}>
+                                        <Select
+                                            maxMenuHeight={200}
+                                            maxMenuWidth={300}
+                                            styles={customStyles}
+                                            placeholder={<div>Search..</div>}
+                                            options={stockOptions}
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            id={"rc2"}
+                                            className="stockPageSelect text-left"
+                                            theme={this.selectSelectionTab}
+                                            onChange={this.changelist2}
+                                            filterOption={customFilter}
+                                            value={selectedStock2}
+                                        />
+                                    </li>
+                                </div>
+
                                 <div className="form-inline">
                                     <div className="form-group">
+                                        <input type="hidden" id={"chartDataSelect" + this.state.stockType} value="" data-json="./msft.json" />
+                                        <input type="hidden" id={"chartDataSelect2" + this.state.stockType} value="" data-json="./ibm.json" />
+
                                         <li style={marginSelection}>
-                                            <input type="hidden" id={"chartDataSelect" + this.state.stockType} value="" data-json="./msft.json" />
-                                            <input type="hidden" id={"chartDataSelect2" + this.state.stockType} value="" data-json="./ibm.json" />
-
-                                            <div className="input-group mr-1">
-                                                <input id={"rc"} style={{borderRight:'none'}} list="brow"
-                                                       className="select selectpicker stockOptionInput2 show-tick form-control"
-                                                       onChange={this.changelist} placeholder="Search"/>
-                                                <datalist id="brow">
-                                                    <option value="AALI"/>
-                                                    <option value="ADHI"/>
-                                                    <option value="ANTM"/>
-                                                    <option value="ASII"/>
-                                                    <option value="WSKT"/>
-                                                    <option value="INDF"/>
-                                                    <option value="BBCA"/>
-                                                    <option value="SMGR"/>
-                                                </datalist>
-                                                <span
-                                                    className="input-group-addon ml-0 pl-1 n-border-left">
-                                                    <i className="fa fa-search"></i></span>
-                                            </div>
-
-                                            <div className="input-group mr-1">
-                                                <input id={"rc2"} style={{borderRight:'none'}} list="brow"
-                                                       className="select selectpicker stockOptionInput2 show-tick form-control"
-                                                       onChange={this.changelist} placeholder="Search"/>
-                                                <datalist id="brow">
-                                                    <option value="AALI"/>
-                                                    <option value="ADHI"/>
-                                                    <option value="ANTM"/>
-                                                    <option value="ASII"/>
-                                                    <option value="WSKT"/>
-                                                    <option value="INDF"/>
-                                                    <option value="BBCA"/>
-                                                    <option value="SMGR"/>
-                                                </datalist>
-                                                <span style={{borderLeft:'none'}}
-                                                    className="input-group-addon ml-0 pl-1 n-border-left"><i className="fa fa-search"></i></span>
-                                            </div>
-
                                             <select data-width={elemWidthanotation} data-size="10" data-dropup-auto="false" data-style="btn-dark" defaultValue={'default'} id={"typeSelect" + this.state.stockType} onclick="create()" className="select selectpicker show-tick form-control" title="Select Annotation Type">
                                                 <option value="default" selected>Annotation Type</option>
                                                 <option value="andrews-pitchfork">Andrews' Pitchfork</option>

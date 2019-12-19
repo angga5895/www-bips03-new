@@ -695,15 +695,15 @@ class BuyPage extends React.Component{
                     <div className="col-sm-6 pr-3 pl-0 f-12">
                     <TableInfoTransaction lotshare="buyPage"/>
                     </div>
-                    <div className="col-sm-6 mt-0 bg-dark-grey pt-0 pb-3 px-3 card-515 d-border">
-                        <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33">
+                    <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-danger pt-0 pb-3 px-0 card-515 d-border" : "col-sm-6 mt-0 bg-success pt-0 pb-3 px-0 card-515 d-border"}>
+                        <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33 mb-3">
                             <ul>
                                 <li className={ (this.state.activeTab === 1)  ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' }
-                                    onClick={() => { this.toggle(1); }}><a className="pt-1 pb-2"><span className="f-12">
+                                    onClick={() => { this.toggle(1); }}><a className="pt-4 pb-2"><span className="f-12">
                                     &nbsp; Buy
                                 </span></a></li>
                                 <li className={ (this.state.activeTab === 2) ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' }
-                                    onClick={() => { this.toggle(2); }}><a className="pt-1 pb-2"><span className="f-12">
+                                    onClick={() => { this.toggle(2); }}><a className="pt-4 pb-2"><span className="f-12">
                                     &nbsp; Sell
                                 </span></a></li>
                             </ul>

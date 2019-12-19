@@ -1,3 +1,13 @@
+.bg-white-grey-sell{
+    background-image: linear-gradient(#DFDFDE,#F4F5F6);
+    color: #5CB85C!important;
+}
+
+.bg-white-grey-buy{
+    background-image: linear-gradient(#DFDFDE,#F4F5F6);
+    color: #D9534F!important;
+}
+
 .d-bold{
     font-weight: bold!important;
 }
@@ -2086,8 +2096,8 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab-scale {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 10.49% !important;
+        max-width: 10.49%!important;
         display: inline-block!important;
     }
 
@@ -2124,17 +2134,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 10.49% !important;
+        max-width: 10.49%!important;
         display: inline-block!important;
     }
 
     .fs-icon-bips{
-        font-size: 1.5rem!important;
+        font-size: 2rem!important;
     }
 
     .fs-text-bips{
-        font-size: 7px!important;
+        font-size: 8px!important;
     }
 }
 
@@ -2160,17 +2170,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 10.39% !important;
+        max-width: 10.39%!important;
         display: inline-block!important;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 2rem!important;
     }
 
     .fs-text-bips{
-        font-size: 5px!important;
+        font-size: 8px!important;
     }
 }
 
@@ -2196,17 +2206,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 10.285% !important;
+        max-width: 10.285%!important;
         display: inline-block!important;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 2rem!important;
     }
 
     .fs-text-bips{
-        font-size: 5px!important;
+        font-size: 8px!important;
     }
 }
 
@@ -2232,17 +2242,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 10.19% !important;
+        max-width: 10.19%!important;
         display: inline-block!important;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1.5rem!important;
     }
 
     .fs-text-bips{
-        font-size: 5px!important;
+        font-size: 6.2px!important;
     }
 
     .col-mbl-1 {
@@ -2305,8 +2315,8 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 14.285% !important;
-        max-width: 14.285%!important;
+        flex: 0 0 9% !important;
+        max-width: 9%!important;
         display: inline-block!important;
     }
 

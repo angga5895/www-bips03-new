@@ -1,3 +1,8 @@
+.bg-tableheader{
+    background-color :rgb(51, 63, 80)!important;
+    color : white!important;
+}
+
 .bg-white-grey-sell{
     background-image: linear-gradient(#DFDFDE,#F4F5F6);
     color: #5CB85C!important;

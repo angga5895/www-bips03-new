@@ -637,14 +637,14 @@ class ModalHistorical extends React.Component {
                                     <tr>
                                         <td>
                                             <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35">Periode</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
                                                 <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                         <span className="fa fa-calendar-alt"></span>
                                                                     </span>
-                                                <span className="input-group-addon h-35">to</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
                                                 <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                         <span className="fa fa-calendar-alt"></span>
                                                                     </span>
                                             </div>
@@ -751,14 +751,14 @@ class ModalTransaction extends React.Component {
                                     <tr>
                                         <td>
                                             <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35">Periode</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
                                                 <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                         <span className="fa fa-calendar-alt"></span>
                                                                     </span>
-                                                <span className="input-group-addon h-35">to</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
                                                 <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                         <span className="fa fa-calendar-alt"></span>
                                                                     </span>
                                             </div>
@@ -986,7 +986,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                 </div>
                                                 <div className="col-md-3 ui input" style={{paddingRight:'53px'}}>
                                                     <Input placeholder='dd/mm/yy' size='small' id="datepickerTest" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
-                                                    <span className="input-group-addon h-35 no-border-radius" style={{width: '100%'}}><span
+                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
                                                         className="fa fa-calendar-alt"></span></span>
                                                 </div>
                                             </div>
@@ -1020,15 +1020,15 @@ class FundTransfer_Base extends React.PureComponent {
                                                         <tr>
                                                             <td>
                                                                 <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                                    <span className="input-group-addon h-35">Periode</span>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">Periode</span>
                                                                     <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35">
-                                                                    <span className="fa fa-calendar-alt"></span>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">
+                                                                    <span className="fa fa-calendar-alt bg-tableheader"></span>
                                                                 </span>
-                                                                    <span className="input-group-addon h-35">to</span>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">to</span>
                                                                     <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35">
-                                                                    <span className="fa fa-calendar-alt"></span>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">
+                                                                    <span className="fa fa-calendar-alt bg-tableheader"></span>
                                                                 </span>
                                                                 </div>
                                                             </td>
@@ -1611,14 +1611,14 @@ class SoePage extends React.PureComponent{
                                     <tr>
                                         <td>
                                             <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35">Periode</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
                                                 <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                     <span className="fa fa-calendar-alt"></span>
                                                                 </span>
-                                                <span className="input-group-addon h-35">to</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
                                                 <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                     <span className="fa fa-calendar-alt"></span>
                                                                 </span>
                                             </div>
@@ -1676,14 +1676,14 @@ class TradeControlPage extends React.PureComponent{
                                     <tr>
                                         <td>
                                             <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35">Periode</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
                                                 <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                     <span className="fa fa-calendar-alt"></span>
                                                                 </span>
-                                                <span className="input-group-addon h-35">to</span>
+                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
                                                 <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35">
+                                                <span className="input-group-addon h-35 bg-tableheader">
                                                                     <span className="fa fa-calendar-alt"></span>
                                                                 </span>
                                             </div>

@@ -4,7 +4,7 @@ import { NetAppContext, WSConnectionAction } from './appnetwork.js';
 import { AppFrameContext, AppFrameAction } from './appframe.js';
 import { throwStatement } from '@babel/types';
 
-const SERVER_URL = 'ws://bahana.ihsansolusi.co.id:5050';
+const SERVER_URL = 'wss://bahana.ihsansolusi.co.id:5050';
 const RECONNECT_TIME = 1000;
 
 var BIPSAppVars = {

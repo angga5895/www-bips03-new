@@ -4652,3 +4652,95 @@ textarea {
         }
     }
 }
+@media (min-width: 2048px) and (max-width: 2303px){
+
+}
+@media (min-width: 2304px) and (max-width: 2559px){
+    @media(max-height: 1447px){
+        .card-mc {
+            height: 1008px;
+        }
+
+        .table-market > thead > tr > th {
+            padding: 45px 5px !important;
+        }
+
+        .table-market > tbody > tr > td {
+            padding: 45px 5px !important;
+        }
+
+        .card-sib {
+            height: 816px;
+        }
+
+        .card-watchlistAggrid {
+            height: 1190px;
+        }
+        .card-bwt {
+            height: 870px;
+        }
+        .card-sellBuy {
+            height: 1240px;
+        }
+
+        .card-tradeAgW {
+            height: 1195px;
+        }
+
+        .card-twl {
+            height: 874px;
+        }
+
+        .card-autSend {
+            height: 1190px;
+        }
+
+        .card-autOrd {
+            height: 874px;
+        }
+    }
+    @media(min-height: 1448px){
+            .card-mc {
+                height: 1080px;
+            }
+
+            .table-market > thead > tr > th {
+                padding: 49px 5px !important;
+            }
+
+            .table-market > tbody > tr > td {
+                padding: 49px 5px 48px 5px !important;
+            }
+
+            .card-sib {
+                height: 870px;
+            }
+
+            .card-watchlistAggrid {
+                height: 1263px;
+            }
+            .card-bwt {
+                height: 926px;
+            }
+            .card-sellBuy {
+                height: 1330px;
+            }
+            .card-tradeAgW {
+                height: 1270px;
+            }
+            .card-twl {
+                height: 930px;
+            }
+
+            .card-autSend {
+                height: 1265px;
+            }
+
+            .card-autOrd {
+                height: 930px;
+            }
+        }
+}
+@media (min-width: 2360px){
+
+}

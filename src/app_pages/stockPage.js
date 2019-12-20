@@ -518,14 +518,14 @@ class StockHistoryPage_Base extends React.PureComponent {
                             <div className="px-2 mx-0 mt-3 col-sm-12 mb-3 row h-40">
                                 <div className="col-sm-4 px-0 mx-0">
                                     <div className="input-group input-daterange h-35" style={{"z-index":0}}>
-                                        <span className="input-group-addon h-35">Start</span>
+                                        <span className="input-group-addon h-35 bg-tableheader">Start</span>
                                         <input placeholder="dd/mm/yyyy" id="startDate1" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                        <span className="input-group-addon h-35">
+                                        <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>
-                                        <span className="input-group-addon h-35">to</span>
+                                        <span className="input-group-addon h-35 bg-tableheader">to</span>
                                         <input placeholder="dd/mm/yyyy" id="endDate1" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                        <span className="input-group-addon h-35">
+                                        <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>
                                         <span id="btn-clear-date" className="input-group-addon bg-gold click-pointer hover-gold h-35">

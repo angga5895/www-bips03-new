@@ -581,7 +581,7 @@ class MainPage_Base extends React.Component {
                         <i onClick={this.state.fullscreenmode == false ? this.openContentFullscreen : this.closeContentFullscreen}
                            className={this.state.fullscreenmode == false ? "icon-icon-fullscreen-in myBtn" : "icon-exit-fullscreen myBtn"}></i>
                         {props.loginState ? <AlertBips/> : ''}
-                        <AppModal/>
+                        {/*<AppModal/>*/}
                         </AlertProvider>
                     </div>
                 }

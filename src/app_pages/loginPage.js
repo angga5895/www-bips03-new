@@ -580,7 +580,6 @@ class LoginUserPage_Base extends React.PureComponent {
                 }
             }
         }
-        console.log("ini pesan"+this.props.loginErrState);
         return (
             <>
                 {

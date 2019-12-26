@@ -64,16 +64,18 @@ class LiveTradePage extends React.PureComponent {
     }
 
     ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
-        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
             return "s80";
-        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
             return "s75";
-        }else if(window.innerWidth > 2045 && window.innerWidth < 2700){
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
             return "s67";
-        }else if(window.innerWidth > 2701){
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
             return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
         }else{
             return "s100";
         }
@@ -195,44 +197,44 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?130:100, minWidth: 100, cellClass : function (params) {
+                    width: s=="s49"?155:s=="s50"?145:s=="s67"?135:s=="s75"?130:s=="s80"?120:100, minWidth: 100, cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?120:70,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:70,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-visible";
                     }},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?120:80, minWidth: 80, cellClass : function (params) {
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:80, minWidth: 80, cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?120:85,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:85,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "percent", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?100:63, minWidth: 63,
+                    width: s=="s49"?145:s=="s50"?120:s=="s67"?105:s=="s75"?100:s=="s80"?80:63, minWidth: 63,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?110:70, minWidth: 70,
+                    width: s=="s49"?140:s=="s50"?120:s=="s67"?115:s=="s75"?110:s=="s80"?90:70, minWidth: 70,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
+                    width: s=="s49"?155:s=="s50"?145:s=="s67"?130:s=="s75"?125:s=="s80"?105:s=="s90"?110:85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -244,7 +246,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span class="text-warning">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1];
                     } },
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
+                    width: s=="s49"?155:s=="s50"?140:s=="s67"?125:s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -256,7 +258,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span class="text-warning">'+sSeller[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sSeller[1];
                     } },
                 { field: "board", headerName: "Board", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="75"?130:s=="s80"?120:s=="s90"?120:90, minWidth: 90,
+                    width: s=="s49"?155:s=="s50"?155:s=="s67"?135:s=="75"?130:s=="s80"?120:s=="s90"?120:90, minWidth: 90,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     } },

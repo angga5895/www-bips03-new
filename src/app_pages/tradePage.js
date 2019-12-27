@@ -213,11 +213,11 @@ class OrderSetting extends React.PureComponent {
             <AppFrameProvider>
                 <div className="col-sm-12">
 
-                    <div className="row">
+                    <div className="row pt-1">
                         <div className="col-sm-4 pr-3 pl-3 f-12">
                             <TableInfoTransactionLayout/>
                         </div>
-                        <div className="col-sm-8 pr-3 mt-2">
+                        <div className="col-sm-8 pr-3 mt-0">
                             <TableInfoTransactionLayout2/>
                         </div>
                     </div>
@@ -324,7 +324,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
     render(){
         return(
             <>
-                <div className="bg-dark-grey d-border">
+                <div className="bg-dark-grey d-border card-520">
                     <div className="row">
                         <div className="col-sm-6 f-12 pt-3">
                             <div className="col-sm-4 mb-5">
@@ -456,11 +456,8 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-sm-12 d-border mt-2 px-0">
                     <OrderSettingListAgGrid size={this.ceksize()}/>
                 </div>
-
             </>
         );
     }
@@ -707,7 +704,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
                 </div>
                 <div
-                    className="card-233 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-234 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
 
@@ -789,35 +786,37 @@ class TradeWatchlist extends React.PureComponent{
     }
     render() {
         return (
-            <div className="row col-sm-12 px-2 mx-0 py-0">
+            <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
 
-                <OrderListAgGrid
-                    size={this.ceksize()}
-                    clickorderdetail={this.buttonClickOrderDetail}
-                    clickamend={this.buttonClickAmend}
-                    clickwithdraw={this.buttonClickWithdraw}/>
-                <div className="container-fluid row px-0 ml-0 mt-2" style={{'width':'100%'}}>
+                <div className="col-sm-12 px-0 card-310">
+                    <OrderListAgGrid
+                        size={this.ceksize()}
+                        clickorderdetail={this.buttonClickOrderDetail}
+                        clickamend={this.buttonClickAmend}
+                        clickwithdraw={this.buttonClickWithdraw}/>
+                </div>
+                <div className="col-sm-12 row px-0 ml-0 mt-0 pt-1" style={{'width':'100%'}}>
                     <div className="col-sm-6 pl-0 pr-2">
                         <div className="col-sm-12 pl-0 pr-0">
                             <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 f-12 bg-tableheader">TRADE LIST</div>
+                                <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE LIST</div>
                             </div>
                             <TradeListOrderListAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
                     <div className="col-sm-6 pl-2 pr-0">
                         <div className="cssmenu d-border-bottom d-border-top d-border-left small h-30">
-                            <ul className="ul-menu h-27">
+                            <ul className="ul-menu h-30">
                                 <li name="stockDaily"
                                     className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 1) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 1})}>
-                                    <a className="linkCustomStockTab h-27">
+                                    <a className="linkCustomStockTab h-30">
                                                     <span
                                                         className="f-12">ORDER SUMMARY</span></a></li>
                                 <li name="stockPage"
                                     className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 2) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 2})}>
-                                    <a className="linkCustomStockTab h-27">
+                                    <a className="linkCustomStockTab h-30">
                                                     <span
                                                         className="f-12">TRADE SUMMARY</span></a></li>
                             </ul>
@@ -859,12 +858,12 @@ class SettingInWatchlist extends React.Component{
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction /> {/* websocket connection component */}
-                <div className="row">
-                    <div className="col-md-4 pt-2 pr-2">
+                <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
+                    <div className="col-sm-4 px-0 mx-0 card-520">
                         <TradeWatchlistAgGrid size={this.ceksize()}/>
                     </div>
-                    <div className="col-sm-8 px-0 mx-0 card-527">
-                        <div className="col-sm-12 px-2 pt-2">
+                    <div className="col-sm-8 pl-3 pr-0 mx-0 card-520">
+                        <div className="col-sm-12 px-0 pt-0">
                             <BuyPage/>
                         </div>
                     </div>
@@ -1197,7 +1196,7 @@ class TradeWatchlistAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-tradeAgW ag-theme-balham-dark ag-header-border d-border ml-2 ag-striped-odd"
+                    className="card-520 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -1380,7 +1379,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
             <>
                 {/*senttttt*/}
                 <div
-                    className="card-autSend ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
+                    className="card-520 ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
                     >
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
@@ -2157,7 +2156,7 @@ class OrderListAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-305 ag-theme-balham-dark mt-2 ag-bordered ag-striped-odd d-border"}
+                    className={"card-310 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2355,7 +2354,7 @@ class TradeListOrderListAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-175 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-177 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2518,7 +2517,7 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-175 ag-theme-balham-dark ag-bordered ag-striped-odd d-border d-border"}
+                    className={"card-176 ag-theme-balham-dark ag-bordered ag-striped-odd d-border d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2646,7 +2645,7 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-175 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-176 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

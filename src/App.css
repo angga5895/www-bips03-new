@@ -1,3 +1,47 @@
+.mb3{
+    margin-bottom: 3.75px!important;
+}
+
+.d-border-gray-half{
+    border: 1px solid var(--warna-gray)!important;
+}
+
+.h-48{
+    height: 48px!important;
+}
+
+.card-467{
+    height: var(--card-467) !important;
+}.card-112{
+    height: var(--card-112) !important;
+}.card-362{
+    height: var(--card-362) !important;
+}.card-482{
+    height: var(--card-482) !important;
+}.card-283{
+    height: var(--card-283) !important;
+}.card-191{
+    height: var(--card-191) !important;
+}.card-323{
+    height: var(--card-323) !important;
+}.card-161{
+    height: var(--card-161) !important;
+}.card-161-1{
+    height: var(--card-161-1) !important;
+}.card-161-2{
+    height: var(--card-161-2) !important;
+}.card-346{
+    height: var(--card-346) !important;
+}.card-310{
+    height: var(--card-310) !important;
+}.card-176{
+    height: var(--card-176) !important;
+}.card-177{
+    height: var(--card-177) !important;
+}.card-234{
+    height: var(--card-234) !important;
+}
+
 .bg-tableheader{
     background-color :rgb(51, 63, 80)!important;
     color : white!important;
@@ -441,8 +485,8 @@ div.main-header > .ui.menu .item{
 }
 
 .col-sm-header-user {
-    flex: 0 0 19.5%;
-    max-width: 19.5%;
+    flex: 0 0 19%;
+    max-width: 19%;
 }
 
 .col-sm-sidebar{

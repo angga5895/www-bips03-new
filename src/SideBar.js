@@ -78,6 +78,16 @@ class SideBar extends React.Component{
         })
     }
 
+    isFireFox() {
+        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+            var firefox = true;
+        } else {
+            var firefox = false;
+        }
+
+        return firefox;
+    }
+
     render(){
         return(
             <>
@@ -107,8 +117,8 @@ class SideBar extends React.Component{
                                                 <tr className="d-border-bottom px-3">
                                                     <td className="px-3">
                                                         <div className="align-self-center text-center click-pointer">
-                                                            <h5 className="mb-1">{charx.name}</h5>
-                                                            <p className="f-11-center mb-1 text-danger">{charx.last}</p>
+                                                            <h5 className={this.isFireFox() ? "mb-0" : "mb-1"}>{charx.name}</h5>
+                                                            <p className={this.isFireFox() ? "f-11-center mb3 text-danger" : "f-11-center mb-1 text-danger"}>{charx.last}</p>
                                                         </div>
                                                     </td>
                                                 </tr>

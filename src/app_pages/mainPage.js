@@ -43,6 +43,102 @@ const ResizeResponsive = () => {
     $('.card-575').css('min-height', (height575));
     var height527 = height575-$('.tabheaderfill').height()-3;
     $('.card-527').css('min-height', (height527));
+
+    var height520 = height527-7;
+    $('.card-520').css('min-height', (height520));
+    var height467 = height520-53;
+    $('.card-467').css('min-height', (height467));
+
+    var height482 = height527-45;
+    $('.card-482').css('min-height', (height482));
+
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+        // Do Firefox-related activities
+        var height112 = (115/474)*(height520-46);
+        $('.card-112').css('minHeight', (height112));
+        var height362 = (358.9/474)*(height520-46);
+        $('.card-362').css('minHeight', (height362));
+
+        if($('html').height() > 1099 && $('html').height() < 1200)    {
+            var height283 = (279/482)*(height482);
+            var height283a = (279/482)*(height482)-6;
+            $('.card-283').css('minHeight', (height283a));
+        } else if(($('html').height() > 768 && $('html').height() < 900) ||
+            ($('html').height() > 899 && $('html').height() < 1000)){
+            var height283 = (279/482)*(height482);
+            var height283a = (279/482)*(height482)-3;
+            $('.card-283').css('minHeight', (height283a));
+        } else if(($('html').height() > 999 && $('html').height() < 1100)){
+            var height283 = (279/482)*(height482);
+            var height283a = (279/482)*(height482)-4;
+            $('.card-283').css('minHeight', (height283a));
+        } else if(($('html').height() > 1199)&& ($('html').height() < 2000)){
+            var height283 = (279/482)*(height482);
+            var height283a = (279/482)*(height482)-7;
+            $('.card-283').css('minHeight', (height283a));
+        } else if(($('html').height() > 2001)){
+            var height283 = (279/482)*(height482);
+            var height283a = (279/482)*(height482)-10;
+            $('.card-283').css('minHeight', (height283a));
+        } else{
+            var height283 = (279/482)*(height482);
+            $('.card-283').css('minHeight', (height283));
+        }
+
+        var height191 = (197/199)*(height482-height283)-4;
+        $('.card-191').css('minHeight', (height191));
+        var height161 = (169/169)*(height482-height283)-4-30-4-1;
+        $('.card-161').css('minHeight', (height161));
+        var height1611 = (167/169)*(height482-height283)-4-30-4-1;
+        $('.card-161-1').css('minHeight', (height1611));
+        var height1612 = (167/169)*(height482-height283)-4-30-4-2;
+        $('.card-161-2').css('minHeight', (height1612));
+
+        var height323 = (321/324)*(height482-46-height112)-2;
+        $('.card-323').css('minHeight', (height323));
+
+        var height310 = (310/520)*(height520);
+        $('.card-310').css('minHeight', (height310));
+        var height176 = (175/176)*(height520-height310-30);
+        $('.card-176').css('minHeight', (height176));
+        var height177 = (176/177)*(height520-height310-30+1);
+        $('.card-177').css('minHeight', (height177));
+    }else{
+        var height112 = (112/474)*(height520-46);
+        $('.card-112').css('minHeight', (height112));
+        var height362 = (361.9/474)*(height520-46);
+        $('.card-362').css('minHeight', (height362));
+
+        var height283 = (283/482)*(height482);
+        $('.card-283').css('minHeight', (height283));
+        var height191 = (199/199)*(height482-height283)-4;
+        $('.card-191').css('minHeight', (height191));
+        var height161 = (169/169)*(height482-height283)-4-30-4;
+        $('.card-161').css('minHeight', (height161));
+        var height1611 = (169/169)*(height482-height283)-4-30-4-1;
+        $('.card-161-1').css('minHeight', (height1611));
+        var height1612 = (169/169)*(height482-height283)-4-30-4-2;
+        $('.card-161-2').css('minHeight', (height1612));
+
+        var height323 = (324/324)*(height482-46-height112);
+        $('.card-323').css('minHeight', (height323));
+
+        var height310 = (310/520)*(height520);
+        $('.card-310').css('minHeight', (height310));
+        var height176 = (175/176)*(height520-height310-30);
+        $('.card-176').css('minHeight', (height176));
+        var height177 = (176/177)*(height520-height310-30+1);
+        $('.card-177').css('minHeight', (height177));
+    }
+
+    if($('html').height() > 2200){
+        var height234 = height527-$('.grid-294').height()-40;
+        $('.card-234').css('min-height', (height234));
+    } else{
+        var height234 = height527-$('.grid-294').height();
+        $('.card-234').css('min-height', (height234));
+    }
+
     var height452 = height527-31-37-6;
     $('.card-452').css('min-height', (height452));
     var height487 = height527-40;
@@ -190,6 +286,102 @@ class MainPage_Base extends React.Component {
             $('.card-575').css('min-height', (height575));
             var height527 = height575-$('.tabheaderfill').height()-3;
             $('.card-527').css('min-height', (height527));
+
+            var height520 = height527-7;
+            $('.card-520').css('minHeight', (height520));
+            var height467 = height520-53;
+            $('.card-467').css('minHeight', (height467));
+
+            var height482 = height527-45;
+            $('.card-482').css('min-height', (height482));
+
+            if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+                // Do Firefox-related activities
+                var height112 = (115/474)*(height520-46);
+                $('.card-112').css('minHeight', (height112));
+                var height362 = (358.9/474)*(height520-46);
+                $('.card-362').css('minHeight', (height362));
+
+                if($('html').height() > 1099 && $('html').height() < 1200)    {
+                    var height283 = (279/482)*(height482);
+                    var height283a = (279/482)*(height482)-6;
+                    $('.card-283').css('minHeight', (height283a));
+                } else if(($('html').height() > 768 && $('html').height() < 900) ||
+                    ($('html').height() > 899 && $('html').height() < 1000)){
+                    var height283 = (279/482)*(height482);
+                    var height283a = (279/482)*(height482)-3;
+                    $('.card-283').css('minHeight', (height283a));
+                } else if(($('html').height() > 999 && $('html').height() < 1100)){
+                    var height283 = (279/482)*(height482);
+                    var height283a = (279/482)*(height482)-4;
+                    $('.card-283').css('minHeight', (height283a));
+                } else if(($('html').height() > 1199)&& ($('html').height() < 2000)){
+                    var height283 = (279/482)*(height482);
+                    var height283a = (279/482)*(height482)-7;
+                    $('.card-283').css('minHeight', (height283a));
+                } else if(($('html').height() > 2001)){
+                    var height283 = (279/482)*(height482);
+                    var height283a = (279/482)*(height482)-10;
+                    $('.card-283').css('minHeight', (height283a));
+                } else{
+                    var height283 = (279/482)*(height482);
+                    $('.card-283').css('minHeight', (height283));
+                }
+
+                var height191 = (197/199)*(height482-height283)-4;
+                $('.card-191').css('minHeight', (height191));
+                var height161 = (169/169)*(height482-height283)-4-30-4-1;
+                $('.card-161').css('minHeight', (height161));
+                var height1611 = (167/169)*(height482-height283)-4-30-4-1;
+                $('.card-161-1').css('minHeight', (height1611));
+                var height1612 = (167/169)*(height482-height283)-4-30-4-2;
+                $('.card-161-2').css('minHeight', (height1612));
+
+                var height323 = (321/324)*(height482-46-height112)-2;
+                $('.card-323').css('minHeight', (height323));
+
+                var height310 = (310/520)*(height520);
+                $('.card-310').css('minHeight', (height310));
+                var height176 = (175/176)*(height520-height310-30);
+                $('.card-176').css('minHeight', (height176));
+                var height177 = (176/177)*(height520-height310-30+1);
+                $('.card-177').css('minHeight', (height177));
+            }else{
+                var height112 = (112/474)*(height520-46);
+                $('.card-112').css('minHeight', (height112));
+                var height362 = (361.9/474)*(height520-46);
+                $('.card-362').css('minHeight', (height362));
+
+                var height283 = (283/482)*(height482);
+                $('.card-283').css('minHeight', (height283));
+                var height191 = (199/199)*(height482-height283)-4;
+                $('.card-191').css('minHeight', (height191));
+                var height161 = (169/169)*(height482-height283)-4-30-4;
+                $('.card-161').css('minHeight', (height161));
+                var height1611 = (169/169)*(height482-height283)-4-30-4-1;
+                $('.card-161-1').css('minHeight', (height1611));
+                var height1612 = (169/169)*(height482-height283)-4-30-4-2;
+                $('.card-161-2').css('minHeight', (height1612));
+
+                var height323 = (324/324)*(height482-46-height112);
+                $('.card-323').css('minHeight', (height323));
+
+                var height310 = (310/520)*(height520);
+                $('.card-310').css('minHeight', (height310));
+                var height176 = (175/176)*(height520-height310-30);
+                $('.card-176').css('minHeight', (height176));
+                var height177 = (176/177)*(height520-height310-30+1);
+                $('.card-177').css('minHeight', (height177));
+            }
+
+            if($('html').height() > 2200){
+                var height234 = height527-$('.grid-294').height()-40;
+                $('.card-234').css('min-height', (height234));
+            } else{
+                var height234 = height527-$('.grid-294').height();
+                $('.card-234').css('min-height', (height234));
+            }
+
             var height452 = height527-31-37-6;
             $('.card-452').css('min-height', (height452));
             var height487 = height527-40;
@@ -316,6 +508,11 @@ class MainPage_Base extends React.Component {
             var height527 = height575-$('.tabheaderfill').height()-3;
             var height372 = (height527-40-40-30-45)+0.5;
             $('.card-372').css('min-height', (height372));
+
+            var height520 = height527-7;
+            $('.card-520').css('min-height', (height520));
+            var height467 = height520-53;
+            $('.card-467').css('min-height', (height467));
         };
 
         $(document).ready(function () {
@@ -581,6 +778,7 @@ class MainPage_Base extends React.Component {
                         <i onClick={this.state.fullscreenmode == false ? this.openContentFullscreen : this.closeContentFullscreen}
                            className={this.state.fullscreenmode == false ? "icon-icon-fullscreen-in myBtn" : "icon-exit-fullscreen myBtn"}></i>
                         {props.loginState ? <AlertBips/> : ''}
+                        {/*<AppModal/>*/}
                         </AlertProvider>
                     </div>
                 }

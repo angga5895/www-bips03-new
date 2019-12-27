@@ -53,7 +53,7 @@ class TableInfoTransaction extends React.PureComponent{
 
                 
 
-                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-111 mb-2">
+                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-112 mb-2">
                     <thead></thead>
                     <tbody>
                     <tr>
@@ -102,17 +102,17 @@ class TableInfoTransaction extends React.PureComponent{
                 {/*<div className="my-3"></div>*/}
 
                 <div className="bg-dark-grey">
-                    <div className="col-sm-12 row mx-0 px-0 d-border-gray">
+                    <div className="col-sm-12 row mx-0 px-0 d-border-gray-half">
                         <div className="col-sm-6 mx-0 px-0 d-border-right-half">
                             <div className="container-fluid px-0 mx-0">
                                 <Table
                                     responsive
                                     bordered size="sm"
                                     className={`text-white bg-dark-grey px-0 mx-0
-                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
-                                          (this.props.lotshare == 'buyPage') ? 'card-bwt':
-                                                (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
-                                                    (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
+                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-323':
+                                          (this.props.lotshare == 'buyPage') ? 'card-362':
+                                                (this.props.lotshare == 'buyPageTrade') ? 'card-362':
+                                                    (this.props.lotshare == 'autTradeOrd') ? 'card-362':'card-362'
                                         }
                                      mb-0 table-hover table-striped-trans`}>
                                 <thead className="d-border-top d-border-bottom bg-gray-tradding">
@@ -194,10 +194,10 @@ class TableInfoTransaction extends React.PureComponent{
                                     responsive
                                     bordered size="sm"
                                     className={`text-white bg-dark-grey px-0 mx-0
-                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-sib':
-                                        (this.props.lotshare == 'buyPage')? 'card-bwt':
-                                            (this.props.lotshare == 'buyPageTrade') ? 'card-twl':
-                                                (this.props.lotshare == 'autTradeOrd') ? 'card-autOrd':'card-324'
+                                     ${(this.props.lotshare == 'stockInfoBuy') ? 'card-323':
+                                        (this.props.lotshare == 'buyPage')? 'card-362':
+                                            (this.props.lotshare == 'buyPageTrade') ? 'card-362':
+                                                (this.props.lotshare == 'autTradeOrd') ? 'card-362':'card-362'
                                     }
                                         mb-0 table-hover table-striped-trans`}>
                                 <thead className="d-border-top d-border-bottom bg-gray-tradding">
@@ -327,7 +327,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                     </div>
                 </div>
 
-                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-111">
+                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-112">
                     <thead></thead>
                     <tbody>
                     <tr>

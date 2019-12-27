@@ -86,7 +86,7 @@ class LiveTradePage extends React.PureComponent {
             <div>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
-                <div className="row pl-4 mt-2 mb-3">
+                <div className="row pl-4 pt-2 pb-3 h-48">
                     <div
                         className={`col-md-1 px-0 pt-3 text-center
                         ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
@@ -143,12 +143,12 @@ class LiveTradePage extends React.PureComponent {
                     </div>
                 </div>
                 <div className="col-sm-12 row px-0 mx-0 row">
-                    <div className="col-sm-7 px-2 mx-0">
+                    <div className="col-sm-7 px-2 mx-0 card-520">
                         <div className="bg-trading-gray">
                             <LiveTradeAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
-                    <div className="col-sm-5 px-2 mx-0 bg-grey">
+                    <div className="col-sm-5 px-2 mx-0 bg-grey card-520 f-12">
                         <TableInfoTransaction lotshare="infoLiveTradePage"/>
                     </div>
                 </div>
@@ -543,7 +543,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card card-515 ag-theme-balham-dark ag-header-border-gray-live-trade ag-striped-odd"
+                    className="card card-520 ag-theme-balham-dark ag-header-border-gray-live-trade ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <span>

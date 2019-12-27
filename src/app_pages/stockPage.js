@@ -69,7 +69,7 @@ const StockInfo = (props) => {
         <div>
             {/*<BIPSAppProvider>*/}
             <WSConnectionAction />
-            <div className="row col-sm-12 px-0 mx-0 pt-1 card-190">
+            <div className="row col-sm-12 px-0 mx-0 pt-1 card-191">
                 <div className="col-sm-12 px-0 h-30">
                     <MenuOfContent treeName="/stockPage/stockInfoPage" linkTitles={
                         {
@@ -79,7 +79,7 @@ const StockInfo = (props) => {
                         }
                     } />
                 </div>
-                <div className="col-sm-12 px-0 d-border card-160">
+                <div className="col-sm-12 px-0 d-border card-161">
                     <AppFrame treeName="/stockPage/stockInfoPage" headerComponent={StockInfoFrameHeader}/>
                 </div>
             </div>
@@ -94,7 +94,7 @@ class TableStockInfo extends React.PureComponent{
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <TableBS responsive size="sm" className="text-white my-0 bg-dark-grey card-158 ">
+                <TableBS responsive size="sm" className="text-white my-0 bg-dark-grey card-161-1 ">
                     <thead></thead>
                     <tbody>
                     <tr>
@@ -194,7 +194,7 @@ class TableCorpAction extends React.PureComponent{
                 <WSConnectionAction ref="wsAction" />
                 <main>
                     <div className="container px-0 mx-0 col-sm-12">
-                        <div className="bg-black-inactive card card-156">
+                        <div className="bg-black-inactive card card-161-2">
                             <CorpActionAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
@@ -310,9 +310,9 @@ class StockPage_Base extends React.PureComponent {
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" /> {/* websocket connection component*/}
                 <main>
-                    <div className="container-fluid f-12">
-                        <div className="py-2">
-                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
+                    <div className="container-fluid f-12 card-527">
+                        <div className="py-0">
+                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40 mt-2">
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
                                     {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
@@ -343,13 +343,13 @@ class StockPage_Base extends React.PureComponent {
                                 </div>
                             </div>
                             <div className="px-1 mx-0 col-sm-12 row">
-                                <div className="col-md-7 px-1 py-2">
-                                    <div id="stock-chart" className="card card-282 bg-trading-gray">
+                                <div className="col-md-7 px-1 py-2 card-482">
+                                    <div id="stock-chart" className="card card-283 bg-trading-gray">
                                         <StockChart/>
                                     </div>
                                     <StockInfo/>
                                 </div>
-                                <div className="col-md-5 px-1 py-0">
+                                <div className="col-md-5 px-1 py-0 card-482">
                                     <TableInfoTransaction lotshare="stockInfoBuy" />
                                 </div>
                             </div>
@@ -627,13 +627,13 @@ const StockWatchlist = (props) => {
     return(
         <div>
             {/* <BIPSAppProvider> */}
-            <div className="row col-sm-12 pl-2 mx-0 py-0">
-                <div className="col-sm-4 px-0 mx-0">
+            <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
+                <div className="col-sm-4 px-0 mx-0 card-520">
                     {/*<AppModal/>*/}
                     <TableStockWatchlist/>
                 </div>
-                <div className="col-sm-8 px-0 mx-0 card-527">
-                    <div className="col-sm-12 px-2 pt-2">
+                <div className="col-sm-8 pl-3 pr-0 mx-0 card-520">
+                    <div className="col-sm-12 px-0 pt-0">
                         <BuyPage/>
                     </div>
                 </div>
@@ -680,7 +680,7 @@ class TableStockWatchlist_Base extends React.Component{
                 <WSConnectionAction ref="wsAction" /> {/* websocket connection component */}
                 <div className="bg-black-trading f-12">
                     <AppFrameAction ref="frameAction" />
-                    <div className="pl-4 pr-2 pt-3">
+                    <div className="px-0 py-0">
                         <StockWatchlistAgGrid size={this.ceksize()}/>
                     </div>
                 </div>
@@ -713,11 +713,11 @@ class BuyPage extends React.Component{
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction /> {/* websocket connection component */}
-                <div className="col-sm-12 px-2 pt-1 mx-0 row">
+                <div className="col-sm-12 px-0 py-0 mx-0 row">
                     <div className="col-sm-6 pr-3 pl-0 f-12">
                     <TableInfoTransaction lotshare="buyPage"/>
                     </div>
-                    <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-danger pt-0 pb-3 px-0 card-515 d-border" : "col-sm-6 mt-0 bg-success pt-0 pb-3 px-0 card-515 d-border"}>
+                    <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-danger pt-0 pb-0 px-0 card-520 d-border" : "col-sm-6 mt-0 bg-success pt-0 pb-0 px-0 card-520 d-border"}>
                         <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33 mb-3">
                             <ul>
                                 <li className={ (this.state.activeTab === 1)  ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' }
@@ -1779,7 +1779,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-watchlistAggrid ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-520 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -2576,7 +2576,7 @@ class CorpActionAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card card-156 ag-theme-balham-dark ag-striped-odd ag-header-border"
+                    className="card card-161-2 ag-theme-balham-dark ag-striped-odd ag-header-border"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

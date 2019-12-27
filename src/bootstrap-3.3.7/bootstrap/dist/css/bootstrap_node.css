@@ -71,6 +71,23 @@
 
 /*@media (max-width: 1440px) {*/
 :root{
+  --card-520 : 520px;
+  --card-467 : 467px;
+  --card-112 : 112px;
+  --card-362 : 355px;
+  --card-482 : 482px;
+  --card-283 : 270px;
+  --card-191 : 191px;
+  --card-323 : 310px;
+  --card-161 : 150px;
+  --card-161-1 : 149px;
+  --card-161-2 : 148px;
+  --card-346 : 346px;
+  --card-310 : 310px;
+  --card-176 : 176px;
+  --card-177 : 177px;
+  --card-234 : 234px;
+
   /*variabel card*/
   --height-container-custom: 520px;
 
@@ -114,7 +131,7 @@
 
 
   /*Data lama*/
-  --card-520 : 420px;
+  /*--card-520 : 420px;*/
   --card-490 : 90px;
   --card-400 : 30px;
   --card-540 : 40px;

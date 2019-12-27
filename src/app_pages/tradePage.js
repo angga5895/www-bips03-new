@@ -3,7 +3,7 @@ import {AppFrame, AppFrameAction, AppFrameProvider, AppModal} from "../appframe"
 import { NetAppContext, WSConnectionAction } from '../appnetwork.js';
 import FillHeaderTab from "../tabheaderfill";
 import MenuOfContent from "../menuofcontent";
-import {AddGroupCodeAgGrid, AmendGroupCodeAgGrid, AmendGroupNameAgGrid, RegisterAmendModal} from "./stockPage";
+import {AddGroupCodeAgGrid, AmendGroupCodeAgGrid, AmendGroupNameAgGrid, BuyPage, RegisterAmendModal} from "./stockPage";
 import { ContextConnector } from '../appcontext.js';
 import {BIPSAppContext, BIPSAppProvider} from "../AppData";
 import { Dropdown, Input, Popup, Radio, Form} from 'semantic-ui-react';
@@ -863,14 +863,19 @@ class SettingInWatchlist extends React.Component{
                     <div className="col-md-4 pt-2 pr-2">
                         <TradeWatchlistAgGrid size={this.ceksize()}/>
                     </div>
-                    <div className="col-md-8 pl-1">
-                        <SettingOrder
-                            type="full"
-                            lpSetting="setWatchlist"
-                            volSetting="volsetWatchlist"
-                            opSetting="opsetWatchlist"
-                            slpSetting="ssetWatchlist" svolSetting="svolsetWatchlist" sopSetting="sopsetWatchlist"/>
+                    <div className="col-sm-8 px-0 mx-0 card-527">
+                        <div className="col-sm-12 px-2 pt-2">
+                            <BuyPage/>
+                        </div>
                     </div>
+                    {/*<div className="col-md-8 pl-1">*/}
+                        {/*<SettingOrder*/}
+                            {/*type="full"*/}
+                            {/*lpSetting="setWatchlist"*/}
+                            {/*volSetting="volsetWatchlist"*/}
+                            {/*opSetting="opsetWatchlist"*/}
+                            {/*slpSetting="ssetWatchlist" svolSetting="svolsetWatchlist" sopSetting="sopsetWatchlist"/>*/}
+                    {/*</div>*/}
                 </div>
 
             </>
@@ -878,6 +883,7 @@ class SettingInWatchlist extends React.Component{
     }
 
 }
+
 
 const CustomFrameHeaderTrade = ContextConnector(BIPSAppContext,
     (vars, actions, props) => ({

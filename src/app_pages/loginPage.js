@@ -326,6 +326,7 @@ class LoginUserPage_Base extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            isLoading: false,
             passlogin : 'password',
             seconds: 0,
             index: 0,
@@ -403,10 +404,19 @@ class LoginUserPage_Base extends React.PureComponent {
         })*/
         this.props.isSignup(this.props.signupState)
     }
-
+    hideThis = () => {
+        $("#alert-wrong").css("display","none");
+        $("#buttonLogin").css("display","block");
+        $("#loader").css("display","none");
+    }
     buttonClickLogin = () => {
         var r = this.refs;
         var p = this.props;
+        $("#loader").css("display","block");
+        $("#buttonLogin").css("display","none");
+        this.setState({isLoading: true});
+
+
 
         /*p.onLogin(r.userID.value, r.password.value);*/
         // console.log(r)
@@ -436,7 +446,6 @@ class LoginUserPage_Base extends React.PureComponent {
             $("#req_pass").css("display","block");
         } else {
             p.onLogin(r.userID.value, r.password.value);
-
             // if (user === "a" && pass === "b") {
             //     this.props.getLogin(this.props.loginState);
             // } else {
@@ -498,7 +507,6 @@ class LoginUserPage_Base extends React.PureComponent {
     render () {
         var props = this.props;
         const logo = "https://dummyimage.com/308x244/949294/fff.jpg";
-
         const switchPanel = () => {
             if(this.state.flipped === true){
                 return "card is-flipped";
@@ -589,9 +597,13 @@ class LoginUserPage_Base extends React.PureComponent {
                             <WSConnectionAction ref="wsAction"/>
                             <main>
                                 <div className="container-fluid p-login text-center">
+
                                     <div className={"card card-body d-border-active row bg-box-gradient mx-0"}>
                                         {this.props.loginErrState === true ?
                                             <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
+                                                <div className="pull-right mt-2 mr-3">
+                                                    <i className="click-pointer icofont icofont-close" onClick={this.hideThis}></i>
+                                                </div>
                                                 <div id="content-alert" className={"py-2 text-white bg-danger "}>
                                                     {this.props.loginErrReason} Please try again
                                                 </div>
@@ -645,10 +657,12 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     </div>
                                                 </div>
                                                 <div className={"col-sm-12 pr-0 pl-5"}>
-                                                    <div className="justify-content-center align-items-center d-flex    ">
+                                                    <div id="loader"></div>
+
+                                                    <div id="buttonLogin" className="justify-content-center text-center align-items-center d-flex    ">
                                                         <button id="click_login" type="submit" onClick={this.buttonClickLogin}
                                                                 className="btn btn-primary form-control py-0">
-                                                            Login
+                                                            <span id="text-login">Login</span>
                                                         </button>
                                                     </div>
                                                 </div>

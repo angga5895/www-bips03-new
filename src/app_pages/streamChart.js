@@ -17,6 +17,10 @@ require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 class StreamChart extends React.PureComponent {
 
     componentDidMount() {
+
+    }
+
+    render() {
         //create new point every 1 minute
         var period = 60000;
         //new price ticks come every 15 seconds
@@ -127,9 +131,6 @@ class StreamChart extends React.PureComponent {
             };
 
         });
-    }
-
-    render() {
         return (
             <div>
                 <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>

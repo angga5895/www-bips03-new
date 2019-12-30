@@ -1536,21 +1536,21 @@ class StockWatchlistAgGrid extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
+                    width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:92, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "persen", headerName: "(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:60, minWidth: 50,
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:65, minWidth: 50,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "tvol", headerName: "T. Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:80, minWidth: 80,
+                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:85, minWidth: 80,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":

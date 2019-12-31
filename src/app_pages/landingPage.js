@@ -521,7 +521,7 @@ class StockCash_Base extends React.Component{
                                 <StockCashAgGrid size={this.ceksize()}/>
                             </div>
                             <div className="col-sm-12 card-221 px-0">
-                                <p className="text-left mt-3 mb-0 h-17">Settlement</p>
+                                <p className="text-center mt-3 mb-0 h-17 bg-tableheader">Settlement</p>
                                 <table className="table text-white d-border-table bg-dark-grey table-sm table-borderless mb-0 card-194">
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Date</td>

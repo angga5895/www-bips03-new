@@ -46,6 +46,10 @@
     height: var(--card-344) !important;
 }.card-220{
     height: var(--card-220) !important;
+}.card-514{
+    height: var(--card-514) !important;
+}.card-356{
+    height: var(--card-356) !important;
 }
 
 .bg-tableheader{

@@ -15,12 +15,14 @@ window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 
 class StreamChart extends React.PureComponent {
-
-    componentDidMount() {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            newRow: 2000,
+            seconds: 0,
+        };
     }
-
-    render() {
+    componentDidMount() {
         //create new point every 1 minute
         var period = 60000;
         //new price ticks come every 15 seconds
@@ -93,7 +95,7 @@ class StreamChart extends React.PureComponent {
                     function () {
 
                         newTimestamp += tickPeriod;
-                        point = Math.floor((Math.random() * 500) + 1);
+                        point = document.getElementById("tempVal").value;
 
                         //current point update or create new point
                         if (newTimestamp - newDataRow[0][0] <= period) {
@@ -131,9 +133,13 @@ class StreamChart extends React.PureComponent {
             };
 
         });
+    }
+
+    render() {
         return (
             <div>
                 <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
                 <div id="container" className="mt-2 py-3 px-3 card-344"></div>
             </div>
         );

@@ -22,7 +22,9 @@ class StreamChart extends React.PureComponent {
             seconds: 0,
         };
     }
+
     componentDidMount() {
+
         //create new point every 1 minute
         var period = 60000;
         //new price ticks come every 15 seconds
@@ -59,7 +61,7 @@ class StreamChart extends React.PureComponent {
 
 
             // map the data
-            let mapping = dataset.mapAs({ x: 0, value: 1 });
+            let mapping = dataset.mapAs({x: 0, value: 1});
 
             // set chart type
             let chart = anychart.stock();
@@ -90,8 +92,16 @@ class StreamChart extends React.PureComponent {
             newTimestamp = newDataRow[0][0];
 
             function streamStart() {
+                var ahay = document.getElementById('propsluar').value;
+                if(ahay.length < 1){
+                    alert('kosong euy');
+                }else{
+                    document.getElementById("hello").click();
+                }
+
                 dataInteval = setInterval(
                     // data streaming itself
+
                     function () {
 
                         newTimestamp += tickPeriod;
@@ -108,7 +118,6 @@ class StreamChart extends React.PureComponent {
                             newDataRow[0][0] = newTimestamp;
                             newDataRow[0][1] = point;
                         }
-
                         dataset.addData(newDataRow);
                     }, 500            // interval
                 );
@@ -134,12 +143,16 @@ class StreamChart extends React.PureComponent {
 
         });
     }
-
+    test = () => {
+        alert('oke');
+    }
     render() {
         return (
             <div>
                 <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
                 <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
+                <input type="hidden" id={"propsluar"} value=""/>
+                <span onClick={this.test} id={"hello"}></span>
                 <div id="container" className="mt-2 py-3 px-3 card-344"></div>
             </div>
         );

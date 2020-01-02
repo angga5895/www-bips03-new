@@ -859,10 +859,10 @@ class SettingInWatchlist extends React.Component{
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction /> {/* websocket connection component */}
                 <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
-                    <div className="col-sm-4 px-0 mx-0 card-520">
+                    <div className="col-sm-4 px-0 mx-0 card-514">
                         <TradeWatchlistAgGrid size={this.ceksize()}/>
                     </div>
-                    <div className="col-sm-8 pl-3 pr-0 mx-0 card-520">
+                    <div className="col-sm-8 pl-3 pr-0 mx-0 card-514">
                         <div className="col-sm-12 px-0 pt-0">
                             <BuyPage/>
                         </div>
@@ -1196,7 +1196,7 @@ class TradeWatchlistAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-520 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-514 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

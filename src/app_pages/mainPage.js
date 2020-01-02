@@ -52,12 +52,18 @@ const ResizeResponsive = () => {
     var height482 = height527-45;
     $('.card-482').css('min-height', (height482));
 
+    var height514 = height520-4.5+2;
+    $('.card-514').css('minHeight', (height514));
+
     if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
         // Do Firefox-related activities
         var height112 = (115/474)*(height520-46);
         $('.card-112').css('minHeight', (height112));
         var height362 = (358.9/474)*(height520-46);
         $('.card-362').css('minHeight', (height362));
+
+        var height356 = ((358.9/474)*(height520-46))-7+2;
+        $('.card-356').css('minHeight', (height356));
 
         if($('html').height() > 1099 && $('html').height() < 1200)    {
             var height283 = (279/482)*(height482);
@@ -108,6 +114,9 @@ const ResizeResponsive = () => {
         $('.card-112').css('minHeight', (height112));
         var height362 = (361.9/474)*(height520-46);
         $('.card-362').css('minHeight', (height362));
+
+        var height356 = ((361.9/474)*(height520-46))-5.382+0.764+2;
+        $('.card-356').css('minHeight', (height356));
 
         var height283 = (283/482)*(height482);
         $('.card-283').css('minHeight', (height283));
@@ -302,12 +311,18 @@ class MainPage_Base extends React.Component {
             var height482 = height527-45;
             $('.card-482').css('min-height', (height482));
 
+            var height514 = height520-4.5+2;
+            $('.card-514').css('minHeight', (height514));
+
             if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
                 // Do Firefox-related activities
                 var height112 = (115/474)*(height520-46);
                 $('.card-112').css('minHeight', (height112));
                 var height362 = (358.9/474)*(height520-46);
                 $('.card-362').css('minHeight', (height362));
+
+                var height356 = ((358.9/474)*(height520-46))-7+2;
+                $('.card-356').css('minHeight', (height356));
 
                 if($('html').height() > 1099 && $('html').height() < 1200)    {
                     var height283 = (279/482)*(height482);
@@ -359,6 +374,8 @@ class MainPage_Base extends React.Component {
                 var height362 = (361.9/474)*(height520-46);
                 $('.card-362').css('minHeight', (height362));
 
+                var height356 = ((361.9/474)*(height520-46))-5.382+0.764+2;
+                $('.card-356').css('minHeight', (height356));
                 var height283 = (283/482)*(height482);
                 $('.card-283').css('minHeight', (height283));
                 var height191 = (199/199)*(height482-height283)-4;

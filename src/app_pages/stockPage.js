@@ -628,11 +628,11 @@ const StockWatchlist = (props) => {
         <div>
             {/* <BIPSAppProvider> */}
             <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
-                <div className="col-sm-4 px-0 mx-0 card-520">
+                <div className="col-sm-4 px-0 mx-0 card-514">
                     {/*<AppModal/>*/}
                     <TableStockWatchlist/>
                 </div>
-                <div className="col-sm-8 pl-3 pr-0 mx-0 card-520">
+                <div className="col-sm-8 pl-3 pr-0 mx-0 card-514">
                     <div className="col-sm-12 px-0 pt-0">
                         <BuyPage/>
                     </div>
@@ -717,7 +717,7 @@ class BuyPage extends React.Component{
                     <div className="col-sm-6 pr-3 pl-0 f-12">
                     <TableInfoTransaction lotshare="buyPage"/>
                     </div>
-                    <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-danger pt-0 pb-0 px-0 card-520 d-border" : "col-sm-6 mt-0 bg-success pt-0 pb-0 px-0 card-520 d-border"}>
+                    <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-danger pt-0 pb-0 px-0 card-514 d-border" : "col-sm-6 mt-0 bg-success pt-0 pb-0 px-0 card-514 d-border"}>
                         <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33 mb-3">
                             <ul>
                                 <li className={ (this.state.activeTab === 1)  ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' }
@@ -1536,21 +1536,21 @@ class StockWatchlistAgGrid extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:92, minWidth: 90,
+                    width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "persen", headerName: "(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:65, minWidth: 50,
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:60, minWidth: 50,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "tvol", headerName: "T. Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:85, minWidth: 80,
+                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:80, minWidth: 80,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -1779,7 +1779,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-520 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-514 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

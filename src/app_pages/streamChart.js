@@ -18,7 +18,7 @@ class StreamChart extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            newRow: 2000,
+            newRow: 100,
             seconds: 0,
         };
     }
@@ -26,7 +26,7 @@ class StreamChart extends React.PureComponent {
     componentDidMount() {
 
         //create new point every 1 minute
-        var period = 60000;
+        var period = 4;
         //new price ticks come every 15 seconds
         var tickPeriod = 15000;
 
@@ -42,25 +42,10 @@ class StreamChart extends React.PureComponent {
 
             var dataset = anychart.data.table();
             dataset.addData([
-                [1508889600000, 100],
-                [1508889660000, 200],
-                [1508889720000, 15],
-                [1508889780000, 130],
-                [1508889840000, 153],
-                [1508889900000, 120],
-                [1508889960000, 151],
-                [1508890020000, 58],
-                [1508890080000, 19],
-                [1508890140000, 135],
-                [1508890200000, 170],
-                [1508890260000, 195],
-                [1508890320000, 22],
-                [1508890380000, 175],
-                [1508890440000, 120]
+                [1569986691452, 100],
             ]);
 
-
-            // map the data
+                // map the data
             let mapping = dataset.mapAs({x: 0, value: 1});
 
             // set chart type
@@ -90,11 +75,13 @@ class StreamChart extends React.PureComponent {
             }
             //timestamp variable for incoming ticks
             newTimestamp = newDataRow[0][0];
-
+            function reset(){
+                dataset.remove(1509986691452,9508889600000);
+            }
             function streamStart() {
                 var ahay = document.getElementById('propsluar').value;
                 if(ahay.length < 1){
-                    alert('kosong euy');
+                    alert('data kosong');
                 }else{
                     document.getElementById("hello").click();
                 }
@@ -124,9 +111,14 @@ class StreamChart extends React.PureComponent {
             }
 
             let streamButton = document.getElementById("streamButton");
+            let resetButton = document.getElementById("resetButton");
+
             let streamState = 0;
             let dataInteval;
 
+            resetButton.onclick = function(){
+                reset();
+            }
             streamButton.onclick = function () {
                 streamButton.innerHTML = "Stop" + "\nstream";
                 streamState++;
@@ -150,6 +142,7 @@ class StreamChart extends React.PureComponent {
         return (
             <div>
                 <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                <button id="resetButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">reset Stream</button>
                 <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
                 <input type="hidden" id={"propsluar"} value=""/>
                 <span onClick={this.test} id={"hello"}></span>

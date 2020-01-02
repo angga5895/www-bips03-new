@@ -24,7 +24,9 @@ class StreamChart extends React.PureComponent {
     }
 
     componentDidMount() {
-
+        var tommorow = new Date();
+        tommorow.setDate(tommorow.getDate()+1);
+        const ntommorow = tommorow.getTime();
         //create new point every 1 minute
         var period = 4;
         //new price ticks come every 15 seconds
@@ -76,7 +78,7 @@ class StreamChart extends React.PureComponent {
             //timestamp variable for incoming ticks
             newTimestamp = newDataRow[0][0];
             function reset(){
-                dataset.remove(1509986691452,9508889600000);
+                dataset.remove(1509986691452,ntommorow);
             }
             function streamStart() {
                 var ahay = document.getElementById('propsluar').value;
@@ -106,7 +108,7 @@ class StreamChart extends React.PureComponent {
                             newDataRow[0][1] = point;
                         }
                         dataset.addData(newDataRow);
-                    }, 500            // interval
+                    }, 5000            // interval
                 );
             }
 

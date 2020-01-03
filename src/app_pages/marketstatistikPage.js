@@ -271,7 +271,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         this.state = {
             newRow: 100,
             seconds: 0,
-            streamStart: null,
+            newStream: null,
         };
     }
 
@@ -307,14 +307,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
         //current price variable
         var point = null;
-        var statusStream = null;
 
 
         anychart.onDocumentReady(function () {
 
             var dataset = anychart.data.table();
             dataset.addData([
-                [1569986691452, 100],
+                [1569986691452, 300],
             ]);
 
             // map the data
@@ -353,7 +352,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             function streamStart() {
                 var ahay = document.getElementById('propsluar').value;
                 if(ahay.length < 1){
-                    alert('data kosong');
+                    // alert('data kosong');
                 }else{
                     document.getElementById("hello").click();
                 }
@@ -365,12 +364,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
                         newTimestamp += tickPeriod;
                         point = document.getElementById("tempVal").value;
-                        statusStream = document.getElementById("statusStream").value;
                         //current point update or create new point
-                        if(statusStream === false){
-                            console.log('stopp right theerrrr !!!');
-                            reset();
-                        }else{
+
                             if (newTimestamp - newDataRow[0][0] <= period) {
                                 //set price as close for existing point
                                 newDataRow[0][2] = point;
@@ -382,7 +377,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 newDataRow[0][1] = point;
                             }
                             dataset.addData(newDataRow);
-                        }
+
 
                     }, 500            // interval
                 );
@@ -400,6 +395,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                 clearInterval(dataInteval);
                 reset();
             }
+
             streamButton.onclick = function () {
                 streamButton.innerHTML = "Stop" + "\nstream";
                 streamState++;
@@ -418,6 +414,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
     }
     changelist = event => {
         document.getElementById("resetButton").click();
+        this.setState({newStream: true});
+    }
+    newStream = event => {
+        if(this.state.newStream){
+            document.getElementById("resetButton").click();
+            this.setState({newStream: false});
+        }
     }
     render(){
         const stockOptions = [
@@ -492,13 +495,11 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray">
                                         <div>
-                                            <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
-                                            <button id="resetButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">reset Stream</button>
-                                            <button id="changeButton" onClick={()=>this.setState({streamStart: !this.state.streamStart})}
-                                                    className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Change code cenah</button>
+                                            <button id="streamButton" onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                                            <i id="resetButton"></i>
                                             <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
-                                            <input type="hidden" id={"statusStream"} value={this.state.streamStart}/>
+                                            <input type="hidden" id={"newStream"} value={this.state.newStream}/>
                                             <span onClick={this.test} id={"hello"}></span>
                                             <div id="container" className="mt-2 py-3 px-3 card-344"></div>
                                         </div>

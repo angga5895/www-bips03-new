@@ -18,6 +18,8 @@ import newsImg3 from './../img/noimage.png';
 import newsImg4 from './../img/noimage.png';
 import newsImg5 from './../img/noimage.png';
 import {ContextConnector} from "../appcontext";
+import anychart from 'anychart';
+
 
 const stateOptions = [
     //untuk top active
@@ -266,6 +268,11 @@ class IndiceMarketStatistikPage extends React.PureComponent{
 class StatisticMarketStatistikPage_Base extends React.PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            newRow: 100,
+            seconds: 0,
+            streamStart: null,
+        };
     }
 
     selectSelectionTab = theme => ({
@@ -285,6 +292,133 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         },
     });
 
+    componentDidMount() {
+        var tommorow = new Date();
+        tommorow.setDate(tommorow.getDate()+1);
+        const ntommorow = tommorow.getTime();
+        //create new point every 1 minute
+        var period = 4;
+        //new price ticks come every 15 seconds
+        var tickPeriod = 15000;
+
+        var newTimestamp;
+
+        var newDataRow = [];
+
+        //current price variable
+        var point = null;
+        var statusStream = null;
+
+
+        anychart.onDocumentReady(function () {
+
+            var dataset = anychart.data.table();
+            dataset.addData([
+                [1569986691452, 100],
+            ]);
+
+            // map the data
+            let mapping = dataset.mapAs({x: 0, value: 1});
+
+            // set chart type
+            let chart = anychart.stock();
+
+            // set the series
+            let series = chart.plot(0).line(mapping);
+            series.name("Stock Streaming");
+
+            chart.title('Stock Streaming Demo: Currency Rates');
+
+            // set container and draw chart
+            chart.container("container").draw();
+
+            //create empty array for point data update
+            newDataRow[0] = new Array(2);
+
+            //select the last point from existing datatable
+            var selectable = mapping.createSelectable();
+            selectable.selectAll();
+            var iterator = selectable.getIterator();
+
+            while (iterator.advance()) {
+                //put data from the last exsiting point
+                newDataRow[0][0] = iterator.get('x');
+                newDataRow[0][1] = iterator.get('value');
+            }
+            //timestamp variable for incoming ticks
+            newTimestamp = newDataRow[0][0];
+            function reset(){
+                dataset.remove(1509986691452,ntommorow);
+            }
+            function streamStart() {
+                var ahay = document.getElementById('propsluar').value;
+                if(ahay.length < 1){
+                    alert('data kosong');
+                }else{
+                    document.getElementById("hello").click();
+                }
+
+                dataInteval = setInterval(
+                    // data streaming itself
+
+                    function () {
+
+                        newTimestamp += tickPeriod;
+                        point = document.getElementById("tempVal").value;
+                        statusStream = document.getElementById("statusStream").value;
+                        //current point update or create new point
+                        if(statusStream === false){
+                            console.log('stopp right theerrrr !!!');
+                            reset();
+                        }else{
+                            if (newTimestamp - newDataRow[0][0] <= period) {
+                                //set price as close for existing point
+                                newDataRow[0][2] = point;
+                            } else {
+                                //erase update data array
+                                newDataRow[0] = new Array(2);
+                                //set data for the new point
+                                newDataRow[0][0] = newTimestamp;
+                                newDataRow[0][1] = point;
+                            }
+                            dataset.addData(newDataRow);
+                        }
+
+                    }, 500            // interval
+                );
+            }
+
+            let streamButton = document.getElementById("streamButton");
+            let resetButton = document.getElementById("resetButton");
+
+            let streamState = 0;
+            let dataInteval;
+
+            resetButton.onclick = function(){
+                streamButton.innerHTML = "Start" + "\nstream";
+                streamState = 0;
+                clearInterval(dataInteval);
+                reset();
+            }
+            streamButton.onclick = function () {
+                streamButton.innerHTML = "Stop" + "\nstream";
+                streamState++;
+
+                if (streamState > 1) {
+                    streamButton.innerHTML = "Start" + "\nstream";
+                    streamState = 0;
+                    clearInterval(dataInteval);
+                } else {
+                    streamStart();
+                }
+
+            };
+
+        });
+    }
+    changelist = event => {
+        document.getElementById("resetButton").click();
+    }
     render(){
         const stockOptions = [
             { value: 'agri', label: 'AGRI' },
@@ -334,7 +468,15 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <label className="align-self-center col-sm-2 px-0 mx-0 f-16">Index</label>
                                     {/*<Input defaultValue='AGRI' placeholder='Code' size='small' className="col-sm-7 text-center align-self-center"/>*/}
                                     <div className="col-sm-10 mr-0 pl-0 pr-0 text-left align-self-center">
-                                        <Select maxMenuHeight={150} styles={customStyles} size="small" placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
+                                        <Select
+                                            maxMenuHeight={150}
+                                            styles={customStyles}
+                                            size="small"
+                                            placeholder={<div>Search..</div>}
+                                            options={stockOptions}
+                                            className="stockPageSelect"
+                                            onChange={this.changelist}
+                                            theme={this.selectSelectionTab}/>
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                 </div>
@@ -349,7 +491,17 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                             <div className="card-body">
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray">
-                                        <StreamChart />
+                                        <div>
+                                            <button id="streamButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                                            <button id="resetButton" className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">reset Stream</button>
+                                            <button id="changeButton" onClick={()=>this.setState({streamStart: !this.state.streamStart})}
+                                                    className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Change code cenah</button>
+                                            <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
+                                            <input type="hidden" id={"propsluar"} value=""/>
+                                            <input type="hidden" id={"statusStream"} value={this.state.streamStart}/>
+                                            <span onClick={this.test} id={"hello"}></span>
+                                            <div id="container" className="mt-2 py-3 px-3 card-344"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

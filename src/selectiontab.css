@@ -119,3 +119,43 @@ input[type="radio"]:checked .radioAccount ~ label{
       transform: rotateX(180deg);
       border-radius:5px;
   }
+
+.box {
+    height: 37px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    width: 100%;
+    overflow: hidden;
+    /*background: #ff0;*/
+    display: inline-block;
+
+    width: 100%;
+    color: var(--warna-black-white-semantic);
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+    padding-top: 0px;
+    text-transform: uppercase!important;
+}
+.box-inside{
+    transition: all 1.2s ease-out;
+}
+.hid-box {
+    top: 100%;
+    position: relative;
+    transition: all 1.2s ease-out;
+    background: #428bca;
+    height: 100%;
+}
+.box > .active{
+    top: -37px;
+}
+.bg-yellow-red-grad{
+    background-image: linear-gradient(#FCB03B, #F26427);
+}
+.bg-red-dark-grad{
+    background-image: linear-gradient(#ED1D24, #78232A);
+}
+.bg-green-dark-grad{
+    background-image: linear-gradient(#8CC640,#119848);
+}

@@ -330,7 +330,23 @@ class LoginUserPage_Base extends React.PureComponent {
             passlogin : 'password',
             seconds: 0,
             index: 0,
-            flipped: true,
+            flipped: false,
+            barSatu: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barDua: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
             barInfo: [
                 {
                     symbol: 'GBP/USD',
@@ -478,9 +494,10 @@ class LoginUserPage_Base extends React.PureComponent {
     }
 
     componentDidMount() {
+
         this.interval = setInterval(() => this.tick(), 1000);
 
-        var input = document.getElementById("press_login");
+      var input = document.getElementById("press_login");
         input.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
@@ -490,48 +507,44 @@ class LoginUserPage_Base extends React.PureComponent {
     }
 
     tick() {
+
         this.setState(prevState => ({
             seconds: prevState.seconds + 1
             // seconds: prevState.seconds + 0
         }));
-        if(this.state.seconds % 20 === 0){
+        if(this.state.seconds === 1){
+            this.setState({barSatu: this.state.barInfo[0]})
+        }
+        if(this.state.seconds % 10 === 0){
+            var elementBox = document.getElementById("hid-box");
+            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
+            elementBox.classList.toggle("active");
             //set change every 20 sec
-            this.setState({flipped: !this.state.flipped})
-            this.setState({index: (this.state.index + 1) % this.state.barInfo.length });
+            this.setState({flipped: !this.state.flipped});
+            this.setState({index: nextIndex});
+
+            if(this.state.flipped === false){
+                this.setState({barSatu: this.state.barInfo[nextIndex]})
+            }else{
+                this.setState({barDua: this.state.barInfo[nextIndex]})
+            }
         }
     }
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-
     render () {
+
         var props = this.props;
         const logo = "https://dummyimage.com/308x244/949294/fff.jpg";
-        const switchPanel = () => {
-            if(this.state.flipped === true){
-                return "card is-flipped";
-            }else{
-                return "card";
-            }
-        }
-        //zaky
-        //fungsi untuk warna
+
         const colorLabelFront = (props) => {
             if(props < 0){
-                return "card__face--front-red"
+                return "bg-red-dark-grad"
             }if(props > 0){
-                return "card__face--front"
+                return "bg-green-dark-grad"
             }else{
-                return "card__face--front-yellow"
-            }
-        }
-        const colorLabelBack = (props) => {
-            if(props < 0){
-                return "card__face--back-red"
-            }if(props > 0){
-                return "card__face--back"
-            }else{
-                return "card__face--back-yellow"
+                return "bg-yellow-red-grad"
             }
         }
         const colorIcon = (props) => {
@@ -545,49 +558,6 @@ class LoginUserPage_Base extends React.PureComponent {
         }
         //zaky
         //fungsi untuk flipped
-        const cardFace = (props) => {
-            let info = this.state.barInfo[this.state.index];
-            if(props === "front"){
-                if(this.state.flipped){
-                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>&nbsp;</div>
-                }else{
-                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>
-                        <table width="100%" height="100%">
-                            <tr>
-                                <td className="spanSymbol">{info.symbol}</td>
-                                <td>Last: {info.last}</td>
-
-                                <td>
-                                    <span className={"white "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
-                                </td>
-                                <td>
-                                    <span className="white">({info.percentage}%)</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                }
-            }else{
-                if(this.state.flipped){
-                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>
-                        <table width="100%" height="100%">
-                            <tr>
-                                <td className="spanSymbol">{info.symbol}</td>
-                                <td>Last: {info.last}</td>
-                                <td>
-                                    <span className={"white "+ colorIcon(info.change)}>{info.change}</span>&nbsp;
-                                </td>
-                                <td>
-                                    <span className="white">({info.percentage}%)</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                }else{
-                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>&nbsp;</div>
-                }
-            }
-        }
         return (
             <>
                 {
@@ -597,6 +567,8 @@ class LoginUserPage_Base extends React.PureComponent {
                             <WSConnectionAction ref="wsAction"/>
                             <main>
                                 <div className="container-fluid p-login text-center">
+
+
 
                                     <div className={"card card-body d-border-active row bg-box-gradient mx-0"}>
                                         {this.props.loginErrState === true ?
@@ -623,7 +595,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   defaultValue="user21"/>
+                                                                   defaultValue="user1"/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -637,7 +609,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="Testing21"/>
+                                                                       defaultValue="Testing1"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
@@ -686,9 +658,46 @@ class LoginUserPage_Base extends React.PureComponent {
 
                                         </div>
                                         <div className="col-sm-12 mh-45 px-0 mt-3 mb-0">
-                                            <div className={switchPanel()}>
-                                                {cardFace("front")}
-                                                {cardFace("back")}
+                                            <div className="box">
+                                                <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
+                                                    <table width="100%" height="100%">
+                                                        <tr>
+                                                            <td className="spanSymbol">{this.state.barSatu.symbol}</td>
+                                                            <td>Last: {this.state.barSatu.last}</td>
+                                                            <td>
+                                                                <span className={"white"}><i className={colorIcon(this.state.barSatu.change)}></i>
+                                                                    {this.state.barSatu.change}
+                                                                </span>&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                <span className="white">
+                                                                    {this.state.barSatu.percentage}
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div className=
+                                                         {"hid-box"+' '
+                                                         +colorLabelFront(this.state.barDua.change)
+                                                         +" "+(this.state.flipped===true ? 'active' : '')} id="hid-box">
+                                                    <table width="100%" height="100%">
+                                                        <tr>
+                                                            <td className="spanSymbol">{this.state.barDua.symbol}</td>
+                                                            <td>Last: {this.state.barDua.last}</td>
+                                                            <td>
+                                                                <span className={"white"}><i className={colorIcon(this.state.barDua.change)}></i>
+                                                                    {this.state.barDua.change}
+                                                                </span>&nbsp;
+                                                            </td>
+                                                            <td>
+                                                                <span className="white">
+                                                                    {this.state.barDua.percentage}
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="col-sm-12 mh-45 px-0 f-11">

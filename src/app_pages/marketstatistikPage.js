@@ -29,6 +29,13 @@ const stateOptions = [
     //untuk top gainer dan top looser --> tambahkan value
     { key: 'percentage', value: 'percentage', text: 'by percentage' },
 ];
+const summaryOptions = [
+    //untuk top active
+    { key: 'all', value: 'all', text: 'All' },
+    { key: 'rg', value: 'rg', text: 'RG' },
+    { key: 'tn', value: 'tn', text: 'TN' },
+    { key: 'ng', value: 'ng', text: 'NG' },
+];
 
 
 const CustomFrameHeaderMarketStatistik= (props) =>{
@@ -40,7 +47,8 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                         {
                             marketStatistikPage: 'SUMMARY',
                             statisticMarketStatistikPage: 'MARKET INDEX',
-                            indiceMarketStatistikPage: 'SECTORAL INDEX',
+                            indiceMarketStatistikPage: 'MEMBER CAPITALIZATION',
+                            indiceMarketSecondStatistikPage: 'INDEX MOVER',
                             topBrokerMarketStatistikPage: 'TOP BROKER',
                             newResearchMarketStatistikPage: 'NEWS & RESEARCH',
                         }
@@ -179,10 +187,14 @@ class MarketStatistikPage extends React.PureComponent {
                                 </div>
                                 <div className="col-mbl-radio-o px-0 mx-0 align-self-center">
                                     <div className="col-sm-12 px-0 mx-0 row text-right h-49 py-2">
-                                        <div className="col-sm-8"></div>
+                                        <div className="col-sm-4"></div>
+                                        <div className="col-sm-4">
+                                            <Dropdown placeholder='Choose' search selection options={summaryOptions} className="col-sm-12 f-12"/>
+                                        </div>
                                         <div className="col-sm-4">
                                             <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -198,6 +210,74 @@ class MarketStatistikPage extends React.PureComponent {
 }
 
 class IndiceMarketStatistikPage extends React.PureComponent{
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    buttonClickBuy = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: BuyModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    buttonClickSell = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: SellModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction />
+
+                <div className="card grid-294 bg-black-trading f-12">
+                    <MarketIndicesAgGrid size={this.ceksize()}/>
+                    {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
+                </div>
+
+                <div className="card card-233 bg-black-trading f-12">
+                    <div className="card-header px-0 py-0">
+                        <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
+                            <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 h-30">FINANCE</div>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                    </div>
+                    {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
+                </div>
+            </>
+        );
+    }
+}
+
+class IndiceMarketSecondStatistikPage extends React.PureComponent{
     closeClick = (e) => {
         this.refs.frameAction.closeModal(100);
     }
@@ -551,7 +631,35 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </tbody>
                                 </TableBS>
                                 <div className="bg-tableheader text-center py-4 h-40 mt-1">
+                                    <span>&nbsp;</span></div>
+                                <TableBS responsive bordered size="sm"
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-220">
+                                    <thead className="text-white t-statistic">
+                                    <tr>
+                                        <th className="py-1 bg-gray-tradding"></th>
+                                        <th className="py-1 bg-gray-tradding">Val(T)</th>
+                                        <th className="py-1 bg-gray-tradding">Vol(Lot)</th>
+                                        <th className="py-1 bg-gray-tradding">Freq</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody className="text-white no-wrap">
+                                    <tr>
+                                        <td className="text-center py-1">Rights</td>
+                                        <td className="text-right py-1">500,00</td>
+                                        <td className="text-right py-1">100.3</td>
+                                        <td className="text-right py-1">403,040 </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-center py-1">Warrants</td>
+                                        <td className="text-right py-1">2.64</td>
+                                        <td className="text-right py-1">55.41</td>
+                                        <td className="text-right py-1">870 </td>
+                                    </tr>
+                                    </tbody>
+                                </TableBS>
+                                <div className="bg-tableheader text-center py-4 h-40 mt-1">
                                     <span>FOREIGN ACTIVITY</span></div>
+
                                 <TableBS
                                     responsive
                                     bordered
@@ -2850,6 +2958,7 @@ export default MarketStatistikPage;
 export {CustomFrameHeaderMarketStatistik, MarketStatistik,
     StatisticMarketStatistikPage,
     IndiceMarketStatistikPage,
+    IndiceMarketSecondStatistikPage,
     TopBrokerMarketStatistikPage,
     NewResearchMarketStatistikPage,
     GeneralNewResearchPage, StockNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage};

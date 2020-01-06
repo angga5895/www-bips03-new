@@ -1,3 +1,54 @@
+.menuscaleheader{
+    font-weight: 400;
+    border: var(--warna-border-headermenu) solid 1px;
+    align-items: center;
+    text-decoration: none!important;
+    position: relative;
+    vertical-align: middle;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    text-transform: none;
+    border-radius: 5px!important;
+    transition:background .1s ease, box-shadow .1s ease, color .1s ease ;
+    box-shadow : 2px 2px var(--warna-shadow)!important;
+    cursor: pointer!important;
+    margin: 7px 3px;
+    flex: 0 0 7%;
+    max-width: 7%;
+    color: var(--warna-text-header);
+}
+
+.menuscaleheader:hover{
+    color: var(--warna-text-header);
+    background: var(--warna-background-semantic);
+}
+.menuscaleheader:active{
+    color: var(--warna-black-white);
+    background: var(--warna-navy-headermenu-even);
+}
+
+.menuscaleheader.act{
+    background-image: linear-gradient(#67AAD7,#0071BC) !important;
+}
+
+.col-sm-header-logo-scale {
+    flex: 0 0 7%;
+    max-width: 7%;
+
+}
+
+.col-sm-header-menu-scale {
+    flex: 0 0 73%;
+    max-width: 73%;
+
+}
+
+.col-sm-header-user-scale {
+    flex: 0 0 21%;
+    max-width: 21%;
+}
+
 .mb3{
     margin-bottom: 3.75px!important;
 }
@@ -1959,7 +2010,7 @@ button.bg-gold:hover {
     }
 }
 
-@media (max-width: 993px) {
+@media (max-width: 1020px) {
 
     .col-smb-1,
     .col-smb-10,
@@ -2170,9 +2221,25 @@ button.bg-gold:hover {
         margin-left: 3.6rem!important;
         margin-right: 1.5rem!important;
     }
+
+    .padding-6{
+        padding: 0px 6.5px;
+    }
+    .padding-15{
+        padding: 0px 15.3px;
+    }
+    .padding-7{
+        padding: 0px 7.8px;
+    }
+    .padding-21{
+        padding: 0px 21.09px;
+    }
+    .padding-11{
+        padding: 0px 11.1px;
+    }
 }
 
-@media (max-width: 1315px) and (min-width: 994px){
+@media (max-width: 1315px) and (min-width: 1177px){
     .d-xxl-none {
         display: none!important;
     }
@@ -2200,15 +2267,204 @@ button.bg-gold:hover {
     }
 
     .fs-icon-bips{
-        font-size: 2rem!important;
+        font-size: 1.9rem!important;
     }
 
     .fs-text-bips{
-        font-size: 8px!important;
+        font-size: 6px!important;
+    }
+
+    .padding-t5{
+        padding: 5px 0px 0px 0px;
+    }
+
+    .menuscaleheader{
+        padding: 9px;
+    }
+
+    .img-avatar {
+        vertical-align: middle;
+        width: 42px!important;
+        height: 42px!important;
+        border-radius: 50%;
+    }
+
+    .f-12{
+        font-size: 11px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 11px!important;
+    }
+
+    .f-14 {
+        font-size: 13px!important;
+    }
+
+    h5{
+        font-size: 13px!important;
+    }
+
+    .f-16 {
+        font-size: 15px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 22px!important;
     }
 }
 
-@media (max-width: 993px) and (min-width: 846px){
+@media (max-width: 1176px) and (min-width: 1117px){
+    .d-xxl-none {
+        display: none!important;
+    }
+
+    .d-sml-block {
+        display: block!important;
+    }
+
+    .d-xsml-none {
+        display: none!important;
+    }
+
+    .d-xxsml-none {
+        display: none!important;
+    }
+
+    .d-xsm-none {
+        display: none!important;
+    }
+
+    .col-sm-tab {
+        flex: 0 0 10.49% !important;
+        max-width: 10.49%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1.9rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5.9px!important;
+    }
+
+    .padding-t5{
+        padding: 5px 0px 0px 0px;
+    }
+
+    .menuscaleheader{
+        padding: 9px 5px;
+    }
+
+    .img-avatar {
+        vertical-align: middle;
+        width: 40px!important;
+        height: 40px!important;
+        border-radius: 50%;
+    }
+
+    .f-12{
+        font-size: 10px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 10px!important;
+    }
+
+    .f-16 {
+        font-size: 14px!important;
+    }
+
+    .f-14 {
+        font-size: 12px!important;
+    }
+
+    h5{
+        font-size: 12px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 19px!important;
+    }
+}
+
+@media (max-width: 1116px) and (min-width: 1021px){
+    .d-xxl-none {
+        display: none!important;
+    }
+
+    .d-sml-block {
+        display: block!important;
+    }
+
+    .d-xsml-none {
+        display: none!important;
+    }
+
+    .d-xxsml-none {
+        display: none!important;
+    }
+
+    .d-xsm-none {
+        display: none!important;
+    }
+
+    .col-sm-tab {
+        flex: 0 0 10.49% !important;
+        max-width: 10.49%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1.9rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5.9px!important;
+    }
+
+    .padding-t5{
+        padding: 5px 0px 0px 0px;
+    }
+
+    .menuscaleheader{
+        padding: 9px 5px;
+    }
+
+    .img-avatar {
+        vertical-align: middle;
+        width: 33px!important;
+        height: 33px!important;
+        border-radius: 50%;
+    }
+
+    .f-12{
+        font-size: 10px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 10px!important;
+    }
+
+    .f-16 {
+        font-size: 14px!important;
+    }
+
+    .f-14 {
+        font-size: 12px!important;
+    }
+
+    h5{
+        font-size: 12px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 19px!important;
+    }
+}
+
+@media (max-width: 1020px) and (min-width: 846px){
     .d-xxl-none {
         display: none!important;
     }
@@ -2241,6 +2497,30 @@ button.bg-gold:hover {
 
     .fs-text-bips{
         font-size: 8px!important;
+    }
+
+    .f-12{
+        font-size: 10px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 10px!important;
+    }
+
+    .f-16 {
+        font-size: 14px!important;
+    }
+
+    .f-14 {
+        font-size: 12px!important;
+    }
+
+    h5{
+        font-size: 12px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 19px!important;
     }
 }
 
@@ -2277,6 +2557,30 @@ button.bg-gold:hover {
 
     .fs-text-bips{
         font-size: 8px!important;
+    }
+
+    .f-12{
+        font-size: 10px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 10px!important;
+    }
+
+    .f-16 {
+        font-size: 14px!important;
+    }
+
+    .f-14 {
+        font-size: 12px!important;
+    }
+
+    h5{
+        font-size: 12px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 19px!important;
     }
 }
 
@@ -2448,23 +2752,23 @@ button.bg-gold:hover {
 }
 
 .f-25{
-    font-size: 25px!important;
+    font-size: 25px;
 }
 
 .f-18{
-    font-size: 18px!important;
+    font-size: 18px;
 }
 
 .f-14{
-    font-size: 14px!important;
+    font-size: 14px;
 }
 
 .f-16{
-    font-size: 16px!important;
+    font-size: 16px;
 }
 
 .f-11{
-    font-size: 11px!important;
+    font-size: 11px;
 }
 
 .text-transform-none{
@@ -3206,12 +3510,6 @@ button.bg-gold:hover {
         max-width: 100%;
         margin-bottom: 2px;
         margin-top: 2px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .f-xs-14 {
-        font-size: 12px!important;
     }
 }
 

@@ -62,6 +62,37 @@ class MenuHeader extends React.PureComponent {
     }
 }
 
+class MenuScaleHeader extends React.PureComponent {
+    constructor(props){
+        super(props);
+    }
+
+    render() {
+        return (
+            <>
+                {
+                    Object.keys(this.props.id.instances).map((k) => {
+                            var e = this.props.id.instances[k];
+                            return (
+                                <a className={this.props.id.activeInstance === e ? "menuscaleheader act" : "menuscaleheader"}
+                                   key={e.instanceName}
+                                   name={e.instanceName}
+                                   active={this.props.id.activeInstance === e}
+                                   onClick={
+                                       () => this.props.id.activateFrame(e.instanceName)}>
+                                    {
+                                        this.props.id.linkTitles[e.instanceName] || e.title
+                                    }
+                                </a>
+                            )
+                        }
+                    )
+                }
+            </>
+        );
+    }
+}
+
 const UISelectionTab_Base = (props) => {
     // expected in props:
     // instances: array of pageInstance object
@@ -134,39 +165,29 @@ const UISelectionTab_Base = (props) => {
             </div>
 
             <div className="d-sml-none d-sml-block d-border-bottom mb-1">
-                <Navbar className="navbar-trading my-0">
-                    <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd">
-                        <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
-                            <Navbar.Brand href="/" className="mr-auto text-white">
-                                <h2>BIPS</h2>
-                            </Navbar.Brand>
-                        </div>
-                        <div className="col-sm-10 px-0 mx-0 align-self-center text-center">
-                            <div className="col-sm-12 align-self-center text-center row">
-                                <div className="col-sm-8 px-0 mx-0 row">
-                                    {/*Zaky*/}
-                                    <Menu.Menu className="col-sm-12 px-4 align-self-center">
-                                        <SelectItem1/>
-                                    </Menu.Menu>
-                                </div>
-                                <div className="col-sm-4 px-0 mx-0 row">
-                                    <Menu.Menu className="col-sm-8 px-4 mx-0">
-                                        <InfoCash/>
-                                    </Menu.Menu>
-
-                                    <Menu.Menu className="col-sm-4 px-1 mx-0">
-                                        <UserInfo/>
-                                    </Menu.Menu>
-                                </div>
-                            </div>
-                        </div>
-                        <MenuCollapse>
-                            <Menu className="row col-sm-12" style={{zIndex:"1"}}>
-                                <MenuHeader id={props}/>
-                            </Menu>
-                        </MenuCollapse>
+                <Menu className="row">
+                    <div className="col-sm-header-logo-scale px-0 text-center align-middle align-self-center text-white click-pointer">
+                        <Navbar.Brand href="/" className="text-white px-3"><h3>BIPS</h3></Navbar.Brand>
                     </div>
-                </Navbar>
+                    <div className="d-border-left d-border-right row main-header col-sm-header-menu-scale px-0 mr-0 pb-2 h-87">
+                        <MenuScaleHeader id={props}/>
+
+                        {/*Zaky*/}
+                        <Menu.Menu className="px-1 align-self-center mx-0" style={{ flex:"auto" }}>
+                            <SelectItem1 />
+                        </Menu.Menu>
+                    </div>
+
+                    <div className="col-sm-header-user-scale row mx-0">
+                        <Menu.Menu className="col-sm-8 pl-0 pr-1 mx-0">
+                            <InfoCash/>
+                        </Menu.Menu>
+
+                        <Menu.Menu className="col-sm-4 pl-3 pr-0 mx-0">
+                            <UserInfo/>
+                        </Menu.Menu>
+                    </div>
+                </Menu>
             </div>
 
             <div className="d-xsml-none d-xsml-block d-border-bottom mb-1">

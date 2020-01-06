@@ -549,6 +549,7 @@ class MainPage_Base extends React.Component {
         $(document).ready(function () {
             setElementHeightWeb();
             setElementLiveZoom();
+            console.log('Naha Teu Asup');
         }).resize();
 
         $(window).on("resize", function () {
@@ -737,58 +738,58 @@ class MainPage_Base extends React.Component {
                         <UISelectionTab treeName="/" linkTitles={
                             {
                                 landingPage:
-                                    <div className="text-align-center">
+                                    <div className="text-align-center padding-t5">
                                         <i className="icon-icon-investment-board fs-icon-bips"></i> <br/><br/>
                                         <span className="fs-text-bips">MY ACCOUNT</span>
                                     </div>,
                                 marketstatistikPage:
                                     <div className="text-align-center">
                                         <i className="icon-icon-market-statistic fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 6.5px"}}>MARKET &</span><br/>
+                                        <span className="fs-text-bips padding-6">MARKET &</span><br/>
                                         <span className="fs-text-bips">STATISTIC</span>
                                     </div>,
                                 stockPage:
-                                    <div className="text-align-center">
+                                    <div className="text-align-center padding-t5">
                                         <i className="icon-icon-stock-page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                        <span className="fs-text-bips padding-15">
                                   STOCK
                                 </span>
                                     </div>,
                                 tradePage:
-                                    <div className="text-align-center">
+                                    <div className="text-align-center padding-t5">
                                         <i className="icon-icon-trade-page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                        <span className="fs-text-bips padding-15">
                                   TRADE
                                 </span>
                                     </div>,
                                 analyticPage:
-                                    <div className="text-align-center">
+                                    <div className="text-align-center padding-t5">
                                         <i className="icon-icon-analytic_page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 7.8px"}}>ANALYTIC</span>
+                                        <span className="fs-text-bips padding-7">ANALYTIC</span>
                                     </div>,
                                 livetradePage:
                                     <div className="text-align-center">
                                         <i className="icon-icon-live-trade fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 21.09px"}}>LIVE</span><br/>
+                                        <span className="fs-text-bips padding-21">LIVE</span><br/>
                                         <span className="fs-text-bips">TRADE</span>
                                     </div>,
                                 esbnPage:
-                                    <div className="text-align-center">
+                                    <div className="text-align-center padding-t5">
                                         <i className="icon-icon-fund fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 15.3px"}}>
+                                        <span className="fs-text-bips padding-15">
                                         E-SBN
                                       </span>
                                     </div>,
                                 mutualfundPage:
                                     <div className="text-align-center">
                                         <i className="icon-icon-inquiry fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 11.1px"}}>MUTUAL</span><br/>
+                                        <span className="fs-text-bips padding-11">MUTUAL</span><br/>
                                         <span className="fs-text-bips">FUND</span>
                                     </div>,
                                 chatsupportPage:
                                     <div className="text-align-center">
                                         <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips" style={{padding: "0px 11.1px"}}>CHATS &</span><br/>
+                                        <span className="fs-text-bips padding-11">CHATS &</span><br/>
                                         <span className="fs-text-bips">SUPPORT</span>
                                     </div>
                             }

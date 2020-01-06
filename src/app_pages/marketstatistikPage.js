@@ -592,9 +592,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                     <div className="col-sm-5 px-1 py-0 d-border-table-left">
                         <div className="card card-520 bg-black-trading text-white">
                             <div className="card-body px-3 pt-3">
-                                <div className="bg-tableheader text-center py-4 h-40"><span>BOARD SUMMARY</span></div>
+                                <div className="bg-tableheader text-center py-3 h-30"><span>BOARD SUMMARY</span></div>
                                 <TableBS responsive bordered size="sm"
-                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-220">
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-132">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
@@ -630,10 +630,10 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </tr>
                                     </tbody>
                                 </TableBS>
-                                <div className="bg-tableheader text-center py-4 h-40 mt-1">
+                                <div className="bg-tableheader text-center py-3 h-30 mt-1">
                                     <span>&nbsp;</span></div>
                                 <TableBS responsive bordered size="sm"
-                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-220">
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-132">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding"></th>
@@ -657,14 +657,14 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </tr>
                                     </tbody>
                                 </TableBS>
-                                <div className="bg-tableheader text-center py-4 h-40 mt-1">
+                                <div className="bg-tableheader text-center py-3 h-30 mt-1">
                                     <span>FOREIGN ACTIVITY</span></div>
 
                                 <TableBS
                                     responsive
                                     bordered
                                     size="sm"
-                                    className="table-hover table-striped text-center align-self-center align-middle card-220">
+                                    className="table-hover table-striped text-center align-self-center align-middle card-132 mb-0">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>

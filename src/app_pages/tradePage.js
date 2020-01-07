@@ -81,8 +81,8 @@ const CustomFrameHeaderTrade_Base = (props) => {
                         <div className="col-sm-10 px-0 mx-0 d-border-bottom">
                             <FillHeaderTab tradeMode="auto" treeName="/tradePage" linkTitles={
                                 {
-                                    AutOrderSetting: 'ORDER SETTING',
-                                    AutSentOrder : 'SEND ORDER',
+                                    AutOrderSetting: 'AUTOMATIC ORDER SETTING',
+                                    AutSentOrder : 'SENT ORDER',
                                 }
                             } />
                         </div>
@@ -405,17 +405,19 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                           disabled={(this.state.value === "2")}
                                           options={
                                               [
-                                                  {key:'1',value:'Offer4',text: 'Offer + 4 tick'},
-                                                  {key:'2',value:'Offer3',text: 'Offer + 3 tick'},
-                                                  {key:'3',value:'Offer2',text: 'Offer + 2 tick'},
-                                                  {key:'4',value:'Offer1',text: 'Offer + 1 tick'},
-                                                  {key:'5',value:'BestOffer',text: 'Best Offer Price'},
-                                                  {key:'6',value:'LastPrice',text: 'Last Price'},
-                                                  {key:'7',value:'BestBid',text: 'Best Bid Price'},
-                                                  {key:'8',value:'Bid1',text: 'Bid - 1 tick'},
-                                                  {key:'9',value:'Bid2',text: 'Bid - 2 tick'},
-                                                  {key:'10',value:'Bid3',text: 'Bid - 3 tick'},
-                                                  {key:'11',value:'Bid4',text: 'Bid - 4 tick'},
+                                                  {key:'1',value:'Offer5',text: 'Offer + 5 tick'},
+                                                  {key:'2',value:'Offer4',text: 'Offer + 4 tick'},
+                                                  {key:'3',value:'Offer3',text: 'Offer + 3 tick'},
+                                                  {key:'4',value:'Offer2',text: 'Offer + 2 tick'},
+                                                  {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
+                                                  {key:'6',value:'BestOffer',text: 'Best Offer Price'},
+                                                  {key:'7',value:'LastPrice',text: 'Last Price'},
+                                                  {key:'8',value:'BestBid',text: 'Best Bid Price'},
+                                                  {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
+                                                  {key:'10',value:'Bid2',text: 'Bid - 2 tick'},
+                                                  {key:'11',value:'Bid3',text: 'Bid - 3 tick'},
+                                                  {key:'12',value:'Bid4',text: 'Bid - 4 tick'},
+                                                  {key:'13',value:'Bid5',text: 'Bid - 5 tick'},
                                               ]
                                           }
                                           className={"f-12 text-center align-self-center col-sm-12"}
@@ -2548,6 +2550,13 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
+                },{ field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?340:s=="s50"?310:s=="s67"?125:110,
+                    cellClass : function (params) {
+                        var cmd = params.data.cmd;
+                        return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                    },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?440:s=="s50"?410:s=="s67"?355:s=="s75"?335:s=="s80"?277:s=="s90"?227:207,
                     cellClass : function (params) {
@@ -2570,18 +2579,22 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
                     code : "AALI",
                     price :"15,000",
                     vol : "3",
+                    cmd: 'BUY',
                 },{
                     code : "AALI",
                     price :"25,000",
                     vol : "4",
+                    cmd: 'SELL',
                 },{
                     code : "AALI",
                     price :"35,000",
                     vol : "2",
+                    cmd: 'BUY',
                 },{
                     code : "AALI",
                     price :"5,000",
                     vol : "1",
+                    cmd: 'SELL  ',
                 },
             ],
             getRowHeight : function (params) {

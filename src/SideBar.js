@@ -23,42 +23,44 @@ class SideBar extends React.Component{
                 {
                     name: "AALI",
                     last: "41,560",
+                    change: 0.55,
+                    percent: 3.56,
                 },
                 {
                     name: "ADHI",
                     last: "12,750",
+                    change: -1.95,
+                    percent: -0.06,
                 },
                 {
                     name: "ANTM",
                     last: "15,350",
+                    change: 4.50,
+                    percent: 0.56,
                 },
                 {
                     name: "ASII",
                     last: "30,540",
+                    change: -1.45,
+                    percent: -3.56,
                 },
                 {
                     name: "TLKM",
                     last: "70,000",
+                    change: 0,
+                    percent: 0,
                 },
                 {
                     name: "WSKT",
                     last: "12,500",
+                    change: 11.05,
+                    percent: 20.52,
                 },
                 {
                     name: "INDF",
                     last: "24,600",
-                },
-                {
-                    name: "BBCA",
-                    last: "58,950",
-                },
-                {
-                    name: "SMGR",
-                    last: "5,400",
-                },
-                {
-                    name: "BUMI",
-                    last: "1,025",
+                    change: 2.5,
+                    percent: 3.90,
                 },
             ],
         }
@@ -105,7 +107,8 @@ class SideBar extends React.Component{
                             </buttom>
                         </div>
                         <div className="nav flex-lg-column">
-                            <div className="nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0">
+                            <div className={this.isFireFox() ? "nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0" :
+                                "nav-link align-self-center text-center px-0 d-border col-sm-12 my-1 py-0"}>
                                 <Dropdown placeholder='Group' search selection options={option} className={"f-9 text-center align-self-center col-sm-12 grey h-31"} defaultValue="groupA"/>
                             </div>
                             <div className="d-sidebar-potrait px-0">
@@ -113,12 +116,26 @@ class SideBar extends React.Component{
                                     <tbody>
                                     {
                                         this.state.rowData.map((charx, index) => {
+                                            if(charx.percent < 0){
+                                                var warna = " text-danger";
+                                                var icon = " icofont icofont-caret-down f-8";
+                                            } else if (charx.percent > 0) {
+                                                var warna = " text-success";
+                                                var icon = " icofont icofont-caret-up f-8";
+                                            } else {
+                                                var warna = " text-warning";
+                                                var icon = " icofont icofont-minus f-8";
+                                            }
+
                                             return (
-                                                <tr className="d-border-bottom px-3">
-                                                    <td className="px-3">
-                                                        <div className="align-self-center text-center click-pointer">
-                                                            <h5 className={this.isFireFox() ? "mb-0" : "mb-1"}>{charx.name}</h5>
-                                                            <p className={this.isFireFox() ? "f-11-center mb3 text-danger" : "f-11-center mb-1 text-danger"}>{charx.last}</p>
+                                                <tr className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
+                                                    <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
+                                                        <div className="align-self-center text-left click-pointer">
+                                                            <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
+                                                            <div className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
+                                                                <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
+                                                            </div>
+                                                            <p className={this.isFireFox() ? "f-11 mb3 text-right" : "f-11 mb-1 text-right"}>{charx.last}</p>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -159,17 +176,31 @@ class SideBar extends React.Component{
 
                             {
                                 this.state.rowData.map((charx, index) => {
+                                    if(charx.percent < 0){
+                                        var warna = " text-danger";
+                                        var icon = " icofont icofont-caret-down f-8";
+                                    } else if (charx.percent > 0) {
+                                        var warna = " text-success";
+                                        var icon = " icofont icofont-caret-up f-8";
+                                    } else {
+                                        var warna = " text-warning";
+                                        var icon = " icofont icofont-minus f-8";
+                                    }
+
                                     return (
                                         <div
-                                            className="align-self-center text-center px-sidebar my-sidebar click-pointer d-border-bottom d-sidebar-landscape-hover">
-                                            <h5 className="mb-2">{charx.name}</h5>
-                                            <p className="f-11-center mb-1 text-danger">{charx.last}</p>
+                                            className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover">
+                                            <h5 className="mb-1">{charx.name}</h5>
+                                            <div className={"f-10 mb-1 text-right"+warna}>
+                                                <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
+                                            </div>
+                                            <p className="f-11 mb-1 text-right">{charx.last}</p>
                                         </div>
                                     )
                                 })
                             }
 
-                            <div className="align-self-center text-center px-sidebar py-0 d-sidebar-landscape-hover">
+                            <div className="align-self-center text-center px-sidebar py-0">
                                 <div className="align-self-center text-center click-pointer">
                                     <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
                                 </div>

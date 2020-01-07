@@ -61,8 +61,7 @@ class SettingOrder extends React.Component{
         var getpin = document.getElementById("buttonAct").value;
         frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                   onClick={this.closeClick}></i></div>,
+               </div>,
             contentClass: (getpin == "Buy") ? PINVerifyBuy : PINVerifySell,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"

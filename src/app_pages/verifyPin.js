@@ -194,7 +194,8 @@ class VerifyPIN extends React.PureComponent{
                                     this.props.tipe === 'buy'? 'btn btn-danger form-control py-0' :
                                         this.props.tipe === 'sell'? 'btn btn-success form-control py-0' :
                                             this.props.tipe === 'amend'? 'btn btn-primary form-control py-0' :
-                                                'btn btn-brown form-control py-0'
+                                                this.props.tipe === 'withdraw'? 'btn btn-brown form-control py-0' :
+                                                'btn btn-danger form-control py-0'
                                 }
                                     onClick={this.onClickSubmit}>
                                 Submit

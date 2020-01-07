@@ -607,8 +607,8 @@ div.main-header > .ui.menu .item{
 
 @media (min-width: 994px){
     .px-sidebar {
-        margin-right: 1rem;
-        margin-left: 1rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
     }
 
     .d-sidebar-potrait{
@@ -619,15 +619,15 @@ div.main-header > .ui.menu .item{
 }
 @media (max-width:993px) {
     .px-sidebar {
-        margin-right: 2.25rem;
-        margin-left: 2.25rem;
+        padding-right: 2.25rem;
+        padding-left: 2.25rem;
     }
 
     .d-sidebar-potrait{
         display: none!important;
     } .d-sidebar-landscape{
           display: block!important;
-      } .d-sidebar-landscape:hover{
+      } .d-sidebar-landscape-hover:hover{
             background-color: var(--warna-btn-dark-hover) !important;
         }
 }
@@ -2333,6 +2333,14 @@ button.bg-gold:hover {
     .cssmenu ul li a{
         padding: 15px 22px!important;
     }
+
+    .f-10{
+        font-size: 9px!important;
+    }
+
+    .f-8{
+        font-size: 7px!important;
+    }
 }
 
 @media (max-width: 1176px) and (min-width: 1117px){
@@ -2407,6 +2415,14 @@ button.bg-gold:hover {
 
     .cssmenu ul li a{
         padding: 15px 19px!important;
+    }
+
+    .f-10{
+        font-size: 9px!important;
+    }
+
+    .f-8{
+        font-size: 7px!important;
     }
 }
 
@@ -2483,6 +2499,14 @@ button.bg-gold:hover {
     .cssmenu ul li a{
         padding: 15px 19px!important;
     }
+
+    .f-10{
+        font-size: 8px!important;
+    }
+
+    .f-8{
+        font-size: 6px!important;
+    }
 }
 
 @media (max-width: 1020px) and (min-width: 846px){
@@ -2542,6 +2566,14 @@ button.bg-gold:hover {
 
     .cssmenu ul li a{
         padding: 15px 9px!important;
+    }
+
+    .f-10{
+        font-size: 7px!important;
+    }
+
+    .f-8{
+        font-size: 5px!important;
     }
 }
 
@@ -3429,6 +3461,10 @@ button.bg-gold:hover {
     margin-top: var(--margin-top-sidebar);
     margin-bottom: var(--margin-bottom-sidebar);
 }
+.py-sidebar{
+    padding-top: var(--margin-top-sidebar);
+    padding-bottom: var(--margin-bottom-sidebar);
+}
 
 .list-group-item-portofolio{
     position: relative;
@@ -3679,6 +3715,14 @@ button.bg-gold:hover {
 .f-10-center{
     font-size: 10px;
     text-align: center;
+}
+
+.f-10{
+    font-size: 10px;
+}
+
+.f-8{
+    font-size: 8px;
 }
 
 .f-9-center{

@@ -871,9 +871,7 @@ class FundTransfer_Base extends React.PureComponent {
         var frameAction = this.refs.frameAction;
         frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i
-                    className="icofont icofont-close text-icofont-close text-border click-pointer"
-                    onClick={this.closeClick}></i></div>,
+                </div>,
             contentClass: PINVerify,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"
@@ -3994,8 +3992,8 @@ class VerifyPINPortofolio extends React.PureComponent{
     buttonClickPin = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i></div>,
+                {/*<i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i>*/}</div>,
             size: 'mini',
             contentClass: PinModal,
             onClose: (result) => {console.log('Modal 1 result = ', result)}

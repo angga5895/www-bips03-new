@@ -23,8 +23,7 @@ class FormSell extends React.PureComponent{
     buttonClickPIN = (e) => {
         var frameAction = this.refs.frameAction;
         frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i></div>,
+            headerClass: () => <div className="text-right"></div>,
             contentClass: PINVerify,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"

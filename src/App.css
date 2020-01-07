@@ -1,3 +1,21 @@
+.text-form > label {
+   color: #272727!important;
+}
+
+.text-form{
+    color: #272727!important;
+}
+
+.bg-sell{
+    background: #C4D69C!important;
+}
+.bg-buy{
+    background: #FAA8AE!important;
+}
+.bg-amend{
+    background: #B8DCE8!important;
+}
+
 .menuscaleheader{
     font-weight: 400;
     border: var(--warna-border-headermenu) solid 1px;
@@ -17,6 +35,7 @@
     flex: 0 0 7%;
     max-width: 7%;
     color: var(--warna-text-header);
+    background: linear-gradient(var(--warna-navy-headermenu-odd),var(--warna-navy-headermenu-even));
 }
 
 .menuscaleheader:hover{
@@ -2522,7 +2541,7 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 19px!important;
+        padding: 15px 9px!important;
     }
 }
 

@@ -19,7 +19,7 @@ class ModalAmend extends React.Component{
                         <div className="col-sm-6 pr-3 pl-0 mt-0 card-520">
                             <TableInfoTransaction lotshare="modalamend" />
                         </div>
-                        <div className="col-sm-6 mt-0 d-border-active bg-primary card-520">
+                        <div className="col-sm-6 mt-0 d-border-active bg-amend card-520">
                             <FormAmend idPrice="modalAmendPrice" idVol="modalAmendVol" idValue="modalAmendValue" columnSm="col-sm-11"/>
                         </div>
                     </div>

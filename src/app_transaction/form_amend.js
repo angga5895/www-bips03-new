@@ -41,14 +41,14 @@ class FormAmend extends React.PureComponent{
                         <td className="py-0">
                             <div className="row mb-2">
                                 <div className="col-sm-6 f-18 text-success">{/*<span className="text-primary">Amend</span> [Sell]*/}</div>
-                                <div className="col-sm-6 text-right"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
+                                <div className="col-sm-6 text-right text-form"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td className="py-0">
                             <div className="row py-form mb-2">
-                                <div className="col-sm-2">Code</div>
+                                <div className="col-sm-2 text-form">Code</div>
                                 <div className="col-sm-10 row pr-0">
                                     <div className="col-sm-4 pr-0 text-center align-self-center">
                                         <input type="text" placeholder="Code" defaultValue={"AALI"} className="form-control f-12" style={{"border-radius": "0px", }}/>
@@ -62,10 +62,10 @@ class FormAmend extends React.PureComponent{
                                         <input type="text" placeholder="Name" defaultValue={"Astra Argo Lestari Tbk."} className="form-control f-12" style={{"border-radius": "0px", }}/>
                                     </div>
                                     <div className="col-sm-12">
-                                        <div className="pt-2"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
+                                        <div className="pt-2 text-form"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
                                     </div>
                                     <div className="col-sm-12">
-                                        <Checkbox label='Prevent same order' className="f-12 text-white my-3 align-self-center" />
+                                        <Checkbox label='Prevent same order' className="f-12 text-white my-3 align-self-center text-form" />
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ class FormAmend extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Price</div>
+                                    <div className="col-sm-3 text-form">Price</div>
                                     <div className="col-sm-9">
                                         <NumberInput idclassname={this.props.idPrice} name="sell_price" placeholder="Price" size="small" defaultValue={"12650"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
                                     </div>
@@ -90,15 +90,15 @@ class FormAmend extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Vol</div>
+                                    <div className="col-sm-3 text-form">Vol</div>
                                     <div className="col-sm-9">
                                         <NumberInput idclassname={this.props.idVol} name="sell_vol" placeholder="Vol" size="small" defaultValue={"10"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">
-                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-primary py-2 align-self-center text-left">Lot</label>
+                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-amend py-2 align-self-center text-left text-form">Lot</label>
                                     <div className="col-sm-7 px-0 mx-0 py-2 align-self-center text-left">
-                                        <Checkbox label='All' className="f-12 text-white my-0 align-self-center" />
+                                        <Checkbox label='All' className="f-12 text-white my-0 align-self-center text-form" />
                                     </div>
                                 </div>
                             </div>
@@ -108,14 +108,14 @@ class FormAmend extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Mkt.</div>
+                                    <div className="col-sm-3 text-form">Mkt.</div>
                                     <div className="col-sm-9">
                                         <Dropdown placeholder='Mkt' search selection options={stateOptions} className={"f-12 text-center align-self-center col-sm-12"} defaultValue="rg" disabled/>
                                     </div>
                                 </div>
                                 <div className="col-sm-4 align-middle align-self-center">
                                     <div className="col-sm-12 px-0">
-                                        <Checkbox label='Order Booking' className="f-12 text-white px-0 py-2 my-0 align-self-center" />
+                                        <Checkbox label='Order Booking' className="f-12 text-white px-0 py-2 my-0 align-self-center text-form" />
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +125,12 @@ class FormAmend extends React.PureComponent{
                         <td className="py-0">
                             <div className="row">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3 mb-3 py-form">Expire</div>
+                                    <div className="col-sm-3 mb-3 py-form text-form">Expire</div>
                                     <div className="col-sm-9 mb-3 py-form">
                                         <Dropdown placeholder='Expire' search selection options={stateOptions} className={"f-12 text-center align-self-center col-sm-12"} defaultValue="day" disabled/>
                                     </div>
 
-                                    <div className="col-sm-3 mb-3 py-form">Value</div>
+                                    <div className="col-sm-3 mb-3 py-form text-form">Value</div>
                                     <div className="col-sm-9 mb-3 py-form">
                                         <input type="text" id={this.props.idValue} name="amend_value" placeholder="Value" size="small" defaultValue={"12,600"} className="col-sm-12 f-12 text-center align-self-center form-control"
                                                style={{"border-radius": "0px", "text-align": "right"}} readOnly={true} />

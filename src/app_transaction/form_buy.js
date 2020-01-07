@@ -41,14 +41,14 @@ class FormBuy extends React.PureComponent{
                         <td className="py-0">
                             <div className="row mb-2">
                                 <div className="col-sm-6 f-18 text-danger"></div>
-                                <div className="col-sm-6 text-right"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
+                                <div className="col-sm-6 text-right text-form"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td className="py-0">
                             <div className="row py-form mb-2">
-                                <div className="col-sm-2">Code</div>
+                                <div className="col-sm-2 text-form">Code</div>
                                 <div className="col-sm-10 row pr-0">
                                     <div className="col-sm-4 pr-0 text-center align-self-center">
                                         <input type="text" placeholder="Code" defaultValue={"AALI"} className="form-control f-12" style={{"border-radius": "0px", }}/>
@@ -62,15 +62,15 @@ class FormBuy extends React.PureComponent{
                                         <input type="text" placeholder="Name" defaultValue={"Astra Argo Lestari Tbk."} className="form-control f-12" style={{"border-radius": "0px", }}/>
                                     </div>
                                     <div className="col-sm-12">
-                                        <Checkbox label='Prevent same order' className="f-12 text-white mt-2 mb-0 align-self-center" />
+                                        <Checkbox label='Prevent same order' className="f-12 text-form mt-2 mb-0 align-self-center" />
                                     </div>
                                 </div>
                                 <div className="col-sm-12 row">
                                     <div className="col-sm-6">
-                                        <div className="pb-0"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
+                                        <div className="pb-0 text-form"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
                                     </div>
                                     <div className="col-sm-6">
-                                        <div className="pb-0"><i className="fa fa-info-circle text-danger"></i>&nbsp; Not yet submit annual financial report</div>
+                                        <div className="pb-0 text-form"><i className="fa fa-info-circle text-danger"></i>&nbsp; Not yet submit annual financial report</div>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@ class FormBuy extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Price</div>
+                                    <div className="col-sm-3 text-form">Price</div>
                                     <div className="col-sm-9">
                                         <NumberInput idclassname={this.props.idPrice} name="buy_price" placeholder="Price" size="small" defaultValue={"12650"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
                                     </div>
@@ -95,13 +95,13 @@ class FormBuy extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Vol</div>
+                                    <div className="col-sm-3 text-form">Vol</div>
                                     <div className="col-sm-9">
                                         <NumberInput idclassname={this.props.idVol} name="buy_vol" placeholder="Vol" size="small" defaultValue={"10"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">
-                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-danger py-2 align-self-center text-left">Lot</label>
+                                    <label className="col-sm-5 pr-4 pl-0 mb-0 bg-buy py-2 align-self-center text-left text-form">Lot</label>
                                     <button type="button"
                                             className="col-sm-7 px-0 btn btn-sm btn-dark py-2 align-self-center">Max
                                     </button>
@@ -113,14 +113,14 @@ class FormBuy extends React.PureComponent{
                         <td className="py-0">
                             <div className="row py-form mb-2">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3">Mkt.</div>
+                                    <div className="col-sm-3 text-form">Mkt.</div>
                                     <div className="col-sm-9">
                                         <Dropdown placeholder='Mkt' search selection options={stateOptions} className={"f-12 text-center align-self-center col-sm-12"} defaultValue="rg"/>
                                     </div>
                                 </div>
                                 <div className="col-sm-4 align-middle align-self-center">
                                     <div className="col-sm-12 px-0">
-                                        <Checkbox label='Order Booking' className="f-12 text-white px-0 py-2 my-0 align-self-center" />
+                                        <Checkbox label='Order Booking' className="f-12 text-white px-0 py-2 my-0 align-self-center text-form" />
                                     </div>
                                 </div>
                             </div>
@@ -130,12 +130,12 @@ class FormBuy extends React.PureComponent{
                         <td className="py-0">
                             <div className="row">
                                 <div className="col-sm-8 ml-0 px-0 row">
-                                    <div className="col-sm-3 mb-2 py-form">Expire</div>
+                                    <div className="col-sm-3 mb-2 py-form text-form">Expire</div>
                                     <div className="col-sm-9 mb-2 py-form">
                                         <Dropdown placeholder='Expire' search selection options={stateOptions} className={"f-12 text-center align-self-center col-sm-12"} defaultValue="day"/>
                                     </div>
 
-                                    <div className="col-sm-3 mb-2 py-form">Value</div>
+                                    <div className="col-sm-3 mb-2 py-form text-form">Value</div>
                                     <div className="col-sm-9 mb-2 py-form">
                                         <input type="text" id={this.props.idValue} name="buy_value" placeholder="Value" size="small" defaultValue={"12,600"} className="col-sm-12 f-12 text-center align-self-center form-control"
                                                style={{"border-radius": "0px", "text-align": "right"}} readOnly={true} />

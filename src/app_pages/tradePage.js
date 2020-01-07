@@ -180,7 +180,7 @@ class OrderbookPage extends React.PureComponent {
                 <div className="bg-black-trading f-12 mt-1">
                     <AppFrameAction ref="frameAction" />
 
-                    <div className="card-515 col-sm-12 pt-3 pr-2 mr-0 mt-3 row">
+                    <div className="card-515 col-sm-12 pt-3 pr-2 mr-0 mt-0 row">
                         <div className="col-sm-4 pl-4 pr-0">
                             <div className={this.state.box1 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox1}>
                                 <TableInfoTransactionWithButton saham="AALI"/>

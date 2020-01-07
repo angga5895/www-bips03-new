@@ -19,7 +19,7 @@ class ModalSell extends React.Component{
                         <div className="col-sm-6 pr-3 pl-0 mt-0 card-520">
                             <TableInfoTransaction lotshare="modalSell" />
                         </div>
-                        <div className="col-sm-6 mt-0 d-border-active bg-success card-520">
+                        <div className="col-sm-6 mt-0 d-border-active bg-sell card-520">
                             <FormSell idPrice="modalSellPrice" idVol="modalSellVol" idValue="modalSellValue" columnSm="col-sm-11"/>
                         </div>
                     </div>

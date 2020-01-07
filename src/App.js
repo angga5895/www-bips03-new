@@ -16,7 +16,7 @@ import PortfolioPage from './app_pages/portfolioPage.js';
 import StockSummaryPage from './app_pages/stockSummary.js';
 import FixedIncomePage from './app_pages/fixedIncome.js';
 import Stocks, { CustomFrameHeaderStock, StockPage,
-    StockWatchlist, StockHistoryPage,
+    StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
     TableStockInfo, TableProfil, TableCorpAction} from './app_pages/stockPage';
 import AccountAPage from './app_pages/accountA.js';
 import AccountBPage from './app_pages/accountB.js';
@@ -60,7 +60,7 @@ class App extends React.Component {
             IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage,
             /*tree3*/ GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
             //StockPage
-            /*tree2*/ StockPage, StockWatchlist, StockHistoryPage,
+            /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
             /*tree3*/ TableStockInfo, TableProfil, TableCorpAction,
             //TradePage
             /*tree2*/
@@ -117,7 +117,9 @@ class App extends React.Component {
             //tree 2 In Stock
             {className: 'StockPage', title: '', instanceName: 'stockInfoPage'},
             {className: 'StockWatchlist', title: '', instanceName: 'stockWatchlistPage'},
-            {className: 'StockHistoryPage', title: '', instanceName: 'stockHistoryPage'},
+              {className: 'StockHistoryPage', title: '', instanceName: 'stockHistoryPage'},
+              {className: 'StockTradeSummaryPage', title: '', instanceName: 'stockTradeSummaryPage'},
+
 
             //tree 3 In Stock
             {className: 'TableStockInfo', title: '', instanceName: 'stockInfoTable'},
@@ -205,7 +207,8 @@ class App extends React.Component {
                             ]
                         },
                         'stockWatchlistPage',
-                        'stockHistoryPage'
+                        'stockHistoryPage',
+                        'stockTradeSummaryPage',
                     ]
                 },
                 {

@@ -182,7 +182,7 @@ class App extends React.Component {
                         'marketStatistikPage',
                         'statisticMarketStatistikPage',
                         'indiceMarketStatistikPage',
-                        'indiceMarketSecondStatistikPage',
+                        /*'indiceMarketSecondStatistikPage',*/
                         'topBrokerMarketStatistikPage',
                         {
                             name: 'newResearchMarketStatistikPage',

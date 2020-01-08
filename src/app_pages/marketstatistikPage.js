@@ -48,7 +48,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             marketStatistikPage: 'SUMMARY',
                             statisticMarketStatistikPage: 'MARKET INDEX',
                             indiceMarketStatistikPage: 'MEMBER CAPITALIZATION',
-                            indiceMarketSecondStatistikPage: 'INDEX MOVER',
+                            /*indiceMarketSecondStatistikPage: 'INDEX MOVER',*/
                             topBrokerMarketStatistikPage: 'TOP BROKER',
                             newResearchMarketStatistikPage: 'NEWS & RESEARCH',
                         }

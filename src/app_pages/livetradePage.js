@@ -86,7 +86,7 @@ class LiveTradePage extends React.PureComponent {
             <div>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
-                <div className="row pl-4 pt-2 pb-3 h-48">
+                <div className="row pl-4 pt-2 pb-3 h-48 f-livetrade">
                     <div
                         className={`col-md-1 px-0 pt-3 text-center
                         ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
@@ -202,25 +202,30 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:70,
+                    minWidth: 70,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-visible";
                     }},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:80, minWidth: 80, cellClass : function (params) {
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:80,
+                    minWidth: 80,
+                    cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:85,
+                    minWidth: 85,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "percent", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?145:s=="s50"?120:s=="s67"?105:s=="s75"?100:s=="s80"?80:63, minWidth: 63,
+                    width: s=="s49"?145:s=="s50"?120:s=="s67"?105:s=="s75"?100:s=="s80"?80:63,
+                    minWidth: 63,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -235,6 +240,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                     }},
                 { field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?155:s=="s50"?145:s=="s67"?130:s=="s75"?125:s=="s80"?105:s=="s90"?110:85,
+                    minWidth: 85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -247,6 +253,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                     } },
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?155:s=="s50"?140:s=="s67"?125:s=="s75"?125:s=="s80"?110:s=="s90"?110:85,
+                    minWidth: 85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },

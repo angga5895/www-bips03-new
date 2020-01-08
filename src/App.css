@@ -5432,3 +5432,19 @@ textarea {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+@media (max-width: 1300px){
+    .f-livetrade{
+        font-size: 13px;
+    }
+}
+@media (max-width: 1200px){
+    .f-livetrade{
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1000px){
+    .f-livetrade{
+        font-size: 10px;
+    }
+}

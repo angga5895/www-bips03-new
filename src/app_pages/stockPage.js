@@ -1887,34 +1887,34 @@ class StockWatchlistAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "code", headerName: "Code",sortable: false, resizable: true,
                     width: s=="s49"?126:s=="50"?125:s=="s67"?120:s=="s75"?90:80, minWidth: 80, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }},
-                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "price", headerName: "Price",sortable: false, resizable: true,
                     width: s=="s49"?126:s=="s50"?125:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
-                { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "change", headerName: "Change",sortable: false, resizable: true,
                     width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "persen", headerName: "(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "persen", headerName: "(%)",sortable: false, resizable: true,
                     width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:60, minWidth: 50,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "tvol", headerName: "T. Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:80, minWidth: 80,
+                { field: "tvol", headerName: "T. Vol", sortable: false, resizable: true,
+                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:85, minWidth: 85,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -1922,8 +1922,8 @@ class StockWatchlistAgGrid extends React.PureComponent {
                     } },
             ],
             defaultColDef: {
-                sortable: true,
-                filter: true,
+                sortable: false,
+                filter: false,
             },
             getRowHeight : function(params){
                 return 27.5;

@@ -900,53 +900,53 @@ class TradeWatchlistAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "code", headerName: "Code", resizable: true,
                     width: s=="s49"?110:80, minWidth: 80, lockPosition:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "price", headerName: "Price", resizable: true,
                     width: s=="s49"?110:80, minWidth: 80,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
-                { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "change", headerName: "Change", resizable: true,
                     width: 90, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "persen", headerName: "(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "persen", headerName: "(%)",  resizable: true,
                     width: 70, minWidth: 70,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "tvol", headerName: "T. Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "tvol", headerName: "T. Vol", resizable: true,
                     width: 100, minWidth: 100,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "accumulated", headerName: "Accumulated Foreign Vol.", sortable: true, filter: "agTextColumnFilter",
+                { field: "accumulated", headerName: "Accumulated Foreign Vol.",
                     resizable: true, width: 200, minWidth: 200,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "avgprice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "avgprice", headerName: "Avg. Price", resizable: true,
                     width: 100, minWidth: 100,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     } },
             ],
             defaultColDef: {
-                sortable: true,
-                filter: true,
+                sortable: false,
+                filter: false,
             },
             getRowHeight : function(params){
                 return 27.5;

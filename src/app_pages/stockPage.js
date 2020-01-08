@@ -604,7 +604,7 @@ class StockHistoryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-4 px-1 pt-2 pb-0">
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
-                                        <HistoryPriceAgGrid size={this.ceksize()}/>
+                                        <HistoryPriceAgGrid size={this.ceksize()} type="tradeHistory"/>
                                     </div>
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
                                         <HistoryBuyerAgGrid size={this.ceksize()}/>
@@ -850,7 +850,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                         </TableBS>
                                     </div>
                                     <div className="bg-trading-gray">
-                                        <HistoryPriceAgGrid size={this.ceksize()}/>
+                                        <HistoryPriceAgGrid size={this.ceksize()} type="tradeSummary"/>
                                     </div>
                                 </div>
                             </div>
@@ -2556,7 +2556,8 @@ class HistoryPriceAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    className={this.props.type === "tradeHistory" ? "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                        "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

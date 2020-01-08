@@ -1929,12 +1929,12 @@ class StockWatchlistAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "code", headerName: "Code",sortable: false, resizable: true,
-                    width: s=="s49"?126:s=="50"?125:s=="s67"?120:s=="s75"?90:80, minWidth: 80, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
+                    width: s=="s49"?126:s=="50"?125:s=="s67"?120:s=="s75"?90:85, minWidth: 80, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }},
                 { field: "price", headerName: "Price",sortable: false, resizable: true,
-                    width: s=="s49"?126:s=="s50"?125:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
+                    width: s=="s49"?126:s=="s50"?125:s=="s67"?120:s=="s75"?100:93, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":

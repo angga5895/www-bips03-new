@@ -4014,16 +4014,16 @@ class VerifyPINPortofolio extends React.PureComponent{
                         </div>
 
                         <div className="form-group text-center pt-2 mb-3">
-                            <label className="col-sm-12 px-5 py-1 col-form-label f-16 font-weight-bold mb-2">ACCESS DENIED</label>
+                            <label className="col-sm-12 px-5 py-1 col-form-label f-16 font-weight-bold mb-2">PLEASE INPUT PIN</label>
                             <label className="col-sm-12 px-5 py-1 col-form-label">
-                                Seems like you are not allowed to access this page
+                                you must enter a pin to continue
                             </label>
                         </div>
                         <div className="text-center">
                             <button
                                 onClick={() => this.buttonClickPin()}
                                 id="pin-click" type="submit" className={'btn btn-danger form-control py-0 col-md-3'}>
-                                Unlock
+                                INPUT PIN
                             </button>
                         </div>
                     </div>

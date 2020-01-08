@@ -163,7 +163,7 @@ class StockAnalyticPage extends React.PureComponent {
                 <main>
                     <div className="container-fluid">
                         <div className="container px-1 mx-0 col-sm-12 row">
-                            <div className={"col-md-12 px-1 py-2"} id="chartContentStock1">
+                            <div className={"col-md-12 px-1 pt-2"} id="chartContentStock1">
                                 <div className={"d-border-inactive card " + classChart} style={boxScroll} id="chartBoxStock1">
                                     <AnalyticChart viewMode={true} key="chrtStock" charVal="chrtStock" chartData="orcl.json" chartAlias="Analytic Stock" />
                                 </div>
@@ -196,7 +196,7 @@ class IndiceAnalyticPage extends React.PureComponent {
                 <main>
                     <div className="container-fluid">
                         <div className="container px-1 mx-0 col-sm-12 row">
-                            <div className={"col-md-12 px-1 py-2"} id="chartContentIndice">
+                            <div className={"col-md-12 px-1 pt-2"} id="chartContentIndice">
                                 <div className={"d-border-inactive card " + classChart} style={boxScroll} id="chartBoxIndice">
                                     <AnalyticChart viewMode={true} key="chrtIndice" charVal="chrtIndice" chartData="ibm.json" chartAlias="Indice Stock" />
                                 </div>
@@ -229,7 +229,7 @@ class RelativePerformanceAnalyticPage extends React.PureComponent {
                 <main>
                     <div className="container-fluid">
                         <div className="container px-1 mx-0 col-sm-12 row">
-                            <div className={"col-md-12 px-1 py-2"} id="chartContentRelative">
+                            <div className={"col-md-12 px-1 pt-2"} id="chartContentRelative">
                                 <div className={"d-border-inactive card " + classChart} style={boxScroll} id="chartBoxRelative">
                                     <RelativePerfomanceChart viewMode={true} key="chrtRelative" charVal="chrtRelative" />
                                 </div>

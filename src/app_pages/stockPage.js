@@ -742,8 +742,8 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
             <div className="bg-black-trading">
                 <AppFrameAction ref="frameAction" />
                 <main>
-                    <div className="container-fluid f-12">
-                        <div className="py-2">
+                    <div className="container-fluid f-12 card-520">
+                        <div className="py-2 card-520">
                             <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
@@ -791,7 +791,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     </TableBS>
                                 </div>
                             </div>
-                            <div className="px-1 mx-0 col-sm-12 row">
+                            <div className="px-1 mx-0 col-sm-12 row card-475">
                                 <div className="col-sm-8 px-1 py-2">
                                     <div className="col-sm-12 pl-0 pr-0">
                                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
@@ -808,7 +808,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
                                         <TableBS responsive bordered size="sm"
                                                  className="table-hover table-striped text-center align-self-center
-                                                 align-middle card-220 mb-0"
+                                                 align-middle card-215 mb-0"
 
                                         >
                                             <thead className="text-white t-statistic">
@@ -849,7 +849,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             </tfoot>
                                         </TableBS>
                                     </div>
-                                    <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
+                                    <div className="bg-trading-gray">
                                         <HistoryPriceAgGrid size={this.ceksize()}/>
                                     </div>
                                 </div>
@@ -1006,7 +1006,7 @@ class StockTickAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-310 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-440 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2515,7 +2515,7 @@ class HistoryPriceAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    className="card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

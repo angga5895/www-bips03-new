@@ -2197,7 +2197,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "volume", headerName: "Volume", resizable: true, width: 122,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "value", headerName: "Value (T)", resizable: true,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?162:122,

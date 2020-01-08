@@ -1,3 +1,9 @@
+.text-right > .ag-cell-wrapper {
+    justify-content: flex-end!important;
+}.text-center > .ag-cell-wrapper {
+    justify-content: center!important;
+}
+
 .text-form > label {
    color: #272727!important;
 }

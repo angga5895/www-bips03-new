@@ -2596,15 +2596,15 @@ class HistoryBuyerAgGrid extends React.PureComponent {
                     }, },
                 { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?180:s=="s67"?155:s=="s75"?145:s=="s80"?120:s=="s90"?110:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
                 { field: "freq", headerName: "Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?145:s=="s80"?130:s=="s90"?110:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
                 { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?170:s=="s67"?150:s=="s75"?145:s=="s80"?135:s=="s90"?115:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
             ],
             defaultColDef: {
@@ -2739,15 +2739,15 @@ class HistorySellerAgGrid extends React.PureComponent {
                     }, },
                 { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?180:s=="s67"?155:s=="s75"?145:s=="s80"?120:s=="s90"?110:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
                 { field: "freq", headerName: "Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?145:s=="s80"?130:s=="s90"?110:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
                 { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?170:s=="s67"?150:s=="s75"?145:s=="s80"?135:s=="s90"?115:100, minWidth: 100, cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 text-success";
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
             ],
             defaultColDef: {

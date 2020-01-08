@@ -3155,7 +3155,7 @@ class TradeListAgGrid extends React.PureComponent {
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?140:s=="s50"?120:107,
                     cellClass : function (params) {
-                        return " text-center grid-table f-12 d-border-aggrid-right";
+                        return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -3530,7 +3530,7 @@ class FundAgGrid extends React.PureComponent {
                     width: s=="s49"?250:s=="s50"?190:s=="s67"?170:s=="s75"?130:s=="s80"?110:100,
                     minWidth: 80,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-left f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?280:s=="s50"?230:s=="s67"?215:s=="s75"?195:s=="s80"?180:s=="s90"?150:130,

@@ -504,17 +504,17 @@ class OrderSettingListAgGrid extends React.PureComponent{
                 { field: "condition", headerName: "Condition", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?200:180,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:80,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?195:s=="s75"?190:s=="s80"?160:120,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "exp", headerName: "Expired Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?185:s=="s80"?165:s=="s90"?155:135,
@@ -1251,22 +1251,22 @@ class OrderHistoryAgGrid extends React.PureComponent {
                 { field: "qty", headerName: "Qty", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?150:s=="s50"?120:s=="s67"?110:s=="s75"?100:80,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?160:140,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "mqty", headerName: "M Qty", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?180:s=="s67"?140:s=="s75"?130:110,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "mprice", headerName: "M Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?220:s=="s67"?215:s=="s75"?210:s=="s80"?173:s=="s90"?133:120,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "result", headerName: "Result", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?260:s=="s50"?240:s=="s67"?230:s=="s75"?220:s=="s80"?200:s=="s90"?160:120,
@@ -1479,13 +1479,13 @@ class OrderListAgGrid extends React.PureComponent {
                 { field: "type", headerName: "Type", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:s=="s49"?90:70, minWidth: 70,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right f-12";
+                        return " grid-table d-border-aggrid-right f-12 text-center";
                     },
                 },
                 { field: "mkt", headerName: "Mkt", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:s=="s49"?90:70, minWidth:70,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right f-12";
+                        return " grid-table d-border-aggrid-right f-12 text-center";
                     },
                 },
                 { field: "vlot", headerName: "Vol. Lot", sortable: true, filter: "agTextColumnFilter", resizable: true,
@@ -2199,7 +2199,7 @@ class TradeListOrderListAgGrid extends React.PureComponent {
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?245:s=="s50"?240:s=="s67"?100:s=="s75"?95:s=="s80"?105:s=="s90"?90:86, minWidth: 86,
                     cellClass : function (params) {
-                        return " grid-table text-right d-border-aggrid-right text-center f-12";
+                        return " grid-table text-right d-border-aggrid-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s67"?190:s=="s75"?90:s=="s80"?105:s=="s90"?70:60, minWidth: 60,

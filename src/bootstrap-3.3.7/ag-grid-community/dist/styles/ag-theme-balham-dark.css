@@ -537,7 +537,7 @@
       border-bottom-width: 1px; }
 
   div.ag-theme-balham-dark.ag-bordered > div > div > div > div > div > div > div.ag-row  {
-    border-style: solid;
+    border-style: none;
     border-color: var(--warna-btn-dark-hover)!important;
     height: 28px;
     border-width: 0; }

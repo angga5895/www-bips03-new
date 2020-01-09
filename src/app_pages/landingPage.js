@@ -95,7 +95,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Portfolio Equity", value: 298173,
                 normal:  {
-                    fill: "#64b5f6",
+                    fill: (["#64b5f6","#abd3e9"]),
                 },
                 hovered: {
                     outline: {
@@ -112,7 +112,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Pawnshop", value: 208173,
                 normal:  {
-                    fill: "#ef6c00",
+                    fill: (["#dac39e","#ef6c00"]),
                 },
                 hovered: {
                     outline: {
@@ -129,7 +129,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Fixed Income", value: 198173,
                 normal:  {
-                    fill: "#455a64",
+                    fill: (["#a4bdc6","#455a64"]),
                 },
                 hovered: {
                     outline: {
@@ -145,7 +145,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Mutual Fund", value: 66173,
                 normal:  {
-                    fill: "#ffd64f",
+                    fill: (["#fffc8d","#ffd64f"]),
                 },
                 hovered: {
                     outline: {
@@ -161,7 +161,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Cash", value: 100173,
                 normal:  {
-                    fill: "#1976d2",
+                    fill: (["#02aad2","#1976d2"]),
                 },
                 hovered: {
                     outline: {

@@ -594,7 +594,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                             <div className="card-body px-3 pt-3">
                                 <div className="bg-tableheader text-center py-3 h-30"><span>BOARD SUMMARY</span></div>
                                 <TableBS responsive bordered size="sm"
-                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-132">
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-152">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
@@ -633,7 +633,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="bg-tableheader text-center py-3 h-30 mt-1">
                                     <span>&nbsp;</span></div>
                                 <TableBS responsive bordered size="sm"
-                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-132">
+                                         className="table-hover table-striped text-center align-self-center align-middle mb-3 card-92">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding"></th>
@@ -664,7 +664,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     responsive
                                     bordered
                                     size="sm"
-                                    className="table-hover table-striped text-center align-self-center align-middle card-132 mb-0">
+                                    className="table-hover table-striped text-center align-self-center align-middle card-152 mb-0">
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>

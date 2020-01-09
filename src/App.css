@@ -130,6 +130,10 @@
     height: var(--card-132) !important;
 }.card-215{
     height: var(--card-215) !important;
+}.card-152{
+    height: var(--card-152) !important;
+}.card-92{
+    height: var(--card-92) !important;
 }
 
 .bg-tableheader{

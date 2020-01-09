@@ -646,15 +646,6 @@ class LoginUserPage_Base extends React.PureComponent {
                                                 </div>
 
                                             </div>
-                                            {/*<div className="form-group py-0 mt-0 mb-4 text-center">*/}
-                                            {/*<small className="py-0 px-5 col-form-label">*/}
-                                            {/*<span className="click-pointer px-0 btn btn-link"*/}
-                                            {/*onClick={this.buttonClickDisclaimer}>*/}
-                                            {/*<small className="text-primary">Disclaimer</small>*/}
-                                            {/*</span>*/}
-                                            {/*</small>*/}
-                                            {/*</div>*/}
-
 
                                         </div>
                                         <div className="col-sm-12 mh-45 px-0 mt-3 mb-0">

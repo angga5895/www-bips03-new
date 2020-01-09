@@ -405,8 +405,10 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
     border-top: var(--warna-scroll) 2px solid!important;
 }
 
-.tabheaderfill{
-    height: 44.5px!important;
+@media (min-width: 576px) {
+    .tabheaderfill {
+        height: 44.5px !important;
+    }
 }
 
 .h-33{
@@ -2587,6 +2589,10 @@ button.bg-gold:hover {
     .f-8{
         font-size: 5px!important;
     }
+
+    .btn{
+        font-size: 10px!important;
+    }
 }
 
 @media (max-width: 845px) and (min-width: 756px){
@@ -2616,32 +2622,43 @@ button.bg-gold:hover {
         display: inline-block!important;
     }
 
+    .img-avatar {
+        vertical-align: middle;
+        width: 40px!important;
+        height: 40px!important;
+        border-radius: 50%;
+    }
+
     .fs-icon-bips{
-        font-size: 2rem!important;
+        font-size: 1.5rem!important;
     }
 
     .fs-text-bips{
-        font-size: 8px!important;
+        font-size: 7px!important;
     }
 
     .f-12{
-        font-size: 10px!important;
+        font-size: 7px!important;
     }
 
     .f-xs-14 {
-        font-size: 10px!important;
+        font-size: 7px!important;
     }
 
     .f-16 {
-        font-size: 14px!important;
+        font-size: 11px!important;
     }
 
     .f-14 {
-        font-size: 12px!important;
+        font-size: 9px!important;
     }
 
     h5{
-        font-size: 12px!important;
+        font-size: 9px!important;
+    }
+
+    .btn{
+        font-size: 7px!important;
     }
 
     .cssmenu ul li a{
@@ -2720,6 +2737,42 @@ button.bg-gold:hover {
         max-width: 50%;
         display: inline-block!important;
     }
+
+    .f-12{
+        font-size: 9px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 9px!important;
+    }
+
+    .f-16 {
+        font-size: 13px!important;
+    }
+
+    .f-14 {
+        font-size: 11px!important;
+    }
+
+    h5{
+        font-size: 11px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 7px!important;
+    }
+
+    .f-10{
+        font-size: 6px!important;
+    }
+
+    .f-8{
+        font-size: 4px!important;
+    }
+
+    .btn{
+        font-size: 9px!important;
+    }
 }
 
 @media (max-width: 575px){
@@ -2741,20 +2794,6 @@ button.bg-gold:hover {
 
     .d-xsm-block {
         display: block!important;
-    }
-
-    .col-sm-tab {
-        flex: 0 0 9% !important;
-        max-width: 9%!important;
-        display: inline-block!important;
-    }
-
-    .fs-icon-bips{
-        font-size: 1rem!important;
-    }
-
-    .fs-text-bips{
-        display: none!important;
     }
 
     .col-mbl-1 {
@@ -2795,6 +2834,105 @@ button.bg-gold:hover {
     }
 }
 
+@media (max-width: 575px) and (min-width: 546px){
+    .col-sm-tab {
+        flex: 0 0 9.9% !important;
+        max-width: 9.9%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 7px!important;
+    }
+} @media (max-width: 545px) and (min-width: 480px) {
+    .col-sm-tab {
+        flex: 0 0 9.85% !important;
+        max-width: 9.85%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 6px!important;
+    }
+} @media (max-width: 479px) and (min-width: 429px){
+    .col-sm-tab {
+        flex: 0 0 9.7% !important;
+        max-width: 9.7%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5.5px!important;
+    }
+} @media (max-width: 428px) and (min-width: 401px){
+    .col-sm-tab {
+        flex: 0 0 9.6% !important;
+        max-width: 9.6%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5px!important;
+    }
+} @media (max-width: 400px) and (min-width: 365px){
+    .col-sm-tab {
+        flex: 0 0 9.45% !important;
+        max-width: 9.45%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 4.5px!important;
+    }
+} @media (max-width: 364px) and (min-width: 336px){
+    .col-sm-tab {
+        flex: 0 0 9.3% !important;
+        max-width: 9.3%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 4px!important;
+    }
+} @media (max-width: 335px){
+    .col-sm-tab {
+        flex: 0 0 9% !important;
+        max-width: 9%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 3.5px!important;
+    }
+}
 
 @media (min-width: 756px){
     .toggler-menu{

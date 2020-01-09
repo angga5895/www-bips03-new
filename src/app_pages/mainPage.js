@@ -294,7 +294,6 @@ class MainPage_Base extends React.Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(() => this.tick(), 1000);
 
         var setElementHeightWeb = function () {
             var marquee = $('html').width();
@@ -660,49 +659,6 @@ class MainPage_Base extends React.Component {
         }
 
     }
-    tick() {
-        this.setState(prevState => ({
-            seconds: prevState.seconds + 1
-        }));
-
-        if(this.state.seconds === 199){
-            this.setState({seconds: 100});
-            this.setState({timeChange: 110});
-        }
-
-        //inisalisasi
-        if(this.state.seconds === 1){
-            let s = this.state.spanData.slice();
-            s[0] = this.state.rowData[0];
-            s[1] = this.state.rowData[1];
-            s[2] = this.state.rowData[2];
-            s[3] = this.state.rowData[3];
-            s[4] = this.state.rowData[4];
-            s[5] = this.state.rowData[5];
-            s[6] = this.state.rowData[6];
-            s[7] = this.state.rowData[7];
-            s[8] = this.state.rowData[8];
-            s[9] = this.state.rowData[9];
-            this.setState({
-                spanData: s,
-            })
-        }
-        //merubah data
-        if(this.state.seconds === this.state.timeChange){
-            this.setState({indexData: (this.state.indexData + 1) % this.state.rowData.length });
-            let s = this.state.spanData.slice();
-            s[this.state.indexMarquee] = this.state.rowData[this.state.indexData];
-            this.setState({spanData: s,})
-            this.setState({indexMarquee: (this.state.indexMarquee + 1) % 10});
-            this.setState({timeChange: (this.state.timeChange + 10)});
-        }
-
-
-    }
-    //zaky
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
 
     render () {
         document.body.style.setProperty('--warna-dasar', this.props.thememode === true  ? "#010101" : "#FCFCFC");
@@ -816,7 +772,7 @@ class MainPage_Base extends React.Component {
                         }/>
 
                         <div className="d-sidebar-landscape">
-                            <MarqueePage />
+                            <MarqueeMac />
                         </div>
                         <div className="col-sm-12 px-0 mx-0 card-575">
                             <SideBar/>
@@ -825,7 +781,9 @@ class MainPage_Base extends React.Component {
                             </div>
                         </div>
                         <div className="d-sidebar-potrait">
-                            <MarqueePage />
+                            {/*<MarqueePage />*/}
+                            <MarqueeMac />
+
                         </div>
                         <i onClick={this.state.fullscreenmode == false ? this.openContentFullscreen : this.closeContentFullscreen}
                            className={this.state.fullscreenmode == false ? "icon-icon-fullscreen-in myBtn" : "icon-exit-fullscreen myBtn"}></i>
@@ -893,7 +851,452 @@ class AlertBips extends React.PureComponent{
         );
     }
 }
+class MarqueeMac extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: false,
+            passlogin : 'password',
+            seconds: 0,
+            index: 0,
+            flipped: false,
+            barSatu: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barDua: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barTiga: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barEmpat: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barLima: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barEnam: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barTujuh: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barDelapan: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barSatuSatu: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barDuaDua: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barTigaTiga: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barEmpatEmpat: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barLimaLima: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
 
+
+
+
+
+            barInfo: [
+                {
+                    symbol: 'GBP/USD',
+                    last: '12849',
+                    change: -0.99,
+                    percentage: -0.30,
+                },{
+                    symbol: 'USD/JPY',
+                    last: '108.59',
+                    change: 0,
+                    percentage: 0,
+                },{
+                    symbol: 'USD/CHF',
+                    last: '0.9874',
+                    change: -0.05,
+                    percentage: -0.04,
+                },{
+                    symbol: 'AUD/JPY',
+                    last: '78.14',
+                    change: 0.05,
+                    percentage: 0.05,
+                },
+            ],
+        };
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+
+    tick() {
+
+        this.setState(prevState => ({
+            seconds: prevState.seconds + 1
+            // seconds: prevState.seconds + 0
+        }));
+        if(this.state.seconds === 1){
+            this.setState({barSatu: this.state.barInfo[0]})
+        }
+        if(this.state.seconds % 10 === 0){
+            var elementBox = document.getElementById("hid-box");
+            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
+            elementBox.classList.toggle("active");
+            //set change every 20 sec
+            this.setState({flipped: !this.state.flipped});
+            this.setState({index: nextIndex});
+
+            if(this.state.flipped === false){
+                this.setState({barSatu: this.state.barInfo[nextIndex]})
+            }else{
+                this.setState({barDua: this.state.barInfo[nextIndex]})
+            }
+        }
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+    render(){
+        const colorLabelFront = (props) => {
+            if(props < 0){
+                return "bg-red-dark-grad"
+            }if(props > 0){
+                return "bg-green-dark-grad"
+            }else{
+                return "bg-yellow-red-grad"
+            }
+        }
+        const colorIcon = (props) => {
+            if(props < 0){
+                return "icofont icofont-caret-down"
+            }if(props > 0){
+                return "icofont icofont-caret-up"
+            }else{
+                return "icofont icofont-minus"
+            }
+        }
+        return(
+            <div className="h-32 runningTextMac">
+                <div className={"slidee slideSatu"}>
+                    <div className={"show-box " +colorLabelFront(0)}>
+                        <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down text-danger"}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(0)+" "+(this.state.flipped===true ? 'active' : '')}>
+                        <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down"}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideDua"}>
+                    <div className={"show-box " +colorLabelFront(-2)}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(0)+" "+(this.state.flipped===true ? 'active' : '')}>
+                        <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideTiga"}>
+                    <div className={"show-box " +colorLabelFront(0)}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(-1)+" "+(this.state.flipped===true ? 'active' : '')}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideEmpat"}>
+                    <div className={"show-box " +colorLabelFront(1)}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(-2)+" "+(this.state.flipped===true ? 'active' : '')}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideLima"}>
+                    <div className={"show-box " +colorLabelFront(0)}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(1)+" "+(this.state.flipped===true ? 'active' : '')}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideEnam"}>
+                    <div className={"show-box " +colorLabelFront(1)}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(2)+" "+(this.state.flipped===true ? 'active' : '')}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideTujuh"}>
+                    <div className={"show-box " +colorLabelFront(2)}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(-1)+" "+(this.state.flipped===true ? 'active' : '')}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+                <div className={"slidee slideDelapan"}>
+                    <div className={"show-box " +colorLabelFront(4)}>
+
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down  "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                    <div className={"hid-box "+colorLabelFront(1)+" "+(this.state.flipped===true ? 'active' : '')}>
+                    <kbd>AALI</kbd>&nbsp;
+                        <text
+                            className={" "}>
+                            1,000 &nbsp;
+                        </text>
+                        <i
+                            className={"icofont icofont-caret-down "}>
+                        </i>
+                        <text
+                            className="">
+                            20% &nbsp;
+                        </text>
+                    </div>
+                </div>
+            </div>
+            )
+    }
+}
 class MarqueePage extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -1128,6 +1531,52 @@ class MarqueePage extends React.PureComponent{
                 },
             ],
         };
+    }
+    componentDidMount(){
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
+    tick() {
+        this.setState(prevState => ({
+            seconds: prevState.seconds + 1
+        }));
+
+        if(this.state.seconds === 199){
+            this.setState({seconds: 100});
+            this.setState({timeChange: 110});
+        }
+
+        //inisalisasi
+        if(this.state.seconds === 1){
+            let s = this.state.spanData.slice();
+            s[0] = this.state.rowData[0];
+            s[1] = this.state.rowData[1];
+            s[2] = this.state.rowData[2];
+            s[3] = this.state.rowData[3];
+            s[4] = this.state.rowData[4];
+            s[5] = this.state.rowData[5];
+            s[6] = this.state.rowData[6];
+            s[7] = this.state.rowData[7];
+            s[8] = this.state.rowData[8];
+            s[9] = this.state.rowData[9];
+            this.setState({
+                spanData: s,
+            })
+        }
+        //merubah data
+        if(this.state.seconds === this.state.timeChange){
+            this.setState({indexData: (this.state.indexData + 1) % this.state.rowData.length });
+            let s = this.state.spanData.slice();
+            s[this.state.indexMarquee] = this.state.rowData[this.state.indexData];
+            this.setState({spanData: s,})
+            this.setState({indexMarquee: (this.state.indexMarquee + 1) % 10});
+            this.setState({timeChange: (this.state.timeChange + 10)});
+        }
+
+
+    }
+    //zaky
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     render() {

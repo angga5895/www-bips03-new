@@ -453,7 +453,7 @@ class SelectItem1 extends React.PureComponent {
 
         return (
             <div className="nav-link col-sm-12 px-0 mx-0 py-0 text-white">
-                <div className="col-sm-12 bg-black-trading px-0 text-center" style={{ borderRadius : "5px" }}>
+                <div className="col-sm-12 px-0 text-center" style={{ borderRadius : "5px" }}>
                     {/*zaky
                     Element Flipped*/}
                     <div className="box-selection">

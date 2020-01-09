@@ -5458,3 +5458,43 @@ textarea {
         font-size: 10px;
     }
 }
+
+.runningTextMac > .slidee{
+    display: inline-block;
+    width: 12.5%;
+    height: 32px;
+    overflow: hidden;
+}
+.slidee > div{
+    color: #fff !important;
+    padding: 5px;
+    height: 32px;
+    align-content: center;
+    text-align: center;
+}
+.slidee > .active{
+    top: -32px;
+}
+.slideDua > .hid-box{
+    transition-delay: .3s;
+}
+.slideTiga > .hid-box{
+    transition-delay: .5s;
+}
+.slideEmpat > .hid-box{
+    transition-delay: .7s;
+}
+.slideLima > .hid-box{
+    transition-delay: .9s;
+}
+.slideEnam > .hid-box{
+    transition-delay: 1.1s;
+}
+.slideTujuh > .hid-box{
+    transition-delay: 1.3s;
+}
+.slideDelapan > .hid-box{
+    transition-delay: 1.5s;
+}
+
+

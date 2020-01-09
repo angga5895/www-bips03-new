@@ -401,6 +401,12 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
     border-top: var(--warna-scroll) 2px solid!important;
 }
 
+@media (min-width: 994px) {
+    .h-84{
+        height: 84px!important;
+    }
+}
+
 @media (min-width: 576px) {
     .tabheaderfill {
         height: 44.5px !important;
@@ -448,9 +454,7 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
                  height: 79px!important;
              }.h-77{
                   height: 77px!important;
-              }.h-84{
-                   height: 84px!important;
-               }.h-32{
+              }.h-32{
                     height: 32px!important;
                     background-image: linear-gradient(var(--warna-navy-even), var(--warna-navy-odd)) !important;
                 }

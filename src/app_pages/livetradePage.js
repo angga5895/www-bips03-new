@@ -64,7 +64,10 @@ class LiveTradePage extends React.PureComponent {
     }
 
     ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+        if(window.innerWidth > 1265 && window.innerWidth <= 1370){
+            return "s110";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
         }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
             return "s80";
@@ -197,18 +200,19 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?155:s=="s50"?145:s=="s67"?135:s=="s75"?130:s=="s80"?120:100, minWidth: 100, cellClass : function (params) {
+                    width: s=="s49"?155:s=="s50"?145:s=="s67"?135:s=="s75"?130:s=="s80"?120:s=="s110"?80:100,
+                    minWidth: 100, cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:70,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s110"?60:70,
                     minWidth: 70,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-visible";
                     }},
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:80,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s110"?55:80,
                     minWidth: 80,
                     cellClass : function (params) {
                         var change = params.data.change;

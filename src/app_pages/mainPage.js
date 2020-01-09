@@ -29,9 +29,9 @@ const CustomFrameHeader = (props) => {
 
 const ResizeResponsive = () => {
     var marquee = $('html').width();
-    marquee = marquee + 20;
-    $('.runningText p').css('width', (marquee));
-    $('.runningText').css('width', (marquee));
+    /*marquee = marquee + 20;*/
+    $('.runningText p').css('minWidth', (marquee));
+    $('.runningText').css('minWidth', (marquee));
 
     var height695 = $('html').height();
     $('.card-695').css('min-height', (height695));
@@ -297,9 +297,9 @@ class MainPage_Base extends React.Component {
 
         var setElementHeightWeb = function () {
             var marquee = $('html').width();
-            marquee = marquee + 20;
-            $('.runningText p').css('width', (marquee));
-            $('.runningText').css('width', (marquee));
+            /*marquee = marquee + 20;*/
+            $('.runningText p').css('minWidth', (marquee));
+            $('.runningText').css('minWidth', (marquee));
 
             var height695 = $('html').height();
             $('.card-695').css('min-height', (height695));

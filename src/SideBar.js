@@ -135,7 +135,7 @@ class SideBar extends React.Component{
                                                             <div className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
                                                                 <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
                                                             </div>
-                                                            <p className={this.isFireFox() ? "f-11 mb3 text-right" : "f-11 mb-1 text-right"}>{charx.last}</p>
+                                                            <p className={this.isFireFox() ? "f-11 mb3 text-right"+warna : "f-11 mb-1 text-right"+warna}>{charx.last}</p>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -194,7 +194,7 @@ class SideBar extends React.Component{
                                             <div className={"f-10 mb-1 text-right"+warna}>
                                                 <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
                                             </div>
-                                            <p className="f-11 mb-1 text-right">{charx.last}</p>
+                                            <p className={"f-11 mb-1 text-right"+warna}>{charx.last}</p>
                                         </div>
                                     )
                                 })

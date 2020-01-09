@@ -82,10 +82,6 @@
     border: 1px solid var(--warna-gray)!important;
 }
 
-.h-48{
-    height: 48px!important;
-}
-
 .card-467{
     height: var(--card-467) !important;
 }.card-112{
@@ -405,25 +401,42 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
     border-top: var(--warna-scroll) 2px solid!important;
 }
 
-.tabheaderfill{
-    height: 44.5px!important;
+@media (min-width: 576px) {
+    .tabheaderfill {
+        height: 44.5px !important;
+    }
+    .h-33{
+        height: 33px!important;
+    }
+    .h-45{
+        height: 45px!important;
+    }
+    .h-30{
+        height: 30px;
+    }
+    .h-48{
+        height: 48px!important;
+    }
+    .h-49{
+         height: 49px!important;
+    }
+    .h-40{
+         height: 40px!important;
+    }
+    .h-27{
+        height: 27px!important;
+    }
 }
 
-.h-33{
-    height: 33px!important;
-}.h-22{
+.h-22{
      height: 22px!important;
  }.h-31{
       height: 31px!important;
-  }.h-27{
-       height: 27px!important;
-   }.h-37{
+  }.h-37{
         height: 37px!important;
     }.h-121{
          height: 121px!important;
-     }.h-49{
-          height: 49px!important;
-      }.h-25{
+     }.h-25{
            height: 25px!important;
        }.h-62{
             height: 62px!important;
@@ -431,11 +444,7 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
              height: 73px!important;
          }.h-17{
               height: 17px!important;
-          }.h-40{
-               height: 40px!important;
-           }.h-45{
-                height: 45px!important;
-            }.h-79{
+          }.h-79{
                  height: 79px!important;
              }.h-77{
                   height: 77px!important;
@@ -459,10 +468,6 @@ div.main-header > .ui.menu .item{
 }.ag-header-group-cell{
      border-right: 1px solid #88888880!important;
  }
-
-.h-30{
-    height: 30px;
-}
 
 .grid-294{
     height: 294px;
@@ -1818,7 +1823,7 @@ button.bg-gold:hover {
     display: block;
     color: var(--warna-text-basic);
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 10px;
     text-decoration: none!important;
 }
 
@@ -2575,6 +2580,9 @@ button.bg-gold:hover {
     h5{
         font-size: 12px!important;
     }
+    h3{
+        font-size: 20px!important;
+    }
 
     .cssmenu ul li a{
         padding: 15px 9px!important;
@@ -2586,6 +2594,10 @@ button.bg-gold:hover {
 
     .f-8{
         font-size: 5px!important;
+    }
+
+    .btn{
+        font-size: 10px!important;
     }
 }
 
@@ -2616,32 +2628,46 @@ button.bg-gold:hover {
         display: inline-block!important;
     }
 
+    .img-avatar {
+        vertical-align: middle;
+        width: 40px!important;
+        height: 40px!important;
+        border-radius: 50%;
+    }
+
     .fs-icon-bips{
-        font-size: 2rem!important;
+        font-size: 1.5rem!important;
     }
 
     .fs-text-bips{
-        font-size: 8px!important;
+        font-size: 7px!important;
     }
 
     .f-12{
-        font-size: 10px!important;
+        font-size: 7px!important;
     }
 
     .f-xs-14 {
-        font-size: 10px!important;
+        font-size: 7px!important;
     }
 
     .f-16 {
-        font-size: 14px!important;
+        font-size: 11px!important;
     }
 
     .f-14 {
-        font-size: 12px!important;
+        font-size: 9px!important;
     }
 
     h5{
-        font-size: 12px!important;
+        font-size: 9px!important;
+    }
+    h3{
+        font-size: 18px!important;
+    }
+
+    .btn{
+        font-size: 7px!important;
     }
 
     .cssmenu ul li a{
@@ -2720,6 +2746,45 @@ button.bg-gold:hover {
         max-width: 50%;
         display: inline-block!important;
     }
+
+    .f-12{
+        font-size: 9px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 9px!important;
+    }
+
+    .f-16 {
+        font-size: 13px!important;
+    }
+
+    .f-14 {
+        font-size: 11px!important;
+    }
+
+    h5{
+        font-size: 11px!important;
+    }
+    h3{
+        font-size: 16px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 7px!important;
+    }
+
+    .f-10{
+        font-size: 6px!important;
+    }
+
+    .f-8{
+        font-size: 4px!important;
+    }
+
+    .btn{
+        font-size: 9px!important;
+    }
 }
 
 @media (max-width: 575px){
@@ -2741,20 +2806,6 @@ button.bg-gold:hover {
 
     .d-xsm-block {
         display: block!important;
-    }
-
-    .col-sm-tab {
-        flex: 0 0 9% !important;
-        max-width: 9%!important;
-        display: inline-block!important;
-    }
-
-    .fs-icon-bips{
-        font-size: 1rem!important;
-    }
-
-    .fs-text-bips{
-        display: none!important;
     }
 
     .col-mbl-1 {
@@ -2793,8 +2844,146 @@ button.bg-gold:hover {
         max-width: 50%;
         display: inline-block!important;
     }
+
+    .f-12{
+        font-size: 9px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 9px!important;
+    }
+
+    .f-16 {
+        font-size: 13px!important;
+    }
+
+    .f-14 {
+        font-size: 11px!important;
+    }
+
+    h5{
+        font-size: 11px!important;
+    }
+    h3{
+        font-size: 16px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 7px!important;
+    }
+
+    .f-10{
+        font-size: 6px!important;
+    }
+
+    .f-8{
+        font-size: 4px!important;
+    }
+
+    .btn{
+        font-size: 9px!important;
+    }
 }
 
+@media (max-width: 575px) and (min-width: 546px){
+    .col-sm-tab {
+        flex: 0 0 9.9% !important;
+        max-width: 9.9%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 7px!important;
+    }
+} @media (max-width: 545px) and (min-width: 480px) {
+    .col-sm-tab {
+        flex: 0 0 9.85% !important;
+        max-width: 9.85%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 6px!important;
+    }
+} @media (max-width: 479px) and (min-width: 429px){
+    .col-sm-tab {
+        flex: 0 0 9.7% !important;
+        max-width: 9.7%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5.5px!important;
+    }
+} @media (max-width: 428px) and (min-width: 401px){
+    .col-sm-tab {
+        flex: 0 0 9.6% !important;
+        max-width: 9.6%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 5px!important;
+    }
+} @media (max-width: 400px) and (min-width: 365px){
+    .col-sm-tab {
+        flex: 0 0 9.45% !important;
+        max-width: 9.45%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 4.5px!important;
+    }
+} @media (max-width: 364px) and (min-width: 336px){
+    .col-sm-tab {
+        flex: 0 0 9.3% !important;
+        max-width: 9.3%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 4px!important;
+    }
+} @media (max-width: 335px){
+    .col-sm-tab {
+        flex: 0 0 9% !important;
+        max-width: 9%!important;
+        display: inline-block!important;
+    }
+
+    .fs-icon-bips{
+        font-size: 1rem!important;
+    }
+
+    .fs-text-bips{
+        font-size: 3.5px!important;
+    }
+}
 
 @media (min-width: 756px){
     .toggler-menu{

@@ -420,15 +420,19 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
     .h-49{
          height: 49px!important;
     }
+    .h-40{
+         height: 40px!important;
+    }
+    .h-27{
+        height: 27px!important;
+    }
 }
 
 .h-22{
      height: 22px!important;
  }.h-31{
       height: 31px!important;
-  }.h-27{
-       height: 27px!important;
-   }.h-37{
+  }.h-37{
         height: 37px!important;
     }.h-121{
          height: 121px!important;
@@ -440,9 +444,7 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
              height: 73px!important;
          }.h-17{
               height: 17px!important;
-          }.h-40{
-               height: 40px!important;
-           }.h-79{
+          }.h-79{
                  height: 79px!important;
              }.h-77{
                   height: 77px!important;
@@ -1821,7 +1823,7 @@ button.bg-gold:hover {
     display: block;
     color: var(--warna-text-basic);
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 10px;
     text-decoration: none!important;
 }
 
@@ -2578,6 +2580,9 @@ button.bg-gold:hover {
     h5{
         font-size: 12px!important;
     }
+    h3{
+        font-size: 20px!important;
+    }
 
     .cssmenu ul li a{
         padding: 15px 9px!important;
@@ -2656,6 +2661,9 @@ button.bg-gold:hover {
 
     h5{
         font-size: 9px!important;
+    }
+    h3{
+        font-size: 18px!important;
     }
 
     .btn{
@@ -2758,6 +2766,9 @@ button.bg-gold:hover {
     h5{
         font-size: 11px!important;
     }
+    h3{
+        font-size: 16px!important;
+    }
 
     .cssmenu ul li a{
         padding: 15px 7px!important;
@@ -2832,6 +2843,45 @@ button.bg-gold:hover {
         flex: 0 0 50%;
         max-width: 50%;
         display: inline-block!important;
+    }
+
+    .f-12{
+        font-size: 9px!important;
+    }
+
+    .f-xs-14 {
+        font-size: 9px!important;
+    }
+
+    .f-16 {
+        font-size: 13px!important;
+    }
+
+    .f-14 {
+        font-size: 11px!important;
+    }
+
+    h5{
+        font-size: 11px!important;
+    }
+    h3{
+        font-size: 16px!important;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 7px!important;
+    }
+
+    .f-10{
+        font-size: 6px!important;
+    }
+
+    .f-8{
+        font-size: 4px!important;
+    }
+
+    .btn{
+        font-size: 9px!important;
     }
 }
 

@@ -64,8 +64,8 @@ class LiveTradePage extends React.PureComponent {
     }
 
     ceksize(){
-        if(window.innerWidth > 1265 && window.innerWidth <= 1370){
-            return "s110";
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
         }
         else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
@@ -80,7 +80,7 @@ class LiveTradePage extends React.PureComponent {
         }else if(window.innerWidth > 2559){
             return "s49";
         }else{
-            return "s100";
+            return "s110";
         }
     }
 

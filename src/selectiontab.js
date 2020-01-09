@@ -338,7 +338,23 @@ class SelectItem1 extends React.PureComponent {
         this.state = {
             seconds: 0,
             index: 0,
-            flipped: true,
+            flipped: false,
+            firstbox:
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                }
+            ,
+            secondbox:
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                }
+            ,
             barInfo: [
                 {
                     symbol: 'COMPOSITE INDEX',
@@ -388,10 +404,20 @@ class SelectItem1 extends React.PureComponent {
             seconds: prevState.seconds + 1
             // seconds: prevState.seconds + 0
         }));
+        if(this.state.seconds === 1){
+            this.setState({firstbox: this.state.barInfo[0]})
+        }
         if(this.state.seconds % 5 === 0){
-            //set change every 30 sec
-            this.setState({flipped: !this.state.flipped})
-            this.setState({index: (this.state.index + 1) % this.state.barInfo.length });
+            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
+            //set change every 20 sec
+            this.setState({flipped: !this.state.flipped});
+            this.setState({index: nextIndex});
+
+            if(this.state.flipped === false){
+                this.setState({firstbox: this.state.barInfo[nextIndex]})
+            }else{
+                this.setState({secondbox: this.state.barInfo[nextIndex]})
+            }
         }
     }
     //zaky
@@ -406,33 +432,13 @@ class SelectItem1 extends React.PureComponent {
     }
 
     render() {
-        //zaky
-        //fungsi untuk flipped
-        const switchPanel = () => {
-            if(this.state.flipped === true){
-                return "card is-flipped";
-            }else{
-                return "card";
-            }
-        }
-        //zaky
-        //fungsi untuk warna
         const colorLabelFront = (props) => {
             if(props < 0){
-                return "card__face--front-red"
+                return "bg-red-dark-grad"
             }if(props > 0){
-                return "card__face--front"
+                return "bg-green-dark-grad"
             }else{
-                return "card__face--front-yellow"
-            }
-        }
-        const colorLabelBack = (props) => {
-            if(props < 0){
-                return "card__face--back-red"
-            }if(props > 0){
-                return "card__face--back"
-            }else{
-                return "card__face--back-yellow"
+                return "bg-yellow-red-grad"
             }
         }
         const colorIcon = (props) => {
@@ -444,67 +450,54 @@ class SelectItem1 extends React.PureComponent {
                 return "icofont icofont-minus"
             }
         }
-        //zaky
-        //fungsi untuk flipped
-        const cardFace = (props) => {
-            let info = this.state.barInfo[this.state.index];
-            if(props === "front"){
-                if(this.state.flipped){
-                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>&nbsp;</div>
-                }else{
-                    return <div className={"card__face"+' '+colorLabelFront(info.change)}>
-                        <table width="100%" height="100%">
-                            <tr>
-                                <td rowSpan="2" className="spanSymbol px-0">{info.symbol}</td>
-                                <td colSpan="2" className="lastColor px-0">{info.last}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span className={'white '+colorIcon(info.change)}>&nbsp;
-                                        {info.change}</span>&nbsp;
-                                </td>
-                                <td>
-                                    <span className="white">({info.percentage}%)</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                }
-            }else{
-                if(this.state.flipped){
-                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>
-                        <table width="100%" height="100%">
-                            <tr>
-                                <td rowSpan="2" className="spanSymbol px-0">{info.symbol}</td>
-                                <td colSpan="2" className="lastColor px-0">{info.last}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span className={'white '+colorIcon(info.change)}>&nbsp;
-                                        {info.change}</span>&nbsp;
-                                </td>
-                                <td>
-                                    <span className="white">({info.percentage}%)</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                }else{
-                    return <div className={"card__face"+' '+colorLabelBack(info.change)}>&nbsp;</div>
-                }
-            }
-        }
+
         return (
             <div className="nav-link col-sm-12 px-0 mx-0 py-0 text-white">
                 <div className="col-sm-12 bg-black-trading px-0 text-center" style={{ borderRadius : "5px" }}>
                     {/*zaky
                     Element Flipped*/}
-                    <div className="scene scene--card">
-
-                        <div className={switchPanel()}>
-                            {cardFace("front")}
-                            {cardFace("back")}
+                    <div className="box-selection">
+                        <div className={"box-inside " +colorLabelFront(this.state.firstbox.change)}>
+                            <table width="100%" height="100%">
+                                <tr>
+                                    <td rowSpan="2" className="spanSymbol px-0">{this.state.firstbox.symbol}</td>
+                                    <td colSpan="2" className="lastColor px-0">{this.state.firstbox.last}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span className={'white '}>
+                                            <i className={colorIcon(this.state.firstbox.change)}></i>&nbsp;
+                                            {this.state.firstbox.change}</span>&nbsp;
+                                    </td>
+                                    <td>
+                                        <span className="white">({this.state.firstbox.percentage}%)</span>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
+                        <div className={"hid-box " +colorLabelFront(this.state.secondbox.change)+" "
+                        +(this.state.flipped===true ? 'active' : '')} id={"hid-box-selection"}>
+                            <table width="100%" height="100%">
+                                <tr>
+                                    <td rowSpan="2" className="spanSymbol px-0">{this.state.secondbox.symbol}</td>
+                                    <td colSpan="2" className="lastColor px-0">{this.state.secondbox.last}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span className={'white '}>
+                                            <i className={colorIcon(this.state.secondbox.change)}></i>&nbsp;
+                                            {this.state.secondbox.change}</span>&nbsp;
+                                    </td>
+                                    <td>
+                                        <span className="white">({this.state.secondbox.percentage}%)</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        {/*<div className={switchPanel()}>*/}
+                            {/*{cardFace("front")}*/}
+                            {/*{cardFace("back")}*/}
+                        {/*</div>*/}
                     </div>
                     {/*<Select
                         className="f-12-fix"
@@ -701,111 +694,6 @@ class UserInfo_Base extends React.Component {
         })
     }
 
-    /*buttonClickPortofolio = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="text-white text-left"><span class="pull-left icon-icon-portofolio"></span> <h4>&nbsp;&nbsp;Portofolio & Balance</h4></div>
-                        </div>
-                        <div className="col-sm text-right">
-                            <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                               onClick={this.closeClick}></i>
-                        </div>
-                    </div>
-                </div>,
-
-            size: 'fullscreen',
-            contentClass: PortofolioModal,
-            onClose: (result) => { console.log('Modal 1 result = ', result) }
-        })
-    }
-
-    buttonClickHistorical = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="text-white text-left"><span class="pull-left icon-icon-historical"></span> <h4>&nbsp;&nbsp;Historical Trade List</h4></div>
-                        </div>
-                        <div className="col-sm text-right">
-                            <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                               onClick={this.closeClick}></i>
-                        </div>
-                    </div>
-                </div>,
-
-            size: 'fullscreen',
-            contentClass: HistoricalModal,
-            onClose: (result) => { console.log('Modal 1 result = ', result) }
-        })
-    }
-
-    buttonClickFund = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="text-white text-left"><span class="pull-left icon-icon-fund"></span> <h4>&nbsp;&nbsp;Fund Transfer</h4></div>
-                        </div>
-                        <div className="col-sm text-right">
-                            <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                               onClick={this.closeClick}></i>
-                        </div>
-                    </div>
-                </div>,
-
-            size: 'fullscreen',
-            contentClass: FundModal,
-            onClose: (result) => { console.log('Modal 1 result = ', result) }
-        })
-    }
-
-    buttonClickTransactionHistory = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="text-white text-left"><span class="pull-left icon-icon-transactional"></span> <h4>&nbsp;&nbsp;Transaction History</h4></div>
-                        </div>
-                        <div className="col-sm text-right">
-                            <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                               onClick={this.closeClick}></i>
-                        </div>
-                    </div>
-                </div>,
-
-            size: 'fullscreen',
-            contentClass: TransactionHistoryModal,
-            onClose: (result) => { console.log('Modal 1 result = ', result) }
-        })
-    }
-
-    buttonClickInquiry = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () =>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm">
-                            <div className="text-white text-left"><span class="pull-left icon-icon-inquiry"></span> <h4>&nbsp;&nbsp;Inquiry of Account Info</h4></div>
-                        </div>
-                        <div className="col-sm text-right">
-                            <i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                               onClick={this.closeClick}></i>
-                        </div>
-                    </div>
-                </div>,
-
-            size: 'fullscreen',
-            contentClass: InquiryModal,
-            onClose: (result) => { console.log('Modal 1 result = ', result) }
-        })
-    }*/
-
     buttonClickChangePassPin = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
@@ -817,16 +705,12 @@ class UserInfo_Base extends React.Component {
     }
 
     render(){
-        //zaky
-        //fungsi untuk mengubah state switch akun
         const changeGeneralState = (props) => {
             this.setState({
                 general: props
             });
             this.props.changeAccountType(props);
         }
-        //zaky
-        //fungsi untuk mengubah state switch akun dengan perubahan style
         const changeStyle = (props,type) => {
             if(props === true && type === "general"){
                 return "radioAccount checkedRadio"
@@ -839,14 +723,13 @@ class UserInfo_Base extends React.Component {
         return(
             <div className="nav-link px-0 mx-0 py-0 text-white">
                 <AppFrameAction ref="frameAction" />
-                {/*Zaky*/}
-                {/*perubahan nama*/}
                 <table>
                     <tr>
                         <td className="py-0">
                             <Dropdown icon={null} text={
                                 <div className="cursor-menu pt-1">
-                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2"/><i className="f-11-center text-gray-tradding oi oi-caret-bottom"></i>
+                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2"/>
+                                    <i className="f-11-center text-gray-tradding oi oi-caret-bottom"></i>
                                 </div>
                             } className="text-white align-self-center">
                                 <Dropdown.Menu className={'bg-black-trading f-14 w-300 d-border'} style={{ left: 'auto', right: 0 }}>
@@ -869,7 +752,8 @@ class UserInfo_Base extends React.Component {
                                         <tr>
                                             <td>
                                                 <div className="divAccountOpt input col-sm-12 text-center align-self-center px-0 ">
-                                                    <input type="radio" className={changeStyle(this.state.general,"general")} name="itemTheme2" id="radioAccount"
+                                                    <input type="radio" className={changeStyle(this.state.general,"general")}
+                                                           name="itemTheme2" id="radioAccount"
                                                            onClick={()=>{changeGeneralState(true);}
                                                            } checked={(this.state.general === true) ? true : false}/>
                                                     <label className="radioLabelAccount" htmlFor="radioAccount">
@@ -879,7 +763,8 @@ class UserInfo_Base extends React.Component {
                                             </td>
                                             <td>
                                                 <div className="input col-sm-12 text-center align-self-center divAccountOpt px-0">
-                                                    <input type="radio" className={changeStyle(this.state.general,"margin")} name="itemTheme2" id="radioAccount2"
+                                                    <input type="radio" className={changeStyle(this.state.general,"margin")}
+                                                           name="itemTheme2" id="radioAccount2"
                                                            onClick={()=>{changeGeneralState(false);}
                                                            }  checked={(this.state.general === false) ? true : false} />
                                                     <label className="radioLabelAccount" htmlFor="radioAccount2">
@@ -890,37 +775,7 @@ class UserInfo_Base extends React.Component {
                                         </tr>
                                         </tbody>
                                     </table>
-                                    {/*End*/}
-                                    {/*<Dropdown.Divider className="d-border py-0 my-0" />
-                        <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickPortofolio} text={
-                            <div>
-                                <i className="icon-icon-portofolio"></i>&nbsp;&nbsp; Portofolio & Balance
-                            </div>
-                        }/>
-                        <Dropdown.Divider className="d-border py-0 my-0" />
-                        <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickHistorical} text={
-                            <div>
-                                <i className="icon-icon-historical"></i>&nbsp;&nbsp; Historical Trade List
-                            </div>
-                        }/>
-                        <Dropdown.Divider className="d-border py-0 my-0" />
-                        <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickFund} text={
-                            <div>
-                                <i className="icon-icon-fund"></i>&nbsp;&nbsp; Fund Transfer
-                            </div>
-                        }/>
-                        <Dropdown.Divider className="d-border py-0 my-0" />
-                        <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickTransactionHistory} text={
-                            <div>
-                                <i className="icon-icon-transactional"></i>&nbsp;&nbsp; Transaction History
-                            </div>
-                        }/>
-                        <Dropdown.Divider className="d-border py-0 my-0" />
-                        <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickInquiry} text={
-                            <div>
-                                <i className="icon-icon-inquiry"></i>&nbsp;&nbsp; Inquiry Of Account
-                            </div>
-                        }/>*/}
+
                                     <Dropdown.Divider className="d-border py-0 my-0" />
                                     <Dropdown.Item className="item-hover text-white text-left" onClick={this.buttonClickChangePassPin} text={
                                         <div>
@@ -969,81 +824,6 @@ class SettingModal extends React.Component {
     }
 }
 
-
-class PortofolioModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <>
-                <AppFrameAction ref="frameAction" />
-                <ModalPortofolio />
-            </>
-        );
-    }
-}
-
-class HistoricalModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <>
-                <AppFrameAction ref="frameAction" />
-                <ModalHistorical />
-            </>
-        );
-    }
-}
-
-class FundModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <>
-                <AppFrameAction ref="frameAction" />
-                <ModalFund />
-            </>
-        );
-    }
-}
-
-class TransactionHistoryModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <>
-                <AppFrameAction ref="frameAction" />
-                <ModalTransactionHistory />
-            </>
-        );
-    }
-}
-
-class InquiryModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
-    render() {
-        return (
-            <>
-                <AppFrameAction ref="frameAction" />
-                <ModalInquiry />
-            </>
-        );
-    }
-}
 
 class ChangePassPinModal extends React.Component {
     closeClick = (e) => {

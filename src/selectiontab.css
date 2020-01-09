@@ -137,6 +137,25 @@ input[type="radio"]:checked .radioAccount ~ label{
     padding-top: 0px;
     text-transform: uppercase!important;
 }
+.box-selection {
+    height: 48px;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+    color: var(--warna-black-white-semantic);
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+    padding-top: 0px;
+    text-transform: uppercase!important;
+}
+.box-selection > .box-inside{
+    height: 48px;
+}
+.box-selection > .box-inside table td,.box-selection > .hid-box table td{
+    padding:3px 15px;
+}
 .box-inside{
     transition: all 1.2s ease-out;
 }
@@ -149,6 +168,9 @@ input[type="radio"]:checked .radioAccount ~ label{
 }
 .box > .active{
     top: -37px;
+}
+.box-selection > .active{
+    top: -48px;
 }
 .bg-yellow-red-grad{
     background-image: linear-gradient(#FCB03B, #F26427);

@@ -5660,8 +5660,9 @@ textarea {
 }
 .slidee > div{
     color: #fff !important;
-    padding: 5px;
+    padding-top: 9px;
     height: 32px;
+    font-size: 11px;
     align-content: center;
     text-align: center;
 }

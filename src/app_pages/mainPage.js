@@ -860,115 +860,6 @@ class MarqueeMac extends React.PureComponent{
             seconds: 0,
             index: 0,
             flipped: false,
-            barSatu: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barDua: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barTiga: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barEmpat: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barLima: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barEnam: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barTujuh: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barDelapan: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barSatuSatu: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barDuaDua: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barTigaTiga: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barEmpatEmpat: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-            barLimaLima: [
-                {
-                    symbol: '',
-                    last: 0,
-                    change: 0,
-                    percentage: 0,
-                },
-            ],
-
-
-
-
-
             barInfo: [
                 {
                     symbol: 'GBP/USD',
@@ -991,7 +882,112 @@ class MarqueeMac extends React.PureComponent{
                     change: 0.05,
                     percentage: 0.05,
                 },
+                {
+                    symbol: 'GBP/USD',
+                    last: '12849',
+                    change: -0.99,
+                    percentage: -0.30,
+                },{
+                    symbol: 'USD/JPY',
+                    last: '108.59',
+                    change: 0,
+                    percentage: 0,
+                },{
+                    symbol: 'USD/CHF',
+                    last: '0.9874',
+                    change: -0.05,
+                    percentage: -0.04,
+                },{
+                    symbol: 'AUD/JPY',
+                    last: '78.14',
+                    change: 0.05,
+                    percentage: 0.05,
+                },
             ],
+            barReady: [
+                {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                }, {
+                    symbol: '',
+                    last: '',
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+
         };
     }
 
@@ -1005,21 +1001,63 @@ class MarqueeMac extends React.PureComponent{
             seconds: prevState.seconds + 1
             // seconds: prevState.seconds + 0
         }));
+
         if(this.state.seconds === 1){
-            this.setState({barSatu: this.state.barInfo[0]})
+            let s = this.state.barReady.slice();
+            let empty = {
+                symbol: '',
+                last: '',
+                change: 0,
+                percentage: 0,
+            };
+            s[0] = this.state.barInfo[0];
+            s[1] = this.state.barInfo[1];
+            s[2] = this.state.barInfo[2];
+            s[3] = this.state.barInfo[3];
+            s[4] = this.state.barInfo[4];
+            s[5] = this.state.barInfo[5];
+            s[6] = this.state.barInfo[6];
+            s[7] = this.state.barInfo[7];
+
+            s[8] = empty;
+            s[9] = empty;
+            s[10] = empty;
+            s[11] = empty;
+            s[12] = empty;
+            s[13] = empty;
+            s[14] = empty;
+            s[15] = empty;
+            this.setState({
+                barReady: s,
+            })
         }
+        //change every 10 sec
         if(this.state.seconds % 10 === 0){
-            var elementBox = document.getElementById("hid-box");
-            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
-            elementBox.classList.toggle("active");
-            //set change every 20 sec
+
             this.setState({flipped: !this.state.flipped});
-            this.setState({index: nextIndex});
 
             if(this.state.flipped === false){
-                this.setState({barSatu: this.state.barInfo[nextIndex]})
+                let s = this.state.barReady.slice();
+                s[0] = this.state.barInfo[0];
+                s[1] = this.state.barInfo[1];
+                s[2] = this.state.barInfo[2];
+                s[3] = this.state.barInfo[3];
+                s[4] = this.state.barInfo[4];
+                s[5] = this.state.barInfo[5];
+                s[6] = this.state.barInfo[6];
+                s[7] = this.state.barInfo[7];
+                this.setState({barReady: s,})
             }else{
-                this.setState({barDua: this.state.barInfo[nextIndex]})
+                let s = this.state.barReady.slice();
+                s[8] = this.state.barInfo[0];
+                s[9] = this.state.barInfo[1];
+                s[10] = this.state.barInfo[2];
+                s[11] = this.state.barInfo[3];
+                s[12] = this.state.barInfo[4];
+                s[13] = this.state.barInfo[5];
+                s[14] = this.state.barInfo[6];
+                s[15] = this.state.barInfo[7];
+                this.setState({barReady: s,})
             }
         }
     }
@@ -1048,48 +1086,40 @@ class MarqueeMac extends React.PureComponent{
         return(
             <div className="h-32 runningTextMac">
                 <div className={"slidee slideSatu"}>
-                    <div className={"show-box " +colorLabelFront(0)}>
-                        <kbd>AALI</kbd>&nbsp;
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[0].change)}>
+                        <kbd>{this.state.barReady[0].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[0].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down text-danger"}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[0].change)}></i>
+                        <text>
+                            {this.state.barReady[0].change}&nbsp;({this.state.barReady[0].persen}%) &nbsp;
                         </text>
                     </div>
-                    <div className={"hid-box "+colorLabelFront(0)+" "+(this.state.flipped===true ? 'active' : '')}>
-                        <kbd>AALI</kbd>&nbsp;
+                    <div className={"hid-box "+colorLabelFront(this.state.barReady[0].change)+" "+(this.state.flipped===true ? 'active' : '')}>
+                        <kbd>{this.state.barReady[0].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[0].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down"}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[0].change)}></i>
+                        <text>
+                            {this.state.barReady[0].change}&nbsp;({this.state.barReady[0].persen}%) &nbsp;
                         </text>
                     </div>
                 </div>
                 <div className={"slidee slideDua"}>
-                    <div className={"show-box " +colorLabelFront(-2)}>
-                    <kbd>AALI</kbd>&nbsp;
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[1].change)}>
+                        <kbd>{this.state.barReady[1].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[1].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[1].change)}></i>
+
+                        <text>
+                            {this.state.barReady[1].change}&nbsp;({this.state.barReady[1].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(0)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1098,9 +1128,7 @@ class MarqueeMac extends React.PureComponent{
                             className={" "}>
                             1,000 &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
+                        <i className={colorIcon(this.state.barReady[0].change)}></i>
                         <text
                             className="">
                             20% &nbsp;
@@ -1108,18 +1136,16 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideTiga"}>
-                    <div className={"show-box " +colorLabelFront(0)}>
-                    <kbd>AALI</kbd>&nbsp;
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[2].change)}>
+                        <kbd>{this.state.barReady[2].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[2].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[2].change)}></i>
+
+                        <text>
+                            {this.state.barReady[2].change}&nbsp;({this.state.barReady[2].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(-1)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1139,18 +1165,16 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideEmpat"}>
-                    <div className={"show-box " +colorLabelFront(1)}>
-                    <kbd>AALI</kbd>&nbsp;
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[3].change)}>
+                        <kbd>{this.state.barReady[3].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[3].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[3].change)}></i>
+
+                        <text>
+                            {this.state.barReady[3].change}&nbsp;({this.state.barReady[3].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(-2)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1169,19 +1193,17 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideLima"}>
-                    <div className={"show-box " +colorLabelFront(0)}>
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[4].change)}>
 
-                    <kbd>AALI</kbd>&nbsp;
+                        <kbd>{this.state.barReady[4].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[4].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[4].change)}></i>
+
+                        <text>
+                            {this.state.barReady[4].change}&nbsp;({this.state.barReady[4].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(1)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1200,19 +1222,17 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideEnam"}>
-                    <div className={"show-box " +colorLabelFront(1)}>
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[5])}>
 
-                    <kbd>AALI</kbd>&nbsp;
+                        <kbd>{this.state.barReady[5].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[5].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[5].change)}></i>
+
+                        <text>
+                            {this.state.barReady[5].change}&nbsp;({this.state.barReady[5].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(2)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1232,19 +1252,17 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideTujuh"}>
-                    <div className={"show-box " +colorLabelFront(2)}>
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[6].change)}>
 
-                    <kbd>AALI</kbd>&nbsp;
+                        <kbd>{this.state.barReady[6].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[6].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[6].change)}></i>
+
+                        <text>
+                            {this.state.barReady[6].change}&nbsp;({this.state.barReady[6].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(-1)+" "+(this.state.flipped===true ? 'active' : '')}>
@@ -1263,19 +1281,17 @@ class MarqueeMac extends React.PureComponent{
                     </div>
                 </div>
                 <div className={"slidee slideDelapan"}>
-                    <div className={"show-box " +colorLabelFront(4)}>
+                    <div className={"show-box " +colorLabelFront(this.state.barReady[7].change)}>
 
-                    <kbd>AALI</kbd>&nbsp;
+                        <kbd>{this.state.barReady[7].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>
-                            1,000 &nbsp;
+                            {this.state.barReady[7].last} &nbsp;
                         </text>
-                        <i
-                            className={"icofont icofont-caret-down  "}>
-                        </i>
-                        <text
-                            className="">
-                            20% &nbsp;
+                        <i className={colorIcon(this.state.barReady[7].change)}></i>
+
+                        <text>
+                            {this.state.barReady[7].change}&nbsp;({this.state.barReady[7].persen}%) &nbsp;
                         </text>
                     </div>
                     <div className={"hid-box "+colorLabelFront(1)+" "+(this.state.flipped===true ? 'active' : '')}>

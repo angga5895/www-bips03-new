@@ -5,6 +5,8 @@ import { WSConnectionAction } from '../appnetwork.js';
 import { AppFrameAction } from '../appframe.js';
 import { ContextConnector } from '../appcontext.js';
 import { BIPSAppContext } from '../AppData.js';
+import Flash from '../flash';
+import Bus from '../bus';
 
 import {Dropdown} from 'semantic-ui-react';
 import $ from "jquery";
@@ -556,6 +558,10 @@ class LoginUserPage_Base extends React.PureComponent {
                 return "icofont icofont-minus"
             }
         }
+        const testAlert = () => {
+            window.flash = (message, type="success") => Bus.emit('flash', ({message, type}));
+            window.flash('record has been created successfully!', 'success');
+        }
         //zaky
         //fungsi untuk flipped
         return (
@@ -567,9 +573,7 @@ class LoginUserPage_Base extends React.PureComponent {
                             <WSConnectionAction ref="wsAction"/>
                             <main>
                                 <div className="container-fluid p-login text-center">
-
-
-
+                                <Flash/>
                                     <div className={"card card-body d-border-active row bg-box-gradient mx-0"}>
                                         {this.props.loginErrState === true ?
                                             <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
@@ -588,7 +592,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                         <div className="col-md-6 pt-3">
                                             <div className="form-group row">
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
-                                                <div className="col-sm-12 text-left pl-5">Please enter ID and Password</div>
+                                                <div className="col-sm-12 text-left pl-5" onClick={()=>testAlert()}>Please enter ID and Password</div>
                                                 <div className="col-sm-12 pr-0 pl-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
                                                     <div className={"py-2"}>

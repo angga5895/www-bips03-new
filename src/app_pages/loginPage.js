@@ -558,8 +558,11 @@ class LoginUserPage_Base extends React.PureComponent {
                 return "icofont icofont-minus"
             }
         }
-        //zaky
-        //fungsi untuk flipped
+        // const testAlert = () => {
+        //     window.flash = (message, type="info") => Bus.emit('flash', ({message, type}));
+        //     window.flash('Record has been created successfully!', 'info');
+        // }
+
         return (
             <>
                 {
@@ -574,7 +577,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                         {this.props.loginErrState === true ?
                                             <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
                                                 <div className="pull-right mt-2 mr-3">
-                                                    <i className="click-pointer icofont icofont-close"></i>
+                                                    <i className="click-pointer icofont icofont-close" onClick={this.hideThis}></i>
                                                 </div>
                                                 <div id="content-alert" className={"py-2 text-white bg-danger "}>
                                                     {this.props.loginErrReason} Please try again
@@ -588,7 +591,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                         <div className="col-md-6 pt-3">
                                             <div className="form-group row">
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
-                                                <div className="col-sm-12 text-left pl-5" onClick={()=>testAlert()}>Please enter ID and Password</div>
+                                                <div className="col-sm-12 text-left pl-5">Please enter ID and Password</div>
                                                 <div className="col-sm-12 pr-0 pl-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
                                                     <div className={"py-2"}>

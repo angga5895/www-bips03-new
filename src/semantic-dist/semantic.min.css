@@ -13398,11 +13398,11 @@ img.ui.bordered.image {
 }
 
 .ui.small.input {
-    font-size: .92857143em
+    /*font-size: .92857143em*/
 }
 
 .ui.input {
-    font-size: 1em
+    /*font-size: 1em*/
 }
 
 .ui.large.input {

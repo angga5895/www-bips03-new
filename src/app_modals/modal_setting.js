@@ -61,8 +61,8 @@ class TabAppearance_Base extends React.PureComponent {
         var zoomLevel = 0.8;
         $('html').css({ zoom: zoomLevel });
 
-        document.body.style.setProperty('--column-col-sm-3-6', "25%");
-        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");
+        /*document.body.style.setProperty('--column-col-sm-3-6', "25%");
+        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");*/
 
         document.body.style.setProperty('--header-menu-scale', 'none');
         document.body.style.setProperty('--header-menu', 'block');
@@ -82,8 +82,8 @@ class TabAppearance_Base extends React.PureComponent {
         var zoomLevel = 0.9;
         $('html').css({ zoom: zoomLevel });
 
-        document.body.style.setProperty('--column-col-sm-3-6', "25%");
-        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");
+        /*document.body.style.setProperty('--column-col-sm-3-6', "25%");
+        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");*/
 
         document.body.style.setProperty('--header-menu-scale', 'none');
         document.body.style.setProperty('--header-menu', 'block');
@@ -103,8 +103,8 @@ class TabAppearance_Base extends React.PureComponent {
         var zoomLevel = 1;
         $('html').css({ zoom: zoomLevel });
 
-        document.body.style.setProperty('--column-col-sm-3-6', "25%");
-        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");
+        /*document.body.style.setProperty('--column-col-sm-3-6', "25%");
+        document.body.style.setProperty('--column-col-sm-2-4', "16.666667%");*/
 
         document.body.style.setProperty('--header-menu-scale', 'none');
         document.body.style.setProperty('--header-menu', 'block');
@@ -124,8 +124,8 @@ class TabAppearance_Base extends React.PureComponent {
         var zoomLevel = 1.1;
         $('html').css({ zoom: zoomLevel });
 
-        document.body.style.setProperty('--column-col-sm-3-6', "50%");
-        document.body.style.setProperty('--column-col-sm-2-4', "33.333333%");
+        /*document.body.style.setProperty('--column-col-sm-3-6', "50%");
+        document.body.style.setProperty('--column-col-sm-2-4', "33.333333%");*/
 
         document.body.style.setProperty('--header-menu-scale', 'block');
         document.body.style.setProperty('--header-menu', 'none');
@@ -146,8 +146,8 @@ class TabAppearance_Base extends React.PureComponent {
         $('html').css({ zoom: zoomLevel });
 
 
-        document.body.style.setProperty('--column-col-sm-3-6', "50%");
-        document.body.style.setProperty('--column-col-sm-2-4', "33.333333%");
+        /*document.body.style.setProperty('--column-col-sm-3-6', "50%");
+        document.body.style.setProperty('--column-col-sm-2-4', "33.333333%");*/
 
         document.body.style.setProperty('--header-menu-scale', 'block');
         document.body.style.setProperty('--header-menu', 'none');

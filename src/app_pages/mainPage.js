@@ -103,12 +103,16 @@ const ResizeResponsive = () => {
 
     if($('html').width() > 1300){
         $('.f-livetrade').css('font-size','14px');
+        $('.slidee > div').css('font-size','11px');
     } else if($('html').width() > 1200 && $('html').width() < 1301){
+        $('.slidee > div').css('font-size','10px');
         $('.f-livetrade').css('font-size','13px');
     } else if($('html').width() > 1000 && $('html').width() < 1201){
         $('.f-livetrade').css('font-size','9px');
+        $('.slidee > div').css('font-size','9px');
     } else if($('html').width() < 1001){
         $('.f-livetrade').css('font-size','7px');
+        $('.slidee > div').css('font-size','8px');
     }
 
     if($('html').width() > 1315) {
@@ -679,12 +683,16 @@ class MainPage_Base extends React.Component {
 
             if($('html').width() > 1300){
                 $('.f-livetrade').css('font-size','14px');
+                $('.slidee > div').css('font-size','11px');
             } else if($('html').width() > 1200 && $('html').width() < 1301){
+                $('.slidee > div').css('font-size','10px');
                 $('.f-livetrade').css('font-size','13px');
             } else if($('html').width() > 1000 && $('html').width() < 1201){
                 $('.f-livetrade').css('font-size','9px');
+                $('.slidee > div').css('font-size','9px');
             } else if($('html').width() < 1001){
                 $('.f-livetrade').css('font-size','7px');
+                $('.slidee > div').css('font-size','8px');
             }
 
             if($('html').width() > 545 && $('html').width() < 576) {

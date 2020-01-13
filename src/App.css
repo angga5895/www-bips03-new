@@ -5694,6 +5694,11 @@ textarea {
     align-content: center;
     text-align: center;
 }
+@media (max-width: 1300px){
+    .slidee > div{
+        font-size: 9px;
+    }
+}
 .slidee > .active{
     top: -32px;
 }

@@ -558,10 +558,6 @@ class LoginUserPage_Base extends React.PureComponent {
                 return "icofont icofont-minus"
             }
         }
-        const testAlert = () => {
-            window.flash = (message, type="success") => Bus.emit('flash', ({message, type}));
-            window.flash('record has been created successfully!', 'success');
-        }
         //zaky
         //fungsi untuk flipped
         return (
@@ -578,7 +574,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                         {this.props.loginErrState === true ?
                                             <div id="alert-wrong" className={"col-sm-12 text-center mb-3 px-0 py-0"}>
                                                 <div className="pull-right mt-2 mr-3">
-                                                    <i className="click-pointer icofont icofont-close" onClick={this.hideThis}></i>
+                                                    <i className="click-pointer icofont icofont-close"></i>
                                                 </div>
                                                 <div id="content-alert" className={"py-2 text-white bg-danger "}>
                                                     {this.props.loginErrReason} Please try again

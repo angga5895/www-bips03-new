@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Bus from '../src/bus';
 
-// import './index.css';
-
 export const Flash = () => {
     let [visibility, setVisibility] = useState(false);
     let [message, setMessage] = useState('');
@@ -15,7 +13,7 @@ export const Flash = () => {
             setType(type);
             setTimeout(() => {
                 setVisibility(false);
-            }, 4000);
+            }, 9000);
         });
 
 
@@ -31,8 +29,8 @@ export const Flash = () => {
 
     return (
         visibility && <div className={`alert alert-${type}`}>
-            <span className="close"><strong>X</strong></span>
-            <p>{message}</p>
+                <i className={"close click-pointer icofont icofont-close pull-right"}></i>
+                <p>{message}</p>
         </div>
     )
 }

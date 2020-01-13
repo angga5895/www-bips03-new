@@ -5690,5 +5690,36 @@ textarea {
 .slideDelapan > .hid-box{
     transition-delay: 1.5s;
 }
+.alert {
+    color: white;
+    border-radius: 10px;
+    position: absolute;
+    top: 8vh;
+    right: 10px;
+    padding: 13px;
+    /*display: flex;*/
+    align-items: center;
+    z-index: 1111;
+    -webkit-box-shadow: 3px 3px 4px -2px rgba(0,0,0,1);
+    -moz-box-shadow: 3px 3px 4px -2px rgba(0,0,0,1);
+    box-shadow: 3px 3px 4px -2px rgba(0,0,0,1);
+}
+.alert p {
+    margin: 0;
+}
+.alert-error {
+    background-image: linear-gradient(#ED1D24, #78232A);
+}
+.alert-success {
+    background-image: linear-gradient(#8CC640,#119848);
+}
+.alert-info {
+    background-image: linear-gradient(#0071BC,#122b40);
+}
+.close {
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
 
 

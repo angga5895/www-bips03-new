@@ -291,9 +291,11 @@ class MainPage_Base extends React.Component {
         this.state ={
               fullscreenmode:false,
         }
+        this.inactivity = this.inactivity.bind(this);
     }
 
     componentDidMount(){
+        window.addEventListener('load', this.inactivity);
 
         var setElementHeightWeb = function () {
             var marquee = $('html').width();
@@ -580,6 +582,8 @@ class MainPage_Base extends React.Component {
             ElementStockHistory();
         }).resize();
 
+
+
         // $(window).on("click", function () {
         //     setElementHeightWeb();
         //     setElementLiveZoom();
@@ -659,6 +663,33 @@ class MainPage_Base extends React.Component {
         }
 
     }
+
+    inactivity(){
+        var time;
+
+        document.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onmousedown = resetTimer; // touchscreen presses
+        document.ontouchstart = resetTimer;
+        document.onclick = resetTimer;     // touchpad clicks
+        document.onkeypress = resetTimer;
+        document.addEventListener('scroll', resetTimer, true); // improved; see comments
+        window.addEventListener('load', resetTimer, true);
+        var events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        events.forEach(function(name) {
+            document.addEventListener(name, resetTimer, true);
+        });
+
+        function logout() {
+            window.confirm("Apakah anda ingin reconnect?");
+        }
+
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(logout, 10000)
+            // 1000 milliseconds = 1 second
+        }
+    };
 
     render () {
         document.body.style.setProperty('--warna-dasar', this.props.thememode === true  ? "#010101" : "#FCFCFC");
@@ -1530,6 +1561,7 @@ class MarqueePage extends React.PureComponent{
     componentDidMount(){
         this.interval = setInterval(() => this.tick(), 1000);
     }
+
     tick() {
         this.setState(prevState => ({
             seconds: prevState.seconds + 1

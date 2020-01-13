@@ -405,9 +405,6 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
     .h-84{
         height: 84px!important;
     }
-}
-
-@media (min-width: 576px) {
     .tabheaderfill {
         height: 44.5px !important;
     }
@@ -2144,10 +2141,6 @@ button.bg-gold:hover {
     font-size: 12px!important;
 }
 
-.f-12{
-    font-size: 12px!important;
-}
-
 .f-13{
     font-size: 13px!important;
 }
@@ -2241,11 +2234,11 @@ button.bg-gold:hover {
     }
 
     .fs-icon-bips{
-        font-size: 2rem!important;
+        font-size: 2rem;
     }
 
     .fs-text-bips{
-        font-size: 8px!important;
+        font-size: 8px;
     }
 
     .col-sm-tab-scale {
@@ -2279,9 +2272,44 @@ button.bg-gold:hover {
     .padding-11{
         padding: 0px 11.1px;
     }
+
+    .img-avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .f-11{
+        font-size: 11px;
+    }
+
+    .f-12{
+        font-size: 12px;
+    }
+
+    .f-14{
+        font-size: 14px;
+    }
+
+    .f-16{
+        font-size: 16px;
+    }
+
+    .f-10{
+        font-size: 10px;
+    }
+
+    .f-8{
+        font-size: 8px;
+    }
+
+    .cssmenu ul li a{
+        padding: 15px 25px;
+    }
 }
 
-@media (max-width: 1315px) and (min-width: 1177px){
+@media (max-width: 1315px) and (min-width: 1177px) {
     .d-xxl-none {
         display: none!important;
     }
@@ -2303,17 +2331,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.49% !important;
-        max-width: 10.49%!important;
-        display: inline-block!important;
+        flex: 0 0 10.49% ;
+        max-width: 10.49%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1.9rem!important;
+        font-size: 1.9rem;
     }
 
     .fs-text-bips{
-        font-size: 6px!important;
+        font-size: 6px;
     }
 
     .padding-t5{
@@ -2326,21 +2354,25 @@ button.bg-gold:hover {
 
     .img-avatar {
         vertical-align: middle;
-        width: 42px!important;
-        height: 42px!important;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
     }
 
+    .f-11{
+        font-size: 10px;
+    }
+
     .f-12{
-        font-size: 11px!important;
+        font-size: 11px;
     }
 
     .f-xs-14 {
-        font-size: 11px!important;
+        font-size: 11px;
     }
 
     .f-14 {
-        font-size: 13px!important;
+        font-size: 13px;
     }
 
     h5{
@@ -2348,19 +2380,19 @@ button.bg-gold:hover {
     }
 
     .f-16 {
-        font-size: 15px!important;
+        font-size: 15px;
     }
 
     .cssmenu ul li a{
-        padding: 15px 22px!important;
+        padding: 15px 22px;
     }
 
     .f-10{
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-8{
-        font-size: 7px!important;
+        font-size: 7px;
     }
 }
 
@@ -2386,17 +2418,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.49% !important;
-        max-width: 10.49%!important;
-        display: inline-block!important;
+        flex: 0 0 10.49%;
+        max-width: 10.49%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1.9rem!important;
+        font-size: 1.9rem;
     }
 
     .fs-text-bips{
-        font-size: 5.9px!important;
+        font-size: 5.9px;
     }
 
     .padding-t5{
@@ -2409,25 +2441,29 @@ button.bg-gold:hover {
 
     .img-avatar {
         vertical-align: middle;
-        width: 40px!important;
-        height: 40px!important;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
     }
 
+    .f-11{
+        font-size: 9px;
+    }
+
     .f-12{
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-xs-14 {
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-16 {
-        font-size: 14px!important;
+        font-size: 14px;
     }
 
     .f-14 {
-        font-size: 12px!important;
+        font-size: 12px;
     }
 
     h5{
@@ -2435,15 +2471,15 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 19px!important;
+        padding: 15px 19px;
     }
 
     .f-10{
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-8{
-        font-size: 7px!important;
+        font-size: 7px;
     }
 }
 
@@ -2469,17 +2505,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.49% !important;
-        max-width: 10.49%!important;
-        display: inline-block!important;
+        flex: 0 0 10.49%;
+        max-width: 10.49%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1.9rem!important;
+        font-size: 1.9rem;
     }
 
     .fs-text-bips{
-        font-size: 5.9px!important;
+        font-size: 5.9px;
     }
 
     .padding-t5{
@@ -2492,25 +2528,29 @@ button.bg-gold:hover {
 
     .img-avatar {
         vertical-align: middle;
-        width: 33px!important;
-        height: 33px!important;
+        width: 33px;
+        height: 33px;
         border-radius: 50%;
     }
 
+    .f-11{
+        font-size: 9px;
+    }
+
     .f-12{
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-xs-14 {
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-16 {
-        font-size: 14px!important;
+        font-size: 14px;
     }
 
     .f-14 {
-        font-size: 12px!important;
+        font-size: 12px;
     }
 
     h5{
@@ -2518,15 +2558,15 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 19px!important;
+        padding: 15px 19px;
     }
 
     .f-10{
-        font-size: 8px!important;
+        font-size: 8px;
     }
 
     .f-8{
-        font-size: 6px!important;
+        font-size: 6px;
     }
 }
 
@@ -2552,33 +2592,37 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.39% !important;
-        max-width: 10.39%!important;
-        display: inline-block!important;
+        flex: 0 0 10.39%;
+        max-width: 10.39%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 2rem!important;
+        font-size: 2rem;
     }
 
     .fs-text-bips{
-        font-size: 8px!important;
+        font-size: 8px;
+    }
+
+    .f-11{
+        font-size: 9px;
     }
 
     .f-12{
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-xs-14 {
-        font-size: 10px!important;
+        font-size: 10px;
     }
 
     .f-16 {
-        font-size: 14px!important;
+        font-size: 14px;
     }
 
     .f-14 {
-        font-size: 12px!important;
+        font-size: 12px;
     }
 
     h5{
@@ -2589,15 +2633,15 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 9px!important;
+        padding: 15px 9px;
     }
 
     .f-10{
-        font-size: 7px!important;
+        font-size: 7px;
     }
 
     .f-8{
-        font-size: 5px!important;
+        font-size: 5px;
     }
 
     .btn{
@@ -2627,40 +2671,44 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.285% !important;
-        max-width: 10.285%!important;
-        display: inline-block!important;
+        flex: 0 0 10.285%;
+        max-width: 10.285%;
+        display: inline-block;
     }
 
     .img-avatar {
         vertical-align: middle;
-        width: 40px!important;
-        height: 40px!important;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
     }
 
     .fs-icon-bips{
-        font-size: 1.5rem!important;
+        font-size: 1.5rem;
     }
 
     .fs-text-bips{
-        font-size: 7px!important;
+        font-size: 7px;
+    }
+
+    .f-11{
+        font-size: 6px;
     }
 
     .f-12{
-        font-size: 7px!important;
+        font-size: 7px;
     }
 
     .f-xs-14 {
-        font-size: 7px!important;
+        font-size: 7px;
     }
 
     .f-16 {
-        font-size: 11px!important;
+        font-size: 11px;
     }
 
     .f-14 {
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     h5{
@@ -2675,7 +2723,7 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 19px!important;
+        padding: 15px 19px;
     }
 }
 
@@ -2701,17 +2749,17 @@ button.bg-gold:hover {
     }
 
     .col-sm-tab {
-        flex: 0 0 10.19% !important;
-        max-width: 10.19%!important;
-        display: inline-block!important;
+        flex: 0 0 10.19%;
+        max-width: 10.19%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1.5rem!important;
+        font-size: 1.5rem;
     }
 
     .fs-text-bips{
-        font-size: 6.2px!important;
+        font-size: 6.2px;
     }
 
     .col-mbl-1 {
@@ -2751,20 +2799,24 @@ button.bg-gold:hover {
         display: inline-block!important;
     }
 
+    .f-11{
+        font-size: 8px;
+    }
+
     .f-12{
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-xs-14 {
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-16 {
-        font-size: 13px!important;
+        font-size: 13px;
     }
 
     .f-14 {
-        font-size: 11px!important;
+        font-size: 11px;
     }
 
     h5{
@@ -2775,15 +2827,15 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 7px!important;
+        padding: 15px 7px;
     }
 
     .f-10{
-        font-size: 6px!important;
+        font-size: 6px;
     }
 
     .f-8{
-        font-size: 4px!important;
+        font-size: 4px;
     }
 
     .btn{
@@ -2849,20 +2901,24 @@ button.bg-gold:hover {
         display: inline-block!important;
     }
 
+    .f-11{
+        font-size: 8px;
+    }
+
     .f-12{
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-xs-14 {
-        font-size: 9px!important;
+        font-size: 9px;
     }
 
     .f-16 {
-        font-size: 13px!important;
+        font-size: 13px;
     }
 
     .f-14 {
-        font-size: 11px!important;
+        font-size: 11px;
     }
 
     h5{
@@ -2873,15 +2929,15 @@ button.bg-gold:hover {
     }
 
     .cssmenu ul li a{
-        padding: 15px 7px!important;
+        padding: 15px 7px;
     }
 
     .f-10{
-        font-size: 6px!important;
+        font-size: 6px;
     }
 
     .f-8{
-        font-size: 4px!important;
+        font-size: 4px;
     }
 
     .btn{
@@ -2891,101 +2947,101 @@ button.bg-gold:hover {
 
 @media (max-width: 575px) and (min-width: 546px){
     .col-sm-tab {
-        flex: 0 0 9.9% !important;
-        max-width: 9.9%!important;
-        display: inline-block!important;
+        flex: 0 0 9.9%;
+        max-width: 9.9%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 7px!important;
+        font-size: 7px;
     }
 } @media (max-width: 545px) and (min-width: 480px) {
     .col-sm-tab {
-        flex: 0 0 9.85% !important;
-        max-width: 9.85%!important;
-        display: inline-block!important;
+        flex: 0 0 9.85%;
+        max-width: 9.85%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 6px!important;
+        font-size: 6px;
     }
 } @media (max-width: 479px) and (min-width: 429px){
     .col-sm-tab {
-        flex: 0 0 9.7% !important;
-        max-width: 9.7%!important;
-        display: inline-block!important;
+        flex: 0 0 9.7%;
+        max-width: 9.7%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 5.5px!important;
+        font-size: 5.5px;
     }
 } @media (max-width: 428px) and (min-width: 401px){
     .col-sm-tab {
-        flex: 0 0 9.6% !important;
-        max-width: 9.6%!important;
-        display: inline-block!important;
+        flex: 0 0 9.6%;
+        max-width: 9.6%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 5px!important;
+        font-size: 5px;
     }
 } @media (max-width: 400px) and (min-width: 365px){
     .col-sm-tab {
-        flex: 0 0 9.45% !important;
-        max-width: 9.45%!important;
-        display: inline-block!important;
+        flex: 0 0 9.45%;
+        max-width: 9.45%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 4.5px!important;
+        font-size: 4.5px;
     }
 } @media (max-width: 364px) and (min-width: 336px){
     .col-sm-tab {
-        flex: 0 0 9.3% !important;
-        max-width: 9.3%!important;
-        display: inline-block!important;
+        flex: 0 0 9.3%;
+        max-width: 9.3%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 4px!important;
+        font-size: 4px;
     }
 } @media (max-width: 335px){
     .col-sm-tab {
-        flex: 0 0 9% !important;
-        max-width: 9%!important;
-        display: inline-block!important;
+        flex: 0 0 9%;
+        max-width: 9%;
+        display: inline-block;
     }
 
     .fs-icon-bips{
-        font-size: 1rem!important;
+        font-size: 1rem;
     }
 
     .fs-text-bips{
-        font-size: 3.5px!important;
+        font-size: 3.5px;
     }
 }
 
@@ -3015,18 +3071,6 @@ button.bg-gold:hover {
 
 .f-18{
     font-size: 18px;
-}
-
-.f-14{
-    font-size: 14px;
-}
-
-.f-16{
-    font-size: 16px;
-}
-
-.f-11{
-    font-size: 11px;
 }
 
 .text-transform-none{
@@ -3079,13 +3123,6 @@ button.bg-gold:hover {
 
 .cursor-menu{
     cursor: pointer!important;
-}
-
-.img-avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
 }
 
 .img-round-icon {
@@ -3159,7 +3196,6 @@ button.bg-gold:hover {
     color: var(--warna-cssmenu);
     text-decoration: none;
     display: block;
-    padding: 15px 25px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -3920,14 +3956,6 @@ button.bg-gold:hover {
 .f-10-center{
     font-size: 10px;
     text-align: center;
-}
-
-.f-10{
-    font-size: 10px;
-}
-
-.f-8{
-    font-size: 8px;
 }
 
 .f-9-center{

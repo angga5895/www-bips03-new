@@ -28,6 +28,357 @@ const CustomFrameHeader = (props) => {
 }
 
 const ResizeResponsive = () => {
+    if($('html').width() < 1021) {
+        $('.col-smb-1').css('float', 'left');
+        $('.col-smb-2').css('float', 'left');
+        $('.col-smb-3').css('float', 'left');
+        $('.col-smb-4').css('float', 'left');
+        $('.col-smb-5').css('float', 'left');
+        $('.col-smb-6').css('float', 'left');
+        $('.col-smb-7').css('float', 'left');
+        $('.col-smb-8').css('float', 'left');
+        $('.col-smb-9').css('float', 'left');
+        $('.col-smb-10').css('float', 'left');
+        $('.col-smb-11').css('float', 'left');
+        $('.col-smb-12').css('float', 'left');
+
+        $('.col-smb-1').css('width', '8.33333333%');
+        $('.col-smb-2').css('width', '16.66666667%');
+        $('.col-smb-3').css('width', '25%');
+        $('.col-smb-4').css('width', '33.33333333%');
+        $('.col-smb-5').css('width', '41.66666667%');
+        $('.col-smb-6').css('width', '50%');
+        $('.col-smb-7').css('width', '58.33333333%');
+        $('.col-smb-8').css('width', '66.66666667%');
+        $('.col-smb-9').css('width', '75%');
+        $('.col-smb-10').css('width', '83.33333333%');
+        $('.col-smb-11').css('width', '91.66666667%');
+        $('.col-smb-12').css('width', '100%');
+    }
+
+
+    if($('html').width() > 545 && $('html').width() < 576) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 7px!important');
+        $('.col-sm-tab').css('flex','0 0 9.9%');
+        $('.col-sm-tab').css('max-width','9.9%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() > 479 && $('html').width() < 546) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 6px!important');
+        $('.col-sm-tab').css('flex','0 0 9.85%');
+        $('.col-sm-tab').css('max-width','9.85%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() > 428 && $('html').width() < 480) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 5.5px!important');
+        $('.col-sm-tab').css('flex','0 0 9.7%');
+        $('.col-sm-tab').css('max-width','9.7%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() > 400 && $('html').width() < 429) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 5px!important');
+        $('.col-sm-tab').css('flex','0 0 9.6%');
+        $('.col-sm-tab').css('max-width','9.6%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() > 364 && $('html').width() < 401) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 4.5px!important');
+        $('.col-sm-tab').css('flex','0 0 9.45%');
+        $('.col-sm-tab').css('max-width','9.45%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() > 335 && $('html').width() < 365) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 4px!important');
+        $('.col-sm-tab').css('flex','0 0 9.3%');
+        $('.col-sm-tab').css('max-width','9.3%');
+        $('.col-sm-tab').css('display','inline-block');
+    } else if($('html').width() < 366) {
+        $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 3.5px!important');
+        $('.col-sm-tab').css('flex','0 0 9%');
+        $('.col-sm-tab').css('max-width','9%');
+        $('.col-sm-tab').css('display','inline-block');
+    }
+
+    if($('html').width() > 1300){
+        $('.f-livetrade').css('font-size','14px');
+    } else if($('html').width() > 1200 && $('html').width() < 1301){
+        $('.f-livetrade').css('font-size','13px');
+    } else if($('html').width() > 1000 && $('html').width() < 1201){
+        $('.f-livetrade').css('font-size','9px');
+    } else if($('html').width() < 1001){
+        $('.f-livetrade').css('font-size','7px');
+    }
+
+    if($('html').width() > 1315) {
+        $('.d-xxl-block').css('cssText', 'display: block!important');
+        $('.d-sml-none').css('cssText', 'display: none!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+        $('.padding-t5').css('cssText', 'padding: 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 0px!important');
+        $('.col-sm-tab').css('flex','0 1 auto');
+        $('.col-sm-tab').css('max-width','10.49%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '50px');
+        $('.img-avatar').css('height', '50px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '11px');
+        $('.f-12').css('font-size', '12px');
+        $('.f-xs-14').css('font-size', '12px');
+        $('.f-14').css('font-size', '14px');
+        $('.f-16').css('font-size', '16px');
+        $('.f-10').css('font-size', '10px');
+        $('.f-8').css('font-size', '8px');
+        $('.cssmenu ul li a').css('padding', '15px 25px');
+        $('h5').css('cssText', 'font-size: 14px!important');
+        $('h3').css('cssText', 'font-size: 24px!important');
+        $('.padding-6').css('padding','0px 6.5px');
+        $('.padding-15').css('padding','0px 15.3px');
+        $('.padding-7').css('padding','0px 7.8px');
+        $('.padding-21').css('padding','0px 21.09px');
+        $('.padding-11').css('padding','0px 11.1px');
+        $('.btn').css('font-size','12px');
+    }
+    else if($('html').width() > 1176 && $('html').width() < 1316) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-block').css('cssText', 'display: block!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 6px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px!important');
+        $('.col-sm-tab').css('flex','0 1 auto');
+        $('.col-sm-tab').css('max-width','10.49%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '42px');
+        $('.img-avatar').css('height', '42px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '10px');
+        $('.f-12').css('font-size', '11px');
+        $('.f-xs-14').css('font-size', '11px');
+        $('.f-14').css('font-size', '13px');
+        $('.f-16').css('font-size', '15px');
+        $('.f-10').css('font-size', '9px');
+        $('.f-8').css('font-size', '7px');
+        $('.cssmenu ul li a').css('padding', '15px 22px');
+        $('h5').css('cssText', 'font-size: 13px!important');
+        $('h3').css('cssText', 'font-size: 24px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','12px');
+    }
+    else if($('html').width() > 1116 && $('html').width() < 1177) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-block').css('cssText', 'display: block!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 5.9px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.col-sm-tab').css('flex','0 1 auto');
+        $('.col-sm-tab').css('max-width','10.49%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '38.5px');
+        $('.img-avatar').css('height', '38.5px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '9px');
+        $('.f-12').css('font-size', '10px');
+        $('.f-xs-14').css('font-size', '10px');
+        $('.f-14').css('font-size', '12px');
+        $('.f-16').css('font-size', '14px');
+        $('.f-10').css('font-size', '8px');
+        $('.f-8').css('font-size', '7px');
+        $('.cssmenu ul li a').css('padding', '15px 19px');
+        $('h5').css('cssText', 'font-size: 12px!important');
+        $('h3').css('cssText', 'font-size: 24px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','12px');
+    }
+    else if($('html').width() > 1020 && $('html').width() < 1117) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-block').css('cssText', 'display: block!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 5.9px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.col-sm-tab').css('flex','0 1 auto');
+        $('.col-sm-tab').css('max-width','10.49%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '33px');
+        $('.img-avatar').css('height', '33px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '9px');
+        $('.f-12').css('font-size', '10px');
+        $('.f-xs-14').css('font-size', '10px');
+        $('.f-14').css('font-size', '12px');
+        $('.f-16').css('font-size', '14px');
+        $('.f-10').css('font-size', '8px');
+        $('.f-8').css('font-size', '6px');
+        $('.cssmenu ul li a').css('padding', '15px 10px');
+        $('h5').css('cssText', 'font-size: 12px!important');
+        $('h3').css('cssText', 'font-size: 24px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','12px');
+    }
+    else if($('html').width() > 845 && $('html').width() < 1021) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-none').css('cssText', 'display: none!important');
+        $('.d-xsml-block').css('cssText', 'display: block!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.col-sm-tab').css('flex','0 0 10.39%');
+        $('.col-sm-tab').css('max-width','10.39%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '50px');
+        $('.img-avatar').css('height', '50px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '9px');
+        $('.f-12').css('font-size', '10px');
+        $('.f-xs-14').css('font-size', '10px');
+        $('.f-14').css('font-size', '12px');
+        $('.f-16').css('font-size', '14px');
+        $('.f-10').css('font-size', '7px');
+        $('.f-8').css('font-size', '5px');
+        $('.cssmenu ul li a').css('padding', '15px 10px');
+        $('h5').css('cssText', 'font-size: 12px!important');
+        $('h3').css('cssText', 'font-size: 20px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','10px');
+    }
+    else if($('html').width() > 755 && $('html').width() < 846) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-none').css('cssText', 'display: none!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-block').css('cssText', 'display: block!important');
+        $('.d-xsm-none').css('cssText', 'display: none!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.col-sm-tab').css('flex','0 0 10.285%');
+        $('.col-sm-tab').css('max-width','10.285%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '40px');
+        $('.img-avatar').css('height', '40px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '6px');
+        $('.f-12').css('font-size', '7px');
+        $('.f-xs-14').css('font-size', '7px');
+        $('.f-14').css('font-size', '9px');
+        $('.f-16').css('font-size', '11px');
+        $('.f-10').css('font-size', '5px');
+        $('.f-8').css('font-size', '3px');
+        $('.cssmenu ul li a').css('padding', '15px 5px');
+        $('h5').css('cssText', 'font-size: 9px!important');
+        $('h3').css('cssText', 'font-size: 18px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','7px');
+    }
+    else if($('html').width() > 575 && $('html').width() < 756) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-none').css('cssText', 'display: none!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-block').css('cssText', 'display: block!important');
+        $('.fs-icon-bips').css('cssText', 'font-size: 1.5rem!important');
+        $('.fs-text-bips').css('cssText', 'font-size: 6.2px!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.col-sm-tab').css('flex','0 0 10.1%');
+        $('.col-sm-tab').css('max-width','10.1%');
+        $('.col-sm-tab').css('display','inline-block');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '42px');
+        $('.img-avatar').css('height', '42px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '8px');
+        $('.f-12').css('font-size', '9px');
+        $('.f-xs-14').css('font-size', '9px');
+        $('.f-14').css('font-size', '11px');
+        $('.f-16').css('font-size', '13px');
+        $('.f-10').css('font-size', '4px');
+        $('.f-8').css('font-size', '3px');
+        $('.cssmenu ul li a').css('padding', '15px 5px');
+        $('h5').css('cssText', 'font-size: 11px!important');
+        $('h3').css('cssText', 'font-size: 16px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','9px');
+    }
+    else if($('html').width() < 576) {
+        $('.d-xxl-none').css('cssText', 'display: none!important');
+        $('.d-sml-none').css('cssText', 'display: none!important');
+        $('.d-xsml-none').css('cssText', 'display: none!important');
+        $('.d-xxsml-none').css('cssText', 'display: none!important');
+        $('.d-xsm-block').css('cssText', 'display: block!important');
+        $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+        $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+        $('.img-avatar').css('vertical-align', 'middle');
+        $('.img-avatar').css('width', '42px');
+        $('.img-avatar').css('height', '42px');
+        $('.img-avatar').css('border-radius', '50%');
+        $('.f-11').css('font-size', '8px');
+        $('.f-12').css('font-size', '9px');
+        $('.f-xs-14').css('font-size', '9px');
+        $('.f-14').css('font-size', '11px');
+        $('.f-16').css('font-size', '13px');
+        $('.f-10').css('font-size', '6px');
+        $('.f-8').css('font-size', '4px');
+        $('.cssmenu ul li a').css('padding', '15px 5px');
+        $('h5').css('cssText', 'font-size: 11px!important');
+        $('h3').css('cssText', 'font-size: 16px!important');
+        $('.padding-6').css('padding', '0px 0px');
+        $('.padding-15').css('padding', '0px 0px');
+        $('.padding-7').css('padding', '0px 0px');
+        $('.padding-21').css('padding', '0px 0px');
+        $('.padding-11').css('padding', '0px 0px');
+        $('.btn').css('font-size','9px');
+    }
+
     var marquee = $('html').width();
     /*marquee = marquee + 20;*/
     $('.runningText p').css('minWidth', (marquee));
@@ -296,6 +647,357 @@ class MainPage_Base extends React.Component {
     componentDidMount(){
 
         var setElementHeightWeb = function () {
+            if($('html').width() < 1021) {
+                $('.col-smb-1').css('float', 'left');
+                $('.col-smb-2').css('float', 'left');
+                $('.col-smb-3').css('float', 'left');
+                $('.col-smb-4').css('float', 'left');
+                $('.col-smb-5').css('float', 'left');
+                $('.col-smb-6').css('float', 'left');
+                $('.col-smb-7').css('float', 'left');
+                $('.col-smb-8').css('float', 'left');
+                $('.col-smb-9').css('float', 'left');
+                $('.col-smb-10').css('float', 'left');
+                $('.col-smb-11').css('float', 'left');
+                $('.col-smb-12').css('float', 'left');
+
+                $('.col-smb-1').css('width', '8.33333333%');
+                $('.col-smb-2').css('width', '16.66666667%');
+                $('.col-smb-3').css('width', '25%');
+                $('.col-smb-4').css('width', '33.33333333%');
+                $('.col-smb-5').css('width', '41.66666667%');
+                $('.col-smb-6').css('width', '50%');
+                $('.col-smb-7').css('width', '58.33333333%');
+                $('.col-smb-8').css('width', '66.66666667%');
+                $('.col-smb-9').css('width', '75%');
+                $('.col-smb-10').css('width', '83.33333333%');
+                $('.col-smb-11').css('width', '91.66666667%');
+                $('.col-smb-12').css('width', '100%');
+            }
+
+            if($('html').width() > 1300){
+                $('.f-livetrade').css('font-size','14px');
+            } else if($('html').width() > 1200 && $('html').width() < 1301){
+                $('.f-livetrade').css('font-size','13px');
+            } else if($('html').width() > 1000 && $('html').width() < 1201){
+                $('.f-livetrade').css('font-size','9px');
+            } else if($('html').width() < 1001){
+                $('.f-livetrade').css('font-size','7px');
+            }
+
+            if($('html').width() > 545 && $('html').width() < 576) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 7px!important');
+                $('.col-sm-tab').css('flex','0 0 9.9%');
+                $('.col-sm-tab').css('max-width','9.9%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() > 479 && $('html').width() < 546) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 6px!important');
+                $('.col-sm-tab').css('flex','0 0 9.85%');
+                $('.col-sm-tab').css('max-width','9.85%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() > 428 && $('html').width() < 480) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 5.5px!important');
+                $('.col-sm-tab').css('flex','0 0 9.7%');
+                $('.col-sm-tab').css('max-width','9.7%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() > 400 && $('html').width() < 429) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 5px!important');
+                $('.col-sm-tab').css('flex','0 0 9.6%');
+                $('.col-sm-tab').css('max-width','9.6%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() > 364 && $('html').width() < 401) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 4.5px!important');
+                $('.col-sm-tab').css('flex','0 0 9.45%');
+                $('.col-sm-tab').css('max-width','9.45%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() > 335 && $('html').width() < 365) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 4px!important');
+                $('.col-sm-tab').css('flex','0 0 9.3%');
+                $('.col-sm-tab').css('max-width','9.3%');
+                $('.col-sm-tab').css('display','inline-block');
+            } else if($('html').width() < 366) {
+                $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 3.5px!important');
+                $('.col-sm-tab').css('flex','0 0 9%');
+                $('.col-sm-tab').css('max-width','9%');
+                $('.col-sm-tab').css('display','inline-block');
+            }
+
+
+            if($('html').width() > 1315) {
+                $('.d-xxl-block').css('cssText', 'display: block!important');
+                $('.d-sml-none').css('cssText', 'display: none!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+                $('.padding-t5').css('cssText', 'padding: 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 0px!important');
+                $('.col-sm-tab').css('flex','0 1 auto');
+                $('.col-sm-tab').css('max-width','10.49%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '50px');
+                $('.img-avatar').css('height', '50px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '11px');
+                $('.f-12').css('font-size', '12px');
+                $('.f-xs-14').css('font-size', '12px');
+                $('.f-14').css('font-size', '14px');
+                $('.f-16').css('font-size', '16px');
+                $('.f-10').css('font-size', '10px');
+                $('.f-8').css('font-size', '8px');
+                $('.cssmenu ul li a').css('padding', '15px 25px');
+                $('h5').css('cssText', 'font-size: 14px!important');
+                $('h3').css('cssText', 'font-size: 24px!important');
+                $('.padding-6').css('padding','0px 6.5px');
+                $('.padding-15').css('padding','0px 15.3px');
+                $('.padding-7').css('padding','0px 7.8px');
+                $('.padding-21').css('padding','0px 21.09px');
+                $('.padding-11').css('padding','0px 11.1px');
+                $('.btn').css('font-size','12px');
+            }
+            else if($('html').width() > 1176 && $('html').width() < 1316) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-block').css('cssText', 'display: block!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 6px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px!important');
+                $('.col-sm-tab').css('flex','0 1 auto');
+                $('.col-sm-tab').css('max-width','10.49%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '42px');
+                $('.img-avatar').css('height', '42px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '10px');
+                $('.f-12').css('font-size', '11px');
+                $('.f-xs-14').css('font-size', '11px');
+                $('.f-14').css('font-size', '13px');
+                $('.f-16').css('font-size', '15px');
+                $('.f-10').css('font-size', '9px');
+                $('.f-8').css('font-size', '7px');
+                $('.cssmenu ul li a').css('padding', '15px 22px');
+                $('h5').css('cssText', 'font-size: 13px!important');
+                $('h3').css('cssText', 'font-size: 24px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','12px');
+            }
+            else if($('html').width() > 1116 && $('html').width() < 1177) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-block').css('cssText', 'display: block!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 5.9px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.col-sm-tab').css('flex','0 1 auto');
+                $('.col-sm-tab').css('max-width','10.49%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '38.5px');
+                $('.img-avatar').css('height', '38.5px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '9px');
+                $('.f-12').css('font-size', '10px');
+                $('.f-xs-14').css('font-size', '10px');
+                $('.f-14').css('font-size', '12px');
+                $('.f-16').css('font-size', '14px');
+                $('.f-10').css('font-size', '8px');
+                $('.f-8').css('font-size', '7px');
+                $('.cssmenu ul li a').css('padding', '15px 19px');
+                $('h5').css('cssText', 'font-size: 12px!important');
+                $('h3').css('cssText', 'font-size: 24px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','12px');
+            }
+            else if($('html').width() > 1020 && $('html').width() < 1117) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-block').css('cssText', 'display: block!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 1.9rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 5.9px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.col-sm-tab').css('flex','0 1 auto');
+                $('.col-sm-tab').css('max-width','10.49%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '33px');
+                $('.img-avatar').css('height', '33px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '9px');
+                $('.f-12').css('font-size', '10px');
+                $('.f-xs-14').css('font-size', '10px');
+                $('.f-14').css('font-size', '12px');
+                $('.f-16').css('font-size', '14px');
+                $('.f-10').css('font-size', '8px');
+                $('.f-8').css('font-size', '6px');
+                $('.cssmenu ul li a').css('padding', '15px 10px');
+                $('h5').css('cssText', 'font-size: 12px!important');
+                $('h3').css('cssText', 'font-size: 24px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','12px');
+            }
+            else if($('html').width() > 845 && $('html').width() < 1021) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-none').css('cssText', 'display: none!important');
+                $('.d-xsml-block').css('cssText', 'display: block!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.col-sm-tab').css('flex','0 0 10.39%');
+                $('.col-sm-tab').css('max-width','10.39%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '50px');
+                $('.img-avatar').css('height', '50px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '9px');
+                $('.f-12').css('font-size', '10px');
+                $('.f-xs-14').css('font-size', '10px');
+                $('.f-14').css('font-size', '12px');
+                $('.f-16').css('font-size', '14px');
+                $('.f-10').css('font-size', '7px');
+                $('.f-8').css('font-size', '5px');
+                $('.cssmenu ul li a').css('padding', '15px 10px');
+                $('h5').css('cssText', 'font-size: 12px!important');
+                $('h3').css('cssText', 'font-size: 20px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','10px');
+            }
+            else if($('html').width() > 755 && $('html').width() < 846) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-none').css('cssText', 'display: none!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-block').css('cssText', 'display: block!important');
+                $('.d-xsm-none').css('cssText', 'display: none!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 2rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 8px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.col-sm-tab').css('flex','0 0 10.285%');
+                $('.col-sm-tab').css('max-width','10.285%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '40px');
+                $('.img-avatar').css('height', '40px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '6px');
+                $('.f-12').css('font-size', '7px');
+                $('.f-xs-14').css('font-size', '7px');
+                $('.f-14').css('font-size', '9px');
+                $('.f-16').css('font-size', '11px');
+                $('.f-10').css('font-size', '5px');
+                $('.f-8').css('font-size', '3px');
+                $('.cssmenu ul li a').css('padding', '15px 5px');
+                $('h5').css('cssText', 'font-size: 9px!important');
+                $('h3').css('cssText', 'font-size: 18px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','7px');
+            }
+            else if($('html').width() > 575 && $('html').width() < 756) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-none').css('cssText', 'display: none!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-block').css('cssText', 'display: block!important');
+                $('.fs-icon-bips').css('cssText', 'font-size: 1.5rem!important');
+                $('.fs-text-bips').css('cssText', 'font-size: 6.2px!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.col-sm-tab').css('flex','0 0 10.1%');
+                $('.col-sm-tab').css('max-width','10.1%');
+                $('.col-sm-tab').css('display','inline-block');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '42px');
+                $('.img-avatar').css('height', '42px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '8px');
+                $('.f-12').css('font-size', '9px');
+                $('.f-xs-14').css('font-size', '9px');
+                $('.f-14').css('font-size', '11px');
+                $('.f-16').css('font-size', '13px');
+                $('.f-10').css('font-size', '4px');
+                $('.f-8').css('font-size', '3px');
+                $('.cssmenu ul li a').css('padding', '15px 5px');
+                $('h5').css('cssText', 'font-size: 11px!important');
+                $('h3').css('cssText', 'font-size: 16px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','9px');
+            }
+            else if($('html').width() < 576) {
+                $('.d-xxl-none').css('cssText', 'display: none!important');
+                $('.d-sml-none').css('cssText', 'display: none!important');
+                $('.d-xsml-none').css('cssText', 'display: none!important');
+                $('.d-xxsml-none').css('cssText', 'display: none!important');
+                $('.d-xsm-block').css('cssText', 'display: block!important');
+                $('.padding-t5').css('cssText', 'padding: 5px 0px 0px 0px!important');
+                $('.menuscaleheader').css('cssText', 'padding: 9px 5px!important');
+                $('.img-avatar').css('vertical-align', 'middle');
+                $('.img-avatar').css('width', '42px');
+                $('.img-avatar').css('height', '42px');
+                $('.img-avatar').css('border-radius', '50%');
+                $('.f-11').css('font-size', '8px');
+                $('.f-12').css('font-size', '9px');
+                $('.f-xs-14').css('font-size', '9px');
+                $('.f-14').css('font-size', '11px');
+                $('.f-16').css('font-size', '13px');
+                $('.f-10').css('font-size', '6px');
+                $('.f-8').css('font-size', '4px');
+                $('.cssmenu ul li a').css('padding', '15px 5px');
+                $('h5').css('cssText', 'font-size: 11px!important');
+                $('h3').css('cssText', 'font-size: 16px!important');
+                $('.padding-6').css('padding', '0px 0px');
+                $('.padding-15').css('padding', '0px 0px');
+                $('.padding-7').css('padding', '0px 0px');
+                $('.padding-21').css('padding', '0px 0px');
+                $('.padding-11').css('padding', '0px 0px');
+                $('.btn').css('font-size','9px');
+            }
+
             var marquee = $('html').width();
             /*marquee = marquee + 20;*/
             $('.runningText p').css('minWidth', (marquee));
@@ -568,7 +1270,6 @@ class MainPage_Base extends React.Component {
         $(document).ready(function () {
             setElementHeightWeb();
             setElementLiveZoom();
-            console.log('Naha Teu Asup');
         }).resize();
 
         $(window).on("resize", function () {

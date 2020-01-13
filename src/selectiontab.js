@@ -102,7 +102,7 @@ const UISelectionTab_Base = (props) => {
     return (
         <div class="h-84 mb-1">
             <div className="d-xxl-none d-xxl-block d-border-bottom mb-1">
-                <div className="header-normal-menu">
+                <div>
                     <Menu className="row">
                         <div className="col-sm-header-logo px-0 text-center align-middle align-self-center text-white click-pointer">
                             <Navbar.Brand href="/" className="text-white pr-0 pl-3"><h2>BIPS</h2></Navbar.Brand>
@@ -127,7 +127,7 @@ const UISelectionTab_Base = (props) => {
                         </div>
                     </Menu>
                 </div>
-                <div className="header-scale-menu">
+                {/*<div className="header-scale-menu">
                     <Navbar className="navbar-trading my-0">
                         <div className="col-sm-12 px-0 mx-0 row bg-navy-gradient-odd">
                             <div className="col-sm-1 px-0 mx-0 align-self-center text-center click-pointer">
@@ -138,7 +138,7 @@ const UISelectionTab_Base = (props) => {
                             <div className="col-sm-10 px-0 mx-0 align-self-center text-center">
                                 <div className="col-sm-12 align-self-center text-center row">
                                     <div className="col-sm-8 px-0 mx-0 row">
-                                        {/*Zaky*/}
+                                        Zaky
                                         <Menu.Menu className="col-sm-12 px-4 align-self-center">
                                             <SelectItem1 />
                                         </Menu.Menu>
@@ -161,7 +161,7 @@ const UISelectionTab_Base = (props) => {
                             </MenuCollapse>
                         </div>
                     </Navbar>
-                </div>
+                </div>*/}
             </div>
 
             <div className="d-sml-none d-sml-block d-border-bottom mb-1">
@@ -859,7 +859,7 @@ class MenuCollapse extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Collapse in={this.state.open} className="w-100">
+                <Collapse in={this.state.open} className="w-100" style={{zIndex:"1"}}>
                     <div>
                         {this.props.children}
                     </div>

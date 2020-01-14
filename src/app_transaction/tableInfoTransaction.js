@@ -318,7 +318,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                 <AppFrameAction ref="frameAction" />
                 <div className="col-sm-12 row px-2 mx-0 py-3">
                     <div className="col-sm-5 px-0 mx-0">
-                        <Input defaultValue={this.props.saham} placeholder='Code' size='small' style={{width:'50%'}}/>
+                        <Input defaultValue={this.props.saham} placeholder='Code' style={{width:'50%'}}/>
                     </div>
 
                     <div className="col-sm-7 align-self-center mx-0 px-0">

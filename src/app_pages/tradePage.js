@@ -449,7 +449,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 <label htmlFor="">Expired Date</label>
                             </div>
                             <div className="col-sm-12 ui input mb-3" style={{paddingRight:'53px'}}>
-                                <Input placeholder='dd/mm/yy' size='small' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
+                                <Input placeholder='dd/mm/yy' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
                                 <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
                                     className="fa fa-calendar-alt"></span></span>
                             </div>

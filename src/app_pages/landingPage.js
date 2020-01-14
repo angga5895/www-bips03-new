@@ -974,7 +974,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
-                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
                                                     <div className="col-md-2">
                                                         Withdrawable Amount
@@ -983,7 +983,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
-                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
                                                 </div> <div className="row p-3">
                                                 <div className="col-md-2">
@@ -993,7 +993,7 @@ class FundTransfer_Base extends React.PureComponent {
 
                                                 </div>
                                                 <div className="col-md-3 ui input" style={{paddingRight:'53px'}}>
-                                                    <Input placeholder='dd/mm/yy' size='small' id="datepickerTest" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    <Input placeholder='dd/mm/yy' id="datepickerTest" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
                                                         className="fa fa-calendar-alt"></span></span>
                                                 </div>

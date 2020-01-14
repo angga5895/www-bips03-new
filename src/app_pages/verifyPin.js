@@ -43,7 +43,8 @@ class VerifyPIN extends React.PureComponent{
 
     state = {
         value: "",
-        visible:false
+        visible:false,
+        isEmpty: false,
     }
 
     onChange = value =>{
@@ -123,7 +124,15 @@ class VerifyPIN extends React.PureComponent{
             } else{
                 var visible = true;
                 this.setState({ visible });
+                var isEmpty = false;
+                this.setState({ isEmpty });
             }
+        }else{
+            var isEmpty = true;
+            this.setState({ isEmpty });
+
+            var visible = false;
+            this.setState({ visible });
         }
     };
 
@@ -134,6 +143,10 @@ class VerifyPIN extends React.PureComponent{
         this.pin.clear();
         this.setState({ value });
     };
+    onClickCloseFullFill = (e) => {
+        var isEmpty = false;
+        this.setState({ isEmpty });
+    }
 
     forgotPIN = (e) =>{
         var frameAction = this.refs.frameAction;
@@ -178,6 +191,7 @@ class VerifyPIN extends React.PureComponent{
                             secret
                             ref={p => (this.pin = p)}
                             type="numeric"
+                            onComplete={this.onClickSubmit}
                             onChange={this.onChange}
                         />
                     </div>
@@ -207,9 +221,15 @@ class VerifyPIN extends React.PureComponent{
                     </div>
 
                     <div className={this.state.visible ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
-                        <div className={/*{cssmode == 'night'? */"px-2 pt-2 text-right text-white" /*: "px-2 pt-2 text-right text-black"*/}><i className="click-pointer icofont icofont-close" onClick={this.onClickCloseAlert}></i></div>
-                        <div className={/*cssmode == 'night'? */"px-2 py-4 text-white" /*: "px-2 py-4 text-black"*/}>
+                        <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
+                            <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseAlert}></i>
                             PIN is wrong!
+                        </div>
+                    </div>
+                    <div className={this.state.isEmpty ? "col-sm-12 text-center bg-info fade-in" : "col-sm-12 text-center bg-info fade-out"}>
+                        <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
+                            <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseFullFill}></i>
+                            Please fullfil pin number.
                         </div>
                     </div>
                 </div>

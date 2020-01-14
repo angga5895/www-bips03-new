@@ -398,26 +398,26 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 {/*<Checkbox label='Order Price'/>*/}
                             </div>
                             <div className="col-sm-12 mb-2">
-                                <Dropdown placeholder='Offer + 4 tick'
-                                          defaultValue={"Offer4"}
+                                <Dropdown placeholder='Offer + 5 ticks'
+                                          defaultValue={"Offer5"}
                                           search
                                           selection
                                           disabled={(this.state.value === "2")}
                                           options={
                                               [
-                                                  {key:'1',value:'Offer5',text: 'Offer + 5 tick'},
-                                                  {key:'2',value:'Offer4',text: 'Offer + 4 tick'},
-                                                  {key:'3',value:'Offer3',text: 'Offer + 3 tick'},
-                                                  {key:'4',value:'Offer2',text: 'Offer + 2 tick'},
+                                                  {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
+                                                  {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
+                                                  {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
+                                                  {key:'4',value:'Offer2',text: 'Offer + 2 ticks'},
                                                   {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
                                                   {key:'6',value:'BestOffer',text: 'Best Offer Price'},
                                                   {key:'7',value:'LastPrice',text: 'Last Price'},
                                                   {key:'8',value:'BestBid',text: 'Best Bid Price'},
                                                   {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
-                                                  {key:'10',value:'Bid2',text: 'Bid - 2 tick'},
-                                                  {key:'11',value:'Bid3',text: 'Bid - 3 tick'},
-                                                  {key:'12',value:'Bid4',text: 'Bid - 4 tick'},
-                                                  {key:'13',value:'Bid5',text: 'Bid - 5 tick'},
+                                                  {key:'10',value:'Bid2',text: 'Bid - 2 ticks'},
+                                                  {key:'11',value:'Bid3',text: 'Bid - 3 ticks'},
+                                                  {key:'12',value:'Bid4',text: 'Bid - 4 ticks'},
+                                                  {key:'13',value:'Bid5',text: 'Bid - 5 ticks'},
                                               ]
                                           }
                                           className={"f-12 text-center align-self-center col-sm-12"}

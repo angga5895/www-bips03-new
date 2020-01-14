@@ -51,6 +51,10 @@ class VerifyPIN extends React.PureComponent{
         this.setState({ value });
     };
 
+    onAutoSubmit = () => {
+        $("#pin-click-verify").click();
+    }
+
     onClickSubmit = (e) => {
         if(this.state.value.length >= '6'){
             if(this.state.value === '123456') {
@@ -191,7 +195,7 @@ class VerifyPIN extends React.PureComponent{
                             secret
                             ref={p => (this.pin = p)}
                             type="numeric"
-                            onComplete={this.onClickSubmit}
+                            onComplete={this.onAutoSubmit}
                             onChange={this.onChange}
                         />
                     </div>

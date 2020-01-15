@@ -20,12 +20,93 @@
     Learn how to configure a non-root public URL by running `npm run build`.
   -->
   <title>React App</title>
+  <style>
+    @media (min-width: 1160px) {
+      .p-error {
+        padding-right: 25% !important;
+        padding-left: 25% !important;
+        padding-top: 20% !important;
+        /*padding-bottom: 10px !important;*/
+      }
+    }
+
+    @media (min-width: 1047px) and (max-width: 1159px) {
+      .p-error {
+        padding-right: 20% !important;
+        padding-left: 20% !important;
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+      }
+    }
+
+    @media (min-width: 992px) and (max-width: 1046px) {
+      .p-error {
+        padding-right: 27.5% !important;
+        padding-left: 27.5% !important;
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .p-error {
+        padding-right: 5% !important;
+        padding-left: 5% !important;
+        padding-top: 100px !important;
+        padding-bottom: 100px !important;
+      }
+    }
+
+    .container-fluid-error {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .text-center-error{
+      text-align: center!important;
+    }
+
+    .bg-nigga{
+      background: #010101!important;
+    }
+
+    .hide-this-error{
+      display:none;
+    }
+
+    .card-error {
+      width: 100%;
+      height: 100%;
+      color: #F7F7F7;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .d-border-active-error{
+      border: #4D4E4E solid 1px!important;
+      padding: 30px 30px;
+    }
+
+    .mx-0-error {
+      margin-right: 0!important
+    }
+
+    .bg-dark-error {
+      color: #FFFFFF!important;
+      background-image: linear-gradient(#3D3E3F, #333332) !important;
+      background: #333332;
+      border-color: #3D3E3F!important;
+    }
+  </style>
 </head>
 <body class="bg-black-trading" id="bipsFullscreen">
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
-<div id="rootUpdate" class="container-fluid p-login text-center hide-this ">
-  <div class="card card-body d-border-active text-center mx-0 btn-dark">
+<div id="rootUpdate" class="bg-nigga container-fluid-error p-error text-center-error hide-this-error">
+  <div class="card-error d-border-active-error text-center-error mx-0-error bg-dark-error">
     <span id="text-root">
 
     </span>
@@ -67,29 +148,32 @@
       var rootUpdate = document.getElementById("rootUpdate");
       var span = document.getElementById("text-root");
 
-      if ((res[0] == "Chrome") && (res[1] > 77)) {
-          root.classList.add("hide-this");
-          rootUpdate.classList.remove("hide-this");
+      var height = document.documentElement.clientHeight;
+      document.getElementById("rootUpdate").style.minHeight = height+'px';
+
+      if ((res[0] == "Chrome") && (res[1] < 77)) {
+          root.classList.add("hide-this-error");
+          rootUpdate.classList.remove("hide-this-error");
           span.innerHTML = "Please upgrade your browser to two latest versions";
       } else if ((res[0] == "Firefox") && (res[1] < 70)) {
-          root.classList.add("hide-this");
-          rootUpdate.classList.remove("hide-this");
+          root.classList.add("hide-this-error");
+          rootUpdate.classList.remove("hide-this-error");
           span.innerHTML = "Please upgrade your browser to two latest versions";
       } else if ((res[0] == "Safari") && (res[1] < 11)) {
-          root.classList.add("hide-this");
-          rootUpdate.classList.remove("hide-this");
+          root.classList.add("hide-this-error");
+          rootUpdate.classList.remove("hide-this-error");
           span.innerHTML = "Please upgrade your browser to two latest versions";
       } else if ((res[0] == "Opera") && (res[1] < 62)) {
-          root.classList.add("hide-this");
-          rootUpdate.classList.remove("hide-this");
+          root.classList.add("hide-this-error");
+          rootUpdate.classList.remove("hide-this-error");
           span.innerHTML = "Please upgrade your browser to two latest versions";
       } else if ((res[0] == "Edge") && (res[1] < 16)) {
-          root.classList.add("hide-this");
-          rootUpdate.classList.remove("hide-this");
+          root.classList.add("hide-this-error");
+          rootUpdate.classList.remove("hide-this-error");
           span.innerHTML = "Please upgrade your browser to two latest versions";
       } else {
-          root.classList.remove("hide-this");
-          rootUpdate.classList.add("hide-this");
+          root.classList.remove("hide-this-error");
+          rootUpdate.classList.add("hide-this-error");
       }
   })();
 </script>

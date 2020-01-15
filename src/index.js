@@ -19,7 +19,7 @@ import './bootstrap-3.3.7/ag-grid-community/dist/styles/ag-theme-balham-dark.css
 import './App.css';
 
 import {LicenseManager} from 'ag-grid-enterprise';
-LicenseManager.setLicenseKey("Evaluation_License_Not_For_Production_5_January_2020__MTU3ODE4MjQwMDAwMA==b3a4f5d99ad7b227bb0218c384e68a4d");
+LicenseManager.setLicenseKey("Evaluation_License_Not_For_Production_2_March_2020__MTU4MzEwNzIwMDAwMA==12d7491114e302b6213098155f3e87e2");
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

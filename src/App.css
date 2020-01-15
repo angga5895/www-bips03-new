@@ -1,3 +1,9 @@
+.item-hover-active{
+    color: var(--warna-black-white) !important;
+    text-decoration: none!important;
+    background-color: #00b3ee!important;
+}
+
 .text-right > .ag-cell-wrapper {
     justify-content: flex-end!important;
 }.text-center > .ag-cell-wrapper {
@@ -2131,10 +2137,10 @@ button.bg-gold:hover {
     padding: 1px!important;
 }
 
-.item-hover:hover{
-    color: #16181b !important;
+.ui.menu .ui.dropdown .menu>.item:hover{
+    color: var(--warna-black-white) !important;
     text-decoration: none!important;
-    background-color: #f8f9fa!important;
+    background-color: var(--warna-text-basic)!important;
 }
 
 .f-12-fix{

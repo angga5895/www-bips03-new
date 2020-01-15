@@ -636,7 +636,8 @@ class InfoCash_Base extends React.Component {
                           className="text-white align-self-center">
                     <Dropdown.Menu className={'bg-black-trading f-14 w-100 d-border'}>
                         <Dropdown.Item
-                            className="item-hover text-white text-left px-2" text={
+                            className={this.state.balanceOpt == 'cashBalance' ? "item-hover item-hover-active text-white text-left px-2" :
+                                "item-hover text-white text-left px-2"} text={
                             <div>
                                 Cash Balance
                                 <div className="text-primary text-right" id={"cashBalanceVal"}>{this.props.balanceVal}</div>
@@ -646,7 +647,8 @@ class InfoCash_Base extends React.Component {
                         />
                         <Dropdown.Divider className='d-border' />
                         <Dropdown.Item
-                            className="item-hover text-white text-left px-2"
+                            className={this.state.balanceOpt == 'cashBalance' ? "item-hover text-white text-left px-2" :
+                                "item-hover item-hover-active text-white text-left px-2"}
                             onClick={()=>changeBalanceOpt('buyLimit')}
                             text={
                                 <div>

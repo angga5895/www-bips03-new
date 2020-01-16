@@ -4016,7 +4016,7 @@ class VerifyPINPortofolio extends React.PureComponent{
                         <div className="form-group text-center pt-2 mb-3">
                             <label className="col-sm-12 px-5 py-1 col-form-label f-16 font-weight-bold mb-2">PLEASE INPUT PIN</label>
                             <label className="col-sm-12 px-5 py-1 col-form-label">
-                                you must enter a pin to continue
+                                &nbsp;
                             </label>
                         </div>
                         <div className="text-center">

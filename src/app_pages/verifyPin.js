@@ -182,9 +182,9 @@ class VerifyPIN extends React.PureComponent{
                         </div>
                     </div>
                     <div className="form-group text-center pt-5">
-                        <label className="col-sm-12 px-5 py-2 col-form-label f-14 font-weight-bold">Please enter security PIN</label>
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Please fullfill with 6 digit security
-                            PIN to verify your transaction</label>
+                        <label className="col-sm-12 px-5 py-2 col-form-label f-14 font-weight-bold">Please insert 6 digit PIN Security</label>
+                        {/*<label className="col-sm-12 px-5 py-2 col-form-label">Please fullfill with 6 digit security*/}
+                            {/*PIN to verify your transaction</label>*/}
                     </div>
                     <div className="form-group mb-0">
                         <PinInput
@@ -227,7 +227,7 @@ class VerifyPIN extends React.PureComponent{
                     <div className={this.state.visible ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
                         <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
                             <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseAlert}></i>
-                            PIN is wrong!
+                            Please insert the correct pin!
                         </div>
                     </div>
                     <div className={this.state.isEmpty ? "col-sm-12 text-center bg-info fade-in" : "col-sm-12 text-center bg-info fade-out"}>

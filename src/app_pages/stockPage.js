@@ -150,11 +150,11 @@ class TableProfil extends React.PureComponent{
                     <tbody>
                     <tr className="py-3"><td>Corporate Governance</td></tr>
                     <tr className="py-3">
-                        <td>
+                        <x>
                             PT Astra Agro Lestari Tbk’s ISS Governance Quality
                             Score as of N/A is N/A. The pillar scores are Audit: N/A; Board: N/A;
                             Shareholder Rights: N/A; Compensation: N/A.
-                        </td>
+                        </x>
                     </tr>
                     <tr className="py-3">
                         <td>
@@ -1311,8 +1311,8 @@ class RegisterAmendModal_Base extends React.Component {
                             <li className={ this.state.activeTab === '2' ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Add Group</span></a></li>
                         </ul>
                     </div>
-                    <div className="card-475">
-                        <div className={this.state.activeTab === '1' ? 'card card-475 d-border d-block f-12' : 'd-none'}>
+                    <div className="card-520">
+                        <div className={this.state.activeTab === '1' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
                             <div className="card card-375 d-border-transparent-grey">
                                 <div className="card card-xmini bg-grey">
                                     <AmendGroupNameAgGrid />
@@ -1325,7 +1325,7 @@ class RegisterAmendModal_Base extends React.Component {
                                         <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
                                     </div>
                                 </div>
-                                <div className="card card-xs bg-grey">
+                                <div className="card card-xmini bg-grey">
                                     <AmendGroupCodeAgGrid />
                                 </div>
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
@@ -1341,7 +1341,7 @@ class RegisterAmendModal_Base extends React.Component {
                                 </div>
                             </div>
                             {/*998*/}
-                            <div className="form-group row col-sm-12 px-0 mx-0 mt-5 pt-5 z-99 text-white">
+                            <div className="form-group row col-sm-12 px-0 mx-0 pt-5 z-99 text-white" style={{ marginTop : "70px" }}>
                                 <div className="col-sm-9 align-self-center align-middle">
                                     <label className="text-muted">Max Group is 10 group with 45 stock list</label>
                                 </div>
@@ -1350,7 +1350,7 @@ class RegisterAmendModal_Base extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className={this.state.activeTab === '2' ? 'card card-475 d-border d-block f-12' : 'd-none'}>
+                        <div className={this.state.activeTab === '2' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
                             <div className="card card-375 d-border-transparent-grey">
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
                                     <div className="col-sm-5">
@@ -1360,7 +1360,7 @@ class RegisterAmendModal_Base extends React.Component {
                                         <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
                                     </div>
                                 </div>
-                                <div className="card card-xs bg-grey">
+                                <div className="card card-xmini bg-grey">
                                     <AddGroupCodeAgGrid />
                                 </div>
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 z-99 text-white">
@@ -1376,7 +1376,7 @@ class RegisterAmendModal_Base extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="form-group row col-sm-12 px-0 mx-0 mt-5 pt-5 text-white">
+                            <div className="form-group row col-sm-12 px-0 mx-0 pt-5 text-white" style={{ marginTop : "70px" }}>
                                 <div className="col-sm-9 align-self-center align-middle z-99">
                                     <label className="text-muted">Max Group is 10 group with 45 stock list</label>
                                 </div>
@@ -2325,7 +2325,7 @@ class AmendGroupCodeAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-xs ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-xmini ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto'}}>
                     <table className="table table-fixed table-hovered">
@@ -2335,7 +2335,7 @@ class AmendGroupCodeAgGrid extends React.PureComponent {
                             <th className="col-xs-2">#</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="tbodyGroup">
                         {this.state.rowData.map((charx, index) => {
                             return (
                                 <tr className="trTableFix">
@@ -2400,7 +2400,7 @@ class AddGroupCodeAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-xs ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-xmini ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto','overflow-y':'hidden'}}>
                     <table className="table table-fixed table-hovered">
@@ -2410,7 +2410,7 @@ class AddGroupCodeAgGrid extends React.PureComponent {
                             <th className="col-xs-2">#</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="tbodyGroup">
                         {this.state.rowData.map((charx, index) => {
                             return (
                                 <tr className="trTableFix">

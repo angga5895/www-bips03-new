@@ -233,14 +233,14 @@ class App extends React.Component {
                 'livetradePage',
                 'esbnPage',
                 'mutualfundPage',
-                /*{
+                {
                     name: 'chatsupportPage',
                     pages : [
                         'ChatUserPage',
                         'ChatSuppPage',
                         'ChatCommentPage'
                     ]
-                }*/
+                }
             ]
         }
         initActions={[

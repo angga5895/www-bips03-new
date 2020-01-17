@@ -110,7 +110,7 @@ class LandingPage_Base extends React.PureComponent {
             },
 
             {
-                x: "Pawnshop", value: 208173,
+                x: "Pegadaian", value: 208173,
                 normal:  {
                     fill: (["#dac39e","#ef6c00"]),
                 },
@@ -4016,7 +4016,7 @@ class VerifyPINPortofolio extends React.PureComponent{
                         <div className="form-group text-center pt-2 mb-3">
                             <label className="col-sm-12 px-5 py-1 col-form-label f-16 font-weight-bold mb-2">PLEASE INPUT PIN</label>
                             <label className="col-sm-12 px-5 py-1 col-form-label">
-                                &nbsp;
+                                you must enter a pin to continue
                             </label>
                         </div>
                         <div className="text-center">

@@ -1,3 +1,8 @@
+.ag-header-border-gray-live-trade > span > div > div > div > div > .ag-body-viewport.ag-layout-normal{
+    overflow-y: hidden;
+    -webkit-overflow-scrolling : unset;
+}
+
 .item-hover-active{
     color: var(--warna-black-white) !important;
     text-decoration: none!important;

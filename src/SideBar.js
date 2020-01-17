@@ -146,8 +146,10 @@ class SideBar extends React.Component{
                                     <tfoot>
                                     <tr>
                                         <td className="py-0 px-3">
-                                            <div className="align-self-center text-center click-pointer">
-                                                <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
+                                            <div className="align-self-center text-center">
+                                                <i className="icofont icofont-ui-previous text-bips-dark f-16 click-pointer"></i>
+                                                &nbsp;&nbsp;
+                                                <i className="icofont icofont-ui-next text-bips-dark f-16 click-pointer"></i>
                                             </div>
                                         </td>
                                     </tr>

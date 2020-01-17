@@ -507,7 +507,7 @@ class SelectItem1 extends React.PureComponent {
                         theme={this.selectSelectionTab}
                     />*/}
                 </div>
-                <label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>
+                <label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12 px-0">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>
             </div>
         );
     }

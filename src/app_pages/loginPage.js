@@ -657,7 +657,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     <table width="100%" height="100%">
                                                         <tr>
                                                             <td className="spanSymbol">{this.state.barSatu.symbol}</td>
-                                                            <td>Last: {this.state.barSatu.last}</td>
+                                                            <td>{this.state.barSatu.last}</td>
                                                             <td>
                                                                 <span className={"white"}><i className={colorIcon(this.state.barSatu.change)}></i>
                                                                     {this.state.barSatu.change}
@@ -678,7 +678,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     <table width="100%" height="100%">
                                                         <tr>
                                                             <td className="spanSymbol">{this.state.barDua.symbol}</td>
-                                                            <td>Last: {this.state.barDua.last}</td>
+                                                            <td>{this.state.barDua.last}</td>
                                                             <td>
                                                                 <span className={"white"}><i className={colorIcon(this.state.barDua.change)}></i>
                                                                     {this.state.barDua.change}

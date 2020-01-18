@@ -243,6 +243,13 @@ class VerifyPIN extends React.PureComponent{
 }
 
 class detailBuyModal extends React.Component {
+    componentDidMount(){
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $("#enter-ok").click();
+            }
+        });
+    }
 
     render() {
         return (
@@ -310,8 +317,9 @@ class detailBuyModal extends React.Component {
                         }>Cancel</button>
                     </div>
                     <div className="col-sm-6">
-                        <button className="btn btn-danger col-sm-12" onClick={
+                        <button className="btn btn-danger col-sm-12" id="enter-ok" onClick={
                             () => {
+                                alert('OK!!');
                                 var refs = this.refs;
                                 refs.frameAction.closeModal(100)
                             }
@@ -324,7 +332,13 @@ class detailBuyModal extends React.Component {
 }
 
 class detailSellModal extends React.Component {
-
+    componentDidMount(){
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $("#enter-ok").click();
+            }
+        });
+    }
     render() {
         return (
             <>
@@ -391,8 +405,9 @@ class detailSellModal extends React.Component {
                         }>Cancel</button>
                     </div>
                     <div className="col-sm-6">
-                        <button className="btn btn-success col-sm-12" onClick={
+                        <button className="btn btn-success col-sm-12" id="enter-ok" onClick={
                             () => {
+                                alert('OK!!');
                                 var refs = this.refs;
                                 refs.frameAction.closeModal(100)
                             }
@@ -405,7 +420,13 @@ class detailSellModal extends React.Component {
 }
 
 class detailWithdrawModal extends React.Component {
-
+    componentDidMount(){
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $("#enter-ok").click();
+            }
+        });
+    }
     render() {
         return (
             <>
@@ -472,8 +493,9 @@ class detailWithdrawModal extends React.Component {
                         }>Cancel</button>
                     </div>
                     <div className="col-sm-6">
-                        <button className="btn btn-brown col-sm-12" onClick={
+                        <button className="btn btn-brown col-sm-12" id="enter-ok" onClick={
                             () => {
+                                alert('OK!!');
                                 var refs = this.refs;
                                 refs.frameAction.closeModal(100)
                             }
@@ -486,7 +508,13 @@ class detailWithdrawModal extends React.Component {
 }
 
 class detailAmendModal extends React.Component {
-
+    componentDidMount(){
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $("#enter-ok").click();
+            }
+        });
+    }
     render() {
         return (
             <>
@@ -598,8 +626,9 @@ class detailAmendModal extends React.Component {
                         }>Cancel</button>
                     </div>
                     <div className="col-sm-6">
-                        <button className="btn btn-primary col-sm-4" onClick={
+                        <button className="btn btn-primary col-sm-4" id="enter-ok" onClick={
                             () => {
+                                alert('OK!!');
                                 var refs = this.refs;
                                 refs.frameAction.closeModal(100)
                             }

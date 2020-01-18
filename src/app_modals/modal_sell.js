@@ -16,10 +16,10 @@ class ModalSell extends React.Component{
                 <AppFrameAction ref="frameAction" />
                 <div className="text-white f-12">
                     <div className="col sm-8 px-0 mx-0 row card-520">
-                        <div className="col-sm-6 pr-3 pl-0 mt-0 card-520">
+                        <div className="col-sm-6 px-2 mt-0 card-520 d-border">
                             <TableInfoTransaction lotshare="modalSell" />
                         </div>
-                        <div className="col-sm-6 mt-0 d-border-active bg-sell card-520">
+                        <div className="col-sm-6 mt-0 d-border-active bg-sell card-520 d-border">
                             <FormSell idPrice="modalSellPrice" idVol="modalSellVol" idValue="modalSellValue" columnSm="col-sm-11"/>
                         </div>
                     </div>

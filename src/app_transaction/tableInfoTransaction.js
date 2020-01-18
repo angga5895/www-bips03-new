@@ -53,7 +53,7 @@ class TableInfoTransaction extends React.PureComponent{
 
                 
 
-                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-112 mb-2">
+                <Table responsive borderless size="sm" className={this.props.lotshare === 'modalbuy' || this.props.lotshare === 'modalSell' || this.props.lotshare === 'modalamend' ? "text-white d-border-table bg-dark-grey card-112 mb-1" : "text-white d-border-table bg-dark-grey card-112 mb-2"}>
                     <thead></thead>
                     <tbody>
                     <tr>

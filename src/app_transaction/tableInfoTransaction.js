@@ -377,7 +377,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                     <div className="col-sm-12 row mx-0 px-0 d-border-gray">
                         <div className="col-sm-6 mx-0 px-0 d-border-right-half">
                             <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-305 table-hover table-striped-trans mb-0">
+                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-326 table-hover table-striped-trans mb-0">
                                     <thead className="d-border-top d-border-bottom bg-gray-tradding">
                                     <tr>
                                         <th className="no-wrap py-3 text-center bg-gray-tradding">
@@ -453,7 +453,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                         </div>
                         <div className="col-sm-6 mx-0 px-0 d-border-left-half">
                             <div className="container-fluid px-0 mx-0">
-                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-305 table-hover table-striped-trans mb-0">
+                                <Table responsive bordered size="sm" className="text-white bg-dark-grey px-0 mx-0 card-326 table-hover table-striped-trans mb-0">
                                     <thead className="d-border-top d-border-bottom bg-gray-tradding">
                                     <tr>
                                         <th className="no-wrap py-3 text-center bg-gray-tradding">Offer</th>

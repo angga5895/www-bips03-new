@@ -669,7 +669,7 @@ class ModalHistorical extends React.Component {
 
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
-                    <div className="col-sm-12 px-0 pt-2" >
+                    <div className="col-sm-12 px-0 pt-0" >
                         <TradeListAgGrid size={this.ceksize()}/>
                     </div>
 
@@ -785,7 +785,7 @@ class ModalTransaction extends React.Component {
 
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
-                    <div className="col-sm-12 px-0 pt-2" >
+                    <div className="col-sm-12 px-0 pt-0" >
                         <TransactionAgGrid size={this.ceksize()}/>
                     </div>
                 </div>

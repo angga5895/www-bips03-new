@@ -1783,7 +1783,7 @@ class MarqueeMac extends React.PureComponent{
             })
         }
         //change every 10 sec
-        if(this.state.seconds % 10 === 0){
+        if(this.state.seconds % 5 === 0){
 
             this.setState({flipped: !this.state.flipped});
 

@@ -5699,7 +5699,7 @@ textarea {
     width: 14.285%;
     height: 32px;
     overflow: hidden;
-    background: black;
+    background: var(--warna-black-white);
 }
 .slidee > div{
     color: #fff !important;

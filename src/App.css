@@ -5825,3 +5825,17 @@ textarea {
 .hide-this{
     display:none;
 }
+.btn-sa{
+    margin-right: 8px; border-color: rgb(212, 63, 58);
+    sbox-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset, rgba(65, 24, 21, 0.36) 0px 0px 8px;
+    font-size: 12px;
+}
+.btn-trans{
+    color: #0071bc;
+    background: transparent !important;
+    border:none!important;
+}
+.btn-trans:hover, .btn-trans:active, .btn-trans:focus{
+    text-decoration: underline;
+    color: #23527c;
+}

@@ -5,6 +5,8 @@ import {cssmode} from "./App";
 import {Dropdown} from "semantic-ui-react";
 import {RegisterAmendModal} from "./app_pages/stockPage";
 import {AppFrameAction} from "./appframe";
+import SweetAlert from "react-bootstrap-sweetalert";
+
 
 
 const option = [
@@ -63,17 +65,21 @@ class SideBar extends React.Component{
                     percent: 3.90,
                 },
             ],
+            showAlert:false,
         }
     }
 
     closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
+        alert('yak')
+        this.setState({showAlert:true});
+        // this.refs.frameAction.closeModal(100);
     }
 
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i></div>,
+            headerClass: () => <div className="text-right">
+                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={()=>this.setState({showAlert:true})}></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
@@ -94,6 +100,43 @@ class SideBar extends React.Component{
         return(
             <>
                 <AppFrameAction ref="frameAction" />
+                <SweetAlert
+                    show={this.state.showAlert}
+                    warning
+                    title={<span className="text-white">Save changes before quiting?</span>}
+                    style={{'color':'var(--text-white)',}}
+                    customClass={"bg-dark-grey"}
+                    customButtons={
+                        <React.Fragment>
+                            <button className={"btn btn-sa btn-trans btn-sm btn-popup"}
+                                    onClick={()=>this.setState({showAlert:false})}>
+                                Cancel
+                            </button>
+                            &nbsp;
+                            <button className={"btn btn-sa btn-sm btn-popup btn-danger border-gray-tradding"}
+                                    onClick={
+                                        ()=>{
+                                            this.setState({showAlert:false});
+                                            this.refs.frameAction.closeModal(100);
+                                        }
+                                    }>
+                                &nbsp;&nbsp;No&nbsp;&nbsp;
+                            </button>
+                            &nbsp;
+                            <button id="save" autoFocus={true} className={"btn btn-sa btn-sm btn-popup btn-info border-gray-tradding"}
+                                    onClick={
+                                        ()=>{
+                                            this.setState({showAlert:false});
+                                            this.refs.frameAction.closeModal(100);
+                                        }
+                                    }>
+                                &nbsp;&nbsp;Yes&nbsp;&nbsp;
+                            </button>
+                        </React.Fragment>
+                    }
+
+                >
+                </SweetAlert>
                 <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom d-sidebar-potrait">
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">

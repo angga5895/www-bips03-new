@@ -20,6 +20,8 @@ import StockChart from "./stockChart";
 import '../bootstrap-3.3.7/bootstrap-datepicker.min.css';
 import $ from 'jquery';
 import {AgGridReact} from "ag-grid-react";
+import SweetAlert from "react-bootstrap-sweetalert";
+
 window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 require('../bootstrap-3.3.7/bootstrap-datepicker.standalone.min.css');
@@ -1215,19 +1217,19 @@ class SellModal extends React.Component  {
 }
 
 class RegisterAmendModal_Base extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
-    }
-
     constructor(props) {
         super(props);
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            activeTab: '1'
+            activeTab: '1',
+            showAlert: false,
         };
     }
-
+    closeClick = (e) => {
+        this.setState({show:true});
+        // this.refs.frameAction.closeModal(100);
+    }
     toggle(tab) {
         if (this.state.activeTab !== tab) {
             this.setState({
@@ -1303,6 +1305,23 @@ class RegisterAmendModal_Base extends React.Component {
         };
         return (
             <>
+
+                <SweetAlert
+                    show={this.state.showAlert}
+                    warning
+                    showCancel
+                    confirmBtnText="Yes, delete it!"
+                    confirmBtnBsStyle="danger"
+                    style={{'color':'var(--text-white)',}}
+                    title={<span className="text-white">Are you sure?</span>}
+                    onConfirm={()=>{this.setState({showAlert:false})}}
+                    onCancel={()=>{this.setState({showAlert:false})}}
+                    customClass={"bg-dark-grey"}
+                    confirmBtnCssClass={"btn btn-sm btn-popup btn-danger bg-gray-tradding border-gray-tradding"}
+                    focusConfirmBtn
+                >
+                    <span className={"text-white"}>You will not be able to undo this action!</span>
+                </SweetAlert>
                 <AppFrameAction ref="frameAction" />
                 <div>
                     <div className="cssmenumodal bg-grey pb-4 col-sm-12 mx-0 px-0">
@@ -1315,7 +1334,7 @@ class RegisterAmendModal_Base extends React.Component {
                         <div className={this.state.activeTab === '1' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
                             <div className="card card-375 d-border-transparent-grey">
                                 <div className="card card-xmini bg-grey">
-                                    <AmendGroupNameAgGrid />
+                                    <AmendGroupNameAgGrid trash={() => this.setState({showAlert:true})}/>
                                 </div>
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
                                     <div className="col-sm-5">
@@ -2260,7 +2279,8 @@ class AmendGroupNameAgGrid extends React.PureComponent {
                                     <td className={`col-xs-3 buttonTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
                                         <button type="button" className="btn btn-info btn-sm">
                                             <i className="icofont-pencil"></i>
-                                        </button> <button type="button" className="btn btn-danger btn-sm">
+                                        </button>
+                                        <button type="button" onClick={this.props.trash} className="btn btn-danger btn-sm">
                                         <i className="icofont-trash"></i>
                                     </button>
                                     </td>

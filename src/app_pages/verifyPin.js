@@ -150,6 +150,7 @@ class VerifyPIN extends React.PureComponent{
     onClickCloseFullFill = (e) => {
         var isEmpty = false;
         this.setState({ isEmpty });
+        this.pin.clear();
     }
 
     forgotPIN = (e) =>{

@@ -217,7 +217,7 @@ class OrderSetting extends React.PureComponent {
                         <div className="col-sm-4 pr-3 pl-3 f-12">
                             <TableInfoTransactionLayout/>
                         </div>
-                        <div className="col-sm-8 pr-3 mt-0">
+                        <div className="col-sm-8 pr-3 pl-0 mt-0">
                             <TableInfoTransactionLayout2/>
                         </div>
                     </div>

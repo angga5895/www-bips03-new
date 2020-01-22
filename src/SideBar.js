@@ -123,7 +123,7 @@ class SideBar extends React.Component{
                                 &nbsp;&nbsp;No&nbsp;&nbsp;
                             </button>
                             &nbsp;
-                            <button id="save" autoFocus={true} className={"btn btn-sa btn-sm btn-popup btn-info border-gray-tradding"}
+                            <button id="save" autoFocus={true} autofocus className={"btn btn-sa btn-sm btn-popup btn-info border-gray-tradding"}
                                     onClick={
                                         ()=>{
                                             this.setState({showAlert:false});

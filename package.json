@@ -15,6 +15,7 @@
     "react": "^16.9.0",
     "react-alerts-plus": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.11",
+    "react-bootstrap-sweetalert": "^5.1.9",
     "react-data-grid": "^6.1.0",
     "react-data-grid-addons": "^6.1.0",
     "react-dom": "^16.9.0",
@@ -50,5 +51,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

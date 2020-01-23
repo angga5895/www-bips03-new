@@ -228,7 +228,7 @@ class SideBar extends React.Component{
                                     </div>
                                 </div>
 
-                                <div className="row col-sm-10 mx-0 px-0">
+                                <div className="row col-sm-10 mx-0 px-0" style={{justifyContent : 'center'}}>
                                     {
                                         this.state.rowData.map((charx, index) => {
                                             if(charx.percent < 0){

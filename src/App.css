@@ -1,3 +1,35 @@
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.text-bips-dark:active{
+    color: var(--warna-btn-dark) !important;
+    background: -webkit-linear-gradient(var(--warna-btn-dark-hover-disabled), var(--warna-btn-dark-hover-disabled)) !important;
+    -webkit-background-clip: text!important;
+    -webkit-text-fill-color: transparent!important;
+}
+
+.text-bips-dark-disabled{
+    color: var(--warna-btn-dark) !important;
+    background: -webkit-linear-gradient(var(--warna-btn-dark-hover-disabled), var(--warna-btn-dark-hover-disabled)) !important;
+    -webkit-background-clip: text!important;
+    -webkit-text-fill-color: transparent!important;
+}
+
+.text-disabled{
+    color: var(--warna-pembatas) !important;
+}
+
+.click-disabled{
+    cursor: not-allowed!important;
+}
+
 @media (min-width: 1160px) {
     .p-disconnect {
         padding-right: 25% !important;

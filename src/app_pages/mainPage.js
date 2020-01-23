@@ -1486,6 +1486,10 @@ class MainPage_Base extends React.Component {
         document.body.style.setProperty('--warna-border-headermenu', this.props.thememode === true  ? "#5f68ad" : "#F9F9F9");
         document.body.style.setProperty('--warna-bg-data-orange', this.props.thememode === true  ? "#e68c27" : "#e6e027");
 
+        document.body.style.setProperty('--warna-btn-dark-disabled', this.props.thememode === true  ? "#3D3E3F20" : "#CDCDCE20");
+        document.body.style.setProperty('--warna-btn-dark-hover-disabled', this.props.thememode === true  ? "#33333240" : "#CDCDDD40");
+        document.body.style.setProperty('--warna-pembatas', this.props.thememode === true  ? "#373839" : "#CDCDD5");
+
         var props = this.props;
         return (
             <>

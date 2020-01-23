@@ -173,7 +173,7 @@ class SideBar extends React.Component{
                                             return (
                                                 <tr className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
-                                                        <div className="align-self-center text-left click-pointer">
+                                                        <div className="align-self-center text-left click-pointer noselect">
                                                             <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
                                                             <div className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
                                                                 <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
@@ -189,9 +189,9 @@ class SideBar extends React.Component{
                                     <tfoot>
                                     <tr>
                                         <td className="py-0 px-3">
-                                            <div className="align-self-center text-center">
-                                                <i className="icofont icofont-ui-previous text-bips-dark f-16 click-pointer"></i>
-                                                &nbsp;&nbsp;
+                                            <div className="align-self-center text-center noselect">
+                                                <i className="icofont icofont-ui-previous text-bips-dark-disabled f-16 click-disabled"></i>
+                                                &nbsp;<span className="text-disabled">|</span>&nbsp;
                                                 <i className="icofont icofont-ui-next text-bips-dark f-16 click-pointer"></i>
                                             </div>
                                         </td>
@@ -219,35 +219,49 @@ class SideBar extends React.Component{
                                 <Dropdown placeholder='Group' search selection options={option} className={"f-9 text-center align-self-center col-sm-12 grey h-31"} defaultValue="groupA"/>
                             </div>
 
-                            {
-                                this.state.rowData.map((charx, index) => {
-                                    if(charx.percent < 0){
-                                        var warna = " text-danger";
-                                        var icon = " icofont icofont-caret-down f-8";
-                                    } else if (charx.percent > 0) {
-                                        var warna = " text-success";
-                                        var icon = " icofont icofont-caret-up f-8";
-                                    } else {
-                                        var warna = " text-warning";
-                                        var icon = " icofont icofont-minus f-8";
-                                    }
-
-                                    return (
-                                        <div
-                                            className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover">
-                                            <h5 className="mb-1">{charx.name}</h5>
-                                            <div className={"f-10 mb-1 text-right"+warna}>
-                                                <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
-                                            </div>
-                                            <p className={"f-11 mb-1 text-right"+warna}>{charx.last}</p>
+                            <div className="row col-sm-12 mx-0 px-0">
+                                <div className="col-sm-1 align-self-center mx-0">
+                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                        <div className="align-self-center text-center click-disabled">
+                                            <i className="icofont icofont-ui-previous text-bips-dark-disabled f-16"></i>
                                         </div>
-                                    )
-                                })
-                            }
+                                    </div>
+                                </div>
 
-                            <div className="align-self-center text-center px-sidebar py-0">
-                                <div className="align-self-center text-center click-pointer">
-                                    <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
+                                <div className="row col-sm-10 mx-0 px-0">
+                                    {
+                                        this.state.rowData.map((charx, index) => {
+                                            if(charx.percent < 0){
+                                                var warna = " text-danger";
+                                                var icon = " icofont icofont-caret-down f-8";
+                                            } else if (charx.percent > 0) {
+                                                var warna = " text-success";
+                                                var icon = " icofont icofont-caret-up f-8";
+                                            } else {
+                                                var warna = " text-warning";
+                                                var icon = " icofont icofont-minus f-8";
+                                            }
+
+                                            return (
+                                                <div
+                                                    className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover noselect">
+                                                    <h5 className="mb-1">{charx.name}</h5>
+                                                    <div className={"f-10 mb-1 text-right"+warna}>
+                                                        <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
+                                                    </div>
+                                                    <p className={"f-11 mb-1 text-right"+warna}>{charx.last}</p>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+
+                                <div className="col-sm-1 align-self-center mx-0">
+                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                        <div className="align-self-center text-center click-pointer">
+                                            <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

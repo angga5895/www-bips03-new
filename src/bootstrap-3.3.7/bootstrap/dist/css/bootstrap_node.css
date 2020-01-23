@@ -67,6 +67,9 @@
   --column-col-sm-3-6 : 25%;
   --column-col-sm-2-4 : 16.666667%;
 
+  --warna-btn-dark-disabled : #3D3E3F20;
+  --warna-btn-dark-hover-disabled : #33333240;
+  --warna-pembatas : #373839;
 }
 
 /*@media (max-width: 1440px) {*/

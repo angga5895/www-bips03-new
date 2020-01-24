@@ -1379,12 +1379,11 @@ class RegisterAmendModal_Base extends React.Component {
                                         <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
                                     </div>
                                 </div>
-                                <div className="card card-xmini bg-grey">
+                                <div className="card card-addgroup-modify bg-grey">
                                     <AddGroupCodeAgGrid />
                                 </div>
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 z-99 text-white">
                                     <div className="form-group col-sm-8 my-1 text-left">
-                                        {/*997*/}
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             filterOption={customFilter} isSearchable={true}
@@ -2381,7 +2380,7 @@ class AddGroupCodeAgGrid extends React.PureComponent {
         this.state = {
             rowData: [
                 {
-                    code: "AALI-Astra Argo Lestari Tbk.",
+                    code: "AALI-Astra Argo Lestari Tbk.1",
                     price: "12,650",
                     indicator: "",
                     change: "+175(+1.36%)"
@@ -2404,6 +2403,18 @@ class AddGroupCodeAgGrid extends React.PureComponent {
                     indicator: "",
                     change: "-175(-1.36%)"
                 },
+                {
+                    code: "",
+                    price: "",
+                    indicator: "",
+                    change: ""
+                },
+                {
+                    code: "",
+                    price: "",
+                    indicator: "",
+                    change: ""
+                },
             ],
         };
     }
@@ -2420,7 +2431,7 @@ class AddGroupCodeAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-xmini ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-addgroup-modify ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto','overflow-y':'hidden'}}>
                     <table className="table table-fixed table-hovered">
@@ -2430,16 +2441,26 @@ class AddGroupCodeAgGrid extends React.PureComponent {
                             <th className="col-xs-2">#</th>
                         </tr>
                         </thead>
-                        <tbody className="tbodyGroup">
+                        <tbody className="tbodyGroupAdd">
                         {this.state.rowData.map((charx, index) => {
-                            return (
-                                <tr className="trTableFix">
-                                    <td className={`col-xs-10 codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}><kbd>{splitcode(charx.code)}</kbd> {splitname(charx.code)}</td>
-                                    <td className={`col-xs-2 buttonTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
-                                        <button type="button"
+                            if(charx.code == ""){
+                                return (
+                                    <tr className="trTableFix">
+                                        <td className={`col-xs-10 codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}></td>
+                                         <td className={`col-xs-2 buttonTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                     </td>
+                                    </tr>
+                                )
+                            }else{
+                                return (
+                                    <tr className="trTableFix">
+                                        <td className={`col-xs-10 codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}><kbd>{splitcode(charx.code)}</kbd> {splitname(charx.code)}</td>
+                                         <td className={`col-xs-2 buttonTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                            <button type="button"
                                                 className="btn btn-danger btn-sm"><i className="icofont-trash"></i></button></td>
-                                </tr>
-                            )
+                                    </tr>
+                                    )
+                                }
                         })}
                         </tbody>
                     </table>

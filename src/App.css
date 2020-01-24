@@ -5871,3 +5871,9 @@ textarea {
     text-decoration: underline;
     color: #23527c;
 }
+.card-addgroup-modify{
+    height: 215px;
+}
+.tbodyGroupAdd{
+    height: 178px !important;
+}

@@ -103,7 +103,7 @@ class SideBar extends React.Component{
                 <SweetAlert
                     show={this.state.showAlert}
                     warning
-                    title={<span className="text-white">Save changes before quiting?</span>}
+                    title={<span className="text-white f-16">Save changes before quiting?</span>}
                     style={{'color':'var(--text-white)',}}
                     customClass={"bg-dark-grey"}
                     customButtons={

@@ -72,15 +72,15 @@ class FormDocument extends React.PureComponent{
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8 mx-0 mb-3 ">
-                    <div class="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
+                <div className="col-sm-8 mx-0 mb-3 ">
+                    <div className="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
                         <img src={srcIDImage} alt="Logo" width="250px" height="150px"/>;
 
                     </div>
                 </div>
 
 
-                <div class="col-sm-3">Bank Account</div>
+                <div className="col-sm-3">Bank Account</div>
                 <div className="form-group row mb-0">
                     <div className="col-sm-5 mx-0 mb-2 pl-5">
                         <div className="ui small input">
@@ -92,8 +92,8 @@ class FormDocument extends React.PureComponent{
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8 mx-0 mb-3 ">
-                    <div class="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
+                <div className="col-sm-8 mx-0 mb-3 ">
+                    <div className="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
                         <img src={srcBankImage} alt="Bank Account Image" width="250px" height="150px"/>;
                     </div>
                 </div>

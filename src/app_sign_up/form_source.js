@@ -45,26 +45,26 @@ class FormSource extends React.PureComponent{
             <div className="f-12">
                 <AppFrameAction ref="frameAction" />
                 <div className="form-group row mb-0">
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Occupation
                         </div>
                     </div>
-                    <div class="col-sm-7 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-7 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Field of work
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12 black-dropdown"/>
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptionsSts} className="col-sm-12 f-12"/>                                                         */}
                             <input type="text" className="black"/>
                         </div>
@@ -72,38 +72,38 @@ class FormSource extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Company Name
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Position
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Job function/Division
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>                             */}
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>                             */}
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>                             */}
                             <input type="text" className="black"/>
                         </div>
@@ -111,54 +111,54 @@ class FormSource extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Years of service
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Phone No
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Extention
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
-                            <div class="ui small input col-sm-3 f-12 text-center align-self-center black pr-1 pl-0">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
+                            <div className="ui small input col-sm-3 f-12 text-center align-self-center black pr-1 pl-0">
                                 <input type="text" className="black"/>
                             </div>
 
-                            <div class="ui small input col-sm-3 f-12 text-center align-self-center black pr-2 pl-0">
+                            <div className="ui small input col-sm-3 f-12 text-center align-self-center black pr-2 pl-0">
                                 <input type="text" className="black"/>
                                 {/* <span> Year</span>                */}
                             </div>
 
-                            {/* <div class="ui small input col-sm-3 f-12 text-center align-self-center black pr-0 pl-0"></div> */}
-                            <div class="ui small input col-sm-3 f-12 text-center align-self-center black pr-1 pl-0">
+                            {/* <div className="ui small input col-sm-3 f-12 text-center align-self-center black pr-0 pl-0"></div> */}
+                            <div className="ui small input col-sm-3 f-12 text-center align-self-center black pr-1 pl-0">
                                 <input type="text" className="black"/>
                             </div>
 
-                            <div class="ui small input col-sm-3 f-12 text-center align-self-center black pr-2 pl-0">
+                            <div className="ui small input col-sm-3 f-12 text-center align-self-center black pr-2 pl-0">
                                 <input type="text" className="black"/>
                                 {/* <span> Month</span>                */}
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12"/>                                                         */}
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12"/>                                                         */}
                             <input type="text" className="black"/>
                         </div>
@@ -166,14 +166,14 @@ class FormSource extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
-                            <div class="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 text-white pull-right"></div>
-                            <div class="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 pt-0 text-white text-right">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
+                            <div className="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 text-white pull-right"></div>
+                            <div className="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 pt-0 text-white text-right">
                                 Year
                             </div>
-                            <div class="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 text-white pull-right"></div>
-                            <div class="ui small input col-sm-3 f-9 text-center align-self-center black pr-2 pl-0 pt-0 text-white text-right">
+                            <div className="ui small input col-sm-3 f-9 text-center align-self-center black pr-1 pl-0 text-white pull-right"></div>
+                            <div className="ui small input col-sm-3 f-9 text-center align-self-center black pr-2 pl-0 pt-0 text-white text-right">
                                 Month
                             </div>
                         </div>
@@ -181,40 +181,40 @@ class FormSource extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Company Address
                         </div>
                     </div>
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Source of fund
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12"/>                                                         */}
                             <textarea className="black-textarea" cols="50" rows="5"/>
                         </div>
                     </div>
-                    <div class="col-sm-6 mx-0 mb-2 ">
+                    <div className="col-sm-6 mx-0 mb-2 ">
                         <div className="form-group row mb-0">
-                            <div class="col-sm-12 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-6 f-12 text-center align-self-center black">
+                            <div className="col-sm-12 mx-0 mb-2 ">
+                                <div className="ui small input col-sm-6 f-12 text-center align-self-center black">
                                     {/* <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12"/>                                                         */}
                                     <input type="text "className="black"/>
                                 </div>
                             </div>
                         </div>
                         <div className="form-group row mb-0">
-                            <div class="col-sm-12 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-12 f-12 text-left align-self-center text-white">
+                            <div className="col-sm-12 mx-0 mb-2 ">
+                                <div className="ui small input col-sm-12 f-12 text-left align-self-center text-white">
                                     Annual Income (in Rupiah)
                                 </div>
-                                <div class="ui small input col-sm-6 f-12 text-center align-self-center black">
+                                <div className="ui small input col-sm-6 f-12 text-center align-self-center black">
                                     {/* <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12"/>                                                         */}
                                     <input type="text "className="black"/>
                                 </div>
@@ -225,28 +225,28 @@ class FormSource extends React.PureComponent{
 
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Investment purpose
                         </div>
                     </div>
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Investment experience
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center ">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center ">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12 black-dropdown"/>
                             {/* <input type="text"/>                         */}
                         </div>
                     </div>
 
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12 black-dropdown"/>
                             {/* <input type="text"/>                         */}
                         </div>
@@ -255,16 +255,16 @@ class FormSource extends React.PureComponent{
 
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Monhly Securities Transaction Estimation
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center ">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center ">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsKlh} className="col-sm-12 f-12 black-dropdown"/>
                             {/* <input type="text"/>                         */}
                         </div>

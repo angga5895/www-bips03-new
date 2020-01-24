@@ -54,36 +54,36 @@ class FormParticular extends React.PureComponent{
             <div className="f-12">
                 <AppFrameAction ref="frameAction" />
                 <div className="form-group row mb-0">
-                    <div class="col-sm-3">Name as stated in the ID</div>
+                    <div className="col-sm-3">Name as stated in the ID</div>
                 </div>
-                <div class="col-sm-8 mx-0 mb-3 ">
-                    <div class="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
+                <div className="col-sm-8 mx-0 mb-3 ">
+                    <div className="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
                         <input type="text" className="black"/>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Place of birth
                         </div>
                     </div>
 
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Date of birth
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Input type="text" /> */}
                             <div className="input-group input-daterange">
                                 <input placeholder="dd/mm/yyyy" id="startDate1" name="startDate1" type="text" className="form-control date-clear black-dropdown" readOnly="readonly" />
@@ -96,34 +96,34 @@ class FormParticular extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-5 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-5 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             ID Type
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                            <input class="magic-radio" type="radio" name="IDType" id="IDType1" value="option"/>
-                            <label for="IDType1" className="text-white f-12-center">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
+                            <input className="magic-radio" type="radio" name="IDType" id="IDType1" value="option"/>
+                            <label htmlFor="IDType1" className="text-white f-12-center">
                                 KTP / ID Card
                             </label>
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                            <input class="magic-radio" type="radio" name="IDType" id="IDType2" value="option" checked/>
-                            <label for="IDType2" className="text-white f-12-center">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
+                            <input className="magic-radio" type="radio" name="IDType" id="IDType2" value="option" defaultChecked/>
+                            <label htmlFor="IDType2" className="text-white f-12-center">
                                 Passport/ KITAS / KITAP
                             </label>
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                            <input class="magic-radio" type="radio" name="IDType" id="IDType3" value="option"/>
-                            <label for="IDType3" className="text-white f-12-center">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
+                            <input className="magic-radio" type="radio" name="IDType" id="IDType3" value="option"/>
+                            <label htmlFor="IDType3" className="text-white f-12-center">
                                 Student ID
                             </label>
                         </div>
@@ -133,33 +133,33 @@ class FormParticular extends React.PureComponent{
 
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             ID Number
                         </div>
                     </div>
 
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Date of birth
                         </div>
                     </div>
 
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Gender
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             {/* <Input type="text" /> */}
                             <div className="input-group input-daterange">
                                 <input placeholder="dd/mm/yyyy" id="startDate1" name="startDate1" type="text" className="form-control date-clear black-dropdown" readOnly="readonly" />
@@ -169,8 +169,8 @@ class FormParticular extends React.PureComponent{
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             {/* <input type="text" /> */}
                             <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12 black-dropdown"/>
                         </div>
@@ -178,48 +178,48 @@ class FormParticular extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-2 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-2 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Education
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsEdc} className="col-sm-12 f-12 black-dropdown"/>
 
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             <input type="text" className="black"/>
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             NPWP/Indonesian Taxpayer Reg No.
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Taxpayer Reg Status
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-6 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             <input type="text" className="black"/>
                         </div>
                     </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsNPWP} className="col-sm-12 f-12 black-dropdown"/>
 
                         </div>
@@ -227,35 +227,35 @@ class FormParticular extends React.PureComponent{
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Marital Status
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
                             Interesting Activities
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group row mb-0">
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                    <div className="col-sm-3 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center">
                             <Dropdown placeholder='Choose' search selection options={stateOptionsMrt} className="col-sm-12 f-12 black-dropdown"/>
 
                         </div>
                     </div>
-                    <div class="col-sm-4 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center black">
+                    <div className="col-sm-4 mx-0 mb-2 ">
+                        <div className="ui small input col-sm-12 f-12 text-center align-self-center black">
                             <input type="text" className="black"/>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-3">Mother's maiden name</div>
-                <div class="col-sm-8 mx-0 mb-3 ">
-                    <div class="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
+                <div className="col-sm-3">Mother's maiden name</div>
+                <div className="col-sm-8 mx-0 mb-3 ">
+                    <div className="ui small input col-sm-12 px-0 f-12 text-center align-self-center black">
                         <input type="text" className="black"/>
                     </div>
                 </div>

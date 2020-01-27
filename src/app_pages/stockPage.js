@@ -152,11 +152,11 @@ class TableProfil extends React.PureComponent{
                     <tbody>
                     <tr className="py-3"><td>Corporate Governance</td></tr>
                     <tr className="py-3">
-                        <x>
+                        <td>
                             PT Astra Agro Lestari Tbk’s ISS Governance Quality
                             Score as of N/A is N/A. The pillar scores are Audit: N/A; Board: N/A;
                             Shareholder Rights: N/A; Compensation: N/A.
-                        </x>
+                        </td>
                     </tr>
                     <tr className="py-3">
                         <td>

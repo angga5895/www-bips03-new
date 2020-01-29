@@ -1332,11 +1332,11 @@ class RegisterAmendModal_Base extends React.Component {
                     </div>
                     <div className="card-520">
                         <div className={this.state.activeTab === '1' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
-                            <div className="card card-375 d-border-transparent-grey">
-                                <div className="card card-xmini bg-grey">
+                            <div className="card d-border-transparent-grey h-auto">
+                                <div className="card card-145 bg-grey">
                                     <AmendGroupNameAgGrid trash={() => this.setState({showAlert:true})}/>
                                 </div>
-                                <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
+                                <div className="form-group row col-sm-12 px-0 mx-0 my-0 py-3 text-white h-63 v-align-items-center">
                                     <div className="col-sm-5">
                                         <label className="col-sm-12">Name</label>
                                     </div>
@@ -1344,10 +1344,46 @@ class RegisterAmendModal_Base extends React.Component {
                                         <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
                                     </div>
                                 </div>
-                                <div className="card card-xmini bg-grey">
+                                <div className="card card-145 bg-grey">
                                     <AmendGroupCodeAgGrid />
                                 </div>
-                                <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
+                                <div className="form-group row col-sm-12 px-0 mx-0 my-0 py-3 text-white h-67 v-align-items-center">
+                                    <div className="form-group col-sm-8 my-1 text-left">
+                                        <Select
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            filterOption={customFilter} isSearchable={true}
+                                            maxMenuHeight={110} styles={customStyles} placeholder={<div style={{color:"white"}}>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
+                                    </div>
+                                    <div className="col-sm-1 px-0 mx-0 align-self-center align-middle">
+                                        <button className="btn btn-sm bg-gray-tradding border-gray-tradding"><i className="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {/*998*/}
+                            <div className="form-group row col-sm-12 px-0 mx-0 z-99 text-white my-0 h-100 pt-40">
+                                <div className="col-sm-9 align-self-center align-middle">
+                                    <label className="text-muted">Max Group is 10 group with 45 stock list</label>
+                                </div>
+                                <div className="col-sm-3 align-self-center align-middle">
+                                    <button className="btn btn-sm btn-grey-gray border-gray-tradding col-sm-12">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={this.state.activeTab === '2' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
+                            <div className="card d-border-transparent-grey h-auto">
+                                <div className="form-group row col-sm-12 px-0 mx-0 my-0 py-3 text-white h-63 v-align-items-center">
+                                    <div className="col-sm-5">
+                                        <label className="col-sm-12">Group Name</label>
+                                    </div>
+                                    <div className="col-sm-7">
+                                        <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
+                                    </div>
+                                </div>
+                                <div className="card card-290 bg-grey">
+                                    <AddGroupCodeAgGrid />
+                                </div>
+                                <div className="form-group row col-sm-12 px-0 mx-0 my-0 py-3 text-white h-67 v-align-items-center">
                                     <div className="form-group col-sm-8 my-1 text-left">
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
@@ -1359,43 +1395,8 @@ class RegisterAmendModal_Base extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            {/*998*/}
-                            <div className="form-group row col-sm-12 px-0 mx-0 pt-5 z-99 text-white" style={{ marginTop : "70px" }}>
+                            <div className="form-group row col-sm-12 px-0 mx-0 z-99 text-white my-0 h-100 pt-40">
                                 <div className="col-sm-9 align-self-center align-middle">
-                                    <label className="text-muted">Max Group is 10 group with 45 stock list</label>
-                                </div>
-                                <div className="col-sm-3 align-self-center align-middle">
-                                    <button className="btn btn-sm btn-grey-gray border-gray-tradding col-sm-12">Save</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={this.state.activeTab === '2' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
-                            <div className="card card-375 d-border-transparent-grey">
-                                <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 text-white">
-                                    <div className="col-sm-5">
-                                        <label className="col-sm-12">Group Name</label>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <Input defaultValue='Group A' placeholder='Group Name' size='small' className="gray col-sm-12 align-self-center"/>
-                                    </div>
-                                </div>
-                                <div className="card card-addgroup-modify bg-grey">
-                                    <AddGroupCodeAgGrid />
-                                </div>
-                                <div className="form-group row col-sm-12 px-0 mx-0 my-4 py-3 z-99 text-white">
-                                    <div className="form-group col-sm-8 my-1 text-left">
-                                        <Select
-                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
-                                            filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={155} styles={customStyles} placeholder={<div style={{color:"white"}}>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
-                                    </div>
-                                    <div className="col-sm-1 px-0 mx-0 align-self-center align-middle">
-                                        <button className="btn btn-sm bg-gray-tradding border-gray-tradding"><i className="fa fa-plus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="form-group row col-sm-12 px-0 mx-0 pt-5 text-white" style={{ marginTop : "70px" }}>
-                                <div className="col-sm-9 align-self-center align-middle z-99">
                                     <label className="text-muted">Max Group is 10 group with 45 stock list</label>
                                 </div>
                                 <div className="col-sm-3 align-self-center align-middle">
@@ -2258,15 +2259,15 @@ class AmendGroupNameAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-xmini ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-145 ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto'}}>
                     <table className="table table-fixed table-hovered">
                         <thead>
                         <tr>
-                            <th className="col-xs-7">Group</th>
-                            <th className="col-xs-2">Member</th>
-                            <th className="col-xs-3">#</th>
+                            <th className="col-xs-7 v50-align-center">Group</th>
+                            <th className="col-xs-2 v50-align-center">Member</th>
+                            <th className="col-xs-3 v50-align-center">#</th>
                         </tr>
                         </thead>
                         <tbody className="tbodyGroup">
@@ -2344,14 +2345,14 @@ class AmendGroupCodeAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-xmini ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-145 ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto'}}>
                     <table className="table table-fixed table-hovered">
                         <thead>
                         <tr>
-                            <th className="col-xs-10">Code</th>
-                            <th className="col-xs-2">#</th>
+                            <th className="col-xs-10 v50-align-center">Code</th>
+                            <th className="col-xs-2 v50-align-center">#</th>
                         </tr>
                         </thead>
                         <tbody className="tbodyGroup">
@@ -2431,14 +2432,14 @@ class AddGroupCodeAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className="card-addgroup-modify ag-theme-balham-dark ag-header-border-grey d-border"
+                    className="card-290 ag-theme-balham-dark ag-header-border-grey d-border"
                     style={{
                         width: 'auto','overflow-y':'hidden'}}>
                     <table className="table table-fixed table-hovered">
                         <thead>
                         <tr>
-                            <th className="col-xs-10">Code</th>
-                            <th className="col-xs-2">#</th>
+                            <th className="col-xs-10 v50-align-center">Code</th>
+                            <th className="col-xs-2 v50-align-center">#</th>
                         </tr>
                         </thead>
                         <tbody className="tbodyGroupAdd">

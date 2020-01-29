@@ -808,9 +808,13 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
                                     </div>
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
-                                        <TableBS responsive bordered size="sm"
+                                        {/*<TableBS responsive bordered size="sm"
                                                  className="table-hover table-striped text-center align-self-center
                                                  align-middle card-215 mb-0"
+
+                                        >*/}<TableBS responsive bordered size="sm"
+                                                 className="table-hover table-striped text-center align-self-center
+                                                 align-middle card-440 mb-0"
 
                                         >
                                             <thead className="text-white t-statistic">
@@ -851,9 +855,9 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             </tfoot>
                                         </TableBS>
                                     </div>
-                                    <div className="bg-trading-gray">
+                                    {/*<div className="bg-trading-gray">
                                         <HistoryPriceAgGrid size={this.ceksize()} type="tradeSummary"/>
-                                    </div>
+                                    </div>*/}
                                 </div>
                             </div>
                         </div>

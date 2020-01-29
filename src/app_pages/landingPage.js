@@ -109,8 +109,25 @@ class LandingPage_Base extends React.PureComponent {
                 }
             },
 
-            {
+            /*{
                 x: "Pegadaian", value: 208173,
+                normal:  {
+                    fill: (["#a4bdc6","#455a64"]),
+                },
+                hovered: {
+                    outline: {
+                        enabled: true,
+                    }
+                },
+                selected: {
+                    outline: {
+                        enabled: true,
+                    }
+                }
+            },*/
+
+            {
+                x: "Fixed Income", value: 0,
                 normal:  {
                     fill: (["#dac39e","#ef6c00"]),
                 },
@@ -125,25 +142,8 @@ class LandingPage_Base extends React.PureComponent {
                     }
                 }
             },
-
             {
-                x: "Fixed Income", value: 198173,
-                normal:  {
-                    fill: (["#a4bdc6","#455a64"]),
-                },
-                hovered: {
-                    outline: {
-                        enabled: true,
-                    }
-                },
-                selected: {
-                    outline: {
-                        enabled: true,
-                    }
-                }
-            },
-            {
-                x: "Mutual Fund", value: 66173,
+                x: "Mutual Fund", value: 0,
                 normal:  {
                     fill: (["#fffc8d","#ffd64f"]),
                 },
@@ -266,7 +266,7 @@ class LandingPage_Base extends React.PureComponent {
                         chart.unselect([0,1,2,4]);
                         chart.select(3);
                     }
-                } else if (points === 4){
+                } /*else if (points === 4){
                     props.changeStateLanding('4');
                     if (e.point.selected()) {
                         chart.unselect([0,1,2,3]);
@@ -274,13 +274,14 @@ class LandingPage_Base extends React.PureComponent {
                         chart.unselect([0,1,2,3]);
                         chart.select(4);
                     }
-                }
+                }*/
             });
 
             chart.legend().listen("legendItemClick", function(e) {
                 var legend = e.itemIndex;
                 // Set disturber.
-                chart.select([5]);
+                /*chart.select([5]);*/
+                chart.select([4]);
                 if (legend === 0){
                     props.changeStateLanding('0');
                     chart.unselect([1,2,3,4]);
@@ -293,10 +294,10 @@ class LandingPage_Base extends React.PureComponent {
                 } else if (legend === 3){
                     props.changeStateLanding('3');
                     chart.unselect([0,1,2,4]);
-                } else if (legend === 4){
+                } /*else if (legend === 4){
                     props.changeStateLanding('4');
                     chart.unselect([0,1,2,3]);
-                }
+                }*/
             });
 
             /*chart.unselect([1,2,3]);
@@ -390,7 +391,7 @@ class LandingPage_Base extends React.PureComponent {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '1' ? 'block' : 'none'}}>
+                                {/*<div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '1' ? 'block' : 'none'}}>
                                     <div className="card-header header-pegadaian bg-grey">
                                         <div className="row col-sm-12 px-0 mx-0 py-3">
                                             <div className="col-sm-10 px-0 mx-0 f-14 align-self-center"></div>
@@ -407,8 +408,8 @@ class LandingPage_Base extends React.PureComponent {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '2' ? 'block' : 'none'}}>
+                                </div>*/}
+                                <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '1' ? 'block' : 'none'}}>
                                     <div className="card-header card-header-investment bg-grey h-40">
                                         <div className="row col-sm-12 px-0 mx-0 py-1">
                                             <div className="col-sm-5 px-4 mx-0 f-14">
@@ -421,7 +422,7 @@ class LandingPage_Base extends React.PureComponent {
                                         <FixedIncomeAgGrid size={this.ceksize()} gridView="tab" classView="f-12"/>
                                     </div>
                                 </div>
-                                <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '3' ? 'block' : 'none'}}>
+                                <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '2' ? 'block' : 'none'}}>
                                     <div className="card-header card-header-investment bg-grey h-40">
                                         <div className="row col-sm-12 px-0 mx-0 py-1">
                                             <div className="col-sm-4 px-4 mx-0 f-14">

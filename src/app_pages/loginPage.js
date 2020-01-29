@@ -626,8 +626,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </div>
                                                         <div className={"text-left"}>
                                                             <Checkbox label='Remember Me' />
-                                                            <text className="text-primary text-right pull-right click-pointer mt-9" onClick={this.buttonClickForgot}>Forgot your password?
-                                                            </text>
+                                                            /*<text className="text-primary text-right pull-right click-pointer mt-9" onClick={this.buttonClickForgot}>Forgot your password?
+                                                            </text>*/
                                                         </div>
                                                     </div>
                                                 </div>

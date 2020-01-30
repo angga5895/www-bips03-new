@@ -679,7 +679,122 @@ class ModalHistorical extends React.Component {
         );
     }
 }
-//aaa
+class ModalOrderHistory extends React.Component {
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('.input-daterangeTransaction').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                startDate: '01/01/1920',
+                autoclose: true,
+                endDate : sd,
+                todayHighlight: true,
+                todayBtn: "linked",
+            });
+
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render() {
+
+        const imgdisplay = {
+            display: 'inline-flex',
+            paddingTop: '3px'
+        };
+
+        const paddingParagraph = {
+            paddingTop: '10px',
+            paddingBottom: '0px'
+        }
+        const paddingParagraphBottom = {
+            paddingBottom: '10px'
+        }
+
+        const divMargin = {
+            marginBottom: '15px'
+        }
+
+        const imgUser = {
+            margin: 'auto',
+            backgroundColor: 'var(--warna-bg-trading-gray)',
+            // borderBottom: '2px solid var(--warna-inactive-gradient)'
+        }
+
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <div className="container-fluid pl-0 pr-0 f-12" >
+                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={paddingParagraphBottom}>
+                        {/*<div className="col-sm-3">
+                            <div className="row" style={imgUser}>
+                                <div className="col-md-12" style={imgdisplay}>
+                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2" /><p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
+                                </div>
+                            </div>
+                        </div>*/}
+                        <div className="col-sm-12 h-62">
+                            <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
+                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
+                                                <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                                <span className="input-group-addon h-35 bg-tableheader">
+                                                                        <span className="fa fa-calendar-alt"></span>
+                                                                    </span>
+                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
+                                                <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                                <span className="input-group-addon h-35 bg-tableheader">
+                                                                        <span className="fa fa-calendar-alt"></span>
+                                                                    </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
+
+                    <div className="col-sm-12 px-0 pt-0" >
+                        <TransactionAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
+
 class ModalTransaction extends React.Component {
     componentDidMount() {
         $(document).ready(function() {
@@ -1498,10 +1613,11 @@ class TradeListHistory_Base extends React.PureComponent {
 
                     <div className="col-sm-12 px-0" style={paddingParagraph}>
                         {/* <PortofolioAgGrid/> */}
-                        <div className="cssmenu col-sm-6 mx-0 px-0 h-45">
+                        <div className="cssmenu col-sm-8 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Trade List History</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Transaction History</span></a></li>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Trade List History</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Transaction History</span></a></li>
+                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Order History</span></a></li>
                             </ul>
                         </div>
                         <div className="col-sm-12 px-0 py-0 mx-0 my-0 bg-grey bg-black-trading d-border card-472">
@@ -1515,6 +1631,11 @@ class TradeListHistory_Base extends React.PureComponent {
                             <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
                                 <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
                                     <ModalTransaction/>
+                                </div>
+                            </div>
+                            <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
+                                <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
+                                    <ModalOrderHistory/>
                                 </div>
                             </div>
                         </div>

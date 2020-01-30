@@ -179,6 +179,9 @@ class ForgotModal extends React.Component {
                         </label>
                     </div>
                 </div>
+                <div className="text-center">
+                        <button className="btn btn-primary col-sm-3" onClick={this.closeClick}>Close</button>
+                    </div>
             </>
         );
     }

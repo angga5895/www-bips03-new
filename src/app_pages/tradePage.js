@@ -6,7 +6,7 @@ import MenuOfContent from "../menuofcontent";
 import {AddGroupCodeAgGrid, AmendGroupCodeAgGrid, AmendGroupNameAgGrid, BuyPage, RegisterAmendModal} from "./stockPage";
 import { ContextConnector } from '../appcontext.js';
 import {BIPSAppContext, BIPSAppProvider} from "../AppData";
-import { Dropdown, Input, Popup, Radio, Form} from 'semantic-ui-react';
+import { Dropdown, Input, Popup, Radio, Form, Checkbox} from 'semantic-ui-react';
 
 import {AgGridReact} from "ag-grid-react";
 import {TableInfoTransactionWithButton} from './../app_transaction/tableInfoTransaction';
@@ -65,7 +65,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                                 {
                                     tradePageManOrderbook : 'ORDERLIST',
                                     tradePageManWatchlist: 'ORDERBOOK',
-                                    tradePageManWatchList2 : 'WATCHLIST',
+                                    tradePagePL : 'TRADE P/L',
                                 }
                             } />
                         </div>
@@ -831,6 +831,126 @@ class TradeWatchlist extends React.PureComponent{
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        )
+    };
+}
+
+class TradePL extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state={
+            activeTab: '1',
+        };
+
+    }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerTrade').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                startDate: '01/01/1920',
+                autoclose: true,
+                endDate : sd,
+                todayHighlight: true,
+                todayBtn: "linked",
+            });
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth < 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render() {
+        return (
+            <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+                <div className="row f-12">
+                                    <div className="col-md-12">
+                                           
+                                           <div className="row p-3">
+                                                <div className="col-md-3 ui input" style={{paddingRight:'53px'}}>
+                                                    <Input placeholder='dd/mm/yy' id="datepickerTrade" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
+                                                        className="fa fa-calendar-alt"></span></span>
+                                                </div>
+                                                <div className={"col-sm-4 text-left mb-0 px-3"}>
+                                                <Checkbox className="my-0 mr-3" label='Fee Tax' /> 
+                                                    <button 
+                                                    onClick={this.buttonClickPIN} 
+                                                    className={"btn btn-primary"}>&nbsp;Search
+                                                    </button>
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                           
+                                            <div className="col-md-12 p-3">
+                                                <div className="row p-3">
+                                                    <div className="col-md-1 mt-3 mb-5">
+                                                        Sell Amount
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
+                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    </div>
+                                                    <div className="col-md-1 mt-3">
+                                                        Sales PL
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
+                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    </div>
+                                                    <div className="col-md-1 mt-3">
+                                                        Fee & Tax
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
+                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    </div>
+
+                                                    <div className="col-md-1 mt-3">
+                                                        Buy Amount
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
+                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    </div>
+                                                    <div className="col-md-1 mt-3">
+                                                        Sales PL(%)
+                                                    </div>
+                                                    <div className="col-md-3">
+                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
+                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                    </div>
+                                                </div> 
+                                        
+                                            </div>
+                                        </div>
+                                        </div>
+                                
+                <div className="col-sm-12 px-0 card-310">
+                    <TradePLAgGrid
+                        size={this.ceksize()}/>
                 </div>
             </div>
         )
@@ -2375,6 +2495,179 @@ class TradeListOrderListAgGrid extends React.PureComponent {
     }
 }
 
+class TradePLAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth: 120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "buyAmount", headerName: "Buy Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth: 120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth: 120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "pl", headerName: "P/L(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?130:s=="s50"?130:s=="s67"?130:s=="s75"?130:s=="s80"?130:130, minWidth: 130,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    code :"AALI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"BUMI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"BUDI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"SMGR"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-177 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 class TradeOrderSummaryAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -2722,7 +3015,7 @@ class OrderDetailModal extends React.Component {
 }
 
 export {CustomFrameHeaderTrade, Trade,
-    OrderbookPage, TradeWatchlist, SettingInWatchlist,
+    OrderbookPage, TradeWatchlist, TradePL, SettingInWatchlist,
     OrderSetting,SentOrder,
 
 };

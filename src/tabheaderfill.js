@@ -148,7 +148,7 @@ const FillHeaderTab_Base = (props) => {
                                                                             trademore !== '' ?
                                                                                 trademore === 'manual' ?
                                                                                     e.instanceName.search('tradePage') >= 0 ?
-                                                                                        e.instanceName.search('tradePageManWatchList') >= 0?
+                                                                                        e.instanceName.search('tradePL') >= 0?
                                                                                             'col-sm-4 click-pointer text-center'
                                                                                             :
                                                                                             'col-sm-4 click-pointer text-center d-border-right'

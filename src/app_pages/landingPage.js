@@ -44,7 +44,7 @@ const CustomFrameHeaderLanding = (props) =>{
                             tradeListHistoryPageInvboard: 'HISTORICALS',
                             fundTransferPageInvboard: 'FUND TRANSFER',
                             inquryAccountPageInvboard: 'ACCOUNT INFO',
-                            InvboardTcAndSoe: 'TC & SOA',
+                            InvboardTcAndSoa: 'TC & SOA',
                         }
                     }/>
                 </div>
@@ -944,19 +944,19 @@ class FundTransfer_Base extends React.PureComponent {
                                             <table className="table text-white d-border-table bg-dark-grey table-sm table-borderless">
                                                 <tr>
                                                     <td className="no-wrap bg-gray-tradding d-border-tr-black">Account No</td>
-                                                    <td className="d-border-tr-gray-all text-right py-1">0640110945186</td>
+                                                    <td className="d-border-tr-gray-all text-right">0640110945186</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="no-wrap bg-gray-tradding d-border-tr-black">Account Name</td>
-                                                    <td className="d-border-tr-gray-all text-right py-1">Mr. Mario Surya Saputra</td>
+                                                    <td className="d-border-tr-gray-all text-right">Mr. Mario Surya Saputra</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="no-wrap bg-gray-tradding d-border-tr-black">Bank Name</td>
-                                                    <td className="d-border-tr-gray-all text-right py-1"> PT. Bank Niaga Tbk.</td>
+                                                    <td className="d-border-tr-gray-all text-right"> PT. Bank Niaga Tbk.</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="no-wrap bg-gray-tradding d-border-tr-black">Branch Name</td>
-                                                    <td className="d-border-tr-gray-all text-right py-1">Bahana Sekuritas</td>
+                                                    <td className="d-border-tr-gray-all text-right">Bahana Sekuritas</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -968,26 +968,26 @@ class FundTransfer_Base extends React.PureComponent {
                                         <div className="d-border">
                                             <div className="col-md-12 p-3">
                                                 <div className="row p-3">
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 mt-3">
                                                         Amount (Not Including Fee)
                                                     </div>
-                                                    <div className="col-md-1">
+                                                    <div className="col-md-1 mt-3">
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
                                                         <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 mt-3">
                                                         Withdrawable Amount
                                                     </div>
-                                                    <div className="col-md-1">
+                                                    <div className="col-md-1 mt-3">
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
                                                         <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
                                                 </div> <div className="row p-3">
-                                                <div className="col-md-2">
+                                                <div className="col-md-2 mt-3">
                                                     Transfer Date (T1/T2)
                                                 </div>
                                                 <div className="col-md-1">
@@ -1005,7 +1005,7 @@ class FundTransfer_Base extends React.PureComponent {
                                         <div className="row">
                                             <div className="col-md-12 p-5">
                                                 <input className="magic-checkbox" type="checkbox" name="viaRTGS" id="viaRTGS" value="option"/>
-                                                <label for="viaRTGS" className="text-white f-12-center">
+                                                <label for="viaRTGS" className="text-white f-12-center mt-3">
                                                     Via RTGS (The above amount is more than IDR 100,000,000)
                                                 </label>
                                             </div>
@@ -1525,8 +1525,7 @@ class TradeListHistory_Base extends React.PureComponent {
     }
 }
 
-//initcandsoe
-class tcAndSoe extends React.PureComponent {
+class tcAndSoa extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state={
@@ -4133,5 +4132,5 @@ export { CustomFrameHeaderLanding, LandingPage,
     TradeListHistory,
     FundTransfer,
     InquryAccount,
-    tcAndSoe
+    tcAndSoa
 };

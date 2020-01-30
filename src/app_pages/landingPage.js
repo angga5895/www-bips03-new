@@ -44,7 +44,7 @@ const CustomFrameHeaderLanding = (props) =>{
                             tradeListHistoryPageInvboard: 'HISTORICALS',
                             fundTransferPageInvboard: 'FUND TRANSFER',
                             inquryAccountPageInvboard: 'ACCOUNT INFO',
-                            InvboardTcAndSoe: 'TC & SOE',
+                            InvboardTcAndSoe: 'TC & SOA',
                         }
                     }/>
                 </div>
@@ -1578,20 +1578,31 @@ class tcAndSoe extends React.PureComponent {
                         {/* <PortofolioAgGrid/> */}
                         <div className="cssmenu col-sm-6 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Trade Control</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Soe</span></a></li>
+                                <li 
+                                className={ this.state.activeTab === '1' ? 
+                                                'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' 
+                                                : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } 
+                                            onClick={() => { this.toggle('1'); }}><a><span className="f-11">
+                                                &nbsp; Trade Confirm</span>
+                                                </a>
+                                                </li>
+                                <li className={ 
+                                    this.state.activeTab === '2' 
+                                    ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' 
+                                    : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } 
+                                    onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Settlement of Account</span></a></li>
                             </ul>
                         </div>
                         <div className="col-sm-12 px-0 py-0 mx-0 my-0 bg-grey bg-black-trading d-border card-472">
 
                             <div className={this.state.activeTab === '1' ? 'd-block f-12' : 'd-none'}>
                                 <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
-                                    <TradeControlPage/>
+                                    <TradeConfirmPage/>
                                 </div>
                             </div>
                             <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
                                 <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
-                                    <SoePage/>
+                                    <SoaPage/>
                                 </div>
                             </div>
                         </div>
@@ -1602,7 +1613,7 @@ class tcAndSoe extends React.PureComponent {
     }
 }
 
-class SoePage extends React.PureComponent{
+class SoaPage extends React.PureComponent{
     constructor(props) {
         super(props);
 
@@ -1643,7 +1654,7 @@ class SoePage extends React.PureComponent{
                             </div>
                         </div>
                         {/*<div className="d-border-top">*/}
-                        {/*/!*<TradeControlPageAgGrid />*!/*/}
+                        {/*/!*<TradeConfirmPageAgGrid />*!/*/}
                         {/*</div>*/}
                     </div>
                 </div>
@@ -1652,7 +1663,7 @@ class SoePage extends React.PureComponent{
     }
 
 }
-class TradeControlPage extends React.PureComponent{
+class TradeConfirmPage extends React.PureComponent{
     constructor(props) {
         super(props);
 
@@ -1713,7 +1724,7 @@ class TradeControlPage extends React.PureComponent{
                             </div>
                         </div>
                         <div className="d-border-top">
-                            <TradeControlPageAgGrid size={this.ceksize()}/>
+                            <TradeConfirmPageAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
                 </div>
@@ -1722,7 +1733,7 @@ class TradeControlPage extends React.PureComponent{
     }
 }
 
-class TradeControlPageAgGrid extends React.PureComponent{
+class TradeConfirmPageAgGrid extends React.PureComponent{
     constructor(props) {
         super(props);
         const self = this;

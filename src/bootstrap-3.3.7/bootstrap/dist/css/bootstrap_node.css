@@ -96,6 +96,10 @@
   --card-356 : 350px;
   --card-514 : 514px;
   --card-132 : 132px;
+  --card-95 : 95px;
+  --card-145 : 145px;
+  --card-240 : 240px;
+  --card-290 : 290px;
 
   /*variabel card*/
   --height-container-custom: 520px;
@@ -298,7 +302,7 @@
   text-align:center;
 }
 .tbodyGroup{
-  height: 100px !important;
+  height: var(--card-95) !important;
   background-color: var(--warna-hover-menu)!important;
 }
 .trTableFix:hover>td{

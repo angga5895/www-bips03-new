@@ -1,3 +1,40 @@
+.h-auto{
+    height: auto!important;
+}
+
+.pt-40{
+    padding-top: 40px!important;
+}
+
+.card-290{
+    height: var(--card-290);
+}
+.card-145{
+    height: var(--card-145);
+}
+
+.v-align-items-center{
+    display: flex;
+    align-items: center;
+}
+
+.h-63{
+    height: 63px!important;
+}.h-67{
+    height: 67px!important;
+}
+
+.v50-align-center{
+    min-height: 50px;
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-blackgrey{
+    background: var(--warna-hover-menu) !important;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -5875,5 +5912,5 @@ textarea {
     height: 215px;
 }
 .tbodyGroupAdd{
-    height: 178px !important;
+    height: var(--card-240) !important;
 }

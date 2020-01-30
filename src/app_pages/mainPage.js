@@ -408,6 +408,20 @@ const ResizeResponsive = () => {
 
     var height520 = height527-7;
     $('.card-520').css('min-height', (height520));
+    var height145 = (height520-63-67-100)/2;
+
+    var height290 = (height520-63-67-100);
+    $('.card-290').css('min-height', (height290));
+    var height240 = (height290-50);
+    $('.card-240').css('min-height', (height240));
+    $('.tbodyGroupAdd').css('min-height', (height240));
+
+    $('.card-145').css('min-height', (height145));
+    var height95 = (height145-50);
+    $('.card-95').css('min-height', (height95));
+    $('.tbodyGroup').css('min-height', (height95));
+
+
     var height467 = height520-53;
     $('.card-467').css('min-height', (height467));
 
@@ -1057,6 +1071,19 @@ class MainPage_Base extends React.Component {
 
             var height520 = height527-7;
             $('.card-520').css('minHeight', (height520));
+
+            var height290 = (height520-63-67-100);
+            $('.card-290').css('min-height', (height290));
+            var height240 = (height290-50);
+            $('.card-240').css('min-height', (height240));
+            $('.tbodyGroupAdd').css('min-height', (height240));
+
+            var height145 = (height520-63-67-100)/2;
+            $('.card-145').css('min-height', (height145));
+            var height95 = (height145-50);
+            $('.card-95').css('min-height', (height95));
+            $('.tbodyGroup').css('min-height', (height95));
+
             var height467 = height520-53;
             $('.card-467').css('minHeight', (height467));
 
@@ -1322,6 +1349,18 @@ class MainPage_Base extends React.Component {
             $('.card-520').css('min-height', (height520));
             var height467 = height520-53;
             $('.card-467').css('min-height', (height467));
+
+            var height290 = (height520-63-67-100);
+            $('.card-290').css('min-height', (height290));
+            var height240 = (height290-50);
+            $('.card-240').css('min-height', (height240));
+            $('.tbodyGroupAdd').css('min-height', (height240));
+
+            var height145 = (height520-63-67-100)/2;
+            $('.card-145').css('min-height', (height145));
+            var height95 = (height145-50);
+            $('.card-95').css('min-height', (height95));
+            $('.tbodyGroup').css('min-height', (height95));
         };
 
         $(document).ready(function () {

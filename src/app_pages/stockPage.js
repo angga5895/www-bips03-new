@@ -1953,38 +1953,56 @@ class StockWatchlistAgGrid extends React.PureComponent {
             activePage: 1,
             columnDefs: [
                 { field: "code", headerName: "Code",sortable: false, resizable: true,
-                    width: s=="s49"?126:s=="50"?125:s=="s67"?120:s=="s75"?90:85, minWidth: 80, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
+                    width: 85, minWidth: 85, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }},
                 { field: "price", headerName: "Price",sortable: false, resizable: true,
-                    width: s=="s49"?126:s=="s50"?125:s=="s67"?120:s=="s75"?100:93, minWidth: 90,
+                    width: 93, minWidth: 93,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change",sortable: false, resizable: true,
-                    width: s=="s49"?142:s=="s50"?140:s=="s67"?120:s=="s75"?100:90, minWidth: 90,
+                    width: 90, minWidth: 90,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "persen", headerName: "(%)",sortable: false, resizable: true,
-                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?125:s=="s90"?95:60, minWidth: 50,
+                    width: 60, minWidth: 50,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "tvol", headerName: "T. Vol", sortable: false, resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s75"?143:s=="s80"?120:s=="s90"?93:85, minWidth: 85,
+                    width: 85, minWidth: 85,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
+                { field: "AccForVol", headerName: "Accumulate Foreign Vol", sortable: false, resizable: true,
+                    width: 180, minWidth: 180,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                    },    
+                },
+                { field: "AccForVal", headerName: "Accumulate Foreign Val", sortable: false, resizable: true,
+                    width: 180, minWidth: 180,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                    },
+                },
+                { field: "AvgPrice", headerName: "Avg. Price", sortable: false, resizable: true,
+                    width: 180, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                    },
+                }
             ],
             defaultColDef: {
                 sortable: false,
@@ -1994,21 +2012,32 @@ class StockWatchlistAgGrid extends React.PureComponent {
                 return 27.5;
             },
             rowData: [
-                { code: "AALI",
+                { code: "AALI "+s,
                     price: "3,870",
                     change: "50",
                     persen: "0.2",
-                    tvol: "156,450"},
+                    tvol: "156,450",
+                    AccForVol: "12,000",
+                    AccForVal: "13,000",
+                    AvgPrice: "9,000",
+                },
                 { code: "ANTM",
                     price: "3,870",
                     change: "-50",
                     persen: "-0.2",
-                    tvol: "156,450"},
+                    tvol: "156,450",
+                    AccForVol: "9,000",
+                    AccForVal: "3,000",
+                    AvgPrice: "1,000",},
                 { code: "BBCA",
                     price: "3,870",
                     change: "-50",
                     persen: "-0.2",
-                    tvol: "156,450"},
+                    tvol: "156,450",
+                    AccForVol: "9,000",
+                    AccForVal: "1,000",
+                    AvgPrice: "3,000",
+                },
                 
             ],
             sideBar: {
@@ -2120,7 +2149,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
                         onFirstDataRendered={this.onFirstDataRendered}>
                     </AgGridReact>
                 </div>
-                {pagination()}
+                {/* {pagination()} */}
 
             </>
         );

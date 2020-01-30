@@ -172,31 +172,10 @@ class ForgotModal extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding">Forgot Password</label>
-                <div className="text-white f-12">
+                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-16 text-center">Forgot Password</label>
+                <div className="text-white f-12 text-center">
                     <div className="form-group">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Enter your email address and we'll
-                            send link to reset your password
-                        </label>
-                    </div>
-                    <div className="form-group mb-0">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Email</label>
-                        <div className="col-sm-12 px-5 py-0">
-                            <input type="email" className="text-white input-login col-sm-12 py-3"/>
-                        </div>
-                    </div>
-
-                    <div className="form-group py-3">
-                        <div className="justify-content-center align-items-center d-flex py-0 px-5">
-                            <button type="submit" className="btn btn-primary form-control py-0">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="form-group text-center">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">
-                            <span className="click-pointer btn btn-link text-primary" onClick={this.closeClick}> Back to Login Page</span>
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Please Contact Our Support Center 14045
                         </label>
                     </div>
                 </div>
@@ -607,7 +586,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <i><small className="text-danger" id="req_user" style={{"display": "none"}}></small></i>
                                                         </div>
                                                     </div>
-                                                    <div className={"py-2"}>
+                                                    <div className={"pt-2"}>
                                                         <div className="buttonInside">
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
@@ -626,8 +605,6 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </div>
                                                         <div className={"text-left"}>
                                                             <Checkbox label='Remember Me' />
-                                                            {/*<text className="text-primary text-right pull-right click-pointer mt-9" onClick={this.buttonClickForgot}>Forgot your password?
-                                                            </text>*/}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -641,11 +618,21 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div className={"col-sm-12 text-right pr-0 pl-5 mt-4"}>
-                                                    <text
-                                                        className="text-right mt-9">
-                                                        New BIPS? <span className="click-pointer text-primary" onClick={this.buttonClickSignUp}>Sign Up</span>
+                                                <div className={"col-sm-12 text-right pr-0 mt-4 text-center"}>
+                                                    <text 
+                                                        className="text-primary text-right click-pointer mt-2 " 
+                                                        onClick={this.buttonClickForgot}>Forgot your password?
                                                     </text>
+                                                    <text
+                                                        className="text-right mt-2 dot-login">
+                                                        New BIPS?&nbsp;
+                                                        <span 
+                                                            className="click-pointer text-primary" 
+                                                            onClick={this.buttonClickSignUp}>
+                                                            Sign Up
+                                                        </span>
+                                                    </text>
+                                                    
                                                 </div>
 
                                             </div>
@@ -705,13 +692,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                                 <i className="icofont-exclamation"></i>
                                                                 &nbsp;Help</button>
                                                         </td>
-                                                        <td>
-                                                            <button onClick={this.buttonFindHelp} className="btn btn-sm px-1 py-0 btn-block btn-default btn-dark">
-                                                                <i className="icofont-search-1"></i>&nbsp;
-                                                                Find Id
-                                                            </button>
-                                                        </td>
-                                                        <td ><u className="click-pointer" onClick={this.buttonClickDisclaimer}>Disclaimer</u></td>
+                                                        <td><u className="click-pointer" onClick={this.buttonClickDisclaimer}>Disclaimer</u></td>
                                                     </tr>
                                                 </table>
                                             </div>

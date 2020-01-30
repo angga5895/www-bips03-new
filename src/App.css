@@ -5914,3 +5914,9 @@ textarea {
 .tbodyGroupAdd{
     height: var(--card-240) !important;
 }
+.dot-login:before {
+    font:bold 1.1em/0 monospace; 
+    content:"\2022";
+    margin-left: 6px;
+    margin-right: 6px;
+}

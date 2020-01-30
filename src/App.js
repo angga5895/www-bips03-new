@@ -112,8 +112,7 @@ class App extends React.Component {
             {className: 'GeneralNewResearchPage', title: '', instanceName: 'newsGeneral'},
             {className: 'StockNewResearchPage', title: '', instanceName: 'newsStock'},
             {className: 'MutualNewResearchPage', title: '', instanceName: 'newsMutualFund'},
-            {className: 'ReseacrhNewResearchPage', title: '', instanceName: 'newsResearch'},
-
+            
             //tree 2 In Stock
             {className: 'StockPage', title: '', instanceName: 'stockInfoPage'},
             {className: 'StockWatchlist', title: '', instanceName: 'stockWatchlistPage'},
@@ -190,7 +189,6 @@ class App extends React.Component {
                                 'newsGeneral',
                                 'newsStock',
                                 'newsMutualFund',
-                                'newsResearch'
                             ]
                         }
                     ]

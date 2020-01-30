@@ -1945,6 +1945,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
         const self = this;
         const s = props.size;
         this.state = {
+            activePage: 1,
             columnDefs: [
                 { field: "code", headerName: "Code",sortable: false, resizable: true,
                     width: s=="s49"?126:s=="50"?125:s=="s67"?120:s=="s75"?90:85, minWidth: 80, lockVisible:true, lockPosition:true, suppressSizeToFit:true,
@@ -2003,151 +2004,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
                     change: "-50",
                     persen: "-0.2",
                     tvol: "156,450"},
-                { code: "TLKM",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "BBRI",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "ASII",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "BBMR",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "WSKT",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "AGII",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "ADHI",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "SMGR",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "EMTK",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "MREI",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "PTSP",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "TCPI",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "BRAM",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "INDF",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "JECC",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "RDTX",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "DUTI",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "FASW",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "IBST",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "SMMA",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "TKIM",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "JSMR",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "SONA",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "AMFG",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "SCCO",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "BYAN",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "UNTR",
-                    price: "3,870",
-                    change: "50",
-                    persen: "0.2",
-                    tvol: "156,450"},
-                { code: "GGRM",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
-                { code: "UNVR",
-                    price: "3,870",
-                    change: "-50",
-                    persen: "-0.2",
-                    tvol: "156,450"},
+                
             ],
             sideBar: {
                 toolPanels: [
@@ -2177,6 +2034,18 @@ class StockWatchlistAgGrid extends React.PureComponent {
                 ],
                 defaultToolPanel: ""
             },
+            listData: [
+                {code: "AALI"},
+                {code: "TLKM"},
+                {code: "INDF"},
+                {code: "WSKT"},
+                {code: "BMPT"},
+                {code: "ASII"},
+                {code: "BUMI"},
+                {code: "BBCA"},
+                {code: "SMGR"},
+                {code: "BBRI"},
+            ],
         }
     }
 
@@ -2197,14 +2066,46 @@ class StockWatchlistAgGrid extends React.PureComponent {
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
-
+    changeActive(i){
+        this.setState({activePage: i});
+        var i = 0;
+        let currentPos = (i-1) * 3;
+        let perPage = 3;    
+        let s = this.state.rowData.slice();
+        s[0].code = this.state.listData[6].code;
+        this.setState({rowData: s});
+        // for (let index = currentPos; index < currentPos+perPage; index++) {
+        //     if(typeof this.state.listData[index] !== "undefined"){
+        //         console.log('fire');
+        //    }
+        // }
+        // this.setState({rowData: s,})
+    }
     render() {
+    
+    const pagination = () => {
+        let perPage = 3;
+        var pages = Math.ceil(this.state.listData.length/perPage);
+        let paginationtext = [];
+
+       for (let i = 1; i < pages+1; i++) {
+            paginationtext.push(<span 
+                className="click-pointer" 
+                onClick={
+                    () => this.changeActive(i)}
+                >
+                    {i}&nbsp;&nbsp;&nbsp;
+                    </span>);
+        }
+        return paginationtext;
+    }  
         return (
             <>
                 <div
                     className="card-514 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
+                     {/* {newDataReq()} */}
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
@@ -2214,6 +2115,8 @@ class StockWatchlistAgGrid extends React.PureComponent {
                         onFirstDataRendered={this.onFirstDataRendered}>
                     </AgGridReact>
                 </div>
+                {pagination()}
+
             </>
         );
     }

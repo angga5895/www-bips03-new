@@ -93,7 +93,7 @@ class LandingPage_Base extends React.PureComponent {
             //     x: "Portfolio Equity", value: 207166
             // },
             {
-                x: "Portfolio Equity", value: 298173,
+                x: "Portfolio Equity", value: 100173,
                 normal:  {
                     fill: (["#64b5f6","#abd3e9"]),
                 },

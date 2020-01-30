@@ -11,7 +11,7 @@ import { BIPSAppProvider, BIPSAppContext } from './AppData.js';
 // application-UI-pages goes here
 import MainPage from './app_pages/mainPage.js';
 
-import Landing, {CustomFrameHeaderLanding, LandingPage, StockCash, FundTransfer, InquryAccount, TradeListHistory, tcAndSoe} from './app_pages/landingPage.js';
+import Landing, {CustomFrameHeaderLanding, LandingPage, StockCash, FundTransfer, InquryAccount, TradeListHistory, tcAndSoa} from './app_pages/landingPage.js';
 import PortfolioPage from './app_pages/portfolioPage.js';
 import StockSummaryPage from './app_pages/stockSummary.js';
 import FixedIncomePage from './app_pages/fixedIncome.js';
@@ -26,7 +26,7 @@ import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     StatisticMarketStatistikPage,GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage} from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
-    TradeWatchlist, SettingInWatchlist,
+    TradeWatchlist, TradePL,
     OrderSetting,SentOrder } from './app_pages/tradePage';
 import AnalyticPage, { CustomFrameHeaderAnalytic, Analytic,
     StockAnalyticPage,
@@ -54,7 +54,7 @@ class App extends React.Component {
         initialClasses={{Landing, MarketStatistik, Stocks, Trade, Analytic, LiveTradePage, EsbnPage, MutualFundPage, ChatSupportPage,
             PortfolioPage, StockSummaryPage, FixedIncomePage, AccountAPage, AccountBPage,
             //Landing Page
-            /*tree1*/ LandingPage, StockCash, TradeListHistory, FundTransfer, InquryAccount, tcAndSoe,
+            /*tree1*/ LandingPage, StockCash, TradeListHistory, FundTransfer, InquryAccount, tcAndSoa,
             //MarketStatistik Page
             /*tree2*/ MarketStatistikPage, NewResearchMarketStatistikPage,TopBrokerMarketStatistikPage,IndiceMarketStatistikPage,
             IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage,
@@ -64,8 +64,8 @@ class App extends React.Component {
             /*tree3*/ TableStockInfo, TableProfil, TableCorpAction,
             //TradePage
             /*tree2*/
-            OrderbookPage, TradeWatchlist, SettingInWatchlist,
-            OrderSetting,SentOrder,
+            OrderbookPage, TradeWatchlist,
+            OrderSetting,SentOrder,TradePL,
             //AnalyticPage
             /*tree1*/
             AnalyticPage, StockAnalyticPage, IndiceAnalyticPage, RelativePerformanceAnalyticPage,
@@ -98,7 +98,7 @@ class App extends React.Component {
             {className: 'TradeListHistory', title: '', instanceName: 'tradeListHistoryPageInvboard'},
             {className: 'FundTransfer', title: '', instanceName: 'fundTransferPageInvboard'},
             {className: 'InquryAccount', title: '', instanceName: 'inquryAccountPageInvboard'},
-            {className: 'tcAndSoe', title: '', instanceName: 'InvboardTcAndSoe'},
+            {className: 'tcAndSoa', title: '', instanceName: 'InvboardTcAndSoa'},
 
             //tree 2 In MarketStatistik
             {className: 'MarketStatistikPage', title: '', instanceName: 'marketStatistikPage'},
@@ -128,7 +128,7 @@ class App extends React.Component {
             //tree 2 In Trade
             {className: 'TradeWatchlist', title: 'WATCHLIST PAGES', instanceName: 'tradePageManOrderbook'},
             {className: 'OrderbookPage', title: 'ORDERBOOK PAGE', instanceName: 'tradePageManWatchlist'},
-            {className: 'SettingInWatchlist', title: 'WATCHLIST', instanceName: 'tradePageManWatchList2'},
+            {className: 'TradePL', title: 'TRADE P/L', instanceName: 'tradePagePL'},
 
             {className: 'OrderSetting', title: 'ORDER SETTING', instanceName: 'AutOrderSetting'},
             {className: 'SentOrder', title: 'SEND ORDER', instanceName: 'AutSentOrder'},
@@ -172,7 +172,7 @@ class App extends React.Component {
                         'tradeListHistoryPageInvboard',
                         'fundTransferPageInvboard',
                         'inquryAccountPageInvboard',
-                        'InvboardTcAndSoe'
+                        'InvboardTcAndSoa'
                     ]
                 },
                 {
@@ -214,7 +214,7 @@ class App extends React.Component {
                     pages : [
                         'tradePageManOrderbook',
                         'tradePageManWatchlist',
-                        'tradePageManWatchList2',
+                        'tradePagePL',
                         'AutOrderSetting',
                         'AutSentOrder'
                     ]

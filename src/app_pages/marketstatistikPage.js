@@ -50,7 +50,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             indiceMarketStatistikPage: 'MEMBER CAPITALIZATION',
                             /*indiceMarketSecondStatistikPage: 'INDEX MOVER',*/
                             topBrokerMarketStatistikPage: 'TOP BROKER',
-                            newResearchMarketStatistikPage: 'NEWS & RESEARCH',
+                            newResearchMarketStatistikPage: 'NEWS',
                         }
                     }/>
                 </div>
@@ -769,7 +769,7 @@ class NewResearchMarketStatistikPage extends React.PureComponent {
                                 newsGeneral : 'General News',
                                 newsStock : 'Stock News',
                                 newsMutualFund : 'Mutual Fund News',
-                                newsResearch : 'Research'
+                                // newsResearch : 'Research'
                             }
                         } />
                     </div>
@@ -803,9 +803,9 @@ class GeneralNewResearchPage extends React.PureComponent {
                                 </h3>
                             </div>
                             <div className="card card-body card-406 scrollable px-3">
-                                <div className={"text-center align-self-center"}>
+                                {/* <div className={"text-center align-self-center"}>
                                     <img src={newsImg1} alt="News 1" height={"auto"} width={"50%"} />
-                                </div>
+                                </div> */}
                                 <div className="py-4 text-white text-justify f-12">
                                     <span className="text-warning">Liputan6.com, Jakarta </span> -  Indeks Harga Saham
                                     Gabungan (IHSG) ditutup melemah pada perdagangan Selasa ini. Dari 10 sektor pembentuk IHSG, seluruhnya sebagian besar melemah. <br/><br/>
@@ -833,50 +833,86 @@ class GeneralNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
                                         <img src={newsImg2} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
                                             IHSG Dibuka Melemah ke 6,381.98
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
                                         <img src={newsImg3} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
                                             IHSG Ditutup Menguat ke 6,204.19
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
                                         <img src={newsImg4} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
                                             IHSG Ditutup Terjun Bebas ke 6,175.7
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
                                         <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
                                             Melantai Di Bursa Efek
-                                        </p><br/><br/>
+                                        </p><br/>
+                                        <span className="text-warning">Liputan6.com - </span> 27 minutes ago
+                                    </div>
+                                </div>
+                                <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
+                                        <p className="f-16">
+                                            Cara BEI Ajak Pengusaha Kecil
+                                            Melantai Di Bursa Efek
+                                        </p><br/>
+                                        <span className="text-warning">Liputan6.com - </span> 27 minutes ago
+                                    </div>
+                                </div>
+                                <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
+                                        <p className="f-16">
+                                            Cara BEI Ajak Pengusaha Kecil
+                                            Melantai Di Bursa Efek
+                                        </p><br/>
+                                        <span className="text-warning">Liputan6.com - </span> 27 minutes ago
+                                    </div>
+                                </div>
+                                <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
+                                    {/* <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
+                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
+                                    </div> */}
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
+                                        <p className="f-16">
+                                            Cara BEI Ajak Pengusaha Kecil
+                                            Melantai Di Bursa Efek
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
@@ -909,9 +945,9 @@ class StockNewResearchPage extends React.PureComponent {
                                 </h3>
                             </div>
                             <div className="card card-body card-406 scrollable px-3">
-                                <div className={"text-center align-self-center"}>
+                                {/* <div className={"text-center align-self-center"}>
                                     <img src={newsImg1} alt="News 1" height={"auto"} width={"50%"} />
-                                </div>
+                                </div> */}
                                 <div className="py-4 text-white text-justify f-12">
                                     <span className="text-warning">Liputan6.com, Jakarta </span> -  Indeks Harga Saham
                                     Gabungan (IHSG) ditutup melemah pada perdagangan Selasa ini. Dari 10 sektor pembentuk IHSG, seluruhnya sebagian besar melemah. <br/><br/>
@@ -939,50 +975,42 @@ class StockNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg3} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
                                             IHSG Ditutup Menguat ke 6,204.19
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg2} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
                                             IHSG Dibuka Melemah ke 6,381.98
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg4} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
                                             IHSG Ditutup Terjun Bebas ke 6,175.7
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
                                             Melantai Di Bursa Efek
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
@@ -1015,9 +1043,6 @@ class MutualNewResearchPage extends React.PureComponent {
                                 </h3>
                             </div>
                             <div className="card card-body card-406 scrollable px-3">
-                                <div className={"text-center align-self-center"}>
-                                    <img src={newsImg1} alt="News 1" height={"auto"} width={"50%"} />
-                                </div>
                                 <div className="py-4 text-white text-justify f-12">
                                     <span className="text-warning">Liputan6.com, Jakarta </span> -  Indeks Harga Saham
                                     Gabungan (IHSG) ditutup melemah pada perdagangan Selasa ini. Dari 10 sektor pembentuk IHSG, seluruhnya sebagian besar melemah. <br/><br/>
@@ -1045,50 +1070,42 @@ class MutualNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg3} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
+                                   
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
                                             IHSG Ditutup Menguat ke 6,204.19
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg4} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
                                             IHSG Ditutup Terjun Bebas ke 6,175.7
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg2} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
                                             IHSG Dibuka Melemah ke 6,381.98
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
                                             Melantai Di Bursa Efek
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
@@ -1121,9 +1138,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                                 </h3>
                             </div>
                             <div className="card card-body card-406 scrollable px-3">
-                                <div className={"text-center align-self-center"}>
-                                    <img src={newsImg1} alt="News 1" height={"auto"} width={"50%"} />
-                                </div>
+                               
                                 <div className="py-4 text-white text-justify f-12">
                                     <span className="text-warning">Liputan6.com, Jakarta </span> -  Indeks Harga Saham
                                     Gabungan (IHSG) ditutup melemah pada perdagangan Selasa ini. Dari 10 sektor pembentuk IHSG, seluruhnya sebagian besar melemah. <br/><br/>
@@ -1151,50 +1166,42 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg3} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
-                                    <div className="col-sm-6 pr-0 pl-1 mx-0">
+                                    
+                                    <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
                                             IHSG Ditutup Menguat ke 6,204.19
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg4} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
+                                    
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
                                             IHSG Ditutup Terjun Bebas ke 6,175.7
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg5} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
+                                    
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
                                             Melantai Di Bursa Efek
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    <div className="col-sm-6 pl-0 pr-1 mx-0 text-center align-self-center">
-                                        <img src={newsImg2} alt="News 1" height={"auto"} width={"100%"} />
-                                    </div>
+                                   
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
                                             IHSG Dibuka Melemah ke 6,381.98
-                                        </p><br/><br/>
+                                        </p><br/>
                                         <span className="text-warning">Liputan6.com - </span> 27 minutes ago
                                     </div>
                                 </div>

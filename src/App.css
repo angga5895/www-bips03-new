@@ -1832,7 +1832,7 @@ button.bg-gold:hover {
 .li-menu-news {
     /*padding-top: 10px;*/
     /*padding-bottom: 10px;*/
-    width : 25%;
+    width : 33.33%;
     float: left;
     /*background-color: var(--warna-bg-dark-grey);*/
     border-bottom:2px solid var(--warna-d-border);

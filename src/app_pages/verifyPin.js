@@ -95,7 +95,7 @@ class VerifyPIN extends React.PureComponent{
                     this.refs.frameAction.closeModal(100);
                     var frameAction = this.refs.frameAction;
                     frameAction.showModal({
-                        headerClass: () => 'Ini : '+this.props.tipe,
+                        // headerClass: () => 'Ini : '+this.props.tipe,
                         contentClass: detailWithdrawModal,
                         onClose: (result) => console.log('Second modal result = ', result),
                         size: "mini"

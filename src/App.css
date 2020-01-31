@@ -5920,3 +5920,6 @@ textarea {
     margin-left: 6px;
     margin-right: 6px;
 }
+.input-right>input{
+    text-align: right !important;
+}

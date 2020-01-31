@@ -66,6 +66,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                                     tradePageManOrderbook : 'ORDERLIST',
                                     tradePageManWatchlist: 'ORDERBOOK',
                                     tradePagePL : 'TRADE P/L',
+                                    tradePageOrderBookList : 'ORDER BOOKING LIST',
                                 }
                             } />
                         </div>
@@ -521,7 +522,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:105, pinned: "right", lockPosition: true, lockVisible: true,
+               ` { field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:105, pinned: "right", lockPosition: true, lockVisible: true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right locked-col locked-visible";
                     },
@@ -539,7 +540,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
 
                         return eDiv;
                     }, suppressSizeToFit: true
-                },
+                },`
             ],
             defaultColDef: {
                 sortable: true,
@@ -956,6 +957,137 @@ class TradePL extends React.PureComponent{
         )
     };
 }
+
+class TradeOrderBookList extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state={
+            activeTab: '1',
+        };
+
+    }
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+    clickdetail = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right">
+                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                   onClick={this.closeClick}></i></div>,
+            size: 'mini',
+            contentClass: DetailTradeOrderBook,
+        })
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+            return "s75";
+        }else if(window.innerWidth > 2045 && window.innerWidth < 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth < 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render() {
+        return (
+            <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+
+                <div className="col-sm-12 px-0 card-310">
+                    <TradeOrderBookListAgGrid
+                        clickdetail={this.clickdetail}
+                        size={this.ceksize()}/>
+                </div>
+            </div>
+        )
+    };
+}
+
+class DetailTradeOrderBook extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+
+    componentDidMount(){
+        $(document).keypress(function(e) {
+            if(e.which == 13) {
+                $("#enter-ok").click();
+            }
+        });
+    }
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <div className="col-sm-12 text-white px-0 mx-0 f-12">
+                    <div className="col-sm-12 mx-0 px-0">
+                        <Table size="sm" responsive borderless className="text-white">
+                            <thead className="d-border-table">
+                            <tr>
+                                <th
+                                    className="text-center bg-brown text-white" colSpan="3">ORDER BOOKING DETAIL</th>
+                            </tr>
+                            </thead>
+                            <tbody className="no-wrap d-border-table">
+                            <tr>
+                                <td>Booking No</td>
+                                <td>:</td>
+                                <td className={"text-right"}>001</td>
+                            </tr>
+                            <tr>
+                                <td>Code</td>
+                                <td>:</td>
+                                <td>TLKM</td>
+                            </tr>
+                            <tr>
+                                <td>Market</td>
+                                <td>:</td>
+                                <td>RG</td>
+                            </tr>
+                            <tr>
+                                <td>Booking Date</td>
+                                <td>:</td>
+                                <td>22/02/2020</td>
+                            </tr>
+
+                            </tbody>
+                            </Table>
+                    </div>
+                </div><br/>
+                <div className="col-sm-12 text-center mx-0 px-0 f-12">Do you want to cancel the order ?</div><br/>
+                <div className="col-sm-12 row mx-0 px-0">
+                    <div className="col-sm-12 text-center">
+                        <button className="btn btn-danger col-sm-6" id="enter-ok" onClick={
+                            () => {
+                                alert('Order canceled!');
+                                var refs = this.refs;
+                                refs.frameAction.closeModal(100)
+                            }
+                        }>Cancel Order</button>
+                    </div>
+                    <div className="col-sm-12 text-center">
+                        <button className="btn btn-trans col-sm-6" onClick={
+                            () => {
+                                var refs = this.refs;
+                                refs.frameAction.closeModal(100)
+                            }
+                        }>Cancel</button>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
 
 class SettingInWatchlist extends React.Component{
     ceksize(){
@@ -2666,6 +2798,210 @@ class TradePLAgGrid extends React.PureComponent {
         );
     }
 }
+class TradeOrderBookListAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "#", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "bookingNo", headerName: "Booking No", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "mkt", headerName: "Mkt", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },
+                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s50"?120:s=="s67"?120:s=="s75"?120:s=="s80"?120:s=="s90"?120:120, minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },
+                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "vol", headerName: "Vol(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "vollot", headerName: "Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "bookingDate", headerName: "Booking Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?140:s=="s67"?140:s=="s75"?140:s=="s80"?140:140, minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                }, { field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:105, pinned: "right", lockPosition: true, lockVisible: true,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center locked-col locked-visible";
+                    },
+                    cellRenderer : function (params) {
+                        var eDiv = document.createElement('div');
+                        eDiv.innerHTML = '<span class="px-1">' +
+                            '<button class="btn-cellamend btn btn-sm btn-primary mx-1 f-9">Cancel</button>'+
+                            '</span>';
+                        var aButton = eDiv.querySelectorAll('.btn-cellamend')[0];
+
+                        aButton.addEventListener('click', self.props.clickdetail);
+
+                        return eDiv;
+                    }, suppressSizeToFit: true
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    code :"AALI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"BUMI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"BUDI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },{
+                    code :"SMGR"+s,
+                    vol: 3,
+                    buyAmount : "13.000",    
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",   
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+    buttonClickAmend = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right">
+                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                   onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: AmendModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+   
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-177 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        >
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
 
 
 class TradeOrderSummaryAgGrid extends React.PureComponent {
@@ -3015,7 +3351,7 @@ class OrderDetailModal extends React.Component {
 }
 
 export {CustomFrameHeaderTrade, Trade,
-    OrderbookPage, TradeWatchlist, TradePL, SettingInWatchlist,
+    OrderbookPage, TradeWatchlist, TradePL, TradeOrderBookList, SettingInWatchlist,
     OrderSetting,SentOrder,
 
 };

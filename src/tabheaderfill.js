@@ -72,10 +72,10 @@ const FillHeaderTab_Base = (props) => {
                                                                         trademore !== '' ?
                                                                             trademore === 'manual' ?
                                                                                 e.instanceName.search('tradePage') >= 0 ?
-                                                                                    e.instanceName.search('tradePageManWatchList') >= 0?
-                                                                                        'active col-sm-4 bg-blue-white click-pointer text-center bg-blue-white'
+                                                                                    e.instanceName.search('tradePageBookList') >= 0?
+                                                                                        'active col-sm-3 bg-blue-white click-pointer text-center bg-blue-white'
                                                                                         :
-                                                                                        'active col-sm-4 bg-blue-white click-pointer text-center d-border-right bg-blue-white'
+                                                                                        'active col-sm-3 bg-blue-white click-pointer text-center d-border-right bg-blue-white'
                                                                                     :
                                                                                     'd-none'
                                                                                 :
@@ -148,10 +148,10 @@ const FillHeaderTab_Base = (props) => {
                                                                             trademore !== '' ?
                                                                                 trademore === 'manual' ?
                                                                                     e.instanceName.search('tradePage') >= 0 ?
-                                                                                        e.instanceName.search('tradePL') >= 0?
-                                                                                            'col-sm-4 click-pointer text-center'
+                                                                                        e.instanceName.search('tradeOrderBookList') >= 0?
+                                                                                            'col-sm-3 click-pointer text-center'
                                                                                             :
-                                                                                            'col-sm-4 click-pointer text-center d-border-right'
+                                                                                            'col-sm-3 click-pointer text-center d-border-right'
                                                                                         :
                                                                                         'd-none'
                                                                                     :

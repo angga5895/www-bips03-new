@@ -26,7 +26,7 @@ import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     StatisticMarketStatistikPage,GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage} from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
-    TradeWatchlist, TradePL,
+    TradeWatchlist, TradePL, TradeOrderBookList,
     OrderSetting,SentOrder } from './app_pages/tradePage';
 import AnalyticPage, { CustomFrameHeaderAnalytic, Analytic,
     StockAnalyticPage,
@@ -65,7 +65,7 @@ class App extends React.Component {
             //TradePage
             /*tree2*/
             OrderbookPage, TradeWatchlist,
-            OrderSetting,SentOrder,TradePL,
+            OrderSetting,SentOrder,TradePL, TradeOrderBookList,
             //AnalyticPage
             /*tree1*/
             AnalyticPage, StockAnalyticPage, IndiceAnalyticPage, RelativePerformanceAnalyticPage,
@@ -129,6 +129,7 @@ class App extends React.Component {
             {className: 'TradeWatchlist', title: 'WATCHLIST PAGES', instanceName: 'tradePageManOrderbook'},
             {className: 'OrderbookPage', title: 'ORDERBOOK PAGE', instanceName: 'tradePageManWatchlist'},
             {className: 'TradePL', title: 'TRADE P/L', instanceName: 'tradePagePL'},
+            {className: 'TradeOrderBookList', title: 'ORDER BOOKING LIST', instanceName: 'tradePageOrderBookList'},
 
             {className: 'OrderSetting', title: 'ORDER SETTING', instanceName: 'AutOrderSetting'},
             {className: 'SentOrder', title: 'SEND ORDER', instanceName: 'AutSentOrder'},
@@ -215,6 +216,7 @@ class App extends React.Component {
                         'tradePageManOrderbook',
                         'tradePageManWatchlist',
                         'tradePagePL',
+                        'tradePageOrderBookList',
                         'AutOrderSetting',
                         'AutSentOrder'
                     ]

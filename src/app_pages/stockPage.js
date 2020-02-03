@@ -805,7 +805,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-4 px-1 pt-2 pb-0">
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                        <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
+                                        <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK SUMMARY</div>
                                     </div>
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
                                         {/*<TableBS responsive bordered size="sm"

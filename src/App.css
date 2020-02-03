@@ -5923,3 +5923,10 @@ textarea {
 .input-right>input{
     text-align: right !important;
 }
+.td-select-historical{
+    width: 120px;
+}
+[col-id~="orderer"]{
+    text-decoration: underline;
+    font-style: italic;
+}

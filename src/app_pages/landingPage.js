@@ -716,44 +716,40 @@ class ModalOrderHistory extends React.Component {
         }
     }
     render() {
-
-        const imgdisplay = {
-            display: 'inline-flex',
-            paddingTop: '3px'
-        };
-
-        const paddingParagraph = {
-            paddingTop: '10px',
-            paddingBottom: '0px'
-        }
         const paddingParagraphBottom = {
             paddingBottom: '10px'
         }
-
-        const divMargin = {
-            marginBottom: '15px'
-        }
-
-        const imgUser = {
-            margin: 'auto',
-            backgroundColor: 'var(--warna-bg-trading-gray)',
-            // borderBottom: '2px solid var(--warna-inactive-gradient)'
-        }
-
+        const marketOptions = [
+            //untuk top active
+            { key: 'all', value: 'all', text: 'All' },
+            { key: 'rg', value: 'rg', text: 'RG' },
+            { key: 'tn', value: 'tn', text: 'TN' },
+            { key: 'ng', value: 'ng', text: 'NG' },
+        ];
+        const  statusOptions = [
+            //untuk top active
+            { key: 'all', value: 'all', text: 'All' },
+            { key: 'open', value: 'open', text: 'Open' },
+            { key: 'amend', value: 'amend', text: 'Amend' },
+            { key: 'withdraw', value: 'withdraw', text: 'Withdraw' },
+            { key: 'partial', value: 'partial', text: 'Partial' },
+            { key: 'donePartial', value: 'donePartial', text: 'Done - Partial' },
+            { key: 'reject', value: 'reject', text: 'Reject' },
+            { key: 'send', value: 'send', text: 'Send' },
+        ];
+        const buySellOptions = [
+            //untuk top active
+            { key: 'all', value: 'ALL', text: 'All' },
+            { key: 'buy', value: 'BUY', text: 'Buy' },
+            { key: 'sell', value: 'SELL', text: 'Sell' },
+        ];
         return (
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="container-fluid pl-0 pr-0 f-12" >
                     <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={paddingParagraphBottom}>
-                        {/*<div className="col-sm-3">
-                            <div className="row" style={imgUser}>
-                                <div className="col-md-12" style={imgdisplay}>
-                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2" /><p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
-                                </div>
-                            </div>
-                        </div>*/}
                         <div className="col-sm-12 h-62">
-                            <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
+                            <div className="ui small input col-sm-12 f-12 text-center align-self-center black ver-center">
 
                                 <table>
                                     <tr>
@@ -774,6 +770,24 @@ class ModalOrderHistory extends React.Component {
                                         <td>
                                             <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
                                         </td>
+                                        <td class="text-white">
+                                            Market
+                                        </td>
+                                        <td className="td-select-historical">
+                                            <Dropdown defaultValue={marketOptions[0].value} placeholder='' search selection options={marketOptions} className="col-sm-12 f-12"/>
+                                        </td>
+                                        <td className="text-white">
+                                            Status
+                                        </td>
+                                        <td className="td-select-historical">
+                                            <Dropdown placeholder='' defaultValue={statusOptions[0].value} search selection options={statusOptions} className="col-sm-12 f-12"/>
+                                        </td>
+                                        <td className="text-white">
+                                            Buy/Sell
+                                        </td>
+                                        <td className="td-select-historical">
+                                            <Dropdown placeholder='' defaultValue={buySellOptions[0].value} search selection options={buySellOptions} className="col-sm-12 f-12"/>
+                                        </td>
                                     </tr>
                                 </table>
 
@@ -786,7 +800,7 @@ class ModalOrderHistory extends React.Component {
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
                     <div className="col-sm-12 px-0 pt-0" >
-                        <TransactionAgGrid size={this.ceksize()}/>
+                        <TransactionOrderHistoryAgGrid size={this.ceksize()}/>
                     </div>
                 </div>
             </>
@@ -1090,7 +1104,12 @@ class FundTransfer_Base extends React.PureComponent {
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
-                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                        <Input 
+                                                        readonly defaultValue='1,000,000' 
+                                                        placeholder='Name' 
+                                                        className="col-sm-12 pl-4 pr-0 text-right align-self-center input-right"
+                                                        
+                                                        />
                                                     </div>
                                                     <div className="col-md-2 mt-3">
                                                         Withdrawable Amount
@@ -1099,7 +1118,9 @@ class FundTransfer_Base extends React.PureComponent {
                                                         IDR
                                                     </div>
                                                     <div className="col-md-3">
-                                                        <Input readonly defaultValue='Astra Argo Lestari Tbk.' placeholder='Name' className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                                        <Input readonly defaultValue='1,000,000' 
+                                                        placeholder='Name' 
+                                                        className="col-sm-12 pl-4 pr-0 text-right align-self-center input-right"/>
                                                     </div>
                                                 </div> <div className="row p-3">
                                                 <div className="col-md-2 mt-3">
@@ -1120,7 +1141,7 @@ class FundTransfer_Base extends React.PureComponent {
                                         <div className="row">
                                             <div className="col-md-12 p-5">
                                                 <input className="magic-checkbox" type="checkbox" name="viaRTGS" id="viaRTGS" value="option"/>
-                                                <label for="viaRTGS" className="text-white f-12-center mt-3">
+                                                <label for="viaRTGS" className="text-white f-12-center pt-1">
                                                     Via RTGS (The above amount is more than IDR 100,000,000)
                                                 </label>
                                             </div>
@@ -3645,6 +3666,183 @@ class TransactionAgGrid extends React.PureComponent {
     }
 }
 
+class TransactionOrderHistoryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = this.props.size;
+        this.state = {
+            columnDefs: [
+                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?130:s=="s50"?120:100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                }, { field: "originNo", headerName: "Origin No", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?130:s=="s50"?120:100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12";
+                    }, suppressSizeToFit: true
+                },
+                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?130:s=="s50"?120:100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12";
+                    }, suppressSizeToFit: true
+                },{ field: "cmd", headerName: "Cmd", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?130:s=="s50"?120:100,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "type", headerName: "Type", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?140:s=="s50"?120:130,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "mkt", headerName: "Mkt", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?150:130,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?150:130,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?150:130,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "mvol", headerName: "M Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?150:130,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "mprice", headerName: "M Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?150:130,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "restvol", headerName: "Rest Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "status", headerName: "Status", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:160,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "rejectreason", headerName: "Reject Reason", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "orderer", headerName: "Orderer", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    },},
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    order: "0001",
+                    originNo: "011",
+                    code: 'AALI',
+                    cmd: 'Buy',
+                    type: 'Day',
+                    mkt: 'RG',
+                    vol: 100,
+                    price: 12.000,
+                    mvol: 100,
+                    mprice: 1000,
+                    restvol: 0,
+                    status: "Done",
+                    time: '09:03:10',
+                    rejectreason: '-',
+                    ordered: '',
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-392 ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
+                    id="myGrid"
+                    style={{
+                        width: "100%",
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
 
 class FundAgGrid extends React.PureComponent {
     constructor(props) {

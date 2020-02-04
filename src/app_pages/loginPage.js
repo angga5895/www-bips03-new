@@ -305,7 +305,149 @@ class SignUpModal extends React.PureComponent {
         );
     }
 }
+class SlideBarLogin extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state = {
+            seconds: 0,
+            index: 0,
+            flipped: false,
+            barSatu: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barDua: [
+                {
+                    symbol: '',
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
+                },
+            ],
+            barInfo: [
+                {
+                    symbol: 'GBP/USD',
+                    last: '12849',
+                    change: -0.99,
+                    percentage: -0.30,
+                },{
+                    symbol: 'USD/JPY',
+                    last: '108.59',
+                    change: 0,
+                    percentage: 0,
+                },{
+                    symbol: 'USD/CHF',
+                    last: '0.9874',
+                    change: -0.05,
+                    percentage: -0.04,
+                },{
+                    symbol: 'AUD/JPY',
+                    last: '78.14',
+                    change: 0.05,
+                    percentage: 0.05,
+                },
+            ],
+        };
 
+    }
+    componentDidMount() {
+        this.interval = setInterval(() => this.tick(), 10000);
+    }
+    tick() {
+
+        this.setState(prevState => ({
+            seconds: prevState.seconds + 1
+            // seconds: prevState.seconds + 0
+        }));
+        if(this.state.seconds === 0){
+            this.setState({barSatu: this.state.barInfo[0]})
+        }
+        if(this.state.seconds % 1 === 0){
+            var elementBox = document.getElementById("hid-box");
+            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
+            elementBox.classList.toggle("active");
+            //set change every 20 sec
+            this.setState({flipped: !this.state.flipped});
+            this.setState({index: nextIndex});
+
+            if(this.state.flipped === false){
+                this.setState({barSatu: this.state.barInfo[nextIndex]})
+            }else{
+                this.setState({barDua: this.state.barInfo[nextIndex]})
+            }
+        }
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+    render(){
+        const colorLabelFront = (props) => {
+            if(props < 0){
+                return "bg-red-dark-grad"
+            }if(props > 0){
+                return "bg-green-dark-grad"
+            }else{
+                return "bg-yellow-red-grad"
+            }
+        }
+        const colorIcon = (props) => {
+            if(props < 0){
+                return "icofont icofont-caret-down"
+            }if(props > 0){
+                return "icofont icofont-caret-up"
+            }else{
+                return "icofont icofont-minus"
+            }
+        }
+        return(
+            <div className="box">
+                <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
+                    <table width="100%" height="100%">
+                        <tr>
+                            <td className="spanSymbol">{this.state.barSatu.symbol}</td>
+                            <td>{this.state.barSatu.last}</td>
+                            <td>
+                                <span className={"white"}><i className={colorIcon(this.state.barSatu.change)}></i>
+                                    {this.state.barSatu.change}
+                                    </span>&nbsp;
+                            </td>
+                            <td>
+                                <span className="white">
+                                    {this.state.barSatu.percentage}
+                                    </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div className={"hid-box"+' '
+                         +colorLabelFront(this.state.barDua.change)
+                         +" "+(this.state.flipped===true ? 'active' : '')} id="hid-box">
+                    <table width="100%" height="100%">
+                        <tr>
+                            <td className="spanSymbol">{this.state.barDua.symbol}</td>
+                            <td>{this.state.barDua.last}</td>
+                            <td>
+                                <span className={"white"}><i className={colorIcon(this.state.barDua.change)}></i>
+                                    {this.state.barDua.change}
+                                    </span>&nbsp;
+                            </td>
+                            <td>
+                                <span className="white">
+                                    {this.state.barDua.percentage}
+                                    </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        )
+    }
+
+}
 class LoginUserPage_Base extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -478,9 +620,6 @@ class LoginUserPage_Base extends React.PureComponent {
     }
 
     componentDidMount() {
-
-        this.interval = setInterval(() => this.tick(), 1000);
-
       var input = document.getElementById("press_login");
         input.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
@@ -490,56 +629,13 @@ class LoginUserPage_Base extends React.PureComponent {
         });
     }
 
-    tick() {
 
-        this.setState(prevState => ({
-            seconds: prevState.seconds + 1
-            // seconds: prevState.seconds + 0
-        }));
-        if(this.state.seconds === 1){
-            this.setState({barSatu: this.state.barInfo[0]})
-        }
-        if(this.state.seconds % 10 === 0){
-            var elementBox = document.getElementById("hid-box");
-            var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
-            elementBox.classList.toggle("active");
-            //set change every 20 sec
-            this.setState({flipped: !this.state.flipped});
-            this.setState({index: nextIndex});
-
-            if(this.state.flipped === false){
-                this.setState({barSatu: this.state.barInfo[nextIndex]})
-            }else{
-                this.setState({barDua: this.state.barInfo[nextIndex]})
-            }
-        }
-    }
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
     render () {
 
         var props = this.props;
         const logo = "https://dummyimage.com/308x244/949294/fff.jpg";
 
-        const colorLabelFront = (props) => {
-            if(props < 0){
-                return "bg-red-dark-grad"
-            }if(props > 0){
-                return "bg-green-dark-grad"
-            }else{
-                return "bg-yellow-red-grad"
-            }
-        }
-        const colorIcon = (props) => {
-            if(props < 0){
-                return "icofont icofont-caret-down"
-            }if(props > 0){
-                return "icofont icofont-caret-up"
-            }else{
-                return "icofont icofont-minus"
-            }
-        }
+
         // const testAlert = () => {
         //     window.flash = (message, type="info") => Bus.emit('flash', ({message, type}));
         //     window.flash('Record has been created successfully!', 'info');
@@ -642,47 +738,7 @@ class LoginUserPage_Base extends React.PureComponent {
 
                                         </div>
                                         <div className="col-sm-12 mh-45 px-0 mt-3 mb-0">
-                                            <div className="box">
-                                                <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
-                                                    <table width="100%" height="100%">
-                                                        <tr>
-                                                            <td className="spanSymbol">{this.state.barSatu.symbol}</td>
-                                                            <td>{this.state.barSatu.last}</td>
-                                                            <td>
-                                                                <span className={"white"}><i className={colorIcon(this.state.barSatu.change)}></i>
-                                                                    {this.state.barSatu.change}
-                                                                </span>&nbsp;
-                                                            </td>
-                                                            <td>
-                                                                <span className="white">
-                                                                    {this.state.barSatu.percentage}
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <div className=
-                                                         {"hid-box"+' '
-                                                         +colorLabelFront(this.state.barDua.change)
-                                                         +" "+(this.state.flipped===true ? 'active' : '')} id="hid-box">
-                                                    <table width="100%" height="100%">
-                                                        <tr>
-                                                            <td className="spanSymbol">{this.state.barDua.symbol}</td>
-                                                            <td>{this.state.barDua.last}</td>
-                                                            <td>
-                                                                <span className={"white"}><i className={colorIcon(this.state.barDua.change)}></i>
-                                                                    {this.state.barDua.change}
-                                                                </span>&nbsp;
-                                                            </td>
-                                                            <td>
-                                                                <span className="white">
-                                                                    {this.state.barDua.percentage}
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                            <SlideBarLogin/>
                                         </div>
                                         <div className="col-sm-12 mh-45 px-0 f-11">
                                             <div className="card_help">

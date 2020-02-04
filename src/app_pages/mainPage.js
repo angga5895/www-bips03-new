@@ -1831,7 +1831,7 @@ class MarqueeMac extends React.PureComponent{
     }
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 1000);
+        this.interval = setInterval(() => this.tick(), 5000);
     }
 
     tick() {
@@ -1841,7 +1841,7 @@ class MarqueeMac extends React.PureComponent{
             // seconds: prevState.seconds + 0
         }));
 
-        if(this.state.seconds === 1){
+        if(this.state.seconds === 0){
             let s = this.state.barReady.slice();
             let empty = {
                 symbol: '',
@@ -1869,7 +1869,7 @@ class MarqueeMac extends React.PureComponent{
             })
         }
         //change every 10 sec
-        if(this.state.seconds % 5 === 0){
+        if(this.state.seconds % 1 === 0){
 
             this.setState({flipped: !this.state.flipped});
 

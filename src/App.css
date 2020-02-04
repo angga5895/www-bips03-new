@@ -5933,3 +5933,18 @@ textarea {
 .card-345{
     height: 345px;
 }
+.card-watchlistcust{
+    height: 485px;
+}
+.btn-page.active,.btn-page.active:hover{
+    background-image: linear-gradient(#67AAD7,#0071BC) !important;
+    color: white !important;
+}
+.btn-page,.btn-page:active{
+    background-image: linear-gradient(var(--warna-black-white-gradient),var(--warna-black-white));
+    color: white !important;
+}
+.btn-page:active,.btn-page:hover{
+    background-image: linear-gradient(var(--warna-black-white-gradient),var(--warna-black-white));
+    color: #67AAD7 !important;
+}

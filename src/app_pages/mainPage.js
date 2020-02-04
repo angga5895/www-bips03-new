@@ -433,6 +433,9 @@ const ResizeResponsive = () => {
     var height514 = height520-4.5+2;
     $('.card-514').css('minHeight', (height514));
 
+    var heightStockWathclist = height520-4.5+2-30;
+    $('.card-watchlistcust').css('minHeight', (heightStockWathclist));
+
     if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
         // Do Firefox-related activities
         var height112 = (115/474)*(height520-46);
@@ -1097,6 +1100,9 @@ class MainPage_Base extends React.Component {
 
             var height514 = height520-4.5+2;
             $('.card-514').css('minHeight', (height514));
+
+            var heightStockWathclist = height520-4.5+2-30;
+            $('.card-watchlistcust').css('minHeight', (heightStockWathclist));
 
             if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
                 // Do Firefox-related activities

@@ -2080,6 +2080,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
                 {code: "SMGR"},
                 {code: "BBRI"},
             ],
+            pages: 1,
         }
     }
 
@@ -2115,31 +2116,59 @@ class StockWatchlistAgGrid extends React.PureComponent {
         // }
         // this.setState({rowData: s,})
     }
+    changePrev(){
+        if(this.state.activePage > 1){
+            this.setState({activePage: (this.state.activePage - 1)});
+        }
+    }
+    changeNext(){
+        if(this.state.activePage < this.state.pages){
+            this.setState({activePage: (this.state.activePage + 1)});
+        }
+    }
     render() {
     
     const pagination = () => {
         let perPage = 3;
         var pages = Math.ceil(this.state.listData.length/perPage);
+        this.setState({pages: pages});
         let paginationtext = [];
-
+        paginationtext.push(<button
+            className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == 1)?"disabled":""}`}
+            onClick={
+                () => this.changePrev()}
+        >   &nbsp;&nbsp;
+            <i className={"glyphicon glyphicon-chevron-left"}></i>
+            &nbsp;&nbsp;
+        </button>);
        for (let i = 1; i < pages+1; i++) {
-            paginationtext.push(<span 
-                className="click-pointer" 
+            paginationtext.push(<button
+                className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == i)?"active":""}`}
                 onClick={
                     () => this.changeActive(i)}
                 >
-                    {i}&nbsp;&nbsp;&nbsp;
-                    </span>);
+                &nbsp;&nbsp;
+                    {i}
+                &nbsp;&nbsp;
+            </button>);
         }
+        paginationtext.push(<button
+            className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == this.state.pages)?"disabled":""}`}
+            onClick={
+                () => this.changeNext()}
+        >   &nbsp;&nbsp;
+            <i className={"glyphicon glyphicon-chevron-right"}></i>
+            &nbsp;&nbsp;
+
+        </button>);
         return paginationtext;
     }  
         return (
             <>
                 <div
-                    className="card-514 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-watchlistcust ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
-                     {/* {newDataReq()} */}
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
@@ -2148,6 +2177,11 @@ class StockWatchlistAgGrid extends React.PureComponent {
                         onGridReady={this.onGridReady}
                         onFirstDataRendered={this.onFirstDataRendered}>
                     </AgGridReact>
+
+                </div>
+
+                <div className={"text-center mt-2"}>
+                    {pagination()}
                 </div>
                 {/* {pagination()} */}
 

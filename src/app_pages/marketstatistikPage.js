@@ -598,32 +598,32 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
-                                        <th className="py-1 bg-gray-tradding">VALUE(T)</th>
-                                        <th className="py-1 bg-gray-tradding">LOT(M)</th>
-                                        <th className="py-1 bg-gray-tradding">FREQ</th>
+                                        <th className="py-1 bg-gray-tradding">Val(T)</th>
+                                        <th className="py-1 bg-gray-tradding">Vol(Lot)</th>
+                                        <th className="py-1 bg-gray-tradding">Freq.</th>
                                     </tr>
                                     </thead>
                                     <tbody className="text-white no-wrap">
                                     <tr>
-                                        <td className="text-center py-1">Reguler</td>
+                                        <td className="text-left py-1">Reguler</td>
                                         <td className="text-right py-1">6.35</td>
                                         <td className="text-right py-1">100.3</td>
                                         <td className="text-right py-1">403,040 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center py-1">Negotiated</td>
+                                        <td className="text-left py-1">Negotiated</td>
                                         <td className="text-right py-1">2.64</td>
                                         <td className="text-right py-1">55.41</td>
                                         <td className="text-right py-1">870 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center py-1">Cash</td>
+                                        <td className="text-left py-1">Cash</td>
                                         <td className="text-right py-1">0</td>
                                         <td className="text-right py-1">0</td>
                                         <td className="text-right py-1">0 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-primary text-center py-1">TOTAL</td>
+                                        <td className="text-primary text-left py-1">TOTAL</td>
                                         <td className="text-primary text-right py-1">8.99</td>
                                         <td className="text-primary text-right py-1">156.15</td>
                                         <td className="text-primary text-right py-1">403,914 </td>
@@ -644,13 +644,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </thead>
                                     <tbody className="text-white no-wrap">
                                     <tr>
-                                        <td className="text-center py-1">Rights</td>
+                                        <td className="text-left py-1">Rights</td>
                                         <td className="text-right py-1">500,00</td>
                                         <td className="text-right py-1">100.3</td>
                                         <td className="text-right py-1">403,040 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center py-1">Warrants</td>
+                                        <td className="text-left py-1">Warrants</td>
                                         <td className="text-right py-1">2.64</td>
                                         <td className="text-right py-1">55.41</td>
                                         <td className="text-right py-1">870 </td>
@@ -675,25 +675,25 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </thead>
                                     <tbody className="text-white no-wrap">
                                     <tr>
-                                        <td className="text-center py-1">F.Buy</td>
+                                        <td className="text-left py-1">F.Buy</td>
                                         <td className="text-danger text-right py-1">2.29 T</td>
                                         <td className="text-danger text-right py-1">11.68 M</td>
                                         <td className="text-danger text-right py-1">63,578 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center text-white py-1">F.Sell</td>
+                                        <td className="text-left text-white py-1">F.Sell</td>
                                         <td className="text-right text-success py-1">3.02 T</td>
                                         <td className="text-right text-success py-1">11.44 M</td>
                                         <td className="text-right text-success py-1">85,982 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center text-white py-1">F.TOTAL</td>
+                                        <td className="text-left text-white py-1">F.TOTAL</td>
                                         <td className="text-right text-primary py-1">5.31 T</td>
                                         <td className="text-right text-primary py-1">23.13 M</td>
                                         <td className="text-right text-primary py-1">148,560 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-center text-white py-1">F.NET</td>
+                                        <td className="text-left text-white py-1">F.NET</td>
                                         <td className="text-right text-primary py-1">-731.36 B</td>
                                         <td className="text-right text-primary py-1">241,671</td>
                                         <td className="text-right text-primary py-1">-21,404 </td>

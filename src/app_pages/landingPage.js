@@ -353,6 +353,19 @@ class LandingPage_Base extends React.PureComponent {
         }
     }
     render() {
+        const pl = (getpl,persen) => {
+            let temp = [];
+            if(getpl.includes("-")){
+                temp.push(<span className={"text-danger"}>
+                    <i className="icofont icofont-caret-down"></i>&nbsp;{getpl}&nbsp;({persen}%)
+                </span>);
+            }else{
+                temp.push(<span className={"text-success"}>
+                    <i className="icofont icofont-caret-up"></i>&nbsp;{getpl}&nbsp;({persen}%)
+                </span>);
+            }
+            return temp;
+        }
         return (
             <div className="container-fluid px-0 bg-black-trading">
                 <div className="card-527 col-sm-12 px-0 mx-0 row">
@@ -379,10 +392,13 @@ class LandingPage_Base extends React.PureComponent {
                                         <div className="card-header card-header-investment bg-grey h-40">
                                             <div className="row col-sm-12 px-0 mx-0 py-1">
                                                 <div className="col-sm-4 px-4 mx-0 f-14">
+                                                    <b>Portofolio Equity</b>
+                                                </div>
+                                                <div className="col-sm-4 px-4 mx-0 f-14">
                                                     Stock Val : <span className="text-primary">15,234,000</span>
                                                 </div>
                                                 <div className="col-sm-4 px-4 mx-0 f-14">
-                                                    P/L : <span className="text-success">+1,496,198 (+7.50%)</span>
+                                                    P/L : <span className="text-success">{pl('1,222,222','7.5')}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1059,12 +1075,16 @@ class FundTransfer_Base extends React.PureComponent {
                                             <div>Available Cash (T1/T2)</div>
                                             <table className="table text-white d-border-table bg-dark-grey table-sm ">
                                                 <tr>
-                                                    <td className="no-wrap bg-gray-tradding d-border-tr-black text-center">//</td>
-                                                    <td className="no-wrap bg-gray-tradding d-border-tr-black text-center">//</td>
+                                                    <td className="no-wrap bg-gray-tradding d-border-tr-black text-center d-border-right">
+                                                        dd / mm / yy (T1)
+                                                    </td>
+                                                    <td className="no-wrap bg-gray-tradding d-border-tr-black text-center">
+                                                        dd / mm / yy (T2)
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td className={"text-right d-border-right"}>0.00</td>
+                                                    <td className={"text-right"}>0.00</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -1193,20 +1213,11 @@ class FundTransfer_Base extends React.PureComponent {
                                 </div>
                             </div>
                             <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
-                                <div className="col-sm-12 py-0 px-0 mb-0 h-62">
-                                    <div className="row stockcash-header" style={imgUser}>
-                                        <div className="col-md-12" style={imgdisplay}>
-                                            <img src={user_avatar} alt="User" className="img-avatar d-border mr-2" /><p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div className="d-border-transparent-grey">
-                                    <div className="d-border-bottom" style={{marginBottom : "10px"}}>
-                                        <div className="form-group px-0" style={{marginBottom : "10px"}}>
+                                        <div className="form-group px-0 pt-5" style={{marginBottom : "10px"}}>
                                             <CancelGrid size={this.ceksize()}/>
                                             <CancelGrid2 size={this.ceksize()}/>
                                         </div>
-                                    </div>
                                 </div>
                                 <div className={"col-sm-12 text-right mb-0 px-3 h-40"}>
                                     <button onClick={this.buttonClickPIN} className={"btn btn-primary"}><i className={"fa fa-paper-plane"}>&nbsp;Send</i></button>
@@ -1528,9 +1539,9 @@ class InquryAccount_Base extends React.PureComponent {
                                             <table className={"table table-borderder table-responsive card-113"}>
                                                 <tr>
                                                     <td className={"d-border text-center td-bluelight"}>Item</td>
-                                                    <td className={"d-border text-center td-bluelight"}>Pos No</td>
+                                                    <td className={"d-border text-center td-bluelight"}>Post No.</td>
                                                     <td className={"d-border text-center td-bluelight"}>Address</td>
-                                                    <td className={"d-border text-center td-bluelight"} width="50%">Address1</td>
+                                                    <td className={"d-border text-center td-bluelight"} width="50%">Address</td>
                                                 </tr>
                                                 <tr className={"hover-tables even-td"}>
                                                     <td className={"d-border"}>&nbsp;</td>
@@ -3525,7 +3536,7 @@ class TransactionAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "paidAmt", headerName: "Paid Amt", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "paidAmt", headerName: "Paid Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?170:s=="s50"?150:130,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
@@ -3540,12 +3551,12 @@ class TransactionAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "tradeAmt", headerName: "Trade Amt", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "tradeAmt", headerName: "Trade Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "wht", headerName: "Wht", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "wht", headerName: "WHT", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
@@ -4234,7 +4245,7 @@ class CancelGrid2 extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-155 ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
+                    className={"card-220 ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
                     id="myGrid"
                     style={{
                         width: "100%",

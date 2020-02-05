@@ -51,6 +51,10 @@ class ModalOrderDetail extends React.PureComponent{
                                 <td>Match Value</td>
                                 <td className="hover-tables">88,550,000</td>
                             </tr>
+                            <tr>
+                                <td>Order By</td>
+                                <td className="bg-black-trading hover-tables">Customer</td>
+                            </tr>
                             </tbody>
                         </Table>
                     </div>

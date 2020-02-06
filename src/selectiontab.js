@@ -407,7 +407,7 @@ class SelectItem1 extends React.PureComponent {
         if(this.state.seconds === 0){
             this.setState({firstbox: this.state.barInfo[0]})
         }
-        if(this.state.seconds % 1 === 0){
+        if(this.state.seconds % 5 === 0){
             var nextIndex = (this.state.index + 1) % this.state.barInfo.length;
             //set change every 20 sec
             this.setState({flipped: !this.state.flipped});
@@ -423,7 +423,7 @@ class SelectItem1 extends React.PureComponent {
     //zaky
     //fungsi untuk flipped
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 5000);
+        this.interval = setInterval(() => this.tick(), 1000);
     }
     //zaky
     //fungsi untuk flipped

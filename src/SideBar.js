@@ -4,8 +4,10 @@ import Select from "react-select";
 import {cssmode} from "./App";
 import {Dropdown} from "semantic-ui-react";
 import {RegisterAmendModal} from "./app_pages/stockPage";
+import {ModalReconnect} from "./app_modals/modal_reconnect";
 import {AppFrameAction} from "./appframe";
 import SweetAlert from "react-bootstrap-sweetalert";
+import $ from "jquery";
 
 
 
@@ -66,15 +68,27 @@ class SideBar extends React.Component{
                 },
             ],
             showAlert:false,
-        }
+            showReconnect: false,
+        };
+            this.inactivity = this.inactivity.bind(this);
+
     }
 
     closeClick = (e) => {
-        alert('yak')
         this.setState({showAlert:true});
         // this.refs.frameAction.closeModal(100);
     }
-
+    closeReconnect = (e) => {
+    // this.setState({showAlert:true});
+    this.refs.frameAction.closeModal(100);
+    this.setState({showReconnect: false});
+    }
+    clickOpen = (e) => {
+        if(this.state.showReconnect == false){
+            this.setState({showReconnect: true});
+            this.buttonClickReconnect();
+        }
+    }
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
@@ -82,6 +96,16 @@ class SideBar extends React.Component{
                                                               onClick={()=>this.setState({showAlert:true})}></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+    buttonClickReconnect = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right">
+                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                   onClick={()=>this.closeReconnect()} id={"reconnectxbutton"}></i></div>,
+            size: 'mini',
+            contentClass: ModalReconnect,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -95,6 +119,34 @@ class SideBar extends React.Component{
 
         return firefox;
     }
+    componentDidMount(){
+        window.addEventListener('load', this.inactivity);
+    }
+    inactivity(){
+        var time;
+
+        document.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onmousedown = resetTimer; // touchscreen presses
+        document.ontouchstart = resetTimer;
+        document.onclick = resetTimer;     // touchpad clicks
+        document.onkeypress = resetTimer;
+        document.addEventListener('scroll', resetTimer, true); // improved; see comments
+        window.addEventListener('load', resetTimer, true);
+        var events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        events.forEach(function(name) {
+            document.addEventListener(name, resetTimer, true);
+        });
+
+        function logout() {
+            $("#idTriggerReconnect").click();
+        }
+
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(logout, 30000)
+        }
+    };
 
     render(){
         return(
@@ -145,10 +197,15 @@ class SideBar extends React.Component{
                             </div>
                         </div>
                         <div className="align-self-center text-center px-1 py-0 h-25">
-                            <buttom className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
+                            <button className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
                                 <i className="icofont icofont-edit"></i> &nbsp; Modify
-                            </buttom>
+                            </button>
                         </div>
+                        <span
+                            onClick={this.clickOpen}
+                              id={"idTriggerReconnect"}>
+                        </span>
+
                         <div className="nav flex-lg-column">
                             <div className={this.isFireFox() ? "nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0" :
                                 "nav-link align-self-center text-center px-0 d-border col-sm-12 my-1 py-0"}>

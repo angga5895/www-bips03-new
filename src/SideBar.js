@@ -139,7 +139,11 @@ class SideBar extends React.Component{
         });
 
         function logout() {
-            $("#idTriggerReconnect").click();
+            let a = $("#login-state").css("display");
+            // alert(a);
+            if(a === "none"){
+                $("#idTriggerReconnect").click();
+            }
         }
 
         function resetTimer() {

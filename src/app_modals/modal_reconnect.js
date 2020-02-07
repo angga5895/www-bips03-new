@@ -38,20 +38,6 @@ class ModalReconnect extends React.Component{
                         <div className="form-group row">
                             {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
                             <div className="col-sm-12 pr-3 pb-0">
-                                {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
-                                <div className={"py-2"}>
-                                    <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
-                                        <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
-                                               onChange={""}
-                                               defaultValue="user1"/>
-                                        <i aria-hidden="true" className="icon py-3">
-                                            <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
-                                        </i>
-                                    </div>
-                                    <div className={"text-left"}>
-                                        <i><small className="text-danger" id="req_user" style={{"display": "none"}}></small></i>
-                                    </div>
-                                </div>
                                 <div className={"pt-2"}>
                                     <div className="buttonInside">
                                         <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">

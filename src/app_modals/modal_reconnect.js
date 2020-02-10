@@ -21,7 +21,8 @@ class ModalReconnect extends React.Component{
                 <div className="text-white f-12">
                     <div className="text-center align-self-center align-middle">
                         <div className="img-round-icon">
-                            <i className="icofont icofont-ui-wifi icofont-5x"></i>
+                            {/*<i className="icofont icofont-ui-wifi icofont-5x"></i>*/}
+                            <i className="ion ion-ios-radio icofont-5x"></i>
                         </div>
                     </div>
                     <div className="form-group text-center d-border-bottom-bold">

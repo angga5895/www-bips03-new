@@ -5948,3 +5948,9 @@ textarea {
     background-image: linear-gradient(var(--warna-black-white-gradient),var(--warna-black-white));
     color: #67AAD7 !important;
 }
+.card-stock-trade-sum{
+    height: 250px;
+}
+.card-stock-trade-sum>tbody>tr:nth-of-type(even){
+    background-color: var(--warna-hover-menu) !important;
+}

@@ -803,7 +803,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-4 px-1 pt-2 pb-0">
+                                <div className="col-sm-4 pl-1 pr-0 pt-2 pb-0">
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE SUMMARY</div>
                                     </div>
@@ -813,44 +813,55 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                                  align-middle card-215 mb-0"
 
                                         >*/}<TableBS responsive bordered size="sm"
-                                                 className="table-hover table-striped text-center align-self-center
-                                                 align-middle card-440 mb-0"
-
+                                                 className="table-hover table-striped text-center align-self-center align-middle
+                                                 card-stock-trade-sum mb-0"
                                         >
                                             <thead className="text-white t-statistic">
                                             <tr>
                                                 <th className="py-1 bg-gray-tradding">Price</th>
-                                                <th className="py-1 bg-gray-tradding">Vol</th>
-                                                <th className="py-1 bg-gray-tradding">Lot</th>
+                                                <th className="py-1 bg-gray-tradding">Value</th>
+                                                <th className="py-1 bg-gray-tradding">Volume(Lot)</th>
+                                                <th className="py-1 bg-gray-tradding">Freq</th>
                                             </tr>
                                             </thead>
                                             <tbody className="text-white no-wrap">
                                             <tr>
-                                                <td className="text-right py-1">6.35</td>
-                                                <td className="text-right py-1">100.3</td>
-                                                <td className="text-right py-1">403,040 </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-right py-1">2.64</td>
-                                                <td className="text-right py-1">55.41</td>
-                                                <td className="text-right py-1">870 </td>
-                                            </tr>
-                                            <tr>
+                                                <td className="text-right py-1">0</td>
                                                 <td className="text-right py-1">0</td>
                                                 <td className="text-right py-1">0</td>
                                                 <td className="text-right py-1">0</td>
                                             </tr>
                                             <tr>
-                                                <td className="text-primary text-right py-1">8.99</td>
-                                                <td className="text-primary text-right py-1">156.15</td>
-                                                <td className="text-primary text-right py-1">403,914 </td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
                                             </tr>
-                                            </tbody>
+                                            <tr>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                                <td className="text-right py-1">0</td>
+                                            </tr>
+                                                </tbody>
                                             <tfoot>
                                             <tr>
-                                                <td className="text-left text-success">Freq:</td>
-                                                <td className="text-left text-success">Total Vol:</td>
-                                                <td className="text-left text-success">Total Lot:</td>
+                                                <td className="text-left"></td>
+                                                <td className="text-left">Total Val: 0</td>
+                                                <td className="text-left">Total Vol: 0</td>
+                                                <td className="text-left">Freq: 0</td>
                                             </tr>
                                             </tfoot>
                                         </TableBS>
@@ -1094,7 +1105,7 @@ const StockWatchlist = (props) => {
 
 class TableStockWatchlist_Base extends React.Component{
     closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
+        this.refs.frameAction.closeModalModal(100);
     }
 
     buttonClickAmendRegister = (e) => {

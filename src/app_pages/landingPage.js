@@ -990,7 +990,7 @@ class FundTransfer_Base extends React.PureComponent {
                 format: "dd/mm/yyyy",
                 changeMonth: true,
                 changeYear: true,
-                startDate: '01/01/2000',
+                startDate: sd,
                 autoclose: true,
                 todayBtn: "linked",
             });

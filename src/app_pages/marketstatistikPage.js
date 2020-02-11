@@ -2142,12 +2142,14 @@ class MarketIndicesAgGrid extends React.PureComponent {
             columnDefs: [
                 { field: "sector", headerName: "Sector", resizable: true,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?150:125,
+                    minWidth: 125,
                     lockVisible:true, lockPosition:true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12 text-primary locked-col locked-visible";
                     },suppressSizeToFit: true, pinned: 'left'},
                 { field: "last", headerName: "Last", resizable: true,
                     width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?140:128,
+                    minWidth: 128,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2156,6 +2158,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "change", headerName: "Change", resizable: true,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?140:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2164,6 +2167,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "persen", headerName: "%" , resizable: true,
                     width: s=="s49"?190:s=="s50"?170:s=="s67"?155:s=="s75"?140:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2172,6 +2176,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "prevclosed", headerName: "Prev. Closed", resizable: true,
                     width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?135:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2180,6 +2185,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "open", headerName: "Open", resizable: true,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?145:s=="s75"?133:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2188,6 +2194,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "high", headerName: "High", resizable: true,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?143:s=="s75"?133:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2196,6 +2203,7 @@ class MarketIndicesAgGrid extends React.PureComponent {
                     }},
                 { field: "low", headerName: "Low", resizable: true,
                     width: s=="s49"?170:s=="s60"?160:s=="s67"?145:s=="s75"?135:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         var change = parseFloat(params.data.change.replace(/,/g,""));
                         return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2203,26 +2211,31 @@ class MarketIndicesAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "volume", headerName: "Volume", resizable: true, width: 122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "value", headerName: "Value (T)", resizable: true,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?162:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "fbuy", headerName: "F.Buy (T)", resizable: true,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?140:s=="s75"?132:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "fsell", headerName: "F.Sell (T)", resizable: true,
                     width: s=="s49"?180:s=="s60"?170:s=="s75"?150:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "fnet", headerName: "F.Net (T)", resizable: true,
                     width: s=="s49"?230:s=="s50"?220:s=="s75"?150:122,
+                    minWidth: 122,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2447,43 +2460,43 @@ class TopBrokerAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
-                    width: s=="s49"?140:s=="s50"?90:s=="s67"?70:50,
+                    width: s=="s49"?140:s=="s50"?90:s=="s67"?70:50, minWidth:50,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?170:s=="s67"?140:120,
+                    width: s=="s49"?200:s=="s50"?170:s=="s67"?140:120,minWidth:120,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?500:s=="s50"?460:s=="s67"?420:s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
+                    width: s=="s49"?500:s=="s50"?460:s=="s67"?420:s=="s75"?410:s=="s80"?370:s=="s90"?300:240,minWidth:240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?240:s=="s80"?230:s=="s90"?180:150,minWidth:150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?300:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,minWidth: 170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?280:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:175,
+                    width: s=="s49"?290:s=="s50"?280:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:175,minWidth: 175,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     } },
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?270:s=="s50"?220:s=="s67"?200:190,
+                    width: s=="s49"?270:s=="s50"?220:s=="s67"?200:190,minWidth:190,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?390:s=="s50"?380:s=="s67"?350:s=="s75"?340:s=="s80"?210:s=="s90"?190:170,
+                    width: s=="s49"?390:s=="s50"?380:s=="s67"?350:s=="s75"?340:s=="s80"?210:s=="s90"?190:170,minWidth:170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2640,27 +2653,30 @@ class TopBrokerBAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
-                    width: s=="s49"?140:50,
+                    width: s=="s49"?140:50,minWidth:50,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?195:s=="s67"?180:120, uppressSizeToFit:true, lockVisible:true,
+                    width: s=="s49"?200:s=="s50"?195:s=="s67"?180:120,minWidth:120, uppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?520:s=="s50"?500:s=="s67"?420:s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
+                    minWidth: 240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?330:s=="s50"?300:s=="s67"?250:s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
+                    minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
+                    minWidth: 170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     }},
@@ -2671,6 +2687,7 @@ class TopBrokerBAgGrid extends React.PureComponent {
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?570:s=="s50"?550:s=="s67"?500:s=="s75"?480:s=="s80"?350:s=="s90"?310:275,
+                    minWidth: 275,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -2803,38 +2820,42 @@ class TopBrokerSAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
-                    width: s=="s49"?140:50,
+                    width: s=="s49"?140:50, minWidth: 50,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }},
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: s=="s49"?200:s=="s50"?195:s=="s67"?180:120,
+                    resizable: true, width: s=="s49"?200:s=="s50"?195:s=="s67"?180:120, minWidth: 120,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12 locked-visible";
                     }},
                 { field: "company", headerName: "Company", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?520:s=="s50"?500:s=="s67"?420:s=="s75"?410:s=="s80"?370:s=="s90"?300:240,
+                    minWidth: 240,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }},
                 { field: "tval", headerName: "T. Val(T)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?330:s=="s50"?300:s=="s67"?250:s=="s75"?240:s=="s80"?230:s=="s90"?180:150,
+                    minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
+                    minWidth: 170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     }},
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: s=="s49"?300:260,
+                    resizable: true, width: s=="s49"?300:260, minWidth: 260,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tfreq", headerName: "T. Freq", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?570:s=="s50"?550:s=="s67"?500:s=="s75"?480:s=="s80"?350:s=="s90"?310:275,
+                    minWidth: 275,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },

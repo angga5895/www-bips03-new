@@ -29,7 +29,7 @@ const CustomFrameHeaderAnalytic = (props) => {
                         {
                             StockAnalyticPage: 'Stock Chart',
                             AnalyticPage: 'Multi Chart',
-                            IndiceAnalyticPage: 'Indices Chart',
+                            IndiceAnalyticPage: 'Index Chart',
                             RelativePerformanceAnalyticPage: 'Relative Performance'
                         }
                     } />

@@ -6,7 +6,7 @@ import '../../node_modules/anychart/dist/js/anychart-ui.min.js';
 import '../../node_modules/anychart/dist/fonts/css/anychart-font.min.css';
 import '../../node_modules/anychart/dist/js/anychart-data-adapter.min.js';
 import { ContextConnector } from '../appcontext.js';
-import { BIPSAppContext } from '../AppData.js';
+import { BIPSAppContext, dataAnalitic, GroupList } from '../AppData.js';
 
 // import '../../node_modules/anychart/dist/js/dark_earth.min.js';
 import '../../node_modules/anychart/dist/js/coffee.min.js';
@@ -36,6 +36,8 @@ require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 
 var $valueAnalyticChart = "";
 var $valueAnalyticChart2 = "";
+var $valueType = "";
+var $valueType2 = "";
 
 
 
@@ -306,14 +308,115 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             $(window).on('resize', initHeightChart);
 
             $("#rc").change(function() {
-                getStock($valueAnalyticChart,$valueAnalyticChart2);
+                $("#resetButtonchrtRelative").click();
+                getStock2("select1",$valueAnalyticChart,$valueType);
+                // getStock($valueAnalyticChart,$valueAnalyticChart2);
             });
             $("#rc2").change(function() {
-                getStock($valueAnalyticChart,$valueAnalyticChart2);
+                $("#resetButtonchrtRelative").click();
+                getStock2("select2",$valueAnalyticChart,$valueType2);
+                // getStock($valueAnalyticChart,$valueAnalyticChart2);
             });
 
-            function getStock(stok,stok2){
+            // tess uji coba
+            function getStock2(selecType,stok,type){
+                var sessidbaru = $("#sessIdAhay").val();
+                app.removeChart();
+                appSettingsCache['indicators'] = {};
+                appSettingsCache['scale'] = 'linear';
+                appSettingsCache['chartType'] = 'line';
+                appSettingsCache['annotation'] = 'remove';
+                appSettingsCache['theme'] = 'defaultTheme';
 
+                // if(stok === 'undefined'){
+                //     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
+                // }else {
+                if(type == "code"){
+                    // kalo pakai fetch
+                    fetch('https://bahana.ihsansolusi.co.id:5050/chart/'+stok, 
+                    // fetch('http://10.1.9.10:5050/chart/'+stok, 
+                    // fetch('http://10.1.9.12:5050/chart/'+stok, 
+                    { headers: {
+                        "Authorization": sessidbaru,
+                    }})
+                    .then(data=>{
+                        if(data.ok){
+                            data.json() 
+                            .then(res=>{
+                                if(selecType === "select1"){
+                                    $('#chartDataSelectchrtRelative').val(stok);
+                                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =res.data.data;
+                                }else{
+                                    $('#chartDataSelect2chrtRelative').val(stok);
+                                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = res.data.data;
+                                }
+                            })
+                        }
+                    })
+                
+
+                    // kalo pakai ajax
+                    // $.ajax({
+                    //     type: "GET",
+                    //     url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok,
+                    //     // url: "http://10.1.9.10:5050/chart/" + stok,
+                    //     // url: "http://10.1.9.12:5050/chart/" + stok,
+                    //     contentType: "application/json; charset=utf-8",
+                    //     headers: {
+                    //         "Authorization": sessIdbaru,
+                    //     },
+                    //     dataType: 'json',
+                    //     success: function (result) {                           
+                    //         if(selecType === "select1"){
+                    //             $('#chartDataSelectchrtRelative').val(stok);
+                    //             appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =result.data.data;
+                    //         }else{
+                    //             $('#chartDataSelect2chrtRelative').val(stok);
+                    //             appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result.data.data;
+                    //         }
+                    //     }
+                    // });
+                }else{
+                    alert("ini index", stok)
+                }
+                // if(typeof stok2 == 'undefined'){
+                //     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
+                // }else {
+                // if(stok2 !== 'undefined'){
+                //     $.ajax({
+                //         type: "GET",
+                //         url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok2,
+                //         // url: "http://10.1.9.10:5050/chart/" + stok2,
+                //         // url: "http://10.1.9.12:5050/chart/" + stok2,
+                //         contentType: "application/json; charset=utf-8",
+                //         headers: {
+                //             "Authorization": sessIdbaru,
+                //         },
+                //         dataType: 'json',
+                //         success: function (result2) {
+                //             $('#chartDataSelect2chrtRelative').val(stok2);
+                //             appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result2.data.data;
+                //         }
+                //     });
+                // }
+
+                $annotationType.val('default').selectpicker('refresh');
+                // select series type
+                $seriesTypeSelect.val('line').selectpicker('refresh');
+                // reset indicators select
+                $indicatorTypeSelect.val('').selectpicker('refresh');
+                // select chart theme
+                $themeSelect.val('defaultTheme').selectpicker('refresh');
+
+                // init, create chart
+                app.createChart(chartContainer);
+
+                appSettingsCache['annotation'] = 'remove';
+
+            }
+
+            // ini betul
+            function getStock(stok,stok2){
                 var sessIdbaru = $("#sessIdAhay").val();
                 app.removeChart();
                 appSettingsCache['indicators'] = {};
@@ -321,30 +424,36 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 appSettingsCache['chartType'] = 'line';
                 appSettingsCache['annotation'] = 'remove';
                 appSettingsCache['theme'] = 'defaultTheme';
-                console.log(stok+" "+stok2);
-                if(stok === 'undefined'){
-                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
-                }else {
+
+                // if(stok === 'undefined'){
+                //     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
+                // }else {
+                if(stok !== 'undefined'){
                     $.ajax({
                         type: "GET",
-                        url: "http://bahana.ihsansolusi.co.id:5050/chart/" + stok,
+                        url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok,
+                        // url: "http://10.1.9.10:5050/chart/" + stok,
+                        // url: "http://10.1.9.12:5050/chart/" + stok,
                         contentType: "application/json; charset=utf-8",
                         headers: {
                             "Authorization": sessIdbaru,
                         },
                         dataType: 'json',
-                        success: function (result) {
+                        success: function (result) {                           
                             $('#chartDataSelectchrtRelative').val(stok);
-                            appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = JSON.parse(result.data.data);
+                            appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =result.data.data;
                         }
                     });
                 }
-                if(typeof stok2 == 'undefined'){
-                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
-                }else {
+                // if(typeof stok2 == 'undefined'){
+                //     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
+                // }else {
+                if(stok2 !== 'undefined'){
                     $.ajax({
                         type: "GET",
-                        url: "http://bahana.ihsansolusi.co.id:5050/chart/" + stok2,
+                        url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok2,
+                        // url: "http://10.1.9.10:5050/chart/" + stok2,
+                        // url: "http://10.1.9.12:5050/chart/" + stok2,
                         contentType: "application/json; charset=utf-8",
                         headers: {
                             "Authorization": sessIdbaru,
@@ -352,7 +461,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                         dataType: 'json',
                         success: function (result2) {
                             $('#chartDataSelect2chrtRelative').val(stok2);
-                            appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = JSON.parse(result2.data.data);
+                            appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result2.data.data;
                         }
                     });
                 }
@@ -805,45 +914,18 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
         },
     });
 
-    // changelist(e){
-    //     if(e.target.value.length > 0) {
-    //         if(e.target.id == "rc"){
-    //             $valueAnalyticChart = e.target.value;
-    //             $("#rc").change();
-    //             console.log('he');
-    //         }else{
-    //             $valueAnalyticChart2 = e.target.value;
-    //             $("#rc2").change();
-    //             console.log('ha');
-    //         }
-    //     }else{
-    //         return false;
-    //     }
-    // }
-
     changelist = event => {
         $valueAnalyticChart = event.value;
+        $valueType = event.des; 
         $("#rc").change();
     }
     changelist2 = event => {
         $valueAnalyticChart2 = event.value;
+        $valueType2 = event.des; 
         $("#rc2").change();
     }
 
     render() {
-
-        const stockOptions = [
-            { value:'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType},
-            { value:'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType},
-            { value:'bumi', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType},
-            { value:'asii', code: 'ASII', saham: 'Argo Astra Lestari ' , id: this.state.stockType},
-            { value:'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' , id: this.state.stockType},
-            { value:'wskt', code: 'WSKT', saham: 'Waskita ' , id: this.state.stockType},
-            { value:'indf', code: 'INDF', saham: 'Indofood ' , id: this.state.stockType},
-            { value:'bbca', code: 'BBCA', saham: 'Bank BCA ' , id: this.state.stockType},
-            { value:'smrg', code: 'SMGR', saham: 'Semen Indonesia ' , id: this.state.stockType},
-            { value:'bbri', code: 'BBRI', saham: 'Bank BRI ' , id: this.state.stockType}
-        ];
 
         let styleses = {
             display: 'flex',
@@ -880,9 +962,6 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             }),
         };
 
-        let elemWidthIndicator = (this.props.chartMode) ? 350 : 180;
-        let elemWidthanotation = (this.props.chartMode) ? 250 : 147;
-
         const customFilter  = (option, searchText) => {
             var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
             var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
@@ -901,6 +980,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
         const { selectedStock } = this.state.defaultStock;
         const { selectedStock2 } = this.state.defaultStock2;
 
+        let elemWidthIndicator = (this.props.chartMode) ? 350 : 180;
+        let elemWidthanotation = (this.props.chartMode) ? 250 : 147;
         return (
             <div>
                 < div id={"loader" + this.state.stockType} className="anychart-loader" >
@@ -926,8 +1007,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                 <div className="alert alert-danger"><strong>XHR Fail: </strong>
                                     This Sample will properly work only if upload it to a server and access via http or https.
 						Please see <a href="https://github.com/anychart-solutions/technical-indicators"
-                                        target="_blank">https://github.com/anychart-solutions/technical-indicators</a> to learn
-more.
+                                        target="_blank">https://github.com/anychart-solutions/technical-indicators</a> to learn more.
 					</div>
                             </div>
                         </div>
@@ -965,7 +1045,7 @@ more.
                                             maxMenuWidth={300}
                                             styles={customStyles}
                                             placeholder={<div>Search..</div>}
-                                            options={stockOptions}
+                                            options={this.props.relativelistOptions}
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             id={"rc"}
                                             className="stockPageSelect text-left"
@@ -983,7 +1063,7 @@ more.
                                             maxMenuWidth={300}
                                             styles={customStyles}
                                             placeholder={<div>Search..</div>}
-                                            options={stockOptions}
+                                            options={this.props.relativelistOptions}
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
                                             id={"rc2"}
                                             className="stockPageSelect text-left"
@@ -1021,7 +1101,6 @@ more.
                                             </select>
                                         </li>
                                     </div>
-
                                     <div className="form-group">
                                         <li style={marginSelection}>
                                             <select className="select show-tick form-control" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" data-width={elemWidthIndicator} id={"indicatorTypeSelect" + this.state.stockType}
@@ -1029,7 +1108,6 @@ more.
                                             </select>
                                         </li>
                                     </div>
-
                                     <div className="form-group">
                                         <li style={marginSelection}>
                                             <select id={"themeSelect" + this.state.stockType} data-size="10" data-dropup-auto="false" data-width="81" data-style="btn-dark" className="select selectpicker show-tick form-control" title="Theme">
@@ -1051,9 +1129,6 @@ more.
                                             </select>
                                         </li>
                                     </div>
-
-
-
                                     <div className="form-group">
                                         <li style={marginSelection}><a className="btn btn-danger" style={customStylesBtn} href="" id={"resetButton" + this.state.stockType}>Reset</a></li>
                                     </div>
@@ -1068,13 +1143,13 @@ more.
         );
     }
 }
-
 const RelativePerfomanceChart = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
         thememode: vars.thememode,
         chartMode: vars.chartMode,
         sessId: vars.sessionID,
+        // stocklistOptions:vars.stocklistOptions,
+        relativelistOptions:vars.relativelistOptions,
     }),
 )(RelativePerfomanceChart_Base);
-
 export default RelativePerfomanceChart;

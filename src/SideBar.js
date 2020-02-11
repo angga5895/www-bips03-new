@@ -148,7 +148,7 @@ class SideBar extends React.Component{
 
         function resetTimer() {
             clearTimeout(time);
-            time = setTimeout(logout, 30000)
+            time = setTimeout(logout, 3000000)
         }
     };
 

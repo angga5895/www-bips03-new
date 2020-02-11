@@ -41,7 +41,7 @@ const CustomFrameHeaderLanding = (props) =>{
                         {
                             landingPageInvboard: 'INVESTMENT BOARD',
                             stockCashPageInvboard: 'STOCK & CASH',
-                            tradeListHistoryPageInvboard: 'HISTORICALS',
+                            tradeListHistoryPageInvboard: 'HISTORICAL',
                             fundTransferPageInvboard: 'FUND TRANSFER',
                             inquryAccountPageInvboard: 'ACCOUNT INFO',
                             InvboardTcAndSoa: 'TC & SOA',
@@ -826,24 +826,7 @@ class ModalOrderHistory extends React.Component {
 
 
 class ModalTransaction extends React.Component {
-    componentDidMount() {
-        $(document).ready(function() {
-            var sd = new Date(), ed = new Date();
-            var isRtl = $('html').attr('dir') === 'rtl';
-            $('.input-daterangeTransaction').datepicker({
-                orientation: isRtl ? 'auto right' : 'auto left',
-                format: "dd/mm/yyyy",
-                changeMonth: true,
-                changeYear: true,
-                startDate: '01/01/1920',
-                autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
-                todayBtn: "linked",
-            });
 
-        });
-    }
     ceksize(){
         if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
@@ -890,44 +873,7 @@ class ModalTransaction extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="container-fluid pl-0 pr-0 f-12" >
-                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={paddingParagraphBottom}>
-                        {/*<div className="col-sm-3">
-                            <div className="row" style={imgUser}>
-                                <div className="col-md-12" style={imgdisplay}>
-                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2" /><p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
-                                </div>
-                            </div>
-                        </div>*/}
-                        <div className="col-sm-12 h-62">
-                            <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
 
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
-                                                <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
-                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                                <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
-                                        </td>
-                                    </tr>
-                                </table>
-
-
-
-                            </div>
-                        </div>
-                    </div>
 
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
@@ -1609,30 +1555,48 @@ class TradeListHistory_Base extends React.PureComponent {
             });
         }
     }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('.input-daterangeTransaction').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                startDate: '01/01/1920',
+                autoclose: true,
+                endDate : sd,
+                todayHighlight: true,
+                todayBtn: "linked",
+            });
 
-
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
 
     render () {
-        const imgdisplay = {
-            display: 'inline-flex',
-            paddingTop: '3px'
-        };
-
         const paddingParagraph = {
             paddingTop: '10px'
-        }
-        const paddingParagraphBottom = {
-            paddingBottom: '10px'
-        }
-
-        const divMargin = {
-            marginBottom: '15px'
-        }
-
-        const imgUser = {
-            margin: 'auto',
-            backgroundColor: 'var(--warna-bg-trading-gray)',
-            // borderBottom: '2px solid var(--warna-inactive-gradient)'
         }
 
         return (
@@ -1648,8 +1612,8 @@ class TradeListHistory_Base extends React.PureComponent {
                         <div className="cssmenu col-sm-8 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
                                 <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Trade List History</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Transaction History</span></a></li>
-                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Order History</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Order History</span></a></li>
+                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Transaction History</span></a></li>
                             </ul>
                         </div>
                         <div className="col-sm-12 px-0 py-0 mx-0 my-0 bg-grey bg-black-trading d-border card-472">
@@ -1662,12 +1626,50 @@ class TradeListHistory_Base extends React.PureComponent {
                             </div>
                             <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
                                 <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
-                                    <ModalTransaction/>
+                                    <ModalOrderHistory/>
                                 </div>
                             </div>
-                            <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
-                                <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
-                                    <ModalOrderHistory/>
+                            <div className={this.state.activeTab === '3' ? 'block f-12' : 'd-none'}>
+                                <div className={"row"}>
+                                        <div className="col-sm-12 row px-0 mx-0">
+                                            <div className="col-sm-12 h-62">
+                                                <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">Periode</span>
+                                                                    <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                                                    <span className="input-group-addon h-35 bg-tableheader">
+                                                                            <span className="fa fa-calendar-alt"></span>
+                                                                        </span>
+                                                                    <span className="input-group-addon h-35 bg-tableheader">to</span>
+                                                                    <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                                                    <span className="input-group-addon h-35 bg-tableheader">
+                                                                            <span className="fa fa-calendar-alt"></span>
+                                                                        </span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div className={"col-sm-6 pr-2"}>
+                                        <div className="bg-tableheader text-center py-3 h-30"><span>STOCK TRANSACTION</span>
+                                        </div>
+                                        <StockTransactionHistoryAgGrid size={this.ceksize()}/>
+                                    </div>
+
+                                    <div className={"col-sm-6 pl-2"}>
+                                        <div className="bg-tableheader text-center py-3 h-30"><span>CASH TRANSACTION</span>
+                                        </div>
+                                        <CashTransactionHistoryAgGrid size={this.ceksize()}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3478,6 +3480,350 @@ class TradeListAgGrid extends React.PureComponent {
             <div style={{ width: "100%", height: "100%" }}>
                 <div
                     className={"card-392 ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
+                    id="myGrid"
+                    style={{
+                        width: "100%",
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+class StockTransactionHistoryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = this.props.size;
+        this.state = {
+            columnDefs: [
+                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?310:s=="s50"?280:s=="s67"?250:s=="s75"?240:s=="s80"?205:s=="s90"?180:s=="s100"?170:160,
+                    minWidth: 160,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                }, { field: "code", headerName: "Code Stock", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?230:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                },
+                { field: "buySell", headerName: "Buy / Sell", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    }, suppressSizeToFit: true
+                },{ field: "inOut", headerName: "In/Out Qty", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }
+                }
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    date: "22/06/2019",
+                    code: 'AALI'+s,
+                    buySell: 'Buy',
+                    inOut: '10',
+                }, {
+                    date: "20/06/2019",
+                    code: 'ABBA',
+                    buySell: 'Sell',
+                    inOut: '10',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                }, {
+                    date: "",
+                    code: '',
+                    buySell: '',
+                    inOut: '',
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-392-historical ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
+                    id="myGrid"
+                    style={{
+                        width: "100%",
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+class CashTransactionHistoryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = this.props.size;
+        this.state = {
+            columnDefs: [
+                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?310:s=="s50"?280:s=="s67"?250:s=="s75"?240:s=="s80"?205:s=="s90"?180:s=="s100"?170:160,
+                    minWidth: 160,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                }, { field: "debitCredit", headerName: "Debit / Credit", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?230:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                },
+                { field: "desc", headerName: "Description", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    }, suppressSizeToFit: true
+                },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }
+                }
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    date: "22/06/2019",
+                    debitCredit: "Debit",
+                    desc: "",
+                    amount: "34,500",
+                },{
+                    date: "21/06/2019",
+                    debitCredit: "Debit",
+                    desc: "",
+                    amount: "14,500",
+                },
+                {
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },{
+                    date: "",
+                    debitCredit: "",
+                    desc: "",
+                    amount: "",
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-392-historical ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
                     id="myGrid"
                     style={{
                         width: "100%",

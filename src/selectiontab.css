@@ -46,7 +46,7 @@ input[type="radio"]:checked .radioAccount ~ label{
     background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
-    width: 130px !important;
+    width: 50% !important;
 }
 .lastColor{
     color: white!important;

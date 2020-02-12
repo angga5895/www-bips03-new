@@ -56,13 +56,7 @@ const ResizeResponsive = () => {
         $('.col-smb-12').css('width', '100%');
     }
 
-    if($('html').width() < 1030){
-        $('.box-selection').css('font-size','9px');
-    }else if($('html').width() >= 1030 && $('html').width() < 1090){
-        $('.box-selection').css('font-size','9px');
-    }else if($('html').width() >= 1090){
-        $('.box-selection').css('font-size','11px');
-    }
+        $('.box-selection').css('font-size','13.5px');
 
     if($('html').width() > 545 && $('html').width() < 576) {
         $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
@@ -742,13 +736,7 @@ class MainPage_Base extends React.Component {
                 $('.slidee > div').css('font-size','8px');
             }
 
-            if($('html').width() < 1030){
-                $('.box-selection').css('font-size','9px');
-            }else if($('html').width() >= 1030 && $('html').width() < 1090){
-                $('.box-selection').css('font-size','9px');
-            }else if($('html').width() >= 1090){
-                $('.box-selection').css('font-size','11px');
-            }
+                $('.box-selection').css('font-size','13.5px');
 
             if($('html').width() > 545 && $('html').width() < 576) {
                 $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');

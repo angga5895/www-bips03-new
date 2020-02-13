@@ -5957,3 +5957,10 @@ textarea {
 .card-392-historical{
     height: 379px;
 }
+.lastColor{
+    font-size: 20px;
+    padding:0 !important;
+}
+.box-selection{
+    font-size: 16px;
+}

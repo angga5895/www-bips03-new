@@ -56,7 +56,7 @@ const ResizeResponsive = () => {
         $('.col-smb-12').css('width', '100%');
     }
 
-        $('.box-selection').css('font-size','13.5px');
+        // $('.box-selection').css('font-size','14px');
 
     if($('html').width() > 545 && $('html').width() < 576) {
         $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
@@ -736,7 +736,7 @@ class MainPage_Base extends React.Component {
                 $('.slidee > div').css('font-size','8px');
             }
 
-                $('.box-selection').css('font-size','13.5px');
+                // $('.box-selection').css('font-size','14px');
 
             if($('html').width() > 545 && $('html').width() < 576) {
                 $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');

@@ -202,7 +202,7 @@ class BIPSAppProvider extends React.Component {
     else if (msgData.action_type == 'LOGIN-RESPONSE') {
       if (msgData.status == 'OK') {
         console.log("ini sess", msgData.session_id)
-        this.appProvider.sendAction('loginSuccessful', {sessionID: msgData.sessionID});
+        this.appProvider.sendAction('loginSuccessful', {sessionID: msgData.session_id});
         this.frameAction.setMainFrameActive(true);
       }
       else

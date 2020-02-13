@@ -483,12 +483,12 @@ class SelectItem1 extends React.PureComponent {
                                     <td colSpan="2" className="lastColor px-0">{this.state.secondbox.last}</td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <span className={'white '}>
+                                    <td className={'white px-0 py-0'}>
+                                        <span>
                                             <i className={colorIcon(this.state.secondbox.change)}></i>&nbsp;
                                             {this.state.secondbox.change}</span>&nbsp;
                                     </td>
-                                    <td>
+                                    <td className={'px-0 py-0'}>
                                         <span className="white">({this.state.secondbox.percentage}%)</span>
                                     </td>
                                 </tr>

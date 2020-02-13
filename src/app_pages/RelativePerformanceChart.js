@@ -40,7 +40,6 @@ var $valueType = "";
 var $valueType2 = "";
 
 
-
 class RelativePerfomanceChart_Base extends React.PureComponent {
 
     constructor(props) {
@@ -82,7 +81,6 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
     }
 
     componentDidMount() {
-
         $('.stockOps').css({
             'color': '#000000',
             'width': '100px'
@@ -191,6 +189,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             appSettingsCache['theme'] = $themeSelect.val();
             appSettingsCache['indicators'] = {};
             appSettingsCache['annotations'] = $annotationType.val();
+
+            var dataBaruDariServer = {};
+            var dataBaru2DariServer = {};
 
             var chartContainer = 'chart-container' + stockName;
 
@@ -308,20 +309,17 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             $(window).on('resize', initHeightChart);
 
             $("#rc").change(function() {
-                $("#resetButtonchrtRelative").click();
                 getStock2("select1",$valueAnalyticChart,$valueType);
                 // getStock($valueAnalyticChart,$valueAnalyticChart2);
             });
             $("#rc2").change(function() {
-                $("#resetButtonchrtRelative").click();
-                getStock2("select2",$valueAnalyticChart,$valueType2);
+                getStock2("select2",$valueAnalyticChart2,$valueType2);
                 // getStock($valueAnalyticChart,$valueAnalyticChart2);
             });
 
             // tess uji coba
             function getStock2(selecType,stok,type){
                 var sessidbaru = $("#sessIdAhay").val();
-                app.removeChart();
                 appSettingsCache['indicators'] = {};
                 appSettingsCache['scale'] = 'linear';
                 appSettingsCache['chartType'] = 'line';
@@ -331,9 +329,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // if(stok === 'undefined'){
                 //     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
                 // }else {
-                if(type == "code"){
+                if(type == ("stock" || "index")){
                     // kalo pakai fetch
-                    fetch('https://bahana.ihsansolusi.co.id:5050/chart/'+stok, 
+                    fetch('https://bahana.ihsansolusi.co.id:5050/'+type+'/chart/'+stok,
                     // fetch('http://10.1.9.10:5050/chart/'+stok, 
                     // fetch('http://10.1.9.12:5050/chart/'+stok, 
                     { headers: {
@@ -345,9 +343,12 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                             .then(res=>{
                                 if(selecType === "select1"){
                                     $('#chartDataSelectchrtRelative').val(stok);
-                                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =res.data.data;
+                                    appSettingsCache['data'] = {};
+                                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = res.data.data;
+
                                 }else{
                                     $('#chartDataSelect2chrtRelative').val(stok);
+                                    appSettingsCache['data2'] = {};
                                     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = res.data.data;
                                 }
                             })
@@ -377,7 +378,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     //     }
                     // });
                 }else{
-                    alert("ini index", stok)
+                    alert("apaniiii", stok)
                 }
                 // if(typeof stok2 == 'undefined'){
                 //     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
@@ -409,6 +410,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 $themeSelect.val('defaultTheme').selectpicker('refresh');
 
                 // init, create chart
+                app.removeChart();
+
                 app.createChart(chartContainer);
 
                 appSettingsCache['annotation'] = 'remove';
@@ -721,7 +724,11 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 var mapping = dataTable.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
                 var mapping2 = dataTable2.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
 
+                console.log('ini data pertama'+appSettingsCache['data'][dataName.toLowerCase()]);
+
+
                 // create stock chart
+
                 chart = anychart.stock();
 
                 // create plot on the chart
@@ -732,7 +739,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     .yMinorGrid(true);
 
                 dataTable.addData(appSettingsCache['data'][dataName.toLowerCase()]);
-                dataTable2.addData(appSettingsCache['data2'][dataName2.toLowerCase()])
+                dataTable2.addData(appSettingsCache['data2'][dataName2.toLowerCase()]);
 
                 if (updateChart) {
                     var indicatorName;
@@ -810,6 +817,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     }, 100);
                 });
 
+                // dataTable2.addData(appSettingsCache['data2'][dataName2.toLowerCase()]);
             }
 
             function removeChart() {
@@ -916,12 +924,12 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
 
     changelist = event => {
         $valueAnalyticChart = event.value;
-        $valueType = event.des; 
+        $valueType = event.desc;
         $("#rc").change();
     }
     changelist2 = event => {
         $valueAnalyticChart2 = event.value;
-        $valueType2 = event.des; 
+        $valueType2 = event.desc;
         $("#rc2").change();
     }
 
@@ -976,6 +984,18 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 }
             }
         };
+        const stockOptions = [
+            { value:'BMPT', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType, desc: 'stock'},
+            { value:'BNMPT-PPT', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType, desc: 'stock'},
+            { value:'BUMI', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType, desc: 'stock'},
+            { value:'ASII', code: 'ASII', saham: 'Argo Astra Lestari ' , id: this.state.stockType, desc: 'stock'},
+            { value:'TLKM', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' , id: this.state.stockType, desc: 'stock'},
+            { value:'WSKT', code: 'WSKT', saham: 'Waskita ' , id: this.state.stockType, desc: 'stock'},
+            { value:'INDF', code: 'INDF', saham: 'Indofood ' , id: this.state.stockType, desc: 'stock'},
+            { value:'BBCA', code: 'BBCA', saham: 'Bank BCA ' , id: this.state.stockType, desc: 'stock'},
+            { value:'SMRG', code: 'SMGR', saham: 'Semen Indonesia ' , id: this.state.stockType, desc: 'stock'},
+            { value:'BBRI', code: 'BBRI', saham: 'Bank BRI ' , id: this.state.stockType, desc: 'stock'}
+        ];
 
         const { selectedStock } = this.state.defaultStock;
         const { selectedStock2 } = this.state.defaultStock2;
@@ -1045,8 +1065,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                             maxMenuWidth={300}
                                             styles={customStyles}
                                             placeholder={<div>Search..</div>}
-                                            options={this.props.relativelistOptions}
-                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            // options={this.props.relativelistOptions}
+                                            options={stockOptions}
+                                            getOptionLabel={(stockOptions) => `${stockOptions.code} - ${stockOptions.saham}`}
                                             id={"rc"}
                                             className="stockPageSelect text-left"
                                             theme={this.selectSelectionTab}
@@ -1063,8 +1084,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                             maxMenuWidth={300}
                                             styles={customStyles}
                                             placeholder={<div>Search..</div>}
-                                            options={this.props.relativelistOptions}
-                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            // options={this.props.relativelistOptions}
+                                            options={stockOptions}
+                                            getOptionLabel={(stockOptions) => `${stockOptions.code} - ${stockOptions.saham}`}
                                             id={"rc2"}
                                             className="stockPageSelect text-left"
                                             theme={this.selectSelectionTab}

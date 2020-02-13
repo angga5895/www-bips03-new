@@ -170,7 +170,7 @@ input[type="radio"]:checked .radioAccount ~ label{
     height: 48px;
 }
 .box-selection > .box-inside table td,.box-selection > .hid-box table td{
-    padding:3px 15px;
+    padding:0px 15px;
 }
 .box-inside{
     transition: all 1.2s ease-out;

@@ -2077,9 +2077,11 @@ class PinModal extends React.Component {
 class PortofolioAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
+
         const self = this;
         const s = this.props.size;
         this.state = {
+            activePage: 1,
             columnDefs: [
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 80,
@@ -2453,6 +2455,19 @@ class PortofolioAgGrid extends React.PureComponent {
                 ],
                 defaultToolPanel: ""
             },
+            listData: [
+                {code: "AALI"},
+                {code: "TLKM"},
+                {code: "INDF"},
+                {code: "WSKT"},
+                {code: "BMPT"},
+                {code: "ASII"},
+                {code: "BUMI"},
+                {code: "BBCA"},
+                {code: "SMGR"},
+                {code: "BBRI"},
+            ],
+            pages: 1,
         }
     }
 
@@ -2473,12 +2488,72 @@ class PortofolioAgGrid extends React.PureComponent {
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
+    changeActive(i){
+        this.setState({activePage: i});
+        var i = 0;
+        let currentPos = (i-1) * 3;
+        let perPage = 3;
+        let s = this.state.rowData.slice();
+        s[0].code = this.state.listData[6].code;
+        this.setState({rowData: s});
+        // for (let index = currentPos; index < currentPos+perPage; index++) {
+        //     if(typeof this.state.listData[index] !== "undefined"){
+        //         console.log('fire');
+        //    }
+        // }
+        // this.setState({rowData: s,})
+    }
+    changePrev(){
+        if(this.state.activePage > 1){
+            this.setState({activePage: (this.state.activePage - 1)});
+        }
+    }
+    changeNext(){
+        if(this.state.activePage < this.state.pages){
+            this.setState({activePage: (this.state.activePage + 1)});
+        }
+    }
 
     render() {
+        const pagination = () => {
+            let perPage = 3;
+            var pages = Math.ceil(this.state.listData.length/perPage);
+            this.setState({pages: pages});
+            let paginationtext = [];
+            paginationtext.push(<button
+                className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == 1)?"disabled":""}`}
+                onClick={
+                    () => this.changePrev()}
+            >   &nbsp;&nbsp;
+                <i className={"glyphicon glyphicon-chevron-left"}></i>
+                &nbsp;&nbsp;
+            </button>);
+            for (let i = 1; i < pages+1; i++) {
+                paginationtext.push(<button
+                    className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == i)?"active":""}`}
+                    onClick={
+                        () => this.changeActive(i)}
+                >
+                    &nbsp;&nbsp;
+                    {i}
+                    &nbsp;&nbsp;
+                </button>);
+            }
+            paginationtext.push(<button
+                className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == this.state.pages)?"disabled":""}`}
+                onClick={
+                    () => this.changeNext()}
+            >   &nbsp;&nbsp;
+                <i className={"glyphicon glyphicon-chevron-right"}></i>
+                &nbsp;&nbsp;
+
+            </button>);
+            return paginationtext;
+        }
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-487 ag-theme-balham-dark ag-bordered ag-striped-odd"}
+                    className={"card-487-pe ag-theme-balham-dark ag-bordered ag-striped-odd"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2491,6 +2566,9 @@ class PortofolioAgGrid extends React.PureComponent {
                         onGridReady={this.onGridReady}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
                     </AgGridReact>
+                </div>
+                <div className={"text-center mt-0"}>
+                    {pagination()}
                 </div>
             </div>
         );

@@ -2123,7 +2123,7 @@ class PortofolioAgGrid extends React.PureComponent {
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     },
                 },
-                { field: "pl", headerName: "P/L", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "pl", headerName: "P/L %", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?252:s=="s75"?220:s=="s80"?219:150,
                     minWidth: 150,
                     cellClass : function (params) {

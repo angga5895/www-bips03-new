@@ -19,6 +19,8 @@ import newsImg4 from './../img/noimage.png';
 import newsImg5 from './../img/noimage.png';
 import {ContextConnector} from "../appcontext";
 import anychart from 'anychart';
+import $ from 'jquery';
+window.$ = window.jQuery = $;
 
 
 const stateOptions = [
@@ -384,7 +386,6 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         var newTimestamp;
 
         var newDataRow = [];
-
         //current price variable
         var point = null;
 
@@ -404,10 +405,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             // set the series
             let series = chart.plot(0).line(mapping);
+
             series.name("Stock Streaming");
-
-            chart.title('Stock Streaming Demo: Currency Rates');
-
+            chart.title('Streaming');
             // set container and draw chart
             chart.container("container").draw();
 
@@ -465,6 +465,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             let streamButton = document.getElementById("streamButton");
             let resetButton = document.getElementById("resetButton");
+            let resetTitle = document.getElementById("resetTitle");
 
             let streamState = 0;
             let dataInteval;
@@ -485,6 +486,16 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                     streamState = 0;
                     clearInterval(dataInteval);
                 } else {
+                    var temp = document.getElementById('resetTitle').value;
+
+                    chart.title(temp);
+                    series.name(temp);
+                    chart.container("container").draw();
+                    streamStart();
+                    $("#resetButton").click();
+
+                    streamButton.innerHTML = "Stop" + "\nstream";
+                    streamState++;
                     streamStart();
                 }
 
@@ -498,6 +509,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
     }
     newStream = event => {
         if(this.state.newStream){
+            document.getElementById("resetTitle").click();
             document.getElementById("resetButton").click();
             this.setState({newStream: false});
         }
@@ -575,11 +587,14 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray">
                                         <div>
-                                            <button id="streamButton" onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                                            <button
+                                                id="streamButton"
+                                                    onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
                                             <i id="resetButton"></i>
                                             <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
                                             <input type="hidden" id={"newStream"} value={this.state.newStream}/>
+                                            <input type="hidden" id={"resetTitle"} value={"zakyyuuu"}/>
                                             <span onClick={this.test} id={"hello"}></span>
                                             <div id="container" className="mt-2 py-3 px-3 card-344"></div>
                                         </div>

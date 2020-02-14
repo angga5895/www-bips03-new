@@ -576,12 +576,6 @@ class StockCash_Base extends React.Component{
                                         <td className="d-border-tr-gray-all text-right py-2">- 1,411,168</td>
                                         <td className="d-border-tr-gray-all text-right py-2">0</td>
                                     </tr>
-                                    <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Cash Balance</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">5,911,198</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">4,500,000</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">4,500,000</td>
-                                    </tr>
                                     <tr className="d-border-footer">
                                         <td className="no-wrap bg-gray-tradding d-border-tr-gray py-2">Total</td>
                                         <td className="d-border-tr-gray-all text-right py-2">5,911,198</td>

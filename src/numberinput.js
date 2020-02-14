@@ -17,7 +17,7 @@ class NumberInput extends React.PureComponent{
 
         // Variables
         var min = 0,
-            max = 99999999999999999999,
+            max = (this.props.max ? this.props.max : 999999999999),
             step = 1;
 
         $('.ui.icon.button.'+inputIdClassName).click(function () {
@@ -234,7 +234,7 @@ class NumberInput extends React.PureComponent{
                             <i className="icofont icofont-minus f-9"></i>
                         </button>
                     </span>
-                    <input type="text" id={inputIdClassName} name={inputName} data-type="currency"
+                    <input type="text" id={inputIdClassName} name={inputName} maxlength={this.props.max ? this.props.max : 15} data-type="currency"
                            placeholder={inputPlaceholder}
                            style={{"border-radius": "0px", "text-align": "right", "border-right": "0", "border-left":"0"}} className="form-control f-12"/>
                     <span className="input-group-btn">

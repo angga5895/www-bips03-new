@@ -1349,7 +1349,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "persen", headerName: "%", resizable: true,
-                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:73, minWidth: 73,
+                    width: s=="s49"?170:s=="s50"?150:s=="s67"?140:73, minWidth: 73,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
@@ -1358,7 +1358,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "open", headerName: "Open", resizable: true,
-                    width: s=="s49"?125:s=="s50"?115:s=="s67"?100:91, minWidth: 91,
+                    width: s=="s49"?125:s=="s50"?110:s=="s67"?100:91, minWidth: 91,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
@@ -1385,7 +1385,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "avg", headerName: "Avg.", resizable: true,
-                    width: s=="s49"?135:s=="s50"?125:s=="s67"?110:s=="s75"?95:82, minWidth: 82,
+                    width: s=="s49"?135:s=="s50"?110:s=="s67"?110:s=="s75"?95:82, minWidth: 82,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
@@ -1403,7 +1403,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "vol", headerName: "Vol (Lot)", resizable: true,
-                    width: s=="s49"?155:s=="s50"?150:s=="s67"?130:s=="s75"?120:110, minWidth: 110,
+                    width: s=="s49"?155:s=="s50"?130:s=="s67"?127:s=="s75"?120:110, minWidth: 110,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
@@ -1412,7 +1412,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "freq", headerName: "Freq", resizable: true,
-                    width: s=="s49"?110:s=="s75"?100:82, minWidth: 82,
+                    width: s=="s49"?120:s=="s50"?110:s=="s75"?100:82, minWidth: 82,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
@@ -1421,22 +1421,17 @@ class MarketStatistikAgGrid extends React.PureComponent {
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "fbuy", headerName: "F.Buy (T)", resizable: true,
-                    width: s=="s49"?110:s=="s75"?100:90, minWidth: 90,
+                    width: s=="s49"?180:s=="s50"?165:s=="s75"?170:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "fsell", headerName: "F.Sell (T)",
-                    resizable: true, width: s=="s49"?110:s=="s75"?100:89, minWidth: 89,
+                    resizable: true, width: s=="s49"?180:s=="s50"?165:s=="s75"?170:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "fnet", headerName: "F.Net (T)",
-                    resizable: true, width: s=="s49"?110:s=="s75"?100:89, minWidth: 89,
-                    cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
-                    } },
-                { field: "financial", headerName: "Financial (M)",
-                    resizable: true, width: s=="s49"?225:s=="s50"?210:s=="s75"?205:140, minWidth: 140,
+                    resizable: true, width: s=="s49"?183:s=="s50"?163:s=="s75"?165:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
@@ -1479,9 +1474,9 @@ class MarketStatistikAgGrid extends React.PureComponent {
                     val : "225.3",
                     vol : "560,801",
                     freq : "4,010",
-                    fbuy : "3,980",
-                    fsell : "30",
-                    fnet : "3,950",
+                    fbuy : "100,000,000,000,000",
+                    fsell : "100,000,000,000,000",
+                    fnet : "100,000,000,000,000",
                     financial : "3,000,000,000,000",
                     action:""
                 },

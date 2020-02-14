@@ -96,7 +96,14 @@ class FormBuy extends React.PureComponent{
                                 <div className="col-sm-8 ml-0 px-0 row">
                                     <div className="col-sm-3 text-form">Vol</div>
                                     <div className="col-sm-9">
-                                        <NumberInput idclassname={this.props.idVol} name="buy_vol" placeholder="Vol" size="small" defaultValue={"10"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
+                                        <NumberInput
+                                            idclassname={this.props.idVol}
+                                            name="buy_vol"
+                                            placeholder="Vol"
+                                            size="small"
+                                            max={"6"}
+                                            defaultValue={"10"}
+                                            className="col-sm-12 px-0 f-12 text-center align-self-center no-button-plusminus" />
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">

@@ -33,10 +33,10 @@ const stateOptions = [
 ];
 const summaryOptions = [
     //untuk top active
-    { key: 'all', value: 'all', text: 'All' },
+    // { key: 'all', value: 'all', text: 'All' },
     { key: 'rg', value: 'rg', text: 'RG' },
-    { key: 'tn', value: 'tn', text: 'TN' },
-    { key: 'ng', value: 'ng', text: 'NG' },
+    // { key: 'tn', value: 'tn', text: 'TN' },
+    // { key: 'ng', value: 'ng', text: 'NG' },
 ];
 
 
@@ -49,7 +49,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                         {
                             marketStatistikPage: 'SUMMARY',
                             statisticMarketStatistikPage: 'MARKET INDEX',
-                            indiceMarketStatistikPage: 'MEMBER CAPITALIZATION',
+                            indiceMarketStatistikPage: 'SECTORAL INDEX',
                             /*indiceMarketSecondStatistikPage: 'INDEX MOVER',*/
                             topBrokerMarketStatistikPage: 'TOP BROKER',
                             newResearchMarketStatistikPage: 'NEWS',
@@ -139,7 +139,7 @@ class MarketStatistikPage extends React.PureComponent {
     refreshData(){
         alert('Data refreshed');
     }
-    render () {
+    render (){
         return (
             <>
                 <AppFrameAction ref="frameAction" />
@@ -195,10 +195,21 @@ class MarketStatistikPage extends React.PureComponent {
                                         <div className="col-sm-3">
                                         </div>
                                         <div className="col-sm-4">
-                                            <Dropdown placeholder='Choose' search selection options={summaryOptions} className="col-sm-12 f-12"/>
+                                            <Dropdown
+                                                placeholder='Choose'
+                                                search selection
+                                                options={summaryOptions}
+                                                defaultValue={summaryOptions[0].value}
+                                                className="col-sm-12 f-12"/>
                                         </div>
                                         <div className="col-sm-4">
-                                            <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>
+                                            <Dropdown
+                                                placeholder='Choose'
+                                                search
+                                                selection
+                                                options={stateOptions}
+                                                defaultValue={stateOptions[2].value}
+                                                className="col-sm-12 f-12"/>
                                         </div>
                                         <div className={"col-sm-1 text-center"}>
                                             <button
@@ -277,7 +288,14 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                 <div className="card card-233 bg-black-trading f-12">
                     <div className="card-header px-0 py-0">
                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                            <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 h-30">FINANCE</div>
+                            <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 h-30">
+                                FINANCE
+                                <button
+                                    className="col-sm-1 pull-right btn btn-primary mr-2"
+                                    style={{"margin-top":"-8px","width":"39px","height":"28px"}}>
+                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div className="card-body">
@@ -586,12 +604,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                 </div>
-                                <div className="col-sm-12 mb-4 row">
-                                    <div className="col-sm-2 text-white f-16">6,384.90</div>
-                                    <div className="col-sm-4 text-success f-16">+5.21 (0.082%) <i className="icofont icofont-caret-up"></i></div>
-                                </div>
-                                <div className="col-sm-12 f-14">
-                                    Jun 2, 16:15 GMT +7 Disclaimer
+                                <div className="col-sm-12 mb-4 pt-3 row f-25">
+                                    <div className="col-sm-2 text-success">6,384.90</div>
+                                    <div className="col-sm-7 text-success">+5.21 (0.082%) <i className="icofont icofont-caret-up"></i></div>
                                 </div>
                             </div>
                             <div className="card-body">
@@ -624,9 +639,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
-                                        <th className="py-1 bg-gray-tradding">Val</th>
-                                        <th className="py-1 bg-gray-tradding">Vol(Shr)</th>
-                                        <th className="py-1 bg-gray-tradding">Freq.</th>
+                                        <th className="py-1 bg-gray-tradding">VALUE</th>
+                                        <th className="py-1 bg-gray-tradding">VOL(SHR)</th>
+                                        <th className="py-1 bg-gray-tradding">FREQ</th>
                                     </tr>
                                     </thead>
                                     <tbody className="text-white no-wrap">
@@ -663,9 +678,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding"></th>
-                                        <th className="py-1 bg-gray-tradding">Val</th>
-                                        <th className="py-1 bg-gray-tradding">Vol(Shr)</th>
-                                        <th className="py-1 bg-gray-tradding">Freq</th>
+                                        <th className="py-1 bg-gray-tradding">VALUE</th>
+                                        <th className="py-1 bg-gray-tradding">VOL(SHR)</th>
+                                        <th className="py-1 bg-gray-tradding">FREQ</th>
                                     </tr>
                                     </thead>
                                     <tbody className="text-white no-wrap">
@@ -695,7 +710,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>
                                         <th className="py-1 bg-gray-tradding">VALUE</th>
-                                        <th className="py-1 bg-gray-tradding">SHARE</th>
+                                        <th className="py-1 bg-gray-tradding">SHR</th>
                                         <th className="py-1 bg-gray-tradding">FREQ</th>
                                     </tr>
                                     </thead>
@@ -713,13 +728,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                         <td className="text-right text-success py-1">85,982 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-left text-white py-1">F.TOTAL</td>
+                                        <td className="text-left text-white py-1">F.Total</td>
                                         <td className="text-right text-primary py-1">5.31 T</td>
                                         <td className="text-right text-primary py-1">23.13 M</td>
                                         <td className="text-right text-primary py-1">148,560 </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-left text-white py-1">F.NET</td>
+                                        <td className="text-left text-white py-1">F.Net</td>
                                         <td className="text-right text-primary py-1">-731.36 B</td>
                                         <td className="text-right text-primary py-1">241,671</td>
                                         <td className="text-right text-primary py-1">-21,404 </td>
@@ -755,14 +770,24 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
     }
     render(){
         return(
-            <div className="f-12 px-2">
+            <div className="f-12 px-0">
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
                 <div className="card card-175 bg-black-trading f-12">
-                    <TopBrokerAgGrid size={this.ceksize()}/>
+                    <div className="card-header bg-tableheader h-37 pt-3">
+                        TOP BROKER
+                        <button
+                            className="col-sm-1 pull-right btn btn-primary"
+                            style={{"font-size":"12px","margin-top":"-7px","width":"38px"}}>
+                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                        </button>
+                    </div>
+                    <div className="card-body">
+                        <TopBrokerAgGrid size={this.ceksize()}/>
+                    </div>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
-                    <div className="card-header bg-tableheader h-37">
+                    <div className="card-header bg-tableheader h-37 pt-3">
                         TOP BUYER
                     </div>
                     <div className="card-body">
@@ -770,7 +795,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                     </div>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
-                    <div className="card-header bg-tableheader h-37">
+                    <div className="card-header bg-tableheader h-37 pt-3">
                         TOP SELLER
                     </div>
                     <div className="card-body">

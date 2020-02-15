@@ -2004,6 +2004,19 @@ class StockWatchlistAgGrid extends React.PureComponent {
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
+                { field: "tval", headerName: "T. Val", sortable: false, resizable: true,
+                    width: 85, minWidth: 85,
+                    cellClass : function (params) {
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    } },
+                { field: "AvgPrice", headerName: "Avg. Price", sortable: false, resizable: true,
+                    width: 180, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                    },
+                },
                 { field: "AccForVol", headerName: "Accumulate Foreign Vol", sortable: false, resizable: true,
                     width: 180, minWidth: 180,
                     cellClass : function (params) {
@@ -2016,12 +2029,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     },
                 },
-                { field: "AvgPrice", headerName: "Avg. Price", sortable: false, resizable: true,
-                    width: 180, minWidth: 100,
-                    cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
-                    },
-                }
+
             ],
             defaultColDef: {
                 sortable: false,

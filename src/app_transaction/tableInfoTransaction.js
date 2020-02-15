@@ -69,7 +69,7 @@ class TableInfoTransaction extends React.PureComponent{
                         <td className="no-wrap text-danger d-border-tr-gray text-right py-1"><i className="icofont icofont-caret-down"></i> -50</td>
                         <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Open</td>
                         <td className="no-wrap text-success d-border-tr-gray text-right py-1">12,650</td>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Vol</td>
+                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Vol(Lot)</td>
                         <td className="no-wrap text-danger d-border-tr-gray text-right py-1">2 K</td>
                     </tr>
                     <tr>

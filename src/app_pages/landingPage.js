@@ -391,7 +391,7 @@ class LandingPage_Base extends React.PureComponent {
                                     <div id="detailPortofolio" className="d-none">
                                         <div className="card-header card-header-investment bg-grey h-40">
                                             <div className="row col-sm-12 px-0 mx-0 py-1">
-                                                <div className="col-sm-4 px-4 mx-0 f-14">
+                                                <div className="col-sm-3 px-4 mx-0 f-14">
                                                     <b>Portofolio Equity</b>
                                                 </div>
                                                 <div className="col-sm-4 px-4 mx-0 f-14">
@@ -399,6 +399,13 @@ class LandingPage_Base extends React.PureComponent {
                                                 </div>
                                                 <div className="col-sm-4 px-4 mx-0 f-14">
                                                     P/L : <span className="text-success">{pl('1,222,222','7.5')}</span>
+                                                </div>
+                                                <div className={"col-sm-1 px-4 mx-0 f-14"}>
+                                                    <button
+                                                        className="pull-right btn btn-primary"
+                                                        style={{"font-size":"12px","margin-top":"-7px","width":"38px"}}>
+                                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

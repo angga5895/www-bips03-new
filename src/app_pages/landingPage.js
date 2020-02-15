@@ -2085,13 +2085,13 @@ class PortofolioAgGrid extends React.PureComponent {
                     }, suppressSizeToFit: true
                 },
                 { field: "avgprice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?153:s=="s67"?150:s=="s75"?135:110, minWidth: 110,
+                    width: s=="s49"?165:s=="s50"?153:s=="s67"?150:s=="s75"?135:110, minWidth: 110,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "lastprice", headerName: "Last Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?225:s=="s67"?220:s=="s75"?154:110, minWidth: 110,
+                    width: s=="s49"?240:s=="s50"?225:s=="s67"?220:s=="s75"?154:110, minWidth: 110,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right" :
@@ -2980,12 +2980,12 @@ class StockCashAgGrid extends React.PureComponent {
                         }, suppressSizeToFit: true
                     },]},
                 { field: "avgpriceTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 95, minWidth: 95,
+                    width: 120, minWidth: 120,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }, children: [
                         { field: "avgpriceR", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                            width: s=="s49"?450:s=="s50"?330:s=="s67"?310:s=="s75"?280:s=="s80"?220:s=="s90"?150:95,
+                            width: s=="s49"?320:s=="s50"?315:s=="s67"?290:s=="s75"?220:s=="s80"?160:s=="s90"?130:120,
                             minWidth: 95,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
@@ -3000,7 +3000,7 @@ class StockCashAgGrid extends React.PureComponent {
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right" :
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }, children: [{ field: "lastpriceR", headerName: "Last Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                        width: s=="s49"?330:s=="s50"?150:s=="s75"?120:100, minWidth: 100,
+                        width: s=="s49"?160:s=="s50"?150:s=="s75"?120:100, minWidth: 100,
                         cellClass : function (params) {
                             var pl = params.data.plR;
                             return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right" :
@@ -3036,7 +3036,7 @@ class StockCashAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     },children:[{ field: "mktvalueR", headerName: "Mkt. Val", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                        width: s=="s49"?300:s=="s50"?180:s=="s67"?150:s=="s75"?120:100, minWidth: 100,
+                        width: s=="s49"?270:s=="s50"?180:s=="s67"?150:s=="s75"?120:100, minWidth: 100,
                         cellClass : function (params) {
                             return " text-right grid-table f-12 d-border-aggrid-right";
                         }
@@ -3049,7 +3049,7 @@ class StockCashAgGrid extends React.PureComponent {
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right":
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }, children: [{ field: "plR", headerName: "P/L", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                        width: s=="s49"?170:s=="s50"?160:s=="s67"?125:s=="s75"?105:s=="s80"?80:s=="s90"?70:60,
+                        width: s=="s49"?190:s=="s50"?180:s=="s67"?140:s=="s75"?130:s=="s80"?120:s=="s90"?110:100,
                         minWidth: 60,
                         cellClass : function (params) {
                             var pl = params.data.plR;
@@ -3102,7 +3102,7 @@ class StockCashAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     },children:[{ field: "lqValR", headerName: "Lq. Val", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                        width: s=="s49"?220:s=="s50"?205:s=="s67"?190:s=="s75"?186:s=="s80"?160:s=="s90"?150:98,
+                        width: s=="s49"?220:s=="s50"?205:s=="s67"?190:s=="s75"?186:s=="s80"?160:s=="s90"?130:98,
                         minWidth: 98,
                         cellClass : function (params) {
                             return "text-success text-right  grid-table f-12 d-border-aggrid-right";
@@ -3130,13 +3130,13 @@ class StockCashAgGrid extends React.PureComponent {
                 filter: true,
             },
             rowData: [
-                { codeR: "AALI"+s+s+s,
-                    avgpriceR: "12,650",
-                    lastpriceR: "12,650",
+                { codeR: "AALI"+s,
+                    avgpriceR: "12,650,000",
+                    lastpriceR: "12,650,000",
                     plot: "12",
                     pshares: "122",
                     mktvalueR: "12,650,000",
-                    plR: "-60,240",
+                    plR: "-60,240,999.00",
                     persenR: "-0,40",
                     slot: "12",
                     sshares: "122"+s,

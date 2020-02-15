@@ -136,6 +136,9 @@ class MarketStatistikPage extends React.PureComponent {
             return "s100";
         }
     }
+    refreshData(){
+        alert('Data refreshed');
+    }
     render () {
         return (
             <>
@@ -189,12 +192,20 @@ class MarketStatistikPage extends React.PureComponent {
                                 </div>
                                 <div className="col-mbl-radio-o px-0 mx-0 align-self-center">
                                     <div className="col-sm-12 px-0 mx-0 row text-right h-49 py-2">
-                                        <div className="col-sm-4"></div>
+                                        <div className="col-sm-3">
+                                        </div>
                                         <div className="col-sm-4">
                                             <Dropdown placeholder='Choose' search selection options={summaryOptions} className="col-sm-12 f-12"/>
                                         </div>
                                         <div className="col-sm-4">
                                             <Dropdown placeholder='Choose' search selection options={stateOptions} className="col-sm-12 f-12"/>
+                                        </div>
+                                        <div className={"col-sm-1 text-center"}>
+                                            <button
+                                                className="pull-left btn btn-primary"
+                                                style={{"font-size":"12px","margin-left":"-10px"}}>
+                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                            </button>
                                         </div>
 
                                     </div>
@@ -613,8 +624,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">BOARD</th>
-                                        <th className="py-1 bg-gray-tradding">Val(T)</th>
-                                        <th className="py-1 bg-gray-tradding">Vol(Lot)</th>
+                                        <th className="py-1 bg-gray-tradding">Val</th>
+                                        <th className="py-1 bg-gray-tradding">Vol(Shr)</th>
                                         <th className="py-1 bg-gray-tradding">Freq.</th>
                                     </tr>
                                     </thead>
@@ -652,8 +663,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <thead className="text-white t-statistic">
                                     <tr>
                                         <th className="py-1 bg-gray-tradding"></th>
-                                        <th className="py-1 bg-gray-tradding">Val(T)</th>
-                                        <th className="py-1 bg-gray-tradding">Vol(Lot)</th>
+                                        <th className="py-1 bg-gray-tradding">Val</th>
+                                        <th className="py-1 bg-gray-tradding">Vol(Shr)</th>
                                         <th className="py-1 bg-gray-tradding">Freq</th>
                                     </tr>
                                     </thead>
@@ -684,7 +695,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>
                                         <th className="py-1 bg-gray-tradding">VALUE</th>
-                                        <th className="py-1 bg-gray-tradding">LOT</th>
+                                        <th className="py-1 bg-gray-tradding">SHARE</th>
                                         <th className="py-1 bg-gray-tradding">FREQ</th>
                                     </tr>
                                     </thead>
@@ -1435,17 +1446,17 @@ class MarketStatistikAgGrid extends React.PureComponent {
                             last > prev ? "text-success text-right grid-table d-border-aggrid-right f-12" :
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "fbuy", headerName: "F.Buy (T)", resizable: true,
+                { field: "fbuy", headerName: "F.Buy", resizable: true,
                     width: s=="s49"?180:s=="s50"?165:s=="s75"?170:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "fsell", headerName: "F.Sell (T)",
+                { field: "fsell", headerName: "F.Sell",
                     resizable: true, width: s=="s49"?180:s=="s50"?165:s=="s75"?170:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "fnet", headerName: "F.Net (T)",
+                { field: "fnet", headerName: "F.Net",
                     resizable: true, width: s=="s49"?183:s=="s50"?163:s=="s75"?165:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";

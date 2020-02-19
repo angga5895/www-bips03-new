@@ -408,15 +408,13 @@ class SlideBarLogin extends React.PureComponent{
                 <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
                     <table width="100%" height="100%">
                         <tr>
-                            <td rowSpan={"2"} className="spanSymbol px-0">{this.state.barSatu.symbol}</td>
-                            <td rowSpan={"2"} className="lastColor px-0">{this.state.barSatu.last}</td>
+                            <td className="spanSymbol px-0">{this.state.barSatu.symbol}</td>
+                            <td className=" px-0">{this.state.barSatu.last}</td>
                             <td className={"changeTd"}>
                                 <span className={"white"}><i className={colorIcon(this.state.barSatu.change)}></i>
                                     {this.state.barSatu.change}
                                     </span>&nbsp;
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <span className="white">
                                     ({this.state.barSatu.percentage}%)
@@ -430,15 +428,13 @@ class SlideBarLogin extends React.PureComponent{
                          +" "+(this.state.flipped===true ? 'active' : '')} id="hid-box">
                     <table width="100%" height="100%">
                         <tr>
-                            <td rowSpan={"2"} className="spanSymbol px-0">{this.state.barDua.symbol}</td>
-                            <td rowSpan={"2"} className="lastColor px-0">{this.state.barDua.last}</td>
+                            <td className="spanSymbol px-0">{this.state.barDua.symbol}</td>
+                            <td className="px-0">{this.state.barDua.last}</td>
                             <td>
                                 <span className={"white"}><i className={colorIcon(this.state.barDua.change)}></i>
                                     {this.state.barDua.change}
                                     </span>&nbsp;
                             </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <span className="white">
                                     ({this.state.barDua.percentage}%)

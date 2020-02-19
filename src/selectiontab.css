@@ -50,6 +50,10 @@ input[type="radio"]:checked .radioAccount ~ label{
 }
 .lastColor{
     color: white!important;
+    min-width: 30% !important;
+}
+.changeTd{
+    /*width: 20% !important;*/
 }
 .red {
     color: red;

@@ -461,14 +461,14 @@ class SelectItem1 extends React.PureComponent {
                             <table width="100%" height="100%">
                                 <tr>
                                     <td rowSpan="2" className="spanSymbol px-0">{this.state.firstbox.symbol}</td>
-                                    <td colSpan="2" className="lastColor px-0">{this.state.firstbox.last}</td>
-                                </tr>
-                                <tr>
-                                    <td>
+                                    <td rowSpan="2" className="lastColor px-0">{this.state.firstbox.last}</td>
+                                    <td className={"changeTd px-0"}>
                                         <span className={'white '}>
                                             <i className={colorIcon(this.state.firstbox.change)}></i>&nbsp;
                                             {this.state.firstbox.change}</span>&nbsp;
                                     </td>
+                                </tr>
+                                <tr>
                                     <td>
                                         <span className="white">({this.state.firstbox.percentage}%)</span>
                                     </td>
@@ -480,14 +480,14 @@ class SelectItem1 extends React.PureComponent {
                             <table width="100%" height="100%">
                                 <tr>
                                     <td rowSpan="2" className="spanSymbol px-0">{this.state.secondbox.symbol}</td>
-                                    <td colSpan="2" className="lastColor px-0">{this.state.secondbox.last}</td>
-                                </tr>
-                                <tr>
-                                    <td className={'white px-0 py-0'}>
+                                    <td rowSpan="2" className="lastColor px-0">{this.state.secondbox.last}</td>
+                                    <td className={'changeTd white px-0 py-0'}>
                                         <span>
                                             <i className={colorIcon(this.state.secondbox.change)}></i>&nbsp;
                                             {this.state.secondbox.change}</span>&nbsp;
                                     </td>
+                                </tr>
+                                <tr>
                                     <td className={'px-0 py-0'}>
                                         <span className="white">({this.state.secondbox.percentage}%)</span>
                                     </td>

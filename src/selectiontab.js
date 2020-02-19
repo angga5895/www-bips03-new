@@ -736,7 +736,7 @@ class UserInfo_Base extends React.Component {
                             } className="text-white align-self-center">
                                 <Dropdown.Menu className={'bg-black-trading f-14 w-300 d-border'} style={{ left: 'auto', right: 0 }}>
                                     <Dropdown.Header className="bg-gray-tradding text-white py-3 text-transform-none" content={
-                                        <Table size="sm" className="py-0 my-0 px-2 bg-gray-tradding">
+                                        <Table size="sm" className="py-0 mb-1 my-0 px-2 bg-gray-tradding">
                                             <thead></thead>
                                             <tbody>
                                             <tr><td className="py-0 my-0 f-18">Mr. John Du</td></tr>
@@ -752,28 +752,28 @@ class UserInfo_Base extends React.Component {
                                         <thead></thead>
                                         <tbody className="text-center">
                                         <tr>
-                                            <td>
+                                            <td className={"px-3 mb-1"}>
                                                 <div className="divAccountOpt input col-sm-12 text-center align-self-center px-0 ">
                                                     <input type="radio" className={changeStyle(this.state.general,"general")}
                                                            name="itemTheme2" id="radioAccount"
                                                            onClick={()=>{changeGeneralState(true);}
                                                            } checked={(this.state.general === true) ? true : false}/>
-                                                    <label className="radioLabelAccount" htmlFor="radioAccount">
-                                                        <text>Regular<br/>Account</text>
+                                                    <label className="radioLabelAccount col-sm-12" htmlFor="radioAccount">
+                                                        <text>Regular Account</text>
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div className="input col-sm-12 text-center align-self-center divAccountOpt px-0">
-                                                    <input type="radio" className={changeStyle(this.state.general,"margin")}
-                                                           name="itemTheme2" id="radioAccount2"
-                                                           onClick={()=>{changeGeneralState(false);}
-                                                           }  checked={(this.state.general === false) ? true : false} />
-                                                    <label className="radioLabelAccount" htmlFor="radioAccount2">
-                                                        <text>Margin<br/>Account</text>
-                                                    </label>
-                                                </div>
-                                            </td>
+                                            {/*<td>*/}
+                                                {/*<div className="input col-sm-12 text-center align-self-center divAccountOpt px-0">*/}
+                                                    {/*<input type="radio" className={changeStyle(this.state.general,"margin")}*/}
+                                                           {/*name="itemTheme2" id="radioAccount2"*/}
+                                                           {/*onClick={()=>{changeGeneralState(false);}*/}
+                                                           {/*}  checked={(this.state.general === false) ? true : false} />*/}
+                                                    {/*<label className="radioLabelAccount" htmlFor="radioAccount2">*/}
+                                                        {/*<text>Margin<br/>Account</text>*/}
+                                                    {/*</label>*/}
+                                                {/*</div>*/}
+                                            {/*</td>*/}
                                         </tr>
                                         </tbody>
                                     </table>

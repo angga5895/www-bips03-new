@@ -181,6 +181,12 @@ class FormSell extends React.PureComponent{
                     </tr>
                     </tbody>
                 </Table>
+                <button
+                    className={`col-sm-1 btn btn-primary
+                                    ${(this.props.part == "stock") ? "btn-refresh-2-right" : "btn-refresh-right"}`}
+                    style={{"font-size":"12px","width":"38px","position":"fixed"}}>
+                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                </button>
             </div>
         );
     }

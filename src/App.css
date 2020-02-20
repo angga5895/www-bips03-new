@@ -30,6 +30,12 @@
     align-items: center;
     justify-content: center;
 }
+.v15-align-center{
+    min-height: 15px;
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+}
 
 .bg-blackgrey{
     background: var(--warna-hover-menu) !important;
@@ -3623,6 +3629,10 @@ button.bg-gold:hover {
     height: var(--card-175);
 }
 
+.card-175b {
+    height: 140px;
+}
+
 .card-138 {
     height: var(--card-138);
 }
@@ -5969,4 +5979,23 @@ textarea {
 }
 .no-button-plusminus>span{
     display:none;
+}
+.btn-refresh-right{
+    bottom: 20px;
+    right: 20px;
+}
+.btn-refresh-2-right{
+    bottom: 45px;
+    right: 10px;
+}
+.d-border-bottom-grey > thead > tr > th{
+    border-bottom: 1px solid grey;
+}
+.body-trade-sum-tb{
+    height: 340px !important;
+}
+.btn-10{
+    font-size: 10px !important;
+    margin-top: -9px;
+    margin-right: 2px;
 }

@@ -159,6 +159,7 @@ class FormBuy extends React.PureComponent{
                     <tr>
                         <td className="py-0">
                             <div className="row px-4 py-form">
+
                                 <Table responsive borderless size="sm" className="text-white pb-0 mb-0 d-border-table">
                                     <thead></thead>
                                     <tbody>
@@ -166,7 +167,10 @@ class FormBuy extends React.PureComponent{
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Cash On <br/> T+2</td>
                                         <td className="no-wrap bg-grey d-border-tr-gray">5,911,198</td>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Remain <br/> Trade Limit</td>
-                                        <td className="no-wrap bg-grey d-border-tr-gray">15,000,980</td>
+                                        <td className="no-wrap bg-grey d-border-tr-gray">
+                                            15,000,980
+
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Cash Buy <br/>(Share)</td>
@@ -187,6 +191,13 @@ class FormBuy extends React.PureComponent{
                     </tr>
                     </tbody>
                 </Table>
+
+                <button
+                    className={`col-sm-1 btn btn-primary
+                                    ${(this.props.part == "stock") ? "btn-refresh-2-right" : "btn-refresh-right"}`}
+                    style={{"font-size":"12px","width":"38px","position":"fixed"}}>
+                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                </button>
             </div>
         );
     }

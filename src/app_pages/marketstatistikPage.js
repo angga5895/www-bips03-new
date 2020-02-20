@@ -543,12 +543,22 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             this.setState({newStream: false});
         }
     }
+    checkColor(param){
+        if(param < 0){
+            return "text-right text-danger py-1";
+        }else if(param == 0){
+            return "text-right text-warning py-1";
+        }else{
+            return "text-right text-success py-1";
+        }
+    }
     render(){
         const stockOptions = [
             { value: 'agri', label: 'AGRI' },
             { value: 'composite', label: 'COMPOSITE' },
             { value: 'mining', label: 'MINING' },
         ];
+
 
         const customStyles = {
             control: (base, state) => ({
@@ -633,7 +643,18 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                     <div className="col-sm-5 px-1 py-0 d-border-table-left">
                         <div className="card card-520 bg-black-trading text-white">
                             <div className="card-body px-3 pt-3">
-                                <div className="bg-tableheader text-center py-3 h-30"><span>BOARD SUMMARY</span></div>
+                                <div className="bg-tableheader text-center py-3 h-30">
+                                    <button
+                                        className="pull-right btn btn-primary btn-10"
+                                        >
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
+                                    <span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {/*Biar di tengah*/}
+                                        BOARD SUMMARY</span>
+                                </div>
                                 <TableBS responsive bordered size="sm"
                                          className="table-hover table-striped text-center align-self-center align-middle mb-3 card-152">
                                     <thead className="text-white t-statistic">
@@ -717,15 +738,15 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <tbody className="text-white no-wrap">
                                     <tr>
                                         <td className="text-left py-1">F.Buy</td>
-                                        <td className="text-danger text-right py-1">2.29 T</td>
-                                        <td className="text-danger text-right py-1">11.68 M</td>
-                                        <td className="text-danger text-right py-1">63,578 </td>
+                                        <td className="text-right py-1">2.29 T</td>
+                                        <td className="text-right py-1">11.68 M</td>
+                                        <td className="text-right py-1">63,578 </td>
                                     </tr>
                                     <tr>
                                         <td className="text-left text-white py-1">F.Sell</td>
-                                        <td className="text-right text-success py-1">3.02 T</td>
-                                        <td className="text-right text-success py-1">11.44 M</td>
-                                        <td className="text-right text-success py-1">85,982 </td>
+                                        <td className="text-right py-1">3.02 T</td>
+                                        <td className="text-right py-1">11.44 M</td>
+                                        <td className="text-right py-1">85,982 </td>
                                     </tr>
                                     <tr>
                                         <td className="text-left text-white py-1">F.Total</td>
@@ -734,10 +755,11 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                         <td className="text-right text-primary py-1">148,560 </td>
                                     </tr>
                                     <tr>
+                                        {/*kondisi*/}
                                         <td className="text-left text-white py-1">F.Net</td>
-                                        <td className="text-right text-primary py-1">-731.36 B</td>
-                                        <td className="text-right text-primary py-1">241,671</td>
-                                        <td className="text-right text-primary py-1">-21,404 </td>
+                                        <td className={this.checkColor(-731.36)}>-731.36 B</td>
+                                        <td className={this.checkColor(241.671)}>241,671</td>
+                                        <td className={this.checkColor(0)}>-21,404 </td>
                                     </tr>
                                     </tbody>
                                 </TableBS>
@@ -773,7 +795,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
             <div className="f-12 px-0">
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
-                <div className="card card-175 bg-black-trading f-12">
+                <div className="card bg-black-trading f-12">
                     <div className="card-header bg-tableheader h-37 pt-3">
                         TOP BROKER
                         <button
@@ -1444,7 +1466,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                             last > prev ? "text-success text-right grid-table d-border-aggrid-right f-12" :
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "val", headerName: "Val(T)", resizable: true,
+                { field: "val", headerName: "Val", resizable: true,
                     width: s=="s49"?135:s=="s67"?125:s=="s75"?120:102, minWidth: 102,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
@@ -2529,12 +2551,12 @@ class TopBrokerAgGrid extends React.PureComponent {
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
+                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?290:s=="s50"?280:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:175,minWidth: 175,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
+                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     } },
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?270:s=="s50"?220:s=="s67"?200:190,minWidth:190,
@@ -2672,7 +2694,7 @@ class TopBrokerAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className="card-175 ag-theme-balham-dark ag-striped-odd"
+                    className="card-138 ag-theme-balham-dark ag-striped-odd"
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2724,7 +2746,7 @@ class TopBrokerBAgGrid extends React.PureComponent {
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
+                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
                     }},
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?300:260,
@@ -2892,7 +2914,7 @@ class TopBrokerSAgGrid extends React.PureComponent {
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
+                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
                     }},
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?300:260, minWidth: 260,

@@ -44,7 +44,7 @@ const CustomFrameHeaderLanding = (props) =>{
                             tradeListHistoryPageInvboard: 'HISTORICAL',
                             fundTransferPageInvboard: 'FUND TRANSFER',
                             inquryAccountPageInvboard: 'ACCOUNT INFO',
-                            InvboardTcAndSoa: 'TC & SOA',
+                            // InvboardTcAndSoa: 'TC & SOA',
                         }
                     }/>
                 </div>

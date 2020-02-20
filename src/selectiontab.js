@@ -358,9 +358,9 @@ class SelectItem1 extends React.PureComponent {
             barInfo: [
                 {
                     symbol: 'COMPOSITE INDEX',
-                    last: '12849',
-                    change: -0.99,
-                    percentage: -0.30,
+                    last: 0,
+                    change: 0,
+                    percentage: 0,
                 },{
                     symbol: 'INFRASTRUCTUR',
                     last: '108.59',

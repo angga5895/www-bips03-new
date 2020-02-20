@@ -98,7 +98,7 @@ class App extends React.Component {
             {className: 'TradeListHistory', title: '', instanceName: 'tradeListHistoryPageInvboard'},
             {className: 'FundTransfer', title: '', instanceName: 'fundTransferPageInvboard'},
             {className: 'InquryAccount', title: '', instanceName: 'inquryAccountPageInvboard'},
-            {className: 'tcAndSoa', title: '', instanceName: 'InvboardTcAndSoa'},
+            // {className: 'tcAndSoa', title: '', instanceName: 'InvboardTcAndSoa'},
 
             //tree 2 In MarketStatistik
             {className: 'MarketStatistikPage', title: '', instanceName: 'marketStatistikPage'},
@@ -173,7 +173,7 @@ class App extends React.Component {
                         'tradeListHistoryPageInvboard',
                         'fundTransferPageInvboard',
                         'inquryAccountPageInvboard',
-                        'InvboardTcAndSoa'
+                        // 'InvboardTcAndSoa'
                     ]
                 },
                 {

@@ -807,68 +807,71 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE SUMMARY</div>
                                     </div>
-                                    <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
+                                    {/*<div className="bg-trading-gray" style={{marginBottom : "10px"}}>*/}
                                         {/*<TableBS responsive bordered size="sm"
                                                  className="table-hover table-striped text-center align-self-center
                                                  align-middle card-215 mb-0"
 
-                                        >*/}<TableBS responsive bordered size="sm"
-                                                 className="table-hover table-striped text-center align-self-center align-middle
-                                                 card-stock-trade-sum mb-0"
-                                        >
-                                            <thead className="text-white t-statistic">
-                                            <tr>
-                                                <th className="py-1 bg-gray-tradding">Price</th>
-                                                <th className="py-1 bg-gray-tradding">Value</th>
-                                                <th className="py-1 bg-gray-tradding">Volume(Lot)</th>
-                                                <th className="py-1 bg-gray-tradding">Freq</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody className="text-white no-wrap">
-                                            <tr>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                            </tr>
-                                            <tr>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                                <td className="text-right py-1">0</td>
-                                            </tr>
-                                                </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <td className="text-left"></td>
-                                                <td className="text-left">Total Val: 0</td>
-                                                <td className="text-left">Total Vol: 0</td>
-                                                <td className="text-left">Freq: 0</td>
-                                            </tr>
-                                            </tfoot>
-                                        </TableBS>
-                                    </div>
+                                        >*/}
+                                        {/*<TableBS responsive bordered size="sm"*/}
+                                                 {/*className="table-hover table-striped text-center align-self-center align-middle*/}
+                                                 {/*card-stock-trade-sum mb-0"*/}
+                                        {/*>*/}
+                                            {/*<thead className="text-white t-statistic">*/}
+                                            {/*<tr>*/}
+                                                {/*<th className="py-1 bg-gray-tradding">Price</th>*/}
+                                                {/*<th className="py-1 bg-gray-tradding">Value</th>*/}
+                                                {/*<th className="py-1 bg-gray-tradding">Volume(Lot)</th>*/}
+                                                {/*<th className="py-1 bg-gray-tradding">Freq</th>*/}
+                                            {/*</tr>*/}
+                                            {/*</thead>*/}
+                                            {/*<tbody className="text-white no-wrap">*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                            {/*</tr>*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                            {/*</tr>*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                            {/*</tr>*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                            {/*</tr>*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                                {/*<td className="text-right py-1">0</td>*/}
+                                            {/*</tr>*/}
+                                                {/*</tbody>*/}
+                                            {/*<tfoot>*/}
+                                            {/*<tr>*/}
+                                                {/*<td className="text-left"></td>*/}
+                                                {/*<td className="text-left">Total Val: 0</td>*/}
+                                                {/*<td className="text-left">Total Vol: 0</td>*/}
+                                                {/*<td className="text-left">Freq: 0</td>*/}
+                                            {/*</tr>*/}
+                                            {/*</tfoot>*/}
+                                        {/*</TableBS>*/}
+                                    {/*</div>*/}
                                     {/*<div className="bg-trading-gray">
                                         <HistoryPriceAgGrid size={this.ceksize()} type="tradeSummary"/>
                                     </div>*/}
+                                    <TradeSummaryTableScroll/>
+
                                 </div>
                             </div>
                         </div>
@@ -1164,9 +1167,23 @@ class BuyPage extends React.Component{
     render(){
         const swapContent = () => {
             if(this.state.activeTab === 1){
-                return <FormBuy idPrice="stockBuyPrice" part="stockInfo" idVol="stockBuyVol" idValue="stockBuyValue" columnSm="col-sm-12" />
+                return <FormBuy
+                    idPrice="stockBuyPrice"
+                    part="stockInfo"
+                    idVol="stockBuyVol"
+                    idValue="stockBuyValue"
+                    columnSm="col-sm-12"
+                    part="stock"
+                />
             }else{
-                return <FormSell idPrice="stockSellPrice" part="stockInfo" idVol="stockSellVol" idValue="stockSellValue" columnSm="col-sm-12"/>
+                return <FormSell
+                    idPrice="stockSellPrice"
+                    part="stockInfo"
+                    idVol="stockSellVol"
+                    idValue="stockSellValue"
+                    columnSm="col-sm-12"
+                    part={"stock"}
+                />
             }
         }
         return(
@@ -2364,6 +2381,143 @@ class AmendGroupCodeAgGrid extends React.PureComponent {
                             )
                         })}
                         </tbody>
+                    </table>
+                </div>
+            </>
+        );
+    }
+}
+
+class TradeSummaryTableScroll extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        this.state = {
+            rowData: [
+                {
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    freq: 0,
+                    volume: 0,
+                },
+            ],
+        }
+    }
+
+    render() {
+        const splitcode = (props) => {
+            var splited = props.split('-');
+            return <span>{splited[0]}</span>
+        }
+        const splitname = (props) => {
+            let splited = props.split("-");
+            return <span>{splited[1]}</span>
+        }
+        return (
+            <>
+                <div
+                    className="card-stock-trade-sum-tb ag-theme-balham-dark ag-header-border-grey d-border"
+                    style={{
+                        width: 'auto'}}>
+                    <table className="table table-fixed table-hovered d-border-bottom-grey">
+                        <thead>
+                        <tr>
+                            <th className="col-xs-3 v15-align-center">Price</th>
+                            <th className="col-xs-3 v15-align-center ">Value</th>
+                            <th className="col-xs-3 v15-align-center ">Volume(Lot)</th>
+                            <th className="col-xs-3 v15-align-center ">Freq</th>
+                        </tr>
+                        </thead>
+                        <tbody className={"body-trade-sum-tb"}>
+                        {this.state.rowData.map((charx, index) => {
+                            return (
+                                <tr className="trTableFix">
+                                    <td className={`col-xs-3 text-right d-border-right codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                        {charx.price}</td>
+                                    <td className={`col-xs-3 text-right d-border-right codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                        {charx.value}</td>
+                                    <td className={`col-xs-3 text-right d-border-right codeTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                        {charx.volume}</td>
+                                    <td className={`col-xs-3 text-right d-border-right buttonTd ${((index+1) % 2 == 0) ? 'td-even' : ''}`}>
+                                        {charx.freq}
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                        {/*<thead>*/}
+                        {/*<tr>*/}
+                            {/*<th className="col-xs-10 v50-align-center"></th>*/}
+                            {/*<th className="col-xs-2 v50-align-center">Total Val: </th>*/}
+                            {/*<th className="col-xs-2 v50-align-center">Total Vol: </th>*/}
+                            {/*<th className="col-xs-2 v50-align-center">Freq: </th>*/}
+                        {/*</tr>*/}
+                        {/*</thead>*/}
+                    </table>
+                    <table className="table table-fixed table-hovered d-border-bottom-grey">
+                    <thead>
+                        <tr>
+                            <th className="col-xs-3 ">&nbsp;</th>
+                            <th className="col-xs-3 " style={{"textAlign":"left !important"}}>Val: </th>
+                            <th className="col-xs-3 " style={{"textAlign":"left !important"}}>Vol: </th>
+                            <th className="col-xs-3 " style={{"textAlign":"left !important"}}>Freq: </th>
+                        </tr>
+                        </thead>
                     </table>
                 </div>
             </>

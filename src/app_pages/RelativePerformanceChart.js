@@ -1154,6 +1154,10 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                     <div className="form-group">
                                         <li style={marginSelection}><a className="btn btn-danger" style={customStylesBtn} href="" id={"resetButton" + this.state.stockType}>Reset</a></li>
                                     </div>
+                                    <div className="form-group">
+                                        <li style={marginSelection}><a className="btn btn-primary" style={customStylesBtn} href="" id={"showButton" + this.state.stockType}>Show Graph</a></li>
+                                    </div>
+                                    <text>{this.state.stockType}</text>
                                 </div>
                             </ul>
                         </div>

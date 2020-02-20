@@ -635,20 +635,23 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
         }
     }
     ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
-        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
             return "s80";
-        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
             return "s75";
-        }else if(window.innerWidth > 2045 && window.innerWidth < 2303){
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
             return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth < 2559){
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
             return "s50";
         }else if(window.innerWidth > 2559){
             return "s49";
         }else{
-            return "s100";
+            return "s110";
         }
     }
     componentDidMount() {
@@ -807,70 +810,9 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE SUMMARY</div>
                                     </div>
-                                    {/*<div className="bg-trading-gray" style={{marginBottom : "10px"}}>*/}
-                                        {/*<TableBS responsive bordered size="sm"
-                                                 className="table-hover table-striped text-center align-self-center
-                                                 align-middle card-215 mb-0"
 
-                                        >*/}
-                                        {/*<TableBS responsive bordered size="sm"*/}
-                                                 {/*className="table-hover table-striped text-center align-self-center align-middle*/}
-                                                 {/*card-stock-trade-sum mb-0"*/}
-                                        {/*>*/}
-                                            {/*<thead className="text-white t-statistic">*/}
-                                            {/*<tr>*/}
-                                                {/*<th className="py-1 bg-gray-tradding">Price</th>*/}
-                                                {/*<th className="py-1 bg-gray-tradding">Value</th>*/}
-                                                {/*<th className="py-1 bg-gray-tradding">Volume(Lot)</th>*/}
-                                                {/*<th className="py-1 bg-gray-tradding">Freq</th>*/}
-                                            {/*</tr>*/}
-                                            {/*</thead>*/}
-                                            {/*<tbody className="text-white no-wrap">*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                                {/*<td className="text-right py-1">0</td>*/}
-                                            {/*</tr>*/}
-                                                {/*</tbody>*/}
-                                            {/*<tfoot>*/}
-                                            {/*<tr>*/}
-                                                {/*<td className="text-left"></td>*/}
-                                                {/*<td className="text-left">Total Val: 0</td>*/}
-                                                {/*<td className="text-left">Total Vol: 0</td>*/}
-                                                {/*<td className="text-left">Freq: 0</td>*/}
-                                            {/*</tr>*/}
-                                            {/*</tfoot>*/}
-                                        {/*</TableBS>*/}
-                                    {/*</div>*/}
-                                    {/*<div className="bg-trading-gray">
-                                        <HistoryPriceAgGrid size={this.ceksize()} type="tradeSummary"/>
-                                    </div>*/}
-                                    <TradeSummaryTableScroll/>
+                                    {/*<TradeSummaryTableScroll/>*/}
+                                    <TradeSummaryAgGrid size={this.ceksize()}/>
 
                                 </div>
                             </div>
@@ -927,6 +869,7 @@ class StockTickAgGrid extends React.PureComponent {
                     },
                 },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?220:s=="s75"?190:s=="s80"?135:s=="s90"?115:110,
+                    minWidth: 110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -939,6 +882,7 @@ class StockTickAgGrid extends React.PureComponent {
                     }},
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?220:s=="s75"?190:s=="s80"?135:s=="s90"?120:110,
+                    minWidth: 110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -1104,6 +1048,219 @@ const StockWatchlist = (props) => {
             {/* </BIPSAppProvider> */}
         </div>
     );
+}
+
+class TradeSummaryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "value", headerName: "Value", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
+                    minWidth:100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },
+                { field: "volume", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?115:s=="s100"?110:110,
+                    minWidth:110,
+                    cellClass : function (params) {
+                        return " grid-table text-right d-border-aggrid-right text-right f-12";
+                    },
+                },
+                { field: "freq", headerName: "Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        return " grid-table text-right d-border-aggrid-right text-right f-12";
+                    },
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowPinnedData: [
+                {
+                    price: "",
+                    value: "Total Val: 0",
+                    volume: "Total Vol: 0",
+                    freq: "Freq: 0",
+                },
+            ],
+            rowData: [
+                {
+                    price: s,
+                    value: 12345678901234,
+                    volume: 12345678901234,
+                    freq: 12345678901234,
+                },
+                {
+                    price: 12345678901234,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },{
+                    price: 0,
+                    value: 0,
+                    volume: 0,
+                    freq: 0,
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-440 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        pinnedBottomRowData={this.state.rowPinnedData}
+                    >
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
 }
 
 class TableStockWatchlist_Base extends React.Component{

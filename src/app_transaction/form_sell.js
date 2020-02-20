@@ -29,7 +29,18 @@ class FormSell extends React.PureComponent{
             size: "mini"
         });
     }
-
+    checkDate(){
+        if(this.props.part == "stock"){
+            return;
+        }else{
+            return (
+                <div className="col-sm-2 text-right text-form px-0 my-0 py-0 mx-0 pt-1">
+                <i className="fa fa-calendar-alt"></i>&nbsp;
+                {tanggal()}
+            </div>
+            );
+        }
+    }
     render(){
         return(
             <div className="f-12 px-3">
@@ -39,15 +50,21 @@ class FormSell extends React.PureComponent{
                     <tbody>
                     <tr>
                         <td className="py-0">
-                            <div className="row mb-2">
-                                <div className="col-sm-6 f-18 text-success"></div>
-                                <div className="col-sm-6 text-right text-form"><i className="fa fa-calendar-alt"></i> {tanggal()}</div>
+                            <div className="row mb-0">
+                                <div className={"col-sm-2"}></div>
+                                <div className="col-sm-8 f-15">
+                                    <div className="pb-0 text-form">
+                                        <i className="icofont icofont-warning text-warning"></i>
+                                        &nbsp; <b>Member of acceleration board</b>
+                                    </div>
+                                </div>
+                                {this.checkDate()}
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td className="py-0">
-                            <div className="row py-form mb-2">
+                            <div className="row py-form mb-0">
                                 <div className="col-sm-2 text-form">Code</div>
                                 <div className="col-sm-10 row pr-0">
                                     <div className="col-sm-4 pr-0 text-center align-self-center">
@@ -65,12 +82,16 @@ class FormSell extends React.PureComponent{
                                         <Checkbox label='Prevent same order' className="f-12 text-white mt-2 mb-0 align-self-center text-form" />
                                     </div>
                                 </div>
-                                <div className="col-sm-12 row">
-                                    <div className="col-sm-6">
-                                        <div className="pb-0 text-form"><i className="icofont icofont-warning text-warning"></i>&nbsp; Info Acceleration Board/Status Stock Info</div>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <div className="pb-0 text-form"><i className="fa fa-info-circle text-danger"></i>&nbsp; Not yet submit annual financial report</div>
+                                <div className="col-sm-12 row mb-0">
+                                    <div className={"col-sm-2"}></div>
+
+                                    <div className="col-sm-10 f-15 pr-0 mr-0">
+                                        <div className="pb-0 text-form">
+                                            <b>
+                                                <i className="fa fa-info-circle text-danger"></i>
+                                                &nbsp; Not yet submit annual financial report
+                                            </b>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

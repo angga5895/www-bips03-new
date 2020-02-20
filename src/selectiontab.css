@@ -26,16 +26,16 @@ input[type="radio"]:checked .radioAccount ~ label{
     background: green !important;
 }
 .radioLabelAccount{
-    cursor: pointer;
+    /*cursor: pointer;*/
     color: var(--warna-black-white-semantic);
     padding: 10px 20px;
     /*border-right: 1px solid grey;*/
 }
 .radioLabelAccount:hover{
-    cursor: pointer;
-    font-weight: bold;
-    padding: 10px 20px;
-    background: rgba(15, 161, 247, 0.58) !important;
+    /*cursor: pointer;*/
+    /*font-weight: bold;*/
+    /*padding: 10px 20px;*/
+    /*background: rgba(15, 161, 247, 0.58) !important;*/
     /*border-right: 1px solid grey;*/
 }
 .divAcountOpt>input[type="radio"]:checked {

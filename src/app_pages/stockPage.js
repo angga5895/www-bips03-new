@@ -748,7 +748,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                 <AppFrameAction ref="frameAction" />
                 <main>
                     <div className="container-fluid f-12 card-520">
-                        <div className="py-2 card-520">
+                        <div className="pt-1 pb-0 card-520">
                             <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
@@ -797,7 +797,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                 </div>
                             </div>
                             <div className="px-1 mx-0 col-sm-12 row card-475">
-                                <div className="col-sm-8 px-1 py-2">
+                                <div className="col-sm-8 px-1 pt-1 pb-0">
                                     <div className="col-sm-12 pl-0 pr-0">
                                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                             <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
@@ -806,7 +806,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     </div>
                                 </div>
 
-                                <div className="col-sm-4 pl-1 pr-0 pt-2 pb-0">
+                                <div className="col-sm-4 pl-1 pr-0 pt-1 pb-0">
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE SUMMARY</div>
                                     </div>

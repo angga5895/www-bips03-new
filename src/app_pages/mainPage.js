@@ -416,7 +416,7 @@ const ResizeResponsive = () => {
     $('.runningText p').css('minWidth', (marquee));
     $('.runningText').css('minWidth', (marquee));
 
-    var height440a = $('html').height() - 348.05;
+    var height440a = $('html').height() - 250.05;
     $('.card-440-a').css('height', height440a);
 
     var height695 = $('html').height();

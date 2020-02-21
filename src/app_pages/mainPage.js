@@ -416,6 +416,9 @@ const ResizeResponsive = () => {
     $('.runningText p').css('minWidth', (marquee));
     $('.runningText').css('minWidth', (marquee));
 
+    var height440a = $('html').height() - 348.05;
+    $('.card-440-a').css('height', height440a);
+
     var height695 = $('html').height();
     $('.card-695').css('min-height', (height695));
     var plogin = ($('html').height()-$('.p-login').height())/2;
@@ -1120,6 +1123,9 @@ class MainPage_Base extends React.Component {
             $('.runningText p').css('minWidth', (marquee));
             $('.runningText').css('minWidth', (marquee));
 
+            var height440a = $('html').height() - 250.05;
+            $('.card-440-a').css('height', height440a);
+
             var height345 = $('html').height()-348.05;
             $('.card-345').css('height', (height345));
 
@@ -1366,6 +1372,8 @@ class MainPage_Base extends React.Component {
 
             var height440 = height475-25;
             $('.card-440').css('min-height', (height440));
+
+
 
             var height215 = (height440-10)/2;
             $('.card-215').css('min-height', (height215));

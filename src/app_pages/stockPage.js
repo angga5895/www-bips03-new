@@ -747,9 +747,14 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
             <div className="bg-black-trading">
                 <AppFrameAction ref="frameAction" />
                 <main>
-                    <div className="container-fluid f-12 card-520">
-                        <div className="pt-1 pb-0 card-520">
+                    {/*outer*/}
+                    {/*<div className="container-fluid f-12 card-520">*/}
+                    <div className="container-fluid f-12">
+                        {/*card 520*/}
+                        <div className="pt-1 pb-0">
+
                             <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
+
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
                                     {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
@@ -759,9 +764,8 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             filterOption={customFilter} isSearchable={true}
                                             maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
                                     </div>
-                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
-                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
                                 </div>
+
                                 <div className="col-sm-9 row mx-0 px-0 align-self-center">
                                     <TableBS borderless size="sm" className="bg-black-trading mb-0 h-35">
                                         <thead></thead>
@@ -796,12 +800,15 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     </TableBS>
                                 </div>
                             </div>
-                            <div className="px-1 mx-0 col-sm-12 row card-475">
+                            {/*475*/}
+                            <div className="px-1 mx-0 col-sm-12 row">
+
                                 <div className="col-sm-8 px-1 pt-1 pb-0">
                                     <div className="col-sm-12 pl-0 pr-0">
                                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                             <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
                                         </div>
+
                                         <StockTickAgGrid size={this.ceksize()}/>
                                     </div>
                                 </div>
@@ -1011,7 +1018,7 @@ class StockTickAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-440 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-440-a ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1242,7 +1249,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-440 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-440-a ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

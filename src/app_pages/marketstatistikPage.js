@@ -2551,12 +2551,12 @@ class TopBrokerAgGrid extends React.PureComponent {
                 { field: "bval", headerName: "B. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "sval", headerName: "S. Val(T)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?290:s=="s50"?280:s=="s67"?240:s=="s75"?230:s=="s80"?210:s=="s90"?190:175,minWidth: 175,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     } },
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?270:s=="s50"?220:s=="s67"?200:190,minWidth:190,
@@ -2746,7 +2746,7 @@ class TopBrokerBAgGrid extends React.PureComponent {
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-success";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?300:260,
@@ -2914,7 +2914,7 @@ class TopBrokerSAgGrid extends React.PureComponent {
                     resizable: true, width: s=="s49"?325:s=="s50"?300:s=="s67"?250:s=="s75"?230:s=="s80"?210:s=="s90"?190:170,
                     minWidth: 170,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 text-danger";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     }},
                 { field: "tvol", headerName: "T. Vol(Lot)", sortable: true, filter: "agTextColumnFilter",
                     resizable: true, width: s=="s49"?300:260, minWidth: 260,

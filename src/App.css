@@ -583,10 +583,12 @@ div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > d
                  height: 79px!important;
              }.h-77{
                   height: 77px!important;
-              }.h-32{
-                    height: 32px!important;
-                    background-image: linear-gradient(var(--warna-navy-even), var(--warna-navy-odd)) !important;
-                }
+              }
+.h-32{
+    height: 32px!important;
+    /*font-size: 13px !important;*/
+    background-image: linear-gradient(var(--warna-navy-even), var(--warna-navy-odd)) !important;
+}
 
 .scene{
     height: 48px!important;
@@ -5834,7 +5836,8 @@ textarea {
     margin-right: 1px;
 
     padding: 8px 2px 0px 2px;
-    font-size: 11px;
+    /*font-size: 11px;*/
+    font-weight: bold;
     align-content: center;
     text-align: center;
     border-radius: 2px;

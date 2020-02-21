@@ -104,16 +104,43 @@ const ResizeResponsive = () => {
 
     if($('html').width() > 1300){
         $('.f-livetrade').css('font-size','14px');
-        $('.slidee > div').css('font-size','11px');
     } else if($('html').width() > 1200 && $('html').width() < 1301){
         $('.slidee > div').css('font-size','10px');
-        $('.f-livetrade').css('font-size','13px');
     } else if($('html').width() > 1000 && $('html').width() < 1201){
         $('.f-livetrade').css('font-size','9px');
-        $('.slidee > div').css('font-size','9px');
     } else if($('html').width() < 1001){
         $('.f-livetrade').css('font-size','7px');
-        $('.slidee > div').css('font-size','8px');
+    }
+
+    if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+        $('.slidee > div').css('font-size','13px');
+        $('.slidee > div').css('padding-top','5px');
+        $('.slidee > div').css('padding-right','1px');
+        $('.slidee > div').css('padding-left','1px');
+    }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+        $('.slidee > div').css('font-size','14px');
+        $('.slidee > div').css('padding-top','5px');
+        $('.slidee > div').css('padding-right','1px');
+        $('.slidee > div').css('padding-left','1px');
+    }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+        $('.slidee > div').css('font-size','16px');
+        $('.slidee > div').css('padding-top','4px');
+        $('.slidee > div').css('padding-right','1px');
+        $('.slidee > div').css('padding-left','1px');
+    }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+        $('.slidee > div').css('font-size','17px');
+        $('.slidee > div').css('padding-top','3px');
+    }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+        $('.slidee > div').css('font-size','20px');
+        $('.slidee > div').css('padding-top','2px');
+    }else if(window.innerWidth > 2559){
+        $('.slidee > div').css('font-size','22px');
+        $('.slidee > div').css('padding-top','2px');
+    }else{
+        $('.slidee > div').css('font-size','11.5px');
+        $('.slidee > div').css('padding-top','6px');
+        $('.slidee > div').css('padding-right','1px');
+        $('.slidee > div').css('padding-left','1px');
     }
 
     if($('html').width() > 1315) {
@@ -736,19 +763,44 @@ class MainPage_Base extends React.Component {
 
             if($('html').width() > 1300){
                 $('.f-livetrade').css('font-size','14px');
-                $('.slidee > div').css('font-size','11px');
             } else if($('html').width() > 1200 && $('html').width() < 1301){
-                $('.slidee > div').css('font-size','10px');
                 $('.f-livetrade').css('font-size','13px');
             } else if($('html').width() > 1000 && $('html').width() < 1201){
                 $('.f-livetrade').css('font-size','9px');
-                $('.slidee > div').css('font-size','9px');
             } else if($('html').width() < 1001){
                 $('.f-livetrade').css('font-size','7px');
-                $('.slidee > div').css('font-size','8px');
             }
 
-                // $('.box-selection').css('font-size','14px');
+            if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+                $('.slidee > div').css('font-size','13px');
+                $('.slidee > div').css('padding-top','5px');
+                $('.slidee > div').css('padding-right','1px');
+                $('.slidee > div').css('padding-left','1px');
+            }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+                $('.slidee > div').css('font-size','14px');
+                $('.slidee > div').css('padding-top','5px');
+                $('.slidee > div').css('padding-right','1px');
+                $('.slidee > div').css('padding-left','1px');
+            }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+                $('.slidee > div').css('font-size','16px');
+                $('.slidee > div').css('padding-top','4px');
+                $('.slidee > div').css('padding-right','1px');
+                $('.slidee > div').css('padding-left','1px');
+            }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+                $('.slidee > div').css('font-size','17px');
+                $('.slidee > div').css('padding-top','3px');
+            }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+                $('.slidee > div').css('font-size','20px');
+                $('.slidee > div').css('padding-top','2px');
+            }else if(window.innerWidth > 2559){
+                $('.slidee > div').css('font-size','22px');
+                $('.slidee > div').css('padding-top','2px');
+            }else{
+                $('.slidee > div').css('font-size','11.5px');
+                $('.slidee > div').css('padding-top','6px');
+                $('.slidee > div').css('padding-right','1px');
+                $('.slidee > div').css('padding-left','1px');
+            }
 
             if($('html').width() > 545 && $('html').width() < 576) {
                 $('.fs-icon-bips').css('cssText', 'font-size: 1rem!important');
@@ -1944,7 +1996,7 @@ class MarqueeMac extends React.PureComponent{
         return(
             <div className="h-32 runningTextMac">
                 <div className={"slidee slideSatu"}>
-                    <div className={"show-box " +colorLabelFront(this.state.barReady[0].change)}>
+                    <div className={"show-box1 " +colorLabelFront(this.state.barReady[0].change)}>
                         <kbd>{this.state.barReady[0].symbol}</kbd>&nbsp;
                         <text
                             className={" "}>

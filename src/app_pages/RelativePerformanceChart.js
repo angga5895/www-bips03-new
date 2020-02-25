@@ -175,6 +175,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             var $indicatorTypeSelect = $('#indicatorTypeSelect' + stockName);
             var $indicatorSettingsModal = $('#indicatorSettingsModal' + stockName);
             var $resetBtn = $('#resetButton' + stockName);
+            var $showBtn = $('#showButton');
             var $addIndicatorBtn = $('#addIndicatorButton' + stockName);
             var $indicatorNavPanel = $('#indicatorNavPanel' + stockName);
             var $indicatorForm = $('#indicatorForm' + stockName);
@@ -334,7 +335,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     fetch('https://bahana.ihsansolusi.co.id:5050/'+type+'/chart/'+stok,
                     // fetch('http://10.1.9.10:5050/chart/'+stok, 
                     // fetch('http://10.1.9.12:5050/chart/'+stok, 
-                    { headers: {
+                    {
+                        method: 'GET',
+                        headers: {
                         "Authorization": sessidbaru,
                     }})
                     .then(data=>{
@@ -344,12 +347,14 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                 if(selecType === "select1"){
                                     $('#chartDataSelectchrtRelative').val(stok);
                                     appSettingsCache['data'] = {};
-                                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = res.data.data;
+                                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = res.data;
+                                    console.log(res.data,"yaa bambang");
 
                                 }else{
                                     $('#chartDataSelect2chrtRelative').val(stok);
                                     appSettingsCache['data2'] = {};
-                                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = res.data.data;
+                                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = res.data;
+                                    console.log(res.data,"yaa bambang");
                                 }
                             })
                         }
@@ -489,14 +494,26 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // (https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js)
                 // Load JSON data and create a chart by JSON data.
 
+                var dataInit = [
+                    ["2018-03-05", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-06", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-07", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-08", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-09", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-10", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-11", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-12", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-13", 4050, 4060, 4000, 4020, 56394900],
+                    ["2018-03-14", 4050, 4060, 4000, 4020, 56394900],
+                ];
 
                 //multiple data load ===========================
                 anychart.data.loadJsonFile($chartDataSelect.data().json, function (data) {
-                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
+                    appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = dataInit;
                 });
 
                 anychart.data.loadJsonFile($chartDataSelect2.data().json, function (data2) {
-                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
+                    appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = dataInit;
 
                     // init, create chart
                     app.createChart(chartContainer);
@@ -626,6 +643,79 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 $indicatorSettingsModal.on('show.bs.modal-b', function () {
                     $indicatorForm.find('.select').selectpicker();
                 });
+                $showBtn.on('click', function (e) {
+                    e.preventDefault();
+                    var resultData = {};
+                    var resultData2 = {};
+                    if($valueType.length < 1 || $valueType2.length < 1){
+                        alert('Mohon isi dulu kedua pilihan');
+                        return false;
+                    }
+                    app.removeChart();
+
+                    $('#chartDataSelectchrtRelative').val($valueAnalyticChart);
+                    $('#chartDataSelect2chrtRelative').val($valueAnalyticChart2);
+
+                    $annotationType.val('default').selectpicker('refresh');
+                    // select series type
+                    $seriesTypeSelect.val('line').selectpicker('refresh');
+                    // reset indicators select
+                    $indicatorTypeSelect.val('').selectpicker('refresh');
+                    // select chart theme
+                    $themeSelect.val('defaultTheme').selectpicker('refresh');
+                    app.createChart(chartContainer);
+
+                        var sessidbaru = $("#sessIdAhay").val();
+                        appSettingsCache['indicators'] = {};
+                        appSettingsCache['scale'] = 'linear';
+                        appSettingsCache['chartType'] = 'line';
+                        appSettingsCache['annotation'] = 'remove';
+                        appSettingsCache['theme'] = 'defaultTheme';
+
+                        fetch('https://bahana.ihsansolusi.co.id:5050/'+$valueType+'/chart/'+$valueAnalyticChart,
+                            // fetch('http://10.1.9.10:5050/chart/'+stok,
+                            // fetch('http://10.1.9.12:5050/chart/'+stok,
+                            {
+                                method: 'GET',
+                                headers: {
+                                    "Authorization": sessidbaru,
+                                }})
+                            .then(data=>{
+                                if(data.ok){
+                                    data.json()
+                                        .then(res=>{
+                                               dataTable.addData(res.data);
+
+                                        })
+                                }
+                            })
+
+                    fetch('https://bahana.ihsansolusi.co.id:5050/'+$valueType2+'/chart/'+$valueAnalyticChart2,
+                        // fetch('http://10.1.9.10:5050/chart/'+stok,
+                        // fetch('http://10.1.9.12:5050/chart/'+stok,
+                        {
+                            method: 'GET',
+                            headers: {
+                                "Authorization": sessidbaru,
+                            }})
+                        .then(data=>{
+                            if(data.ok){
+                                data.json()
+                                    .then(res=>{
+                                       dataTable2.addData(res.data);
+                                    })
+                            }
+                        })
+
+
+
+                        // init, create chart
+
+
+
+
+
+                });
 
                 // reset all settings
                 $resetBtn.on('click', function (e) {
@@ -724,7 +814,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 var mapping = dataTable.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
                 var mapping2 = dataTable2.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
 
-                console.log('ini data pertama'+appSettingsCache['data'][dataName.toLowerCase()]);
+                // console.log('ini data pertama'+appSettingsCache['data'][dataName.toLowerCase()]);
 
 
                 // create stock chart
@@ -925,12 +1015,12 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
     changelist = event => {
         $valueAnalyticChart = event.value;
         $valueType = event.desc;
-        $("#rc").change();
+        // $("#rc").change();
     }
     changelist2 = event => {
         $valueAnalyticChart2 = event.value;
         $valueType2 = event.desc;
-        $("#rc2").change();
+        // $("#rc2").change();
     }
 
     render() {
@@ -1155,9 +1245,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                         <li style={marginSelection}><a className="btn btn-danger" style={customStylesBtn} href="" id={"resetButton" + this.state.stockType}>Reset</a></li>
                                     </div>
                                     <div className="form-group">
-                                        <li style={marginSelection}><a className="btn btn-primary" style={customStylesBtn} href="" id={"showButton" + this.state.stockType}>Show Graph</a></li>
+                                        <li style={marginSelection}><a className="btn btn-primary" style={customStylesBtn} id={"showButton"}>Show Graph</a></li>
                                     </div>
-                                    <text>{this.state.stockType}</text>
                                 </div>
                             </ul>
                         </div>

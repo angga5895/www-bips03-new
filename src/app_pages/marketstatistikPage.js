@@ -535,12 +535,17 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
     changelist = event => {
         document.getElementById("resetButton").click();
         this.setState({newStream: true});
+        this.props.handleSearchCode(event)
+    }
+    handleStartStopStream = () => {
+        this.props.handleStreamChart(this.props.streamStatus)
     }
     newStream = event => {
         if(this.state.newStream){
             document.getElementById("resetTitle").click();
             document.getElementById("resetButton").click();
-            this.setState({newStream: false});
+            // this.setState({newStream: false});
+            this.props.handleStreamChart(this.props.streamStatus)
         }
     }
     checkColor(param){
@@ -579,6 +584,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             })
         };
 
+        console.log("stream",this.props.codeSearchMarketIndex, "datanya : ", this.props.streamChart, "timenya", this.props.timeChart)
+
         return(
             <>
                 <style>{'' +
@@ -609,7 +616,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                             placeholder={<div>Search..</div>}
                                             options={stockOptions}
                                             className="stockPageSelect"
-                                            onChange={this.changelist}
+                                            onChange={(e)=>this.changelist(e.value)}
                                             theme={this.selectSelectionTab}/>
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
@@ -623,15 +630,15 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray">
                                         <div>
-                                            <button
-                                                id="streamButton"
-                                                    onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">Start Stream</button>
+                                            <button id="streamButton"
+                                                onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">
+                                                    {this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>
                                             <i id="resetButton"></i>
-                                            <input type="hidden" id={"tempVal"} value={this.state.newRow}/>
+                                            <input type="hidden" id={"tempVal"} value={this.props.streamChart}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
-                                            <input type="hidden" id={"newStream"} value={this.state.newStream}/>
-                                            <input type="hidden" id={"resetTitle"} value={"zakyyuuu"}/>
-                                            <span onClick={this.test} id={"hello"}></span>
+                                            <input type="hidden" id={"newStream"} value={this.props.streamStatus}/>
+                                            <input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>
+                                            <span onClick={this.handleStartStopStream} id={"hello"}></span>
                                             <div id="container" className="mt-2 py-3 px-3 card-344"></div>
                                         </div>
                                     </div>
@@ -3046,8 +3053,16 @@ class TopBrokerSAgGrid extends React.PureComponent {
 
 const StatisticMarketStatistikPage = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
-        thememode: vars.thememode
-    }),
+        thememode: vars.thememode,
+        codeSearchMarketIndex:vars.codeSearchMarketIndex,
+        // data Stream
+        streamChart:vars.streamChart,
+        timeChart:vars.timeChart,
+        streamStatus:vars.streamStatus,
+        handleStreamChart: (streamStatus) => { actions.sendAction('handleStreamChart', { streamStatus }) },
+        handleSearchCode: (newCode) => { actions.sendAction('handleSearchCode', { newCode }) },
+        }),
+    ["handleStreamChart","handleSearchCode"]
 )(StatisticMarketStatistikPage_Base);
 
 export default MarketStatistikPage;

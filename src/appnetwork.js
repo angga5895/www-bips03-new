@@ -6,45 +6,129 @@ var NetAppVars = {
   socketFlag: false,
   state: 'disconnected', // possible values of state: disconnected, connected, connecting
   url: 'wss://',
-  socket: null,
-  onMessageArrive: null, // function (message)
-  onNetworkConnection: null, // function (isConnected)
+  // url: 'ws://',
+  socket: null, // instance of web socket component object
+  onMessageArrive: null, // function (message, socketID)
+  onNetworkConnection: null, // function (isConnected, url, socketID)
+  extSockets: {} /* 
+    extension sockets, named by socket ID, where each sockets has the following attributes:
+    - socketFlag
+    - state
+    - url
+    - socket
+  */
 }
 
-function handleMessageArriveEvt(vars, message) {
+function handleCreateAndConnect(vars, url, socketID) {
+  return (
+    socketID ? {
+      ...vars,
+      extSockets: {
+        ...vars.extSockets,
+        [socketID]: {
+            url,
+            socketFlag: true,
+            state: 'connecting',
+            socket: null
+        }
+      }
+    } :
+    {
+      ...vars, 
+      url, 
+      socketFlag: true, 
+      state: 'connecting'
+    }
+  )
+}
+
+function handleDisconnect(vars, socketID) {
+  return (
+    socketID ? {
+      ...vars, 
+      extSockets: {
+        ...vars.extSockets, 
+        [socketID]: {
+          ...(vars.extSockets[socketID]), 
+          socketFlag: false, 
+          state: 'disconnected'
+        }
+      }
+    } : 
+    {
+      ...vars, 
+      socketFlag: false, 
+      state: 'disconnected'
+    }
+  )
+}
+
+function handleMessageArriveEvt(vars, message, socketID) {
   if (vars.onMessageArrive)
-    vars.onMessageArrive(message);
+    vars.onMessageArrive(message, socketID);
 }
 
-function handleSend(vars, text) {
-  var socket = vars.socket;
-  if (socket && vars.state == 'connected')
+function handleSend(vars, text, socketID) {
+  var socket = socketID ? vars.extSockets[socketID].socket : vars.socket;
+  var connState = socketID ? vars.extSockets[socketID].state : vars.state;
+  if (socket && connState == 'connected') {
+    // //-- perflog
+    // if (text.indexOf('{"action_type":"SUBSCRIBE"') == 0) {
+    //   console.log('SUBS: ' + text);
+    // }
+    // else if (text.indexOf('{"action_type":"UNSUBSCRIBE"') == 0) {
+    //   console.log('UNSUBS: ' + text);
+    // }
     socket.sendMessage(text);
-}
-
-function handleConnectionEvent(vars, isConnected, wsObject) {
-
-  if (vars.onNetworkConnection) 
-    vars.onNetworkConnection(isConnected, vars.url);
-
-  return {
-    ...vars, 
-    state: isConnected ? 'connected' : 'disconnected', 
-    socket: wsObject,
-    socketFlag: isConnected
   }
 }
 
+function handleConnectionEvent(vars, isConnected, wsObject, socketID) {
+
+  if (vars.onNetworkConnection) 
+    vars.onNetworkConnection(isConnected, vars.url, socketID);
+
+  return (
+    socketID ?
+      {
+        ...vars,
+        extSockets: {
+          ...vars.extSockets,
+          [socketID]: {
+            ...(vars.extSockets[socketID]),
+            state: isConnected ? 'connected' : 'disconnected',
+            socket: wsObject,
+            socketFlag: isConnected
+          }
+        }
+      } :   
+      {
+        ...vars, 
+        state: isConnected ? 'connected' : 'disconnected', 
+        socket: wsObject,
+        socketFlag: isConnected
+      }
+  )
+}
+
+function handleGetState(vars, outs, socketID) {
+
+  if (typeof(outs) != 'object' || Array.isArray(outs))
+    return
+
+  var dataSrc = (!socketID) ? vars : (socketID in vars.extSockets ? vars.extSockets[socketID] : {})
+  outs.state = dataSrc.state || 'disconnected' // set default to 'disconnected'
+  outs.url = dataSrc.url || ''
+  outs.socket = dataSrc.socket || null
+}
+
 var NetAppActions = {
-  createAndConnect: (vars, {url}) => {
-    return(
-      {...vars, url, socketFlag: true, state: 'connecting'}
-    )
-  },
-  disconnect: (vars, {}) => ({...vars, socketFlag: false, state: 'disconnected'}),
-  send: (vars, {text}) => handleSend(vars, text),
-  connectionEvt: (vars, {isConnected, wsObject}) => (handleConnectionEvent(vars, isConnected, wsObject)),
-  messageArriveEvt: (vars, {message}) => handleMessageArriveEvt(vars, message),
+  getState: (vars, {outVars, socketID}) => handleGetState(vars, outVars, socketID),
+  createAndConnect: (vars, {url, socketID}) => handleCreateAndConnect(vars, url, socketID),
+  disconnect: (vars, {socketID}) => handleDisconnect(vars, socketID),
+  send: (vars, {text, socketID}) => handleSend(vars, text, socketID),
+  connectionEvt: (vars, {isConnected, wsObject, socketID}) => (handleConnectionEvent(vars, isConnected, wsObject, socketID)),
+  messageArriveEvt: (vars, {message, socketID}) => handleMessageArriveEvt(vars, message, socketID),
   setEventHandlers: (vars, {onMessageHandler, onConnectionState}) => (
     {...vars, onMessageArrive: onMessageHandler, onNetworkConnection: onConnectionState}
   ),
@@ -62,10 +146,11 @@ const NetAppProvider = (props) => (
 // in:
 // - socketFlag
 // - url
+// - socketID (optional)
 // event:
-// - connectionEvt(isConnected, wsobject)
-// - setConnected(connected: true/false)
-// - messageArriveEvt(message)
+// - connectionEvt(isConnected, wsobject, socketID)
+// - setConnected(connected: true/false, socketID)
+// - messageArriveEvt(message, socketID)
 
 class WSConnection_Base extends React.Component {
   constructor (props) {
@@ -73,20 +158,19 @@ class WSConnection_Base extends React.Component {
   }
 
   onOpen = (e) => {
-    this.props.connectionEvt(true, this.refs.wsObject);
+    this.props.connectionEvt(true, this.refs.wsObject, this.props.socketID);
   }
 
   onClose = (e) => {
-    this.props.connectionEvt(false, null);
+    this.props.connectionEvt(false, null, this.props.socketID);
   }
 
   onMessage = (message) => {
-    // console.log('Data received from websocket: ', message);
-    this.props.messageArriveEvt(message);
+    this.props.messageArriveEvt(message, this.props.socketID);
   }
 
   render() {
-    console.log('WSConnection component: ', (this.props.socketFlag ? 'Flag = TRUE' : 'Flag = FALSE'));
+    //console.log(`WSConnection component. SocketID [${this.props.socketID}]: `, (this.props.socketFlag ? 'Flag = TRUE' : 'Flag = FALSE'));
     return (
       this.props.socketFlag ?
         (
@@ -106,23 +190,35 @@ class WSConnection_Base extends React.Component {
 }
 
 const WSConnection = ContextConnector(NetAppContext, (vars, act, props) => ({
-  socketFlag: vars.socketFlag,
-  url: vars.url,
-  connectionEvt: (isConnected, wsObject) => act.sendAction('connectionEvt', {isConnected, wsObject}),
-  messageArriveEvt: (message) => act.sendAction('messageArriveEvt', {message}),
+  socketID: props.socketID,
+  socketFlag: (!props.socketID) ? vars.socketFlag : 
+    (props.socketID in vars.extSockets && vars.extSockets[props.socketID].socketFlag),
+  url: (!props.socketID) ? vars.url : (
+    props.socketID in vars.extSockets ? vars.extSockets[props.socketID].url : ''
+  ), 
+  connectionEvt: (isConnected, wsObject, socketID) => act.sendAction('connectionEvt', {isConnected, wsObject, socketID}),
+  messageArriveEvt: (message, socketID) => act.sendAction('messageArriveEvt', {message, socketID}),
 }), ['connectionEvt', 'messageArriveEvt'])(WSConnection_Base);
 
 const WSConnectionActionF = ContextConnector(NetAppContext, 
   (vars, actions, ownProps) => ({
     connectionState: vars.state,
-    createAndConnect: ({url}) => actions.sendAction('createAndConnect', {url}),
-    disconnect: () => actions.sendAction('disconnect', {}),
-    send: ({text}) => actions.sendAction('send', {text}),
+    getState: (socketID) => {
+      var outs = {}
+      actions.sendAction('getState', {outVars: outs, socketID: ownProps.socketID ? ownProps.socketID : socketID})
+      return outs
+    },     
+    createAndConnect: ({url, socketID}) => {
+      actions.sendAction('createAndConnect', {url, socketID: ownProps.socketID ? ownProps.socketID : socketID})
+    },
+    disconnect: (socketID) => 
+      actions.sendAction('disconnect', {socketID: ownProps.socketID ? ownProps.socketID : socketID}),
+    send: ({text, socketID}) => actions.sendAction('send', {text, socketID: ownProps.socketID ? ownProps.socketID : socketID}),
     setEventHandlers: ({onMessageHandler, onConnectionState}) => {
       actions.sendAction('setEventHandlers', {onMessageHandler, onConnectionState})
     }
   }),
-  ['createAndConnect', 'disconnect', 'send', 'setEventHandlers']
+  ['getState', 'createAndConnect', 'disconnect', 'send', 'setEventHandlers']
 )(
   (props) => {
     props.actionWS.notifyActionWS(props);
@@ -133,21 +229,14 @@ const WSConnectionActionF = ContextConnector(NetAppContext,
 class WSConnectionAction extends React.Component {
 
   notifyActionWS(passedProps) {
-    var propNames = ['createAndConnect', 'disconnect', 'send', 'setEventHandlers', 'connectionState'];
+    var propNames = ['getState', 'createAndConnect', 'disconnect', 'send', 'setEventHandlers', 'connectionState'];
     for (var i = 0; i < propNames.length; ++i)
       this[propNames[i]] = passedProps[propNames[i]];
   }
 
   render() {
-    return <WSConnectionActionF actionWS={this} />
+    return <WSConnectionActionF actionWS={this} socketID={this.props.socketID} />
   } 
 }
 
 export { NetAppProvider, NetAppContext, WSConnection, WSConnectionAction };
-
-
-
-
-
-
-

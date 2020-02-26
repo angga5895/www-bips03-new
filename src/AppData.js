@@ -5,6 +5,8 @@ import { AppFrameAction } from './appframe.js';
 import { throwStatement } from '@babel/types';
 
 const SERVER_URL = 'wss://bahana.ihsansolusi.co.id:12000';
+var SERVER_URL2 = 'wss://bahana.ihsansolusi.co.id:5050';
+
 const RECONNECT_TIME = 1000;
 
 var BIPSAppVars = {
@@ -15,6 +17,7 @@ var BIPSAppVars = {
   loginErrReason: '',
   netAction: null,
   frameAction: null,
+  netActionAux: null,
   userID: '',
   sessionID: '',
   subscriptionFlags: {
@@ -59,18 +62,26 @@ var BIPSAppVars = {
   //Penambahan untuk mode akun
   // zaky
   GeneralType: true,
-    balanceOpt: 'cashBalance',
-    balanceVal: '1,950,999,850,000',
-    buyLimitVal: '9,000,000,000'
+  balanceOpt: 'cashBalance',
+  balanceVal: '1,950,999,850,000',
+  buyLimitVal: '9,000,000,000',
+
+  // Stream Chart
+  codeSearchMarketIndex:'',
+  timeChart:'',
+  streamChart:'',
+  streamStatus:false, 
+  firstDataStream:'', 
 }
 
 var BIPSAppActions = {
-  setActionRefs: (vars, {netAction, frameAction}) => ({...vars, netAction, frameAction}),
+  setActionRefs: (vars, {netAction, frameAction, netActionAux,}) => ({...vars, netAction, frameAction, netActionAux,}),
   networkDisconnected: (vars) => ({...vars, loginState: false, networkState: false}),
   networkConnected: (vars) => ({...vars, loginState: false, networkState: true}),
   doLogin: (vars, {userID, password}) => {
     var text = JSON.stringify({action_type: 'LOGIN', user: userID, password: password});
     vars.netAction.send({text});
+    return{...vars, userName:userID}
   },
   doSetFrameActive: (vars, {isActive}) => {vars.frameAction.setMainFrameActive(isActive);},
   doSetSubscription: (vars, {subscriptionID, flag}) => {
@@ -102,7 +113,9 @@ var BIPSAppActions = {
     if (prevFlag != flag)  
       return {...vars, subscriptionFlags: {...vars.subscriptionFlags, [subscriptionID]: flag}}
   },
-  loginSuccessful: (vars, {sessionID}) => ({...vars, sessionID: sessionID, loginState: true, loginErrState: false, loginErrReason: ''}),
+  loginSuccessful: (vars, {sessionID}) => {
+    vars.netActionAux.send({text:JSON.stringify({"user":vars.userName,"session_id":sessionID, "stringify":"true"})})
+    return {...vars, sessionID: sessionID, loginState: true, loginErrState: false, loginErrReason: ''}},
   loginFail: (vars, {reason}) => ({...vars, loginState: false, loginErrState: true, loginErrReason: reason}),
   getLoginRequestID: (vars, {cbRequestID}) => {
     var cid = vars.loginRequestID;
@@ -144,7 +157,7 @@ var BIPSAppActions = {
 
   changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
 
-// subscribe
+  // subscribe
   subscribeMsgSukses:(vars,{mess})=>{
       return({
           ...mess,
@@ -171,6 +184,31 @@ var BIPSAppActions = {
           [stock_code]: data
       }
   }),
+  // handle Stream Chart
+  // handle onclick Stream Chart
+  handleStreamChart:(vars,{streamStatus})=>{
+    if(!streamStatus){
+      console.log("ini handle stream yang baru", streamStatus,vars.codeSearchMarketIndex)
+      vars.netActionAux.send({text:JSON.stringify({"action_type": "SUBSCRIBE","sub_type": "INDEXPERIODIC", "code": vars.codeSearchMarketIndex})})           
+    } else{
+      vars.netActionAux.send({text:JSON.stringify({"action_type": "UNSUBSCRIBE","sub_type": "INDEXPERIODIC", "code": vars.codeSearchMarketIndex})})
+    }
+    return {
+      ...vars, streamStatus:!vars.streamStatus
+    }
+  },
+
+  handleSearchCode:(vars,{newCode})=>{
+    return{...vars, codeSearchMarketIndex:newCode.toUpperCase()}
+  },
+
+  //Response data Stream 
+  updateSubscribeStringReplay : (vars, {data})=>{
+    let arrData = data.split("#")
+    if(arrData[1] === 'INDEXPERIODIC'){
+      return{...vars, streamChart:arrData[3], timeChart:arrData[2]}
+    }
+  },
 }
 
 const BIPSAppContext = React.createContext({});
@@ -182,45 +220,59 @@ class BIPSAppProvider extends React.Component {
     this.appProvider = null; // will be set when ContextProvider is rendered
     this.netAction = null;
     this.frameAction = null;
+    this.netActionAux = null;
   }
 
-  messageHandler = (msg) => {
-    console.log('BISAppProvider.messageHandler(). Message = ', msg);
-    var msgData;
-    try {
-      msgData = JSON.parse(msg);
-    }
-    catch {
-      console.log('Invalid JSON: ', msg);
-      return;
-    }
-
-    if (msgData.action_type == 'UPDATE') {
-      if (msgData.sub_type == 'STOCK_SUMMARY') 
-        this.appProvider.sendAction('updateStock', {stock_code: msgData.stock_code, data: msgData.data || {}});
-    }
-    else if (msgData.action_type == 'LOGIN-RESPONSE') {
-      if (msgData.status == 'OK') {
-        console.log("ini sess", msgData.session_id)
-        this.appProvider.sendAction('loginSuccessful', {sessionID: msgData.session_id});
-        this.frameAction.setMainFrameActive(true);
+  messageHandler = (msg, socketID) => {
+    // console.log('BIPSAppProvider.messageHandler(). socketID',socketID,' Message = ', msg);    
+    if (socketID === undefined) {
+      var msgData;
+      try {
+        msgData = JSON.parse(msg);
       }
-      else
-        this.appProvider.sendAction('loginFail', {reason: msgData.reason});
+      catch {
+        console.log('Invalid JSON: ', msg);
+        return;
+      }
+
+      if (msgData.action_type == 'UPDATE') {
+        if (msgData.sub_type == 'STOCK_SUMMARY') 
+          this.appProvider.sendAction('updateStock', {stock_code: msgData.stock_code, data: msgData.data || {}});
+      }
+      else if (msgData.action_type == 'LOGIN-RESPONSE') {
+        if (msgData.status == 'OK') {
+          this.appProvider.sendAction('loginSuccessful', {sessionID: msgData.session_id});
+          this.frameAction.setMainFrameActive(true);
+        }
+        else if(msgData.status === 'FAILED'){
+          this.appProvider.sendAction('loginFail', {reason: msgData.reason});
+        }
+      }
+    }
+    else{
+      if(!msg.includes("action_type")){
+        this.appProvider.sendAction('updateSubscribeStringReplay', {data: msg});
+      }
     }
 
     // use this.appProvider.sendAction, 
     // to access vars of this provider
   }
 
-  connectionState = (isConnected, url) => {
-    console.log('BISAppProvider.connectionState invoked ', isConnected ? 'Connected' : 'Disconnected');
+  connectionState = (isConnected, url, socketID) => {
+    console.log('BISAppProvider.connectionState invoked ', isConnected ? 'Connected' : 'Disconnected', "socketID",socketID);
     // if fall to disconnected state then retry connection
-    if (!isConnected) {
-      this.appProvider.sendAction('networkDisconnected');
-      console.log(`Reconnecting in ${RECONNECT_TIME / 1000} seconds...`);
-      this.frameAction.setMainFrameActive(false);
-      window.setTimeout(() => this.netAction.createAndConnect({url: SERVER_URL}), RECONNECT_TIME);
+    if(socketID ==undefined){
+      if (!isConnected) {
+        this.appProvider.sendAction('networkDisconnected');
+        console.log(`Reconnecting in ${RECONNECT_TIME / 1000} seconds...`);
+        this.frameAction.setMainFrameActive(false);
+        window.location.reload(); 
+        window.setTimeout(() => this.netAction.createAndConnect({url: SERVER_URL}), RECONNECT_TIME);
+      }
+      else {
+        this.appProvider.sendAction('networkConnected');
+      }
     }
     else {
       this.appProvider.sendAction('networkConnected');
@@ -250,7 +302,7 @@ class BIPSAppProvider extends React.Component {
   componentDidMount () {
 
     /* make link frame and net API */    
-    this.appProvider.sendAction('setActionRefs', {netAction: this.netAction, frameAction: this.frameAction})
+    this.appProvider.sendAction('setActionRefs', {netAction: this.netAction, frameAction: this.frameAction, netActionAux: this.netActionAux, })
 
     /* set frame event handlers here */
     // console.log(this.frameAction);
@@ -264,6 +316,7 @@ class BIPSAppProvider extends React.Component {
 
     /* init connection to host */
     this.netAction.createAndConnect({url: SERVER_URL}); 
+    this.netActionAux.createAndConnect({url: SERVER_URL2}); 
 
     /* set frameActive status to false */
     this.frameAction.setMainFrameActive(false);
@@ -275,6 +328,8 @@ class BIPSAppProvider extends React.Component {
       <ContextProvider ref={(value) => {this.appProvider = value;}} context={BIPSAppContext} vars={BIPSAppVars} actions={BIPSAppActions}>
         <AppFrameAction ref={(value) => {this.frameAction = value;}} />
         <WSConnectionAction ref={(value) => {this.netAction = value;}} />        
+         {/*for ws 2  */}
+          <WSConnectionAction ref={(value) => {this.netActionAux = value;}} socketID="aux" />  
         {this.props.children}
       </ContextProvider>
     );

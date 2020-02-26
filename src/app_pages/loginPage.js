@@ -676,7 +676,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   defaultValue="user1"/>
+                                                                   defaultValue="user31"/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -690,7 +690,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="Testing1"/>
+                                                                       defaultValue="Testing31"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>

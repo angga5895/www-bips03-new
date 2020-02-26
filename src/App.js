@@ -257,6 +257,7 @@ class App extends React.Component {
           <NetAppProvider>
               <BIPSAppProvider>
                   <WSConnection />
+                  <WSConnection socketID="aux" />
                   <MainPage />
                   <AppModal />
               </BIPSAppProvider>

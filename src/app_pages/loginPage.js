@@ -19,6 +19,7 @@ import FormSource         from "../app_sign_up/form_source";
 import FormAdditonal      from "../app_sign_up/form_additional";
 import { Checkbox } from 'semantic-ui-react'
 import bahana_logo from './../img/bahanalogos.png';
+import bahana_logo_black from './../img/bahanalogos_black.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
 
@@ -673,7 +674,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                             <div className="form-group row" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
                                                 <div className="col-sm-12 text-left text-center px-5">
-                                                    <img src={bahana_logo} height="auto" width="90%" alt={"logo bahana"}/>
+                                                    <img src={this.props.thememode ? bahana_logo : bahana_logo_black} height="auto" width="90%" alt={"logo bahana"}/>
                                                 </div>
                                                 <div className="col-sm-12 pr-0 px-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
@@ -796,6 +797,7 @@ const LoginUserPage = ContextConnector(BIPSAppContext,
         networkState:vars.networkState,
         loginErrState: vars.loginErrState,
         loginErrReason: vars.loginErrReason,
+        thememode:vars.thememode,
 
         loginState: vars.loginState,
         getLogin : (loginState)=> {actions.sendAction('getLogin', {loginState})},

@@ -417,13 +417,14 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         var newDataRow = [];
         //current price variable
         var point = null;
+        var time = null;
 
 
         anychart.onDocumentReady(function () {
 
             var dataset = anychart.data.table();
             dataset.addData([
-                [1569986691452, 300],
+                [1582703100063, 300],
             ]);
 
             // map the data
@@ -473,18 +474,19 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
                         newTimestamp += tickPeriod;
                         point = document.getElementById("tempVal").value;
+                        time = document.getElementById("tempTime").value;
                         //current point update or create new point
 
-                            if (newTimestamp - newDataRow[0][0] <= period) {
-                                //set price as close for existing point
-                                newDataRow[0][2] = point;
-                            } else {
+                            // if (newTimestamp - newDataRow[0][0] <= period) {
+                            //     //set price as close for existing point
+                            //     newDataRow[0][2] = point;
+                            // } else {
                                 //erase update data array
                                 newDataRow[0] = new Array(2);
                                 //set data for the new point
-                                newDataRow[0][0] = newTimestamp;
+                                newDataRow[0][0] = time;
                                 newDataRow[0][1] = point;
-                            }
+                            // }
                             dataset.addData(newDataRow);
 
 
@@ -544,7 +546,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         if(this.state.newStream){
             document.getElementById("resetTitle").click();
             document.getElementById("resetButton").click();
-            // this.setState({newStream: false});
+            this.setState({newStream: false});
             this.props.handleStreamChart(this.props.streamStatus)
         }
     }
@@ -556,6 +558,15 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         }else{
             return "text-right text-success py-1";
         }
+    }
+    convertTime(param){
+        var d = new Date();
+        var h = parseInt(param.substring(0,2));
+        d.setHours(h);
+        d.setMinutes(param.substring(3,5));
+        d.setSeconds(param.substring(6,8));
+        console.log("jadi ini total waktu yang telah dikurang "+d);
+        return parseInt(d.getTime()) + 25200000;
     }
     render(){
         const stockOptions = [
@@ -635,6 +646,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                                     {this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>
                                             <i id="resetButton"></i>
                                             <input type="hidden" id={"tempVal"} value={this.props.streamChart}/>
+                                            <input type="hidden" id={"tempTime"} value={this.convertTime(this.props.timeChart)}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
                                             <input type="hidden" id={"newStream"} value={this.props.streamStatus}/>
                                             <input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>

@@ -418,26 +418,28 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         //current price variable
         var point = null;
         var time = null;
-
+        var tempTitle = null;
 
         anychart.onDocumentReady(function () {
 
             var dataset = anychart.data.table();
             dataset.addData([
                 [1582703100063, 300],
+                [1582705100063, 500],
+                [1582709420063, 900],
             ]);
 
             // map the data
-            let mapping = dataset.mapAs({x: 0, value: 1});
+            var mapping = dataset.mapAs({x: 0, value: 1});
 
             // set chart type
-            let chart = anychart.stock();
+            var chart = anychart.stock();
 
             // set the series
-            let series = chart.plot(0).line(mapping);
+            var series = chart.plot(0).line(mapping);
 
-            series.name("Stock Streaming");
-            chart.title('Streaming');
+            series.name("");
+            chart.title('Stock Streaming');
             // set container and draw chart
             chart.container("container").draw();
 
@@ -456,9 +458,11 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             }
             //timestamp variable for incoming ticks
             newTimestamp = newDataRow[0][0];
+
             function reset(){
                 dataset.remove(1509986691452,ntommorow);
             }
+
             function streamStart() {
                 var ahay = document.getElementById('propsluar').value;
                 if(ahay.length < 1){
@@ -501,10 +505,23 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             let streamState = 0;
             let dataInteval;
 
+            //untuk mengganti title chart
+            resetTitle.onclick = function(){
+                reset();
+
+                tempTitle = document.getElementById("resetTitle").value;
+                var dataset = anychart.data.table();
+                dataset.addData([
+                    [1582703100063, 300],
+                ]);
+                series.name(tempTitle);
+                // set container and draw chart
+                chart.container("container").draw();
+            }
             resetButton.onclick = function(){
-                streamButton.innerHTML = "Start" + "\nstream";
-                streamState = 0;
-                clearInterval(dataInteval);
+                // streamButton.innerHTML = "Start" + "\nstream";
+                // streamState = 0;
+                // clearInterval(dataInteval);
                 reset();
             }
 
@@ -517,16 +534,6 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                     streamState = 0;
                     clearInterval(dataInteval);
                 } else {
-                    var temp = document.getElementById('resetTitle').value;
-
-                    chart.title(temp);
-                    series.name(temp);
-                    chart.container("container").draw();
-                    streamStart();
-                    $("#resetButton").click();
-
-                    streamButton.innerHTML = "Stop" + "\nstream";
-                    streamState++;
                     streamStart();
                 }
 
@@ -535,13 +542,15 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         });
     }
     changelist = event => {
-        document.getElementById("resetButton").click();
+        document.getElementById("resetTitle").value = event.toUpperCase();
+        document.getElementById("resetTitle").click();
         this.setState({newStream: true});
         this.props.handleSearchCode(event)
     }
     handleStartStopStream = () => {
         this.props.handleStreamChart(this.props.streamStatus)
     }
+
     newStream = event => {
         if(this.state.newStream){
             document.getElementById("resetTitle").click();
@@ -550,6 +559,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             this.props.handleStreamChart(this.props.streamStatus)
         }
     }
+
     checkColor(param){
         if(param < 0){
             return "text-right text-danger py-1";
@@ -565,7 +575,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         d.setHours(h);
         d.setMinutes(param.substring(3,5));
         d.setSeconds(param.substring(6,8));
-        console.log("jadi ini total waktu yang telah dikurang "+d);
+
         return parseInt(d.getTime()) + 25200000;
     }
     render(){
@@ -649,7 +659,10 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                             <input type="hidden" id={"tempTime"} value={this.convertTime(this.props.timeChart)}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
                                             <input type="hidden" id={"newStream"} value={this.props.streamStatus}/>
-                                            <input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>
+
+                                            {/*<input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>*/}
+                                            <input type="hidden" id={"resetTitle"}/>
+
                                             <span onClick={this.handleStartStopStream} id={"hello"}></span>
                                             <div id="container" className="mt-2 py-3 px-3 card-344"></div>
                                         </div>

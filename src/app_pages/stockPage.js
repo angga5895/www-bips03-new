@@ -542,12 +542,15 @@ class StockHistoryPage_Base extends React.PureComponent {
                                     </div>
 
                                 </div>
-                                <div className="col-sm-7 pl-2 pr-0 mx-0 align-self-center">
+                                <div className="col-sm-1 pl-2 pr-0 mx-0">
                                     <button
-                                        className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
-                                        style={{"font-size":"12px","width":"38px"}}>
+                                        className={`btn btn-primary`}
+                                        style={{"font-size":"14px","width":"38px","margin-top":"2px"}}>
                                         <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
                                     </button>
+                                </div>
+                                    <div className="col-sm-7 pl-0 pr-0 mx-0">
+
                                     <TableBS borderless size="sm" className="bg-black-trading mb-0 h-35">
                                         <thead></thead>
                                         <tbody className="d-border-top d-border-bottom">
@@ -1072,28 +1075,28 @@ class TradeSummaryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
-                    minWidth: 100,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:80,
+                    minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "value", headerName: "Value", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?110:s=="s100"?110:100,
                     minWidth:100,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
                 { field: "volume", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?115:s=="s100"?110:110,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?110:s=="s100"?110:110,
                     minWidth:110,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
                 },
                 { field: "freq", headerName: "Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:100,
-                    minWidth: 100,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?90:90,
+                    minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
@@ -1114,12 +1117,12 @@ class TradeSummaryAgGrid extends React.PureComponent {
             rowData: [
                 {
                     price: s,
-                    value: 12345678901234,
-                    volume: 12345678901234,
-                    freq: 12345678901234,
+                    value: 1234567890,
+                    volume: 1234567890,
+                    freq: 1234567890,
                 },
                 {
-                    price: 12345678901234,
+                    price: 1234567890,
                     value: 0,
                     volume: 0,
                     freq: 0,

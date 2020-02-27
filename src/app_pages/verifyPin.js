@@ -156,7 +156,7 @@ class VerifyPIN extends React.PureComponent{
     forgotPIN = (e) =>{
         var frameAction = this.refs.frameAction;
         frameAction.showModal({
-            headerClass: () => <div className="text-white text-center"><h1 className="text-center">BIPS</h1></div>,
+            headerClass: () => <div className="text-white text-center"><h1 className="text-center">DX TRADE</h1></div>,
             contentClass: ForgotPINModal,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"

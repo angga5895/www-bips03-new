@@ -18,7 +18,9 @@ import ModalInquiry from "./app_modals/modal_inquiry";
 import { AppFrame, AppFrameAction, AppFrameProvider, AppModal } from "./appframe";
 
 import bipslogo from './img/bahanas.png';
+import bipslogo_black from './img/bahanas_black.png';
 import bahana_logo from './img/bahanalogos.png';
+import bahana_logo_black from './img/bahanalogos_black.png';
 import ojk_logo from './img/ojk.png';
 import idx_logo from './img/idx.png';
 
@@ -102,7 +104,11 @@ class MenuScaleHeader extends React.PureComponent {
     }
 }
 
-class AboutModal extends React.Component {
+class AboutModal_Base extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     closeClick = (e) => {
         this.refs.frameAction.closeModal(100);
     }
@@ -114,7 +120,7 @@ class AboutModal extends React.Component {
                 <WSConnectionAction ref="wsAction" />
                 <div className="text-white f-12 text-center">
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
-                        <img src={bahana_logo} width="40%"/>
+                        <img src={this.props.thememode ? bahana_logo : bahana_logo_black} width="40%"/>
                     </div>
 
                     <div className="col-sm-12 f-10 py-5 px-5">
@@ -144,7 +150,7 @@ class AboutModal extends React.Component {
     }
 }
 
-class LogoBips extends React.Component {
+class LogoBips_Base extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -164,7 +170,7 @@ class LogoBips extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <img src={bipslogo} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
+                <img src={this.props.thememode ? bipslogo : bipslogo_black} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
             </>
         );
     }
@@ -1009,5 +1015,17 @@ const InfoCash = ContextConnector(BIPSAppContext,
         changeBalanceOpt : (balanceOpt) => {actions.sendAction('changeBalanceType', {balanceOpt})}
     })
 )(InfoCash_Base);
+
+const LogoBips = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        thememode : vars.thememode,
+    }),
+)(LogoBips_Base);
+
+const AboutModal = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        thememode : vars.thememode,
+    }),
+)(AboutModal_Base);
 
 export default UISelectionTab;

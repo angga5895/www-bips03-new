@@ -118,7 +118,14 @@ class FormSell extends React.PureComponent{
                                 <div className="col-sm-8 ml-0 px-0 row">
                                     <div className="col-sm-3 text-form">Vol</div>
                                     <div className="col-sm-9">
-                                        <NumberInput idclassname={this.props.idVol} name="sell_vol" placeholder="Vol" size="small" defaultValue={"10"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
+                                        <NumberInput
+                                            idclassname={this.props.idVol}
+                                            name="sell_vol"
+                                            placeholder="Vol"
+                                            size="small"
+                                            // max={"6"}
+                                            defaultValue={"10"}
+                                            className="col-sm-12 px-0 f-12 text-center align-self-center no-button-plusminus" />
                                     </div>
                                 </div>
                                 <div className="col-sm-4 pl-5 row text-center align-middle align-self-center pr-0">
@@ -167,6 +174,12 @@ class FormSell extends React.PureComponent{
                                         <i className="icon-icon-sell-btn fa-2x"></i>
                                         <br/>Sell
                                     </Button>
+                                    <button
+                                        className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
+                                        style={{"font-size":"12px","width":"38px",
+                                            "display":(this.props.part=="stock")?"":"none"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -204,8 +217,9 @@ class FormSell extends React.PureComponent{
                 </Table>
                 <button
                     className={`col-sm-1 btn btn-primary
-                                    ${(this.props.part == "stock") ? "btn-refresh-2-right" : "btn-refresh-right"}`}
-                    style={{"font-size":"12px","width":"38px","position":"fixed"}}>
+                                    btn-refresh-right`}
+                    style={{"font-size":"12px","width":"38px","position":"fixed",
+                        "display":(this.props.part=="stock") ? "none":"block"}}>
                     <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
                 </button>
             </div>

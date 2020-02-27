@@ -173,6 +173,12 @@ class FormBuy extends React.PureComponent{
                                         <i className="icon-icon-buy-btn fa-2x"></i>
                                         <br/>Buy
                                     </Button>
+                                    <button
+                                        className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
+                                        style={{"font-size":"12px","width":"38px",
+                                            "display":(this.props.part=="stock")?"":"none"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -215,8 +221,9 @@ class FormBuy extends React.PureComponent{
 
                 <button
                     className={`col-sm-1 btn btn-primary
-                                    ${(this.props.part == "stock") ? "btn-refresh-2-right" : "btn-refresh-right"}`}
-                    style={{"font-size":"12px","width":"38px","position":"fixed"}}>
+                                    btn-refresh-right`}
+                    style={{"font-size":"12px","width":"38px","position":"fixed",
+                        "display":(this.props.part=="stock") ? "none":"block"}}>
                     <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
                 </button>
             </div>

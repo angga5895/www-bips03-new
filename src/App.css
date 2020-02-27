@@ -6068,8 +6068,8 @@ textarea {
     right: 20px;
 }
 .btn-refresh-2-right{
-    bottom: 45px;
-    right: 10px;
+    bottom: -16px;
+    right: -5px;
 }
 .d-border-bottom-grey > thead > tr > th{
     border-bottom: 1px solid grey;

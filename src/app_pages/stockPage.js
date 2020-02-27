@@ -540,8 +540,14 @@ class StockHistoryPage_Base extends React.PureComponent {
                                             <span className="ion ion-ios-close"></span>
                                         </span>
                                     </div>
+
                                 </div>
-                                <div className="col-sm-8 pl-2 pr-0 mx-0 align-self-center">
+                                <div className="col-sm-7 pl-2 pr-0 mx-0 align-self-center">
+                                    <button
+                                        className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
+                                        style={{"font-size":"12px","width":"38px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
                                     <TableBS borderless size="sm" className="bg-black-trading mb-0 h-35">
                                         <thead></thead>
                                         <tbody className="d-border-top d-border-bottom">
@@ -764,6 +770,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             filterOption={customFilter} isSearchable={true}
                                             maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
                                     </div>
+
                                 </div>
 
                                 <div className="col-sm-9 row mx-0 px-0 align-self-center">

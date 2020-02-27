@@ -1,3 +1,33 @@
+.ui.about.modal>.header {
+    background-image: linear-gradient(var(--warna-navy-odd), var(--warna-navy-even)) !important;
+}
+
+@media (max-width: 1800px) {
+    .w-logo {
+        width: 85%;
+    }
+}@media (min-width: 1801px) and (max-width: 1900px){
+    .w-logo {
+        width: 70%;
+    }
+}@media (min-width: 1901px) and (max-width: 2100px){
+    .w-logo {
+        width: 55%;
+    }
+}@media (min-width: 2101px) and (max-width: 2800px){
+    .w-logo {
+        width: 45%;
+    }
+}@media (min-width: 2801px) and (max-width: 4100px){
+    .w-logo {
+        width: 30%;
+    }
+}@media (min-width: 4101px){
+    .w-logo {
+        width: 20%;
+    }
+}
+
 .h-auto{
     height: auto!important;
 }
@@ -2146,11 +2176,61 @@ button.bg-gold:hover {
     cursor: pointer!important;
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 2101px){
     .p-login {
-        padding-right: 25% !important;
-        padding-left: 25% !important;
-        padding-top: 23vh !important;
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 25vh !important;
+        /*padding-bottom: 10px !important;*/
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 1901px) and (max-width: 2100px){
+    .p-login {
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 19vh !important;
+        /*padding-bottom: 10px !important;*/
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 1801px) and (max-width: 1900px){
+    .p-login {
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 18vh !important;
+        /*padding-bottom: 10px !important;*/
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 1701px) and (max-width: 1800px){
+    .p-login {
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 15vh !important;
+        /*padding-bottom: 10px !important;*/
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1700px){
+    .p-login {
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 13vh !important;
+        /*padding-bottom: 10px !important;*/
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 1160px) and (max-width: 1440px){
+    .p-login {
+        padding-right: 30% !important;
+        padding-left: 30% !important;
+        padding-top: 10vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2160,7 +2240,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 20% !important;
         padding-left: 20% !important;
-        padding-top: 22vh !important;
+        padding-top: 8vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }
@@ -2170,7 +2250,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 27.5% !important;
         padding-left: 27.5% !important;
-        padding-top: 21vh !important;
+        padding-top: 7vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }
@@ -2180,7 +2260,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 5% !important;
         padding-left: 5% !important;
-        padding-top: 16vh !important;
+        padding-top: 5vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }

@@ -18,6 +18,9 @@ import FormAddress        from "../app_sign_up/form_address";
 import FormSource         from "../app_sign_up/form_source";
 import FormAdditonal      from "../app_sign_up/form_additional";
 import { Checkbox } from 'semantic-ui-react'
+import bahana_logo from './../img/bahanalogos.png';
+import ojk_logo from './../img/ojk.png';
+import idx_logo from './../img/idx.png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -663,14 +666,16 @@ class LoginUserPage_Base extends React.PureComponent {
                                             </div>
                                             :''
                                         }
-                                        <div className={"col-md-6 px-0"}>
+                                        {/*<div className={"col-md-6 px-0"}>
                                             <img src={logo} width="100%"/>
-                                        </div>
-                                        <div className="col-md-6 pt-3">
-                                            <div className="form-group row">
+                                        </div>*/}
+                                        <div className="col-md-12 pt-3">
+                                            <div className="form-group row" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
-                                                <div className="col-sm-12 text-left pl-5">Please enter ID and Password</div>
-                                                <div className="col-sm-12 pr-0 pl-5">
+                                                <div className="col-sm-12 text-left text-center px-5">
+                                                    <img src={bahana_logo} height="auto" width="90%" alt={"logo bahana"}/>
+                                                </div>
+                                                <div className="col-sm-12 pr-0 px-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
                                                     <div className={"py-2"}>
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
@@ -707,7 +712,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className={"col-sm-12 pr-0 pl-5"}>
+                                                <div className={"col-sm-12 pr-0 px-5"}>
                                                     <div id="loader"></div>
 
                                                     <div id="buttonLogin" className="justify-content-center text-center align-items-center d-flex    ">
@@ -717,7 +722,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div className={"col-sm-12 text-right pr-0 mt-4 text-center"}>
+                                                <div className={"col-sm-12 text-right px-5 mt-4 text-center"}>
                                                     <text 
                                                         className="text-primary text-right click-pointer mt-2 " 
                                                         onClick={this.buttonClickForgot}>Forgot your password?
@@ -759,6 +764,19 @@ class LoginUserPage_Base extends React.PureComponent {
 
                                     </div>
 
+                                    <div className="col-sm-12 f-10 py-4 px-5">
+                                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaftar
+                                        dan diawasi oleh Otoritas Jasa Keuangan (OJK)
+                                    </div>
+
+                                    <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
+                                        <img src={idx_logo} width="15%"/>
+                                        <img src={ojk_logo} width="30%"/>
+                                    </div>
+
+                                    <div className="col-sm-12 f-10 pt-4 px-5">
+                                        Copyright 2020 by PT. Bahana Securities
+                                    </div>
                                 </div>
                             </main>
                         </div>

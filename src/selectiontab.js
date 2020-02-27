@@ -17,7 +17,16 @@ import ModalTransactionHistory from "./app_modals/modal_transaction_history";
 import ModalInquiry from "./app_modals/modal_inquiry";
 import { AppFrame, AppFrameAction, AppFrameProvider, AppModal } from "./appframe";
 
+import bipslogo from './img/bahanas.png';
+import bahana_logo from './img/bahanalogos.png';
+import ojk_logo from './img/ojk.png';
+import idx_logo from './img/idx.png';
+
 import './selectiontab.css';
+
+import $ from 'jquery';
+import {WSConnectionAction} from "./appnetwork";
+window.$ = window.jQuery = $;
 
 const options = [
     { value: 'compositeindex', label: 'Composite Index' },
@@ -93,6 +102,75 @@ class MenuScaleHeader extends React.PureComponent {
     }
 }
 
+class AboutModal extends React.Component {
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction ref="wsAction" />
+                <div className="text-white f-12 text-center">
+                    <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
+                        <img src={bahana_logo} width="40%"/>
+                    </div>
+
+                    <div className="col-sm-12 f-10 py-5 px-5">
+                        BIPS Version 2.1.
+                    </div>
+
+                    <div className="col-sm-12 f-10 py-4" style={{ paddingLeft:"20%", paddingRight:"20%" }}>
+                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaftar
+                        dan diawasi oleh Otoritas Jasa Keuangan (OJK)
+                    </div>
+
+                    <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
+                        <img src={idx_logo} width="15%"/>
+                        <img src={ojk_logo} width="30%"/>
+                    </div>
+
+                    <div className="col-sm-12 f-10 pt-4 px-5">
+                        Copyright 2020 by PT. Bahana Securities
+                    </div>
+
+                    <div className="text-center pt-5">
+                        <button className="btn btn-primary col-sm-3" onClick={this.closeClick}>Close</button>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
+class LogoBips extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    buttonClickDisclaimer = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-white text-center"><h3>About</h3></div>,
+            closeIcon: false,
+            contentClass: AboutModal,
+            size: "about",
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction ref="wsAction" />
+                <img src={bipslogo} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
+            </>
+        );
+    }
+
+}
+
 const UISelectionTab_Base = (props) => {
     // expected in props:
     // instances: array of pageInstance object
@@ -104,8 +182,10 @@ const UISelectionTab_Base = (props) => {
             <div className="d-xxl-none d-xxl-block d-border-bottom mb-1">
                 <div>
                     <Menu className="row">
-                        <div className="col-sm-header-logo px-0 text-center align-middle align-self-center text-white click-pointer">
-                            <Navbar.Brand href="/" className="text-white pr-0 pl-3"><h2>BIPS</h2></Navbar.Brand>
+                        <div className="col-sm-header-logo pl-0 pr-4 text-center align-middle align-self-center text-white click-pointer">
+                            {/*<Navbar.Brand href="/" className="text-white pr-0 pl-3">*/}
+                                <LogoBips/>
+                            {/*</Navbar.Brand>*/}
                         </div>
                         <div className="d-border-left d-border-right row main-header col-sm-header-menu px-0 mr-0 py-1 h-87">
                             <MenuHeader id={props}/>
@@ -166,8 +246,10 @@ const UISelectionTab_Base = (props) => {
 
             <div className="d-sml-none d-sml-block d-border-bottom mb-1">
                 <Menu className="row">
-                    <div className="col-sm-header-logo-scale px-0 text-center align-middle align-self-center text-white click-pointer">
-                        <Navbar.Brand href="/" className="text-white px-3"><h3>BIPS</h3></Navbar.Brand>
+                    <div className="col-sm-header-logo-scale pl-0 pr-4 text-center align-middle align-self-center text-white click-pointer">
+                        {/*<Navbar.Brand href="/" className="text-white px-3">*/}
+                           <LogoBips/>
+                        {/*</Navbar.Brand>*/}
                     </div>
                     <div className="d-border-left d-border-right row main-header col-sm-header-menu-scale px-0 mr-0 pb-2 h-87">
                         <MenuScaleHeader id={props}/>
@@ -194,9 +276,9 @@ const UISelectionTab_Base = (props) => {
                 <Navbar className="navbar-trading my-0">
                     <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
                         <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
-                            <Navbar.Brand href="/" className="mr-auto text-white">
-                                <h2>BIPS</h2>
-                            </Navbar.Brand>
+                            {/*<Navbar.Brand href="/" className="mr-auto text-white">*/}
+                                <LogoBips/>
+                            {/*</Navbar.Brand>*/}
                         </div>
                         <div className="col-smb-10 px-0 mx-0 align-self-center text-center">
                             <div className="col-smb-12 align-self-center text-center row">
@@ -230,9 +312,9 @@ const UISelectionTab_Base = (props) => {
                 <Navbar className="navbar-trading my-0">
                     <div className="col-smb-12 px-0 mx-0 row bg-navy-gradient-odd">
                         <div className="col-smb-1 px-0 mx-0 align-self-center text-center click-pointer">
-                            <Navbar.Brand href="/" className="mr-auto text-white">
-                                <h2>BIPS</h2>
-                            </Navbar.Brand>
+                            {/*<Navbar.Brand href="/" className="mr-auto text-white">*/}
+                                <LogoBips/>
+                            {/*</Navbar.Brand>*/}
                         </div>
                         <div className="col-smb-10 px-4 mx-0 align-self-center text-center">
                             <div className="col-smb-12 align-self-center text-center row">
@@ -265,9 +347,9 @@ const UISelectionTab_Base = (props) => {
                 <Navbar className="navbar-trading my-0">
                     <div className="col-smb-12 px-0 mx-0 row text-center align-self-center bg-navy-gradient-odd">
                         <div className="col-smb-3 px-2 text-center align-self-center click-pointer">
-                            <Navbar.Brand href="/" className="mr-auto text-white">
-                                <h2>BIPS</h2>
-                            </Navbar.Brand>
+                            {/*<Navbar.Brand href="/" className="mr-auto text-white">*/}
+                                <LogoBips/>
+                            {/*</Navbar.Brand>*/}
                         </div>
                         <div className="col-smb-4 px-4 text-center align-self-center">
                             <Menu.Menu>

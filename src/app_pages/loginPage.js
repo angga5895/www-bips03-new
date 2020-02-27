@@ -765,7 +765,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 f-10 py-4 px-5">
-                                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaar
+                                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaftar
                                         dan diawasi oleh Otoritas Jasa Keuangan (OJK)
                                     </div>
 

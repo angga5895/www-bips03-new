@@ -29597,6 +29597,55 @@ select.ui.dropdown {
     }
 }
 
+.ui.about.modal>.header:not(.ui) {
+    font-size: 1.3em
+}
+
+@media only screen and (max-width:767px) {
+    .ui.about.modal {
+        width: 95%;
+        margin: 0;
+        border: #4D4D4E solid 1px!important;
+        /*border-radius: 7px!important;*/
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .ui.about.modal {
+        width: 70.4%;
+        margin: 0;
+        border: #4D4D4E solid 1px!important;
+        /*border-radius: 7px!important;*/
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .ui.about.modal {
+        width: 680px;
+        margin: 0;
+        border: #4D4D4E solid 1px!important;
+        /*border-radius: 7px!important;*/
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .ui.about.modal {
+        width: 720px;
+        margin: 0;
+        border: #4D4D4E solid 1px!important;
+        /*border-radius: 7px!important;*/
+    }
+}
+
+@media only screen and (min-width:1920px) {
+    .ui.about.modal {
+        width: 760px;
+        margin: 0;
+        border: #4D4D4E solid 1px!important;
+        /*border-radius: 7px!important;*/
+    }
+}
+
 .ui.large.modal>.header {
     font-size: 1.6em;
     padding-bottom: 0px;

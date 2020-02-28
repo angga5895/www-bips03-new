@@ -552,11 +552,13 @@ class StockHistoryPage_Base extends React.PureComponent {
 
                                 </div>
                                 <div className="col-sm-1 pl-2 pr-0 mx-0">
-                                    <button
-                                        className={`btn btn-primary`}
-                                        style={{"font-size":"14px","width":"38px","margin-top":"2px"}}>
-                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                    </button>
+                                    <Popup content='Refresh' position='top center' trigger={
+                                        <button
+                                            className={`btn btn-primary`}
+                                            style={{"font-size": "14px", "width": "38px", "margin-top": "2px"}}>
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                        </button>
+                                    }/>
                                 </div>
                                     <div className="col-sm-7 pl-0 pr-0 mx-0">
 
@@ -857,11 +859,13 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                         <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">
                                             TRADE SUMMARY
-                                            <button
-                                                className={`btn btn-primary btn-10 pull-right`}
-                                                style={{"width":"36px","margin-top":"-9px"}}>
-                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                            </button>
+                                            <Popup content='Refresh' position='top center' trigger={
+                                                <button
+                                                    className={`btn btn-primary btn-10 pull-right`}
+                                                    style={{"width": "36px", "margin-top": "-9px"}}>
+                                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                                </button>
+                                            }/>
                                         </div>
 
                                     </div>

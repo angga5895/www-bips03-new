@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, InputGroup, Table} from "react-bootstrap";
-import {Input, Checkbox, Dropdown} from "semantic-ui-react";
+import {Input, Checkbox, Dropdown, Popup} from "semantic-ui-react";
 import Select from "react-select";
 import {AppFrameAction} from "./../appframe";
 import VerifyPIN, {tanggal} from "../app_pages/verifyPin";
@@ -173,12 +173,14 @@ class FormBuy extends React.PureComponent{
                                         <i className="icon-icon-buy-btn fa-2x"></i>
                                         <br/>Buy
                                     </Button>
-                                    <button
-                                        className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
-                                        style={{"font-size":"12px","width":"38px",
-                                            "display":(this.props.part=="stock")?"":"none"}}>
-                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                    </button>
+                                    <Popup content='Refresh' position='top center' trigger={
+                                        <button
+                                            className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
+                                            style={{"font-size":"12px","width":"38px",
+                                                "display":(this.props.part=="stock")?"":"none"}}>
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                        </button>
+                                    } />
                                 </div>
                             </div>
                         </td>
@@ -218,14 +220,17 @@ class FormBuy extends React.PureComponent{
                     </tr>
                     </tbody>
                 </Table>
-
-                <button
-                    className={`col-sm-1 btn btn-primary
+                <Popup content='Refresh' position='top center' trigger={
+                    <button
+                        className={`col-sm-1 btn btn-primary
                                     btn-refresh-right`}
-                    style={{"font-size":"12px","width":"38px","position":"fixed",
-                        "display":(this.props.part=="stock") ? "none":"block"}}>
-                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                </button>
+                        style={{
+                            "font-size": "12px", "width": "38px", "position": "fixed",
+                            "display": (this.props.part == "stock") ? "none" : "block"
+                        }}>
+                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                    </button>
+                }/>
             </div>
         );
     }

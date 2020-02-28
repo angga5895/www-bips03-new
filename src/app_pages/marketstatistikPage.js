@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown} from 'semantic-ui-react';
+import {Dropdown, Popup} from 'semantic-ui-react';
 import { AppFrameAction } from '../appframe.js';
 import StreamChart from './streamChart.js';
 import {AppFrame} from "../appframe";
@@ -212,11 +212,13 @@ class MarketStatistikPage extends React.PureComponent {
                                                 className="col-sm-12 f-12"/>
                                         </div>
                                         <div className={"col-sm-1 text-center"}>
-                                            <button
-                                                className="pull-left btn btn-primary"
-                                                style={{"font-size":"12px","margin-left":"-10px"}}>
-                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                            </button>
+                                            <Popup content='Refresh' position='top center' trigger={
+                                                <button
+                                                    className="pull-left btn btn-primary"
+                                                    style={{"font-size": "12px", "margin-left": "-10px"}}>
+                                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                                </button>
+                                            }/>
                                         </div>
 
                                     </div>
@@ -290,11 +292,13 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                             <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 h-30">
                                 FINANCE
-                                <button
-                                    className="col-sm-1 pull-right btn btn-primary mr-2"
-                                    style={{"margin-top":"-8px","width":"39px","height":"28px"}}>
-                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                </button>
+                                <Popup content='Refresh' position='top center' trigger={
+                                    <button
+                                        className="col-sm-1 pull-right btn btn-primary mr-2"
+                                        style={{"margin-top": "-8px", "width": "39px", "height": "28px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
+                                }/>
                             </div>
                         </div>
                     </div>
@@ -676,11 +680,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                         <div className="card card-520 bg-black-trading text-white">
                             <div className="card-body px-3 pt-3">
                                 <div className="bg-tableheader text-center py-3 h-30">
-                                    <button
-                                        className="pull-right btn btn-primary btn-10"
+                                    <Popup content='Refresh' position='top center' trigger={
+                                        <button
+                                            className="pull-right btn btn-primary btn-10"
                                         >
-                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                    </button>
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                        </button>
+                                    }/>
                                     <span>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -830,11 +836,13 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                 <div className="card bg-black-trading f-12">
                     <div className="card-header bg-tableheader h-37 pt-3">
                         TOP BROKER
-                        <button
-                            className="col-sm-1 pull-right btn btn-primary"
-                            style={{"font-size":"12px","margin-top":"-7px","width":"38px"}}>
-                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                        </button>
+                        <Popup content='Refresh' position='top center' trigger={
+                            <button
+                                className="col-sm-1 pull-right btn btn-primary"
+                                style={{"font-size": "12px", "margin-top": "-7px", "width": "38px"}}>
+                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                            </button>
+                        }/>
                     </div>
                     <div className="card-body">
                         <TopBrokerAgGrid size={this.ceksize()}/>

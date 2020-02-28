@@ -633,6 +633,13 @@ class LoginUserPage_Base extends React.PureComponent {
         });
     }
 
+    clickOjk = (e) => {
+        window.open('https://www.ojk.go.id/');
+    }
+
+    clickIdx = (e) => {
+        window.open('https://www.idx.co.id/');
+    }
 
     render () {
 
@@ -771,8 +778,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
-                                        <img src={idx_logo} width="15%"/>
-                                        <img src={ojk_logo} width="30%"/>
+                                        <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
+                                        <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>
 
                                     <div className="col-sm-12 f-10 pt-4 px-5">

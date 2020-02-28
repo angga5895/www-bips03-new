@@ -22,6 +22,7 @@ import bahana_logo from './../img/bahanalogos.png';
 import bahana_logo_black from './../img/bahanalogos_black.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
+import dxtrade_logo from './../img/dxtradelogos.png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -681,7 +682,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                             <div className="form-group row" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
                                                 <div className="col-sm-12 text-left text-center px-5">
-                                                    <img src={this.props.thememode ? bahana_logo : bahana_logo_black} height="auto" width="90%" alt={"logo bahana"}/>
+                                                    <img src={dxtrade_logo} height="auto" width="35%" alt={"logo bahana"}/>
                                                 </div>
                                                 <div className="col-sm-12 pr-0 px-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}

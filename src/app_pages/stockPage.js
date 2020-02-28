@@ -825,7 +825,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                 <div className="col-sm-8 px-1 pt-1 pb-0">
                                     <div className="col-sm-12 pl-0 pr-0 mb-3">
                                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center row bg-tableheader">
-                                            <div className={"col-sm-4 bg-tableheader"}></div>
+                                            <div className={"col-sm-6 bg-tableheader"}></div>
                                             <div className="col-sm-2 px-0 mx-0 text-left pt-3 pb-2 h-30 f-12 bg-tableheader">
                                                 STOCK TICK
                                             </div>
@@ -3013,12 +3013,12 @@ class SummaryBuyerAgGrid extends React.PureComponent {
 
                         return value;
                     }, },
-                { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "volume", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?205:s=="s75"?190:s=="s80"?170:s=="s90"?140:s=="s100"?130:120,
                     minWidth: 120, cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
-                { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "avg", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?135:s=="s100"?130:120,
                     minWidth: 120, cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
@@ -3301,13 +3301,13 @@ class SummarySellerAgGrid extends React.PureComponent {
 
                         return value;
                     }, },
-                { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "volume", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?205:s=="s75"?190:s=="s80"?170:s=="s90"?140:s=="s100"?130:120,
                     minWidth: 120, cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
 
-                { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "avg", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?135:s=="s100"?130:120,
                     minWidth: 120, cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";

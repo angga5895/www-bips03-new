@@ -815,13 +815,22 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                             <div className="px-1 mx-0 col-sm-12 row">
 
                                 <div className="col-sm-8 px-1 pt-1 pb-0">
-                                    <div className="col-sm-12 pl-0 pr-0">
+                                    <div className="col-sm-12 pl-0 pr-0 mb-3">
                                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                             <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
                                         </div>
 
                                         <StockTickAgGrid size={this.ceksize()}/>
                                     </div>
+                                    <div className={"row"}>
+                                        <div className={"col-sm-6 pr-1"}>
+                                            <SummaryBuyerAgGrid size={this.ceksize()}/>
+                                        </div>
+                                        <div className={"col-sm-6 pl-1"}>
+                                            <SummarySellerAgGrid size={this.ceksize()}/>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div className="col-sm-4 pl-1 pr-0 pt-1 pb-0">
@@ -859,7 +868,7 @@ class StockTickAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?190:s=="s67"?180:s=="s75"?170:s=="s80"?165:s=="s90"?150:145, minWidth: 145,
+                    width: s=="s49"?210:s=="s50"?190:s=="s67"?180:s=="s75"?170:s=="s80"?165:s=="s90"?150:135, minWidth: 135,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -1036,7 +1045,7 @@ class StockTickAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-440-a ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-220-a ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2963,6 +2972,149 @@ class HistoryPriceAgGrid extends React.PureComponent {
         );
     }
 }
+class SummaryBuyerAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?195:s=="s80"?170:s=="s90"?140:s=="s100"?140:130,
+                    minWidth: 130,
+                    suppressSizeToFit:true, lockVisible:true, lockPosition:true,
+                    cellClass : function (params) {
+                        var volume = parseInt(params.data.volume);
+                        if (volume < 22 || volume > 26) {
+                            var value = 'text-center grid-table d-border-aggrid-right f-12 text-warning locked-col locked-visible';
+                        } else {
+                            var value = 'text-center grid-table d-border-aggrid-right f-12 text-warning locked-col locked-visible';
+                        }
+
+                        return value;
+                    }, },
+                { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?205:s=="s75"?190:s=="s80"?170:s=="s90"?140:s=="s100"?130:120,
+                    minWidth: 120, cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?135:s=="s100"?130:120,
+                    minWidth: 120, cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            getRowHeight : function(params){
+                return 27;
+            },
+            rowData: [
+                { buyer: "DX",
+                    volume: "20",
+                    freq: "5",
+                    avg: "10,820"},
+                { buyer: "DX",
+                    volume: "21",
+                    freq: "6",
+                    avg: "10,830"},
+                { buyer: "DX",
+                    volume: "22",
+                    freq: "7",
+                    avg: "10,840"},
+                { buyer: "DX",
+                    volume: "23",
+                    freq: "8",
+                    avg: "10,850"},
+                { buyer: "DX",
+                    volume: "24",
+                    freq: "9",
+                    avg: "10,860"},
+                { buyer: "DX",
+                    volume: "25",
+                    freq: "4",
+                    avg: "10,870"},
+                { buyer: "DX",
+                    volume: "26",
+                    freq: "3",
+                    avg: "10,880"},
+                { buyer: "DX",
+                    volume: "27",
+                    freq: "2",
+                    avg: "10,890"},
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    className="card card-220-b ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    style={{
+                        width: 'auto' }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        getRowHeight={this.state.getRowHeight}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered}>
+                    </AgGridReact>
+                </div>
+            </>
+        );
+    }
+}
+
 
 class HistoryBuyerAgGrid extends React.PureComponent {
     constructor(props) {
@@ -3092,6 +3244,150 @@ class HistoryBuyerAgGrid extends React.PureComponent {
             <>
                 <div
                     className="card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    style={{
+                        width: 'auto' }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        getRowHeight={this.state.getRowHeight}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered}>
+                    </AgGridReact>
+                </div>
+            </>
+        );
+    }
+}
+
+class SummarySellerAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?195:s=="s80"?170:s=="s90"?140:s=="s100"?140:130,
+                    minWidth: 130,
+                    suppressSizeToFit:true, lockPosition:true, lockVisible:true,
+                    cellClass : function (params) {
+                        var volume = parseInt(params.data.volume);
+                        if (volume < 22 || volume > 26) {
+                            var value = 'text-center grid-table d-border-aggrid-right f-12 text-warning locked-col locked-visible';
+                        } else {
+                            var value = 'text-center grid-table d-border-aggrid-right f-12 text-warning locked-col locked-visible';
+                        }
+
+                        return value;
+                    }, },
+                { field: "volume", headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?205:s=="s75"?190:s=="s80"?170:s=="s90"?140:s=="s100"?130:120,
+                    minWidth: 120, cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+
+                { field: "avg", headerName: "Avg", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?135:s=="s100"?130:120,
+                    minWidth: 120, cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            getRowHeight : function(params){
+                return 27;
+            },
+            rowData: [
+                { seller: "DX",
+                    volume: "20",
+                    freq: "5",
+                    avg: "10,820"},
+                { seller: "DX",
+                    volume: "21",
+                    freq: "6",
+                    avg: "10,830"},
+                { seller: "DX",
+                    volume: "22",
+                    freq: "7",
+                    avg: "10,840"},
+                { seller: "DX",
+                    volume: "23",
+                    freq: "8",
+                    avg: "10,850"},
+                { seller: "DX",
+                    volume: "24",
+                    freq: "9",
+                    avg: "10,860"},
+                { seller: "DX",
+                    volume: "25",
+                    freq: "4",
+                    avg: "10,870"},
+                { seller: "DX",
+                    volume: "26",
+                    freq: "3",
+                    avg: "10,880"},
+                { seller: "DX",
+                    volume: "27",
+                    freq: "2",
+                    avg: "10,890"},
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    className="card card-220-b ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact

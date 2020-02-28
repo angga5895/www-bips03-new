@@ -6088,3 +6088,19 @@ textarea {
 .card-440-a{
     height: 445px;
 }
+.card-440-a{
+    height: 420px;
+}
+.table-total-stock{
+    margin-top: -1px;
+    margin-left: -1px !important;
+    border-left: 1px solid var(--warna-d-border);
+    border-right: 1px solid var(--warna-d-border);
+}
+.table-total-stock thead tr th {
+    background-color: var(--warna-bg-dark-grey);
+    color: var(--warna-cssmenu);
+    font-weight: bold;
+    border-right: 1px solid var(--warna-d-border);
+    border-bottom: 1px solid var(--warna-d-border);
+}

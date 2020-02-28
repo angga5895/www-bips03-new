@@ -257,7 +257,7 @@ class FormSource extends React.PureComponent{
                 <div className="form-group row mb-0">
                     <div className="col-sm-5 mx-0 mb-2 ">
                         <div className="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                            Monhly Securities Transaction Estimation
+                            Monthly Sekuritas Transaction Estimation
                         </div>
                     </div>
                 </div>

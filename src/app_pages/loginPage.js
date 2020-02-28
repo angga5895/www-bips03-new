@@ -55,7 +55,7 @@ class DisclaimerModal extends React.Component {
                         and capacity or other causes, and other factors. One or more of these factors may occur
                         before or after you place a trade, resulting in delayed or failed order placement, order
                         cancellation, trade execution and/or acknowledgement of any of those actions. Solely you
-                        assume those risks, and give indemnity to PT. Bahana Securities.
+                        assume those risks, and give indemnity to PT. Bahana Sekuritas.
                     </p>
                     <div className="text-center">
                         <button className="btn btn-primary col-sm-3" onClick={this.closeClick}>Close</button>
@@ -766,7 +766,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 f-10 py-4 px-5">
-                                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaftar
+                                        PT. Bahana Sekuritas, member dari Bursa Efek Indonesia, serta terdaftar
                                         dan diawasi oleh Otoritas Jasa Keuangan (OJK)
                                     </div>
 
@@ -776,7 +776,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 f-10 pt-4 px-5">
-                                        Copyright 2020 by PT. Bahana Securities
+                                        Copyright 2020 by PT. Bahana Sekuritas
                                     </div>
                                 </div>
                             </main>

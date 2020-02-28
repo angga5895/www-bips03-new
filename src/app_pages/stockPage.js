@@ -1,8 +1,9 @@
 import React from 'react';
 import Select from 'react-select';
 import {AppFrame, AppFrameAction, AppFrameProvider, AppModal} from "../appframe";
-import {Dropdown, Input} from 'semantic-ui-react';
+import {Dropdown, Input, Popup} from 'semantic-ui-react';
 import {Table as TableBS} from 'react-bootstrap';
+
 
 import {BIPSAppProvider, BIPSAppContext } from "../AppData";
 import FillHeaderTab from "../tabheaderfill";
@@ -825,10 +826,17 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-4 pl-1 pr-0 pt-1 pb-0">
                                     <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                        <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE SUMMARY</div>
+                                        <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">
+                                            TRADE SUMMARY
+                                            <button
+                                                className={`btn btn-primary btn-10 pull-right`}
+                                                style={{"width":"36px","margin-top":"-9px"}}>
+                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                            </button>
+                                        </div>
+
                                     </div>
 
-                                    {/*<TradeSummaryTableScroll/>*/}
                                     <TradeSummaryAgGrid size={this.ceksize()}/>
 
                                 </div>
@@ -1075,7 +1083,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?100:80,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?105:s=="s100"?90:80,
                     minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -1108,10 +1116,10 @@ class TradeSummaryAgGrid extends React.PureComponent {
             },
             rowPinnedData: [
                 {
-                    price: "",
-                    value: "Total Val: 0",
-                    volume: "Total Vol: 0",
-                    freq: "Freq: 0",
+                    price: "Total",
+                    value: "",
+                    volume: "",
+                    freq: "",
                 },
             ],
             rowData: [
@@ -1254,7 +1262,21 @@ class TradeSummaryAgGrid extends React.PureComponent {
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
-
+    setBottomPinned(){
+        // alert('hee');
+        var rows = this.createData();
+        this.gridApi.setPinnedBottomRowData(rows);
+    }
+    createData() {
+        var result = [];
+        result.push({
+                price: "",
+                value: 1,
+                volume: 1,
+                freq: 1,
+            });
+        return result;
+    }
     render() {
         return (
             <div style={{ width: "100%", height: "100%" }}>
@@ -1264,6 +1286,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
                     style={{
                         width: "100%"
                     }}>
+                    {/*<span onClick={() => this.onClickYeah()}>Aku</span>*/}
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}

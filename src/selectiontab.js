@@ -128,7 +128,7 @@ class AboutModal_Base extends React.Component {
                     </div>
 
                     <div className="col-sm-12 f-10 py-4" style={{ paddingLeft:"20%", paddingRight:"20%" }}>
-                        PT. Bahana Securities, member dari Bursa Efek Indonesia, serta terdaftar
+                        PT. Bahana Sekuritas, member dari Bursa Efek Indonesia, serta terdaftar
                         dan diawasi oleh Otoritas Jasa Keuangan (OJK)
                     </div>
 
@@ -138,7 +138,7 @@ class AboutModal_Base extends React.Component {
                     </div>
 
                     <div className="col-sm-12 f-10 pt-4 px-5">
-                        Copyright 2020 by PT. Bahana Securities
+                        Copyright 2020 by PT. Bahana Sekuritas
                     </div>
 
                     <div className="text-center pt-5">

@@ -28,6 +28,14 @@ require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 require('../bootstrap-3.3.7/bootstrap-datepicker.standalone.min.css');
 require('../../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js');
 
+const summaryOptions = [
+    //untuk top active
+    { key: 'all', value: 'all', text: 'All' },
+    // { key: 'rg', value: 'rg', text: 'RG' },
+    { key: 'tn', value: 'tn', text: 'TN' },
+    { key: 'ng', value: 'ng', text: 'NG' },
+];
+
 const CustomFrameHeaderStock = (props) => {
     return (
         <div>
@@ -816,8 +824,20 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-8 px-1 pt-1 pb-0">
                                     <div className="col-sm-12 pl-0 pr-0 mb-3">
-                                        <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                            <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">STOCK TICK</div>
+                                        <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center row bg-tableheader">
+                                            <div className={"col-sm-4 bg-tableheader"}></div>
+                                            <div className="col-sm-2 px-0 mx-0 text-left pt-3 pb-2 h-30 f-12 bg-tableheader">
+                                                STOCK TICK
+                                            </div>
+                                            <div className={"col-sm-2 bg-tableheader"}></div>
+                                            <div className="col-sm-2 px-0 mx-0 bg-tableheader">
+                                                <Dropdown
+                                                    placeholder='Choose'
+                                                    search selection
+                                                    options={summaryOptions}
+                                                    defaultValue={summaryOptions[0].value}
+                                                    className="col-sm-12 f-11"/>
+                                            </div>
                                         </div>
 
                                         <StockTickAgGrid size={this.ceksize()}/>

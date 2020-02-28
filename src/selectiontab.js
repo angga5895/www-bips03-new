@@ -23,6 +23,7 @@ import bahana_logo from './img/bahanalogos.png';
 import bahana_logo_black from './img/bahanalogos_black.png';
 import ojk_logo from './img/ojk.png';
 import idx_logo from './img/idx.png';
+import dxtrade_logo from './img/dxtradelogos.png';
 
 import './selectiontab.css';
 
@@ -113,6 +114,14 @@ class AboutModal_Base extends React.Component {
         this.refs.frameAction.closeModal(100);
     }
 
+    clickOjk = (e) => {
+        window.open('https://www.ojk.go.id/');
+    }
+
+    clickIdx = (e) => {
+        window.open('https://www.idx.co.id/');
+    }
+
     render() {
         return (
             <>
@@ -120,7 +129,7 @@ class AboutModal_Base extends React.Component {
                 <WSConnectionAction ref="wsAction" />
                 <div className="text-white f-12 text-center">
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
-                        <img src={this.props.thememode ? bahana_logo : bahana_logo_black} width="40%"/>
+                        <img src={dxtrade_logo} width="40%"/>
                     </div>
 
                     <div className="col-sm-12 f-10 py-5 px-5">
@@ -133,8 +142,8 @@ class AboutModal_Base extends React.Component {
                     </div>
 
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
-                        <img src={idx_logo} width="15%"/>
-                        <img src={ojk_logo} width="30%"/>
+                        <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
+                        <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
                     </div>
 
                     <div className="col-sm-12 f-10 pt-4 px-5">
@@ -170,7 +179,7 @@ class LogoBips_Base extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <img src={this.props.thememode ? bipslogo : bipslogo_black} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
+                <img src={dxtrade_logo} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
             </>
         );
     }

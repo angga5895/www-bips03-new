@@ -22,6 +22,7 @@ import bahana_logo from './../img/bahanalogos.png';
 import bahana_logo_black from './../img/bahanalogos_black.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
+import dxtrade_logo from './../img/dxtradelogos.png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -633,6 +634,13 @@ class LoginUserPage_Base extends React.PureComponent {
         });
     }
 
+    clickOjk = (e) => {
+        window.open('https://www.ojk.go.id/');
+    }
+
+    clickIdx = (e) => {
+        window.open('https://www.idx.co.id/');
+    }
 
     render () {
 
@@ -674,7 +682,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                             <div className="form-group row" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
                                                 <div className="col-sm-12 text-left text-center px-5">
-                                                    <img src={this.props.thememode ? bahana_logo : bahana_logo_black} height="auto" width="90%" alt={"logo bahana"}/>
+                                                    <img src={dxtrade_logo} height="auto" width="35%" alt={"logo bahana"}/>
                                                 </div>
                                                 <div className="col-sm-12 pr-0 px-5">
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
@@ -771,8 +779,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
-                                        <img src={idx_logo} width="15%"/>
-                                        <img src={ojk_logo} width="30%"/>
+                                        <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
+                                        <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>
 
                                     <div className="col-sm-12 f-10 pt-4 px-5">

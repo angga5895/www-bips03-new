@@ -199,6 +199,7 @@ class AnalyticChart_Base extends React.PureComponent {
             appSettingsCache['scale'] = 'linear';
             appSettingsCache['theme'] = $themeSelect.val();
             appSettingsCache['indicators'] = {};
+            appSettingsCache['seriesName'] = "";
             appSettingsCache['annotations'] = $annotationType.val();
 
             var chartContainer = 'chart-container' + stockName;
@@ -548,7 +549,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     var sessidbaru = $("#sessIdAhay").val();
                     $.ajax({
                         type: "GET",
-                        url: "http://bahana.ihsansolusi.co.id:5050/chart/"+stok,
+                        url: "http://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
                         contentType: "application/json; charset=utf-8",
                         headers: {
                             "Authorization": sessidbaru,
@@ -561,6 +562,7 @@ class AnalyticChart_Base extends React.PureComponent {
                             appSettingsCache['chartType'] = 'line';
                             appSettingsCache['annotation'] = 'remove';
                             appSettingsCache['theme'] = 'defaultTheme';
+                            appSettingsCache['seriesName'] = stok;
                             appSettingsCache['data'][to] = JSON.parse(result.data.data);
                             $annotationType.val('default').selectpicker('refresh');
 
@@ -589,6 +591,7 @@ class AnalyticChart_Base extends React.PureComponent {
             }
 
             function createChart(container, updateChart) {
+                // var dataName = $chartDataSelect.val().trim();
                 var dataName = $chartDataSelect.val().trim();
 
                 var seriesType = $seriesTypeSelect.val();
@@ -626,7 +629,8 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
-                    series.name(dataName.toUpperCase());
+                    // series.name(dataName.toUpperCase());
+                    series.name(appSettingsCache['seriesName'].toUpperCase());
 
                     plot.yScale(appSettingsCache['scale']);
 
@@ -860,6 +864,7 @@ class AnalyticChart_Base extends React.PureComponent {
         }
 
         const stockOptions = [
+            { value:'ABBA', code: 'ABBA', saham: 'ABBA' , id: this.state.stockType},
             { value:'BMPT', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType},
             { value:'BNMPT-PPT', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType},
             { value:'BUMI', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType},
@@ -993,7 +998,17 @@ more.
                                         <li style={marginSelection}>
                                             <input type="hidden" id={"chartDataSelect" + this.state.stockType} value={this.state.stockAlias} data-json={"./" + this.state.stockData} />
 
-                                            <select data-width={elemWidthanotation} data-size="10" data-dropup-auto="false" data-style="btn-dark" defaultValue={'default'} id={"typeSelect" + this.state.stockType} onclick="create()" className="select selectpicker show-tick form-control" title="Select Annotation Type">
+                                            <select
+                                                data-width={elemWidthanotation}
+                                                data-size="10"
+                                                data-dropup-auto="false"
+                                                data-style="btn-dark"
+                                                defaultValue={'default'}
+                                                id={"typeSelect" + this.state.stockType}
+                                                onclick="create()"
+                                                className="select selectpicker show-tick form-control"
+                                                title="Select Annotation Type">
+
                                                 <option value="default" selected>Annotation Type</option>
                                                 <option value="andrews-pitchfork">Andrews' Pitchfork</option>
                                                 <option value="ellipse">Ellipse</option>

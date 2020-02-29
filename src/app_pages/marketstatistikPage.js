@@ -647,8 +647,10 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                 </div>
                                 <div className="col-sm-12 mb-4 pt-3 row f-25">
-                                    <div className="col-sm-2 text-success">6,384.90</div>
-                                    <div className="col-sm-7 text-success">+5.21 (0.082%) <i className="icofont icofont-caret-up"></i></div>
+                                    <div className="col-sm-4 text-success">1,557.09</div>
+                                    <div className="col-sm-3 text-success text-center">28.28</div>
+                                    <div className="col-sm-4 text-success text-right">(1.85%)</div>
+                                    <div className="col-sm-1 text-success text-right"><i className="icofont icofont-caret-up"></i></div>
                                 </div>
                             </div>
                             <div className="card-body">

@@ -816,6 +816,9 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             <td>
                                                 Avg <span className="text-danger"> 156,000</span>
                                             </td>
+                                            <td>
+                                                F. Net <span className="text-danger"> 156,000</span>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </TableBS>
@@ -1725,11 +1728,6 @@ class HistoryBrokerAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 ";
                     }, },
-                { field: 'avgnet', headerName: "Avg. Net", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 120, minWidth: 120,
-                    cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 ";
-                    }, },
             ],
             defaultColDef: {
                 sortable: true,
@@ -2097,6 +2095,14 @@ class HistoryBrokerAgGridThird extends React.PureComponent {
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }
                 },
+                { field: "percent", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: 60, minWidth: 60,
+                    cellClass : function (params) {
+                        var percent = params.data.change;
+                        return percent.includes('-') === true ? "text-danger text-right grid-table f-12 d-border-aggrid-right":
+                            "text-success text-right  grid-table f-12 d-border-aggrid-right";
+                    }
+                },
                 { field: 'volume', headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?370:s=="s50"?350:s=="s67"?325:s=="s75"?315:s=="s80"?290:s=="s90"?250:215, minWidth: 215,
                     cellClass : function (params) {
@@ -2120,19 +2126,24 @@ class HistoryBrokerAgGridThird extends React.PureComponent {
             },
             rowData: [
                 {
-                    change: "15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"1,50%",
+                    change: "15,000",
+                    percent: "1,50%",
                     date: "2019-02-01",
                     last: '3,850',
                     volume: '150.000',
                     value: '150.000.000',
-                },{
-                    change: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
+                },
+                {
+                    change: "15,000",
+                    percent: "1,50%",
                     date: "2019-02-01",
                     last: '3,850',
                     volume: '150.000',
                     value: '150.000.000',
-                },{
-                    change: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
+                },
+                {
+                    change: "15,000",
+                    percent: "1,50%",
                     date: "2019-02-01",
                     last: '3,850',
                     volume: '150.000',

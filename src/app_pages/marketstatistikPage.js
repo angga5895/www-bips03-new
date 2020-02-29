@@ -1508,7 +1508,7 @@ class MarketStatistikAgGrid extends React.PureComponent {
                             last > prev ? "text-success text-right grid-table d-border-aggrid-right f-12" :
                                 "text-warning text-right grid-table d-border-aggrid-right f-12";
                     } },
-                { field: "val", headerName: "Val", resizable: true,
+                { field: "val", headerName: "Value", resizable: true,
                     width: s=="s49"?135:s=="s67"?125:s=="s75"?120:102, minWidth: 102,
                     cellClass : function (params) {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));

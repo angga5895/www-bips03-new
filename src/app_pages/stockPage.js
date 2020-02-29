@@ -588,7 +588,7 @@ class StockHistoryPage_Base extends React.PureComponent {
                                                 T.Vol <span className="text-danger"> 156</span>
                                             </td>
                                             <td>
-                                                Value(Tn) <span className="text-danger"> 156,000</span>
+                                                Value <span className="text-danger"> 156,000</span>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -926,7 +926,7 @@ class StockTickAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                },{ field: "vol", headerName: "Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s67"?140:s=="s75"?160:s=="s80"?150:s=="s90"?125:120, minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -1841,8 +1841,8 @@ class HistoryBrokerAgGridSecond extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: 'fBuyVol', headerName: "Foreign Buy Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 95, minWidth: 120,
+                { field: 'fBuyVol', headerName: "Foreign Buy Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: 120, minWidth: 150,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
@@ -1851,8 +1851,8 @@ class HistoryBrokerAgGridSecond extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: 'fSellVol', headerName: "Foreign Sell Vol", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 95, minWidth: 120,
+                { field: 'fSellVol', headerName: "Foreign Sell Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: 140, minWidth: 140,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
@@ -2895,7 +2895,7 @@ class HistoryPriceAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
                     }, },
-                { field: "value", headerName: "Value(Tn)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "value", headerName: "Value", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 text-success";
@@ -3019,7 +3019,7 @@ class SummaryBuyerAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "buyer", headerName: "Top Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?195:s=="s80"?170:s=="s90"?140:s=="s100"?140:130,
                     minWidth: 130,
                     suppressSizeToFit:true, lockVisible:true, lockPosition:true,
@@ -3310,7 +3310,7 @@ class SummarySellerAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "seller", headerName: "Top Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?195:s=="s80"?170:s=="s90"?140:s=="s100"?140:130,
                     minWidth: 130,
                     suppressSizeToFit:true, lockPosition:true, lockVisible:true,

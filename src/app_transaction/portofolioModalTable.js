@@ -279,7 +279,7 @@ class PortofolioModalTable extends React.PureComponent {
                             <td className="no-wrap text-danger d-border-tr-gray text-right py-1">-0.40%</td>
                             <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">High</td>
                             <td className="no-wrap text-success d-border-tr-gray text-right py-1">12,800</td>
-                            <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Val</td>
+                            <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Value</td>
                             <td className="no-wrap text-danger d-border-tr-gray text-right py-1">2.6 B</td>
                         </tr>
                         <tr>

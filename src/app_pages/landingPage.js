@@ -259,12 +259,14 @@ class LandingPage_Base extends React.PureComponent {
                         chart.select(2);
                     }
                 } else if (points === 3){
-                    props.changeStateLanding('3');
+                    // props.changeStateLanding('3');
+                    props.changeStateLanding('2');
                     if (e.point.selected()) {
-                        chart.unselect([0,1,2,4]);
+                        chart.select(1);
+                        chart.unselect([0,1,2,3]);
                     } else {
-                        chart.unselect([0,1,2,4]);
-                        chart.select(3);
+                        chart.select(1);
+                        chart.unselect([0,1,2,3]);
                     }
                 } /*else if (points === 4){
                     props.changeStateLanding('4');
@@ -292,8 +294,11 @@ class LandingPage_Base extends React.PureComponent {
                     props.changeStateLanding('2');
                     chart.unselect([0,1,3,4]);
                 } else if (legend === 3){
-                    props.changeStateLanding('3');
-                    chart.unselect([0,1,2,4]);
+                    props.changeStateLanding('2');
+                    // alert('keclick');
+                    // return ;
+                    chart.select(1);
+                    // chart.unselect([0,1,2,3,4]);
                 } /*else if (legend === 4){
                     props.changeStateLanding('4');
                     chart.unselect([0,1,2,3]);

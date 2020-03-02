@@ -771,7 +771,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                     <tr>
                                         <th className="py-1 bg-gray-tradding">FOREIGN</th>
                                         <th className="py-1 bg-gray-tradding">VALUE</th>
-                                        <th className="py-1 bg-gray-tradding">SHR</th>
+                                        <th className="py-1 bg-gray-tradding">VOL(SHR)</th>
                                         <th className="py-1 bg-gray-tradding">FREQ</th>
                                     </tr>
                                     </thead>

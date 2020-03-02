@@ -6107,3 +6107,6 @@ textarea {
     border-right: 1px solid var(--warna-d-border);
     border-bottom: 1px solid var(--warna-d-border);
 }
+.card-tradePL{
+    height: 343px;
+}

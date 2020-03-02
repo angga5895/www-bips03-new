@@ -416,6 +416,9 @@ const ResizeResponsive = () => {
     $('.runningText p').css('minWidth', (marquee));
     $('.runningText').css('minWidth', (marquee));
 
+    var cardTradePL = $('html').height() - 352;
+    $('.card-tradePL').css('min-height', cardTradePL);
+
     var height440a = $('html').height() - 250.05;
     $('.card-440-a').css('height', height440a);
 
@@ -1131,6 +1134,9 @@ class MainPage_Base extends React.Component {
 
             var height220a = $('html').height() - 469;
             $('.card-220-a').css('height', height220a);
+
+            var cardTradePL = $('html').height() - 352;
+            $('.card-tradePL').css('min-height', cardTradePL);
 
             var height440a = $('html').height() - 250.05;
             $('.card-440-a').css('height', height440a);

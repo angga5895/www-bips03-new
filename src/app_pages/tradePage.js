@@ -951,7 +951,7 @@ class TradePL extends React.PureComponent{
                                         </div>
                                         </div>
                                 
-                <div className="col-sm-12 px-0 card-310">
+                <div className="col-sm-12 px-0">
                     <TradePLAgGrid
                         size={this.ceksize()}/>
                 </div>
@@ -2790,7 +2790,7 @@ class TradePLAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-345 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-tradePL ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

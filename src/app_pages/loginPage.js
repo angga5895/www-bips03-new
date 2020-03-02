@@ -678,8 +678,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                         {/*<div className={"col-md-6 px-0"}>
                                             <img src={logo} width="100%"/>
                                         </div>*/}
-                                        <div className="col-md-12 pt-3">
-                                            <div className="form-group row" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
+                                        <div className="col-md-12 px-0 mb-0">
+                                            <div className="form-group row mb-0" style={{ paddingLeft:"10%", paddingRight:"10%" }}>
                                                 {/*<label className="col-sm-12 px-5 py-2 col-form-label">User ID</label>*/}
                                                 <div className="col-sm-12 text-left text-center px-5">
                                                     <img src={dxtrade_logo} height="auto" width="35%" alt={"logo bahana"}/>

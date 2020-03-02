@@ -2120,7 +2120,7 @@ button.bg-gold:hover {
 .d-border-active{
     border: var(--warna-gray) solid 1px!important;
     /*border-radius: 7px!important;*/
-    padding: 30px 30px;
+    padding: 20px 20px;
 }
 
 .d-border-active-tab{

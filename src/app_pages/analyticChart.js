@@ -199,7 +199,7 @@ class AnalyticChart_Base extends React.PureComponent {
             appSettingsCache['scale'] = 'linear';
             appSettingsCache['theme'] = $themeSelect.val();
             appSettingsCache['indicators'] = {};
-            appSettingsCache['seriesName'] = "";
+            appSettingsCache[stockName] = "";
             appSettingsCache['annotations'] = $annotationType.val();
 
             var chartContainer = 'chart-container' + stockName;
@@ -546,38 +546,82 @@ class AnalyticChart_Base extends React.PureComponent {
                 });
 
                 function getStock(stok,to){
+
                     var sessidbaru = $("#sessIdAhay").val();
-                    $.ajax({
-                        type: "GET",
-                        url: "http://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
-                        contentType: "application/json; charset=utf-8",
-                        headers: {
-                            "Authorization": sessidbaru,
-                        },
-                        dataType: 'json',
-                        success: function (result) {
-                            app.removeChart();
-                            appSettingsCache['indicators'] = {};
-                            appSettingsCache['scale'] = 'linear';
-                            appSettingsCache['chartType'] = 'line';
-                            appSettingsCache['annotation'] = 'remove';
-                            appSettingsCache['theme'] = 'defaultTheme';
-                            appSettingsCache['seriesName'] = stok;
-                            appSettingsCache['data'][to] = JSON.parse(result.data.data);
-                            $annotationType.val('default').selectpicker('refresh');
+                    // url: "https://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
 
-                            // select series type
-                            $seriesTypeSelect.val('candlestick').selectpicker('refresh');
-                            // reset indicators select
-                            $indicatorTypeSelect.val('').selectpicker('refresh');
-                            // select chart theme
-                            $themeSelect.val('defaultTheme').selectpicker('refresh');
-                            // init, create chart
-                            app.createChart(chartContainer);
+                        // fetch('https://bahana.ihsansolusi.co.id:5050/'+type+'/chart/'+stok,
+                        fetch('https://bahana.ihsansolusi.co.id:5050/stock/chart/'+stok,
+                        // fetch('http://10.1.9.10:5050/chart/'+stok,
+                        // fetch('http://10.1.9.12:5050/chart/'+stok,
+                        {
+                            method: 'GET',
+                            headers: {
+                                "Authorization": sessidbaru,
+                            }})
+                        .then(data=>{
+                            if(data.ok){
+                                data.json()
+                                    .then(res=>{
+                                        app.removeChart();
+                                        appSettingsCache['indicators'] = {};
+                                        appSettingsCache['scale'] = 'linear';
+                                        appSettingsCache['chartType'] = 'line';
+                                        appSettingsCache['annotation'] = 'remove';
+                                        appSettingsCache['theme'] = 'defaultTheme';
+                                        appSettingsCache[stockName] = stok;
+                                        appSettingsCache['data'][to] = res.data;
+                                        $annotationType.val('default').selectpicker('refresh');
 
-                            appSettingsCache['annotation'] = 'remove';
-                        }
-                    });
+                                        // select series type
+                                        $seriesTypeSelect.val('candlestick').selectpicker('refresh');
+                                        // reset indicators select
+                                        $indicatorTypeSelect.val('').selectpicker('refresh');
+                                        // select chart theme
+                                        $themeSelect.val('defaultTheme').selectpicker('refresh');
+                                        // init, create chart
+                                        app.createChart(chartContainer);
+
+                                        appSettingsCache['annotation'] = 'remove';
+                                    })
+                            }
+                        })
+
+                    //
+                    // $.ajax({
+                    //     type: "GET",
+                    //     url: "https://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
+                    //     contentType: "application/json; charset=utf-8",
+                    //     headers: {
+                    //         "Authorization": sessidbaru,
+                    //     },
+                    //     dataType: 'json',
+                    //     success: function (result) {
+                    //         app.removeChart();
+                    //         appSettingsCache['indicators'] = {};
+                    //         appSettingsCache['scale'] = 'linear';
+                    //         appSettingsCache['chartType'] = 'line';
+                    //         appSettingsCache['annotation'] = 'remove';
+                    //         appSettingsCache['theme'] = 'defaultTheme';
+                    //         appSettingsCache['seriesName'] = stok;
+                    //         // console.log(JSON.parse(result),"ahay");
+                    //         var json = JSON.parse(result.data);
+                    //         console.log('yak betulll',json);
+                    //         appSettingsCache['data'][to] = JSON.parse(result.data);
+                    //         $annotationType.val('default').selectpicker('refresh');
+                    //
+                    //         // select series type
+                    //         $seriesTypeSelect.val('candlestick').selectpicker('refresh');
+                    //         // reset indicators select
+                    //         $indicatorTypeSelect.val('').selectpicker('refresh');
+                    //         // select chart theme
+                    //         $themeSelect.val('defaultTheme').selectpicker('refresh');
+                    //         // init, create chart
+                    //         app.createChart(chartContainer);
+                    //
+                    //         appSettingsCache['annotation'] = 'remove';
+                    //     }
+                    // });
                 }
 
             });
@@ -629,8 +673,9 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
-                    // series.name(dataName.toUpperCase());
-                    series.name(appSettingsCache['seriesName'].toUpperCase());
+                    // series.name("ini chartnya eeeyy");
+                    // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
+                    series.name(appSettingsCache[stockName].toUpperCase());
 
                     plot.yScale(appSettingsCache['scale']);
 
@@ -658,7 +703,9 @@ class AnalyticChart_Base extends React.PureComponent {
                 } else {
                     // create line series
                     series = plot[seriesType](mapping);
-                    series.name(dataName.toUpperCase());
+                    // series.name(appSettingsCache['seriesName']);
+                    // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
+                    series.name(appSettingsCache[stockName].toUpperCase());
 
                     // create volume series on the plot
                     var volumeSeries1 = plot.volumeMa(mapping, 5, "sma", "column", "line");
@@ -865,6 +912,7 @@ class AnalyticChart_Base extends React.PureComponent {
 
         const stockOptions = [
             { value:'ABBA', code: 'ABBA', saham: 'ABBA' , id: this.state.stockType},
+            { value:'ABMM', code: 'ABMM', saham: 'ABMM' , id: this.state.stockType},
             { value:'BMPT', code: 'BMPT', saham: 'Bumi Mega Pertama ' , id: this.state.stockType},
             { value:'BNMPT-PPT', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' , id: this.state.stockType},
             { value:'BUMI', code: 'BUMI', saham: 'Bumi Resource ' , id: this.state.stockType},

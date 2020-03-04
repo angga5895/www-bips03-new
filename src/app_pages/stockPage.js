@@ -853,7 +853,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                                 T.Vol <span className="text-danger"> 156</span>
                                             </td>
                                             <td>
-                                                Value(Tn) <span className="text-danger"> 156,000</span>
+                                                Value <span className="text-danger"> 156,000</span>
                                             </td>
                                             <td>
                                                 Avg <span className="text-danger"> 156,000</span>
@@ -1343,7 +1343,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
     setBottomPinned(){
         // alert('hee');
         var rows = this.createData();
-        this.gridApi.setPinnedBottomRowData(rows);
+        // this.gridApi.setPinnedBottomRowData(rows);
     }
     createData() {
         var result = [];
@@ -1372,7 +1372,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
                         onGridReady={this.onGridReady}
                         getRowHeight={this.state.getRowHeight}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}
-                        pinnedBottomRowData={this.state.rowPinnedData}
+                        // pinnedBottomRowData={this.state.rowPinnedData}
                     >
                     </AgGridReact>
                 </div>

@@ -195,6 +195,7 @@ class AnalyticChart_Base extends React.PureComponent {
             var lastDate = '';
             var appSettingsCache = {};
             appSettingsCache['data'] = {};
+            appSettingsCache['series'] = {};
             appSettingsCache['chartType'] = $seriesTypeSelect.val();
             appSettingsCache['scale'] = 'linear';
             appSettingsCache['theme'] = $themeSelect.val();
@@ -569,7 +570,7 @@ class AnalyticChart_Base extends React.PureComponent {
                                         appSettingsCache['chartType'] = 'line';
                                         appSettingsCache['annotation'] = 'remove';
                                         appSettingsCache['theme'] = 'defaultTheme';
-                                        appSettingsCache[stockName] = stok;
+                                        appSettingsCache['series'][to] = stok;
                                         appSettingsCache['data'][to] = res.data;
                                         $annotationType.val('default').selectpicker('refresh');
 
@@ -673,9 +674,22 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
-                    // series.name("ini chartnya eeeyy");
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
-                    series.name(appSettingsCache[stockName].toUpperCase());
+                    // series.name(appSettingsCache['series'][stockName].toUpperCase());
+                    // series.name("A");
+                    if(stockName == "chrtStock"){
+                        series.name(appSettingsCache['series']['analytic stock']);
+                    }else if(stockName == "chrtIndice"){
+                        series.name(appSettingsCache['series']['indice stock']);
+                    }else if(stockName == "chart1"){
+                        series.name(appSettingsCache['series']['chart 1']);
+                    }else if(stockName == "chart2"){
+                        series.name(appSettingsCache['series']['chart 2']);
+                    }else if(stockName == "chart3"){
+                        series.name(appSettingsCache['series']['chart 3']);
+                    }else if(stockName == "chart4"){
+                        series.name(appSettingsCache['series']['chart 4']);
+                    }
 
                     plot.yScale(appSettingsCache['scale']);
 
@@ -705,7 +719,24 @@ class AnalyticChart_Base extends React.PureComponent {
                     series = plot[seriesType](mapping);
                     // series.name(appSettingsCache['seriesName']);
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
-                    series.name(appSettingsCache[stockName].toUpperCase());
+                    // series.name(appSettingsCache[stockName].toUpperCase());
+                    console.log(appSettingsCache['series'],stockName);
+                    if(stockName == "chrtStock"){
+                        series.name(appSettingsCache['series']['analytic stock']);
+                    }else if(stockName == "chrtIndice"){
+                        series.name(appSettingsCache['series']['indice stock']);
+                    }else if(stockName == "chart1"){
+                        series.name(appSettingsCache['series']['chart 1']);
+                    }else if(stockName == "chart2"){
+                        series.name(appSettingsCache['series']['chart 2']);
+                    }else if(stockName == "chart3"){
+                        series.name(appSettingsCache['series']['chart 3']);
+                    }else if(stockName == "chart4"){
+                        series.name(appSettingsCache['series']['chart 4']);
+                    }
+                    else{
+                        series.name("B");
+                    }
 
                     // create volume series on the plot
                     var volumeSeries1 = plot.volumeMa(mapping, 5, "sma", "column", "line");

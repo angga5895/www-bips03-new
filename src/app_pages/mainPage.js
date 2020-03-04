@@ -419,13 +419,13 @@ const ResizeResponsive = () => {
     var cardTradePL = $('html').height() - 352;
     $('.card-tradePL').css('min-height', cardTradePL);
 
-    var height440a = $('html').height() - 250.05;
+    var height440a = $('html').height() - 315.05;
     $('.card-440-a').css('height', height440a);
 
-    var height220a = $('html').height() - 469;
-    $('.card-220-a').css('height', height220a);
+    var height220a = $('html').height() - 514.5;
+    $('.card-220-a').css('min-height', height220a);
 
-    var height440ac = $('html').height() - 300.05;
+    var height440ac = $('html').height() - 295.05;
     $('.card-440-ac').css('height', height440ac);
 
     var height695 = $('html').height();
@@ -1132,13 +1132,13 @@ class MainPage_Base extends React.Component {
             $('.runningText p').css('minWidth', (marquee));
             $('.runningText').css('minWidth', (marquee));
 
-            var height220a = $('html').height() - 469;
+            var height220a = $('html').height() - 514.5;
             $('.card-220-a').css('height', height220a);
 
             var cardTradePL = $('html').height() - 352;
             $('.card-tradePL').css('min-height', cardTradePL);
 
-            var height440a = $('html').height() - 250.05;
+            var height440a = $('html').height() - 295.05;
             $('.card-440-a').css('height', height440a);
 
             var height440ac = $('html').height() - 285.05;

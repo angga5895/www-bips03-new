@@ -439,7 +439,29 @@ class StockHistoryPage_Base extends React.PureComponent {
             primary: '#0071BC',
         },
     });
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
 
+    buttonClickBuy = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: BuyModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    buttonClickSell = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: SellModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
     render () {
         const changeTabNumber = (props) => {
             this.setState({
@@ -532,6 +554,12 @@ class StockHistoryPage_Base extends React.PureComponent {
                                     <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
                                         Astra Argo Lestari Tbk.
                                     </label>
+                                </div>
+                                <div className="col-sm-3 row mx-0 px-0 align-self-center">
+                                    <div className="col-sm-12 align-self-center mx-0 px-0">
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -775,9 +803,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                     <div className="container-fluid f-12">
                         {/*card 520*/}
                         <div className="pt-1 pb-0">
-
                             <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
-
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
                                     {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
@@ -787,10 +813,23 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             filterOption={customFilter} isSearchable={true}
                                             maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
                                     </div>
-
+                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
+                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
                                 </div>
-
-                                <div className="col-sm-9 row mx-0 px-0 align-self-center">
+                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
+                                    <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
+                                        Astra Argo Lestari Tbk.
+                                    </label>
+                                </div>
+                                <div className="col-sm-3 row mx-0 px-0 align-self-center">
+                                    <div className="col-sm-12 align-self-center mx-0 px-0">
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
+                                <div className="col-sm-12 row mx-0 px-0 align-self-center">
                                     <TableBS borderless size="sm" className="bg-black-trading mb-0 h-35">
                                         <thead></thead>
                                         <tbody className="d-border-top d-border-bottom">
@@ -926,7 +965,7 @@ class StockTickAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                },{ field: "vol", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s67"?140:s=="s75"?160:s=="s80"?150:s=="s90"?125:120, minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -1127,7 +1166,7 @@ class TradeSummaryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "value", headerName: "Value", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                },{ field: "value", headerName: "Value(tn)", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?146:s=="s80"?127:s=="s90"?110:s=="s100"?110:100,
                     minWidth:100,
                     cellClass : function (params) {

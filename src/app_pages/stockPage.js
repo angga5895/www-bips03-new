@@ -802,7 +802,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                     {/*<div className="container-fluid f-12 card-520">*/}
                     <div className="container-fluid f-12">
                         {/*card 520*/}
-                        <div className="pt-1 pb-0">
+                        <div className="py-2 pb-0">
                             <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
                                 <div className="col-sm-3 px-0 mx-0 row">
                                     <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>

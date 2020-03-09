@@ -2056,7 +2056,7 @@ button.bg-gold:hover {
 
 .d-border {
     border: var(--warna-d-border) solid 1px!important;
-    border-radius: 0px;
+    /*border-radius: 0px;*/
 }
 
 .d-border-transparent-grey {

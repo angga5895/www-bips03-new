@@ -111,37 +111,39 @@ class TableStockInfo extends React.PureComponent{
                     <tbody>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Listed</td>
-                        <td className="py-1 text-primary d-border-tr-gray">19,246,883</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-right">19,246,883</td>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">IPO</td>
-                        <td className="py-1 text-primary d-border-tr-gray">1,550</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-right">1,550</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Tradeable</td>
-                        <td className="py-1 text-primary d-border-tr-gray">19,246,883</td>
+                        <td className="py-1 text-primary text-right d-border-tr-gray">19,246,883</td>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Base</td>
-                        <td className="py-1 text-primary d-border-tr-gray">1,230</td>
+                        <td className="py-1 text-primary text-right d-border-tr-gray">1,230</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Fg Avail</td>
-                        <td className="py-1 text-primary d-border-tr-gray">19,246,883</td>
-                        <td className="py-1 bg-gray-tradding">Board</td>
-                        <td className="py-1 text-primary d-border-tr-gray">Main</td>
+                        <td className="py-1 text-primary text-right d-border-tr-gray">19,246,883</td>
+                        <td className="py-1 bg-gray-tradding d-border-tr-black">Board</td>
+                        <td className="py-1 text-primary text-left d-border-tr-gray">Main</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Mkt. Capital(M)</td>
-                        <td className="py-1 text-primary d-border-tr-gray text-right" colSpan="3">24.299T</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-right">24.299T</td>
+                        <td className="py-1 bg-gray-tradding d-border-tr-black">Status</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-left">Pre-opening</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Corp. Action</td>
-                        <td className="py-1 text-primary d-border-tr-gray text-right" colSpan="3">No Corporation Action</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-left" colSpan="3">No Corporation Action</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding d-border-tr-black">Marginable</td>
-                        <td className="py-1 text-primary d-border-tr-gray text-right" colSpan="3">Marginable and Shirt Selling</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-left" colSpan="3">Marginable and Shirt Selling</td>
                     </tr>
                     <tr>
                         <td className="py-1 bg-gray-tradding">Sub Sector</td>
-                        <td className="py-1 text-primary d-border-tr-gray text-right" colSpan="3">Plantation</td>
+                        <td className="py-1 text-primary d-border-tr-gray text-left" colSpan="3">Plantation</td>
                     </tr>
                     </tbody>
                 </TableBS>

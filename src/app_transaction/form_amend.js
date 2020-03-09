@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, InputGroup, Table} from "react-bootstrap";
-import {Input, Checkbox, Dropdown} from "semantic-ui-react";
+import {Input, Checkbox, Dropdown, Popup} from "semantic-ui-react";
 import Select from "react-select";
 import {AppFrameAction} from "./../appframe";
 import VerifyPIN, {tanggal} from "../app_pages/verifyPin";
@@ -146,6 +146,14 @@ class FormAmend extends React.PureComponent{
                                         <i className="icon-icon-amend-btn fa-2x"></i>
                                         <br/>Amend
                                     </Button>
+                                    <Popup content='Refresh' position='top center' trigger={
+                                        <button
+                                            className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
+                                            style={{"font-size":"12px","width":"38px"
+                                            }}>
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                        </button>
+                                    } />
                                 </div>
                             </div>
                         </td>

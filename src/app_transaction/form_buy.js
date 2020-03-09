@@ -176,8 +176,8 @@ class FormBuy extends React.PureComponent{
                                     <Popup content='Refresh' position='top center' trigger={
                                         <button
                                             className={`col-sm-4 btn btn-primary btn-refresh-2-right`}
-                                            style={{"font-size":"12px","width":"38px",
-                                                "display":(this.props.part=="stock")?"":"none"}}>
+                                            style={{"font-size":"12px","width":"38px"
+                                            }}>
                                             <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
                                         </button>
                                     } />
@@ -220,17 +220,17 @@ class FormBuy extends React.PureComponent{
                     </tr>
                     </tbody>
                 </Table>
-                <Popup content='Refresh' position='top center' trigger={
-                    <button
-                        className={`col-sm-1 btn btn-primary
-                                    btn-refresh-right`}
-                        style={{
-                            "font-size": "12px", "width": "38px", "position": "fixed",
-                            "display": (this.props.part == "stock") ? "none" : "block"
-                        }}>
-                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                    </button>
-                }/>
+                {/*<Popup content='Refresh' position='top center' trigger={*/}
+                    {/*<button*/}
+                        {/*className={`col-sm-1 btn btn-primary*/}
+                                    {/*btn-refresh-right`}*/}
+                        {/*style={{*/}
+                            {/*"font-size": "12px", "width": "38px", "position": "fixed",*/}
+                            {/*"display": (this.props.part == "stock") ? "none" : "block"*/}
+                        {/*}}>*/}
+                        {/*<i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>*/}
+                    {/*</button>*/}
+                {/*}/>*/}
             </div>
         );
     }

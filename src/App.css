@@ -6110,3 +6110,6 @@ textarea {
 .card-tradePL{
     height: 343px;
 }
+.bold{
+    font-weight: bold;
+}

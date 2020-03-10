@@ -939,7 +939,7 @@ class StockTickAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?190:s=="s67"?180:s=="s75"?170:s=="s80"?165:s=="s90"?150:135, minWidth: 135,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?160:s=="s75"?150:s=="s80"?145:s=="s90"?130:115, minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -949,6 +949,19 @@ class StockTickAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
+                { field: "updown", headerName: "", resizable: true,
+                    width: 40, minWidth: 40,
+                    cellClass : function (params) {
+                        var pl = params.data.change;
+                        return pl.includes('-') === true ? 'grid-table d-border-aggrid-right text-right f-12 text-danger' :
+                            'grid-table d-border-aggrid-right text-right f-12 text-success'
+                    },
+                    cellRenderer : function (params) {
+                        var pl = params.data.change;
+                        return pl.includes('-') === true ?
+                            '&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-down text-danger"></i>&nbsp;&nbsp;':
+                            '&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-up text-success"></i>&nbsp;&nbsp;';
+                    },},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?210:s=="s50"?200:s=="s67"?160:s=="s75"?150:s=="s80"?145:s=="s90"?120:110, minWidth:110,
                     cellClass : function (params) {
@@ -959,11 +972,11 @@ class StockTickAgGrid extends React.PureComponent {
                     cellRenderer : function (params) {
                         var pl = params.data.change;
                         return pl.includes('-') === true ?
-                            '<i class="icofont icofont-caret-down text-danger"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+pl:
-                            '<i class="icofont icofont-caret-up text-success"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+pl;
+                            '<i class="text-danger"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+pl:
+                            '<i class="text-success"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+pl;
                     } },
                 { field: "persen", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?260:s=="s50"?210:s=="s67"?160:s=="s75"?150:s=="s80"?145:s=="s90"?110:110, minWidth: 110,
+                    width: s=="s49"?240:s=="s50"?190:s=="s67"?140:s=="s75"?130:s=="s80"?125:s=="s90"?90:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
@@ -1672,7 +1685,7 @@ class RegisterAmendModal_Base extends React.Component {
                             {/*998*/}
                             <div className="form-group row col-sm-12 px-0 mx-0 z-99 text-white my-0 h-100 pt-40">
                                 <div className="col-sm-9 align-self-center align-middle">
-                                    <label className="text-muted">Max Group is 10 group with 45 stock list</label>
+                                    <label className="text-muted">Max Group is 10 group with 45 stocklist</label>
                                 </div>
                                 <div className="col-sm-3 align-self-center align-middle">
                                     <button className="btn btn-sm btn-grey-gray border-gray-tradding col-sm-12">Save</button>

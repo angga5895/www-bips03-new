@@ -6023,6 +6023,10 @@ textarea {
     text-decoration: underline;
     font-style: italic;
 }
+[col-id~="updown"]{
+    border-right: none !important;
+    border-left: none !important;
+}
 .card-345{
     height: 345px;
 }

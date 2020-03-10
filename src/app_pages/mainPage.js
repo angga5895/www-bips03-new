@@ -419,7 +419,7 @@ const ResizeResponsive = () => {
     var cardTradePL = $('html').height() - 352;
     $('.card-tradePL').css('min-height', cardTradePL);
 
-    var height440a = $('html').height() - 315.05;
+    var height440a = $('html').height() - 295.05;
     $('.card-440-a').css('height', height440a);
 
     var height220a = $('html').height() - 473.5;

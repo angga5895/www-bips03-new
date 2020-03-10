@@ -1450,10 +1450,27 @@ class MarketStatistikAgGrid extends React.PureComponent {
                         var prev = parseFloat(params.data.prev.replace(/,/g,""));
                         var last = parseFloat(params.data.last.replace(/,/g,""));
                         var lasts = params.data.last;
+                        return lasts;
+                        // return last < prev ? lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-down text-danger"></i>' :
+                        //     last > prev ? lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-up text-success"></i>' :
+                        //         lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-minus text-warning"></i>';
+                    } },
+                { field: "updown", headerName: "", resizable: true,
+                    width: 40, minWidth: 40,
+                    cellClass : function (params) {
+                        var prev = parseFloat(params.data.prev.replace(/,/g,""));
+                        var last = parseFloat(params.data.last.replace(/,/g,""));
+                        return last < prev ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            last > prev ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    },   cellRenderer : function (params) {
+                        var prev = parseFloat(params.data.prev.replace(/,/g,""));
+                        var last = parseFloat(params.data.last.replace(/,/g,""));
+                        var lasts = "";
                         return last < prev ? lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-down text-danger"></i>' :
                             last > prev ? lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-up text-success"></i>' :
                                 lasts +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icofont icofont-minus text-warning"></i>';
-                    } },
+                    }},
                 { field: "change", headerName: "Change", resizable: true,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?140:105, minWidth: 105,
                     cellClass : function (params) {

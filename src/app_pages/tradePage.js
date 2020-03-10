@@ -21,6 +21,7 @@ import {Table} from "react-bootstrap";
 import NumberInput from "../numberinput";
 import '../bootstrap-3.3.7/bootstrap-datepicker.min.css';
 import $ from "jquery";
+import Select from "react-select";
 
 class RadioButt extends React.PureComponent {
     state = {}
@@ -839,7 +840,7 @@ class TradeWatchlist extends React.PureComponent{
     };
 }
 
-class TradePageAdv extends React.PureComponent{
+class TradePageAdv_Base extends React.PureComponent{
     constructor(props) {
         super(props);
         this.state={
@@ -867,18 +868,84 @@ class TradePageAdv extends React.PureComponent{
             return "s110";
         }
     }
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#CDCDCE',
+            neutral20: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral30: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#878787',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#ece9ea',
+            primary: '#0071BC',
+        },
+    });
     render() {
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid",
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0
+            })
+        };
+        const stockOptions = [
+            { value:'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama ' },
+            { value:'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' },
+            { value:'bumi', code: 'BUMI', saham: 'Bumi Resource ' },
+            { value:'asii', code: 'ASII', saham: 'Argo Astra Lestari ' },
+            { value:'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' },
+            { value:'wskt', code: 'WSKT', saham: 'Waskita ' },
+            { value:'indf', code: 'INDF', saham: 'Indofood ' },
+            { value:'bbca', code: 'BBCA', saham: 'Bank BCA ' },
+            { value:'smrg', code: 'SMGR', saham: 'Semen Indonesia ' },
+            { value:'bbri', code: 'BBRI', saham: 'Bank BRI ' }
+        ];
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
         return (
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
                 <div className="row f-12">
-                    <div className={"col-md-6"}>
-                        <div className="ui input">
-                            <input placeholder="Code" type="text" value="TLKM"/>
-                        </div>
+                    <div className={"col-md-4 text-left align-self-center"}>
+                            <Select
+                                getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                filterOption={customFilter} isSearchable={true}
+                                maxMenuHeight={155}
+                                styles={{customStyles}}
+                                placeholder={<div>Search..</div>}
+                                options={stockOptions} className="stockPageSelect text-left"
+                                theme={this.selectSelectionTab}
+                            />
                     </div>
-                    <div className={"col-md-6 text-right"}>
+                    <div className={"col-md-8 text-right"}>
                         <Popup content='Refresh' position='top center' trigger={
                             <button
                                 className={`btn btn-primary`}
@@ -888,7 +955,7 @@ class TradePageAdv extends React.PureComponent{
                         }/>
                     </div>
                 </div>
-                <div className={"row pl-4 mt-2"}>
+                <div className={"row pl-4 pr-4 mt-2"}>
                     <div className="col-sm-6 pl-0 pr-1 mb-3">
                         <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center row bg-tableheader">
                             <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">
@@ -2714,19 +2781,20 @@ class TradeAdvBidAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "broker", headerName: "BROKER", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?260:s=="s67"?260:s=="s75"?240:s=="s80"?200:s=="s90"?165:s=="s100"?160:150,
-                    minWidth:140,
+                    width: s=="s49"?400:s=="s50"?360:s=="s67"?320:s=="s75"?300:s=="s80"?260:s=="s90"?220:s=="s100"?210:200,
+                    minWidth:200,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "PRICE", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?255:s=="s67"?230:s=="s75"?210:s=="s80"?180:s=="s90"?165:s=="s100"?160:150, minWidth: 150,
+                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?260:s=="s90"?220:s=="s100"?210:195,
+                    minWidth: 195,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "VOL(SHR)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?300:s=="s50"?270:s=="s67"?230:s=="s75"?210:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
-                    minWidth: 150,
+                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?250:s=="s90"?220:s=="s100"?210:195,
+                    minWidth: 195,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },},
@@ -2737,41 +2805,13 @@ class TradeAdvBidAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    code :"AALI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: 'A'+s,
+                    vol: '1',
+                    price: '1',
                 },{
-                    code :"BUMI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
-                },{
-                    code :"BUDI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
-                },{
-                    code :"SMGR"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: 'B'+s,
+                    vol: '123456789',
+                    price: '11234454',
                 },
             ],
             getRowHeight : function (params) {
@@ -2835,7 +2875,7 @@ class TradeAdvBidAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-tradePL ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-tradeAdv ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2861,19 +2901,20 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "broker", headerName: "BROKER", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?260:s=="s67"?260:s=="s75"?240:s=="s80"?200:s=="s90"?165:s=="s100"?160:150,
-                    minWidth:140,
+                    width: s=="s49"?400:s=="s50"?360:s=="s67"?320:s=="s75"?300:s=="s80"?260:s=="s90"?220:s=="s100"?210:200,
+                    minWidth:200,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "PRICE", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?255:s=="s67"?230:s=="s75"?210:s=="s80"?180:s=="s90"?165:s=="s100"?160:150, minWidth: 150,
+                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?260:s=="s90"?220:s=="s100"?210:195,
+                    minWidth: 195,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "VOL(SHR)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?300:s=="s50"?270:s=="s67"?230:s=="s75"?210:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
-                    minWidth: 150,
+                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?250:s=="s90"?220:s=="s100"?210:195,
+                    minWidth: 195,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
@@ -2983,7 +3024,7 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-tradePL ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-tradeAdv ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -3718,7 +3759,11 @@ class OrderDetailModal extends React.Component {
         );
     }
 }
-
+const TradePageAdv = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        thememode: vars.thememode
+    }),
+)(TradePageAdv_Base);
 export {CustomFrameHeaderTrade, Trade,
     OrderbookPage, TradeWatchlist, TradePageAdv, TradeOrderBookList, SettingInWatchlist,
     OrderSetting,SentOrder,

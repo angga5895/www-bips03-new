@@ -333,8 +333,15 @@ class StockPage_Base extends React.PureComponent {
                                     <div className="col-sm-10 text-left align-self-center">
                                         <Select
                                             getOptionLabel={(option) => `${option.code} - ${option.saham}`}
-                                            filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect text-left" theme={this.selectSelectionTab}/>
+                                            filterOption={customFilter}
+                                            isSearchable={true}
+                                            maxMenuHeight={155}
+                                            styles={customStyles}
+                                            placeholder={<div>Search..</div>}
+                                            options={stockOptions}
+                                            className="stockPageSelect text-left"
+                                            theme={this.selectSelectionTab}
+                                        />
                                     </div>
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                     {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}

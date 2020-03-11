@@ -2901,20 +2901,26 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "broker", headerName: "BROKER", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?400:s=="s50"?360:s=="s67"?320:s=="s75"?300:s=="s80"?260:s=="s90"?220:s=="s100"?210:200,
-                    minWidth:200,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?210:s=="s80"?180:s=="s90"?150:s=="s100"?150:140,
+                    minWidth:140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "PRICE", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?260:s=="s90"?220:s=="s100"?210:195,
-                    minWidth: 195,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?235:s=="s75"?220:s=="s80"?180:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "VOL(SHR)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?390:s=="s50"?350:s=="s67"?310:s=="s75"?290:s=="s80"?250:s=="s90"?220:s=="s100"?210:195,
-                    minWidth: 195,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?235:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "value", headerName: "VALUE", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?235:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
@@ -2926,41 +2932,30 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    code :"AALI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: "AA",
+                    price: 123232131,
+                    vol: 12,
+                    value: 5,
                 },{
-                    code :"BUMI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: "AA",
+                    price: 123232131,
+                    vol: 12,
+                    value: 5,
                 },{
-                    code :"BUDI"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: "AA",
+                    price: 123232131,
+                    vol: 12,
+                    value: 5,
                 },{
-                    code :"SMGR"+s,
-                    vol: 3,
-                    buyAmount : "13.000",
-                    sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
-                    pl: "123",
-                    percentage: "1000",
+                    broker: "AA",
+                    price: 123232131,
+                    vol: 12,
+                    value: 5,
+                },{
+                    broker: "AA",
+                    price: 123232131,
+                    vol: 12,
+                    value: 5,
                 },
             ],
             getRowHeight : function (params) {

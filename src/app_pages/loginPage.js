@@ -18,11 +18,12 @@ import FormAddress        from "../app_sign_up/form_address";
 import FormSource         from "../app_sign_up/form_source";
 import FormAdditonal      from "../app_sign_up/form_additional";
 import { Checkbox } from 'semantic-ui-react'
-import bahana_logo from './../img/bahanalogos.png';
-import bahana_logo_black from './../img/bahanalogos_black.png';
+import bahana_logo_black from './../img/BAHANA-SECURITIES-BLACK-TRANSPARENT.png';
+import bahana_logo from './../img/bs-white-transparent.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
 import dxtrade_logo from './../img/dxtradelogos.png';
+// import dxtrade_logo from './../img/LOGO DX TRADE-01-mini.png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -779,6 +780,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
+                                        <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4" />
                                         <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
                                         <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>

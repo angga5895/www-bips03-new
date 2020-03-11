@@ -946,12 +946,14 @@ class StockTickAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?190:s=="s50"?170:s=="s67"?160:s=="s75"?150:s=="s80"?145:s=="s90"?130:115, minWidth: 115,
+                    width: s=="s49"?160:s=="s50"?130:s=="s67"?115:s=="s75"?110:s=="s80"?100:s=="s90"?80:s=="s100"?75:70,
+                    minWidth: 70,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?200:s=="s67"?170:s=="s75"?160:s=="s80"?145:s=="s90"?130:120, minWidth:120,
+                    width: s=="s49"?170:s=="s50"?140:s=="s67"?130:s=="s75"?120:s=="s80"?115:s=="s90"?110:s=="s100"?100:100,
+                    minWidth:100,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
@@ -970,7 +972,8 @@ class StockTickAgGrid extends React.PureComponent {
                             '&nbsp;&nbsp;&nbsp;<i class="icofont icofont-caret-up text-success"></i>&nbsp;&nbsp;';
                     },},
                 { field: "change", headerName: "Change", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?200:s=="s67"?160:s=="s75"?150:s=="s80"?145:s=="s90"?120:110, minWidth:110,
+                    width: s=="s49"?190:s=="s50"?160:s=="s67"?135:s=="s75"?130:s=="s80"?120:s=="s90"?105:s=="s100"?100:90,
+                    minWidth:90,
                     cellClass : function (params) {
                         var pl = params.data.change;
                         return pl.includes('-') === true ? 'grid-table d-border-aggrid-right text-right f-12 text-danger' :
@@ -983,18 +986,18 @@ class StockTickAgGrid extends React.PureComponent {
                             '<i class="text-success"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+pl;
                     } },
                 { field: "persen", headerName: "%", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?240:s=="s50"?190:s=="s67"?140:s=="s75"?130:s=="s80"?125:s=="s90"?90:90, minWidth: 90,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?125:s=="s75"?120:s=="s80"?110:s=="s90"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Volume(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s67"?140:s=="s75"?160:s=="s80"?150:s=="s90"?125:120, minWidth: 120,
+                    width: s=="s67"?150:s=="s75"?140:s=="s80"?130:s=="s90"?110:s=="s100"?110:115, minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?250:s=="s67"?220:s=="s75"?190:s=="s80"?135:s=="s90"?115:110,
-                    minWidth: 110,
+                    width: s=="s49"?250:s=="s50"?240:s=="s67"?205:s=="s75"?190:s=="s80"?135:s=="s90"?120:s=="s100"?110:90,
+                    minWidth: 90,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -1006,8 +1009,8 @@ class StockTickAgGrid extends React.PureComponent {
                             '<span class="text-warning">'+sbuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sbuyer[1];
                     }},
                 { field: "seller", headerName: "Seller", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?250:s=="s67"?220:s=="s75"?190:s=="s80"?135:s=="s90"?120:110,
-                    minWidth: 110,
+                    width: s=="s49"?250:s=="s50"?240:s=="s67"?205:s=="s75"?190:s=="s80"?135:s=="s90"?120:s=="s100"?110:90,
+                    minWidth: 90,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },
@@ -1017,6 +1020,12 @@ class StockTickAgGrid extends React.PureComponent {
 
                         return sSeller[0].includes('F') === true ? '<span class="text-success">'+sSeller[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sSeller[1] :
                             '<span class="text-warning">'+sSeller[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sSeller[1];
+                    }},
+                { field: "board", headerName: "Board", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?180:s=="s50"?150:s=="s67"?130:s=="s75"?125:s=="s80"?120:s=="s90"?80:80,
+                    minWidth: 110,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
                     }},
             ],
             defaultColDef: {

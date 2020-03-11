@@ -483,7 +483,6 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['annotation'] = 'remove';
                 });
 
-                //Zaky ampe end
                 $("#stockoptionchrtStock").change(function() {
                     getStock($valueAnalyticChart,'analytic stock');
                 });
@@ -507,7 +506,6 @@ class AnalyticChart_Base extends React.PureComponent {
                     getStock($valueAnalyticChart,'indice stock');
                 });
 
-                //Zaky end
 
                 // event to add indicator
                 $addIndicatorBtn.on('click', function () {
@@ -588,41 +586,6 @@ class AnalyticChart_Base extends React.PureComponent {
                             }
                         })
 
-                    //
-                    // $.ajax({
-                    //     type: "GET",
-                    //     url: "https://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
-                    //     contentType: "application/json; charset=utf-8",
-                    //     headers: {
-                    //         "Authorization": sessidbaru,
-                    //     },
-                    //     dataType: 'json',
-                    //     success: function (result) {
-                    //         app.removeChart();
-                    //         appSettingsCache['indicators'] = {};
-                    //         appSettingsCache['scale'] = 'linear';
-                    //         appSettingsCache['chartType'] = 'line';
-                    //         appSettingsCache['annotation'] = 'remove';
-                    //         appSettingsCache['theme'] = 'defaultTheme';
-                    //         appSettingsCache['seriesName'] = stok;
-                    //         // console.log(JSON.parse(result),"ahay");
-                    //         var json = JSON.parse(result.data);
-                    //         console.log('yak betulll',json);
-                    //         appSettingsCache['data'][to] = JSON.parse(result.data);
-                    //         $annotationType.val('default').selectpicker('refresh');
-                    //
-                    //         // select series type
-                    //         $seriesTypeSelect.val('candlestick').selectpicker('refresh');
-                    //         // reset indicators select
-                    //         $indicatorTypeSelect.val('').selectpicker('refresh');
-                    //         // select chart theme
-                    //         $themeSelect.val('defaultTheme').selectpicker('refresh');
-                    //         // init, create chart
-                    //         app.createChart(chartContainer);
-                    //
-                    //         appSettingsCache['annotation'] = 'remove';
-                    //     }
-                    // });
                 }
 
             });
@@ -653,7 +616,8 @@ class AnalyticChart_Base extends React.PureComponent {
                 var series;
 
                 // map loaded data
-                var mapping = dataTable.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
+                // var mapping = dataTable.mapAs({ 'value': 1, 'volume': 5});
+                var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4,'value': 5,'volume':5,});
 
                 // create stock chart
                 chart = anychart.stock();
@@ -739,14 +703,30 @@ class AnalyticChart_Base extends React.PureComponent {
                     }
 
                     // create volume series on the plot
-                    var volumeSeries1 = plot.volumeMa(mapping, 5, "sma", "column", "line");
-                    volumeSeries1.volumeSeries().stroke(null);
-                    volumeSeries1.volumeSeries().fill("#455a64 0.4");
-                    volumeSeries1.volumeSeries().maxHeight('30%');
-                    volumeSeries1.volumeSeries().bottom(0);
-                    volumeSeries1.maSeries().stroke("1.5 #ff6d00");
-                    volumeSeries1.maSeries().maxHeight('30%');
-                    volumeSeries1.maSeries().bottom(0);
+                    // var volumeSeries1 = plot.volumeMa(mapping, 5, "column", "line");
+                    var volumePlot = chart.plot(1);
+                    volumePlot.yAxis().labels().format('{%Value}{scale:(1000)(1)|(k)}');
+                    // set crosshair y-label formatter
+                    volumePlot.crosshair().yLabel().format('{%Value}{scale:(1000)(1)|(k)}');
+
+                    // create volume series on the plot
+                    var volumeSeries1 = volumePlot.column(mapping);
+                    // set series settings
+                    volumeSeries1.name('Volume');
+                    volumeSeries1.stroke(null);
+                    volumeSeries1.fill("#455a64 0.4");
+                    // volumeSeries1.maxHeight('30%');
+                    // volumeSeries1.bottom(0);
+                    volumeSeries1.stroke("1.5 #ff6d00");
+                    // volumeSeries1.height('100%');
+                    volumeSeries1.bottom(0);
+                    // volumeSeries1.volumeSeries().stroke(null);
+                    // volumeSeries1.volumeSeries().fill("#455a64 0.4");
+                    // volumeSeries1.volumeSeries().maxHeight('30%');
+                    // volumeSeries1.volumeSeries().bottom(0);
+                    // volumeSeries1.maSeries().stroke("1.5 #ff6d00");
+                    // volumeSeries1.maSeries().maxHeight('30%');
+                    // volumeSeries1.maSeries().bottom(0);
                 }
 
                 series.stroke('2px #64b5f6');

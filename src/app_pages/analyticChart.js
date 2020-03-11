@@ -624,6 +624,7 @@ class AnalyticChart_Base extends React.PureComponent {
 
                 // create plot on the chart
                 var plot = chart.plot(0);
+                plot.height('70%');
 
                 dataTable.addData(appSettingsCache['data'][dataName.toLowerCase()]);
 
@@ -705,6 +706,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     // create volume series on the plot
                     // var volumeSeries1 = plot.volumeMa(mapping, 5, "column", "line");
                     var volumePlot = chart.plot(1);
+                    volumePlot.height('30%');
                     volumePlot.yAxis().labels().format('{%Value}{scale:(1000)(1)|(k)}');
                     // set crosshair y-label formatter
                     volumePlot.crosshair().yLabel().format('{%Value}{scale:(1000)(1)|(k)}');
@@ -718,7 +720,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     // volumeSeries1.maxHeight('30%');
                     // volumeSeries1.bottom(0);
                     volumeSeries1.stroke("1.5 #ff6d00");
-                    // volumeSeries1.height('100%');
+                    // volumeSeries1.height('30%');
                     volumeSeries1.bottom(0);
                     // volumeSeries1.volumeSeries().stroke(null);
                     // volumeSeries1.volumeSeries().fill("#455a64 0.4");

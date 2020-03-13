@@ -164,7 +164,7 @@ class OrderbookPage extends React.PureComponent {
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
@@ -743,7 +743,7 @@ class TradeWatchlist extends React.PureComponent{
     buttonClickAmend = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: AmendModal,
@@ -753,7 +753,7 @@ class TradeWatchlist extends React.PureComponent{
 
     buttonClickWithdraw = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'mini',
             contentClass: WithdrawModal,
@@ -765,7 +765,7 @@ class TradeWatchlist extends React.PureComponent{
         this.refs.frameAction.showModal({
             headerClass: () =>
                 <div className="col-sm-12 px-0 mx-0 text-right">
-                    <i className="icofont icofont-close text-icofont-close text-border click-pointer" onClick={this.closeClick}></i>
+                    <i className="icofont icofont-close text-icofont-close text-white click-pointer" onClick={this.closeClick}></i>
                 </div>,
             size: 'large',
             contentClass: OrderDetailModal,
@@ -1117,7 +1117,7 @@ class TradeOrderBookList extends React.PureComponent{
     clickdetail = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'mini',
             contentClass: DetailTradeOrderBook,
@@ -3362,7 +3362,7 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
     buttonClickAmend = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: AmendModal,

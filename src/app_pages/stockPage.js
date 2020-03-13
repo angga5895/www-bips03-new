@@ -235,7 +235,7 @@ class StockPage_Base extends React.PureComponent {
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -245,7 +245,7 @@ class StockPage_Base extends React.PureComponent {
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,
@@ -454,7 +454,7 @@ class StockHistoryPage_Base extends React.PureComponent {
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -464,7 +464,7 @@ class StockHistoryPage_Base extends React.PureComponent {
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,
@@ -752,7 +752,29 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
             primary: '#0071BC',
         },
     });
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
 
+    buttonClickBuy = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: BuyModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    buttonClickSell = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: SellModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
     render () {
 
         const stockOptions = [
@@ -1419,7 +1441,7 @@ class TableStockWatchlist_Base extends React.Component{
 
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,

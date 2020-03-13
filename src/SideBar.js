@@ -92,7 +92,7 @@ class SideBar extends React.Component{
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={()=>this.setState({showAlert:true})}></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
@@ -102,7 +102,7 @@ class SideBar extends React.Component{
     buttonClickReconnect = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
-                <i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={()=>this.closeReconnect()} id={"reconnectxbutton"}></i></div>,
             size: 'mini',
             contentClass: ModalReconnect,

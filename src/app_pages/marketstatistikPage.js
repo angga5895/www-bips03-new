@@ -93,7 +93,7 @@ class MarketStatistikPage extends React.PureComponent {
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -103,7 +103,7 @@ class MarketStatistikPage extends React.PureComponent {
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,
@@ -242,7 +242,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -252,7 +252,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,
@@ -319,7 +319,7 @@ class IndiceMarketSecondStatistikPage extends React.PureComponent{
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -329,7 +329,7 @@ class IndiceMarketSecondStatistikPage extends React.PureComponent{
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,

@@ -22,8 +22,8 @@ import bahana_logo_black from './../img/BAHANA-SECURITIES-BLACK-TRANSPARENT.png'
 import bahana_logo from './../img/bs-white-transparent.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
-import dxtrade_logo from './../img/dxtradelogos.png';
-// import dxtrade_logo from './../img/LOGO DX TRADE-01-mini.png';
+// import dxtrade_logo from './../img/dxtradelogos.png';
+import dxtrade_logo from './../img/LOGO REV-01(2).png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -718,7 +718,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             </div>
                                                         </div>
                                                         <div className={"text-left"}>
-                                                            <Checkbox label='Remember Me' />
+                                                            <Checkbox label='Res Me' />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -780,7 +780,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
-                                        <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4" />
+                                        <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4"/>
                                         <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
                                         <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>

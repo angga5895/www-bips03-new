@@ -25,7 +25,7 @@ import bahana_logo from './img/bs-white-transparent.png';
 
 import ojk_logo from './img/ojk.png';
 import idx_logo from './img/idx.png';
-import dxtrade_logo from './img/dxtradelogos.png';
+import dxtrade_logo from './img/LOGO REV-01(2).png';
 // import dxtrade_logo from './img/LOGO DX TRADE-01-mini.png';
 
 import './selectiontab.css';
@@ -135,7 +135,7 @@ class AboutModal_Base extends React.Component {
                         <img src={dxtrade_logo} width="40%"/>
                     </div>
 
-                    <div className="col-sm-12 f-10 py-5 px-5">
+                    <div className="col-sm-12 f-10 py-3 px-3 f-16">
                         DX TRADE Version 2.1.
                     </div>
 
@@ -903,7 +903,7 @@ class UserInfo_Base extends React.Component {
                     </tr>
                     <tr>
                         <td className="py-0 px-0 text-center text-primary f-16">
-                            <kbd>{(this.props.GeneralType === true) ? "REGULAR" : "MARGIN"}</kbd>
+                            <kbd>{(this.props.GeneralType === true) ? "ACTIVE" : "SUSPEND"}</kbd>
                         </td>
                     </tr>
                 </table>

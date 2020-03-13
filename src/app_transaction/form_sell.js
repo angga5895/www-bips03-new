@@ -194,21 +194,21 @@ class FormSell extends React.PureComponent{
                                     <tbody>
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Cash On <br/> T+2</td>
-                                        <td className="no-wrap bg-grey d-border-tr-gray">5,911,198</td>
+                                        <td className="no-wrap bg-grey d-border-tr-gray text-right">5,911,198</td>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Remain <br/> Trade Limit</td>
-                                        <td className="no-wrap bg-grey d-border-tr-gray">15,000,980</td>
+                                        <td className="no-wrap bg-grey d-border-tr-gray text-right">15,000,980</td>
                                     </tr>
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">Investment</td>
-                                        <td className="no-wrap bg-grey d-border-tr-gray">7,545,000</td>
+                                        <td className="no-wrap bg-grey d-border-tr-gray text-right">7,545,000</td>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black">% Change</td>
-                                        <td className="no-wrap bg-grey d-border-tr-gray">-1.18%</td>
+                                        <td className="no-wrap bg-grey d-border-tr-gray text-right">-1.18%</td>
                                     </tr>
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding">Vol</td>
-                                        <td className="no-wrap bg-grey">6</td>
+                                        <td className="no-wrap bg-grey text-right">6</td>
                                         <td className="no-wrap bg-gray-tradding">P/L</td>
-                                        <td className="no-wrap bg-grey">-90,240</td>
+                                        <td className="no-wrap bg-grey text-right">-90,240</td>
                                     </tr>
                                     </tbody>
                                 </Table>

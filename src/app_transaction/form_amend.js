@@ -166,9 +166,9 @@ class FormAmend extends React.PureComponent{
                                     <tbody>
                                     <tr>
                                         <td className="bg-gray-tradding">Cash On <br/> T+2</td>
-                                        <td className="bg-grey d-border-tr-gray">5,911,198</td>
+                                        <td className="bg-grey d-border-tr-gray text-right">5,911,198</td>
                                         <td className="bg-gray-tradding">Remain <br/> Trade Limit</td>
-                                        <td className="bg-grey d-border-tr-gray">15,000,980</td>
+                                        <td className="bg-grey d-border-tr-gray text-right">15,000,980</td>
                                     </tr>
                                     </tbody>
                                 </Table>

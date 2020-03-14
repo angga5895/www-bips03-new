@@ -6120,3 +6120,9 @@ textarea {
 .bold{
     font-weight: bold;
 }
+.rounded{
+    border-radius: 10px;
+}
+.nameBorder{
+    border: var(--warna-border-headermenu) solid 1px;
+}

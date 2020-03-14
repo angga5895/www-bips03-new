@@ -140,8 +140,8 @@ class LiveTradePage extends React.PureComponent {
                     </div>
                     <div className="col-md-2"></div>
                     <div className="col-md-3 pt-1 text-center pr-0">
-                            <button className="d-border col-sm-4 btn btn-success mr-2 ml-5" onClick={this.buttonClickSell}><span>Sell</span></button>
-                            <button className="d-border col-sm-4 btn btn-danger mr-2" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                            <button className="d-border col-sm-4 btn btn-danger mr-2 ml-5" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                        <button className="d-border col-sm-4 btn btn-success mr-2" onClick={this.buttonClickSell}><span>Sell</span></button>
 
                     </div>
                 </div>

@@ -25,7 +25,8 @@ import bahana_logo from './img/bs-white-transparent.png';
 
 import ojk_logo from './img/ojk.png';
 import idx_logo from './img/idx.png';
-import dxtrade_logo from './img/LOGO REV-01(2).png';
+import dxtrade_logo from './img/logo_white.png';
+import dxtrade_logo2 from './img/logo_black.png';
 // import dxtrade_logo from './img/LOGO DX TRADE-01-mini.png';
 
 import './selectiontab.css';
@@ -132,7 +133,8 @@ class AboutModal_Base extends React.Component {
                 <WSConnectionAction ref="wsAction" />
                 <div className="text-white f-12 text-center">
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
-                        <img src={dxtrade_logo} width="40%"/>
+
+                        <img src={(this.props.thememode === true) ? dxtrade_logo : dxtrade_logo2 } width="40%"/>
                     </div>
 
                     <div className="col-sm-12 f-10 py-3 px-3 f-16">
@@ -183,7 +185,8 @@ class LogoBips_Base extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <img src={dxtrade_logo} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
+
+                <img src={(this.props.thememode === true) ? dxtrade_logo : dxtrade_logo2} alt="Bips Logo" className="w-logo" onClick={this.buttonClickDisclaimer}/>
             </>
         );
     }

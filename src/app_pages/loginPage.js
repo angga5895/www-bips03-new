@@ -23,7 +23,7 @@ import bahana_logo from './../img/bs-white-transparent.png';
 import ojk_logo from './../img/ojk.png';
 import idx_logo from './../img/idx.png';
 // import dxtrade_logo from './../img/dxtradelogos.png';
-import dxtrade_logo from './../img/LOGO REV-01(2).png';
+import dxtrade_logo from './../img/LOGO REV-02-01(mini).png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -718,7 +718,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             </div>
                                                         </div>
                                                         <div className={"text-left"}>
-                                                            <Checkbox label='Res Me' />
+                                                            <Checkbox label='Remember Me' />
                                                         </div>
                                                     </div>
                                                 </div>

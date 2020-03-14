@@ -893,6 +893,11 @@ class AnalyticChart_Base extends React.PureComponent {
         //     return false;
         // }
     }
+    sideClick(){
+        // alert('eeeyyyyyyy yayamaannnyaaaa');
+        $valueAnalyticChart = $("#sideBarValue").val();
+        $("#stockoptionchrtStock").change();
+    }
 
     render() {
         const { selecteddd } = this.state.default;
@@ -1035,6 +1040,7 @@ more.
                 <div id={"allwrap" + this.state.stockType} className="f-12" style={formButton}>
                     <div className="row" id={"formInputIndicators" + this.state.stockType}>
                         <div className="col-xs-12 col-sm-6 col-md-12">
+                            <input type="hidden" onClick={()=>this.sideClick()} value={""} id={"sideBarValue"}/>
                             <ul className="list list-unstyled list-nav" id={"indicatorNavPanel" + this.state.stockType} style={styleses}>
                                 <div className="form-inline">
                                     <div className="form-group">

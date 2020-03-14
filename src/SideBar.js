@@ -151,7 +151,12 @@ class SideBar extends React.Component{
             time = setTimeout(logout, 3000000)
         }
     };
-
+    stockClick(event){
+        // $valueAnalyticChart = event;
+        $("#sideBarValue").val(event);
+        $("#sideBarValue").click();
+        // $("#stockoptionstockChrt").change();
+    }
     render(){
         return(
             <>
@@ -234,9 +239,9 @@ class SideBar extends React.Component{
                                             return (
                                                 <tr className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
-                                                        <div className="align-self-center text-left click-pointer noselect">
+                                                        <div onClick={()=>this.stockClick(charx.name)} className="align-self-center text-left click-pointer noselect">
                                                             <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
-                                                            <div className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
+                                                            <div  className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
                                                                 <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
                                                             </div>
                                                             <p className={this.isFireFox() ? "f-11 mb3 text-right"+warna : "f-11 mb-1 text-right"+warna}>{charx.last}</p>

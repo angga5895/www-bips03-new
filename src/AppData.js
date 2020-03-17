@@ -71,7 +71,10 @@ var BIPSAppVars = {
   timeChart:'',
   streamChart:'',
   streamStatus:false, 
-  firstDataStream:'', 
+  firstDataStream:'',
+
+    //multichart
+    addressMultiVal: 0,
 }
 
 var BIPSAppActions = {
@@ -124,7 +127,10 @@ var BIPSAppActions = {
   },
 
   // action Landing
-  handleView:(vars, {isGrid})=>({...vars, isGrid:!vars.isGrid}),
+    handleView:(vars, {isGrid})=>({...vars, isGrid:!vars.isGrid}),
+
+    // action change chart
+    handleMultiChart:(vars, {addressMultiVal})=>({...vars, addressMultiVal: addressMultiVal}),
 
   // action trade
   handleManual:(vars, {isManual})=>({...vars, isManual:!vars.isManual}),

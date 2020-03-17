@@ -59,7 +59,8 @@ class AnalyticPage_Base extends React.PureComponent {
             { stockName: 'chart2', srcData: 'csco.json', dataAlias: 'CHART 2', expandView: false },
             { stockName: 'chart3', srcData: 'ibm.json', dataAlias: 'CHART 3', expandView: false },
             { stockName: 'chart4', srcData: 'orcl.json', dataAlias: 'CHART 4', expandView: false }
-        ]
+        ],
+        active: 0,
     }
 
     //inisiasi active tab
@@ -91,7 +92,6 @@ class AnalyticPage_Base extends React.PureComponent {
             $(chartContainerId).show();
         }
     }
-
     render() {
         let classChart = (this.state.expnView) ? 'card-515 bg-dark-grey' : 'card-257 bg-dark-grey';
 
@@ -116,10 +116,10 @@ class AnalyticPage_Base extends React.PureComponent {
                         <div className="container px-1 mx-0 col-sm-12 row">
                             {this.state.stockSource.map((charx, index) => {
                                 return (
-                                    <div className={"col-md-" + this.state.colMd + " px-1 pt-2 pb-0"} id={"chartContent" + charx.stockName}>
+                                    <div className={(this.props.addressMultiVal == (index+1)) ? "d-active col-md-" + this.state.colMd + " px-1 pt-2 pb-0 ": "col-md-" + this.state.colMd + " px-1 pt-2 pb-0"} onClick={()=>this.props.handleMultiChart(index + 1)} id={"chartContent" + charx.stockName}>
                                         <div className={"d-border-inactive card " + classChart} style={boxScroll} id={"chartBox" + charx.stockName}>
                                             <i onClick={() => this.expandView(charx.stockName)} className="icon-icon-fullscreen-in pull-right" style={btnExpPost} data-toggle="tooltip" data-placement="left" title="Expand/Condense chart"></i>
-                                            <AnalyticChart viewMode={charx.expandView} key={index.stockName} charVal={charx.stockName} chartData={charx.srcData} chartAlias={charx.dataAlias} />
+                                            <AnalyticChart viewMode={charx.expandView} key={index.stockName} charVal={charx.stockName} chartData={charx.srcData} chartAlias={charx.dataAlias}/>
                                         </div>
                                     </div>
                                 );
@@ -249,9 +249,12 @@ class RelativePerformanceAnalyticPage extends React.PureComponent {
 
 const AnalyticPage = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
-        changeChartMode: (chartMode) => { actions.sendAction('changeChartMode', { chartMode }) }
+        changeChartMode: (chartMode) => { actions.sendAction('changeChartMode', { chartMode }) },
+        handleMultiChart: (addressMultiVal) => { actions.sendAction('handleMultiChart', { addressMultiVal }) },
+        addressMultiVal: vars.addressMultiVal,
     }),
 )(AnalyticPage_Base);
+
 
 export default AnalyticPage;
 export { CustomFrameHeaderAnalytic, Analytic,

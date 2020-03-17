@@ -894,8 +894,10 @@ class AnalyticChart_Base extends React.PureComponent {
         // }
     }
     sideClick(){
-        // alert('eeeyyyyyyy yayamaannnyaaaa');
         $valueAnalyticChart = $("#sideBarValue").val();
+        if(this.props.addressMultiVal){
+            $("#stockoptionchart"+this.props.addressMultiVal).change();
+        }
         $("#stockoptionchrtStock").change();
     }
 
@@ -1016,7 +1018,7 @@ more.
                         </div>
                     </div>
                 </div >
-
+                <input type={"hidden"} id={"multiVal"} value={this.props.addressMultiVal}/>
                 {/* <!-- modal indicator settings --> */}
                 < div className="modal-indicator-b" id={"indicatorSettingsModal" + this.state.stockType} tabindex="-1" role="dialog" hidden >
                     <div className="modal-dialog-b" role="document">
@@ -1176,6 +1178,7 @@ const AnalyticChart = ContextConnector(BIPSAppContext,
         thememode: vars.thememode,
         chartMode: vars.chartMode,
         sessId: vars.sessionID,
+        addressMultiVal: vars.addressMultiVal,
     }),
 )(AnalyticChart_Base);
 

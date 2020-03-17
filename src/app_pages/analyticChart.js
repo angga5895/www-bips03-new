@@ -895,6 +895,8 @@ class AnalyticChart_Base extends React.PureComponent {
     }
     sideClick(){
         $valueAnalyticChart = $("#sideBarValue").val();
+        //ini check dimana dipasangnya, kalo lagi dibuka
+        //baru call, kalo engga, call chrt stock aja
         if(this.props.addressMultiVal){
             $("#stockoptionchart"+this.props.addressMultiVal).change();
         }

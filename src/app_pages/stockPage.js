@@ -23,6 +23,17 @@ import $ from 'jquery';
 import {AgGridReact} from "ag-grid-react";
 import SweetAlert from "react-bootstrap-sweetalert";
 
+
+import anychart from 'anychart';
+import '../../node_modules/anychart/dist/css/anychart-ui.min.css';
+import '../../node_modules/anychart/dist/js/anychart-ui.min.js';
+import '../../node_modules/anychart/dist/fonts/css/anychart-font.min.css';
+import '../../node_modules/anychart/dist/js/anychart-data-adapter.min.js'
+import '../../node_modules/anychart/dist/js/anychart-annotations.min.js';
+
+import '../../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css';
+import '../../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js';
+
 window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 require('../bootstrap-3.3.7/bootstrap-datepicker.standalone.min.css');
@@ -479,9 +490,9 @@ class StockHistoryPage_Base extends React.PureComponent {
         }
         const tabActive = (props) => {
             if (this.state.tabNumber == props) {
-                return "col-sm-4 click-pointer d-border-right text-center active";
+                return "col-sm-3 click-pointer d-border-right text-center active";
             } else {
-                return "col-sm-4 click-pointer d-border-right text-center"
+                return "col-sm-3 click-pointer d-border-right text-center"
             }
         }
         const changeActiveGridHistory = () => {
@@ -489,8 +500,10 @@ class StockHistoryPage_Base extends React.PureComponent {
                 return <HistoryBrokerAgGridThird size={this.ceksize()}/>
             } else if(this.state.tabNumber === 2){
                 return <HistoryBrokerAgGrid/>
-            }else{
+            }else if(this.state.tabNumber === 3){
                 return <HistoryBrokerAgGridSecond/>
+            }else{
+                return <HistoryBrokerChart/>
             }
         }
         const customStyles = {
@@ -649,6 +662,11 @@ class StockHistoryPage_Base extends React.PureComponent {
                                                 <a className="linkCustomStockTab h-27">
                                                     <span
                                                         className="f-12" >BROKER SUMMARY</span></a></li>
+                                            <li name="stockBrokerChart"
+                                                className={tabActive(4)} onClick={()=>changeTabNumber(4)}>
+                                                <a className="linkCustomStockTab h-27">
+                                                    <span
+                                                        className="f-12" >BROKER CHART</span></a></li>
                                             <li name="stockWatchlistPage"
                                                 className={tabActive(3)} onClick={()=>changeTabNumber(3)}>
                                                 <a className="linkCustomStockTab h-27">
@@ -1842,6 +1860,76 @@ class HistoryBrokerAgGrid extends React.PureComponent {
                     netvol: "3,000",
                     netval: "2,100",
                     avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
+                },{ broker: "DX",
+                    buyvol: "2,000",
+                    buyval: "2,000",
+                    avgbuy: "10,800",
+                    sellvol: "3,000",
+                    sellval: "3,000",
+                    avgsell: "2,330",
+                    netvol: "3,000",
+                    netval: "2,100",
+                    avgnet: "500,000",
                 },
                 ],
             sideBar: {
@@ -1899,7 +1987,7 @@ class HistoryBrokerAgGrid extends React.PureComponent {
                 {/*Zaky*/}
                 {/*update ukuran card*/}
                 <div
-                    className="card card-372 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    className="card card-372 ag-theme-balham-dark yellow-hover ag-header-border-gray ag-striped-odd"
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -1915,6 +2003,156 @@ class HistoryBrokerAgGrid extends React.PureComponent {
         );
     }
 }
+class HistoryBrokerChart extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        this.state = {
+            subTabActive: 1,
+        }
+    }
+    componentDidMount(){
+        $('#container-bar').css('height', '100%');
+
+        var tempTitle = null;
+
+        anychart.onDocumentReady(function () {
+
+            // create a data set
+            var data = anychart.data.set([
+                ["John", 10000],
+                ["Jake", 12000],
+                ["Peter", 13000],
+                ["James", 10000],
+                ["Mary", 9000],
+                ["John", 10000],
+                ["Jake", 12000],
+                ["Peter", 13000],
+                ["James", 10000],
+                ["Mary", 9000],
+            ]);
+
+            // create a chart
+            var chart = anychart.bar();
+
+            // create a bar series and set the data
+            var series = chart.bar(data);
+
+            // set the chart title
+            chart.title("TOP 10 BUYER");
+
+            // set the titles of the axes
+            chart.xAxis().title("Broker Name");
+            chart.yAxis().title("Volume");
+
+            // set the container id
+            chart.container("container-bar");
+
+            // initiate drawing the chart
+            chart.draw();
+
+            let resetBar = document.getElementById("resetBar");
+            // let resetBar2 = document.getElementById("container");
+
+            resetBar.onclick = function(){
+
+                tempTitle = document.getElementById("resetBar").value;
+                if(tempTitle == "1"){
+                    chart.title("TOP 10 BUYER");
+                }else if(tempTitle == "2"){
+                    chart.title("TOP 10 SELLER");
+                }else{
+                    chart.title("TOP 10 NET");
+                }
+
+                var data = anychart.data.set([
+                    ["A", 10000],
+                    ["S", 12000],
+                    ["E", 13000],
+                    ["P", 10000],
+                    ["G", 9000],
+                    ["A", 10000],
+                    ["S", 12000],
+                    ["E", 13000],
+                    ["P", 10000],
+                    ["G", 9000],
+                ]);
+
+                // chart = anychart.bar();
+
+                series = chart.bar(data);
+                chart.removeSeriesAt(0);
+
+                // set container and draw chart
+                chart.container("container-bar").draw();
+            }
+        });
+    }
+    changeBar = event => {
+        document.getElementById("resetBar").value = event;
+        document.getElementById("resetBar").click();
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    className="card card-372 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"
+                    style={{
+                        width: 'auto' }}>
+                    <div className="cssmenu d-border-bottom d-border-top d-border-left mb-2 small h-30">
+                        <input type="hidden" id={"resetBar"}
+                               value={this.state.sn}/>
+                        <ul className="ul-menu h-27">
+                            <li name="stockDaily"
+                                className={(this.state.subTabActive == 1) ?
+                                    "col-sm-4 click-pointer d-border-right text-center active":
+                                    "col-sm-4 click-pointer d-border-right text-center"
+                                }
+                                onClick={()=>
+                                {
+                                    this.setState({subTabActive: 1});
+                                    this.changeBar(1)}
+                                }>
+                                <a className="linkCustomStockTab h-27">
+                                                    <span
+                                                        className="f-12">TOP BUYER</span></a></li>
+                            <li name="stockPage"
+                                className={(this.state.subTabActive == 2) ?
+                                    "col-sm-4 click-pointer d-border-right text-center active":
+                                    "col-sm-4 click-pointer d-border-right text-center"
+                                }
+                                onClick={()=>
+                                {
+                                    this.setState({subTabActive: 2});
+                                    this.changeBar(2)}
+                                }>
+                                <a className="linkCustomStockTab h-27">
+                                                    <span
+                                                        className="f-12">TOP SELLER</span></a></li>
+                            <li name="stockBrokerChart"
+                                className={(this.state.subTabActive == 3) ?
+                                    "col-sm-4 click-pointer d-border-right text-center active":
+                                    "col-sm-4 click-pointer d-border-right text-center"
+                                }
+                                onClick={()=>
+                                {
+                                    this.setState({subTabActive: 3});
+                                    this.changeBar(3)}
+                                }>
+                                <a className="linkCustomStockTab h-27">
+                                                    <span
+                                                        className="f-12">TOP NET</span></a></li>
+
+                        </ul>
+                    </div>
+                    <div id={"container-bar"}></div>
+                </div>
+            </>
+        );
+    }
+}
+
 
 class HistoryBrokerAgGridSecond extends React.PureComponent {
     constructor(props) {

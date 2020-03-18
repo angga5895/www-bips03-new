@@ -134,7 +134,7 @@ class AboutModal_Base extends React.Component {
                 <div className="text-white f-12 text-center">
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
 
-                        <img src={(this.props.thememode === true) ? dxtrade_logo : dxtrade_logo2 } width="40%"/>
+                        <img src={dxtrade_logo2} width="40%"/>
                     </div>
 
                     <div className="col-sm-12 f-10 py-3 px-3 f-16">

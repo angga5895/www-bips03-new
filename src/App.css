@@ -476,21 +476,31 @@ div.stockOps > div {
 }
 
 /*for grid odd*/
+div.ag-theme-balham-dark.ag-striped-odd.yellow-hover > div > div > div > div > div > div > div > div > div.ag-row-even:hover {
+    background-color: #ffc200 !important; color:white; }
+div.ag-theme-balham-dark.ag-striped-odd.yellow-hover > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {
+    background-color: #ffc200 !important; color:white; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {
     background-color: var(--warna-btn-dark-hover)!important; }
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div.ag-row-odd:hover {
     background-color: var(--warna-btn-dark-hover)!important; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div > div > div.ag-row-even:hover {
     background-color: var(--warna-btn-dark-hover)!important; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div.ag-row-even:hover {
     background-color: var(--warna-btn-dark-hover)!important; }
 
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div > div > div.ag-row-odd {
     background-color: var(--warna-bg-dark-grey) !important; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div.ag-row-odd {
     background-color: var(--warna-bg-dark-grey) !important; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div > div > div.ag-row-even {
     background-color: var(--warna-hover-menu) !important; }
+
 div.ag-theme-balham-dark.ag-striped-odd > div > div > div > div > div > div > div.ag-row-even {
     background-color: var(--warna-hover-menu) !important; }
 
@@ -6125,4 +6135,7 @@ textarea {
 }
 .nameBorder{
     border: var(--warna-border-headermenu) solid 1px;
+}
+.card-bar{
+    height: 450px;
 }

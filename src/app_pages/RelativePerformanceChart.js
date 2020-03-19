@@ -605,10 +605,10 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // event to change theme
                 $themeSelect.on('change', function () {
                     app.removeChart();
-
                     // save scale type
                     appSettingsCache['theme'] = $(this).val();
-                    app.createChart(chartContainer);
+                    $showBtn.click();
+                    // app.createChart(chartContainer);
                 });
 
                 // remove selected class, if indicator not selected

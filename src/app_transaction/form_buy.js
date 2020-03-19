@@ -70,12 +70,17 @@ class FormBuy extends React.PureComponent{
                                         <input type="text" placeholder="Code" defaultValue={"AALI"} className="form-control f-12" style={{"border-radius": "0px", }}/>
                                     </div>
                                     <div className="input-group col-sm-8 align-self-center pl-4">
-                            <span className="input-group-btn">
-                                <label className="form-control ui icon button bg-gold px-2 py-3" style={{"margin": "0px","border-bottom-left-radius": ".28571429rem","border-top-left-radius": ".28571429rem", "border-bottom-right-radius": "0px", "cursor": "default"}}>
-                                    {"90%"}
-                                </label>
-                            </span>
+                                    <span className="input-group-btn">
+                                        <label className="form-control ui icon button bg-gold px-2 py-3" style={{"margin": "0px","border-bottom-left-radius": ".28571429rem","border-top-left-radius": ".28571429rem", "border-bottom-right-radius": "0px", "cursor": "default"}}>
+                                            {"90%"}
+                                        </label>
+                                    </span>
                                         <input type="text" placeholder="Name" defaultValue={"Astra Argo Lestari Tbk."} className="form-control f-12" style={{"border-radius": "0px", }}/>
+                                        <span className="input-group-btn">
+                                        <label className="form-control ui icon button bg-gold px-2 py-3" style={{"margin": "0px","border-bottom-right-radius": "0px", "cursor": "default"}}>
+                                            ACTIVE
+                                        </label>
+                                    </span>
                                     </div>
                                     <div className="col-sm-12">
                                         <Checkbox label='Prevent same order' className="f-12 text-form mt-2 mb-0 align-self-center" />

@@ -38,6 +38,7 @@ var $valueAnalyticChart = "";
 var $valueAnalyticChart2 = "";
 var $valueType = "";
 var $valueType2 = "";
+var $currTheme = "defaultTheme";
 
 
 class RelativePerfomanceChart_Base extends React.PureComponent {
@@ -187,7 +188,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
             appSettingsCache['data2'] = {};
             appSettingsCache['chartType'] = 'line';
             appSettingsCache['scale'] = 'linear';
-            appSettingsCache['theme'] = $themeSelect.val();
+            appSettingsCache['theme'] = $currTheme;
             appSettingsCache['indicators'] = {};
             appSettingsCache['annotations'] = $annotationType.val();
 
@@ -325,7 +326,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 appSettingsCache['scale'] = 'linear';
                 appSettingsCache['chartType'] = 'line';
                 appSettingsCache['annotation'] = 'remove';
-                appSettingsCache['theme'] = 'defaultTheme';
+                appSettingsCache['theme'] = $currTheme;
 
                 // if(stok === 'undefined'){
                 //     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
@@ -348,130 +349,16 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                     $('#chartDataSelectchrtRelative').val(stok);
                                     appSettingsCache['data'] = {};
                                     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = res.data;
-                                    console.log(res.data,"yaa bambang");
-
                                 }else{
                                     $('#chartDataSelect2chrtRelative').val(stok);
                                     appSettingsCache['data2'] = {};
                                     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = res.data;
-                                    console.log(res.data,"yaa bambang");
                                 }
                             })
                         }
                     })
-                
-
-                    // kalo pakai ajax
-                    // $.ajax({
-                    //     type: "GET",
-                    //     url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok,
-                    //     // url: "http://10.1.9.10:5050/chart/" + stok,
-                    //     // url: "http://10.1.9.12:5050/chart/" + stok,
-                    //     contentType: "application/json; charset=utf-8",
-                    //     headers: {
-                    //         "Authorization": sessIdbaru,
-                    //     },
-                    //     dataType: 'json',
-                    //     success: function (result) {                           
-                    //         if(selecType === "select1"){
-                    //             $('#chartDataSelectchrtRelative').val(stok);
-                    //             appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =result.data.data;
-                    //         }else{
-                    //             $('#chartDataSelect2chrtRelative').val(stok);
-                    //             appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result.data.data;
-                    //         }
-                    //     }
-                    // });
                 }else{
-                    alert("apaniiii", stok)
-                }
-                // if(typeof stok2 == 'undefined'){
-                //     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
-                // }else {
-                // if(stok2 !== 'undefined'){
-                //     $.ajax({
-                //         type: "GET",
-                //         url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok2,
-                //         // url: "http://10.1.9.10:5050/chart/" + stok2,
-                //         // url: "http://10.1.9.12:5050/chart/" + stok2,
-                //         contentType: "application/json; charset=utf-8",
-                //         headers: {
-                //             "Authorization": sessIdbaru,
-                //         },
-                //         dataType: 'json',
-                //         success: function (result2) {
-                //             $('#chartDataSelect2chrtRelative').val(stok2);
-                //             appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result2.data.data;
-                //         }
-                //     });
-                // }
-
-                $annotationType.val('default').selectpicker('refresh');
-                // select series type
-                $seriesTypeSelect.val('line').selectpicker('refresh');
-                // reset indicators select
-                $indicatorTypeSelect.val('').selectpicker('refresh');
-                // select chart theme
-                $themeSelect.val('defaultTheme').selectpicker('refresh');
-
-                // init, create chart
-                app.removeChart();
-
-                app.createChart(chartContainer);
-
-                appSettingsCache['annotation'] = 'remove';
-
-            }
-
-            // ini betul
-            function getStock(stok,stok2){
-                var sessIdbaru = $("#sessIdAhay").val();
-                app.removeChart();
-                appSettingsCache['indicators'] = {};
-                appSettingsCache['scale'] = 'linear';
-                appSettingsCache['chartType'] = 'line';
-                appSettingsCache['annotation'] = 'remove';
-                appSettingsCache['theme'] = 'defaultTheme';
-
-                // if(stok === 'undefined'){
-                //     appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] = [[]];
-                // }else {
-                if(stok !== 'undefined'){
-                    $.ajax({
-                        type: "GET",
-                        url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok,
-                        // url: "http://10.1.9.10:5050/chart/" + stok,
-                        // url: "http://10.1.9.12:5050/chart/" + stok,
-                        contentType: "application/json; charset=utf-8",
-                        headers: {
-                            "Authorization": sessIdbaru,
-                        },
-                        dataType: 'json',
-                        success: function (result) {                           
-                            $('#chartDataSelectchrtRelative').val(stok);
-                            appSettingsCache['data'][$chartDataSelect.val().toLowerCase().trim()] =result.data.data;
-                        }
-                    });
-                }
-                // if(typeof stok2 == 'undefined'){
-                //     appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = [[]];
-                // }else {
-                if(stok2 !== 'undefined'){
-                    $.ajax({
-                        type: "GET",
-                        url: "https://bahana.ihsansolusi.co.id:5050/chart/" + stok2,
-                        // url: "http://10.1.9.10:5050/chart/" + stok2,
-                        // url: "http://10.1.9.12:5050/chart/" + stok2,
-                        contentType: "application/json; charset=utf-8",
-                        headers: {
-                            "Authorization": sessIdbaru,
-                        },
-                        dataType: 'json',
-                        success: function (result2) {
-                            $('#chartDataSelect2chrtRelative').val(stok2);
-                            appSettingsCache['data2'][$chartDataSelect2.val().toLowerCase().trim()] = result2.data.data;
-                        }
-                    });
+                    alert("something went wrong! sorry", stok)
                 }
 
                 $annotationType.val('default').selectpicker('refresh');
@@ -480,15 +367,15 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // reset indicators select
                 $indicatorTypeSelect.val('').selectpicker('refresh');
                 // select chart theme
-                $themeSelect.val('defaultTheme').selectpicker('refresh');
-
+                $themeSelect.val($currTheme).selectpicker('refresh');
                 // init, create chart
+                app.removeChart();
+
                 app.createChart(chartContainer);
 
                 appSettingsCache['annotation'] = 'remove';
 
             }
-
             anychart.onDocumentReady(function () {
                 // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
                 // (https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js)
@@ -607,6 +494,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     app.removeChart();
                     // save scale type
                     appSettingsCache['theme'] = $(this).val();
+                    $currTheme = $(this).val();
                     $showBtn.click();
                     // app.createChart(chartContainer);
                 });
@@ -662,7 +550,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     // reset indicators select
                     $indicatorTypeSelect.val('').selectpicker('refresh');
                     // select chart theme
-                    $themeSelect.val('defaultTheme').selectpicker('refresh');
+                    $themeSelect.val($currTheme).selectpicker('refresh');
                     app.createChart(chartContainer);
 
                         var sessidbaru = $("#sessIdAhay").val();
@@ -670,7 +558,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                         appSettingsCache['scale'] = 'linear';
                         appSettingsCache['chartType'] = 'line';
                         appSettingsCache['annotation'] = 'remove';
-                        appSettingsCache['theme'] = 'defaultTheme';
+                        appSettingsCache['theme'] = $currTheme;
 
                         fetch('https://bahana.ihsansolusi.co.id:5050/'+$valueType+'/chart/'+$valueAnalyticChart,
                             // fetch('http://10.1.9.10:5050/chart/'+stok,
@@ -727,7 +615,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     appSettingsCache['scale'] = 'linear';
                     appSettingsCache['chartType'] = 'line';
                     appSettingsCache['annotation'] = 'remove';
-                    appSettingsCache['theme'] = 'defaultTheme';
+                    appSettingsCache['theme'] = $currTheme;
 
                     $annotationType.val('default').selectpicker('refresh');
 
@@ -736,7 +624,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     // reset indicators select
                     $indicatorTypeSelect.val('').selectpicker('refresh');
                     // select chart theme
-                    $themeSelect.val('defaultTheme').selectpicker('refresh');
+                    $themeSelect.val($currTheme).selectpicker('refresh');
 
                     // init, create chart
                     app.createChart(chartContainer);
@@ -804,7 +692,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 if (appSettingsCache['theme'] == 'defaultTheme') {
                     anychart.theme(anychart.themes.darkEarth);
                 } else {
-                    anychart.theme(appSettingsCache['theme']);
+                    anychart.theme($currTheme);
                 }
 
                 var series;
@@ -813,8 +701,6 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // map loaded data
                 var mapping = dataTable.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
                 var mapping2 = dataTable2.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
-
-                // console.log('ini data pertama'+appSettingsCache['data'][dataName.toLowerCase()]);
 
 
                 // create stock chart

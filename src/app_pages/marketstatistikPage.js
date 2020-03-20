@@ -438,6 +438,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             // set chart type
             var chart = anychart.stock();
+            var credits = chart.credits();
+            credits.enabled(false);
 
             // set the series
             var series = chart.plot(0).line(mapping);

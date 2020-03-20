@@ -17,9 +17,14 @@ import './bootstrap-3.3.7/ag-grid-community/dist/styles/ag-grid.css';
 import './bootstrap-3.3.7/ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 
 import './App.css';
+import anychart from 'anychart';
 
 import {LicenseManager} from 'ag-grid-enterprise';
-LicenseManager.setLicenseKey("Evaluation_License_Not_For_Production_2_March_2020__MTU4MzEwNzIwMDAwMA==12d7491114e302b6213098155f3e87e2");
+
+LicenseManager.setLicenseKey("CompanyName=PT Bahana Sekuritas,LicensedApplication=DX Trade,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=1,LicensedProductionInstancesCount=1,AssetReference=AG-007403,ExpiryDate=18_March_2021_[v2]_MTYxNjAyNTYwMDAwMA==5dc0e27ff88d68e1298c3b5e6765318b");
+anychart.licenseKey("bahana.co.id-32cc970-3e0612a5");
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

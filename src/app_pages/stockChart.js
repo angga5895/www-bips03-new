@@ -32,6 +32,8 @@ class StockChart extends Component {
         });
 
         var chart = anychart.stock();
+        var credits = chart.credits();
+        credits.enabled(false);
 
         function createChart(data) {
             var dataTable = anychart.data.table();

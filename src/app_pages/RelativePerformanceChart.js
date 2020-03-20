@@ -706,6 +706,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 // create stock chart
 
                 chart = anychart.stock();
+                var credits = chart.credits();
+                credits.enabled(false);
 
                 // create plot on the chart
                 var plot = chart.plot(0);

@@ -177,6 +177,8 @@ class LandingPage_Base extends React.PureComponent {
         ];
 
         var chart = anychart.pie(data);
+        var credits = chart.credits();
+        credits.enabled(false);
 
         anychart.onDocumentReady(function () {
             createpie();

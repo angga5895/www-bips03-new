@@ -483,6 +483,7 @@ class StockHistoryPage_Base extends React.PureComponent {
         })
     }
     render () {
+        let p = this.props
         const changeTabNumber = (props) => {
             this.setState({
                 tabNumber: props,
@@ -589,12 +590,14 @@ class StockHistoryPage_Base extends React.PureComponent {
                                 <div className="col-sm-4 px-0 mx-0">
                                     <div className="input-group input-daterange h-35" style={{"z-index":0}}>
                                         <span className="input-group-addon h-35 bg-tableheader">Start</span>
-                                        <input placeholder="dd/mm/yyyy" id="startDate1" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                        <input placeholder="dd/mm/yyyy" id="startDate1" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly"
+                                            value={p.rangeStockTradeHistory.start} />
                                         <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>
                                         <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                        <input placeholder="dd/mm/yyyy" id="endDate1" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
+                                        <input placeholder="dd/mm/yyyy" id="endDate1" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly"
+                                            value={p.rangeStockTradeHistory.to} />
                                         <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>
@@ -4083,7 +4086,8 @@ const StockPage = ContextConnector(BIPSAppContext,
 
 const StockHistoryPage = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
-        thememode: vars.thememode
+        thememode: vars.thememode,
+        rangeStockTradeHistory:vars.rangeStockTradeHistory,
     }),
 )(StockHistoryPage_Base);
 

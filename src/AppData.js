@@ -82,7 +82,7 @@ var BIPSAppActions = {
   networkDisconnected: (vars) => ({...vars, loginState: false, networkState: false}),
   networkConnected: (vars) => ({...vars, loginState: false, networkState: true}),
   doLogin: (vars, {userID, password}) => {
-    var text = JSON.stringify({action_type: 'LOGIN', user: userID, password: password});
+      var text = JSON.stringify({action_type: 'LOGIN', user: userID, password: password, terminal:"web"});
     vars.netAction.send({text});
     return{...vars, userName:userID}
   },

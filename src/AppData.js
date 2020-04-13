@@ -73,8 +73,11 @@ var BIPSAppVars = {
   streamStatus:false, 
   firstDataStream:'',
 
-    //multichart
-    addressMultiVal: 0,
+  //multichart
+  addressMultiVal: 0,
+
+  // range data 
+  rangeStockTradeHistory:{start:"26/12/2020",to:"26/3/2020"},
 }
 
 var BIPSAppActions = {

@@ -2043,7 +2043,7 @@ class HistoryBrokerChart extends React.PureComponent {
 
             // create a chart
             var chart = anychart.bar();
-
+            chart.height('90%');
             // create a bar series and set the data
             var series = chart.bar(data);
 
@@ -2485,7 +2485,7 @@ class HistoryBrokerAgGridThird extends React.PureComponent {
                     } },
                 { field: 'volume', headerName: "Volume", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?180:s=="s50"?180:s=="s67"?165:s=="s75"?160:s=="s80"?130:s=="s90"?100:s=="s100"?90:90,
-                    minWidth: 180,
+                    minWidth: 90,
                     cellClass : function (params) {
                         var changee = params.data.change;
                         return changee.includes('-') === true ? "text-danger text-right grid-table f-12 d-border-aggrid-right":
@@ -2493,13 +2493,13 @@ class HistoryBrokerAgGridThird extends React.PureComponent {
                     }},
                 { field: 'value', headerName: "Value", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?240:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?150:s=="s90"?110:s=="s100"?109:109,
-                    minWidth: 210,
+                    minWidth: 109,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: 'freq', headerName: "Freq", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?160:s=="s75"?140:s=="s80"?110:s=="s90"?80:s=="s100"?70:70,
-                    minWidth: 210,
+                    minWidth: 70,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
@@ -3384,7 +3384,7 @@ class HistoryPriceAgGrid extends React.PureComponent {
                     className={
                         this.props.type === "tradeHistory" ?
                                 (this.props.changethis == "active") ?
-                                    "card card-392 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                                    "card card-406 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
                                     "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
                         "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
                     style={{

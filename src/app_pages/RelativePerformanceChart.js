@@ -321,7 +321,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
 
             // tess uji coba
             function getStock2(selecType,stok,type){
-                var sessidbaru = $("#sessIdAhay").val();
+                // var sessidbaru = $("#sessIdAhay").val();
+                var sessidbaru = "2";
                 appSettingsCache['indicators'] = {};
                 appSettingsCache['scale'] = 'linear';
                 appSettingsCache['chartType'] = 'line';
@@ -553,7 +554,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     $themeSelect.val($currTheme).selectpicker('refresh');
                     app.createChart(chartContainer);
 
-                        var sessidbaru = $("#sessIdAhay").val();
+                    // var sessidbaru = $("#sessIdAhay").val();
+                    var sessidbaru ="2";
                         appSettingsCache['indicators'] = {};
                         appSettingsCache['scale'] = 'linear';
                         appSettingsCache['chartType'] = 'line';

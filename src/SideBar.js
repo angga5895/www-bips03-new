@@ -4,11 +4,15 @@ import Select from "react-select";
 import {cssmode} from "./App";
 import {Dropdown} from "semantic-ui-react";
 import {RegisterAmendModal} from "./app_pages/stockPage";
+
+import { BIPSAppContext } from './AppData.js';
+import { ContextConnector } from './appcontext.js';
+import {ModalAlertC} from "./app_modals/modal_Alert";
+
 import {ModalReconnect} from "./app_modals/modal_reconnect";
 import {AppFrameAction} from "./appframe";
 import SweetAlert from "react-bootstrap-sweetalert";
 import $ from "jquery";
-
 
 
 const option = [
@@ -19,7 +23,7 @@ const option = [
     { key: 'groupE', value: 'groupE', text: 'Group E' }
 ];
 
-class SideBar extends React.Component{
+class SideBar_Base extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -93,7 +97,9 @@ class SideBar extends React.Component{
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right">
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
-                                                              onClick={()=>this.setState({showAlert:true})}></i></div>,
+                    // onClick={()=>this.setState({showAlert:true})}
+                    onClick={()=>this.props.handleStatusAlert3('confirm',this.props.statusAlertC,'Save changes before quiting? dari App/modal_Alert', 'myWatclist#confirmSave#yes')}
+                    ></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
@@ -161,6 +167,7 @@ class SideBar extends React.Component{
         return(
             <>
                 <AppFrameAction ref="frameAction" />
+                <ModalAlertC />
                 <SweetAlert
                     show={this.state.showAlert}
                     warning
@@ -395,5 +402,14 @@ class SelectGroup extends React.Component {
         );
     }
 }
+
+//************************** Context Connector **************************
+const SideBar = ContextConnector(BIPSAppContext,
+    (vars, actions, props) => ({
+        statusAlertC:vars.statusAlertC,
+        handleStatusAlert3:(type,statusAlert,msg, data)=>actions.sendAction('handleStatusAlert3',{type,statusAlert,msg, data}),
+    }),
+    ["handleStatusAlert3"]
+)(SideBar_Base);
 
 export default SideBar;

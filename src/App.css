@@ -6142,3 +6142,6 @@ textarea {
 .card-406{
     height: 406px;
 }
+body{
+    overflow-y: hidden;
+}

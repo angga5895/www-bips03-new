@@ -10,6 +10,8 @@ import FillHeaderTab from "../tabheaderfill";
 import { NetAppContext, WSConnectionAction } from '../appnetwork.js';
 import { ContextConnector } from '../appcontext.js';
 
+import ModalAlertN from "./../app_modals/modal_Alert";
+
 import ModalBuy from "./../app_modals/modal_buy";
 import ModalSell from "./../app_modals/modal_sell";
 import MenuOfContent from "./../menuofcontent";
@@ -1692,7 +1694,7 @@ class RegisterAmendModal_Base extends React.Component {
         };
         return (
             <>
-
+                
                 <SweetAlert
                     show={this.state.showAlert}
                     warning
@@ -1710,6 +1712,7 @@ class RegisterAmendModal_Base extends React.Component {
                     <span className={"text-white"}>You will not be able to undo this action!</span>
                 </SweetAlert>
                 <AppFrameAction ref="frameAction" />
+                <ModalAlertN />
                 <div>
                     <div className="cssmenumodal bg-grey pb-4 col-sm-12 mx-0 px-0">
                         <ul>
@@ -1721,7 +1724,8 @@ class RegisterAmendModal_Base extends React.Component {
                         <div className={this.state.activeTab === '1' ? 'card card-520 d-border d-block f-12' : 'd-none'}>
                             <div className="card d-border-transparent-grey h-auto">
                                 <div className="card card-145 bg-grey">
-                                    <AmendGroupNameAgGrid trash={() => this.setState({showAlert:true})}/>
+                                    {/* <AmendGroupNameAgGrid trash={() => this.setState({showAlert:true})}/> */}
+                                    <AmendGroupNameAgGrid trash={() => this.props.handleStatusAlert3('noConfirm',this.props.statusAlertN,'Are you sure? dari App/modal_Alert ',)}/>
                                 </div>
                                 <div className="form-group row col-sm-12 px-0 mx-0 my-0 py-3 text-white h-63 v-align-items-center">
                                     <div className="col-sm-5">
@@ -4131,8 +4135,11 @@ class CorpActionAgGrid extends React.PureComponent {
 const RegisterAmendModal = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
         thememode: vars.thememode,
-        chartMode: vars.chartMode
+        chartMode: vars.chartMode,
+        statusAlertN:vars.statusAlertN,
+        handleStatusAlert3:(type,statusAlert,msg, data)=>actions.sendAction('handleStatusAlert3',{type,statusAlert,msg, data}),
     }),
+    ["handleStatusAlert3"]
 )(RegisterAmendModal_Base);
 
 const StockPage = ContextConnector(BIPSAppContext,

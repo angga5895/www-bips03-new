@@ -78,6 +78,12 @@ var BIPSAppVars = {
 
   // range data 
   rangeStockTradeHistory:{start:"26/12/2020",to:"26/3/2020"},
+
+  // Modal Alert
+  msgAlert3:'',
+  statusAlertC:false,
+  statusAlertN:false,
+
 }
 
 var BIPSAppActions = {
@@ -218,6 +224,18 @@ var BIPSAppActions = {
       return{...vars, streamChart:arrData[3], timeChart:arrData[2]}
     }
   },
+
+  // Modal Alert
+  handleStatusAlert3:(vars, {type, statusAlert,msg, data})=>{
+    if(type === 'noConfirm'){      
+      return{...vars, statusAlertN:!vars.statusAlertN, msgAlert3:msg}
+    }else{
+      if(msg === 'noSave'){
+        vars.frameAction.closeModal(100)
+      }
+      return{...vars, statusAlertC:!vars.statusAlertC, msgAlert3:msg, ieudata:data}
+    }
+  },
 }
 
 const BIPSAppContext = React.createContext({});
@@ -235,7 +253,7 @@ class BIPSAppProvider extends React.Component {
   messageHandler = (msg, socketID) => {
     // console.log('BIPSAppProvider.messageHandler(). socketID',socketID,' Message = ', msg);    
     if (socketID === undefined) {
-      var msgData;
+      let msgData;
       try {
         msgData = JSON.parse(msg);
       }
@@ -250,10 +268,12 @@ class BIPSAppProvider extends React.Component {
       }
       else if (msgData.action_type == 'LOGIN-RESPONSE') {
         if (msgData.status == 'OK') {
+          console.log("LOGIN Ke 12000 Berhasil")
           this.appProvider.sendAction('loginSuccessful', {sessionID: msgData.session_id});
           this.frameAction.setMainFrameActive(true);
         }
-        else if(msgData.status === 'FAILED'){
+        else if(msgData.status === "AUTH-FAIL"){
+          console.log("LOGIN Ke 12000 Gagal")  
           this.appProvider.sendAction('loginFail', {reason: msgData.reason});
         }
       }
@@ -261,6 +281,16 @@ class BIPSAppProvider extends React.Component {
     else{
       if(!msg.includes("action_type")){
         this.appProvider.sendAction('updateSubscribeStringReplay', {data: msg});
+      }else{
+        let msgData = JSON.parse(msg);
+        //============= call action LOGIN =============  
+        if (msgData.action_type === 'DF-RESPONSE') {
+          if (msgData.status == 'OK') {                  
+            console.log("LOGIN Ke 5050 Berhasil")             
+          }else{
+            console.log("LOGIN Ke 5050 Gagal")
+          }
+        }
       }
     }
 
@@ -274,13 +304,17 @@ class BIPSAppProvider extends React.Component {
     if(socketID ==undefined){
       if (!isConnected) {
         this.appProvider.sendAction('networkDisconnected');
-        console.log(`Reconnecting in ${RECONNECT_TIME / 1000} seconds...`);
+        console.log(`Koneksi ke 1200 putus => Reconnecting in ${RECONNECT_TIME / 1000} seconds...`);
         this.frameAction.setMainFrameActive(false);
-        window.location.reload(); 
+        // window.location.reload(); 
         window.setTimeout(() => this.netAction.createAndConnect({url: SERVER_URL}), RECONNECT_TIME);
       }
-      else {
-        this.appProvider.sendAction('networkConnected');
+      else {  
+        if (!isConnected) {  
+          console.log(`Koneksi ke 1200 putus`) 
+        }else{   
+          this.appProvider.sendAction('networkConnected');
+        }
       }
     }
     else {

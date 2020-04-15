@@ -19,7 +19,7 @@ class ModalAlertN_Base extends React.Component{
                     info
                     style={{'color':'var(--text-white)',}}
                     confirmBtnCssClass={"btn btn-sm btn-popup bg-gray-tradding border-gray-tradding"}
-                    customClass={"bg-dark-grey"}
+                    customClass={"bg-dark-grey f-12"}
                     onConfirm={() => this.props.handleStatusAlert3('noConfirm',this.props.statusAlertN)}
                     onCancel={() => this.props.handleStatusAlert3('noConfirm',this.props.statusAlertN)}                        
                     onEscapeKey={() => this.props.handleStatusAlert3('noConfirm',this.props.statusAlertN)}
@@ -49,7 +49,7 @@ class ModalAlertC_Base extends React.Component{
                         warning
                         title={<span className={`text-white ${dataM[1] === 'confirmSave'? 'f-16' : ''}`}>{dataM[1] === 'confirmSave' ?'Save changes before quiting? dari App/modal_alert' : this.props.msgAlert3 }</span>}
                         style={{'color':'var(--text-white)',}}
-                        customClass={"bg-dark-grey"}                        
+                        customClass={"bg-dark-grey f-12"}
                         customButtons={
                             <React.Fragment>
                                 <button className={"btn btn-sa btn-trans btn-sm btn-popup"}

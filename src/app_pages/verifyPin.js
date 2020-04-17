@@ -4,6 +4,8 @@ import {AppFrameAction} from "../appframe";
 import {Table, Alert} from "react-bootstrap";
 import AmendArrow from "./../img/amend-arrow.svg";
 import $ from "jquery";
+import {ContextConnector} from "../appcontext";
+import {BIPSAppContext} from "../AppData";
 
 class AlertPinSalah extends React.PureComponent{
     render() {
@@ -36,7 +38,7 @@ function tanggal() {
     return date;
 }
 
-class VerifyPIN extends React.PureComponent{
+class VerifyPIN_Base extends React.PureComponent{
     constructor(props){
         super(props);
     }
@@ -56,8 +58,9 @@ class VerifyPIN extends React.PureComponent{
     }
 
     onClickSubmit = (e) => {
-        if(this.state.value.length >= '6'){
-            if(this.state.value === '123456') {
+        if(this.state.value.length >= '6' || this.props.pinStatus == true){
+            if(this.state.value === '123456' || this.props.pinStatus == true) {
+                this.props.changePinStatus(true);
                 if (this.props.tipe === 'buy'){
                     this.refs.frameAction.closeModal(100);
                     var frameAction = this.refs.frameAction;
@@ -169,6 +172,9 @@ class VerifyPIN extends React.PureComponent{
                 $("#pin-click-verify").click();
             }
         });
+        if(this.props.pinStatus == true){
+            $("#pin-click-verify").click();
+        }
     }
 
     render(){
@@ -176,6 +182,7 @@ class VerifyPIN extends React.PureComponent{
         return(
             <>
                 <AppFrameAction ref="frameAction" />
+
                 <div className="text-white f-12">
                     <div className="text-center align-self-center align-middle">
                         <div className="d-border-bold img-round-icon">
@@ -682,6 +689,11 @@ class ForgotPINModal extends React.Component {
         );
     }
 }
-
+const VerifyPIN = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        pinStatus: vars.pinStatus,
+        changePinStatus: (pinStatus) => { actions.sendAction('changePinStatus', { pinStatus }) },
+    }),
+)(VerifyPIN_Base);
 export default VerifyPIN;
 export {tanggal};

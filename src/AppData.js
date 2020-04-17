@@ -83,7 +83,7 @@ var BIPSAppVars = {
   msgAlert3:'',
   statusAlertC:false,
   statusAlertN:false,
-
+  pinStatus: false,
 }
 
 var BIPSAppActions = {
@@ -170,7 +170,9 @@ var BIPSAppActions = {
   // chat bot state
   changeAccountType: (vars, { GeneralType }) => ({ ...vars, GeneralType: GeneralType }),
 
-  changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
+    changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
+
+    changePinStatus: (vars, { pinStatus }) => ({ ...vars, pinStatus: pinStatus }),
 
   // subscribe
   subscribeMsgSukses:(vars,{mess})=>{

@@ -126,10 +126,10 @@ class FormSell extends React.PureComponent{
                                         <NumberInput
                                             idclassname={this.props.idVol}
                                             name="sell_vol"
-                                            placeholder="Vol"
+                                            placeholder="0"
                                             size="small"
                                             // max={"6"}
-                                            defaultValue={"10"}
+                                            defaultValue={null}
                                             className="col-sm-12 px-0 f-12 text-center align-self-center no-button-plusminus" />
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@ class FormSell extends React.PureComponent{
 
                                     <div className="col-sm-3 mb-3 py-form text-form">Value</div>
                                     <div className="col-sm-9 mb-3 py-form">
-                                        <input type="text" id={this.props.idValue} name="sell_value" placeholder="Value" size="small" defaultValue={"12,600"} className="col-sm-12 f-12 text-center align-self-center form-control"
+                                        <input type="text" id={this.props.idValue} name="sell_value" placeholder="0" size="small" defaultValue={null} className="col-sm-12 f-12 text-center align-self-center form-control"
                                                style={{"border-radius": "0px", "text-align": "right"}} readOnly={true} />
                                     </div>
                                 </div>

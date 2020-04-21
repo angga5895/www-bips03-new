@@ -76,7 +76,7 @@ class FormAmend extends React.PureComponent{
                                 <div className="col-sm-8 ml-0 px-0 row">
                                     <div className="col-sm-3 text-form">Price</div>
                                     <div className="col-sm-9">
-                                        <NumberInput idclassname={this.props.idPrice} name="sell_price" placeholder="Price" size="small" defaultValue={"12650"} className="col-sm-12 px-0 f-12 text-center align-self-center" />
+                                        <NumberInput idclassname={this.props.idPrice} name="sell_price" placeholder="Price" size="small" defaultValue={null} className="col-sm-12 px-0 f-12 text-center align-self-center" />
                                     </div>
                                 </div>
                                 <div className="col-sm-4 text-center align-middle align-self-center">
@@ -94,9 +94,9 @@ class FormAmend extends React.PureComponent{
                                         <NumberInput
                                             idclassname={this.props.idVol}
                                             name="sell_vol"
-                                            placeholder="Vol"
+                                            placeholder="0"
                                             size="small"
-                                            defaultValue={"10"}
+                                            defaultValue={null}
                                             className="col-sm-12 px-0 f-12 text-center align-self-center no-button-plusminus" />
                                     </div>
                                 </div>
@@ -137,7 +137,8 @@ class FormAmend extends React.PureComponent{
 
                                     <div className="col-sm-3 mb-3 py-form text-form">Value</div>
                                     <div className="col-sm-9 mb-3 py-form">
-                                        <input type="text" id={this.props.idValue} name="amend_value" placeholder="Value" size="small" defaultValue={"12,600"} className="col-sm-12 f-12 text-center align-self-center form-control"
+                                        <input type="text" id={this.props.idValue} name="amend_value" placeholder="0" size="small"
+                                               defaultValue={null} className="col-sm-12 f-12 text-center align-self-center form-control"
                                                style={{"border-radius": "0px", "text-align": "right"}} readOnly={true} />
                                     </div>
                                 </div>

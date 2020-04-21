@@ -148,8 +148,8 @@ class AboutModal_Base extends React.Component {
 
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
                         <img src={bahana_logo} width="30%" height="30%" className="click-pointer mt-4"/>
-                        <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
-                        <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
+                        <img src={idx_logo} width="15%" height="15%" className="click-pointer" onClick={this.clickIdx}/>
+                        <img src={ojk_logo} width="30%" height="15%" className="click-pointer" onClick={this.clickOjk}/>
                     </div>
 
                     <div className="col-sm-12 f-10 pt-4 px-5">

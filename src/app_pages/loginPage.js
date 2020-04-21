@@ -691,7 +691,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   defaultValue="zakitx"/>
+                                                                   defaultValue="apihtx"/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -705,7 +705,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="zaki123"/>
+                                                                       defaultValue="apih123"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
@@ -781,8 +781,8 @@ class LoginUserPage_Base extends React.PureComponent {
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
                                         <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4"/>
-                                        <img src={idx_logo} width="15%" className="click-pointer" onClick={this.clickIdx}/>
-                                        <img src={ojk_logo} width="30%" className="click-pointer" onClick={this.clickOjk}/>
+                                        <img src={idx_logo} width="15%" height="15%" className="click-pointer" onClick={this.clickIdx}/>
+                                        <img src={ojk_logo} width="30%" height="15%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>
 
                                     <div className="col-sm-12 f-10 pt-4 px-5">

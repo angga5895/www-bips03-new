@@ -102,6 +102,18 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                         },
                     ],
                 },
+                { field: "marketOrderTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 150,
+                    cellClass : function (params) {
+                        return "text-center grid-table f-12 d-border-aggrid-right";
+                    }, children: [
+                        { field: "marketOrderNo0", headerName: "Market Order No.", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                            width: 140, minWidth: 140,
+                            cellClass : function (params) {
+                                return "text-center grid-table f-12 d-border-aggrid-right";
+                            }
+                        },
+                    ],
+                },
                 { field: "actionsTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width:160,
                     cellClass : function (params) {
                         var pl = params.data.actionsO;
@@ -157,12 +169,7 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
                             }
                         },
-                        { field: "vshares", headerName: "Shares", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                            width: 80, minWidth: 80,
-                            cellClass : function (params) {
-                                return " text-right grid-table f-12 d-border-aggrid-right";
-                            },
-                        }
+
                     ]
                 },
                 { field: "priceTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width: this.props.gridView == 'grid' ? 94 : 206,
@@ -209,14 +216,26 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                         },
                     ],
                 },
-                { field: "amountTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
+                { field: "leaveVolTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }, children: [
-                        { field: "amountO", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                            width: 110, minWidth: 110,
+                        { field: "leaveVol0", headerName: "Leave Vol(Lot)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                            width: 150, minWidth: 150,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
+                            }
+                        },
+                    ],
+                },
+                { field: "userIdTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 110,
+                    cellClass : function (params) {
+                        return " text-right grid-table f-12 d-border-aggrid-right";
+                    }, children: [
+                        { field: "userId0", headerName: "User ID", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                            width: 110, minWidth: 110,
+                            cellClass : function (params) {
+                                return " text-left grid-table f-12 d-border-aggrid-right";
                             }
                         },
                     ],
@@ -238,7 +257,11 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     mlot: "",
                     mshares: ""   ,
                     matchpriceO:"",
-                    amountO:"12,650,000"   },
+                    amountO:"12,650,000" ,
+                    marketOrderNo0: "MKT0001",
+                    leaveVol0: "10",
+                    userId0: "johndide",
+                },
                 { dateO: "04/07/2019",
                     timeO: "11:12:10",
                     actionsO: "",
@@ -250,7 +273,11 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     mlot: "20",
                     mshares: "2,000"   ,
                     matchpriceO:"12,600",
-                    amountO:"25,300,000"   },
+                    amountO:"25,300,000",
+                    marketOrderNo0: "MKT0002",
+                    leaveVol0: "10",
+                    userId0: "johndide",
+                },
                 { dateO: "04/07/2019",
                     timeO: "11:10:17",
                     actionsO: "amend",
@@ -262,7 +289,11 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     mlot: "",
                     mshares: ""   ,
                     matchpriceO:"",
-                    amountO:"37,950,000"   },
+                    amountO:"37,950,000",
+                    marketOrderNo0: "MKT0003",
+                    leaveVol0: "10",
+                    userId0: "johndide",
+                },
                 { dateO: "04/07/2019",
                     timeO: "11:02:55",
                     actionsO: "",
@@ -274,7 +305,10 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     mlot: "50",
                     mshares: "5,000"   ,
                     matchpriceO:"12,600",
-                    amountO:"63,250,000"   },
+                    amountO:"63,250,000",
+                    marketOrderNo0: "MKT0004",
+                    leaveVol0: "10",
+                    userId0: "johndide",},
                 { dateO: "04/07/2019",
                     timeO: "11:00:23",
                     actionsO: "buy",
@@ -286,7 +320,11 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     mlot: "",
                     mshares: ""   ,
                     matchpriceO:"",
-                    amountO:"126,500,000"   },
+                    amountO:"126,500,000",
+                    marketOrderNo0: "MKT0005",
+                    leaveVol0: "10",
+                    userId0: "johndide",
+                },
             ],
             sideBar: {
                 toolPanels: [

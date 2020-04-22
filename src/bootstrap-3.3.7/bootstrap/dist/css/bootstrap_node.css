@@ -391,7 +391,7 @@
 [col-id~="priceO"],[col-id~="matchpriceO"],[col-id~="amountO"],
 [col-id~="codeR"], [col-id~="avgpriceR"], [col-id~="lastpriceR"],
 [col-id~="stockValR"], [col-id~="lqValR"], [col-id~="plR"], [col-id~="mktvalueR"],
-[col-id~="persenR"]
+[col-id~="persenR"], [col-id~="userId0"], [col-id~="leaveVol0"],[col-id~="marketOrderNo0"]
 {
   padding-bottom: 25px;
   /*z-index: 9999;*/

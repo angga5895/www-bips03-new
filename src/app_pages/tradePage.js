@@ -3435,7 +3435,7 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                },{ field: "vol", headerName: "Vol(Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?152:s=="s50"?150:s=="s67"?90:70, minWidth: 70,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";

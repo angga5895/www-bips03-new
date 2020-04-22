@@ -235,7 +235,7 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                         { field: "userId0", headerName: "User ID", sortable: true, filter: "agTextColumnFilter", resizable: true,
                             width: 110, minWidth: 110,
                             cellClass : function (params) {
-                                return " text-left grid-table f-12 d-border-aggrid-right";
+                                return " text-center grid-table f-12 d-border-aggrid-right";
                             }
                         },
                     ],

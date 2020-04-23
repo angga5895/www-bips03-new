@@ -65,7 +65,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                             <FillHeaderTab tradeMode="manual" treeName="/tradePage" linkTitles={
                                 {
                                     tradePageManOrderbook : 'ORDERLIST',
-                                    tradePageManWatchlist: 'ORDERBOOK',
+                                    tradePageManWatchlist: 'BID/OFFER',
                                     // tradePagePL : 'TRADE P/L',
                                     tradePageOrderBookList : 'ORDER BOOKING LIST',
                                     tradePageAdvertisement : 'TRADEADV',
@@ -186,17 +186,17 @@ class OrderbookPage extends React.PureComponent {
                     <div className="card-515 col-sm-12 pt-3 pr-2 mr-0 mt-0 row">
                         <div className="col-sm-4 pl-4 pr-0">
                             <div className={this.state.box1 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox1}>
-                                <TableInfoTransactionWithButton saham="AALI"/>
+                                <TableInfoTransactionWithButton saham="INDF" sahamName={"Indofood"}/>
                             </div>
                         </div>
                         <div className="col-sm-4 pl-4 pr-0">
                             <div className={this.state.box2 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox2}>
-                                <TableInfoTransactionWithButton saham="TLKM"/>
+                                <TableInfoTransactionWithButton saham="INDF" sahamName={"Indofood"}/>
                             </div>
                         </div>
                         <div className="col-sm-4 pl-4 pr-0">
                             <div className={this.state.box3 === 1 ? "bg-grey pt-1 d-active" : "bg-grey pt-1"} onClick={this.clickBox3}>
-                                <TableInfoTransactionWithButton saham="BMRI"/>
+                                <TableInfoTransactionWithButton saham="INDF" sahamName={"Indofood"}/>
                             </div>
                         </div>
                     </div>

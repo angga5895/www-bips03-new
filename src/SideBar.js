@@ -8,11 +8,15 @@ import {RegisterAmendModal} from "./app_pages/stockPage";
 import { BIPSAppContext } from './AppData.js';
 import { ContextConnector } from './appcontext.js';
 import {ModalAlertC} from "./app_modals/modal_Alert";
+import TableInfoTransaction from "./app_transaction/tableInfoTransaction";
+import {BuyPage} from "./app_pages/stockPage";
+
 
 import {ModalReconnect} from "./app_modals/modal_reconnect";
 import {AppFrameAction} from "./appframe";
 import SweetAlert from "react-bootstrap-sweetalert";
 import $ from "jquery";
+import {WSConnectionAction} from "./appnetwork";
 
 
 const option = [
@@ -77,10 +81,11 @@ class SideBar_Base extends React.Component{
             this.inactivity = this.inactivity.bind(this);
 
     }
-
+    closeClickNoAlert = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
     closeClick = (e) => {
         this.setState({showAlert:true});
-        // this.refs.frameAction.closeModal(100);
     }
     closeReconnect = (e) => {
     // this.setState({showAlert:true});
@@ -102,6 +107,16 @@ class SideBar_Base extends React.Component{
                     ></i></div>,
             size: 'tiny',
             contentClass: RegisterAmendModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+    buttonClickNewOrder = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right text-white">
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                   onClick={this.closeClickNoAlert}></i></div>,
+            size: 'large scrolling',
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -208,8 +223,8 @@ class SideBar_Base extends React.Component{
                 <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom d-sidebar-potrait">
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">
-                            <div className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
-                                <i className="fa-2x icon-icon-stock-list"></i>
+                            <div onClick={this.buttonClickNewOrder} className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
+                             <i class="fa-3x icofont-shopping-cart"></i>
                             </div>
                         </div>
                         <div className="align-self-center text-center px-1 py-0 h-25">
@@ -399,6 +414,21 @@ class SelectGroup extends React.Component {
                     />
                 </div>
             </div>
+        );
+    }
+}
+class tableInfoModal extends React.Component {
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction /> {/* websocket connection component */}
+                <TableInfoTransaction/>
+            </>
         );
     }
 }

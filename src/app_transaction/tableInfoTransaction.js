@@ -294,7 +294,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
 
     buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-white text-icofont-close click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: BuyModal,
@@ -304,7 +304,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
 
     buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-white text-icofont-close click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
             contentClass: SellModal,
@@ -317,13 +317,16 @@ class TableInfoTransactionWithButton extends React.PureComponent{
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="col-sm-12 row px-2 mx-0 py-3">
-                    <div className="col-sm-5 px-0 mx-0">
-                        <Input defaultValue={this.props.saham} placeholder='Code' style={{width:'50%'}}/>
+                    <div className="col-sm-3 px-0 mx-0">
+                        <Input defaultValue={this.props.saham} placeholder='Code' className={"col-md-12 px-0"}/>
                     </div>
+                    <div className="col-sm-5 px-0 mx-0">
+                        <Input defaultValue={this.props.sahamName} placeholder='Code Name' className={"col-md-12 pr-0"}/>
+                </div>
 
-                    <div className="col-sm-7 align-self-center mx-0 px-0">
-                        <button className="mx-1 pull-right col-sm-5 col-md-3 btn btn-sm btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
-                        <button className="mx-1 pull-right col-sm-5 col-md-3 btn btn-sm btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                    <div className="col-sm-4 align-self-center mx-0 px-0">
+                        <button className="mx-1 pull-right col-sm-5 col-md-5 btn btn-sm btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
+                        <button className="mx-1 pull-right col-sm-5 col-md-5 btn btn-sm btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
                     </div>
                 </div>
 

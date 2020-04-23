@@ -98,9 +98,9 @@ const StockInfo = (props) => {
                 <div className="col-sm-12 px-0 h-30">
                     <MenuOfContent treeName="/stockPage/stockInfoPage" linkTitles={
                         {
-                            stockInfoTable : 'STOCK INFO',
-                            profilTable : 'PROFIL',
-                            corpActionTable : 'CORP ACTION'
+                            stockInfoTable : 'Request',
+                            // profilTable : 'PROFIL',
+                            // corpActionTable : 'CORP ACTION'
                         }
                     } />
                 </div>
@@ -1552,7 +1552,7 @@ class BuyPage extends React.Component{
                     <TableInfoTransaction lotshare="buyPage"/>
                     </div>
                     <div className={this.state.activeTab === 1 ? "col-sm-6 mt-0 bg-buy pt-0 pb-0 px-0 card-514 d-border" : "col-sm-6 mt-0 bg-sell pt-0 pb-0 px-0 card-514 d-border"}>
-                        <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33 mb-3">
+                        <div className="cssmenumodal bg-dark-grey pb-0 col-sm-12 mx-0 px-0 h-33 mb-1">
                             <ul>
                                 <li className={ (this.state.activeTab === 1)  ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' }
                                     onClick={() => { this.toggle(1); }}><a className="pt-4 pb-2"><span className="f-12">
@@ -1572,6 +1572,7 @@ class BuyPage extends React.Component{
     }
 
 }
+
 
 class BuyModal extends React.Component {
     closeClick = (e) => {
@@ -4174,6 +4175,8 @@ export default Stocks;
 export { CustomFrameHeaderStock, BuyPage , AmendGroupNameAgGrid, AmendGroupCodeAgGrid, AddGroupCodeAgGrid, BuyModal, SellModal, RegisterAmendModal };
 export {
     StockWatchlist, StockHistoryPage, StockPage,
-    TableStockInfo, TableProfil, TableCorpAction,
+    TableStockInfo,
+    // TableProfil,
+    // TableCorpAction,
     StockTradeSummaryPage,
 };

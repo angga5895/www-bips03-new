@@ -98,7 +98,7 @@ const StockInfo = (props) => {
                 <div className="col-sm-12 px-0 h-30">
                     <MenuOfContent treeName="/stockPage/stockInfoPage" linkTitles={
                         {
-                            stockInfoTable : 'Request',
+                            stockInfoTable : 'STOCK INFO',
                             // profilTable : 'PROFIL',
                             // corpActionTable : 'CORP ACTION'
                         }

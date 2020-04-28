@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Table} from "react-bootstrap";
 import Select from "react-select";
 import {cssmode} from "./App";
-import {Dropdown} from "semantic-ui-react";
+import {Dropdown, Popup} from "semantic-ui-react";
 import {RegisterAmendModal} from "./app_pages/stockPage";
 
 import { BIPSAppContext } from './AppData.js';
@@ -223,9 +223,13 @@ class SideBar_Base extends React.Component{
                 <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom d-sidebar-potrait">
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">
-                            <div onClick={this.buttonClickNewOrder} className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
-                             <i class="fa-3x icofont-shopping-cart"></i>
-                            </div>
+
+                            <Popup content='New Order' position='top center' trigger={
+                                <div onClick={this.buttonClickNewOrder}
+                                     className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
+                                    <i className="fa-3x icofont-shopping-cart"></i>
+                                </div>
+                            } />
                         </div>
                         <div className="align-self-center text-center px-1 py-0 h-25">
                             <button className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>

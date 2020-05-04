@@ -416,6 +416,8 @@ const ResizeResponsive = () => {
     $('.runningText p').css('minWidth', (marquee));
     $('.runningText').css('minWidth', (marquee));
 
+
+
     var card406 = $('html').height() - 330;
     $('.card-406').css('min-height', card406);
 
@@ -450,6 +452,9 @@ const ResizeResponsive = () => {
     var height520 = height527-7;
     $('.card-520').css('min-height', (height520));
     var height145 = (height520-63-67-100)/2;
+
+    var height310od = (310/520)*(height520) - 43.3;
+    $('.card-310-odlist').css('minHeight', (height310od));
 
     var height290 = (height520-63-67-100);
     $('.card-290').css('min-height', (height290));
@@ -1138,6 +1143,8 @@ class MainPage_Base extends React.Component {
             $('.runningText p').css('minWidth', (marquee));
             $('.runningText').css('minWidth', (marquee));
 
+
+
             var height220a = $('html').height() - 473.5;
             $('.card-220-a').css('min-height', height220a);
 
@@ -1172,6 +1179,9 @@ class MainPage_Base extends React.Component {
 
             var height520 = height527-7;
             $('.card-520').css('minHeight', (height520));
+
+            var height310od = (310/520)*(height520) - 43.3;
+            $('.card-310-odlist').css('minHeight', (height310od));
 
             var height290 = (height520-63-67-100);
             $('.card-290').css('min-height', (height290));
@@ -1255,6 +1265,9 @@ class MainPage_Base extends React.Component {
 
                 var height310 = (310/520)*(height520);
                 $('.card-310').css('minHeight', (height310));
+
+
+
                 var height176 = (175/176)*(height520-height310-30);
                 $('.card-176').css('minHeight', (height176));
                 var height177 = (176/177)*(height520-height310-30+1);
@@ -1291,6 +1304,8 @@ class MainPage_Base extends React.Component {
 
                 var height310 = (310/520)*(height520);
                 $('.card-310').css('minHeight', (height310));
+
+
                 var height176 = (175/176)*(height520-height310-30);
                 $('.card-176').css('minHeight', (height176));
                 var height177 = (176/177)*(height520-height310-30+1);

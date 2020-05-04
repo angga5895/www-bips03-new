@@ -794,8 +794,30 @@ class TradeWatchlist extends React.PureComponent{
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
-
-                <div className="col-sm-12 px-0 card-310">
+                <div className="row f-12">
+                    <div className={"col-md-2 pl-5 text-left align-self-center"}>
+                       <span>10</span> Order(s) Selected
+                    </div>
+                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                        Total Match Volume(Lot): <span>250</span>
+                    </div>
+                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                        Total Match Amnt: <span>2,500,000,000</span>
+                    </div>
+                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                        Total Volume: 250,000
+                    </div>
+                    <div className={"col-md-1 pb-2 text-right"}>
+                        <Popup content='Refresh' position='top center' trigger={
+                            <button
+                                className={`btn btn-primary`}
+                                style={{"font-size": "14px", "width": "38px", "margin-top": "2px"}}>
+                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                            </button>
+                        }/>
+                    </div>
+                </div>
+                <div className="col-sm-12 px-0 card-310-odlist">
                     <OrderListAgGrid
                         size={this.ceksize()}
                         clickorderdetail={this.buttonClickOrderDetail}
@@ -2557,7 +2579,7 @@ class OrderListAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-310 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-310-odlist ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

@@ -6145,3 +6145,10 @@ textarea {
 body{
     overflow-y: hidden;
 }
+#container-barchart{
+    height: 300px;
+    min-height: 300px;
+}
+.card-310-odlist{
+    height: 270px;
+}

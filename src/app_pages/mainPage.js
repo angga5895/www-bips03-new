@@ -416,7 +416,8 @@ const ResizeResponsive = () => {
     $('.runningText p').css('minWidth', (marquee));
     $('.runningText').css('minWidth', (marquee));
 
-
+    var heightbarchart = $('html').height() - 360;
+    $('#container-barchart').css('min-height', heightbarchart);
 
     var card406 = $('html').height() - 330;
     $('.card-406').css('min-height', card406);
@@ -1143,7 +1144,8 @@ class MainPage_Base extends React.Component {
             $('.runningText p').css('minWidth', (marquee));
             $('.runningText').css('minWidth', (marquee));
 
-
+            var heightbarchart = $('html').height() - 360;
+            $('#container-barchart').css('min-height', heightbarchart);
 
             var height220a = $('html').height() - 473.5;
             $('.card-220-a').css('min-height', height220a);

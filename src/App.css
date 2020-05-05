@@ -6146,8 +6146,7 @@ body{
     overflow-y: hidden;
 }
 #container-barchart{
-    height: 300px;
-    min-height: 300px;
+    height: 336px;
 }
 .card-310-odlist{
     height: 270px;

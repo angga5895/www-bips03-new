@@ -542,7 +542,7 @@ class StockCash_Base extends React.Component{
                                     <li className="list-group-item-portofolio">Cash Ballance T+2 <br/><span className="text-primary pull-right">4,500,000</span></li>
                                     <li className="list-group-item-portofolio">Buy Limit <br/><span className="pull-right">15,980,000</span></li>
                                     <li className="list-group-item-portofolio">Stock Value <br/><span className="pull-right">15,234,000</span></li>
-                                    <li className="list-group-item-portofolio">Unsettled Amt <br/><span className="pull-right">?</span></li>
+                                    {/*<li className="list-group-item-portofolio">Unsettled Amt <br/><span className="pull-right">?</span></li>*/}
                                     <li className="list-group-item-portofolio">Mkt. Value <br/><span className="pull-right">4,400,000</span></li>
                                 </ul>
                             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {AppFrame, AppFrameAction, AppFrameProvider, AppModal} from "../appframe";
 import { NetAppContext, WSConnectionAction } from '../appnetwork.js';
 import FillHeaderTab from "../tabheaderfill";
@@ -22,6 +22,8 @@ import NumberInput from "../numberinput";
 import '../bootstrap-3.3.7/bootstrap-datepicker.min.css';
 import $ from "jquery";
 import Select from "react-select";
+import 'ag-grid-enterprise';
+import CustomTooltip from "./CustomTooltip";
 
 class RadioButt extends React.PureComponent {
     state = {}
@@ -1888,6 +1890,8 @@ class OrderListAgGrid extends React.PureComponent {
                 },
                 { field: "remark", headerName: "Remark", sortable: true, resizable: true,
                     width:s=="s49"?100:95, minWidth:95,
+                    tooltipField: 'remark',
+                    tooltipComponentParams: { color: '#ececec' },
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12";
                     },
@@ -1985,7 +1989,10 @@ class OrderListAgGrid extends React.PureComponent {
                 filter: true,
                 headerCheckboxSelection: isFirstColumn,
                 checkboxSelection: isFirstColumn,
+                tooltipComponent: 'customTooltip',
             },
+            tooltipShowDelay: 0,
+            frameworkComponents: {customTooltip: CustomTooltip},
             rowSelection: "multiple",
             getRowHeight : function(params){
                 return 28;
@@ -1996,7 +2003,7 @@ class OrderListAgGrid extends React.PureComponent {
                     code : "AALI"+s,
                     cmd : "SELL",
                     status :"Done",
-                    remark : "",
+                    remark : "(1128): Security is not currently trading",
                     type :"Day",
                     mkt :"RG",
                     vlot :"10",
@@ -2592,6 +2599,8 @@ class OrderListAgGrid extends React.PureComponent {
                         rowSelection={this.state.rowSelection}
                         onGridReady={this.onGridReady}
                         onFirstDataRendered={this.onFirstDataRendered}
+                        tooltipShowDelay={this.state.tooltipShowDelay}
+                        frameworkComponents={this.state.frameworkComponents}
                     >
                     </AgGridReact>
                 </div>

@@ -1884,6 +1884,8 @@ class OrderListAgGrid extends React.PureComponent {
                 },
                 { field: "status", headerName: "Status", sortable: true, resizable: true,
                     width:s=="s49"?220:s=="s50"?200:s=="s67"?100:85, minWidth: 85,
+                    tooltipField: 'status',
+                    tooltipComponentParams: { type: 'status' },
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12";
                     },
@@ -1891,7 +1893,7 @@ class OrderListAgGrid extends React.PureComponent {
                 { field: "remark", headerName: "Remark", sortable: true, resizable: true,
                     width:s=="s49"?100:95, minWidth:95,
                     tooltipField: 'remark',
-                    tooltipComponentParams: { color: '#ececec' },
+                    tooltipComponentParams: { type: 'remark' },
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12";
                     },

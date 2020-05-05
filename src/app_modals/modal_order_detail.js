@@ -18,42 +18,47 @@ class ModalOrderDetail extends React.PureComponent{
                         <Table size="sm" responsive bordered className="text-white">
                             <thead></thead>
                             <tbody className="f-12">
-                            <tr><td colSpan="2" className="f-14 bg-gray-tradding text-center font-weight-bold">ORDER DETAIL</td></tr>
                             <tr>
-                                <td>Order Number</td>
-                                <td className="bg-black-trading hover-tables">001682</td>
+                                <td colSpan="2" className="f-14 bg-gray-tradding text-center font-weight-bold py-2">ORDER DETAIL</td></tr>
+                            <tr>
+                                <td className="pt-2 pb-2">Order Number</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">001682</td>
                             </tr>
                             <tr>
-                                <td>Market Order Number</td>
-                                <td className="hover-tables">MKT021</td>
+                                <td className="pt-2 pb-2">Market Order Number</td>
+                                <td className="hover-tables pt-2 pb-2">MKT021</td>
                             </tr>
                             <tr>
-                                <td>Code</td>
-                                <td className="bg-black-trading hover-tables">AALI [Astra Argo Lestari Tbk.]</td>
+                                <td className="pt-2 pb-2">Code</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">AALI [Astra Argo Lestari Tbk.]</td>
                             </tr>
                             <tr>
-                                <td>Command</td>
-                                <td className="text-danger hover-tables">Buy</td>
+                                <td className="pt-2 pb-2">Command</td>
+                                <td className="text-danger hover-tables pt-2 pb-2">Buy</td>
                             </tr>
                             <tr>
-                                <td>Type</td>
-                                <td className="bg-black-trading hover-tables">Day</td>
+                                <td className="pt-2 pb-2">Type</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">Day</td>
                             </tr>
                             <tr>
-                                <td>Market</td>
-                                <td className="hover-tables">RG</td>
+                                <td className="pt-2 pb-2">Market</td>
+                                <td className="hover-tables pt-2 pb-2">RG</td>
                             </tr>
                             <tr>
-                                <td>Total Match Volume (Lot)</td>
-                                <td className="bg-black-trading hover-tables">70</td>
+                                <td className="pt-2 pb-2">Total Match Volume (Lot)</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">70</td>
                             </tr>
                             <tr>
-                                <td>Match Value</td>
-                                <td className="hover-tables">88,550,000</td>
+                                <td className="pt-2 pb-2">Match Value</td>
+                                <td className="hover-tables pt-2 pb-2">88,550,000</td>
                             </tr>
                             <tr>
-                                <td>Order By</td>
-                                <td className="bg-black-trading hover-tables">Customer</td>
+                                <td className="pt-2 pb-2">Order By</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">Customer</td>
+                            </tr>
+                            <tr>
+                                <td className="pt-2 pb-2">Order By</td>
+                                <td className="bg-black-trading hover-tables pt-2 pb-2">Customer</td>
                             </tr>
                             </tbody>
                         </Table>

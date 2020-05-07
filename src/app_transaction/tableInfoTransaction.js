@@ -330,7 +330,7 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                     </div>
                 </div>
 
-                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-112 mb-1">
+                <Table responsive borderless size="sm" className="text-white d-border-table bg-dark-grey card-112">
                     <thead></thead>
                     <tbody>
                     <tr>
@@ -366,18 +366,12 @@ class TableInfoTransactionWithButton extends React.PureComponent{
                         <td className="no-wrap d-border-tr-gray text-right py-1">1.1 B</td>
                     </tr>
                     <tr>
-                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Upper AR</td>
-                        <td className="no-wrap text-right py-1 d-border-tr-black py-1" >13,000</td>
-                        <td className="no-wrap bg-gray-tradding py-1 d-border-tr-black py-1">Avg.</td>
-                        <td className="no-wrap text-danger text-right py-1 d-border-tr-black py-1">12,639.92</td>
-                        <td className="no-wrap bg-gray-tradding py-1 d-border-tr-black py-1">F. Sell</td>
-                        <td className="no-wrap text-right py-1 d-border-tr-black py-1">825.5 M</td>
-                    </tr>
-                    <tr>
-                        <td className="no-wrap bg-gray-tradding py-1" colSpan={3}>Status</td>
-                        <td className="no-wrap text-left py-1" colSpan={3}>
-                            Success
-                        </td>
+                        <td className="no-wrap bg-gray-tradding py-1">Upper AR</td>
+                        <td className="no-wrap text-right py-1">13,000</td>
+                        <td className="no-wrap bg-gray-tradding py-1">Avg.</td>
+                        <td className="no-wrap text-danger text-right py-1">12,639.92</td>
+                        <td className="no-wrap bg-gray-tradding py-1">F. Sell</td>
+                        <td className="no-wrap text-right py-1">825.5 M</td>
                     </tr>
                     </tbody>
                 </Table>

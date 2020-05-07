@@ -3274,6 +3274,12 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
+                },{ field: "status", headerName: "Status", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:120,
+                    minWidth:120,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:120,
                     minWidth:120,
@@ -3344,6 +3350,7 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                 {
                     no: '1'+s,
                     bookingNo: '001',
+                    status: 'success',
                     cmd: 'Buy',
                     mkt: 'RG',
                     code: 'TLKM',

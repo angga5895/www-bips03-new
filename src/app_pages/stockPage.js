@@ -2030,11 +2030,11 @@ class HistoryBrokerChart extends React.PureComponent {
             buyer: [
                 {
                     data1: [
-                        ["John", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
+                        ["John", 10000, 1000, 2000],
+                        ["Jake", 12000, 3000, 4000],
+                        ["Peter", 13000, 4000, 4000],
+                        ["James", 10000, 5000, 5000],
+                        ["Mary", 9000, 6000, 9994],
                     ],
                     data2: [
                         ["John", 10000],
@@ -2127,17 +2127,24 @@ class HistoryBrokerChart extends React.PureComponent {
         // });
 
         var chart = anychart.bar();
-        var series = chart.bar(this.state.buyer[0].data1);
-        var series2 = chart.bar(this.state.buyer[0].data2);
-        var series3 = chart.bar(this.state.buyer[0].data3);
-        chart.title(this.state.chartTitle);
-        series.name("Vol");
-        series2.name("Lot");
-        series3.name("Freq");
-        var tooltip = chart.tooltip();
+        var data = anychart.data.set([
+            ["John" , 10000, 12000, 9999],
+            ["Jake" , 12000, 15000, 8888],
+            ["Peter" , 18000, 16000, 8888],
+            ["James" , 11000, 13000, 13213],
+            ["Mary" , 9000, 19000, 12333],
+        ]);
+        var data1 = data.mapAs({x: 0, value: 1, freq: 2, volume: 3,});
 
-        // set display mode for the tooltip
-        tooltip.displayMode("union");
+        var series = chart.bar(data1);
+
+        chart.title(this.state.chartTitle);
+        series.name("Series");
+
+        chart.tooltip().useHtml(true);
+        var tooltip = chart.tooltip();
+        tooltip.positionMode("point");
+        tooltip.format("Volume: <b>{%volume}</b><br>Value: <b>{%value}</b><br>Freq: <b>{%freq}</b>");
 
         var credits = chart.credits();
         credits.enabled(false);

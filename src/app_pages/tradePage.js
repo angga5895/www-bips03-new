@@ -3263,51 +3263,51 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?140:s=="s90"?120:s=="s100"?90:80,
-                    minWidth:80,
+                    width: s=="s49"?140:s=="s50"?130:s=="s67"?120:s=="s75"?110:s=="s80"?100:s=="s90"?60:s=="s100"?60:60,
+                    minWidth:60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bookingNo", headerName: "Booking No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:120,
+                    width: s=="s49"?210:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:s=="s90"?140:s=="s100"?130:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:120,
+                    width: s=="s49"?210:s=="s50"?200:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?120:s=="s100"?120:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
-                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:120,
-                    minWidth:120,
+                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?110:s=="s100"?90:80,
+                    minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "mkt", headerName: "Mkt", sortable: true, resizable: true,
-                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?165:s=="s90"?120:s=="s100"?120:110,
-                    minWidth:110,
+                    width: s=="s49"?210:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
+                    minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?120:s=="s100"?120:110,
-                    minWidth:110,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
+                    minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?160:s=="s90"?140:s=="s100"?140:140,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?150:s=="s90"?140:s=="s100"?140:140,
                     minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?170:s=="s80"?150:s=="s90"?130:s=="s100"?130:120,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?180:s=="s75"?170:s=="s80"?140:s=="s90"?130:s=="s100"?130:120,
                     minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";

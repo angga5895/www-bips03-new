@@ -1068,23 +1068,23 @@ class FundTransfer_Base extends React.PureComponent {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="p-2">If the above bank Information is wrong, please contact our call center at 14099 or by website www.directtrading.co.id</div>
-                                        <div className="d-border">
+                                        <div className="d-border bg-gray-tradding">
                                             <div className="col-md-12 p-3">
                                                 <div className="row p-3">
-                                                    <div className="col-md-2 mt-3">
-                                                        Amount (Not Including Fee)
-                                                    </div>
-                                                    <div className="col-md-1 mt-3">
-                                                        IDR
-                                                    </div>
-                                                    <div className="col-md-3">
-                                                        <Input 
-                                                        readonly defaultValue='1,000,000' 
-                                                        placeholder='Name' 
-                                                        className="col-sm-12 pl-4 pr-0 text-right align-self-center input-right"
-                                                        
-                                                        />
-                                                    </div>
+                                                    {/*<div className="col-md-2 mt-3">*/}
+                                                        {/*Amount (Not Including Fee)*/}
+                                                    {/*</div>*/}
+                                                    {/*<div className="col-md-1 mt-3">*/}
+                                                        {/*IDR*/}
+                                                    {/*</div>*/}
+                                                    {/*<div className="col-md-3">*/}
+                                                        {/*<Input */}
+                                                        {/*readonly defaultValue='1,000,000' */}
+                                                        {/*placeholder='Name' */}
+                                                        {/*className="col-sm-12 pl-4 pr-0 text-right align-self-center input-right"*/}
+                                                        {/**/}
+                                                        {/*/>*/}
+                                                    {/*</div>*/}
                                                     <div className="col-md-2 mt-3">
                                                         Withdrawable Amount
                                                     </div>
@@ -1096,34 +1096,46 @@ class FundTransfer_Base extends React.PureComponent {
                                                         placeholder='Name' 
                                                         className="col-sm-12 pl-4 pr-0 text-right align-self-center input-right"/>
                                                     </div>
-                                                </div> <div className="row p-3">
-                                                <div className="col-md-2 mt-3">
-                                                    Transfer Date (T1/T2)
+                                                    <div className={"col-md-6"}></div>
+                                                    <div className={"col-sm-12 f-11 mt-4"}>
+                                                        <input className="magic-checkbox" type="checkbox" name="viaRTGS"
+                                                               id="viaRTGS" value="option"/>
+                                                        <label htmlFor="viaRTGS"
+                                                               className="text-white f-12-center pt-1">
+                                                            Via RTGS (The above amount is more than IDR 100,000,000)
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div className="col-md-1">
+                                                {/*<div className="row p-3">*/}
+                                                    {/*<div className="col-md-2 mt-3">*/}
+                                                        {/*Transfer Date (T1/T2)*/}
+                                                    {/*</div>*/}
+                                                    {/*<div className="col-md-1">*/}
 
-                                                </div>
-                                                <div className="col-md-3 ui input" style={{paddingRight:'53px'}}>
-                                                    <Input placeholder='dd/mm/yy' id="datepickerTest" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
-                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
-                                                        className="fa fa-calendar-alt"></span></span>
-                                                </div>
-                                            </div>
+                                                    {/*</div>*/}
+                                                        {/**/}
+                                                    {/*<div className="col-md-3 ui input" style={{paddingRight:'53px'}}>*/}
+                                                        {/*<Input placeholder='dd/mm/yy' id="datepickerTest" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>*/}
+                                                        {/*<span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span*/}
+                                                            {/*className="fa fa-calendar-alt"></span></span>*/}
+                                                    {/*</div>*/}
+                                                {/*</div>*/}
                                             </div>
                                         </div>
 
-                                        <div className="row">
-                                            <div className="col-md-12 p-5">
-                                                <input className="magic-checkbox" type="checkbox" name="viaRTGS" id="viaRTGS" value="option"/>
-                                                <label for="viaRTGS" className="text-white f-12-center pt-1">
-                                                    Via RTGS (The above amount is more than IDR 100,000,000)
+                                        <div className="row mt-4 pr-4">
+                                            <div className="col-sm-6 mt-2">
+                                                <label htmlFor="">
+                                                    <u>Disclaimer</u>
                                                 </label>
                                             </div>
-                                            <div className={"col-sm-12 text-right mb-0 px-3 h-40"}>
+                                            <div className={"col-sm-6 text-right mb-0 px-3 h-40"}>
                                                 <button onClick={this.buttonClickPIN} className={"btn btn-primary"}><i className={"fa fa-paper-plane"}>&nbsp;Send</i></button>
                                             </div>
                                         </div>
 
+                                    </div>
+                                    <div class="col-md-2">
                                     </div>
                                 </div>
                             </div>

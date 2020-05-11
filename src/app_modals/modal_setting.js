@@ -21,8 +21,8 @@ const stateTimeZone = [
 
 const panes = [
   { menuItem: 'Appearance', render: () => <Tab.Pane><TabAppearance/></Tab.Pane> },
-  { menuItem: 'Privacy', render: () => <Tab.Pane><TabPrivacy/></Tab.Pane> },
-  { menuItem: 'Notification', render: () => <Tab.Pane><TabNotification/></Tab.Pane> },
+  { menuItem: 'Security', render: () => <Tab.Pane><TabPrivacy/></Tab.Pane> },
+  // { menuItem: 'Notification', render: () => <Tab.Pane><TabNotification/></Tab.Pane> },
 ]
 class ModalSetting extends React.Component {
 
@@ -166,48 +166,47 @@ class TabAppearance_Base extends React.PureComponent {
             <div>
                 <div className="col align-item-center"> 
                     <div className="text-white setting align-items-center">
+
                     {/* <div className="border-bottom"> */}
-                        <div className="form-group row mb-0">
-                            <div class="col-sm-5 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                                    Language
-                                </div>
-                            </div>
+                        {/*<div className="form-group row mb-0">*/}
+                            {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                                {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">*/}
+                                    {/*Language*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
 
-                            <div class="col-sm-5 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                                    Time zone
-                                </div>
-                            </div>
-                        </div>
+                            {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                                {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">*/}
+                                    {/*Time zone*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
 
-                        <div className="form-group row mb-0">
-                            <div class="col-sm-5 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                                    <Dropdown placeholder='Choose' search selection options={stateLanguages} className="col-sm-12 f-12"/>                                                        
-                                </div>
-                            </div>
-                            <div class="col-sm-5 mx-0 mb-2 ">
-                                <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                                    <Dropdown placeholder='Choose' search selection options={stateTimeZone} className="col-sm-12 f-12"/>                                                                                        
-                                </div>
-                            </div>
-                        </div>
+                        {/*<div className="form-group row mb-0">*/}
+                            {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                                {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center">*/}
+                                    {/*<Dropdown placeholder='Choose' search selection options={stateLanguages} className="col-sm-12 f-12"/>                                                        */}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                            {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                                {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center">*/}
+                                    {/*<Dropdown placeholder='Choose' search selection options={stateTimeZone} className="col-sm-12 f-12"/>                                                                                        */}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
                     {/* </div> */}
-
-                    <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>
 
                     <div className="form-group row mb-0">
                         <div class="col-sm-6 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
+                            <div class="ui small input col-sm-12 f-14 text-center align-self-center text-white">
                                 Theme Settings
                             </div>
                         </div>
                     </div>
 
                     <div className="form-group row mb-0">
-                        <div class="col-sm-3 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center" >
+                        <div class="col-sm-6 mx-0 mb-2 ">
+                            <div class="ui small input col-sm-5 f-12 text-center align-self-center" >
                             <input type="radio" class="radio_item" value="" name="itemTheme" id="radio1" onClick={
                                 (e) => {
                                     this.setState({
@@ -218,9 +217,7 @@ class TabAppearance_Base extends React.PureComponent {
                             } checked={this.state.valueTheme === "night" ? true : false}/>
                                 <label class="label_item" htmlFor="radio1"> <i className="logo-dark-theme"/> </label>
                             </div>
-                        </div>
-                        <div class="col-sm-3 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center">
+                            <div class="ui small input col-sm-6 f-12 text-center align-self-center">
                             <input type="radio" class="radio_item" value="" name="itemTheme" id="radio2" onClick={
                                 (e) => {
                                     this.setState({
@@ -403,70 +400,70 @@ class TabPrivacy extends React.Component {
                     <div className="form-group row mb-0">
                         <div class="col-sm-5 mx-0 mb-2 ">
                             <div class="ui small input col-sm-12 f-14 text-center align-self-center text-white">
-                                Privacy Settings
+                               Privacy Settings
                             </div>
                         </div>
                     </div>                        
-                    <div className="form-group row mb-0">
-                        <div class="col-sm-5 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                                Email
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="form-group row mb-0">*/}
+                        {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">*/}
+                                {/*Email*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
 
-                    <div className="form-group row mb-0">
-                        <div class="col-sm-5 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                               <input type="text"/>
-                            </div>
-                        </div>
-                        <div class="col-sm-5 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                                <button className="btn btn-md btn-primary">Changes</button>
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="form-group row mb-0">*/}
+                        {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center">*/}
+                               {/*<input type="text"/>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                        {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center">*/}
+                                {/*<button className="btn btn-md btn-primary">Changes</button>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
 
-                    <div className="form-group row mb-0">
-                        <div class="col-sm-5 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-9 text-right">
-                                <i className="text-blue">Current email</i>
-                            </div>
-                        </div>
-                    </div>
-                {/* </div> */}
+                    {/*<div className="form-group row mb-0">*/}
+                        {/*<div class="col-sm-5 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-9 text-right">*/}
+                                {/*<i className="text-blue">Current email</i>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*/!* </div> *!/*/}
 
-                <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>
+                {/*<div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>*/}
 
-                <div className="form-group row mb-0">
-                    <div class="col-sm-6 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                            Profile Photo
-                        </div>
-                    </div>
-                </div>
+                {/*<div className="form-group row mb-0">*/}
+                    {/*<div class="col-sm-6 mx-0 mb-2 ">*/}
+                        {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">*/}
+                            {/*Profile Photo*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
 
-                <div className="form-group row mb-0">
-                    <div class="col-sm-1 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center">
-                            <div className="col-md-12" style={imgdisplay}>
-                                <img src={avatar} alt="User" className="img-avatar d-border mr-2" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 mx-0 mb-2 ">
-                        <div class="ui small input col-sm-12 f-12 text-center align-self-center ver-center">
-                            {/* <button className="btn btn-md btn-primary">Upload</button> */}
-                            <div className="fileUpload btn btn-primary">
-                                <span>Browse</span>
-                                <input id="uploadBtnID" type="file" className="upload" accept="image/*" onChange={this.onChangeAvatar}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/*<div className="form-group row mb-0">*/}
+                    {/*<div class="col-sm-1 mx-0 mb-2 ">*/}
+                        {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center">*/}
+                            {/*<div className="col-md-12" style={imgdisplay}>*/}
+                                {/*<img src={avatar} alt="User" className="img-avatar d-border mr-2" />*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                    {/*<div class="col-sm-3 mx-0 mb-2 ">*/}
+                        {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center ver-center">*/}
+                            {/*/!* <button className="btn btn-md btn-primary">Upload</button> *!/*/}
+                            {/*<div className="fileUpload btn btn-primary">*/}
+                                {/*<span>Browse</span>*/}
+                                {/*<input id="uploadBtnID" type="file" className="upload" accept="image/*" onChange={this.onChangeAvatar}/>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
 
-                <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>
+                {/*<div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>*/}
 
                 <div className="form-group row mb-0">
                     <div class="col-sm-6 mx-0 mb-2 ">

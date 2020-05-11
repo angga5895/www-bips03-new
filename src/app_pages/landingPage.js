@@ -1086,7 +1086,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                         {/*/>*/}
                                                     {/*</div>*/}
                                                     <div className="col-md-2 mt-3">
-                                                        Withdrawable Amount
+                                                        Withdrawal Amount
                                                     </div>
                                                     <div className="col-md-1 mt-3">
                                                         IDR

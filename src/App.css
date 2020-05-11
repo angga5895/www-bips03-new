@@ -2190,7 +2190,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 25vh !important;
+        padding-top: 24vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2200,7 +2200,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 19vh !important;
+        padding-top: 18vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2210,7 +2210,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 18vh !important;
+        padding-top: 17vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2220,7 +2220,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 15vh !important;
+        padding-top: 14vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2230,7 +2230,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 13vh !important;
+        padding-top: 12vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2240,7 +2240,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 30% !important;
         padding-left: 30% !important;
-        padding-top: 10vh !important;
+        padding-top: 9vh !important;
         /*padding-bottom: 10px !important;*/
         min-height: 100vh;
     }
@@ -2250,7 +2250,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 20% !important;
         padding-left: 20% !important;
-        padding-top: 8vh !important;
+        padding-top: 7vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }
@@ -2260,7 +2260,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 27.5% !important;
         padding-left: 27.5% !important;
-        padding-top: 7vh !important;
+        padding-top: 6vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }
@@ -2270,7 +2270,7 @@ button.bg-gold:hover {
     .p-login {
         padding-right: 5% !important;
         padding-left: 5% !important;
-        padding-top: 5vh !important;
+        padding-top: 4vh !important;
         /*padding-bottom: 100px !important;*/
         min-height: 100vh;
     }
@@ -4503,7 +4503,7 @@ padding-left: 8px !important;
 }
 
 .setting{
-    height: 460px !important;
+    height: 390px !important;
     padding-bottom: 0;
 }
 

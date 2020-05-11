@@ -691,7 +691,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   defaultValue="apihtx"/>
+                                                                   defaultValue="zakitx"/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -705,7 +705,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="apih123"/>
+                                                                       defaultValue="zaki123"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
@@ -786,7 +786,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 f-10 pt-4 px-5">
-                                        Copyright 2020 by PT. Bahana Sekuritas
+                                        Copyright 2020 by PT. Bahana Sekuritas<br/>
+                                        Best viewed with Chrome v37+, IE v10+, Firefox v38+, Safari v7+ at 1366 * 768 resolution
                                     </div>
                                 </div>
                             </main>

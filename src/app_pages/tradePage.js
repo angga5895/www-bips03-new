@@ -1837,6 +1837,8 @@ class OrderListAgGrid extends React.PureComponent {
                 { field: "-", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?50:35,
                     minWidth: 35,
+                    headerCheckboxSelectionFilteredOnly: true,
+                    checkboxSelection: true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center text-primary f-12 click-pointer";
                     },

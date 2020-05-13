@@ -2603,6 +2603,7 @@ class OrderListAgGrid extends React.PureComponent {
                         onFirstDataRendered={this.onFirstDataRendered}
                         tooltipShowDelay={this.state.tooltipShowDelay}
                         frameworkComponents={this.state.frameworkComponents}
+                        groupSelectsFiltered={true}
                     >
                     </AgGridReact>
                 </div>

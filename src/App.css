@@ -6143,7 +6143,7 @@ textarea {
     height: 406px;
 }
 body{
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 #container-barchart{
     height: 336px;

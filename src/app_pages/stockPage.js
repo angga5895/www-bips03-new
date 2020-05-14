@@ -2027,81 +2027,8 @@ class HistoryBrokerChart extends React.PureComponent {
         this.state = {
             subTabActive: 1,
             chartTitle: "TOP Buyer",
-            buyer: [
-                {
-                    data1: [
-                        ["John", 10000, 1000, 2000],
-                        ["Jake", 12000, 3000, 4000],
-                        ["Peter", 13000, 4000, 4000],
-                        ["James", 10000, 5000, 5000],
-                        ["Mary", 9000, 6000, 9994],
-                    ],
-                    data2: [
-                        ["John", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                    data3: [
-                        ["John", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                },
-            ],
-            seller: [
-                {
-                    data1: [
-                        ["John3", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                    data2: [
-                        ["John3", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                    data3: [
-                        ["John3", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                },
-            ],
-            net: [
-                {
-                    data1: [
-                        ["John2", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                    data2: [
-                        ["John2", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                    data3: [
-                        ["John2", 10000],
-                        ["Jake", 12000],
-                        ["Peter", 13000],
-                        ["James", 10000],
-                        ["Mary", 9000],
-                    ],
-                },
-            ],
+            heightValue: "335px",
+
         }
 
     }
@@ -2116,15 +2043,13 @@ class HistoryBrokerChart extends React.PureComponent {
         document.getElementById("resetBar").click();
     }
 
+    changesize(){
+        var newval = $("#heightValue-trigger").val();
+        var temp = String(newval+"px");
+        console.log(newval);
+        this.setState({heightValue: temp});
+    }
     render() {
-        // anychart.onDocumentReady(function () {
-        //     // The data used in this sample can be obtained from the CDN
-        //     anychart.data.loadCsvFile('aapl-daily.csv', function (data) {
-        //         // create data table on loaded data
-        //         createChart(data);
-        //     });
-        //
-        // });
 
         var chart = anychart.bar();
         var data = anychart.data.set([
@@ -2149,92 +2074,6 @@ class HistoryBrokerChart extends React.PureComponent {
         var credits = chart.credits();
         credits.enabled(false);
 
-        function createChart2(data) {
-            var dataTable = anychart.data.table();
-            dataTable.addData(data);
-
-            // map loaded data
-            var mapping = dataTable.mapAs({
-                open: 1,
-                high: 2,
-                low: 3,
-                close: 4,
-                value: {
-                    column: 6,
-                    type: 'sum'
-                }
-            });
-
-            // create stock chart
-            // var chart = anychart.stock();
-            // set chart padding
-            chart.padding().right(60);
-            chart.height("90%");
-
-            // create plot on the chart
-            var plot = chart.plot(0);
-
-            // enabled x-grid/y-grid
-            plot.xGrid(true).yGrid(true);
-
-            // set orientation y-axis to the right side
-            plot.yAxis().orientation('right');
-
-            // create candlestick series on the plot
-            var aaplSeries = plot.candlestick(mapping);
-            // set series settings
-            aaplSeries.name('AAPL').zIndex(50);
-            aaplSeries.risingFill('green', 0.5).fallingFill('red', 0.5).risingStroke('green', 0.5).fallingStroke('red', 0.5);
-
-            // create EMA indicators with period 50 on the plot
-            // var ema = plot.ema(dataTable.mapAs({
-            //     'value': 4
-            // }));
-            // ema.series().stroke('1.5 #5FB1EE');
-
-            // create volume series on the plot
-            var volumeSeries = plot.column(mapping);
-            // set series settings
-            volumeSeries.name('Volume').zIndex(100).maxHeight('20%').bottom(0);
-            volumeSeries.legendItem({
-                iconEnabled: false,
-                textOverflow: ''
-            });
-
-            // create a logarithmic scale
-            var customScale = anychart.scales.log();
-            // sets y-scale
-            volumeSeries.yScale(customScale);
-
-            // set volume rising and falling stroke settings
-            volumeSeries.risingStroke('red');
-            volumeSeries.fallingStroke('green');
-
-            // set volume rising and falling fill settings
-            volumeSeries.risingFill('red .5');
-            volumeSeries.fallingFill('green .5');
-
-            // set chart selected date/time range
-            chart.selectRange('2016-07-01', '2016-12-30');
-
-            chart.background().fill("none");
-
-            // set container id for the chart
-            // chart.container(container);
-
-            // initiate chart drawing
-            chart.draw();
-
-            // create range picker
-            var rangePicker = anychart.ui.rangePicker();
-            // init range picker
-            rangePicker.render(chart);
-
-            // create range selector
-            var rangeSelector = anychart.ui.rangeSelector();
-            // init range selector
-            rangeSelector.render(chart);
-        }
         return (
             <>
                 <div
@@ -2295,10 +2134,11 @@ class HistoryBrokerChart extends React.PureComponent {
                         <AnyChart
                             type="bar"
                             // title="TOP 10 BUYER"
+                            height={this.state.heightValue}
                             legend="true"
                             instance={chart}
-                            id={"container-barchart"}
                         />
+                    <input type="hidden" id={"heightValue-trigger"} onClick={()=>this.changesize()}/>
                     {/*<div id={"container-bar"}></div>*/}
                 </div>
             </>

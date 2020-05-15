@@ -6180,7 +6180,7 @@ body{
     padding: 0;
     margin-left: 1px;
 }
-.btn-custom-nav:active{
+.btn-custom-nav:enabled:active{
     background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
 }
 .btn-custom-primary{

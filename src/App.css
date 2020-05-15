@@ -6145,9 +6145,7 @@ textarea {
 body{
     /*overflow-y: hidden;*/
 }
-#container-barchart{
-    height: 336px;
-}
+
 .card-310-odlist{
     height: 270px;
 }
@@ -6181,6 +6179,9 @@ body{
     color: white;
     padding: 0;
     margin-left: 1px;
+}
+.btn-custom-nav:active{
+    background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
 }
 .btn-custom-primary{
     height: 25px;

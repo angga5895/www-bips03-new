@@ -284,8 +284,8 @@ class SideBar_Base extends React.Component{
                                     <tr>
                                         <td className="py-0 px-0">
                                             <div className="align-self-center text-center noselect">
-                                                <button className={"btn btn-custom-nav"}>
-                                                    <i className="icofont icofont-ui-previous click-disabled"></i>
+                                                <button className={"btn btn-custom-nav disabled"}>
+                                                    <i className="icofont icofont-ui-previous"></i>
                                                 </button>
                                                 <button className={"btn btn-custom-primary btn-primary"}>
                                                     <i className="icofont icofont-refresh"></i>

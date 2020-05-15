@@ -53,7 +53,7 @@ class ModalOrderDetail extends React.PureComponent{
                                 <td className="bg-black-trading hover-tables pt-2 pb-2">70</td>
                             </tr>
                             <tr>
-                                <td className="pt-2 pb-2">Order Value</td>
+                                <td className="pt-2 pb-2">Order Volume (Lot)</td>
                                 <td className="hover-tables pt-2 pb-2">88,550,000</td>
                             </tr>
                             <tr>

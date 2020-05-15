@@ -111,6 +111,8 @@ class SideBar_Base extends React.Component{
         })
     }
     buttonClickNewOrder = (e) => {
+        $(".card-356").css("minHeight","500px");
+        console.log("hello");
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right text-white">
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
@@ -280,11 +282,17 @@ class SideBar_Base extends React.Component{
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td className="py-0 px-3">
+                                        <td className="py-0 px-0">
                                             <div className="align-self-center text-center noselect">
-                                                <i className="icofont icofont-ui-previous text-bips-dark-disabled f-16 click-disabled"></i>
-                                                &nbsp;<span className="text-disabled">|</span>&nbsp;
-                                                <i className="icofont icofont-ui-next text-bips-dark f-16 click-pointer"></i>
+                                                <button className={"btn btn-custom-nav"}>
+                                                    <i className="icofont icofont-ui-previous click-disabled"></i>
+                                                </button>
+                                                <button className={"btn btn-custom-primary btn-primary"}>
+                                                    <i className="icofont icofont-refresh"></i>
+                                                </button>
+                                                <button className={"btn btn-custom-nav f-16"}>
+                                                   <i className="icofont icofont-ui-next click-pointer"></i>
+                                               </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -312,6 +320,15 @@ class SideBar_Base extends React.Component{
                             </div>
 
                             <div className="row col-sm-12 mx-0 px-0">
+
+                                <div className="col-sm-1 align-self-center mx-0">
+                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                        <div className="align-self-center text-center click-pointer">
+                                            <i className="glyphicon glyphicon-refresh"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="col-sm-1 align-self-center mx-0">
                                     <div className="align-self-center text-center px-sidebar py-0 px-0">
                                         <div className="align-self-center text-center click-disabled">
@@ -320,7 +337,7 @@ class SideBar_Base extends React.Component{
                                     </div>
                                 </div>
 
-                                <div className="row col-sm-10 mx-0 px-0" style={{justifyContent : 'center'}}>
+                                <div className="row col-sm-9 mx-0 px-0" style={{justifyContent : 'center'}}>
                                     {
                                         this.state.rowData.map((charx, index) => {
                                             if(charx.percent < 0){

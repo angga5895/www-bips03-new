@@ -2647,19 +2647,25 @@ class StockWatchlistAgGrid extends React.PureComponent {
                 { field: "AvgPrice", headerName: "Avg. Price", sortable: false, resizable: true, filter: "agNumberColumnFilter",
                     width: 180, minWidth: 100,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right locked-col locked-visible f-12";
                     },
                 },
                 { field: "AccForVol", headerName: "Accumulate Foreign Vol", sortable: false, resizable: true,
                     width: 180, minWidth: 180, filter: "agNumberColumnFilter",
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
-                    },    
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    },
                 },
                 { field: "AccForVal", headerName: "Accumulate Foreign Val", sortable: false, resizable: true,
                     width: 180, minWidth: 180, filter: "agNumberColumnFilter",
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
                     },
                 },
 

@@ -505,14 +505,14 @@ div.ag-theme-balham-dark.ag-striped-odd.yellow-hover > div > div > div > div > d
     /*background-color: var(--warna-hover-menu) !important; }*/
 
 /*!*for grid even*!*/
-/*div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {*/
-    /*background-color: var(--warna-btn-dark-hover)!important; }*/
-/*div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div.ag-row-odd:hover {*/
-    /*background-color: var(--warna-btn-dark-hover)!important; }*/
-/*div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div > div > div.ag-row-even:hover {*/
-    /*background-color: var(--warna-btn-dark-hover)!important; }*/
-/*div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div.ag-row-even:hover {*/
-    /*background-color: var(--warna-btn-dark-hover)!important; }*/
+div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {
+    background-color: var(--warna-btn-dark-hover)!important; }
+div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div.ag-row-odd:hover {
+    background-color: var(--warna-btn-dark-hover)!important; }
+div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div > div > div.ag-row-even:hover {
+    background-color: var(--warna-btn-dark-hover)!important; }
+div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div.ag-row-even:hover {
+    background-color: var(--warna-btn-dark-hover)!important; }
 
 
 /*div.ag-theme-balham-dark.ag-striped-even > div > div > div > div > div > div > div > div > div.ag-row-odd {*/
@@ -525,23 +525,23 @@ div.ag-theme-balham-dark.ag-striped-odd.yellow-hover > div > div > div > div > d
     /*background-color: var(--warna-hover-menu)!important; }*/
 
 /*!*for grid live trade*!*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {*/
-    /*background-color: var(--warna-hover-menu); }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-odd:hover {*/
-    /*background-color: var(--warna-hover-menu); }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-even:hover {*/
-    /*background-color: var(--warna-hover-menu); }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-even:hover {*/
-    /*background-color: var(--warna-hover-menu); }*/
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-odd:hover {
+    background-color: var(--warna-hover-menu); }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-odd:hover {
+    background-color: var(--warna-hover-menu); }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-even:hover {
+    background-color: var(--warna-hover-menu); }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-even:hover {
+    background-color: var(--warna-hover-menu); }
 
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-odd {*/
-    /*background-color: var(--warna-table-striped) }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-odd {*/
-    /*background-color: var(--warna-table-striped) }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-even {*/
-    /*background-color: var(--warna-dasar); }*/
-/*div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-even {*/
-    /*background-color: var(--warna-dasar); }*/
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-odd {
+    background-color: var(--warna-table-striped) }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-odd {
+    background-color: var(--warna-table-striped) }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div > div > div.ag-row-even {
+    background-color: var(--warna-dasar); }
+div.ag-theme-balham-dark.ag-striped-odd > span > div > div > div > div > div > div > div.ag-row-even {
+    background-color: var(--warna-dasar); }
 .ag-row-hover {
     /* putting in !important so it overrides the theme's styling as it hovers the row also */
     /*background-color: #dfdfff !important;*/

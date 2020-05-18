@@ -3741,7 +3741,7 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-176 ag-theme-balham-dark yellow-hover ag-striped-odd ag-bordered d-border"}
+                    className={"card-176 ag-theme-balham-dark ag-striped-odd ag-bordered d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

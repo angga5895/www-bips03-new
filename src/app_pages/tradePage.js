@@ -3516,16 +3516,9 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
         params.api.sizeColumnsToFit();
     }
 
-    sortByAthleteDesc = () => {
-        console.log(this.gridApi.getSortModel());
-        // this.gridApi.setSortModel(sort);
-    };
     render() {
         return (
             <div style={{ width: "100%", height: "100%" }}>
-                <button onClick={() => this.sortByAthleteDesc()}>
-                    Athlete Ascending
-                </button>
                 <div
                     className={"card-520 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"

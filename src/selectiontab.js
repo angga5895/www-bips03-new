@@ -138,7 +138,7 @@ class AboutModal_Base extends React.Component {
                     </div>
 
                     <div className="col-sm-12 f-10 py-3 px-3 f-16">
-                        DX TRADE Version 2.1.
+                        DX TRADE Version 1.0.
                     </div>
 
                     <div className="col-sm-12 f-10 py-4" style={{ paddingLeft:"20%", paddingRight:"20%" }}>

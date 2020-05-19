@@ -741,8 +741,8 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         className="text-right mt-2 dot-login">
                                                         New DX TRADE?&nbsp;
                                                         <span 
-                                                            className="click-pointer text-primary" 
-                                                            onClick={this.buttonClickSignUp}>
+                                                            className="click-pointer text-primary">
+                                                            {/*onClick={this.buttonClickSignUp}>*/}
                                                             Sign Up
                                                         </span>
                                                     </text>

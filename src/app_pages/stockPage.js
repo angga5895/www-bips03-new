@@ -2054,19 +2054,28 @@ class HistoryBrokerChart extends React.PureComponent {
         var chart = anychart.bar();
         var data = anychart.data.set([
             ["John" , 10000, 12000, 9999],
-            ["Jake" , 12000, 15000, 8888],
+            ["","","","s"],
             ["Peter" , 18000, 16000, 8888],
             ["James" , 11000, 13000, 13213],
-            ["Mary" , 9000, 19000, 12333],
+            ["Mary" , 9000, 19000, 12333],["Jake2" , 12000, 15000, 8888],
+            ["Peter3" , 18000, 16000, 8888],
+            ["James4" , 11000, 13000, 13213],
+            ["Mary5" , 9000, 19000, 12333],["Jake6" , 12000, 15000, 8888],
+            ["Peter7" , 18000, 16000, 8888],
+            ["James8" , 11000, 13000, 13213],
+            ["Mary9" , 9000, 19000, 12333],
         ]);
         var data1 = data.mapAs({x: 0, value: 1, freq: 2, volume: 3,});
 
         var series = chart.bar(data1);
+        var series2 = chart.bar(data1);
 
         chart.title(this.state.chartTitle);
         series.name("Series");
-
+    
         chart.tooltip().useHtml(true);
+
+
         var tooltip = chart.tooltip();
         tooltip.positionMode("point");
         tooltip.format("Volume: <b>{%volume}</b><br>Value: <b>{%value}</b><br>Freq: <b>{%freq}</b>");
@@ -2074,6 +2083,12 @@ class HistoryBrokerChart extends React.PureComponent {
         var credits = chart.credits();
         credits.enabled(false);
 
+        chart.xAxis().title("Broker");
+        var labels = chart.xAxis().labels();
+        chart.xAxis().staggerMode(true);
+        labels.useHtml(false);
+
+        chart.yAxis().title("Volume (Lot)");
         return (
             <>
                 <div

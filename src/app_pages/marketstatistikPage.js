@@ -438,14 +438,28 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             // set chart type
             var chart = anychart.stock();
+
+            console.log(chart);
+
+            chart.scroller(true);
+            chart.scroller().enabled(false);
+
             var credits = chart.credits();
             credits.enabled(false);
+
+
 
             // set the series
             var series = chart.plot(0).line(mapping);
 
+            var columnTooltip = series.tooltip();
+            chart.tooltip().titleFormat('{%x}{type:time}');
+            columnTooltip.format("{%seriesName}: {%value}");
+            chart.plot(0).legend(false);
+
             series.name("");
             chart.title('Stock Streaming');
+
             // set container and draw chart
             chart.container("container").draw();
 

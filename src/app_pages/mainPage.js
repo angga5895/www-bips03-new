@@ -15,6 +15,7 @@ import SideBar from "../SideBar";
 import './../bootstrap-3.3.7/dark_chart_style.min';
 import LoginUserPage from './loginPage';
 import $ from 'jquery';
+import {Popup} from "semantic-ui-react";
 window.$ = window.jQuery = $;
 
 const CustomFrameHeader = (props) => {
@@ -491,6 +492,8 @@ const ResizeResponsive = () => {
 
         var height356 = ((358.9/474)*(height520-46))-7+2;
         $('.card-356').css('minHeight', (height356));
+        $('#cmp.card-356').css('minHeight', (height356));
+
 
         if($('html').height() > 1099 && $('html').height() < 1200)    {
             var height283 = (279/482)*(height482);
@@ -552,6 +555,7 @@ const ResizeResponsive = () => {
 
         var height356 = ((361.9/474)*(height520-46))-5.382+0.764+2;
         $('.card-356').css('minHeight', (height356));
+        $('#cmp.card-356').css('minHeight', (height356));
 
         var height283 = (283/482)*(height482);
         $('.card-283').css('minHeight', (height283));
@@ -1220,6 +1224,8 @@ class MainPage_Base extends React.Component {
 
                 var height356 = ((358.9/474)*(height520-46))-7+2;
                 $('.card-356').css('minHeight', (height356));
+                $('#cmp.card-356').css('minHeight', (height356));
+
 
                 if($('html').height() > 1099 && $('html').height() < 1200)    {
                     var height283 = (279/482)*(height482);
@@ -1284,6 +1290,9 @@ class MainPage_Base extends React.Component {
 
                 var height356 = ((361.9/474)*(height520-46))-5.382+0.764+2;
                 $('.card-356').css('minHeight', (height356));
+                $('#cmp.card-356').css('minHeight', (height356));
+
+                console.log("minheight 356 set to "+height356);
                 var height283 = (283/482)*(height482);
                 $('.card-283').css('minHeight', (height283));
                 var height191 = (199/199)*(height482-height283)-4;
@@ -1687,54 +1696,110 @@ class MainPage_Base extends React.Component {
                         <UISelectionTab treeName="/" linkTitles={
                             {
                                 landingPage:
-                                    <div className="text-align-center padding-t5">
-                                        <i className="icon-icon-investment-board fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips">MY ACCOUNT</span>
-                                    </div>,
+                                    <Popup content='MY ACCOUNT'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center padding-t5">
+                                                   <i className="icon-icon-investment-board fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips">MY ACCOUNT</span>
+                                               </div>
+                                           } />
+                                   ,
                                 marketstatistikPage:
-                                    <div className="text-align-center">
-                                        <i className="icon-icon-market-statistic fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-6">MARKET &</span><br/>
-                                        <span className="fs-text-bips">STATISTIC</span>
-                                    </div>,
+                                    <Popup content='MARKET & STATISTIC'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center">
+                                                   <i className="icon-icon-market-statistic fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-6">MARKET &</span><br/>
+                                                   <span className="fs-text-bips">STATISTIC</span>
+                                               </div>
+                                           } />
+                                    ,
                                 stockPage:
-                                    <div className="text-align-center padding-t5">
-                                        <i className="icon-icon-stock-page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-15">
-                                  STOCK
-                                </span>
-                                    </div>,
+                                    <Popup content='STOCK'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center padding-t5">
+                                                   <i className="icon-icon-stock-page fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-15">
+                                                      STOCK
+                                                    </span>
+                                               </div>
+                                           } />
+                                    ,
                                 tradePage:
-                                    <div className="text-align-center padding-t5">
-                                        <i className="icon-icon-trade-page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-15">
-                                  TRADE
-                                </span>
-                                    </div>,
+                                    <Popup content='TRADE'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center padding-t5">
+                                                   <i className="icon-icon-trade-page fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-15">
+                                                      TRADE
+                                                    </span>
+                                               </div>
+                                           } />
+                                  ,
                                 analyticPage:
-                                    <div className="text-align-center padding-t5">
-                                        <i className="icon-icon-analytic_page fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-7">ANALYTIC</span>
-                                    </div>,
+                                    <Popup content='ANALYTIC'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center padding-t5">
+                                                   <i className="icon-icon-analytic_page fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-7">ANALYTIC</span>
+                                               </div>
+                                           } />
+                                    ,
                                 livetradePage:
-                                    <div className="text-align-center">
-                                        <i className="icon-icon-live-trade fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-21">LIVE</span><br/>
-                                        <span className="fs-text-bips">TRADE</span>
-                                    </div>,
+                                    <Popup content='LIVE TRADE'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center">
+                                                   <i className="icon-icon-live-trade fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-21">LIVE</span><br/>
+                                                   <span className="fs-text-bips">TRADE</span>
+                                               </div>
+                                           } />
+                                    ,
                                 esbnPage:
-                                    <div className="text-align-center padding-t5">
-                                        <i className="icon-icon-fund fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-15">
-                                        E-SBN
-                                      </span>
-                                    </div>,
+                                    <Popup content='E-SBN'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center padding-t5">
+                                                   <i className="icon-icon-fund fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-15">
+                                                    E-SBN
+                                                  </span>
+                                               </div>
+                                           } />
+                                    ,
                                 mutualfundPage:
-                                    <div className="text-align-center">
-                                        <i className="icon-icon-inquiry fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-11">MUTUAL</span><br/>
-                                        <span className="fs-text-bips">FUND</span>
-                                    </div>,
+                                    <Popup content='MUTUAL FUND'
+                                           mouseEnterDelay={900}
+                                           mouseLeaveDelay={100}
+                                           position='bottom center'
+                                           trigger={
+                                               <div className="text-align-center">
+                                                   <i className="icon-icon-inquiry fs-icon-bips"></i> <br/><br/>
+                                                   <span className="fs-text-bips padding-11">MUTUAL</span><br/>
+                                                   <span className="fs-text-bips">FUND</span>
+                                               </div>
+                                           } />
+                                    ,
                                 chatsupportPage:
                                     <div className="text-align-center">
                                         <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>

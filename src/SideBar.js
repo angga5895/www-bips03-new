@@ -180,8 +180,10 @@ class SideBar_Base extends React.Component{
         $("#sideBarValue").click();
         // $("#stockoptionstockChrt").change();
     }
+
     render(){
         return(
+
             <>
                 <AppFrameAction ref="frameAction" />
                 <ModalAlertC />
@@ -226,7 +228,11 @@ class SideBar_Base extends React.Component{
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">
 
-                            <Popup content='New Order' position='top center' trigger={
+                            <Popup content='New Order'
+                                   mouseEnterDelay={900}
+                                   mouseLeaveDelay={100}
+                                   position='top center'
+                                   trigger={
                                 <div onClick={this.buttonClickNewOrder}
                                      className="align-self-center text-center d-border-bottom col-sm-12 paddingY-2 px-0 mx-0 click-pointer">
                                     <i className="fa-3x icofont-shopping-cart"></i>

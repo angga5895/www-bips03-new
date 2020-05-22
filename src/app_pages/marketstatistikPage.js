@@ -455,7 +455,22 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             var columnTooltip = series.tooltip();
             chart.tooltip().titleFormat('{%x}{type:time}');
             columnTooltip.format("{%seriesName}: {%value}");
-            chart.plot(0).legend(false);
+            columnTooltip.displayMode("single");
+
+            chart.crosshair().xLabel().format(' ');
+
+            chart.plot(0).legend(true);
+
+            var title = chart.plot(0).legend().title();
+            title.useHtml(true);
+
+// enable legend title
+            title.enabled(true);
+            title.text("&nbsp;");
+
+// set font size and align
+            title.fontSize(14);
+            title.hAlign("center");
 
             series.name("");
             chart.title('Stock Streaming');

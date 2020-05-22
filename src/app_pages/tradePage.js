@@ -26,6 +26,36 @@ import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
 
+function Comp(text1){
+    return text1;
+}
+
+function dateComparator(date1, date2) {
+    var date1Number = monthToComparableNumber(date1);
+    var date2Number = monthToComparableNumber(date2);
+    if (date1Number === null && date2Number === null) {
+        return date1;
+    }
+    if (date1Number === null) {
+        return date1;
+    }
+    if (date2Number === null) {
+        return date2;
+    }
+    return date1Number - date2Number;
+}
+function monthToComparableNumber(date) {
+    if (date === undefined || date === null || date.length !== 10) {
+        return null;
+    }
+    var yearNumber = date.substring(6, 10);
+    var monthNumber = date.substring(3, 5);
+    var dayNumber = date.substring(0, 2);
+    var result = yearNumber * 10000 + monthNumber * 100 + dayNumber;
+    return result;
+}
+
+
 class RadioButt extends React.PureComponent {
     state = {}
     handleChange = (e, { value }) => this.setState({ value })
@@ -1850,7 +1880,7 @@ class OrderListAgGrid extends React.PureComponent {
                     },
                     suppressSizeToFit: true
                 },
-                { field: "-", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
                     width: s=="s49"?100:85, minWidth: 85,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center text-primary f-12 click-pointer";
@@ -1890,6 +1920,7 @@ class OrderListAgGrid extends React.PureComponent {
                     width:s=="s49"?220:s=="s50"?200:s=="s67"?100:85, minWidth: 85,
                     tooltipField: 'status',
                     tooltipComponentParams: { type: 'status' },
+
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12";
                     },
@@ -2004,15 +2035,15 @@ class OrderListAgGrid extends React.PureComponent {
                 return 28;
             },
             rowData: [
-                {order : "001700"+s,
-                    marketorder :"MKT012"+s,
-                    code : "AALI"+s,
+                {order : "001700",
+                    marketorder :"MKT012",
+                    code : "AALI",
                     cmd : "SELL",
                     status :"Done",
                     remark : "(1128): Security is not currently trading",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :10,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2029,7 +2060,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :15,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2046,7 +2077,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :19,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2063,7 +2094,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :11,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2080,7 +2111,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :13,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2097,7 +2128,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :18,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2114,7 +2145,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :22,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2131,7 +2162,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :3,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2148,7 +2179,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :9,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2165,7 +2196,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :14,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2182,7 +2213,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :21,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2199,7 +2230,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :13,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2216,7 +2247,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :6,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2233,7 +2264,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :32,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2250,7 +2281,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :24,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2267,7 +2298,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :27,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2284,7 +2315,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :29,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2301,7 +2332,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :30,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2318,7 +2349,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :33,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2335,7 +2366,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :32,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2352,7 +2383,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :54,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2369,7 +2400,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :10,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2386,7 +2417,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :10,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2403,7 +2434,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :11,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2420,7 +2451,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :12,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2437,7 +2468,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :13,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"10",
@@ -2454,7 +2485,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"15",
+                    vlot :14,
                     vshares :"1500",
                     price :"12,650",
                     mlot :"5",
@@ -2471,7 +2502,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :8,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2488,7 +2519,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "Amended",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"8",
+                    vlot :8,
                     vshares :"0",
                     price :"29,500",
                     mlot :"0",
@@ -2505,7 +2536,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :9,
                     vshares :"100",
                     price :"12,625",
                     mlot :"10",
@@ -2522,7 +2553,7 @@ class OrderListAgGrid extends React.PureComponent {
                     remark : "to Server",
                     type :"Day",
                     mkt :"RG",
-                    vlot :"10",
+                    vlot :12,
                     vshares :"1000",
                     price :"12,650",
                     mlot :"0",
@@ -2530,6 +2561,23 @@ class OrderListAgGrid extends React.PureComponent {
                     avgmatchprice :"12,650",
                     amount :"12,650,000",
                     time :"11:22:10",
+                    action: "",},
+                {order : "",
+                    marketorder :"",
+                    code : "",
+                    cmd : "",
+                    status :"",
+                    remark : "",
+                    type :"",
+                    mkt :"",
+                    vlot :"",
+                    vshares :"",
+                    price :"",
+                    mlot :"",
+                    mshares :"",
+                    avgmatchprice :"",
+                    amount :"",
+                    time :"",
                     action: "",},
             ],
 
@@ -3538,34 +3586,6 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
             </div>
         );
     }
-}
-function Comp(text1){
-    return text1;
-}
-
-function dateComparator(date1, date2) {
-    var date1Number = monthToComparableNumber(date1);
-    var date2Number = monthToComparableNumber(date2);
-    if (date1Number === null && date2Number === null) {
-        return date1;
-    }
-    if (date1Number === null) {
-        return date1;
-    }
-    if (date2Number === null) {
-        return date2;
-    }
-    return date1Number - date2Number;
-}
-function monthToComparableNumber(date) {
-    if (date === undefined || date === null || date.length !== 10) {
-        return null;
-    }
-    var yearNumber = date.substring(6, 10);
-    var monthNumber = date.substring(3, 5);
-    var dayNumber = date.substring(0, 2);
-    var result = yearNumber * 10000 + monthNumber * 100 + dayNumber;
-    return result;
 }
 
 class TradeOrderSummaryAgGrid extends React.PureComponent {

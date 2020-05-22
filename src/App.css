@@ -649,7 +649,9 @@ div.main-header > .ui.menu .item{
 }.ag-header-group-cell{
      border-right: 1px solid #88888880!important;
  }
-
+.ag-cell {
+    overflow: hidden !important;
+}
 .grid-294{
     height: 294px;
 }
@@ -6157,13 +6159,24 @@ body{
 }
 .custom-tooltip {
     position: absolute;
-    width: 400px;
+    min-width: 500px;
+    width: 30%;
     height: 30px;
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,1);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,1);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     font-size: 12px;
-    border: #4D4D4E solid 1px!important;
+    border: #4D4D4E 1px !important;
+    background: #202021;
     overflow: hidden;
     pointer-events: none;
-    transition: opacity 1s;
+    transition: opacity .5s;
+}
+.custom-tooltip span{
+    padding-left: 4px;
 }
 
 .custom-tooltip.ag-tooltip-hiding {

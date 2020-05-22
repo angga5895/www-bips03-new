@@ -2,6 +2,7 @@ import React from "react";
 import {AppFrameAction} from "./../appframe";
 import {Table} from "react-bootstrap";
 import {AgGridReact} from "ag-grid-react";
+import CustomTooltip from "../app_pages/CustomTooltip";
 
 class ModalOrderDetail extends React.PureComponent{
     render() {
@@ -154,11 +155,14 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                     ],
                 },
                 { field: "remaksTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 230,
+                    width: 230, suppressSizeToFit: true,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right text-capitalize";
                     }, children: [
                         { field: "remarksO", headerName: "Remark", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                            suppressSizeToFit: true,tooltipField: 'remarksO',
+                            tooltipComponentParams: { type: 'remarksO' },
+                            
                             width: 230, minWidth: 230,
                             cellClass : function (params) {
                                 return " text-center grid-table f-12 d-border-aggrid-right text-capitalize";
@@ -253,13 +257,17 @@ class OrderLictCodeAgGrid extends React.PureComponent {
             defaultColDef: {
                 sortable: true,
                 filter: true,
+                tooltipComponent: 'customTooltip',
+
             },
+            tooltipShowDelay: 0,
+            frameworkComponents: {customTooltip: CustomTooltip},
             rowData: [
                 { dateO: "04/07/2019",
                     timeO: "11:22:17",
                     actionsO: "withdraw",
                     statusO: "done",
-                    remarksO: "",
+                    remarksO: "Order Amend Request Confirmed 123123123",
                     vlot: "10",
                     vshares: "1,000",
                     priceO: "12,650",
@@ -398,6 +406,8 @@ class OrderLictCodeAgGrid extends React.PureComponent {
                         rowData={this.state.rowData}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
+                        tooltipShowDelay={this.state.tooltipShowDelay}
+                        frameworkComponents={this.state.frameworkComponents}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
                     </AgGridReact>
                 </div>

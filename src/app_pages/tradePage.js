@@ -27,13 +27,16 @@ import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
 
 function stringComparator(valueA, valueB){
-    if(valueA.length < 2){
-        return null;
-    }else if(valueB.length < 2){
-        return null;
-    }else{
-        return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+    if(valueA !== null && valueB !== null){
+        if(valueA.length < 2){
+            return null;
+        }else if(valueB.length < 2){
+            return null;
+        }else{
+            return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+        }
     }
+
 }
 function integerComparator(valueA, valueB){
     if(valueA == ""){

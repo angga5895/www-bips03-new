@@ -26,8 +26,23 @@ import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
 
-function Comp(text1){
-    return text1;
+function stringComparator(valueA, valueB){
+    if(valueA.length < 2){
+        return null;
+    }else if(valueB.length < 2){
+        return null;
+    }else{
+        return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+    }
+}
+function integerComparator(valueA, valueB){
+    if(valueA == ""){
+        return null;
+    }else if(valueB == ""){
+        return null;
+    }else{
+        return valueA - valueB;
+    }
 }
 
 function dateComparator(date1, date2) {
@@ -512,7 +527,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
 
                 { field: "on", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?170:s=="s50"?150:s=="s67"?130:s=="s75"?110:80, lockPosition:true, lockVisible:true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     },
@@ -527,38 +542,38 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     },
                     suppressSizeToFit: true,
                 },
-                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: Comp,
+                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?175:s=="s50"?160:s=="s67"?140:s=="s75"?120:100,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "cmd", headerName: "Cmd.", sortable: true, resizable: true, comparator: Comp,
+                { field: "cmd", headerName: "Cmd.", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?160:s=="s50"?150:s=="s67"?130:s=="s75"?120:100,
                     cellClass : function (params) {
                         return params.data.cmd == "Buy" ? "text-center text-danger grid-table d-border-aggrid-right f-12 locked-col locked-visible"
                             : "text-center text-success grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "condition", headerName: "Condition", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:180, comparator: Comp,
+                    width: s=="s49"?200:180, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:80, comparator: Comp,
+                    width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:80, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?250:s=="s67"?195:s=="s75"?190:s=="s80"?160:120, comparator: Comp,
+                    width: s=="s49"?280:s=="s50"?250:s=="s67"?195:s=="s75"?190:s=="s80"?160:120, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "exp", headerName: "Expired Date", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?185:s=="s80"?165:s=="s90"?155:135, comparator: Comp,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?185:s=="s80"?165:s=="s90"?155:135, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     } },
-               ` { field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:105, pinned: "right", lockPosition: true, lockVisible: true, comparator: Comp,
+               ` { field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:105, pinned: "right", lockPosition: true, lockVisible: true, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right locked-col locked-visible";
                     },
@@ -1677,53 +1692,53 @@ class OrderHistoryAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?180:90, lockPosition:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 80, comparator: Comp,
+                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, width: 80, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?200:s=="s67"?155:s=="s75"?150:135,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: Comp,
+                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?200:s=="s67"?100:s=="s75"?80:75,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: Comp,
+                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?200:s=="s67"?110:s=="s75"?100:80,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
                         return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
                             " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "qty", headerName: "Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
+                { field: "qty", headerName: "Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?150:s=="s50"?120:s=="s67"?110:s=="s75"?100:80,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
+                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?160:140,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "mqty", headerName: "M Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
+                { field: "mqty", headerName: "M Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?180:s=="s67"?140:s=="s75"?130:110,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "mprice", headerName: "M Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
+                { field: "mprice", headerName: "M Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?220:s=="s67"?215:s=="s75"?210:s=="s80"?173:s=="s90"?133:120,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "result", headerName: "Result", sortable: true, filter: "agNumberColumnFilter", comparator: Comp,
+                { field: "result", headerName: "Result", sortable: true, filter: "agNumberColumnFilter", comparator: stringComparator,
                     resizable: true, width: s=="s49"?260:s=="s50"?240:s=="s67"?230:s=="s75"?220:s=="s80"?200:s=="s90"?160:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
@@ -1866,7 +1881,7 @@ class OrderListAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "-", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "-", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?50:35,
                     minWidth: 35,
                     headerCheckboxSelectionFilteredOnly: true,
@@ -1880,7 +1895,7 @@ class OrderListAgGrid extends React.PureComponent {
                     },
                     suppressSizeToFit: true
                 },
-                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?100:85, minWidth: 85,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center text-primary f-12 click-pointer";
@@ -1896,19 +1911,19 @@ class OrderListAgGrid extends React.PureComponent {
                     },
                     suppressSizeToFit: true
                 },
-                { field: "marketorder", headerName: "Market Order#", sortable: true, comparator: Comp,
+                { field: "marketorder", headerName: "Market Order#", sortable: true,  comparator: stringComparator,
                     resizable: true, width: s=="s49"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },
-                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: Comp,
+                { field: "code", headerName: "Code", sortable: true, resizable: true,  comparator: stringComparator,
                     width: s=="s49"?190:s=="s50"?180:s=="s67"?100:80, minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left text-primary f-12";
                     },
                 },
-                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: Comp,
+                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true,  comparator: stringComparator,
                     width: s=="s49"?190:s=="s50"?180:s=="s67"?100:70, minWidth: 70,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
@@ -1916,7 +1931,7 @@ class OrderListAgGrid extends React.PureComponent {
                             " text-center text-success grid-table d-border-aggrid-right f-12";
                     },
                 },
-                { field: "status", headerName: "Status", sortable: true, resizable: true, comparator: Comp,
+                { field: "status", headerName: "Status", sortable: true, resizable: true,  comparator: stringComparator,
                     width:s=="s49"?220:s=="s50"?200:s=="s67"?100:85, minWidth: 85,
                     tooltipField: 'status',
                     tooltipComponentParams: { type: 'status' },
@@ -1925,7 +1940,7 @@ class OrderListAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right f-12";
                     },
                 },
-                { field: "remark", headerName: "Remark", sortable: true, resizable: true, comparator: Comp,
+                { field: "remark", headerName: "Remark", sortable: true, resizable: true,  comparator: stringComparator,
                     width:s=="s49"?100:95, minWidth:95,
                     tooltipField: 'remark',
                     tooltipComponentParams: { type: 'remark' },
@@ -1934,66 +1949,73 @@ class OrderListAgGrid extends React.PureComponent {
                     },
                     cellRenderer : function (params) {
                         var status = params.data.status;
-                        return status.includes('Sending') === true ? '<i class="fas fa-hourglass-half text-tosca"></i>&nbsp;&nbsp;'+ params.data.remark:
-                            '<i class="fa fa-check text-success"></i> &nbsp;&nbsp;'+ params.data.remark;
+                        if(params.data.status.includes('Sending')){
+                            return '<i class="fas fa-hourglass-half text-tosca"></i>&nbsp;&nbsp;'+ params.data.remark;
+                        }else{
+                            if(params.data.remark == ""){
+                                return '';
+                            }else{
+                                return '<i class="fa fa-check text-success"></i> &nbsp;&nbsp;'+ params.data.remark;
+                            }
+                        }
                     }
                 },
-                { field: "type", headerName: "Type", sortable: true, resizable: true, comparator: Comp,
+                { field: "type", headerName: "Type", sortable: true, resizable: true,  comparator: stringComparator,
                     width:s=="s49"?90:70, minWidth: 70,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12 text-center";
                     },
                 },
-                { field: "mkt", headerName: "Mkt", sortable: true, resizable: true, comparator: Comp,
+                { field: "mkt", headerName: "Mkt", sortable: true, resizable: true,  comparator: stringComparator,
                     width:s=="s49"?90:70, minWidth:70,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right f-12 text-center";
                     },
                 },
-                { field: "vlot", headerName: "Vol. Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
-                    width:s=="s49"?130:120, minWidth: 120,
+                { field: "vlot", headerName: "Vol. Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width:s=="s49"?130:120, minWidth: 120, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "vshares", headerName: "Vol. Shares", sortable: true, filter: "agNumberColumnFilter", comparator: Comp,
-                    resizable: true, width:s=="s49"?130:120, minWidth:120,
+                { field: "vshares", headerName: "Vol. Shares", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, width:s=="s49"?130:120, minWidth:120, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
-                    width: s=="s49"?105:s=="67"?100:86, minWidth: 86,
+                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?105:s=="67"?100:86, minWidth: 86, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "mlot", headerName: "Match Vol. Lot", sortable: true, filter: "agNumberColumnFilter", comparator: Comp,
-                    resizable: true, width:s=="s49"?135:130, minWidth:130,
+                { field: "mlot", headerName: "Match Vol. Lot", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, width:s=="s49"?135:130, minWidth:130, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "mshares", headerName: "Match Vol. Shares", sortable: true, filter: "agNumberColumnFilter", comparator: Comp,
-                    resizable: true, width: s=="s49"?145:140, minWidth:140,
+                { field: "mshares", headerName: "Match Vol. Shares", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, width: s=="s49"?145:140, minWidth:140, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "avgmatchprice", headerName: "Avg. Match Price", sortable: true, filter: "agNumberColumnFilter", comparator: Comp,
-                    resizable: true, width: s=="s49"?145:135, minWidth:135,
+                { field: "avgmatchprice", headerName: "Avg. Match Price", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, width: s=="s49"?145:135, minWidth:135, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
-                    width: s=="s49"?120:s=="s67"?110:100, minWidth:100,
+                { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?120:s=="s67"?110:100, minWidth:100, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
-                    width:s=="s49"?150:140, minWidth:140,
+                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s49"?150:140, minWidth:140, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
@@ -2048,7 +2070,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice : 12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2065,7 +2087,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2082,7 +2104,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2099,7 +2121,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :12635,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2116,7 +2138,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:22:10",
                     action: "",},
@@ -2133,7 +2155,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2150,7 +2172,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2167,7 +2189,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2184,7 +2206,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :12624,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2201,7 +2223,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:22:10",
                     action: "",},
@@ -2218,7 +2240,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2235,7 +2257,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2252,7 +2274,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2269,7 +2291,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :12625,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2286,7 +2308,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:22:10",
                     action: "",},
@@ -2303,7 +2325,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2320,7 +2342,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2337,7 +2359,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2354,7 +2376,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :12650,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2371,7 +2393,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :13560,
                     amount :"12,650,000",
                     time :"11:22:10",
                     action: "",},
@@ -2388,7 +2410,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2405,7 +2427,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2422,7 +2444,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2439,7 +2461,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :12650,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2456,7 +2478,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:22:10",
                     action: "",},
@@ -2473,7 +2495,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"10",
                     mshares :"1000",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:20:17",
                     action: "",},
@@ -2490,7 +2512,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"5",
                     mshares :"500",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:19:17",
                     action: "",},
@@ -2507,7 +2529,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :29500,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2524,7 +2546,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"29,500",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"29,500",
+                    avgmatchprice :32580,
                     amount :"23,600,000",
                     time :"11:10:12",
                     action: "",},
@@ -2541,7 +2563,7 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,625",
                     mlot :"10",
                     mshares :"100",
-                    avgmatchprice :"12,625",
+                    avgmatchprice :45000,
                     amount :"12,625,000",
                     time :"11:22:17",
                     action: "",},
@@ -2558,9 +2580,26 @@ class OrderListAgGrid extends React.PureComponent {
                     price :"12,650",
                     mlot :"0",
                     mshares :"0",
-                    avgmatchprice :"12,650",
+                    avgmatchprice :12650,
                     amount :"12,650,000",
                     time :"11:22:10",
+                    action: "",},
+                {order : "",
+                    marketorder :"",
+                    code : "",
+                    cmd : "",
+                    status :"",
+                    remark : "",
+                    type :"",
+                    mkt :"",
+                    vlot :"",
+                    vshares :"",
+                    price :"",
+                    mlot :"",
+                    mshares :"",
+                    avgmatchprice :"",
+                    amount :"",
+                    time :"",
                     action: "",},
                 {order : "",
                     marketorder :"",
@@ -2671,42 +2710,42 @@ class TradeListOrderListAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: Comp,
+                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?172:s=="s50"?170:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s90"?90:80, minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?205:s=="s50"?200:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s90"?90:78, minWidth:78, comparator: Comp,
+                    width: s=="s49"?205:s=="s50"?200:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s90"?90:78, minWidth:78, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
-                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: Comp,
+                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?245:s=="s50"?240:s=="s67"?100:s=="s75"?95:s=="s80"?105:s=="s90"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s67"?190:s=="s75"?90:s=="s80"?105:s=="s90"?70:60, minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "val", headerName: "Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "val", headerName: "Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?125:s=="s67"?120:s=="s75"?100:s=="s80"?80:s=="s90"?70:60, minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?105:s=="s67"?100:s=="s75"?100:s=="s80"?95:s=="s90"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
-                },{ field: "seller", headerName: "Seller", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "seller", headerName: "Seller", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?102:s=="s67"?100:s=="s75"?100:s=="s80"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
-                },{ field: "tradeId", headerName: "TradeID", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "tradeId", headerName: "TradeID", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?173:s=="s50"?175:s=="s67"?170:s=="s75"?167:s=="s80"?100:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
@@ -2866,25 +2905,25 @@ class TradeAdvBidAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: Comp,
+                { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s90"?160:s=="s100"?155:145,
                     minWidth:145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },},
-                { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
@@ -2992,25 +3031,25 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: Comp,
+                { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s90"?160:s=="s100"?155:145,
                     minWidth:145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
-                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
@@ -3137,47 +3176,47 @@ class TradePLAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "code", headerName: "Code", sortable: true, resizable: true,comparator: Comp,
+                { field: "code", headerName: "Code", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?280:s=="s50"?260:s=="s67"?260:s=="s75"?240:s=="s80"?200:s=="s90"?165:s=="s100"?160:150,
                     minWidth:140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
-                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?290:s=="s50"?255:s=="s67"?230:s=="s75"?210:s=="s80"?180:s=="s90"?165:s=="s100"?160:150, minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "buyAmount", headerName: "Buy Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "buyAmount", headerName: "Buy Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?230:s=="s75"?210:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150, minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?310:s=="s50"?270:s=="s67"?230:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "pl", headerName: "P/L(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "pl", headerName: "P/L(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?255:s=="s75"?240:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: Comp,
+                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?220:s=="s75"?220:s=="s80"?185:s=="s90"?160:s=="s100"?150:140,
                     minWidth: 140,
                     cellClass : function (params) {
@@ -3317,33 +3356,33 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?140:s=="s50"?130:s=="s67"?120:s=="s75"?110:s=="s80"?100:s=="s90"?60:s=="s100"?60:60,
-                    minWidth:60,comparator: Comp,
+                    minWidth:60,comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bookingNo", headerName: "Booking No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?210:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:s=="s90"?140:s=="s100"?130:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?210:s=="s50"?200:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?120:s=="s100"?120:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?210:s=="s50"?190:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?110:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "mkt", headerName: "Mkt", sortable: true, resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?210:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
@@ -3351,7 +3390,7 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
@@ -3359,21 +3398,21 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?150:s=="s90"?140:s=="s100"?140:140,
                     minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?220:s=="s67"?180:s=="s75"?170:s=="s80"?140:s=="s90"?130:s=="s100"?130:120,
                     minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vollot", headerName: "Vol(Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    comparator: Comp,
+                    comparator: stringComparator,
                     width: s=="s49"?240:s=="s50"?220:s=="s67"?180:s=="s75"?160:s=="s80"?150:s=="s90"?130:s=="s100"?120:110,
                     minWidth: 110,
                     cellClass : function (params) {

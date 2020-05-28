@@ -6169,8 +6169,6 @@ body{
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 12px;
-    border: #4D4D4E 1px !important;
-    background: #202021;
     overflow: hidden;
     pointer-events: none;
     transition: opacity .5s;

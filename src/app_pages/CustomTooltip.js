@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {ContextConnector} from "../appcontext";
+import {BIPSAppContext} from "../AppData";
 
 export default class CustomTooltip extends Component {
     getReactContainerClasses() {
@@ -10,7 +12,7 @@ export default class CustomTooltip extends Component {
 
         return (
             <div
-                className="custom-tooltip"
+                className="custom-tooltip bg-black-trading"
             >
                 <p style={{display: this.props.type == "remark" ? "block" : "none"}}>
                     <span>{data.remark}</span>

@@ -32,6 +32,52 @@ const stateOptionsOperator = [
     { key: 'lebihbesar', value: 'lebihbesar', text: '> =' },
 ];
 
+function stringComparator(valueA, valueB){
+    if(valueA !== null && valueB !== null){
+        if(valueA.length < 2){
+            return null;
+        }else if(valueB.length < 2){
+            return null;
+        }else{
+            return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+        }
+    }
+
+}
+function integerComparator(valueA, valueB){
+    if(valueA == ""){
+        return null;
+    }else if(valueB == ""){
+        return null;
+    }else{
+        return valueA - valueB;
+    }
+}
+
+function dateComparator(date1, date2) {
+    var date1Number = monthToComparableNumber(date1);
+    var date2Number = monthToComparableNumber(date2);
+    if (date1Number === null && date2Number === null) {
+        return date1;
+    }
+    if (date1Number === null) {
+        return date1;
+    }
+    if (date2Number === null) {
+        return date2;
+    }
+    return date1Number - date2Number;
+}
+function monthToComparableNumber(date) {
+    if (date === undefined || date === null || date.length !== 10) {
+        return null;
+    }
+    var yearNumber = date.substring(6, 10);
+    var monthNumber = date.substring(3, 5);
+    var dayNumber = date.substring(0, 2);
+    var result = yearNumber * 10000 + monthNumber * 100 + dayNumber;
+    return result;
+}
 const CustomFrameHeaderLanding = (props) =>{
     return (
         <div>
@@ -794,24 +840,24 @@ class ModalOrderHistory extends React.Component {
                                         <td>
                                             <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
                                         </td>
-                                        <td class="text-white">
-                                            Market
-                                        </td>
-                                        <td className="td-select-historical">
-                                            <Dropdown defaultValue={marketOptions[0].value} placeholder='' search selection options={marketOptions} className="col-sm-12 f-12"/>
-                                        </td>
-                                        <td className="text-white">
-                                            Status
-                                        </td>
-                                        <td className="td-select-historical">
-                                            <Dropdown placeholder='' defaultValue={statusOptions[0].value} search selection options={statusOptions} className="col-sm-12 f-12"/>
-                                        </td>
-                                        <td className="text-white">
-                                            Buy/Sell
-                                        </td>
-                                        <td className="td-select-historical">
-                                            <Dropdown placeholder='' defaultValue={buySellOptions[0].value} search selection options={buySellOptions} className="col-sm-12 f-12"/>
-                                        </td>
+                                        {/*<td class="text-white">*/}
+                                            {/*Market*/}
+                                        {/*</td>*/}
+                                        {/*<td className="td-select-historical">*/}
+                                            {/*<Dropdown defaultValue={marketOptions[0].value} placeholder='' search selection options={marketOptions} className="col-sm-12 f-12"/>*/}
+                                        {/*</td>*/}
+                                        {/*<td className="text-white">*/}
+                                            {/*Status*/}
+                                        {/*</td>*/}
+                                        {/*<td className="td-select-historical">*/}
+                                            {/*<Dropdown placeholder='' defaultValue={statusOptions[0].value} search selection options={statusOptions} className="col-sm-12 f-12"/>*/}
+                                        {/*</td>*/}
+                                        {/*<td className="text-white">*/}
+                                            {/*Buy/Sell*/}
+                                        {/*</td>*/}
+                                        {/*<td className="td-select-historical">*/}
+                                            {/*<Dropdown placeholder='' defaultValue={buySellOptions[0].value} search selection options={buySellOptions} className="col-sm-12 f-12"/>*/}
+                                        {/*</td>*/}
                                     </tr>
                                 </table>
 
@@ -1915,32 +1961,35 @@ class TradeConfirmPageAgGrid extends React.PureComponent{
         this.state = {
             columnDefs: [
                 { field: "order", headerName: "Order Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?230:s=="s50"?200:150, minWidth: 150,
+                    width: s=="s49"?230:s=="s50"?200:150, minWidth: 150, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table text-left f-12 d-border-aggrid-right";
                     },
                 },
-                { field: "settle", headerName: "Settlement Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "settle", headerName: "Settlement Date", sortable: true, filter: "agTextColumnFilter",
+                    comparator: dateComparator, resizable: true,
                     width: s=="s49"?400:s=="s50"?360:s=="s67"?320:s=="s75"?310:s=="s80"?288:s=="s90"?240:220, minWidth: 220,
                     cellClass : function (params) {
                         return " text-left grid-table f-12 d-border-aggrid-right";
                     }
-                },{ field: "stockBuy", headerName: "Stock Buy", sortable: true, resizable: true,
+                },{ field: "stockBuy", headerName: "Stock Buy", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?420:s=="s50"?380:s=="s67"?340:s=="s75"?335:s=="s80"?290:s=="s90"?245:210, minWidth: 220,
                     cellClass : function (params) {
                         return " text-left grid-table f-12 d-border-aggrid-right";
                     }
-                },{ field: "stockSell", headerName: "Stock Sell", sortable: true, resizable: true,
+                },{ field: "stockSell", headerName: "Stock Sell", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?450:s=="s50"?410:s=="s67"?360:s=="s75"?335:s=="s80"?290:s=="s90"?245:210, minWidth: 210,
                     cellClass : function (params) {
                         return " text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "amountBuy", headerName: "Amount Buy", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    comparator: integerComparator,
                     width: s=="s49"?450:s=="s50"?400:s=="s67"?375:s=="s75"?325:s=="s80"?290:s=="s90"?270:240, minWidth:240,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
-                },{ field: "amountSell", headerName: "Amount Sell", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                },{ field: "amountSell", headerName: "Amount Sell", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, comparator: integerComparator,
                     width: s=="s49"?450:s=="s50"?400:s=="s67"?370:s=="s75"?340:s=="s80"?290:s=="s90"?270:240,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
@@ -1974,6 +2023,41 @@ class TradeConfirmPageAgGrid extends React.PureComponent{
                     stockSell: "BBNI",
                     amountBuy: "6,350,000",
                     amountSell: "12,500",
+                },{
+                    order: "",
+                    settle: "",
+                    stockBuy: "",
+                    stockSell: "",
+                    amountBuy: "",
+                    amountSell: "",
+                },{
+                    order: "",
+                    settle: "",
+                    stockBuy: "",
+                    stockSell: "",
+                    amountBuy: "",
+                    amountSell: "",
+                },{
+                    order: "",
+                    settle: "",
+                    stockBuy: "",
+                    stockSell: "",
+                    amountBuy: "",
+                    amountSell: "",
+                },{
+                    order: "",
+                    settle: "",
+                    stockBuy: "",
+                    stockSell: "",
+                    amountBuy: "",
+                    amountSell: "",
+                },{
+                    order: "",
+                    settle: "",
+                    stockBuy: "",
+                    stockSell: "",
+                    amountBuy: "",
+                    amountSell: "",
                 },
 
             ],
@@ -2118,7 +2202,7 @@ class PortofolioAgGrid extends React.PureComponent {
         this.state = {
             activePage: 1,
             columnDefs: [
-                { field: "code", headerName: "Code", sortable: true, resizable: true,
+                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
                     width: 80,
                     minWidth: 80,
                     cellClass : function (params) {
@@ -2126,21 +2210,21 @@ class PortofolioAgGrid extends React.PureComponent {
                     }, suppressSizeToFit: true
                 },
                 { field: "avgprice", headerName: "Avg. Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    valueFormatter: rupiahFormatter,
+                    valueFormatter: rupiahFormatter, comparator: integerComparator,
                     width: s=="s49"?165:s=="s50"?153:s=="s67"?150:s=="s75"?135:110, minWidth: 110,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "lastprice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?240:s=="s50"?225:s=="s67"?220:s=="s75"?154:110, minWidth: 110,
+                    width: s=="s49"?240:s=="s50"?225:s=="s67"?220:s=="s75"?154:110, minWidth: 110,comparator: integerComparator,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right" :
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "lot", headerName: "Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                { field: "lot", headerName: "Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?125:s=="s50"?95:s=="s67"?80:s=="s75"?75:70, minWidth: 70,
                     cellClass : function (params) {
                         var pl = params.data.pl;
@@ -2149,7 +2233,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "shares", headerName: "Shares", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?140:s=="s67"?130:100, minWidth: 100,
+                    width: s=="s49"?160:s=="s50"?140:s=="s67"?130:100, minWidth: 100, comparator: integerComparator,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return pl.includes('-') === true ? "text-danger text-right grid-table f-12 d-border-aggrid-right":
@@ -2157,7 +2241,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "stockval", headerName: "Stock Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?225:s=="s67"?220:s=="s75"?190:s=="80"? 190:120,
+                    width: s=="s49"?250:s=="s50"?225:s=="s67"?220:s=="s75"?190:s=="80"? 190:120, comparator: integerComparator,
                     minWidth: 120,
                     cellClass : function (params) {
                         var pl = params.data.pl;
@@ -2166,7 +2250,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "pl", headerName: "P/L %", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?252:s=="s75"?220:s=="s80"?219:150,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?252:s=="s75"?220:s=="s80"?219:150, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         var pl = params.data.pl;
@@ -2180,7 +2264,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     }
                 },
                 { field: "remark", headerName: "Remark", sortable: false, resizable: true,
-                    width: 100, minWidth: 100,
+                    width: 100, minWidth: 100, comparator: stringComparator,
                     tooltip: (params) => {
                         var code = params.data.code;
 
@@ -2461,6 +2545,56 @@ class PortofolioAgGrid extends React.PureComponent {
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""
+                },{
+                    code: "",
+                    avgprice: "",
+                    lastprice: "",
+                    lot: "",
+                    shares: "",
+                    stockval: "",
+                    pl: "",
+                    remark: ""   ,
+                    action:""
+                },{
+                    code: "",
+                    avgprice: "",
+                    lastprice: "",
+                    lot: "",
+                    shares: "",
+                    stockval: "",
+                    pl: "",
+                    remark: ""   ,
+                    action:""
+                },{
+                    code: "",
+                    avgprice: "",
+                    lastprice: "",
+                    lot: "",
+                    shares: "",
+                    stockval: "",
+                    pl: "",
+                    remark: ""   ,
+                    action:""
+                },{
+                    code: "",
+                    avgprice: "",
+                    lastprice: "",
+                    lot: "",
+                    shares: "",
+                    stockval: "",
+                    pl: "",
+                    remark: ""   ,
+                    action:""
+                },{
+                    code: "",
+                    avgprice: "",
+                    lastprice: "",
+                    lot: "",
+                    shares: "",
+                    stockval: "",
+                    pl: "",
+                    remark: ""   ,
+                    action:""
                 }
             ],
             sideBar: {
@@ -2622,39 +2756,39 @@ class FixedIncomeAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, filter: "agNumberColumnFilter",
-                    width: s=="s49"?100:s=="s50"?85:s=="s75"?80:56, minWidth: 56,
+                    width: s=="s49"?100:s=="s50"?85:s=="s75"?80:56, minWidth: 56, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 d-border-aggrid-right";
                     }},
                 { field: "serial", headerName: "Serial", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?185:s=="s50"?175:s=="s75"?170:130, minWidth: 130,
+                    width: s=="s49"?185:s=="s50"?175:s=="s75"?170:130, minWidth: 130, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 d-border-aggrid-right";
                     },suppressSizeToFit: true},
                 { field: "nominal", headerName: "Nominal (IDR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?215:s=="s50"?185:s=="s67"?180:s=="s75"?160:150, minWidth: 150,
+                    width: s=="s49"?215:s=="s50"?185:s=="s67"?180:s=="s75"?160:150, minWidth: 150, comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table text-right f-12 d-border-aggrid-right";
                     }},
                 { field: "coupon", headerName: "Coupon", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?205:s=="s50"?170:s=="s67"?164:s=="s75"?134:s=="s80"?123:90,
+                    width: s=="s49"?205:s=="s50"?170:s=="s67"?164:s=="s75"?134:s=="s80"?123:90, comparator: stringComparator,
                     minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table text-right f-12 d-border-aggrid-right";
                     } },
                 { field: "couponpdate", headerName: "Coupon Payment Date", sortable: true, filter: "agTextColumnFilter",
-                    resizable: true, width: s=="s49"?225:s=="s50"?200:170, minWidth: 170,
+                    resizable: true, width: s=="s49"?225:s=="s50"?200:170, minWidth: 170, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 d-border-aggrid-right";
                     } },
                 { field: "duedate", headerName: "Due Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?285:s=="s50"?255:s=="s67"?230:s=="s75"?170:s=="s80"?140:120,
+                    width: s=="s49"?285:s=="s50"?255:s=="s67"?230:s=="s75"?170:s=="s80"?140:120, comparator: dateComparator,
                     minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 d-border-aggrid-right";
                     } },
                 { field: "detail", headerName: "Detail", resizable: true,
-                    width: s=="s49"?190:s=="s50"?175:s=="s67"?170:s=="s75"?130:s=="s80"?100:80, minWidth: 80,
+                    width: s=="s49"?190:s=="s50"?175:s=="s67"?170:s=="s75"?130:s=="s80"?100:80, minWidth: 80, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 d-border-aggrid-right";
                     },
@@ -2742,6 +2876,38 @@ class FixedIncomeAgGrid extends React.PureComponent {
                     duedate: "08 Jan 2021",
                     detail: "",
                     action: ""},
+                { no: "",
+                    serial: "",
+                    nominal: "",
+                    coupon: "",
+                    couponpdate: "",
+                    duedate: "",
+                    detail: "",
+                    action: ""},
+                { no: "",
+                    serial: "",
+                    nominal: "",
+                    coupon: "",
+                    couponpdate: "",
+                    duedate: "",
+                    detail: "",
+                    action: ""},
+                { no: "",
+                    serial: "",
+                    nominal: "",
+                    coupon: "",
+                    couponpdate: "",
+                    duedate: "",
+                    detail: "",
+                    action: ""},
+                { no: "",
+                    serial: "",
+                    nominal: "",
+                    coupon: "",
+                    couponpdate: "",
+                    duedate: "",
+                    detail: "",
+                    action: ""},
             ],
             sideBar: {
                 toolPanels: [
@@ -2822,7 +2988,7 @@ class MutualFundAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "code", headerName: "Code", sortable: true, resizable: true,
+                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?330:s=="s50"?285:s=="s67"?270:s=="s75"?200:s=="s80"?140:120,
                     minWidth: 120,
                     cellClass : function (params) {
@@ -2836,22 +3002,25 @@ class MutualFundAgGrid extends React.PureComponent {
                             '<br /><span>'+scode[1]+'</span>';
                     }, suppressSizeToFit: true },
                 { field: "nav", headerName: "NAV", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?165:s=="s75"?158:130, minWidth: 130,
+                    comparator: stringComparator, width: s=="s49"?200:s=="s50"?165:s=="s75"?158:130, minWidth: 130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "navdate", headerName: "NAV Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "navdate", headerName: "NAV Date", sortable: true, filter: "agTextColumnFilter",
+                    comparator: dateComparator, resizable: true,
                     width: s=="s49"?195:s=="s50"?175:s=="s75"?155:140, minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     } },
-                { field: "currency", headerName: "Currency", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                { field: "currency", headerName: "Currency", sortable: true, filter: "agNumberColumnFilter",
+                    resizable: true, comparator: stringComparator,
                     width: s=="s49"?335:s=="s50"?300:s=="s67"?280:s=="s75"?260:s=="s90"? 200:s=="s80"?235:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }  },
-                { field: "potentialpl", headerName: "Potential P/L", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "potentialpl", headerName: "Potential P/L", sortable: true, filter: "agTextColumnFilter",
+                    resizable: true, comparator: integerComparator,
                     width: s=="s49"?360:s=="s50"?330:s=="s67"?313:s=="s75"?285:s=="s80"? 250:s=="s90" ? 210:165,
                     minWidth: 165,
                     cellClass : function (params) {
@@ -2928,6 +3097,18 @@ class MutualFundAgGrid extends React.PureComponent {
                     navdate: "06/03/2019",
                     currency: "1,529,000",
                     potentialpl: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
+                    action:""},
+                { code: "",
+                    nav: "",
+                    navdate: "",
+                    currency: "",
+                    potentialpl: "",
+                    action:""},
+                { code: "",
+                    nav: "",
+                    navdate: "",
+                    currency: "",
+                    potentialpl: "",
                     action:""},
             ],
             sideBar: {
@@ -3009,14 +3190,14 @@ class StockCashAgGrid extends React.PureComponent {
         const s = this.props.size;
         this.state = {
             columnDefs: [
-                { field: "codeTop", headerName: "", sortable: true,
+                { field: "codeTop", headerName: "", sortable: true, comparator: stringComparator,
                     filter: "agTextColumnFilter", resizable: true,
                     width: 85, minWidth: 85,
                     lockPosition: true, lockVisible: true,
                     cellClass : function (params) {
                         return " grid-table text-center f-12 locked-visible locked-col d-border-aggrid-right";
                     }, suppressSizeToFit: true, children: [{
-                        field: "codeR", headerName: "Code", sortable: true,
+                        field: "codeR", headerName: "Code", sortable: true, comparator: stringComparator,
                         resizable: true,
                         width: 85, minWidth: 85,
                         lockPosition: true, lockVisible: true,
@@ -3025,11 +3206,11 @@ class StockCashAgGrid extends React.PureComponent {
                         }, suppressSizeToFit: true
                     },]},
                 { field: "avgpriceTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: 120, minWidth: 120,
+                    width: 120, minWidth: 120, comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }, children: [
-                        { field: "avgpriceR", headerName: "Avg. Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                        { field: "avgpriceR", headerName: "Avg. Price", comparator: integerComparator, sortable: true, filter: "agNumberColumnFilter", resizable: true,
                             width: s=="s49"?320:s=="s50"?315:s=="s67"?290:s=="s75"?220:s=="s80"?160:s=="s90"?130:120,
                             minWidth: 95,
                             cellClass : function (params) {
@@ -3038,7 +3219,7 @@ class StockCashAgGrid extends React.PureComponent {
                         },
                     ],
                 },
-                { field: "lastpriceTop", headerName: "", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "lastpriceTop", headerName: "", comparator: integerComparator, sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 100, minWidth: 100,
                     cellClass : function (params) {
                         var pl = params.data.pl;
@@ -3054,20 +3235,20 @@ class StockCashAgGrid extends React.PureComponent {
                     },
                     ],
                 },
-                { field: "port", headerName: "Portofolio", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "port", headerName: "Portofolio", comparator: stringComparator, sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 160, minWidth: 160,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                     ,
                     children: [
-                        { field: "plot", headerName: "Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                        { field: "plot", headerName: "Lot", comparator: stringComparator, sortable: true, filter: "agNumberColumnFilter", resizable: true,
                             width: 80, minWidth: 80,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
                             }
                         },
-                        { field: "pshares", headerName: "Shares", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                        { field: "pshares", headerName: "Shares", comparator: stringComparator, sortable: true, filter: "agNumberColumnFilter", resizable: true,
                             width: 80, minWidth: 80,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
@@ -3077,7 +3258,7 @@ class StockCashAgGrid extends React.PureComponent {
                 },
 
                 { field: "mktvalueTop", headerName: "", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 100, minWidth: 100,
+                    width: 100, minWidth: 100, comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     },children:[{ field: "mktvalueR", headerName: "Mkt. Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,
@@ -3088,14 +3269,14 @@ class StockCashAgGrid extends React.PureComponent {
                     },]
                 },
                 { field: "plTop", headerName: "", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 207, minWidth: 207,
+                    width: 207, minWidth: 207, comparator: integerComparator,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right":
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }, children: [{ field: "plR", headerName: "P/L", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                         width: s=="s49"?190:s=="s50"?180:s=="s67"?140:s=="s75"?130:s=="s80"?120:s=="s90"?110:100,
-                        minWidth: 60,
+                        minWidth: 60, comparator: integerComparator,
                         cellClass : function (params) {
                             var pl = params.data.plR;
                             return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right":
@@ -3104,14 +3285,14 @@ class StockCashAgGrid extends React.PureComponent {
                     },]
                 },
                 { field: "persTop", headerName: "", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 207, minWidth: 207,
+                    width: 207, minWidth: 207, comparator: integerComparator,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return pl.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right":
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     }, children: [{ field: "persenR", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                         width: s=="s49"?170:s=="s50"?140:s=="s67"?125:s=="s75"?155:s=="s80"?80:s=="s90"?70:60,
-                        minWidth: 60,
+                        minWidth: 60, comparator: integerComparator,
                         cellClass : function (params) {
                             var pr = params.data.persenR;
                             return pr.includes('-') === true ? "text-danger text-right  grid-table f-12 d-border-aggrid-right":
@@ -3122,20 +3303,20 @@ class StockCashAgGrid extends React.PureComponent {
 
 
                 { field: "sellable", headerName: "Sellable Balance", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 164, minWidth: 164,
+                    width: 164, minWidth: 164, comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 ";
                     }
                     ,
                     children: [
                         { field: "slot", headerName: "Lot", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                            width: 82, minWidth: 82,
+                            width: 82, minWidth: 82, comparator: integerComparator,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
                             }
                         },
                         { field: "sshares", headerName: "Shares", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                            width: 82, minWidth: 82,
+                            width: 82, minWidth: 82, comparator: integerComparator,
                             cellClass : function (params) {
                                 return " text-right grid-table f-12 d-border-aggrid-right";
                             },
@@ -3143,12 +3324,12 @@ class StockCashAgGrid extends React.PureComponent {
                     ]
                 },
                 { field: "lqValTop", headerName: "", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 98, minWidth: 98,
+                    width: 98, minWidth: 98, comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     },children:[{ field: "lqValR", headerName: "Lq. Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                         width: s=="s49"?220:s=="s50"?205:s=="s67"?190:s=="s75"?186:s=="s80"?160:s=="s90"?130:98,
-                        minWidth: 98,
+                        minWidth: 98, comparator: integerComparator,
                         cellClass : function (params) {
                             return "text-success text-right  grid-table f-12 d-border-aggrid-right";
                         }
@@ -3156,7 +3337,7 @@ class StockCashAgGrid extends React.PureComponent {
                 },
 
                 { field: "stockValTop", headerName: "", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 130, minWidth: 130,
+                    width: 130, minWidth: 130, comparator: integerComparator,
                     cellClass : function (params) {
                         var pl = params.data.pl;
                         return "text-success text-right  grid-table f-12 d-border-aggrid-right";
@@ -3331,6 +3512,18 @@ class StockCashAgGrid extends React.PureComponent {
                     sshares: "122",
                     lqValR: "12,650"   ,
                     stockValR:"12,650,000"   },
+                { codeR: "",
+                    avgpriceR: "",
+                    lastpriceR: "",
+                    plot: "",
+                    pshares: "",
+                    mktvalueR: "",
+                    plR: "",
+                    persenR: "",
+                    slot: "",
+                    sshares: "",
+                    lqValR: ""   ,
+                    stockValR:""   },
             ],
             sideBar: {
                 toolPanels: [
@@ -3411,46 +3604,46 @@ class TradeListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?220:s=="s80"?185:s=="s90"?125:114,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?220:s=="s80"?185:s=="s90"?125:114, comparator: dateComparator,
                     minWidth: 114,
                     cellClass : function (params) {
                         return " grid-table text-left f-12 d-border-aggrid-right";
                     }, suppressSizeToFit: true
                 },
                 { field: "trade", headerName: "Trade#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?190:s=="s90"?160:100,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?190:s=="s90"?160:100,  comparator: stringComparator,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?200:s=="s90"?160:100,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?200:s=="s90"?160:100, comparator: stringComparator,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?230:s=="s50"?200:100, minWidth: 100,
+                    width: s=="s49"?230:s=="s50"?200:100, minWidth: 100, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
+                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?280:s=="s50"?260:s=="s67"?250:s=="s75"?245:s=="s80"?210:s=="s90"?150:147,
                     minWidth: 147,
                     cellClass : function (params) {
                         return "text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "type", headerName: "Type", sortable: true, resizable: true,
+                { field: "type", headerName: "Type", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?190:s=="s50"?160:s=="s67"?150:s=="s75"?148:s=="s80"?110:107,
                     minWidth: 147,
                     cellClass : function (params) {
                         return "text-center  grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "mkt", headerName: "Mkt", sortable: true, resizable: true,
+                { field: "mkt", headerName: "Mkt", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?140:s=="s50"?120:107, minWidth: 107,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
@@ -3463,19 +3656,19 @@ class TradeListAgGrid extends React.PureComponent {
                     }
                 },
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: 150, minWidth: 150,
+                    width: 150, minWidth: 150,  comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?170:120, minWidth: 120,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?170:120, minWidth: 120,  comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:120, minWidth: 120,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:120, minWidth: 120,  comparator: stringComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
@@ -3549,6 +3742,18 @@ class TradeListAgGrid extends React.PureComponent {
                     price:"12650"  ,
                     amount:"1265000",
                     time:"11:22:17"
+                },
+                {   date: "",
+                    trade: "",
+                    order: "",
+                    code: "",
+                    cmd: "",
+                    type: "",
+                    mkt: "",
+                    vol: ""   ,
+                    price:""  ,
+                    amount:"",
+                    time:""
                 },
 
             ],
@@ -3630,7 +3835,7 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
         const s = this.props.size;
         this.state = {
             columnDefs: [
-                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: dateComparator,
                     width: s=="s49"?310:s=="s50"?280:s=="s67"?250:s=="s75"?240:s=="s80"?205:s=="s90"?180:s=="s100"?170:160,
                     minWidth: 160,
                     cellClass : function (params) {
@@ -3638,20 +3843,20 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
                     }, suppressSizeToFit: true
                 }, { field: "code", headerName: "Code Stock", sortable: true, resizable: true,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?230:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "buySell", headerName: "Buy / Sell", sortable: true, resizable: true,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
                 },{ field: "inOut", headerName: "In/Out Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
@@ -3803,26 +4008,26 @@ class CashTransactionHistoryAgGrid extends React.PureComponent {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?310:s=="s50"?280:s=="s67"?250:s=="s75"?240:s=="s80"?205:s=="s90"?180:s=="s100"?170:160,
-                    minWidth: 160,
+                    minWidth: 160, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 }, { field: "debitCredit", headerName: "Debit / Credit", sortable: true, resizable: true,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?230:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "desc", headerName: "Description", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
-                    minWidth: 140,
+                    minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
@@ -3975,78 +4180,78 @@ class TransactionAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100,
+                    width: s=="s49"?130:s=="s50"?120:100,  comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 }, { field: "detail", headerName: "Detail", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100,
+                    width: s=="s49"?130:s=="s50"?120:100,  comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100,
+                    width: s=="s49"?130:s=="s50"?120:100,  comparator: integerComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
-                },{ field: "code", headerName: "Code", sortable: true,resizable: true,
+                },{ field: "code", headerName: "Code", sortable: true,resizable: true,  comparator: stringComparator,
                     width: s=="s49"?130:s=="s50"?120:100,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "inOut", headerName: "In/Out Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?140:s=="s50"?120:130,
+                    width: s=="s49"?140:s=="s50"?120:130,  comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130,
+                    width: s=="s49"?170:s=="s50"?150:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "balA", headerName: "Bal. Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130,
+                    width: s=="s49"?170:s=="s50"?150:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "balQ", headerName: "Bal. Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130,
+                    width: s=="s49"?170:s=="s50"?150:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130,
+                    width: s=="s49"?170:s=="s50"?150:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "paidAmt", headerName: "Paid Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130,
+                    width: s=="s49"?170:s=="s50"?150:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "penalty", headerName: "Penalty", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130,
+                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "add", headerName: "Add Outstanding", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:160,
+                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:160,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "tradeAmt", headerName: "Trade Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "wht", headerName: "WHT", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "incomeTax", headerName: "Income Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130,
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130,  comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
@@ -4088,6 +4293,22 @@ class TransactionAgGrid extends React.PureComponent {
                     wht: '15',
                     incomeTax: '0',
                     price: '200',
+                },{
+                    date: "",
+                    detail: "",
+                    amount: "",
+                    code: "",
+                    inOut: "",
+                    balA: "",
+                    balQ: "",
+                    fee: "",
+                    paidAmt: "",
+                    penalty: "",
+                    add: "",
+                    tradeAmt: "",
+                    wht: "",
+                    incomeTax: "",
+                    price: "",
                 },
             ],
             sideBar: {
@@ -4169,78 +4390,78 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,
+                    width: s=="s49"?130:s=="s50"?120:100, minWidth: 100, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 }, { field: "originNo", headerName: "Origin No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,
+                    width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100, minWidth:100,
+                    width: s=="s49"?130:s=="s50"?120:100, minWidth:100,comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }, suppressSizeToFit: true
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
-                    width: s=="s49"?130:s=="s50"?120:100, minWidth:100,
+                    width: s=="s49"?130:s=="s50"?120:100, minWidth:100,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "type", headerName: "Type", sortable: true, resizable: true,
-                    width: s=="s49"?140:s=="s50"?120:130, minWidth:130,
+                    width: s=="s49"?140:s=="s50"?120:130, minWidth:130,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "mkt", headerName: "Mkt", sortable: true, resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,
+                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130, minWidth:130,
+                    width: s=="s49"?170:s=="s50"?150:130, minWidth:130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130, minWidth:130,
+                    width: s=="s49"?170:s=="s50"?150:130, minWidth:130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "mvol", headerName: "M Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,
+                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "mprice", headerName: "M Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,
+                    width: s=="s49"?170:s=="s50"?150:130, minWidth: 130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "restvol", headerName: "Rest Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130, minWidth:130,
+                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130, minWidth:130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "status", headerName: "Status", sortable: true, resizable: true,
+                { field: "status", headerName: "Status", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?210:s=="s50"?190:s=="s67"?170:160, minWidth:160,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130, minWidth:130,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130, minWidth:130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "rejectreason", headerName: "Reject Reason", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130, minWidth:130,
+                    width: s=="s49"?160:s=="s50"?155:s=="s67"?135:130, minWidth:130,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "orderer", headerName: "Orderer", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130, minWidth:130,
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130, minWidth:130,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     },},
@@ -4266,6 +4487,39 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     time: '09:03:10',
                     rejectreason: '-',
                     ordered: '',
+                },{
+                    order: "0001",
+                    originNo: "011",
+                    code: 'AALI',
+                    cmd: 'Buy',
+                    type: 'Day',
+                    mkt: 'RG',
+                    vol: 120,
+                    price: 12.000,
+                    mvol: 100,
+                    mprice: 1000,
+                    restvol: 0,
+                    status: "Done",
+                    time: '10:03:10',
+                    rejectreason: '-',
+                    ordered: '',
+                },
+                {
+                    order: "",
+                    originNo: "",
+                    code: "",
+                    cmd: "",
+                    type: "",
+                    mkt: "",
+                    vol: "",
+                    price: "",
+                    mvol: "",
+                    mprice: "",
+                    restvol: "",
+                    status: "",
+                    time: "",
+                    rejectreason: "",
+                    ordered: "",
                 },
             ],
             sideBar: {
@@ -4347,52 +4601,52 @@ class FundAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?180:s=="s75"?160:150, minWidth: 130,
+                    width: s=="s49"?210:s=="s50"?180:s=="s75"?160:150, minWidth: 130, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?190:s=="s67"?170:s=="s75"?130:s=="s80"?110:100,
+                    width: s=="s49"?250:s=="s50"?190:s=="s67"?170:s=="s75"?130:s=="s80"?110:100, comparator: integerComparator,
                     minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?230:s=="s67"?215:s=="s75"?195:s=="s80"?180:s=="s90"?150:130,
+                    width: s=="s49"?280:s=="s50"?230:s=="s67"?215:s=="s75"?195:s=="s80"?180:s=="s90"?150:130, comparator: integerComparator,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?360:s=="s50"?330:s=="s67"?315:s=="s75"?250:s=="s80"?200:s=="s90"?180:130,
+                    width: s=="s49"?360:s=="s50"?330:s=="s67"?315:s=="s75"?250:s=="s80"?200:s=="s90"?180:130, comparator: integerComparator,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "bank", headerName: "Bank", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?370:s=="s50"?340:s=="s67"?315:s=="s75"?285:s=="s80"?240:s=="s90"?200:150,
+                    width: s=="s49"?370:s=="s50"?340:s=="s67"?315:s=="s75"?285:s=="s80"?240:s=="s90"?200:150, comparator: stringComparator,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bankAcNo", headerName: "Bank Ac No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?370:s=="s50"?350:s=="s67"?319:s=="s75"?295:s=="s80"?280:s=="s90"?210:170,
+                    width: s=="s49"?370:s=="s50"?350:s=="s67"?319:s=="s75"?295:s=="s80"?280:s=="s90"?210:170, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "reqData", headerName: "Req Data", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s90"?195:s=="s75"?140:120, minWidth: 110,
+                    width: s=="s90"?195:s=="s75"?140:120, minWidth: 110, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "reqTime", headerName: "Req Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s75"?140:120, minWidth: 110,
+                    width: s=="s49"?200:s=="s50"?180:s=="s75"?140:120, minWidth: 110, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, resizable: true,
-                    width: s=="s49"?210:s=="s50"?200:s=="s75"?170:160, minWidth: 160,
+                    width: s=="s49"?210:s=="s50"?200:s=="s75"?170:160, minWidth: 160, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -4424,6 +4678,16 @@ class FundAgGrid extends React.PureComponent {
                     reqData: "03/07/2019",
                     reqTime: "19:30:21",
                     status:"Completing The Process",
+                },{
+                    date: "",
+                    no: "",
+                    amount: "",
+                    fee: "",
+                    bank: "",
+                    bankAcNo: "",
+                    reqData: "",
+                    reqTime: "",
+                    status:"",
                 },
 
             ],
@@ -4506,21 +4770,21 @@ class CancelGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "cw", headerName: "Cw#", sortable: true, filter: "agTextColumnFilter", resizable:
-                        true, width: size=="s75"?190:84, minWidth: 84,
+                        true, width: size=="s75"?190:84, minWidth: 84, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: size=='s90'?734:size == 's80'?836:size=='s75'?870:size=='s67'?846:size=='s50'?1397:644,
-                    minWidth: 644,
+                    minWidth: 644,  comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table d-border-aggrid-right f-12";
                     }
                 },
                 { field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: size=='s90'?570:size == 's80'?644:size=='s75'?690:size=='s67'?956:size=='s50'?1041:515,
-                    minWidth: 515,
+                    minWidth: 515, comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right  grid-table d-border-aggrid-right f-12";
                     }
@@ -4543,6 +4807,9 @@ class CancelGrid extends React.PureComponent {
                 }, {   cw: "Cwxx",
                     amount: "1,223,222",
                     fee: "0",
+                }, {   cw: "",
+                    amount: "",
+                    fee: "",
                 },
 
             ],
@@ -4625,28 +4892,28 @@ class CancelGrid2 extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "cw", headerName: "Cw #", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: size=="s75"?230:100, minWidth:100,
+                    width: size=="s75"?230:100, minWidth:100, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "requestdate", headerName: "Request Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: size=="s90"?319:size=="s80"?363:size=="s75"?375:size=="s67"?442:size=="s50"?603:283,
-                    minWidth: 283,
+                    minWidth: 283,  comparator: dateComparator,
                     cellClass : function (params) {
                         return " text-left grid-table d-border-aggrid-right f-12";
                     }
                 },
                 { field: "transferdate", headerName: "Transfer Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: size=="s90"?321:size=="s80"?366:size=="s75"?380:size=="s67"?447:size=="s50"?610:285,
-                    minWidth: 285,
+                    minWidth: 285,  comparator: dateComparator,
                     cellClass : function (params) {
                         return "text-left  grid-table d-border-aggrid-right f-12";
                     }
                 },
                 { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: size=="s90"?321:size=="s80"?366:size=="s75"?380:size=="s67"?447:size=="s50"?610:304,
-                    minWidth: 304,
+                    minWidth: 304, comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right  grid-table d-border-aggrid-right f-12";
                     }
@@ -4654,6 +4921,7 @@ class CancelGrid2 extends React.PureComponent {
 
                 { field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: size=="s90"?326:size=="s80"?370:size=="s75"?380:size=="s67"?448:size=="s50"?599:269,
+                    comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
@@ -4679,6 +4947,11 @@ class CancelGrid2 extends React.PureComponent {
                     transferdate: "10/12/2018",
                     amount: "1,223,333",
                     fee:"0",
+                }, {   cw: "",
+                    requestdate: "",
+                    transferdate: "",
+                    amount: "",
+                    fee:"",
                 },
             ],
             sideBar: {

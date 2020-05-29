@@ -59,8 +59,9 @@ class VerifyPIN_Base extends React.PureComponent{
 
     onClickSubmit = (e) => {
         if(this.state.value.length >= '6' || this.props.pinStatus == true){
-            if(this.state.value === '123456' || this.props.pinStatus == true) {
-                this.props.changePinStatus(true);
+            if(this.props.pinStatus == true) {
+                // if(this.state.value === '123456' || this.props.pinStatus == true) {
+                //     this.props.changePinStatus(true);
                 if (this.props.tipe === 'buy'){
                     this.refs.frameAction.closeModal(100);
                     var frameAction = this.refs.frameAction;
@@ -129,10 +130,11 @@ class VerifyPIN_Base extends React.PureComponent{
                     this.setState({ value });
                 }
             } else{
-                var visible = true;
-                this.setState({ visible });
-                var isEmpty = false;
-                this.setState({ isEmpty });
+                this.props.changePinStatus(this.state.value);
+                // var visible = true;
+                // this.setState({ visible });
+                // var isEmpty = false;
+                // this.setState({ isEmpty });
             }
         }else{
             var isEmpty = true;
@@ -144,6 +146,7 @@ class VerifyPIN_Base extends React.PureComponent{
     };
 
     onClickCloseAlert = (e) => {
+        this.props.closeAlert(false);
         var visible = false;
         var value = "";
         this.setState({ visible });
@@ -229,13 +232,16 @@ class VerifyPIN_Base extends React.PureComponent{
                         </div>
                     </div>
                     <div className="form-group text-center f-12 mb-0 mt-2">
-                        <span className="click-pointer btn btn-link text-primary text-underline" onClick={(e) => this.refs.frameAction.closeModal(100)}> Cancel</span>
-                    </div>
-
-                    <div className={this.state.visible ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
+                        <span className="click-pointer btn btn-link text-primary text-underline" 
+                            onClick={(e) => {
+                                this.refs.frameAction.closeModal(100)
+                                this.props.closeAlert(false)
+                            }}> Cancel</span>
+                    </div>                    
+                    <div className={ this.props.checkPinErrState ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
                         <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
                             <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseAlert}></i>
-                            Please insert the correct pin!
+                            {this.props.checkPinErrReason}
                         </div>
                     </div>
                     <div className={this.state.isEmpty ? "col-sm-12 text-center bg-info fade-in" : "col-sm-12 text-center bg-info fade-out"}>
@@ -692,7 +698,11 @@ class ForgotPINModal extends React.Component {
 const VerifyPIN = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
         pinStatus: vars.pinStatus,
+        checkPinErrState:vars.checkPinErrState,
+        checkPinErrReason:vars.checkPinErrReason,
         changePinStatus: (pinStatus) => { actions.sendAction('changePinStatus', { pinStatus }) },
+        closeAlert: (erStatus) => { actions.sendAction('closeAlert',{erStatus}) },
+        
     }),
 )(VerifyPIN_Base);
 export default VerifyPIN;

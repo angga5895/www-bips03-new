@@ -4,6 +4,10 @@ import { WSConnectionAction } from './appnetwork.js';
 import { AppFrameAction } from './appframe.js';
 import { throwStatement } from '@babel/types';
 
+import Flash from './flash';
+import Bus from './bus';
+
+
 const SERVER_URL = 'wss://bahana.ihsansolusi.co.id:12000';
 var SERVER_URL2 = 'wss://bahana.ihsansolusi.co.id:5050';
 
@@ -84,6 +88,10 @@ var BIPSAppVars = {
   statusAlertC:false,
   statusAlertN:false,
   pinStatus: false,
+
+  // check pin
+  checkPinErrState:false,
+  checkPinErrReason:"",
 }
 
 var BIPSAppActions = {
@@ -170,9 +178,7 @@ var BIPSAppActions = {
   // chat bot state
   changeAccountType: (vars, { GeneralType }) => ({ ...vars, GeneralType: GeneralType }),
 
-    changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
-
-    changePinStatus: (vars, { pinStatus }) => ({ ...vars, pinStatus: pinStatus }),
+  changeBalanceOpt: (vars, { balanceOpt }) => ({ ...vars, balanceOpt: balanceOpt }),
 
   // subscribe
   subscribeMsgSukses:(vars,{mess})=>{
@@ -238,6 +244,28 @@ var BIPSAppActions = {
       return{...vars, statusAlertC:!vars.statusAlertC, msgAlert3:msg, ieudata:data}
     }
   },
+
+  //handleCheck Pin
+  changePinStatus: (vars, { pinStatus }) => {
+    let params = {"action_type": "PIN","sub_type": "CHECK","data": {"pin": pinStatus}}
+    vars.netAction.send({text :JSON.stringify(params)});
+    return { ...vars,  }
+  }, 
+  closeAlert:(vars,{erStatus})=>({...vars,checkPinErrState:erStatus}),
+  updatePinReplay:(vars, {data})=>{
+    let nstatus = data.status == "OK" ? "Check Pin Success" : data.status
+    let ntype = data.status === "OK" ? 'success' : 'error'    
+    window.flash = (message, type=ntype) => Bus.emit('flash', ({message, type}));
+    window.flash(nstatus, ntype);
+    if(data.status == "OK"){
+      vars.frameAction.closeModal(100) 
+      return{...vars, pinStatus:true}
+    }else{
+      let nmsg = data.reason == undefined ? data.remark : data.reason
+      return {...vars, checkPinErrState:true,checkPinErrReason:nmsg}
+    }
+  },
+
 }
 
 const BIPSAppContext = React.createContext({});
@@ -279,6 +307,12 @@ class BIPSAppProvider extends React.Component {
           this.appProvider.sendAction('loginFail', {reason: msgData.reason});
         }
       }
+      //============= call action updateAccountReplay =============  
+      if(msgData.action_type === "PIN-REPLY"){
+        console.log("RESPONSE CHECK PIN", msgData)
+        this.appProvider.sendAction('updatePinReplay', {data:msgData});
+      }
+
     }
     else{
       if(!msg.includes("action_type")){

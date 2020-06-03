@@ -6,6 +6,7 @@ import { throwStatement } from '@babel/types';
 
 import Flash from './flash';
 import Bus from './bus';
+import $ from "jquery";
 
 
 const SERVER_URL = 'wss://bahana.ihsansolusi.co.id:12000';
@@ -258,7 +259,8 @@ var BIPSAppActions = {
     window.flash = (message, type=ntype) => Bus.emit('flash', ({message, type}));
     window.flash(nstatus, ntype);
     if(data.status == "OK"){
-      vars.frameAction.closeModal(100) 
+      // vars.frameAction.closeModal(100);
+      $("#pin-click-verify").click();
       return{...vars, pinStatus:true}
     }else{
       let nmsg = data.reason == undefined ? data.remark : data.reason

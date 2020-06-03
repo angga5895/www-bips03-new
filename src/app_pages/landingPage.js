@@ -172,38 +172,38 @@ class LandingPage_Base extends React.PureComponent {
                 }
             },*/
 
-            {
-                x: "Fixed Income", value: 0,
-                normal:  {
-                    fill: (["#dac39e","#ef6c00"]),
-                },
-                hovered: {
-                    outline: {
-                        enabled: true,
-                    }
-                },
-                selected: {
-                    outline: {
-                        enabled: true,
-                    }
-                }
-            },
-            {
-                x: "Mutual Fund", value: 0,
-                normal:  {
-                    fill: (["#fffc8d","#ffd64f"]),
-                },
-                hovered: {
-                    outline: {
-                        enabled: true,
-                    }
-                },
-                selected: {
-                    outline: {
-                        enabled: true,
-                    }
-                }
-            },
+            // {
+            //     x: "Fixed Income", value: 0,
+            //     normal:  {
+            //         fill: (["#dac39e","#ef6c00"]),
+            //     },
+            //     hovered: {
+            //         outline: {
+            //             enabled: true,
+            //         }
+            //     },
+            //     selected: {
+            //         outline: {
+            //             enabled: true,
+            //         }
+            //     }
+            // },
+            // {
+            //     x: "Mutual Fund", value: 0,
+            //     normal:  {
+            //         fill: (["#fffc8d","#ffd64f"]),
+            //     },
+            //     hovered: {
+            //         outline: {
+            //             enabled: true,
+            //         }
+            //     },
+            //     selected: {
+            //         outline: {
+            //             enabled: true,
+            //         }
+            //     }
+            // },
             {
                 x: "Cash", value: 100173,
                 normal:  {
@@ -285,9 +285,9 @@ class LandingPage_Base extends React.PureComponent {
                 if (points === 0){
                     props.changeStateLanding('0');
                     if (e.point.selected()) {
-                        chart.unselect([1,2,3,4]);
+                        chart.unselect([1]);
                     } else {
-                        chart.unselect([1,2,3,4]);
+                        chart.unselect([1]);
                         chart.select(0);
                     }
                 } else if (points === 1){
@@ -298,25 +298,27 @@ class LandingPage_Base extends React.PureComponent {
                         chart.unselect([0,2,3,4]);
                         chart.select(1);
                     }
-                } else if (points === 2){
-                    props.changeStateLanding('2');
-                    if (e.point.selected()) {
-                        chart.unselect([0,1,3,4]);
-                    } else {
-                        chart.unselect([0,1,3,4]);
-                        chart.select(2);
-                    }
-                } else if (points === 3){
-                    // props.changeStateLanding('3');
-                    props.changeStateLanding('2');
-                    if (e.point.selected()) {
-                        chart.select(1);
-                        chart.unselect([0,1,2,3]);
-                    } else {
-                        chart.select(1);
-                        chart.unselect([0,1,2,3]);
-                    }
-                } /*else if (points === 4){
+                }
+                // else if (points === 2){
+                //     props.changeStateLanding('2');
+                //     if (e.point.selected()) {
+                //         chart.unselect([0,1,3,4]);
+                //     } else {
+                //         chart.unselect([0,1,3,4]);
+                //         chart.select(2);
+                //     }
+                // } else if (points === 3){
+                //     // props.changeStateLanding('3');
+                //     props.changeStateLanding('2');
+                //     if (e.point.selected()) {
+                //         chart.select(1);
+                //         chart.unselect([0,1,2,3]);
+                //     } else {
+                //         chart.select(1);
+                //         chart.unselect([0,1,2,3]);
+                //     }
+                // }
+                /*else if (points === 4){
                     props.changeStateLanding('4');
                     if (e.point.selected()) {
                         chart.unselect([0,1,2,3]);
@@ -331,23 +333,26 @@ class LandingPage_Base extends React.PureComponent {
                 var legend = e.itemIndex;
                 // Set disturber.
                 /*chart.select([5]);*/
-                chart.select([4]);
+                chart.select([2]);
                 if (legend === 0){
                     props.changeStateLanding('0');
-                    chart.unselect([1,2,3,4]);
+                    chart.unselect([1]);
                 } else if (legend === 1){
                     props.changeStateLanding('1');
-                    chart.unselect([0,2,3,4]);
-                } else if (legend === 2){
-                    props.changeStateLanding('2');
-                    chart.unselect([0,1,3,4]);
-                } else if (legend === 3){
-                    props.changeStateLanding('2');
-                    // alert('keclick');
-                    // return ;
-                    chart.select(1);
-                    // chart.unselect([0,1,2,3,4]);
-                } /*else if (legend === 4){
+                    chart.unselect([0]);
+                }
+                // else if (legend === 2){
+                //     props.changeStateLanding('2');
+                //     chart.unselect([0,1,3,4]);
+                // }
+                // else if (legend === 3){
+                //     props.changeStateLanding('2');
+                //     // alert('keclick');
+                //     // return ;
+                //     chart.select(1);
+                //     // chart.unselect([0,1,2,3,4]);
+                // }
+                /*else if (legend === 4){
                     props.changeStateLanding('4');
                     chart.unselect([0,1,2,3]);
                 }*/

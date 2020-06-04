@@ -640,7 +640,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             })
         };
 
-        console.log("stream",this.props.codeSearchMarketIndex, "datanya : ", this.props.streamChart, "timenya", this.props.timeChart)
+        console.log("stream",this.props.codeSearchMarketIndex, "datanya : ", this.props.streamChart, "timenya", 
+        this.props.timeChart, "hasil inquiry",this.props.indexStreamChart)
 
         return(
             <>
@@ -3139,6 +3140,7 @@ const StatisticMarketStatistikPage = ContextConnector(BIPSAppContext,
         thememode: vars.thememode,
         codeSearchMarketIndex:vars.codeSearchMarketIndex,
         // data Stream
+        indexStreamChart:vars.indexStreamChart,
         streamChart:vars.streamChart,
         timeChart:vars.timeChart,
         streamStatus:vars.streamStatus,

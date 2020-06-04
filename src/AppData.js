@@ -11,6 +11,30 @@ import $ from "jquery";
 
 const SERVER_URL = 'wss://bahana.ihsansolusi.co.id:12000';
 var SERVER_URL2 = 'wss://bahana.ihsansolusi.co.id:5050';
+// const SERVER_URL = 'wss://dxtrade.bahana.co.id:12000';
+// const SERVER_URL2 = 'wss://dxtrade.bahana.co.id:5050';
+
+function convertTime(param){
+  var d = new Date();
+  var h = parseInt(param.substring(0,2));
+  d.setHours(h);
+  d.setMinutes(param.substring(3,5));
+  d.setSeconds(param.substring(6,8));
+
+  return parseInt(d.getTime()) + 25200000;
+}
+
+function GetIndexStreamChart(type,data){
+  let z=[]
+  if(type === "inquiry"){
+    let x = Object.keys(data)
+    let y = Object.values(data)
+    for(let i=0; i<x.length; i++){        
+      z.push([convertTime(x[i]), y[i]])
+    }
+  }
+  return z
+}
 
 const RECONNECT_TIME = 1000;
 
@@ -29,6 +53,7 @@ var BIPSAppVars = {
     stockSummary: false,
     portfolio: false,
     runningTrace: false,
+    statisticMarketStatistikPage:false,
   },
   stockSummary: {
     'AALI': {
@@ -72,11 +97,12 @@ var BIPSAppVars = {
   buyLimitVal: '9,000,000,000',
 
   // Stream Chart
-  codeSearchMarketIndex:'',
+  codeSearchMarketIndex:'agri',
   timeChart:'',
   streamChart:'',
   streamStatus:false, 
   firstDataStream:'',
+  indexStreamChart:[],
 
   //multichart
   addressMultiVal: 0,
@@ -129,6 +155,15 @@ var BIPSAppActions = {
           stock_code: ['TLKM', 'AALI', 'HOME', 'SRIL']
         }
         vars.netAction.send({text: JSON.stringify(subsData)});
+      }
+    }
+    if(subscriptionID == 'statisticMarketStatistikPage'){
+      if (!prevFlag && flag) { // switch on
+        console.log("ini halaman statisticMarketStatistikPage")
+        vars.netActionAux.send({text: JSON.stringify({ "action_type": "INQUIRY", "sub_type": "INDEXPERIODIC", "code": "AGRI"
+      })});
+      }
+      else if (prevFlag && !flag) {
       }
     }
     if (prevFlag != flag)  
@@ -211,6 +246,7 @@ var BIPSAppActions = {
   // handle Stream Chart
   // handle onclick Stream Chart
   handleStreamChart:(vars,{streamStatus})=>{
+    vars.netActionAux.send({text: JSON.stringify({"action_type": "INQUIRY","sub_type": "INDEXPERIODIC","code": vars.codeSearchMarketIndex})});
     if(!streamStatus){
       console.log("ini handle stream yang baru", streamStatus,vars.codeSearchMarketIndex)
       vars.netActionAux.send({text:JSON.stringify({"action_type": "SUBSCRIBE","sub_type": "INDEXPERIODIC", "code": vars.codeSearchMarketIndex})})           
@@ -218,7 +254,7 @@ var BIPSAppActions = {
       vars.netActionAux.send({text:JSON.stringify({"action_type": "UNSUBSCRIBE","sub_type": "INDEXPERIODIC", "code": vars.codeSearchMarketIndex})})
     }
     return {
-      ...vars, streamStatus:!vars.streamStatus
+      ...vars, streamStatus:!vars.streamStatus, indexStreamChart:[]
     }
   },
 
@@ -231,6 +267,11 @@ var BIPSAppActions = {
     let arrData = data.split("#")
     if(arrData[1] === 'INDEXPERIODIC'){
       return{...vars, streamChart:arrData[3], timeChart:arrData[2]}
+    }
+  },
+  updateInquiryReply:(vars,{sub_type, data})=>{
+    if(sub_type.includes('INDEXPERIODIC')){
+      return {...vars, indexStreamChart:GetIndexStreamChart("inquiry",data)}
     }
   },
 
@@ -329,6 +370,9 @@ class BIPSAppProvider extends React.Component {
             console.log("LOGIN Ke 5050 Gagal")
           }
         }
+        else if(msgData.action_type === 'INQUIRY-REPLY'){
+          this.appProvider.sendAction('updateInquiryReply', {sub_type:msgData.sub_type, data: msgData.data});
+        }
       }
     }
 
@@ -366,18 +410,25 @@ class BIPSAppProvider extends React.Component {
     // console.log(`Frame shown. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: true});
+    if (instance.instanceName == 'statisticMarketStatistikPage')
+      this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: true});
+      
   }
 
   frameClose = (instance) => {
     // console.log(`Frame closed. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
+    if (instance.instanceName == 'statisticMarketStatistikPage')
+      this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: false});
   }
 
   frameHide = (instance) => {
     // console.log(`Frame hidden. Instance name ${instance.instanceName}, class name ${instance.className}`);
     if (instance.instanceName == 'stockSummaryPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
+    if (instance.instanceName == 'statisticMarketStatistikPage')
+      this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: false});
   }
 
   componentDidMount () {

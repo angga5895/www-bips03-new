@@ -3865,6 +3865,12 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
+                },{ field: "trx", headerName: "Trx Type", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
+                    minWidth: 140, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    }
                 }
             ],
             defaultColDef: {
@@ -3877,61 +3883,80 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
                     code: 'AALI'+s,
                     buySell: 'Buy',
                     inOut: '10',
+                    trx: '-',
                 }, {
                     date: "20/06/2019",
                     code: 'ABBA',
                     buySell: 'Sell',
                     inOut: '10',
+                    trx: '-',
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 }, {
                     date: "",
                     code: '',
                     buySell: '',
                     inOut: '',
+                    trx: '-',
+
                 },
             ],
             sideBar: {
@@ -4036,6 +4061,12 @@ class CashTransactionHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
+                },{ field: "trx", headerName: "Trx Type", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
+                    minWidth: 140, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    }
                 }
             ],
             defaultColDef: {
@@ -4048,62 +4079,74 @@ class CashTransactionHistoryAgGrid extends React.PureComponent {
                     debitCredit: "Debit",
                     desc: "",
                     amount: "34,500",
+                    trx: "-",
                 },{
                     date: "21/06/2019",
                     debitCredit: "Debit",
                     desc: "",
                     amount: "14,500",
+                    trx: "-",
                 },
                 {
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },{
                     date: "",
                     debitCredit: "",
                     desc: "",
                     amount: "",
+                    trx: "-",
                 },
             ],
             sideBar: {

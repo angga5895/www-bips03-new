@@ -4037,33 +4037,34 @@ class CashTransactionHistoryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?310:s=="s50"?280:s=="s67"?250:s=="s75"?240:s=="s80"?205:s=="s90"?180:s=="s100"?170:160,
-                    minWidth: 160, comparator: dateComparator,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?130:s=="s90"?110:s=="s100"?110:100,
+                    minWidth: 100,
+                    comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 }, { field: "debitCredit", headerName: "Debit / Credit", sortable: true, resizable: true,
-                    width: s=="s49"?300:s=="s50"?270:s=="s67"?250:s=="s75"?230:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140, comparator: stringComparator,
+                    width: s=="s49"?240:s=="s50"?225:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:s=="s100"?140:130,
+                    minWidth: 130, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "desc", headerName: "Description", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?160:s=="s100"?150:140,
-                    minWidth: 140, comparator: stringComparator,
+                    width: s=="s49"?280:s=="s50"?240:s=="s67"?210:s=="s75"?205:s=="s80"?180:s=="s90"?150:s=="s100"?140:130,
+                    minWidth: 130, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
+                    width: s=="s49"?250:s=="s50"?225:s=="s67"?195:s=="s75"?190:s=="s80"?170:s=="s90"?145:s=="s100"?140:140,
                     minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "trx", headerName: "Trx Type", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?285:s=="s50"?260:s=="s67"?220:s=="s75"?210:s=="s80"?190:s=="s90"?165:s=="s100"?160:150,
-                    minWidth: 140, comparator: stringComparator,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?120:s=="s90"?110:s=="s100"?100:90,
+                    minWidth: 90, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }

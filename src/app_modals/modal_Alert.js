@@ -6,6 +6,27 @@ import { BIPSAppContext } from "../AppData";
 import SweetAlert from "react-bootstrap-sweetalert";
 
 // modalAlert without confirm button
+
+
+class ModalAlertOut_Base extends React.Component{
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction"/>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    customClass={"bg-dark-grey f-12"}
+                    warning title=""
+                    onConfirm={() => this.setState({showAlert: false})}
+                    onCancel={() => this.setState({showAlert: false})}
+                >
+                    Same user id has been logged in from other situation
+                </SweetAlert>
+            </>
+
+        )
+    }
+}
 class ModalAlertN_Base extends React.Component{    
     render(){
         return(
@@ -95,7 +116,6 @@ class ModalAlertC_Base extends React.Component{
 }
 
 //************************** Context Connector **************************
-
 const ModalAlertN = ContextConnector(BIPSAppContext,
     (vars, actions)=>({
         msgAlert3:vars.msgAlert3,

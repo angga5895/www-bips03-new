@@ -3628,7 +3628,7 @@ class TradeListAgGrid extends React.PureComponent {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "code", headerName: "Code", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "code", headerName: "Code", sortable: true, resizable: true,
                     width: s=="s49"?230:s=="s50"?200:100, minWidth: 100, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table f-12 d-border-aggrid-right";
@@ -3846,7 +3846,7 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
-                }, { field: "code", headerName: "Code Stock", sortable: true, resizable: true,
+                }, { field: "code", headerName: "Code", sortable: true, resizable: true,
                     width: s=="s49"?240:s=="s50"?225:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:s=="s100"?140:130,
                     minWidth: 130, comparator: stringComparator,
                     cellClass : function (params) {
@@ -4446,13 +4446,13 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                 }, { field: "originNo", headerName: "Origin No", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,comparator: stringComparator,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth:100,comparator: stringComparator,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth:100,comparator: stringComparator,

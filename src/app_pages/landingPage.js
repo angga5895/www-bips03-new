@@ -590,8 +590,9 @@ class StockCash_Base extends React.Component{
                                     <li className="list-group-item-portofolio">Cash and Balance <br/><span className="text-primary pull-right">5,911,198</span></li>
                                     <li className="list-group-item-portofolio">P/L <br/><span className="text-success pull-right">1,496,198</span></li>
                                     <li className="list-group-item-portofolio">P/L Ratio <br/><span className="text-success pull-right">+7.50%</span></li>
-                                    <li className="list-group-item-portofolio">Cash Ballance T+2 <br/><span className="text-primary pull-right">4,500,000</span></li>
+                                    <li className="list-group-item-portofolio">Cash Balance T+2 <br/><span className="text-primary pull-right">4,500,000</span></li>
                                     <li className="list-group-item-portofolio">Buy Limit <br/><span className="pull-right">15,980,000</span></li>
+                                    <li className="list-group-item-portofolio">Additional Buy Limit <br/><span className="pull-right">15,980,000</span></li>
                                     <li className="list-group-item-portofolio">Stock Value <br/><span className="pull-right">15,234,000</span></li>
                                     {/*<li className="list-group-item-portofolio">Unsettled Amt <br/><span className="pull-right">?</span></li>*/}
                                     <li className="list-group-item-portofolio">Mkt. Value <br/><span className="pull-right">4,400,000</span></li>
@@ -637,6 +638,12 @@ class StockCash_Base extends React.Component{
                                     </tr>
                                     <tr>
                                         <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Settlement Amount</td>
+                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-2">- 1,411,168</td>
+                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Fund Transfer</td>
                                         <td className="d-border-tr-gray-all text-right py-2">0</td>
                                         <td className="d-border-tr-gray-all text-right py-2">- 1,411,168</td>
                                         <td className="d-border-tr-gray-all text-right py-2">0</td>

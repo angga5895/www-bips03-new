@@ -900,12 +900,18 @@ class AnalyticChart_Base extends React.PureComponent {
     }
     sideClick(){
         $valueAnalyticChart = $("#sideBarValue").val();
+        var newDiv = "<div class='text-white'>"+$valueAnalyticChart+"</div>";
+
         //ini check dimana dipasangnya, kalo lagi dibuka
         //baru call, kalo engga, call chrt stock aja
         if(this.props.addressMultiVal){
             $("#stockoptionchart"+this.props.addressMultiVal).change();
+            var getSecClass = document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[1].getAttribute("class");
+            document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[0].innerHTML = newDiv;
         }
         $("#stockoptionchrtStock").change();
+        var getSecClass = document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[1].getAttribute("class");
+        document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[0].innerHTML = newDiv;
     }
 
     render() {

@@ -607,52 +607,58 @@ class StockCash_Base extends React.Component{
                                 <p className="text-center mt-3 mb-0 h-17 bg-tableheader">Settlement</p>
                                 <table className="table text-white d-border-table bg-dark-grey table-sm table-borderless mb-0 card-194">
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Date</td>
-                                        <td className="d-border-tr-gray-all py-2">22/6/2019</td>
-                                        <td className="d-border-tr-gray-all py-2">23/6/2019</td>
-                                        <td className="d-border-tr-gray-all py-2">24/6/2019</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Date</td>
+                                        <td className="d-border-tr-gray-all py-1">22/6/2019</td>
+                                        <td className="d-border-tr-gray-all py-1">23/6/2019</td>
+                                        <td className="d-border-tr-gray-all py-1">24/6/2019</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Receiveable</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Receiveable</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Payable</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">1,411,168</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Payable</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">1,411,168</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Tax + Fee</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">-30</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Tax + Fee</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">-30</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Penalty</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Penalty</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Settlement Amount</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">- 1,411,168</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Settlement Amount</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">- 1,411,168</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr>
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-2">Fund Transfer</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">- 1,411,168</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">0</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Cash Balance</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">- 1,411,168</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-black py-1">Fund Transfer</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">- 1,411,168</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">0</td>
                                     </tr>
                                     <tr className="d-border-footer">
-                                        <td className="no-wrap bg-gray-tradding d-border-tr-gray py-2">Total</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">5,911,198</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">4,500,000</td>
-                                        <td className="d-border-tr-gray-all text-right py-2">4,500,000</td>
+                                        <td className="no-wrap bg-gray-tradding d-border-tr-gray py-1">Total</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">5,911,198</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">4,500,000</td>
+                                        <td className="d-border-tr-gray-all text-right py-1">4,500,000</td>
                                     </tr>
                                 </table>
                             </div>

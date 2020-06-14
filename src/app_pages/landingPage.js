@@ -1399,7 +1399,7 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Commission Type</td>
+                                                    <td className={"d-border"}>Commission Rate</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>

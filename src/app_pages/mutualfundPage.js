@@ -21,7 +21,7 @@ class MutualFundPage extends React.PureComponent{
                         <div className="py-5">
                             <i className="icofont icofont-warning-alt f-18"></i>
                             <p>Mutual Fund</p>
-                            <p>Not Available</p>
+                            <p>Not yet available. <br/>Please contact our customer service.</p>
                         </div>
                     </div>
                 </div>

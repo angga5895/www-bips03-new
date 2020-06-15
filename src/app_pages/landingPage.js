@@ -686,6 +686,24 @@ class ModalHistorical extends React.Component {
                 todayHighlight: true,
                 todayBtn: "linked",
             });
+            $('#datepickerstart').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerend').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
         });
     }
     ceksize(){
@@ -724,28 +742,54 @@ class ModalHistorical extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="container-fluid pl-0 pr-0 f-12">
-                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={paddingParagraphBottom}>
+                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={{paddingTop:'8px',paddingBottom: '2px'}}>
                         <div className="col-sm-12 h-62">
-                            <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
+                            <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
 
                                 <table>
                                     <tr>
-                                        <td>
-                                            <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
-                                                <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
-                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                                <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
+                                        {/*<td>*/}
+                                            {/*<div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>*/}
+                                                {/*<span className="input-group-addon h-35 bg-tableheader">Periode</span>*/}
+                                                {/*<input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text"*/}
+                                                       {/*className="form-control date-clear h-35" readOnly="readonly" />*/}
+                                                {/*<span className="input-group-addon h-35 bg-tableheader">*/}
+                                                                        {/*<span className="fa fa-calendar-alt"></span>*/}
+                                                                    {/*</span>*/}
+                                                {/*<span className="input-group-addon h-35 bg-tableheader">to</span>*/}
+                                                {/*<input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />*/}
+                                                {/*<span className="input-group-addon h-35 bg-tableheader">*/}
+                                                                        {/*<span className="fa fa-calendar-alt"></span>*/}
+                                                                    {/*</span>*/}
+                                            {/*</div>*/}
+                                        {/*</td>*/}
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                        </td>
+                                        <td className={"px-0"}>
+                                        <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                            <Input placeholder='dd/mm/yy' id="datepickerstart" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px'}}>to</span>
+                                        </td>
+                                        <td className={"px-0"}>
+
+                                        <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                            <Input placeholder='dd/mm/yy' id="datepickerend" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
+                                            <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
                                         </td>
                                     </tr>
                                 </table>

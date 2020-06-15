@@ -3622,53 +3622,46 @@ class TradeListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?220:s=="s80"?185:s=="s90"?125:114, comparator: dateComparator,
+                    width: s=="s49"?330:s=="s50"?300:s=="s67"?270:s=="s75"?260:s=="s80"?190:s=="s90"?145:s=="s100"?120:110, comparator: dateComparator,
                     minWidth: 114,
                     cellClass : function (params) {
                         return " grid-table text-left f-12 d-border-aggrid-right";
                     }, suppressSizeToFit: true
                 },
                 { field: "trade", headerName: "Trade#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?190:s=="s90"?160:100,  comparator: stringComparator,
+                    width: s=="s49"?330:s=="s50"?300:s=="s67"?270:s=="s75"?260:s=="s80"?200:s=="s90"?150:s=="s100"?140:100,  comparator: stringComparator,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },{ field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?240:s=="s75"?235:s=="s80"?200:s=="s90"?160:100, comparator: stringComparator,
+                    width: s=="s49"?330:s=="s50"?310:s=="s67"?280:s=="s75"?270:s=="s80"?220:s=="s90"?160:s=="s100"?130:110, comparator: stringComparator,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?230:s=="s50"?200:100, minWidth: 100, comparator: stringComparator,
+                    width: s=="s49"?270:s=="s50"?210:120, minWidth: 100, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: stringComparator,
-                    width: s=="s49"?280:s=="s50"?260:s=="s67"?250:s=="s75"?245:s=="s80"?210:s=="s90"?150:147,
-                    minWidth: 147,
+                    width: s=="s49"?300:s=="s50"?285:s=="s67"?280:s=="s75"?270:s=="s80"?230:s=="s90"?160:s=="s100"?155:145,
+                    minWidth: 145,
                     cellClass : function (params) {
                         return "text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
-                { field: "type", headerName: "Type", sortable: true, resizable: true, comparator: stringComparator,
-                    width: s=="s49"?190:s=="s50"?160:s=="s67"?150:s=="s75"?148:s=="s80"?110:107,
-                    minWidth: 147,
-                    cellClass : function (params) {
-                        return "text-center  grid-table f-12 d-border-aggrid-right";
-                    }
-                },
                 { field: "mkt", headerName: "Mkt", sortable: true, resizable: true, comparator: stringComparator,
-                    width: s=="s49"?140:s=="s50"?120:107, minWidth: 107,
+                    width: s=="s49"?160:s=="s50"?120:107, minWidth: 107,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?140:s=="s50"?120:107, minWidth: 107,
+                    width: s=="s49"?160:s=="s50"?120:107, minWidth: 107,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
@@ -3680,13 +3673,13 @@ class TradeListAgGrid extends React.PureComponent {
                     }
                 },
                 { field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?170:120, minWidth: 120,  comparator: integerComparator,
+                    width: s=="s49"?160:s=="s50"?150:s=="s67"?140:120, minWidth: 120,  comparator: integerComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
                 },
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:120, minWidth: 120,  comparator: stringComparator,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?180:120, minWidth: 120,  comparator: stringComparator,
                     cellClass : function (params) {
                         return " text-right grid-table f-12 d-border-aggrid-right";
                     }
@@ -3697,7 +3690,7 @@ class TradeListAgGrid extends React.PureComponent {
                 filter: true,
             },
             rowData: [
-                {   date: "22/06/2019",
+                {   date: "22/06/2019"+s,
                     trade: "0000002027",
                     order: "00162",
                     code: "AALI",

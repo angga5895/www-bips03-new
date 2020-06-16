@@ -160,6 +160,7 @@ input[type="radio"]:checked .radioAccount ~ label{
         height: 48px;
         border-radius: 6px;
         overflow: hidden;
+        max-width: 343px;
         width: 100%;
         display: inline-block;
         color: var(--warna-black-white-semantic);

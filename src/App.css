@@ -6208,3 +6208,9 @@ body{
     color: white !important;
     background-image: linear-gradient(#0071BC,#122b40)
 }
+.no-border-radius{
+    border-radius: 0px !important;
+}
+.btnDatePick{
+    min-height: 32px;
+}

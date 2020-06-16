@@ -675,18 +675,7 @@ class ModalHistorical extends React.Component {
         $(document).ready(function() {
             var sd = new Date(), ed = new Date();
             var isRtl = $('html').attr('dir') === 'rtl';
-            $('.input-daterange').datepicker({
-                orientation: isRtl ? 'auto right' : 'auto left',
-                format: "dd/mm/yyyy",
-                changeMonth: true,
-                changeYear: true,
-                startDate: '01/01/1920',
-                autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
-                todayBtn: "linked",
-            });
-            $('#datepickerstart').datepicker({
+            $('#datepickerstartH').datepicker({
                 orientation: isRtl ? 'auto right' : 'auto left',
                 format: "dd/mm/yyyy",
                 changeMonth: true,
@@ -695,7 +684,7 @@ class ModalHistorical extends React.Component {
                 autoclose: true,
                 todayBtn: "linked",
             });
-            $('#datepickerend').datepicker({
+            $('#datepickerendH').datepicker({
                 orientation: isRtl ? 'auto right' : 'auto left',
                 format: "dd/mm/yyyy",
                 changeMonth: true,
@@ -742,33 +731,18 @@ class ModalHistorical extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="container-fluid pl-0 pr-0 f-12">
-                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={{paddingTop:'8px',paddingBottom: '2px'}}>
+                    <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={{paddingBottom: '10px'}}>
                         <div className="col-sm-12 h-62">
                             <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
 
                                 <table>
                                     <tr>
-                                        {/*<td>*/}
-                                            {/*<div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>*/}
-                                                {/*<span className="input-group-addon h-35 bg-tableheader">Periode</span>*/}
-                                                {/*<input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text"*/}
-                                                       {/*className="form-control date-clear h-35" readOnly="readonly" />*/}
-                                                {/*<span className="input-group-addon h-35 bg-tableheader">*/}
-                                                                        {/*<span className="fa fa-calendar-alt"></span>*/}
-                                                                    {/*</span>*/}
-                                                {/*<span className="input-group-addon h-35 bg-tableheader">to</span>*/}
-                                                {/*<input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />*/}
-                                                {/*<span className="input-group-addon h-35 bg-tableheader">*/}
-                                                                        {/*<span className="fa fa-calendar-alt"></span>*/}
-                                                                    {/*</span>*/}
-                                            {/*</div>*/}
-                                        {/*</td>*/}
                                         <td className={"px-0"}>
                                             <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
                                         </td>
                                         <td className={"px-0"}>
                                         <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
-                                            <Input placeholder='dd/mm/yy' id="datepickerstart" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <Input placeholder='dd/mm/yy' id="datepickerstartH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
                                                 <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
                                                 <span
                                                     className="fa fa-calendar-alt"></span>
@@ -781,7 +755,7 @@ class ModalHistorical extends React.Component {
                                         <td className={"px-0"}>
 
                                         <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
-                                            <Input placeholder='dd/mm/yy' id="datepickerend" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <Input placeholder='dd/mm/yy' id="datepickerendH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
                                             <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
                                                 <span
                                                     className="fa fa-calendar-alt"></span>
@@ -816,17 +790,25 @@ class ModalOrderHistory extends React.Component {
         $(document).ready(function() {
             var sd = new Date(), ed = new Date();
             var isRtl = $('html').attr('dir') === 'rtl';
-            $('.input-daterangeTransaction').datepicker({
+            $('#datepickerstartOH').datepicker({
                 orientation: isRtl ? 'auto right' : 'auto left',
                 format: "dd/mm/yyyy",
                 changeMonth: true,
                 changeYear: true,
-                startDate: '01/01/1920',
+                endDate: ed,
                 autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
                 todayBtn: "linked",
             });
+            $('#datepickerendOH').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+
 
         });
     }
@@ -881,45 +863,37 @@ class ModalOrderHistory extends React.Component {
                 <div className="container-fluid pl-0 pr-0 f-12" >
                     <div className="col-sm-12 row px-0 mx-0 d-border-bottom" style={paddingParagraphBottom}>
                         <div className="col-sm-12 h-62">
-                            <div className="ui small input col-sm-12 f-12 text-center align-self-center black ver-center">
-
+                            <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
                                 <table>
                                     <tr>
-                                        <td>
-                                            <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                <span className="input-group-addon h-35 bg-tableheader">Periode</span>
-                                                <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
-                                                <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                                <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                <span className="input-group-addon h-35 bg-tableheader">
-                                                                        <span className="fa fa-calendar-alt"></span>
-                                                                    </span>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerstartOH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px'}}>to</span>
+                                        </td>
+                                        <td className={"px-0"}>
+
+                                            <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerendOH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
+                                            <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
                                         </td>
-                                        {/*<td class="text-white">*/}
-                                            {/*Market*/}
-                                        {/*</td>*/}
-                                        {/*<td className="td-select-historical">*/}
-                                            {/*<Dropdown defaultValue={marketOptions[0].value} placeholder='' search selection options={marketOptions} className="col-sm-12 f-12"/>*/}
-                                        {/*</td>*/}
-                                        {/*<td className="text-white">*/}
-                                            {/*Status*/}
-                                        {/*</td>*/}
-                                        {/*<td className="td-select-historical">*/}
-                                            {/*<Dropdown placeholder='' defaultValue={statusOptions[0].value} search selection options={statusOptions} className="col-sm-12 f-12"/>*/}
-                                        {/*</td>*/}
-                                        {/*<td className="text-white">*/}
-                                            {/*Buy/Sell*/}
-                                        {/*</td>*/}
-                                        {/*<td className="td-select-historical">*/}
-                                            {/*<Dropdown placeholder='' defaultValue={buySellOptions[0].value} search selection options={buySellOptions} className="col-sm-12 f-12"/>*/}
-                                        {/*</td>*/}
                                     </tr>
                                 </table>
 
@@ -940,6 +914,141 @@ class ModalOrderHistory extends React.Component {
     }
 }
 
+class ModalTransactionHistory extends React.Component {
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerstartTH').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendTH').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+
+
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render() {
+        const paddingParagraphBottom = {
+            paddingBottom: '10px'
+        }
+        const marketOptions = [
+            //untuk top active
+            { key: 'all', value: 'all', text: 'All' },
+            { key: 'rg', value: 'rg', text: 'RG' },
+            { key: 'tn', value: 'tn', text: 'TN' },
+            { key: 'ng', value: 'ng', text: 'NG' },
+        ];
+        const  statusOptions = [
+            //untuk top active
+            { key: 'all', value: 'all', text: 'All' },
+            { key: 'open', value: 'open', text: 'Open' },
+            { key: 'amend', value: 'amend', text: 'Amend' },
+            { key: 'withdraw', value: 'withdraw', text: 'Withdraw' },
+            { key: 'partial', value: 'partial', text: 'Partial' },
+            { key: 'donePartial', value: 'donePartial', text: 'Done - Partial' },
+            { key: 'reject', value: 'reject', text: 'Reject' },
+            { key: 'send', value: 'send', text: 'Send' },
+        ];
+        const buySellOptions = [
+            //untuk top active
+            { key: 'all', value: 'ALL', text: 'All' },
+            { key: 'buy', value: 'BUY', text: 'Buy' },
+            { key: 'sell', value: 'SELL', text: 'Sell' },
+        ];
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <div className={"row"}>
+                    <div className="col-sm-12 row px-0 mx-0">
+                        <div className="col-sm-12 h-62">
+                            <div className="ui small input col-sm-8 pl-4 f-12 text-center align-self-center black ver-center">
+                                <table>
+                                    <tr>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerstartTH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px'}}>to</span>
+                                        </td>
+                                        <td className={"px-0"}>
+
+                                            <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerendTH" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={"col-sm-6 pr-2"}>
+                        <div className="bg-tableheader text-center py-3 h-30"><span>STOCK TRANSACTION</span>
+                        </div>
+                        <StockTransactionHistoryAgGrid size={this.ceksize()}/>
+                    </div>
+
+                    <div className={"col-sm-6 pl-2"}>
+                        <div className="bg-tableheader text-center py-3 h-30"><span>CASH TRANSACTION</span>
+                        </div>
+                        <CashTransactionHistoryAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
+
+            </>
+        );
+    }
+}
 
 class ModalTransaction extends React.Component {
 
@@ -1034,28 +1143,25 @@ class FundTransfer_Base extends React.PureComponent {
         $(document).ready(function() {
             var sd = new Date(), ed = new Date();
             var isRtl = $('html').attr('dir') === 'rtl';
-            $('.input-daterangeTransaction').datepicker({
+            $('#datepickerstartFT').datepicker({
                 orientation: isRtl ? 'auto right' : 'auto left',
                 format: "dd/mm/yyyy",
                 changeMonth: true,
                 changeYear: true,
-                startDate: '01/01/1920',
+                endDate: ed,
                 autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendFT').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
                 todayBtn: "linked",
             });
 
-            // Zaky Update
-            $('#datepickerTest').datepicker({
-                orientation: isRtl ? 'auto right' : 'auto left',
-                format: "dd/mm/yyyy",
-                changeMonth: true,
-                changeYear: true,
-                startDate: sd,
-                autoclose: true,
-                todayBtn: "linked",
-            });
         });
     }
     ceksize(){
@@ -1252,27 +1358,35 @@ class FundTransfer_Base extends React.PureComponent {
                                     <div className="d-border-bottom mb-3">
                                         <div className="form-group mb-3 px-0">
                                             <div className="col-sm-9 pl-0 h-62">
-                                                <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
-                                                    {/* <Input type="text" /> */}
-                                                    {/* Update Zaky */}
+                                                <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
                                                     <table>
                                                         <tr>
-                                                            <td>
-                                                                <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                                    <span className="input-group-addon h-35 bg-tableheader">Periode</span>
-                                                                    <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35 bg-tableheader">
-                                                                    <span className="fa fa-calendar-alt bg-tableheader"></span>
+                                                            <td className={"px-0"}>
+                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                                    <Input placeholder='dd/mm/yy' id="datepickerstartFT" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                                    <span
+                                                                        className="fa fa-calendar-alt"></span>
                                                                 </span>
-                                                                    <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                                                    <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35 bg-tableheader">
-                                                                    <span className="fa fa-calendar-alt bg-tableheader"></span>
+                                                                </div>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px'}}>to</span>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                                    <Input placeholder='dd/mm/yy' id="datepickerendFT" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                                    <span
+                                                                        className="fa fa-calendar-alt"></span>
                                                                 </span>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
+                                                                <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -1683,24 +1797,6 @@ class TradeListHistory_Base extends React.PureComponent {
             });
         }
     }
-    componentDidMount() {
-        $(document).ready(function() {
-            var sd = new Date(), ed = new Date();
-            var isRtl = $('html').attr('dir') === 'rtl';
-            $('.input-daterangeTransaction').datepicker({
-                orientation: isRtl ? 'auto right' : 'auto left',
-                format: "dd/mm/yyyy",
-                changeMonth: true,
-                changeYear: true,
-                startDate: '01/01/1920',
-                autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
-                todayBtn: "linked",
-            });
-
-        });
-    }
     ceksize(){
         if(window.innerWidth > 1290 && window.innerWidth <= 1370){
             return "s100";
@@ -1758,46 +1854,8 @@ class TradeListHistory_Base extends React.PureComponent {
                                 </div>
                             </div>
                             <div className={this.state.activeTab === '3' ? 'block f-12' : 'd-none'}>
-                                <div className={"row"}>
-                                        <div className="col-sm-12 row px-0 mx-0">
-                                            <div className="col-sm-12 h-62">
-                                                <div className="ui small input col-sm-8 f-12 text-center align-self-center black ver-center">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <div className="input-group input-daterange input-daterangestock h-35" style={{"z-index":0}}>
-                                                                    <span className="input-group-addon h-35 bg-tableheader">Periode</span>
-                                                                    <input placeholder="dd/mm/yyyy" id="startDateFirst" name="startDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35 bg-tableheader">
-                                                                            <span className="fa fa-calendar-alt"></span>
-                                                                        </span>
-                                                                    <span className="input-group-addon h-35 bg-tableheader">to</span>
-                                                                    <input placeholder="dd/mm/yyyy" id="endDateFirst" name="endDate1" type="text" className="form-control date-clear h-35" readOnly="readonly" />
-                                                                    <span className="input-group-addon h-35 bg-tableheader">
-                                                                            <span className="fa fa-calendar-alt"></span>
-                                                                        </span>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <button type="submit" className="btn btn-md btn-block btn-default btn-dark btnDatePick">Go</button>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    <div className={"col-sm-6 pr-2"}>
-                                        <div className="bg-tableheader text-center py-3 h-30"><span>STOCK TRANSACTION</span>
-                                        </div>
-                                        <StockTransactionHistoryAgGrid size={this.ceksize()}/>
-                                    </div>
-
-                                    <div className={"col-sm-6 pl-2"}>
-                                        <div className="bg-tableheader text-center py-3 h-30"><span>CASH TRANSACTION</span>
-                                        </div>
-                                        <CashTransactionHistoryAgGrid size={this.ceksize()}/>
-                                    </div>
+                                <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
+                                    <ModalTransactionHistory/>
                                 </div>
                             </div>
                         </div>

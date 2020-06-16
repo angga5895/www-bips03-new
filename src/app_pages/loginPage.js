@@ -181,7 +181,7 @@ class ForgotModal extends React.Component {
                 <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-16 text-center">Forgot Password</label>
                 <div className="text-white f-12 text-center">
                     <div className="form-group">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Please Contact Our Support Center 14045
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Please Contact Our Support Center 14009
                         </label>
                     </div>
                 </div>
@@ -642,6 +642,9 @@ class LoginUserPage_Base extends React.PureComponent {
     clickIdx = (e) => {
         window.open('https://www.idx.co.id/');
     }
+    clickBahana = (e) => {
+        window.open('https://www.bahanasekuritas.id/ ');
+    }
 
     render () {
 
@@ -780,7 +783,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                     </div>
 
                                     <div className="col-sm-12 text-center row mx-0" style={{justifyContent : "center"}}>
-                                        <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4"/>
+                                        <img src={bahana_logo} width="45%" height="45%" className="click-pointer mt-4" onClick={this.clickBahana}/>
                                         <img src={idx_logo} width="15%" height="15%" className="click-pointer" onClick={this.clickIdx}/>
                                         <img src={ojk_logo} width="30%" height="15%" className="click-pointer" onClick={this.clickOjk}/>
                                     </div>

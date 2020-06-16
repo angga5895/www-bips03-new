@@ -125,6 +125,9 @@ class AboutModal_Base extends React.Component {
     clickIdx = (e) => {
         window.open('https://www.idx.co.id/');
     }
+    clickBahana = (e) => {
+        window.open('https://www.bahanasekuritas.id/ ');
+    }
 
     render() {
         return (
@@ -147,7 +150,7 @@ class AboutModal_Base extends React.Component {
                     </div>
 
                     <div className="col-sm-12 text-center row mx-0 py-3" style={{justifyContent : "center"}}>
-                        <img src={bahana_logo} width="30%" height="30%" className="click-pointer mt-4"/>
+                        <img src={bahana_logo} width="30%" height="30%" className="click-pointer mt-4" onClick={this.clickBahana} />
                         <img src={idx_logo} width="15%" height="15%" className="click-pointer" onClick={this.clickIdx}/>
                         <img src={ojk_logo} width="30%" height="15%" className="click-pointer" onClick={this.clickOjk}/>
                     </div>

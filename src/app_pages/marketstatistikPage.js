@@ -117,7 +117,8 @@ class MarketStatistikPage extends React.PureComponent {
     }
 
     state = {
-        top: "topactive"
+        top: "topactive",
+        selected: 1,
     }
     ceksize(){
         if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
@@ -145,83 +146,71 @@ class MarketStatistikPage extends React.PureComponent {
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction />
                 <div className="card card-527">
-                    <div className="card-header h-49 bg-grey py-0">
+                    <div className="card-header pt-1 h-49 bg-grey pb-0">
                         <div className="f-14 px-0 mx-0 py-0 col-sm-12 h-49">
                             <div className="row col-sm-12 px-0 mx-0">
-                                <div className="col-mbl-radio px-0 mx-0 row align-self-center">
-                                    <ul className="ul-radio col-sm-12 px-0 mx-0 row h-49">
-                                        <li className="li-radio col-radio px-0 mx-0" onClick={
-                                            (e) => {
-                                                this.setState({
-                                                    top : "topactive"
-                                                })
-                                            }
-                                        }>
-                                            <input type="radio" id="ta-options" name="top" checked={this.state.top == "topactive" ? true : false}/>
-                                            <label htmlFor="ta-options" className="no-wrap">Top Active</label>
-
-                                            <div className="check"></div>
-                                        </li>
-
-                                        <li className="li-radio col-radio px-0 mx-0" onClick={
-                                            (e) => {
-                                                this.setState({
-                                                    top : "topgainers"
-                                                })
-                                            }
-                                        }>
-                                            <input type="radio" id="tg-options" name="top" checked={this.state.top == "topgainers" ? true : false}/>
-                                            <label htmlFor="tg-options" className="no-wrap">Top Gainers</label>
-
-                                            <div className="check"></div>
-                                        </li>
-
-                                        <li className="li-radio col-radio px-0 mx-0" onClick={
-                                            (e) => {
-                                                this.setState({
-                                                    top : "toploosers"
-                                                })
-                                            }
-                                        }>
-                                            <input type="radio" id="tl-options" name="top" checked={this.state.top == "toploosers" ? true : false}/>
-                                            <label htmlFor="tl-options" className="no-wrap">Top Losers</label>
-
-                                            <div className="check"></div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className="col-mbl-radio-o px-0 mx-0 align-self-center">
-                                    <div className="col-sm-12 px-0 mx-0 row text-right h-49 py-2">
-                                        <div className="col-sm-3">
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <Dropdown
-                                                placeholder='Choose'
-                                                search selection
-                                                options={summaryOptions}
-                                                defaultValue={summaryOptions[0].value}
-                                                className="col-sm-12 f-12"/>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <Dropdown
-                                                placeholder='Choose'
-                                                search
-                                                selection
-                                                options={stateOptions}
-                                                defaultValue={stateOptions[2].value}
-                                                className="col-sm-12 f-12"/>
-                                        </div>
-                                        <div className={"col-sm-1 text-center"}>
-                                            <Popup content='Refresh' position='top center' trigger={
-                                                <button
-                                                    className="pull-left btn btn-primary"
-                                                    style={{"font-size": "12px", "margin-left": "-10px"}}>
-                                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                                </button>
-                                            }/>
-                                        </div>
-
+                                <div className={"col-sm-6"}>
+                                    <div
+                                        className={`px-0 pt-3 pl-5
+                                                  ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
+                                        onClick={()=>this.setState({selected:1})}
+                                        style={{display: "inline-block"}}
+                                    >
+                                        <i className={this.state.selected == 1 ? "far fa-dot-circle" : "far fa-circle"}></i>
+                                        &nbsp;
+                                        Top Active
                                     </div>
+                                    <div
+                                        className={`px-0 pt-3 pl-5
+                                                   ${this.state.selected == 2?"livetradeMenuActive":"livetradeMenu"}`}
+                                        onClick={()=>this.setState({selected:2})}
+                                        style={{display: "inline-block"}}
+                                    >
+                                        <i className={this.state.selected == 2 ? "far fa-dot-circle" : "far fa-circle"}></i>
+                                        &nbsp;
+                                        Top Gainer
+                                    </div>
+                                    <div
+                                        className={`px-0 pt-3 pl-5
+                                                    ${this.state.selected == 3?"livetradeMenuActive":"livetradeMenu"}`}
+                                        onClick={()=>this.setState({selected:3})}
+                                        style={{display: "inline-block"}}
+                                    >
+                                        <i className={this.state.selected == 3 ? "far fa-dot-circle" : "far fa-circle"}></i>
+                                        &nbsp;
+                                        Top Losers
+                                    </div>
+                                </div>
+                                <div className="col-sm-6 px-0 mx-0 row text-right h-49 py-2">
+                                    <div className="col-sm-3">
+                                    </div>
+                                    <div className="col-sm-4">
+                                        <Dropdown
+                                            placeholder='Choose'
+                                            search selection
+                                            options={summaryOptions}
+                                            defaultValue={summaryOptions[0].value}
+                                            className="col-sm-12 f-12"/>
+                                    </div>
+                                    <div className="col-sm-4">
+                                        <Dropdown
+                                            placeholder='Choose'
+                                            search
+                                            selection
+                                            options={stateOptions}
+                                            defaultValue={stateOptions[2].value}
+                                            className="col-sm-12 f-12"/>
+                                    </div>
+                                    <div className={"col-sm-1 text-center"}>
+                                        <Popup content='Refresh' position='top center' trigger={
+                                            <button
+                                                className="pull-left btn btn-primary"
+                                                style={{"font-size": "12px", "margin-left": "-10px"}}>
+                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                            </button>
+                                        }/>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -423,10 +412,13 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         var point = null;
         var time = null;
         var tempTitle = null;
+        var dataset = null;
+        var intervals = [];
 
         anychart.onDocumentReady(function () {
 
-            var dataset = anychart.data.table();
+            dataset = anychart.data.table();
+            //start data
             dataset.addData([
                 [1582703100063, 300],
                 [1582705100063, 500],
@@ -435,19 +427,14 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             // map the data
             var mapping = dataset.mapAs({x: 0, value: 1});
-
             // set chart type
             var chart = anychart.stock();
-
-            console.log(chart);
 
             chart.scroller(true);
             chart.scroller().enabled(false);
 
             var credits = chart.credits();
             credits.enabled(false);
-
-
 
             // set the series
             var series = chart.plot(0).line(mapping);
@@ -464,11 +451,9 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             var title = chart.plot(0).legend().title();
             title.useHtml(true);
 
-// enable legend title
             title.enabled(true);
             title.text("&nbsp;");
 
-// set font size and align
             title.fontSize(14);
             title.hAlign("center");
 
@@ -496,8 +481,18 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
             function reset(){
                 dataset.remove(1509986691452,ntommorow);
+                $("#marketClickInput").click();
             }
+            function convertTime(param){
+                var StrVersion = String(param);
+                var d = new Date();
+                var h = parseInt(StrVersion.substring(0,2));
+                d.setHours(h);
+                d.setMinutes(StrVersion.substring(3,5));
+                d.setSeconds(StrVersion.substring(6,8));
 
+                return parseInt(d.getTime()) + 25200000;
+            }
             function streamStart() {
                 var ahay = document.getElementById('propsluar').value;
                 if(ahay.length < 1){
@@ -529,17 +524,65 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                             dataset.addData(newDataRow);
 
 
-                    }, 500            // interval
+                    }, 300            // interval
                 );
             }
 
             let streamButton = document.getElementById("streamButton");
             let resetButton = document.getElementById("resetButton");
             let resetTitle = document.getElementById("resetTitle");
+            let inputButton = document.getElementById("marketClickInput");
+            let stopInterval = document.getElementById("stopInterval");
 
             let streamState = 0;
             let dataInteval;
+            var timeTemp = Date.now();
+            stopInterval.onclick = function(){
+                intervals.forEach(clearInterval);
+            }
 
+            inputButton.onclick = function(){
+                // intervalTime
+                 var dataInquiry = $("#arrayLengthInquiry").data('arr');
+                 var dataInquiryLength = $("#arrayLengthInquiry").val();
+               dataInquiry = dataInquiry.split(",");
+               // // console.log(dataInquiry);
+               // var newArr = [];
+               //  for(let i = 0; i< 200; i + 2){
+               //     newArr.push([dataInquiry[i],dataInquiry[i+1]]);
+               // }
+                var counter = 0;
+                // var counter2 = 0;
+                var i = setInterval(function(){
+                    // do your thing
+                    // newDataRow[counter2] = new Array(2);
+                    // time = convertTime(dataInquiry[counter]);
+                    time = dataInquiry[counter];
+                    point = parseInt(dataInquiry[counter+1]);
+
+                    dataset.addData([[time, point]]);
+                    // newDataRow[counter2][0] = point;
+                    // newDataRow[counter2][1] = time;
+                    console.log( "point: "+point+" time: "+time + " counter" + counter +" "+dataInquiryLength);
+                    counter = counter + 2;
+                    timeTemp = timeTemp+1;
+                    // dataset.addData(newDataRow);
+                    if(counter == dataInquiryLength) {
+                        clearInterval(i);
+                    }
+                }, 1);
+
+                intervals.push(i);
+
+                // for (let i=0; i < dataInquiry; i++){
+               //     point = 1582705100063 + (i*2);
+               //     time = 400 + (i*10);
+               //     newDataRow[0] = new Array(2);
+               //     newDataRow[0][0] = time;
+               //     newDataRow[0][1] = point;
+               //     dataset.addData(newDataRow);
+               // }
+            }
             //untuk mengganti title chart
             resetTitle.onclick = function(){
                 reset();
@@ -580,7 +623,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         document.getElementById("resetTitle").value = event.toUpperCase();
         document.getElementById("resetTitle").click();
         this.setState({newStream: true});
-        this.props.handleSearchCode(event)
+        this.props.handleSearchCode(event);
     }
     handleStartStopStream = () => {
         this.props.handleStreamChart(this.props.streamStatus)
@@ -613,6 +656,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
         return parseInt(d.getTime()) + 25200000;
     }
+
     render(){
         const stockOptions = [
             { value: 'agri', label: 'AGRI' },
@@ -697,9 +741,12 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                             <input type="hidden" id={"tempTime"} value={this.convertTime(this.props.timeChart)}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
                                             <input type="hidden" id={"newStream"} value={this.props.streamStatus}/>
-
                                             {/*<input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>*/}
                                             <input type="hidden" id={"resetTitle"}/>
+                                            <button type="button" className={"btn btn-sm btn-grey"} id={"marketClickInput"}>X</button>
+                                            <input type="text" id={"arrayLengthInquiry"} data-arr={this.props.indexStreamChart} value={(this.props.indexStreamChart) ? this.props.indexStreamChart.length : 0
+                                            }/>
+                                            <button id={"stopInterval"}>STOP</button>
 
                                             <span onClick={this.handleStartStopStream} id={"hello"}></span>
                                             <div id="container" className="mt-2 py-3 px-3 card-344"></div>

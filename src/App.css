@@ -6214,6 +6214,6 @@ body{
 .btnDatePick{
     min-height: 32px;
 }
-.delayTransition{
+.card-344>#container{
     transition-delay: 1s;
 }

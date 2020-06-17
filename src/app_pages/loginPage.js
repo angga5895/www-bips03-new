@@ -765,7 +765,9 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <td>CALL CENTER 14009</td>
                                                         <td>www.directtrading.co.id</td>
                                                         <td>
-                                                            <button onClick={this.buttonClickHelp} className="btn btn-sm px-1 py-0 btn-block btn-default btn-dark">
+                                                            <button
+                                                                // onClick={this.buttonClickHelp}
+                                                                className="btn btn-sm px-1 py-0 btn-block btn-default btn-dark">
                                                                 <i className="icofont-exclamation"></i>
                                                                 &nbsp;Help</button>
                                                         </td>

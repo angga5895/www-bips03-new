@@ -12,6 +12,8 @@ import ModalBuy from "./../app_modals/modal_buy";
 import ModalSell from "./../app_modals/modal_sell";
 import {AgGridReact} from "ag-grid-react";
 import MenuOfContent from "../menuofcontent";
+import AnyChart from '../../node_modules/anychart-react/dist/anychart-react.min.js'
+
 import newsImg1 from './../img/noimage.png';
 import newsImg2 from './../img/noimage.png';
 import newsImg3 from './../img/noimage.png';
@@ -397,232 +399,233 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
     });
 
     componentDidMount() {
-        var tommorow = new Date();
-        tommorow.setDate(tommorow.getDate()+1);
-        const ntommorow = tommorow.getTime();
-        //create new point every 1 minute
-        var period = 4;
-        //new price ticks come every 15 seconds
-        var tickPeriod = 15000;
+        $('#container').css('height', '100%');
+        // var tommorow = new Date();
+        // tommorow.setDate(tommorow.getDate()+1);
+        // const ntommorow = tommorow.getTime();
+        // //create new point every 1 minute
+        // var period = 4;
+        // //new price ticks come every 15 seconds
+        // var tickPeriod = 15000;
 
-        var newTimestamp;
+        // var newTimestamp;
 
-        var newDataRow = [];
-        //current price variable
-        var point = null;
-        var time = null;
-        var tempTitle = null;
-        var dataset = null;
-        var intervals = [];
+        // var newDataRow = [];
+        // //current price variable
+        // var point = null;
+        // var time = null;
+        // var tempTitle = null;
+        // var dataset = null;
+        // var intervals = [];
 
-        anychart.onDocumentReady(function () {
+        // anychart.onDocumentReady(function () {
 
-            dataset = anychart.data.table();
-            //start data
-            dataset.addData([
-                [1582703100063, 300],
-                [1582705100063, 500],
-                [1582709420063, 900],
-            ]);
+        //     dataset = anychart.data.table();
+        //     //start data
+        //     dataset.addData([
+        //         [1582703100063, 300],
+        //         [1582705100063, 500],
+        //         [1582709420063, 900],
+        //     ]);
 
-            // map the data
-            var mapping = dataset.mapAs({x: 0, value: 1});
-            // set chart type
-            var chart = anychart.stock();
+        //     // map the data
+        //     var mapping = dataset.mapAs({x: 0, value: 1});
+        //     // set chart type
+        //     var chart = anychart.stock();
 
-            chart.scroller(true);
-            chart.scroller().enabled(false);
+        //     chart.scroller(true);
+        //     chart.scroller().enabled(false);
 
-            var credits = chart.credits();
-            credits.enabled(false);
+        //     var credits = chart.credits();
+        //     credits.enabled(false);
 
-            // set the series
-            var series = chart.plot(0).line(mapping);
+        //     // set the series
+        //     var series = chart.plot(0).line(mapping);
 
-            var columnTooltip = series.tooltip();
-            chart.tooltip().titleFormat('{%x}{type:time}');
-            columnTooltip.format("{%seriesName}: {%value}");
-            columnTooltip.displayMode("single");
+        //     var columnTooltip = series.tooltip();
+        //     chart.tooltip().titleFormat('{%x}{type:time}');
+        //     columnTooltip.format("{%seriesName}: {%value}");
+        //     columnTooltip.displayMode("single");
 
-            chart.crosshair().xLabel().format(' ');
+        //     chart.crosshair().xLabel().format(' ');
 
-            chart.plot(0).legend(true);
+        //     chart.plot(0).legend(true);
 
-            var title = chart.plot(0).legend().title();
-            title.useHtml(true);
+        //     var title = chart.plot(0).legend().title();
+        //     title.useHtml(true);
 
-            title.enabled(true);
-            title.text("&nbsp;");
+        //     title.enabled(true);
+        //     title.text("&nbsp;");
 
-            title.fontSize(14);
-            title.hAlign("center");
+        //     title.fontSize(14);
+        //     title.hAlign("center");
 
-            series.name("");
-            chart.title('Stock Streaming');
+        //     series.name("");
+        //     chart.title('Stock Streaming');
 
-            // set container and draw chart
-            chart.container("container").draw();
+        //     // set container and draw chart
+        //     chart.container("container").draw();
 
-            //create empty array for point data update
-            newDataRow[0] = new Array(2);
+        //     //create empty array for point data update
+        //     newDataRow[0] = new Array(2);
 
-            //select the last point from existing datatable
-            var selectable = mapping.createSelectable();
-            selectable.selectAll();
-            var iterator = selectable.getIterator();
+        //     //select the last point from existing datatable
+        //     var selectable = mapping.createSelectable();
+        //     selectable.selectAll();
+        //     var iterator = selectable.getIterator();
 
-            while (iterator.advance()) {
-                //put data from the last exsiting point
-                newDataRow[0][0] = iterator.get('x');
-                newDataRow[0][1] = iterator.get('value');
-            }
-            //timestamp variable for incoming ticks
-            newTimestamp = newDataRow[0][0];
+        //     while (iterator.advance()) {
+        //         //put data from the last exsiting point
+        //         newDataRow[0][0] = iterator.get('x');
+        //         newDataRow[0][1] = iterator.get('value');
+        //     }
+        //     //timestamp variable for incoming ticks
+        //     newTimestamp = newDataRow[0][0];
 
-            function reset(){
-                dataset.remove(1509986691452,ntommorow);
-                $("#marketClickInput").click();
-            }
-            function convertTime(param){
-                var StrVersion = String(param);
-                var d = new Date();
-                var h = parseInt(StrVersion.substring(0,2));
-                d.setHours(h);
-                d.setMinutes(StrVersion.substring(3,5));
-                d.setSeconds(StrVersion.substring(6,8));
+        //     function reset(){
+        //         dataset.remove(1509986691452,ntommorow);
+        //         $("#marketClickInput").click();
+        //     }
+        //     function convertTime(param){
+        //         var StrVersion = String(param);
+        //         var d = new Date();
+        //         var h = parseInt(StrVersion.substring(0,2));
+        //         d.setHours(h);
+        //         d.setMinutes(StrVersion.substring(3,5));
+        //         d.setSeconds(StrVersion.substring(6,8));
 
-                return parseInt(d.getTime()) + 25200000;
-            }
-            function streamStart() {
-                var ahay = document.getElementById('propsluar').value;
-                if(ahay.length < 1){
-                    // alert('data kosong');
-                }else{
-                    document.getElementById("hello").click();
-                }
+        //         return parseInt(d.getTime()) + 25200000;
+        //     }
+        //     function streamStart() {
+        //         var ahay = document.getElementById('propsluar').value;
+        //         if(ahay.length < 1){
+        //             // alert('data kosong');
+        //         }else{
+        //             document.getElementById("hello").click();
+        //         }
 
-                dataInteval = setInterval(
-                    // data streaming itself
+        //         dataInteval = setInterval(
+        //             // data streaming itself
 
-                    function () {
+        //             function () {
 
-                        newTimestamp += tickPeriod;
-                        point = document.getElementById("tempVal").value;
-                        time = document.getElementById("tempTime").value;
-                        //current point update or create new point
+        //                 newTimestamp += tickPeriod;
+        //                 point = document.getElementById("tempVal").value;
+        //                 time = document.getElementById("tempTime").value;
+        //                 //current point update or create new point
 
-                            // if (newTimestamp - newDataRow[0][0] <= period) {
-                            //     //set price as close for existing point
-                            //     newDataRow[0][2] = point;
-                            // } else {
-                                //erase update data array
-                                newDataRow[0] = new Array(2);
-                                //set data for the new point
-                                newDataRow[0][0] = time;
-                                newDataRow[0][1] = point;
-                            // }
-                            dataset.addData(newDataRow);
+        //                     // if (newTimestamp - newDataRow[0][0] <= period) {
+        //                     //     //set price as close for existing point
+        //                     //     newDataRow[0][2] = point;
+        //                     // } else {
+        //                         //erase update data array
+        //                         newDataRow[0] = new Array(2);
+        //                         //set data for the new point
+        //                         newDataRow[0][0] = time;
+        //                         newDataRow[0][1] = point;
+        //                     // }
+        //                     dataset.addData(newDataRow);
 
 
-                    }, 300            // interval
-                );
-            }
+        //             }, 300            // interval
+        //         );
+        //     }
 
-            let streamButton = document.getElementById("streamButton");
-            let resetButton = document.getElementById("resetButton");
-            let resetTitle = document.getElementById("resetTitle");
-            let inputButton = document.getElementById("marketClickInput");
-            let stopInterval = document.getElementById("stopInterval");
+        //     let streamButton = document.getElementById("streamButton");
+        //     let resetButton = document.getElementById("resetButton");
+        //     let resetTitle = document.getElementById("resetTitle");
+        //     let inputButton = document.getElementById("marketClickInput");
+        //     let stopInterval = document.getElementById("stopInterval");
 
-            let streamState = 0;
-            let dataInteval;
-            var timeTemp = Date.now();
-            stopInterval.onclick = function(){
-                intervals.forEach(clearInterval);
-            }
+        //     let streamState = 0;
+        //     let dataInteval;
+        //     var timeTemp = Date.now();
+        //     stopInterval.onclick = function(){
+        //         intervals.forEach(clearInterval);
+        //     }
 
-            inputButton.onclick = function(){
-                // intervalTime
-                 var dataInquiry = $("#arrayLengthInquiry").data('arr');
-                 var dataInquiryLength = $("#arrayLengthInquiry").val();
-               dataInquiry = dataInquiry.split(",");
-               // // console.log(dataInquiry);
-               // var newArr = [];
-               //  for(let i = 0; i< 200; i + 2){
-               //     newArr.push([dataInquiry[i],dataInquiry[i+1]]);
-               // }
-                var counter = 0;
-                // var counter2 = 0;
-                var i = setInterval(function(){
-                    // do your thing
-                    // newDataRow[counter2] = new Array(2);
-                    // time = convertTime(dataInquiry[counter]);
-                    time = dataInquiry[counter];
-                    point = parseInt(dataInquiry[counter+1]);
+        //     inputButton.onclick = function(){
+        //         // intervalTime
+        //          var dataInquiry = $("#arrayLengthInquiry").data('arr');
+        //          var dataInquiryLength = $("#arrayLengthInquiry").val();
+        //        dataInquiry = dataInquiry.split(",");
+        //        // // console.log(dataInquiry);
+        //        // var newArr = [];
+        //        //  for(let i = 0; i< 200; i + 2){
+        //        //     newArr.push([dataInquiry[i],dataInquiry[i+1]]);
+        //        // }
+        //         var counter = 0;
+        //         // var counter2 = 0;
+        //         var i = setInterval(function(){
+        //             // do your thing
+        //             // newDataRow[counter2] = new Array(2);
+        //             // time = convertTime(dataInquiry[counter]);
+        //             time = dataInquiry[counter];
+        //             point = parseInt(dataInquiry[counter+1]);
 
-                    dataset.addData([[time, point]]);
-                    // newDataRow[counter2][0] = point;
-                    // newDataRow[counter2][1] = time;
-                    console.log( "point: "+point+" time: "+time + " counter" + counter +" "+dataInquiryLength);
-                    counter = counter + 2;
-                    timeTemp = timeTemp+1;
-                    // dataset.addData(newDataRow);
-                    if(counter == dataInquiryLength) {
-                        clearInterval(i);
-                    }
-                }, 1);
+        //             dataset.addData([[time, point]]);
+        //             // newDataRow[counter2][0] = point;
+        //             // newDataRow[counter2][1] = time;
+        //             console.log( "point: "+point+" time: "+time + " counter" + counter +" "+dataInquiryLength);
+        //             counter = counter + 2;
+        //             timeTemp = timeTemp+1;
+        //             // dataset.addData(newDataRow);
+        //             if(counter == dataInquiryLength) {
+        //                 clearInterval(i);
+        //             }
+        //         }, 1);
 
-                intervals.push(i);
+        //         intervals.push(i);
 
-                // for (let i=0; i < dataInquiry; i++){
-               //     point = 1582705100063 + (i*2);
-               //     time = 400 + (i*10);
-               //     newDataRow[0] = new Array(2);
-               //     newDataRow[0][0] = time;
-               //     newDataRow[0][1] = point;
-               //     dataset.addData(newDataRow);
-               // }
-            }
-            //untuk mengganti title chart
-            resetTitle.onclick = function(){
-                reset();
+        //         // for (let i=0; i < dataInquiry; i++){
+        //        //     point = 1582705100063 + (i*2);
+        //        //     time = 400 + (i*10);
+        //        //     newDataRow[0] = new Array(2);
+        //        //     newDataRow[0][0] = time;
+        //        //     newDataRow[0][1] = point;
+        //        //     dataset.addData(newDataRow);
+        //        // }
+        //     }
+        //     //untuk mengganti title chart
+        //     resetTitle.onclick = function(){
+        //         reset();
 
-                tempTitle = document.getElementById("resetTitle").value;
-                var dataset = anychart.data.table();
-                dataset.addData([
-                    [1582703100063, 300],
-                ]);
-                series.name(tempTitle);
-                // set container and draw chart
-                chart.container("container").draw();
-            }
-            resetButton.onclick = function(){
-                // streamButton.innerHTML = "Start" + "\nstream";
-                // streamState = 0;
-                // clearInterval(dataInteval);
-                reset();
-            }
+        //         tempTitle = document.getElementById("resetTitle").value;
+        //         var dataset = anychart.data.table();
+        //         dataset.addData([
+        //             [1582703100063, 300],
+        //         ]);
+        //         series.name(tempTitle);
+        //         // set container and draw chart
+        //         chart.container("container").draw();
+        //     }
+        //     resetButton.onclick = function(){
+        //         // streamButton.innerHTML = "Start" + "\nstream";
+        //         // streamState = 0;
+        //         // clearInterval(dataInteval);
+        //         reset();
+        //     }
 
-            streamButton.onclick = function () {
-                streamButton.innerHTML = "Stop" + "\nstream";
-                streamState++;
+        //     streamButton.onclick = function () {
+        //         streamButton.innerHTML = "Stop" + "\nstream";
+        //         streamState++;
 
-                if (streamState > 1) {
-                    streamButton.innerHTML = "Start" + "\nstream";
-                    streamState = 0;
-                    clearInterval(dataInteval);
-                } else {
-                    streamStart();
-                }
+        //         if (streamState > 1) {
+        //             streamButton.innerHTML = "Start" + "\nstream";
+        //             streamState = 0;
+        //             clearInterval(dataInteval);
+        //         } else {
+        //             streamStart();
+        //         }
 
-            };
+        //     };
 
-        });
+        // });
     }
     changelist = event => {
-        document.getElementById("resetTitle").value = event.toUpperCase();
-        document.getElementById("resetTitle").click();
-        this.setState({newStream: true});
+        // document.getElementById("resetTitle").value = event.toUpperCase();
+        // document.getElementById("resetTitle").click();
+        // this.setState({newStream: true});
         this.props.handleSearchCode(event);
     }
     handleStartStopStream = () => {
@@ -659,10 +662,45 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
     render(){
         const stockOptions = [
-            { value: 'agri', label: 'AGRI' },
-            { value: 'composite', label: 'COMPOSITE' },
-            { value: 'mining', label: 'MINING' },
+            { value: 'AGRI', label: 'AGRI' },
+            { value: 'COMPOSITE', label: 'COMPOSITE' },
+            { value: 'MINING', label: 'MINING' },
         ];
+
+        // Chart
+        let chart = anychart.stock();
+        let credits = chart.credits();
+            credits.enabled(false);
+        var dataset = anychart.data.table();
+        dataset.addData(this.props.indexStreamChart);
+        var data1 = dataset.mapAs({x: 0, value: 1,});
+        var series = chart.plot(0).line(data1);
+        series.stroke("#64B5F6");
+        series.name("Price");
+        var columnTooltip = series.tooltip();
+        chart.tooltip().titleFormat('{%x}{type:time}');
+        columnTooltip.format("{%seriesName}: {%value}");
+
+        columnTooltip.displayMode("single");
+
+        chart.crosshair().xLabel().format(' ');
+
+        chart.plot(0).legend(true);
+
+        var title = chart.plot(0).legend().title();
+        title.useHtml(true);
+
+        // enable legend title
+        title.enabled(true);
+        title.text("&nbsp;");
+
+        // set font size and align
+        title.fontSize(14);
+        title.hAlign("center");
+
+        chart.scroller(true);
+        chart.scroller().enabled(false);
+        chart.container('container').draw();
 
 
         const customStyles = {
@@ -733,23 +771,29 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray delayTransition">
                                         <div>
-                                            <button id="streamButton"
+                                            <button id="streamButton" onClick={()=>this.props.handleStreamChart(this.props.streamStatus)} 
+                                                className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">{this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>                                             
+
+                                            {/* <button id="streamButton"
                                                 onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">
                                                     {this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>
                                             <i id="resetButton"></i>
                                             <input type="hidden" id={"tempVal"} value={this.props.streamChart}/>
                                             <input type="hidden" id={"tempTime"} value={this.convertTime(this.props.timeChart)}/>
                                             <input type="hidden" id={"propsluar"} value=""/>
-                                            <input type="hidden" id={"newStream"} value={this.props.streamStatus}/>
+                                            <input type="hidden" id={"newStream"} value={this.props.streamStatus}/> */}
                                             {/*<input type="hidden" id={"resetTitle"} value={this.props.codeSearchMarketIndex}/>*/}
-                                            <input type="hidden" id={"resetTitle"}/>
+                                            {/* <input type="hidden" id={"resetTitle"}/>
                                             <button type="button" className={"btn btn-sm btn-grey"} id={"marketClickInput"}>X</button>
                                             <input type="text" id={"arrayLengthInquiry"} data-arr={this.props.indexStreamChart} value={(this.props.indexStreamChart) ? this.props.indexStreamChart.length : 0
-                                            }/>
-                                            <button id={"stopInterval"}>STOP</button>
+                                            }/> */}
+                                            {/* <button id={"stopInterval"}>STOP</button>
 
-                                            <span onClick={this.handleStartStopStream} id={"hello"}></span>
-                                            <div id="container" className="mt-2 py-3 px-3 card-344"></div>
+                                            <span onClick={this.handleStartStopStream} id={"hello"}></span> */}
+                                            {/* <div id="container" className="mt-2 py-3 px-3 card-344"></div> */}
+                                            <div  className="mt-2 py-3 px-3 card-344 delayTransition" >
+                                                <AnyChart instance={chart} id="container" title={this.props.codeSearchMarketIndex} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

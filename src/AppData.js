@@ -97,7 +97,7 @@ var BIPSAppVars = {
   buyLimitVal: '9,000,000,000',
 
   // Stream Chart
-  codeSearchMarketIndex:'agri',
+  codeSearchMarketIndex:'AGRI',
   timeChart:'',
   streamChart:'',
   streamStatus:false, 
@@ -259,14 +259,16 @@ var BIPSAppActions = {
   },
 
   handleSearchCode:(vars,{newCode})=>{
-    return{...vars, codeSearchMarketIndex:newCode.toUpperCase()}
+    return{...vars, codeSearchMarketIndex:newCode}
   },
 
   //Response data Stream 
   updateSubscribeStringReplay : (vars, {data})=>{
     let arrData = data.split("#")
     if(arrData[1] === 'INDEXPERIODIC'){
-      return{...vars, streamChart:arrData[3], timeChart:arrData[2]}
+      // return{...vars, streamChart:arrData[3], timeChart:arrData[2]}
+      let ndata = vars.indexStreamChart.concat([[convertTime(arrData[2]),arrData[3]]])
+      return{...vars, indexStreamChart:ndata}
     }
   },
   updateInquiryReply:(vars,{sub_type, data})=>{

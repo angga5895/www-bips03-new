@@ -1229,9 +1229,9 @@ class FundTransfer_Base extends React.PureComponent {
                         {/* <PortofolioAgGrid/> */}
                         <div className="cssmenu col-sm-5 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
-                                <li className={ this.state.activeTab === '3' ? 'active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Cancel</span></a></li>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
+                                {/*<li className={ this.state.activeTab === '3' ? 'active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Cancel</span></a></li>*/}
                             </ul>
                         </div>
                         <div className="col-sm-12 px-4 bg-grey bg-black-trading pt-0 d-border card-472">
@@ -1400,17 +1400,17 @@ class FundTransfer_Base extends React.PureComponent {
                                     </div>
                                 </div>
                             </div>
-                            <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
-                                <div className="d-border-transparent-grey">
-                                        <div className="form-group px-0 pt-5" style={{marginBottom : "10px"}}>
-                                            <CancelGrid size={this.ceksize()}/>
-                                            <CancelGrid2 size={this.ceksize()}/>
-                                        </div>
-                                </div>
-                                <div className={"col-sm-12 text-right mb-0 px-3 h-40"}>
-                                    <button onClick={this.buttonClickPIN} className={"btn btn-primary"}><i className={"fa fa-paper-plane"}>&nbsp;Send</i></button>
-                                </div>
-                            </div>
+                            {/*<div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>*/}
+                                {/*<div className="d-border-transparent-grey">*/}
+                                        {/*<div className="form-group px-0 pt-5" style={{marginBottom : "10px"}}>*/}
+                                            {/*<CancelGrid size={this.ceksize()}/>*/}
+                                            {/*<CancelGrid2 size={this.ceksize()}/>*/}
+                                        {/*</div>*/}
+                                {/*</div>*/}
+                                {/*<div className={"col-sm-12 text-right mb-0 px-3 h-40"}>*/}
+                                    {/*<button onClick={this.buttonClickPIN} className={"btn btn-primary"}><i className={"fa fa-paper-plane"}>&nbsp;Send</i></button>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
@@ -4807,6 +4807,27 @@ class FundAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
+                },{ field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:100,
+                    pinned: "right", lockPosition: true, lockVisible: true,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center locked-col locked-visible";
+                    },
+                    cellRenderer : function (params) {
+                        var eDiv = document.createElement('div');
+                        var option = ""
+                        if(params.status == "N"){
+                            option = "disabled";
+                        }
+                        eDiv.innerHTML = '<span class="px-1">' +
+                            '<button class="'+option+' btn-cellamend btn btn-sm btn-primary mx-1 f-9">Cancel</button>'+
+                            '</span>';
+                        var aButton = eDiv.querySelectorAll('.btn-cellamend')[0];
+
+                        // kalo mau nambah action
+                        // aButton.addEventListener('click', self.props.clickdetail);
+
+                        return eDiv;
+                    }, suppressSizeToFit: true
                 },
 
             ],
@@ -4814,9 +4835,12 @@ class FundAgGrid extends React.PureComponent {
                 sortable: true,
                 filter: true,
             },
+            getRowHeight : function (params) {
+                return 32;
+            },
             rowData: [
                 {
-                    date: "22/06/2019",
+                    date: "22/06/2019"+s,
                     no: "12",
                     amount: '15,223',
                     fee: "0",
@@ -4844,7 +4868,7 @@ class FundAgGrid extends React.PureComponent {
                     bankAcNo: "",
                     reqData: "",
                     reqTime: "",
-                    status:"",
+                    status:"N",
                 },
 
             ],
@@ -4911,6 +4935,7 @@ class FundAgGrid extends React.PureComponent {
                         rowData={this.state.rowData}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
                     </AgGridReact>
                 </div>

@@ -4758,36 +4758,36 @@ class FundAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?210:s=="s50"?180:s=="s75"?160:150, minWidth: 130, comparator: dateComparator,
+                    width: s=="s49"?230:s=="s50"?180:s=="s75"?100:90, minWidth: 90, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?190:s=="s67"?170:s=="s75"?130:s=="s80"?110:100, comparator: integerComparator,
-                    minWidth: 80,
+                    width: s=="s49"?250:s=="s50"?190:s=="s67"?170:s=="s75"?130:s=="s80"?120:60, comparator: integerComparator,
+                    minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?230:s=="s67"?215:s=="s75"?195:s=="s80"?180:s=="s90"?150:130, comparator: integerComparator,
+                    width: s=="s49"?290:s=="s50"?210:s=="s67"?205:s=="s75"?195:s=="s80"?170:130, comparator: integerComparator,
                     minWidth: 115,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?360:s=="s50"?330:s=="s67"?315:s=="s75"?250:s=="s80"?200:s=="s90"?180:130, comparator: integerComparator,
-                    minWidth: 115,
+                    width: s=="s49"?325:s=="s50"?310:s=="s67"?300:s=="s75"?235:s=="s80"?195:s=="s90"?130:130, comparator: integerComparator,
+                    minWidth: 130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "bank", headerName: "Bank", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?370:s=="s50"?340:s=="s67"?315:s=="s75"?285:s=="s80"?240:s=="s90"?200:150, comparator: stringComparator,
-                    minWidth: 115,
+                    width: s=="s49"?315:s=="s50"?310:s=="s67"?310:s=="s75"?260:s=="s80"?220:s=="s90"?185:180, comparator: stringComparator,
+                    minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bankAcNo", headerName: "Bank Ac No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?370:s=="s50"?350:s=="s67"?319:s=="s75"?295:s=="s80"?280:s=="s90"?210:170, comparator: integerComparator,
+                    width: s=="s49"?315:s=="s50"?310:s=="s67"?300:s=="s75"?290:s=="s80"?230:s=="s90"?155:150, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -4872,6 +4872,7 @@ class FundAgGrid extends React.PureComponent {
                 },
 
             ],
+
             sideBar: {
                 toolPanels: [
                     {

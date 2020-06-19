@@ -670,7 +670,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         // Chart
         let chart = anychart.stock();
         let credits = chart.credits();
-            credits.enabled(false);
+        credits.enabled(false);
         var dataset = anychart.data.table();
         dataset.addData(this.props.indexStreamChart);
         var data1 = dataset.mapAs({x: 0, value: 1,});
@@ -722,8 +722,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
             })
         };
 
-        console.log("stream",this.props.codeSearchMarketIndex, "datanya : ", this.props.streamChart, "timenya", 
-        this.props.timeChart, "hasil inquiry",this.props.indexStreamChart)
+        console.log("stream",this.props.codeSearchMarketIndex, "datanya : ", this.props.streamChart, "timenya",
+            this.props.timeChart, "hasil inquiry",this.props.indexStreamChart)
 
         return(
             <>
@@ -771,8 +771,8 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                                 <div className="col-sm-12">
                                     <div className="card card-399 text-white bg-trading-gray delayTransition">
                                         <div>
-                                            <button id="streamButton" onClick={()=>this.props.handleStreamChart(this.props.streamStatus)} 
-                                                className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">{this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>                                             
+                                            <button id="streamButton" onClick={()=>this.props.handleStreamChart(this.props.streamStatus)}
+                                                    className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">{this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>
 
                                             {/* <button id="streamButton"
                                                 onClick={this.newStream} className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">
@@ -791,7 +791,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
 
                                             <span onClick={this.handleStartStopStream} id={"hello"}></span> */}
                                             {/* <div id="container" className="mt-2 py-3 px-3 card-344"></div> */}
-                                            <div  className="mt-2 py-3 px-3 card-344 delayTransition" >
+                                            <div  className="mt-2 py-3 px-3 card-344 addmorewidth" >
                                                 <AnyChart instance={chart} id="container" title={this.props.codeSearchMarketIndex} />
                                             </div>
                                         </div>
@@ -1213,7 +1213,7 @@ class StockNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
@@ -1223,7 +1223,7 @@ class StockNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
@@ -1233,7 +1233,7 @@ class StockNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
@@ -1243,7 +1243,7 @@ class StockNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
@@ -1308,7 +1308,7 @@ class MutualNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                   
+
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
@@ -1318,7 +1318,7 @@ class MutualNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
@@ -1328,7 +1328,7 @@ class MutualNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
@@ -1338,7 +1338,7 @@ class MutualNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
@@ -1376,7 +1376,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                                 </h3>
                             </div>
                             <div className="card card-body card-406 scrollable px-3">
-                               
+
                                 <div className="py-4 text-white text-justify f-12">
                                     <span className="text-warning">Liputan6.com, Jakarta </span> -  Indeks Harga Saham
                                     Gabungan (IHSG) ditutup melemah pada perdagangan Selasa ini. Dari 10 sektor pembentuk IHSG, seluruhnya sebagian besar melemah. <br/><br/>
@@ -1404,7 +1404,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                         <div className="card card-479 d-border-left">
                             <div className="card card-body card-479 scrollable px-3">
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-12 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             267 Saham Menghijau,
@@ -1414,7 +1414,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Seluruh Sektor Di Zona Merah,
@@ -1424,7 +1424,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                    
+
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             Cara BEI Ajak Pengusaha Kecil
@@ -1434,7 +1434,7 @@ class ReseacrhNewResearchPage extends React.PureComponent {
                                     </div>
                                 </div>
                                 <div className="row col-sm-12 px-0 mx-0 d-border-bottom pb-4 mb-4 click-pointer">
-                                   
+
                                     <div className="col-sm-6 pr-0 pl-1 mx-0">
                                         <p className="f-16">
                                             The Fed Pangkas Suku Bunga,
@@ -3237,7 +3237,7 @@ const StatisticMarketStatistikPage = ContextConnector(BIPSAppContext,
         streamStatus:vars.streamStatus,
         handleStreamChart: (streamStatus) => { actions.sendAction('handleStreamChart', { streamStatus }) },
         handleSearchCode: (newCode) => { actions.sendAction('handleSearchCode', { newCode }) },
-        }),
+    }),
     ["handleStreamChart","handleSearchCode"]
 )(StatisticMarketStatistikPage_Base);
 

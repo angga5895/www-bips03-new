@@ -599,6 +599,25 @@ const ResizeResponsive = () => {
     $('.card-399').css('min-height', (height399));
     var height344 = height399-40-15;
     $('.card-344').css('min-height', (height344));
+
+    //c9
+    if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+        var marketwidth = $('html').width() * 0.5285;
+    }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+        var marketwidth = $('html').width() * 0.529;
+    }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+        var marketwidth = $('html').width() * 0.530;
+    }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+        var marketwidth = $('html').width() * 0.531;
+    }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+        var marketwidth = $('html').width() * 0.532;
+    }else if(window.innerWidth > 2559){
+        var marketwidth = $('html').width() * 0.534;
+    }else{
+        var marketwidth = $('html').width() * 0.5285;
+    }
+    $('.addmorewidth').css("min-width", marketwidth);
+
     var height220 = ((height520-20)/2)-40-0.5;
     $('.card-220').css('min-height', (height220));
     var height132 = ((height520-40)/3)-30+2;
@@ -1149,6 +1168,7 @@ class MainPage_Base extends React.Component {
             $('.runningText p').css('minWidth', (marquee));
             $('.runningText').css('minWidth', (marquee));
 
+
             var heightbarchart = $('html').height() - 360;
             $('#heightValue-trigger').val(heightbarchart);
             $('#heightValue-trigger').click();
@@ -1337,6 +1357,26 @@ class MainPage_Base extends React.Component {
             $('.card-399').css('min-height', (height399));
             var height344 = height399-40-15;
             $('.card-344').css('min-height', (height344));
+
+            //c9
+            if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+                var marketwidth = $('html').width() * 0.5285;
+            }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+                var marketwidth = $('html').width() * 0.529;
+            }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+                var marketwidth = $('html').width() * 0.530;
+            }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+                var marketwidth = $('html').width() * 0.531;
+            }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+                var marketwidth = $('html').width() * 0.532;
+            }else if(window.innerWidth > 2559){
+                var marketwidth = $('html').width() * 0.534;
+            }else{
+                var marketwidth = $('html').width() * 0.5285;
+            }
+            $('.addmorewidth').css("min-width", marketwidth);
+
+
             var height220 = ((height520-20)/2)-40-0.5;
             $('.card-220').css('min-height', (height220));
             var height132 = ((height520-40)/3)-30+2;

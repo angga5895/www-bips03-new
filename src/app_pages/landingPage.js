@@ -942,11 +942,13 @@ class ModalTransactionHistory extends React.Component {
         });
     }
     ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
-        }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
             return "s80";
-        }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
             return "s75";
         }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
             return "s67";
@@ -955,7 +957,7 @@ class ModalTransactionHistory extends React.Component {
         }else if(window.innerWidth > 2559){
             return "s49";
         }else{
-            return "s100";
+            return "s110";
         }
     }
     render() {
@@ -3949,32 +3951,38 @@ class StockTransactionHistoryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: dateComparator,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?130:s=="s90"?110:s=="s100"?110:100,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?160:s=="s75"?150:s=="s80"?130:s=="s90"?100:s=="s100"?90:90,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 }, { field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?240:s=="s50"?225:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:s=="s100"?140:130,
-                    minWidth: 130, comparator: stringComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?160:s=="s75"?150:s=="s80"?125:s=="s90"?105:s=="s100"?100:90,
+                    minWidth: 90, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },
                 { field: "buySell", headerName: "Buy / Sell", sortable: true, resizable: true,
-                    width: s=="s49"?280:s=="s50"?240:s=="s67"?210:s=="s75"?205:s=="s80"?180:s=="s90"?150:s=="s100"?140:130,
-                    minWidth: 130, comparator: stringComparator,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?145:s=="s80"?125:s=="s90"?115:s=="s100"?110:100,
+                    minWidth: 90, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     }, suppressSizeToFit: true
                 },{ field: "inOut", headerName: "In/Out Qty", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?225:s=="s67"?195:s=="s75"?190:s=="s80"?170:s=="s90"?145:s=="s100"?140:140,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?155:s=="s75"?145:s=="s80"?130:s=="s90"?115:s=="s100"?110:105,
+                    minWidth: 105, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?150:s=="s80"?130:s=="s90"?120:s=="s100"?120:110,
                     minWidth: 140, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "trx", headerName: "Trx Type", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?140:s=="s80"?120:s=="s90"?110:s=="s100"?100:90,
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?150:s=="s75"?140:s=="s80"?130:s=="s90"?110:s=="s100"?100:90,
                     minWidth: 90, comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";

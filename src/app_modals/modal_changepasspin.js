@@ -316,7 +316,7 @@ class ChangePassPinModal extends React.Component {
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
                 <div className="f-12">
-                    <div className="text-center">Change Passwod/PIN</div>
+                    <div className="text-center mb-5">Change Passwod/PIN</div>
                     <div className="cssmenumodal bg-dark-grey pb-4 col-sm-12 mx-0 px-0">
                         <ul>
                             <li className={ this.state.activeTab === '1' ? 'd-border-bottom active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-bottom text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; PASSWORD</span></a></li>
@@ -439,32 +439,22 @@ class ForgotPassModal extends React.Component {
             <div className="card-325">
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-12 mt-4">Forgot Password</label>
+                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-25 mt-4 text-center">Forgot Password</label>
                 <div className="text-white f-12 mt-5">
-                    <div className="form-group mb-3">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Enter your email address and we'll
-                            send link to reset your password
+                    <div className="form-group mb-3 text-center f-15">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Please contact our customer service
                         </label>
                     </div>
-                    <div className="form-group mb-5">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Email</label>
-                        <div className="col-sm-12 px-5 py-0">
-                            <input type="email" className="text-white input-login col-sm-12"/>
-                        </div>
+                    <div className="form-group mb-5 text-center f-25">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">14009</label>
                     </div>
 
                     <div className="form-group py-3">
                         <div className="justify-content-center align-items-center d-flex py-0 px-5">
-                            <button type="submit" className="btn btn-primary form-control py-0">
-                                Submit
+                            <button type="submit" className="btn btn-primary form-control py-0" id="btn_pass" onClick={this.closeClick}>
+                               Back
                             </button>
                         </div>
-                    </div>
-
-                    <div className="form-group text-center">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">
-                            <span className="click-pointer btn btn-link text-primary" onClick={this.closeClick}> Back to Change Password</span>
-                        </label>
                     </div>
                 </div>
             </div>
@@ -482,32 +472,22 @@ class ForgotPINModal extends React.Component {
             <div className="card-325">
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction ref="wsAction" />
-                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding f-12 mt-4">Forgot PIN</label>
+                <label className="col-sm-12 px-5 py-2 col-form-label text-center text-gray-tradding f-25 mt-4">Forgot PIN</label>
                 <div className="text-white f-12 mt-5">
-                    <div className="form-group mb-3">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Enter your email address and we'll
-                            send link to reset your PIN
+                    <div className="form-group mb-3 text-center f-15">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Please contact our customer service
                         </label>
                     </div>
-                    <div className="form-group mb-5">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Email</label>
-                        <div className="col-sm-12 px-5 py-0">
-                            <input type="email" className="text-white input-login col-sm-12"/>
-                        </div>
+                    <div className="form-group mb-5 text-center f-25">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">14009</label>
                     </div>
 
                     <div className="form-group py-3">
                         <div className="justify-content-center align-items-center d-flex py-0 px-5">
-                            <button type="submit" className="btn btn-primary form-control py-0">
-                                Submit
+                            <button type="submit" className="btn btn-primary form-control py-0" id="btn_pass" onClick={this.closeClick}>
+                                Back
                             </button>
                         </div>
-                    </div>
-
-                    <div className="form-group text-center">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">
-                            <span className="click-pointer btn btn-link text-primary" onClick={this.closeClick}> Back to Change PIN</span>
-                        </label>
                     </div>
                 </div>
             </div>

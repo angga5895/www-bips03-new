@@ -614,7 +614,9 @@ class SelectItem1 extends React.PureComponent {
                         theme={this.selectSelectionTab}
                     />*/}
                 </div>
-                <label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12 px-0">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>
+                <label className="col-sm-12 text-center text-white text-jam pt-1 my-0 pb-0 f-12 px-0">Region Time {fullDate(2)} | {fullDate(1)} | IDX Time <span>{fullDate(2)}</span></label>
+
+                {/*<label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12 px-0">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>*/}
             </div>
         );
     }
@@ -653,11 +655,14 @@ function fullDate(params) {
 
     var dateFull = day +"-"+ m +"-"+y +" "+ hours +":"+ minutes +":"+ seconds;
 
-    var time = hours > 8 && hours < 16 ? 'Open' : 'Close';
-
+    var status = hours > 8 && hours < 16 ? 'Open' : 'Close';
+    var date = day+"-"+m+"-"+y;
+    var time = hours+":"+minutes+":"+seconds;
     if(params === 0){
         return dateFull;
-    } else {
+    } else if(params === 1) {
+        return date;
+    } else{
         return time;
     }
 }

@@ -34,42 +34,49 @@ class SideBar_Base extends React.Component{
             rowData: [
                 {
                     name: "AALI",
+                    fullname: "Agro Astra Lestari",
                     last: "41,560",
                     change: 0.55,
                     percent: 3.56,
                 },
                 {
                     name: "ADHI",
+                    fullname: "Adhi Karya",
                     last: "12,750",
                     change: -1.95,
                     percent: -0.06,
                 },
                 {
                     name: "ANTM",
+                    fullname: "Aneka Tambang",
                     last: "15,350",
                     change: 4.50,
                     percent: 0.56,
                 },
                 {
                     name: "ASII",
+                    fullname: "Astar Motor",
                     last: "30,540",
                     change: -1.45,
                     percent: -3.56,
                 },
                 {
                     name: "TLKM",
+                    fullname: "Telkom Indonesia",
                     last: "70,000",
                     change: 0,
                     percent: 0,
                 },
                 {
                     name: "WSKT",
+                    fullname: "Waskita Karya",
                     last: "12,500",
                     change: 11.05,
                     percent: 20.52,
                 },
                 {
                     name: "INDF",
+                    fullname: "Indofood",
                     last: "24,600",
                     change: 2.5,
                     percent: 3.90,
@@ -111,13 +118,14 @@ class SideBar_Base extends React.Component{
         })
     }
     buttonClickNewOrder = (e) => {
-        $(".card-356").css("minHeight","500px");
-        console.log("hello");
+        // $(".card-356").css("minHeight","500px");
+        // console.log("hello");
+
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right text-white">
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClickNoAlert}></i></div>,
-            size: 'large scrolling',
+            size: 'large',
             contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
@@ -187,43 +195,45 @@ class SideBar_Base extends React.Component{
             <>
                 <AppFrameAction ref="frameAction" />
                 <ModalAlertC />
-                <SweetAlert
-                    show={this.state.showAlert}
-                    warning
-                    title={<span className="text-white f-16">Save changes before quiting?</span>}
-                    style={{'color':'var(--text-white)',}}
-                    customClass={"bg-dark-grey"}
-                    customButtons={
-                        <React.Fragment>
-                            <button className={"btn btn-sa btn-trans btn-sm btn-popup"}
-                                    onClick={()=>this.setState({showAlert:false})}>
-                                Cancel
-                            </button>
-                            &nbsp;
-                            <button className={"btn btn-sa btn-sm btn-popup btn-danger border-gray-tradding"}
-                                    onClick={
-                                        ()=>{
-                                            this.setState({showAlert:false});
-                                            this.refs.frameAction.closeModal(100);
-                                        }
-                                    }>
-                                &nbsp;&nbsp;No&nbsp;&nbsp;
-                            </button>
-                            &nbsp;
-                            <button id="save" autoFocus={true} autofocus className={"btn btn-sa btn-sm btn-popup btn-info border-gray-tradding"}
-                                    onClick={
-                                        ()=>{
-                                            this.setState({showAlert:false});
-                                            this.refs.frameAction.closeModal(100);
-                                        }
-                                    }>
-                                &nbsp;&nbsp;Yes&nbsp;&nbsp;
-                            </button>
-                        </React.Fragment>
-                    }
+                {/*<SweetAlert*/}
+                    {/*show={this.state.showAlert}*/}
+                    {/*warning*/}
+                    {/*title={<span className="text-white f-16">Save changes before quiting?</span>}*/}
+                    {/*style={{'color':'var(--text-white)',}}*/}
+                    {/*customClass={"bg-dark-grey"}*/}
+                    {/*customButtons={*/}
+                        {/*<React.Fragment>*/}
+                            {/*<button className={"btn btn-sa btn-trans btn-sm btn-popup"}*/}
+                                    {/*onClick={()=>this.setState({showAlert:false})}>*/}
+                                {/*Cancel*/}
+                            {/*</button>*/}
+                            {/*&nbsp;*/}
+                            {/*<button className={"btn btn-sa btn-sm btn-popup btn-danger border-gray-tradding"}*/}
+                                    {/*onClick={*/}
+                                        {/*()=>{*/}
+                                            {/*this.setState({showAlert:false});*/}
+                                            {/*this.refs.frameAction.closeModal(100);*/}
+                                        {/*}*/}
+                                    {/*}>*/}
+                                {/*&nbsp;&nbsp;No&nbsp;&nbsp;*/}
+                            {/*</button>*/}
+                            {/*&nbsp;*/}
+                            {/*<button id="save" autoFocus={true} autofocus className={"btn btn-sa btn-sm btn-popup btn-info border-gray-tradding"}*/}
+                                    {/*onClick={*/}
+                                        {/*()=>{*/}
+                                            {/*this.setState({showAlert:false});*/}
+                                            {/*this.refs.frameAction.closeModal(100);*/}
+                                        {/*}*/}
+                                    {/*}>*/}
+                                {/*&nbsp;&nbsp;Yes&nbsp;&nbsp;*/}
+                            {/*</button>*/}
+                        {/*</React.Fragment>*/}
+                    {/*}*/}
 
-                >
-                </SweetAlert>
+                {/*>*/}
+                {/*</SweetAlert>*/}
+
+                <input type="hidden" onClick={()=>this.setState({showAlert: true})} id={"alertOut"}/>
                 <div id="mySideBar" className="col-sm-sidebar px-0 mx-0 bg-black-trading d-border-right d-border-left d-border-top card-575 d-border-bottom d-sidebar-potrait">
                     <div className="flex-grow-1">
                         <div className="flex-lg-column mb-1 cssmenu">
@@ -273,7 +283,7 @@ class SideBar_Base extends React.Component{
                                             return (
                                                 <tr className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
-                                                        <div onClick={()=>this.stockClick(charx.name)} className="align-self-center text-left click-pointer noselect">
+                                                        <div onClick={()=>this.stockClick(charx.name+"-"+charx.fullname)} className="align-self-center text-left click-pointer noselect">
                                                             <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
                                                             <div  className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
                                                                 <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
@@ -289,7 +299,7 @@ class SideBar_Base extends React.Component{
                                     <tfoot>
                                     <tr>
                                         <td className="py-0 px-0">
-                                            <div className="align-self-center text-center noselect">
+                                            <div className="align-self-center text-center noselect btn-area-sidebar">
                                                 <button className={"btn btn-custom-nav disabled"} disabled="disabled">
                                                     <i className="icofont icofont-ui-previous"></i>
                                                 </button>

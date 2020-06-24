@@ -900,18 +900,36 @@ class AnalyticChart_Base extends React.PureComponent {
     }
     sideClick(){
         $valueAnalyticChart = $("#sideBarValue").val();
-        var newDiv = "<div class='text-white'>"+$valueAnalyticChart+"</div>";
+        $valueAnalyticChart = $valueAnalyticChart.split("-");
+        var selectText = $valueAnalyticChart[0]+" - "+$valueAnalyticChart[1];
 
-        //ini check dimana dipasangnya, kalo lagi dibuka
-        //baru call, kalo engga, call chrt stock aja
         if(this.props.addressMultiVal){
-            $("#stockoptionchart"+this.props.addressMultiVal).change();
-            var getSecClass = document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[1].getAttribute("class");
-            document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[0].innerHTML = newDiv;
+            var selectwidth = $("#stockoptionchart"+this.props.addressMultiVal).width();
+            var limit = Math.floor((selectwidth - 63) / 6.5);
+            if (selectText.length > (limit)) {
+                var newText = selectText.substring(0, limit);
+                $("#stockoptionchart"+this.props.addressMultiVal).change();
+                var newDiv = "<div class='text-white'>" + newText + ".. </div>";
+                document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[0].innerHTML = newDiv;
+            }else{
+                $("#stockoptionchart"+this.props.addressMultiVal).change();
+                var newDiv = "<div class='text-white'>" + newText + "</div>";
+                document.getElementById("stockoptionchart"+this.props.addressMultiVal).firstChild.firstChild.children[0].innerHTML = newDiv;
+            }
         }
-        $("#stockoptionchrtStock").change();
-        var getSecClass = document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[1].getAttribute("class");
-        document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[0].innerHTML = newDiv;
+            var selectwidth = $("#stockoptionchrtStock").width();
+            var limit = Math.floor((selectwidth - 63) / 6.5);
+            if (selectText.length > (limit)) {
+                var newText = selectText.substring(0, limit);
+                $("#stockoptionchrtStock").change();
+                var newDiv = "<div class='text-white'>" + newText + ".. </div>";
+                document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[0].innerHTML = newDiv;
+            } else {
+                var newDiv = "<div class='text-white'>" + selectText + "</div>";
+                $("#stockoptionchrtStock").change();
+                document.getElementById("stockoptionchrtStock").firstChild.firstChild.children[0].innerHTML = newDiv;
+            }
+
     }
 
     render() {

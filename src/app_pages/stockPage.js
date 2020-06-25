@@ -37,6 +37,7 @@ import '../../node_modules/anychart/dist/js/anychart-annotations.min.js';
 
 import '../../node_modules/bootstrap-select/dist/css/bootstrap-select.min.css';
 import '../../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js';
+import {ResizeResponsive} from "./mainPage";
 
 window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
@@ -1577,6 +1578,9 @@ class BuyPage extends React.Component{
         this.setState({
             activeTab: no,
         });
+    }
+    componentDidMount(){
+        ResizeResponsive();
     }
     render(){
         const swapContent = () => {

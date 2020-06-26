@@ -135,49 +135,50 @@ var BIPSAppActions = {
     var prevFlag = vars.subscriptionFlags[subscriptionID];
     var subsData;
 
-    if (prevFlag == undefined)
-      return;
-    if (subscriptionID == 'stockSummary') {
-      if (!prevFlag && flag) { // switch on
-        subsData = {
-          action_type: 'SUBSCRIBE',
-          sub_type: 'STOCK_SUMMARY',
-          session_id: vars.sessionID,
-          stock_code: ['TLKM', 'AALI', 'HOME', 'SRIL']
+        if (prevFlag == undefined)
+            return;
+        if (subscriptionID == 'stockSummary') {
+            if (!prevFlag && flag) { // switch on
+                subsData = {
+                    action_type: 'SUBSCRIBE',
+                    sub_type: 'STOCK_SUMMARY',
+                    session_id: vars.sessionID,
+                    stock_code: ['TLKM', 'AALI', 'HOME', 'SRIL']
+                }
+                vars.netAction.send({text: JSON.stringify(subsData)});
+            }
+            else if (prevFlag && !flag) {
+                subsData = {
+                    action_type: 'UNSUBSCRIBE',
+                    sub_type: 'STOCK_SUMMARY',
+                    session_id: vars.sessionID,
+                    stock_code: ['TLKM', 'AALI', 'HOME', 'SRIL']
+                }
+                vars.netAction.send({text: JSON.stringify(subsData)});
+            }
         }
-        vars.netAction.send({text: JSON.stringify(subsData)});
-      }
-      else if (prevFlag && !flag) {
-        subsData = {
-          action_type: 'UNSUBSCRIBE',
-          sub_type: 'STOCK_SUMMARY',
-          session_id: vars.sessionID,
-          stock_code: ['TLKM', 'AALI', 'HOME', 'SRIL']
+        if(subscriptionID == 'statisticMarketStatistikPage'){
+            if (!prevFlag && flag) { // switch on
+                console.log("ini halaman statisticMarketStatistikPage")
+                vars.netActionAux.send({text: JSON.stringify({ "action_type": "INQUIRY", "sub_type": "INDEXPERIODIC", "code": "AGRI"
+                    })});
+            }
+            else if (prevFlag && !flag) {
+            }
         }
-        vars.netAction.send({text: JSON.stringify(subsData)});
-      }
-    }
-    if(subscriptionID == 'statisticMarketStatistikPage'){
-      if (!prevFlag && flag) { // switch on
-        console.log("ini halaman statisticMarketStatistikPage")
-        vars.netActionAux.send({text: JSON.stringify({ "action_type": "INQUIRY", "sub_type": "INDEXPERIODIC", "code": "AGRI"
-      })});
-      }
-      else if (prevFlag && !flag) {
-      }
-    }
-    if (prevFlag != flag)  
-      return {...vars, subscriptionFlags: {...vars.subscriptionFlags, [subscriptionID]: flag}}
-  },
-  loginSuccessful: (vars, {sessionID}) => {
-    vars.netActionAux.send({text:JSON.stringify({"user":vars.userName,"session_id":sessionID, "stringify":"true"})})
-    return {...vars, sessionID: sessionID, loginState: true, loginErrState: false, loginErrReason: ''}},
-  loginFail: (vars, {reason}) => ({...vars, loginState: false, loginErrState: true, loginErrReason: reason}),
-  getLoginRequestID: (vars, {cbRequestID}) => {
-    var cid = vars.loginRequestID;
-    cbRequestID(cid);
-    return {...vars, loginRequestID: cid + 1}
-  },
+        if (prevFlag != flag)
+            return {...vars, subscriptionFlags: {...vars.subscriptionFlags, [subscriptionID]: flag}}
+    },
+    loginSuccessful: (vars, {sessionID}) => {
+        $("#triggerMigrate").click();
+        vars.netActionAux.send({text:JSON.stringify({"user":vars.userName,"session_id":sessionID, "stringify":"true"})})
+        return {...vars, sessionID: sessionID, loginState: true, loginErrState: false, loginErrReason: ''}},
+    loginFail: (vars, {reason}) => ({...vars, loginState: false, loginErrState: true, loginErrReason: reason}),
+    getLoginRequestID: (vars, {cbRequestID}) => {
+        var cid = vars.loginRequestID;
+        cbRequestID(cid);
+        return {...vars, loginRequestID: cid + 1}
+    },
 
   // action Landing
     handleView:(vars, {isGrid})=>({...vars, isGrid:!vars.isGrid}),

@@ -6214,6 +6214,24 @@ body{
 .btnDatePick{
     min-height: 32px;
 }
-.card-344>#container{
+.card-344>#container>div>svg{
     transition-delay: 1s;
+}
+.bg-gradi{
+    background: rgb(138,221,109);
+    background: linear-gradient(90deg, rgba(138,221,109,1) 0%, rgba(107,138,115,1) 58%, rgba(81,66,147,1) 100%);
+}
+/*untuk modal migrasi*/
+.b-title{
+    font-weight: bold;
+    color: white;
+}
+.d-border-bottom-bold-migrate {
+    border-bottom: white solid 2px!important;
+}
+.p-migrate{
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    text-indent: 25px;
 }

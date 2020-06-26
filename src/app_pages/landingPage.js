@@ -1474,10 +1474,9 @@ class InquryAccount_Base extends React.PureComponent {
                         {/* <PortofolioAgGrid/> */}
                         <div className="cssmenu col-sm-6 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Account Infromation</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Contact Information</span></a></li>
-                                <li className={ this.state.activeTab === '3' ? 'active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; RDI Bank Information</span></a></li>
-                            </ul>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Account Infromation</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Contact Information</span></a></li>
+                           </ul>
                         </div>
                         <div className="col-sm-12 px-4 pb-0 bg-grey bg-black-trading pt-0 d-border card-472">
 
@@ -1486,6 +1485,10 @@ class InquryAccount_Base extends React.PureComponent {
                                     <div className="row">
                                         <div className={"col-sm-6 pl-0"}>
                                             <table width="100%" className={"table table-bordered table-responsive mb-0 card-448"}>
+                                                <tr>
+                                                    <td className={"d-border"}>Account Name</td>
+                                                    <td width="50%" className={"d-border hover-tables"} ></td>
+                                                </tr>
                                                 <tr>
                                                     <td className={"d-border"}>KSEI A/C No</td>
                                                     <td width="50%" className={"d-border hover-tables"}>928237217312</td>
@@ -1499,6 +1502,10 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"} ></td>
                                                 </tr>
                                                 <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
                                                     <td className={"d-border"}>User ID</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
@@ -1507,31 +1514,27 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>ID Type</td>
+                                                    <td className={"d-border"}>A/C Status</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>ID Type</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
                                                     <td className={"d-border"}>ID No</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
                                                     <td className={"d-border"}>ID Expire Date</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Customer Type</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td className={"d-border"}>Country</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Mother's Name</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Sub Name</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
@@ -1543,12 +1546,8 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>A/C Closing Date</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
                                                     <td className={"d-border"}>Opening Branch</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -1556,12 +1555,7 @@ class InquryAccount_Base extends React.PureComponent {
                                             <table width="100%" className={"table table-bordered table-responsive mb-0 card-448"}>
 
                                                 <tr>
-                                                    <td width="50%" className={"d-border"} >Withholding Tax</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td className={"d-border"}>Dividend Tax</td>
+                                                    <td width="50%" className={"d-border"} >Divindend Tax</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
@@ -1569,39 +1563,7 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Bank Code</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Account No</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Account Name</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Branch</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Auto Transfer</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Virtual Account No</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Penalty Type</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>No. of PIN Error</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>PIN Code Initialize</td>
+                                                    <td className={"d-border"}>Tax Rate</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
@@ -1609,16 +1571,52 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Tax Rate</td>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>Bank Code</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Initial Deposit Amount</td>
+                                                    <td className={"d-border"}>Branch</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Order Permit</td>
+                                                    <td className={"d-border"}>Bank Account No</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>Bank Account Name</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>&nbsp;</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>&nbsp;</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI BANK</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Branch</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Account No</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Account Name</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -1639,77 +1637,27 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Marriage</td>
+                                                    <td className={"d-border"}>Position</td>
                                                     <td width="50%" className={"d-border hover-tables"} ></td>
                                                 </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Spouse's Name</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Manager</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Recommender</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                            </table>
-                                            <table className={"table table-borderder table-responsive card-113"}>
-                                                <tr>
-                                                    <td className={"d-border text-center td-bluelight"}>Item</td>
-                                                    <td className={"d-border text-center td-bluelight"}>Tel No</td>
-                                                    <td className={"d-border text-center td-bluelight"}>Fax No</td>
-                                                </tr>
-                                                <tr className={"even-td hover-tables"}>
-                                                    <td className={"d-border"}>&nbsp;</td>
-                                                    <td className={"d-border"}></td>
-                                                    <td className={"d-border"}></td>
-                                                </tr>
-                                                <tr className={"hover-tables"}>
-                                                    <td className={"d-border"}>&nbsp;</td>
-                                                    <td className={"d-border"}></td>
-                                                    <td className={"d-border"}></td>
-                                                </tr>
-                                                <tr className={"even-td hover-tables"}>
-                                                    <td className={"d-border"}>&nbsp;</td>
-                                                    <td className={"d-border"}></td>
-                                                    <td className={"d-border"}></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div className={"col-sm-6 pr-0"}>
-                                            <table width="100%" className={"table table-bordered table-responsive card-281"}>
-
-                                                <tr>
-                                                    <td width="50%" className={"d-border"} >Position</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-
                                                 <tr>
                                                     <td className={"d-border"}>Company Name</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Company Officer</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
                                                     <td className={"d-border"}>Company Type</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Interest Type</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
+                                            </table>
+                                        </div>
+                                        <div className={"col-sm-6 pr-0"}>
+                                            <table width="100%" className={"table table-bordered table-responsive card-169"}>
+
                                                 <tr>
-                                                    <td className={"d-border"}>Affiliatied Co</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Unknown Addr/Phone</td>
+                                                    <td width="50%" className={"d-border"} >Unknown Addr/Phone</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
+
                                                 <tr>
                                                     <td className={"d-border"}>Email</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
@@ -1721,6 +1669,10 @@ class InquryAccount_Base extends React.PureComponent {
                                                 <tr>
                                                     <td className={"d-border"}>Mobile2</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>&nbsp;</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
 
                                             </table>
@@ -1750,28 +1702,6 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td className={"d-border"}></td>
                                                     <td className={"d-border"}></td>
                                                     <td className={"d-border"}></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
-                                <div className="container-fluid mx-0 pt-3">
-                                    <div className="row">
-                                        <div className={"col-sm-12 pl-0 pr-0"}>
-                                            <table width="100%" className={"table table-bordered table-responsive"}>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI Bank</td>
-                                                    <td width="50%" className={"d-border hover-tables"}>928237217312</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI Account Number</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI Account Name</td>
-                                                    <td width="50%" className={"d-border hover-tables"} ></td>
                                                 </tr>
                                             </table>
                                         </div>

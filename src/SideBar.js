@@ -13,6 +13,7 @@ import {BuyPage} from "./app_pages/stockPage";
 
 
 import {ModalReconnect} from "./app_modals/modal_reconnect";
+import {ModalTrial} from "./app_modals/modal_trial";
 import {AppFrameAction} from "./appframe";
 import SweetAlert from "react-bootstrap-sweetalert";
 import $ from "jquery";
@@ -104,6 +105,16 @@ class SideBar_Base extends React.Component{
             this.setState({showReconnect: true});
             this.buttonClickReconnect();
         }
+    }
+    clickMigrate = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right text-white">
+                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                   onClick={this.closeClickNoAlert}></i></div>,
+            size: 'large',
+            contentClass: ModalTrial,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
     }
     buttonClickAmendRegister = (e) => {
         this.refs.frameAction.showModal({
@@ -257,6 +268,10 @@ class SideBar_Base extends React.Component{
                         <span
                             onClick={this.clickOpen}
                               id={"idTriggerReconnect"}>
+                        </span>
+                        <span
+                            onClick={this.clickMigrate}
+                            id={"triggerMigrate"}>
                         </span>
 
                         <div className="nav flex-lg-column">

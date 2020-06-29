@@ -165,7 +165,7 @@ class AnalyticChart_Base extends React.PureComponent {
 
         var zoomLevel = 0.8;
         $('#indicatorSettingsModal' + stockName).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-        $('#formInputIndicators' + stockName).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+        // $('#formInputIndicators' + stockName).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
 
         function GetRangeDate(type,data){
             if(data.length){

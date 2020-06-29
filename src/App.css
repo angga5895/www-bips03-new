@@ -6208,6 +6208,158 @@ body{
     color: white !important;
     background-image: linear-gradient(#0071BC,#122b40)
 }
+@media (min-width: 1225px) and (max-width: 1409px) {
+    .btn-custom-nav{
+        margin-top: 2px;
+        font-size: 10px !important;
+        height: 22px;
+        width: 22px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+        margin-left: 1px;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 3px;
+        font-size: 10px !important;
+        height: 22px;
+        width: 22px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+@media(min-width: 1410px) and (max-width: 1600px){
+    .btn-custom-nav{
+        margin-top: 4px;
+        font-size: 12px !important;
+        height: 24px;
+        width: 24px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+        margin-left: 1px;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 4px;
+        font-size: 12px !important;
+        height: 24px;
+        width: 24px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+@media (min-width: 1601px) and (max-width: 1700px) {
+    .btn-custom-nav{
+        margin-top: 3px;
+        font-size: 15px !important;
+        height: 30px;
+        width: 30px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+        margin-left: 1px;
+        font-size: 15px;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 3px;
+        font-size: 15px !important;
+        height: 30px;
+        width: 30px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+@media (min-width: 1701px) and (max-width: 1800px) {
+    .btn-custom-nav{
+        margin-top: 3px;
+        height: 25px;
+        width: 25px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+        margin-left: 1px;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 3px;
+        height: 25px;
+        width: 25px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+@media (min-width: 1801px) and (max-width: 1900px){
+    .btn-custom-nav{
+        margin-top: 2px;
+        font-size: 15px !important;
+        height: 29px;
+        width: 29px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+        margin-left: 1px;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 2px;
+        font-size: 15px !important;
+        height: 29px;
+        width: 29px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+@media (min-width: 1901px){
+    .btn-custom-nav{
+        margin-top: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        font-size: 15px !important;
+        height: 29px;
+        width: 29px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 2px;
+        font-size: 15px !important;
+        height: 29px;
+        width: 29px;
+        padding: 0;
+        margin-left: 1px;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
+
+
 .no-border-radius{
     border-radius: 0px !important;
 }

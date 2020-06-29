@@ -1,3 +1,5 @@
+
+html, body {margin: 0; height: 100%; overflow: hidden}
 .ui.about.modal>.header {
     background-image: linear-gradient(var(--warna-navy-odd), var(--warna-navy-even)) !important;
 }
@@ -6386,4 +6388,7 @@ body{
     color: black;
     font-size: 16px;
     text-indent: 25px;
+}
+.card-448>tr>td{
+    padding-top: 1.11vh;
 }

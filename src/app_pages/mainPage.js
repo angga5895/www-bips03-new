@@ -29,6 +29,10 @@ const CustomFrameHeader = (props) => {
 }
 
 const ResizeResponsive = () => {
+    var isFirefox = typeof InstallTrigger !== 'undefined';
+    if(isFirefox){
+        $(".card-448>tr>td").css("padding-top","1vh");
+    }
     if($('html').width() < 1021) {
         $('.col-smb-1').css('float', 'left');
         $('.col-smb-2').css('float', 'left');
@@ -778,6 +782,10 @@ class MainPage_Base extends React.Component {
     }
 
     componentDidMount(){
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        if(isFirefox){
+            $(".card-448>tr>td").css("padding-top","1vh");
+        }
         window.addEventListener('load', this.inactivity);
 
         var setElementHeightWeb = function () {

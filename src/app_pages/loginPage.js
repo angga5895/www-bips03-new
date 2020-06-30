@@ -18,12 +18,11 @@ import FormAddress        from "../app_sign_up/form_address";
 import FormSource         from "../app_sign_up/form_source";
 import FormAdditonal      from "../app_sign_up/form_additional";
 import { Checkbox } from 'semantic-ui-react'
-import bahana_logo_black from './../img/BAHANA-SECURITIES-BLACK-TRANSPARENT.png';
-import bahana_logo from './../img/bs-white-transparent.png';
-import ojk_logo from './../img/ojk.png';
-import idx_logo from './../img/idx.png';
+import bahana_logo from './../img/bs-white-transparent_small.png';
+import ojk_logo from './../img/ojk_small.png';
+import idx_logo from './../img/idx_mini.png';
 // import dxtrade_logo from './../img/dxtradelogos.png';
-import dxtrade_logo from './../img/LOGO REV-02-01(mini).png';
+import dxtrade_logo from './../img/logo_white_small_medium.png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {
@@ -694,7 +693,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
                                                             <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
                                                                    onChange={this.onChangeUser}
-                                                                   defaultValue="zakitx"/>
+                                                                   defaultValue="apihtx"/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -708,7 +707,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="Zaki1234"/>
+                                                                       defaultValue="apih1234"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>

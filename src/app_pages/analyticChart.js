@@ -164,8 +164,8 @@ class AnalyticChart_Base extends React.PureComponent {
         }
 
         var zoomLevel = 0.8;
-        $('#indicatorSettingsModal' + stockName).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-        // $('#formInputIndicators' + stockName).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+        $('#indicatorSettingsModal' + stockName).css({ zoom: zoomLevel, 'transform-origin':'left', '-moz-transform': 'scale(' + zoomLevel + ')' });
+        $('#formInputIndicators' + stockName).css({ zoom: zoomLevel, 'transform-origin':'left', '-moz-transform': 'scale(' + zoomLevel + ')','width':'130%' });
 
         function GetRangeDate(type,data){
             if(data.length){
@@ -1071,7 +1071,7 @@ more.
                 </div >
 
                 <div id={"allwrap" + this.state.stockType} className="f-12" style={formButton}>
-                    <div className="row" id={"formInputIndicators" + this.state.stockType}>
+                    <div className="row" id={"formInputIndicators" + this.state.stockType} >
                         <div className="col-xs-12 col-sm-6 col-md-12">
                             <input type="hidden" onClick={()=>this.sideClick()} value={""} id={"sideBarValue"}/>
                             <ul className="list list-unstyled list-nav" id={"indicatorNavPanel" + this.state.stockType} style={styleses}>

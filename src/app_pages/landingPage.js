@@ -750,7 +750,7 @@ class ModalHistorical extends React.Component {
                                             </div>
                                         </td>
                                         <td className={"px-0"}>
-                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'32px'}}>to</span>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
                                         </td>
                                         <td className={"px-0"}>
 
@@ -879,7 +879,7 @@ class ModalOrderHistory extends React.Component {
                                             </div>
                                         </td>
                                         <td className={"px-0"}>
-                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'32px'}}>to</span>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
                                         </td>
                                         <td className={"px-0"}>
 
@@ -1010,7 +1010,7 @@ class ModalTransactionHistory extends React.Component {
                                             </div>
                                         </td>
                                         <td className={"px-0"}>
-                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'32px'}}>to</span>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
                                         </td>
                                         <td className={"px-0"}>
 
@@ -1376,7 +1376,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                                 </div>
                                                             </td>
                                                             <td className={"px-0"}>
-                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'32px'}}>to</span>
+                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
                                                             </td>
                                                             <td className={"px-0"}>
                                                                 <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>

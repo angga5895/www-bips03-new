@@ -548,7 +548,7 @@ class AnalyticChart_Base extends React.PureComponent {
                 function getStock(stok,to){
 
                     // var sessidbaru = $("#sessIdAhay").val();
-                    var sessidbaru = "2";
+                    var sessidbaru = 1;
 
                     // url: "https://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
 

@@ -23,14 +23,14 @@ class ModalTrial extends React.Component{
         selectedMigrate: true,
     }
     migrate = () => {
-        if(this.selectedMigrate == false){
-            this.closeClickNoAlert();
-        }else{
-            if(this.selected == 1){
+        if(this.state.selectedMigrate){
+            if(this.state.selected == 1){
                 this.setState({selected: 4});
             }else{
-                this.setState({selected: 3});
+                this.setState({selected: 4});
             }
+        }else{
+            this.refs.frameAction.closeModal(100);
         }
     }
     render() {

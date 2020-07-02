@@ -27,7 +27,7 @@ class ModalTrial extends React.Component{
             if(this.state.selected == 1){
                 this.setState({selected: 4});
             }else{
-                this.setState({selected: 4});
+                this.setState({selected: 3});
             }
         }else{
             this.refs.frameAction.closeModal(100);

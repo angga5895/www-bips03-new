@@ -6397,8 +6397,22 @@ body{
     font-weight: bold;
     color: black;
     font-size: 16px;
-    text-indent: 25px;
 }
 .card-448>tr>td{
     padding-top: 1.11vh;
+}
+.text-black{
+    color: black !important;
+}
+.text-black>label{
+    color: black !important;
+}
+.go-button>i{
+    padding-top: 10px;
+    padding-left: 7px;
+    font-size: 35px;
+}
+.go-button{
+    height: 65px;
+    width: 65px;
 }

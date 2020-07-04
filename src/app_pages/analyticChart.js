@@ -626,11 +626,16 @@ class AnalyticChart_Base extends React.PureComponent {
                 chart = anychart.stock();
                 var credits = chart.credits();
                 credits.enabled(false);
-
                 // create plot on the chart
                 var plot = chart.plot(0);
                 plot.crosshair().displayMode("float");
-                plot.height('70%');
+                plot.height('77%');
+                plot.yGrid().enabled(true);
+                plot.yGrid().stroke({color: "#868686", dash: "3 2"});
+                plot.xMinorGrid().enabled(true);
+                plot.xMinorGrid().stroke({color: "#868686", dash: "4 1"});
+                // plot.xMinorGrid().stroke({color: "#717171", dash: "1 3"});
+
 
                 dataTable.addData(appSettingsCache['data'][dataName.toLowerCase()]);
 
@@ -645,6 +650,12 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
+                    series.normal().fallingFill("#ffffff", 0.8);
+                    series.normal().fallingStroke("#ffffff", 0.8);
+                    series.hovered().fallingFill("#ffffff", 1);
+                    series.hovered().fallingStroke("#ffffff", 1);
+                    series.selected().fallingFill("#ffffff", 0.9);
+                    series.selected().fallingStroke("#ffffff",0.9);
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
                     // series.name(appSettingsCache['series'][stockName].toUpperCase());
                     // series.name("A");
@@ -688,6 +699,19 @@ class AnalyticChart_Base extends React.PureComponent {
                 } else {
                     // create line series
                     series = plot[seriesType](mapping);
+                    series.normal().fallingFill("#ff0000", 0.8);
+                    series.normal().fallingStroke("#ff0000", 0.8);
+                    series.hovered().fallingFill("#ff0000", 1);
+                    series.hovered().fallingStroke("#ff0000", 1);
+                    series.selected().fallingFill("#ff0000", 0.9);
+                    series.selected().fallingStroke("#ff0000",0.9);
+
+                    series.normal().risingFill("#00ff00", 0.8);
+                    series.normal().risingStroke("#00ff00", 0.8);
+                    series.hovered().risingFill("#00ff00", 1);
+                    series.hovered().risingStroke("#00ff00", 1);
+                    series.selected().risingFill("#00ff00", 0.9);
+                    series.selected().risingStroke("#00ff00", 0.9);
                     // series.name(appSettingsCache['seriesName']);
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
                     // series.name(appSettingsCache[stockName].toUpperCase());
@@ -712,7 +736,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     // create volume series on the plot
                     // var volumeSeries1 = plot.volumeMa(mapping, 5, "column", "line");
                     var volumePlot = chart.plot(1);
-                    volumePlot.height('30%');
+                    volumePlot.height('23%');
                     volumePlot.yAxis().labels().format('{%Value}{scale:(1000)(1)|(k)}');
                     volumePlot.crosshair().yLabel().format('{%Value}{scale:(1000)(1)|(k)}');
 
@@ -721,10 +745,10 @@ class AnalyticChart_Base extends React.PureComponent {
                     // set series settings
                     volumeSeries1.name('Volume');
                     volumeSeries1.stroke(null);
-                    volumeSeries1.fill("#455a64 0.4");
+                    volumeSeries1.fill("#ff6d00");
                     // volumeSeries1.maxHeight('30%');
                     // volumeSeries1.bottom(0);
-                    volumeSeries1.stroke("1.5 #ff6d00");
+                    volumeSeries1.stroke("#ff6d00");
                     // volumeSeries1.height('30%');
                     volumeSeries1.bottom(0);
                     // volumeSeries1.volumeSeries().stroke(null);

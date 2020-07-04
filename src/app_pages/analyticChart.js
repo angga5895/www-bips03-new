@@ -531,15 +531,23 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['indicators'][indicatorsSettings.name] = {};
                     appSettingsCache['indicators'][indicatorsSettings.name]['settings'] = settings;
                     appSettingsCache['indicators'][indicatorsSettings.name]['plotIndex'] = indicatorsSettings.plotIndex;
+                    if(indicatorName == "psar"){
+                        var plot = chart.plot(0);
+                        plot[indicatorName].apply(plot, settings);
+                        // adding extra Y axis to the right side
+                        plot.yAxis(1).orientation('right');
 
-                    var plot = chart.plot(indicatorsSettings.plotIndex);
-                    plot[indicatorName].apply(plot, settings);
-                    // adding extra Y axis to the right side
-                    plot.yAxis(1).orientation('right');
+                        // hide indicator settings modal
+                        $indicatorSettingsModal.hide();
+                    }else {
+                        var plot = chart.plot(indicatorsSettings.plotIndex);
+                        plot[indicatorName].apply(plot, settings);
+                        // adding extra Y axis to the right side
+                        plot.yAxis(1).orientation('right');
 
-                    // hide indicator settings modal
-                    $indicatorSettingsModal.hide();
-
+                        // hide indicator settings modal
+                        $indicatorSettingsModal.hide();
+                    }
                     $('#allwrap' + stockName).show();
                     $('#chart-container' + stockName).show();
                 });
@@ -631,9 +639,9 @@ class AnalyticChart_Base extends React.PureComponent {
                 plot.crosshair().displayMode("float");
                 plot.height('77%');
                 plot.yGrid().enabled(true);
-                plot.yGrid().stroke({color: "#868686", dash: "3 2"});
+                plot.yGrid().stroke({color: "#2b2b2b", dash: "3 4"});
                 plot.xMinorGrid().enabled(true);
-                plot.xMinorGrid().stroke({color: "#868686", dash: "4 1"});
+                plot.xMinorGrid().stroke({color: "#2b2b2b", dash: "2 4"});
                 // plot.xMinorGrid().stroke({color: "#717171", dash: "1 3"});
 
 
@@ -677,7 +685,6 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     for (var keyIndicator in appSettingsCache['indicators']) {
                         indicatorName = keyIndicator;
-
                         if (appSettingsCache['indicators'].hasOwnProperty(keyIndicator)) {
                             indicatorSettings = appSettingsCache['indicators'][keyIndicator]['settings'];
                             indicatorSettings[0] = mapping;

@@ -417,7 +417,7 @@ class AnalyticChart_Base extends React.PureComponent {
                 // event to change theme
                 $themeSelect.on('change', function () {
                     app.removeChart();
-
+                    $("#themeTemp").val($(this).val());
                     // save scale type
                     appSettingsCache['theme'] = $(this).val();
                     app.createChart(chartContainer);
@@ -588,7 +588,7 @@ class AnalyticChart_Base extends React.PureComponent {
                                         // reset indicators select
                                         $indicatorTypeSelect.val('').selectpicker('refresh');
                                         // select chart theme
-                                        $themeSelect.val('defaultTheme').selectpicker('refresh');
+                                        // $themeSelect.val('defaultTheme').selectpicker('refresh');
                                         // init, create chart
                                         app.createChart(chartContainer);
 
@@ -618,11 +618,12 @@ class AnalyticChart_Base extends React.PureComponent {
                 // create data table on loaded data
                 dataTable = anychart.data.table();
 
-                if (appSettingsCache['theme'] == 'defaultTheme') {
-                    anychart.theme(anychart.themes.darkEarth);
-                } else {
-                    anychart.theme(appSettingsCache['theme']);
-                }
+                // if (appSettingsCache['theme'] == 'defaultTheme') {
+                //     anychart.theme(anychart.themes.darkEarth);
+                // } else {
+                //     anychart.theme(appSettingsCache['theme']);
+                // }
+                anychart.theme($("#themeTemp").val());
 
                 var series;
 
@@ -1228,7 +1229,9 @@ more.
                         </div>
                     </div>
                 </div>
-                <input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>
+                {/*<input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>*/}
+                <input type="hidden" id={"themeTemp"} value={"defaultTheme"}/>
+
                 <div id={"chart-container" + this.state.stockType} className={classChart} style={containerStyle}></div>
             </div>
         );

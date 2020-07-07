@@ -25,6 +25,7 @@ import $ from "jquery";
 import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
+import {VerifyPINPortofolio} from "./landingPage";
 
 function stringComparator(valueA, valueB){
     if(valueA !== null && valueB !== null){
@@ -847,69 +848,73 @@ class TradeWatchlist extends React.PureComponent{
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
-                <div className="row f-12">
-                    <div className={"col-md-2 pl-5 text-left align-self-center"}>
-                       <span>10</span> Order(s) Selected
-                    </div>
-                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
-                        Total Match Volume(Lot): <span>250</span>
-                    </div>
-                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
-                        Total Match Amnt: <span>2,500,000,000</span>
-                    </div>
-                    <div className={"col-md-3 pl-5 text-left align-self-center"}>
-                        Total Volume: 250,000
-                    </div>
-                    <div className={"col-md-1 pb-2 text-right"}>
-                        <Popup content='Refresh' position='top center' trigger={
-                            <button
-                                className={`btn btn-primary`}
-                                style={{"font-size": "14px", "width": "38px", "margin-top": "2px"}}>
-                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                            </button>
-                        }/>
-                    </div>
+                <div id={"orderListPin"}>
+                    <VerifyPINPortofolio pos="orderList"/>
                 </div>
-                <div className="col-sm-12 px-0 card-310-odlist">
-                    <OrderListAgGrid
-                        size={this.ceksize()}
-                        clickorderdetail={this.buttonClickOrderDetail}
-                        clickamend={this.buttonClickAmend}
-                        clickwithdraw={this.buttonClickWithdraw}/>
-                </div>
-                <div className="col-sm-12 row px-0 ml-0 mt-0 pt-1" style={{'width':'100%'}}>
-                    <div className="col-sm-6 pl-0 pr-2">
-                        <div className="col-sm-12 pl-0 pr-0">
-                            <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                                <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE LIST</div>
-                            </div>
-                            <TradeListOrderListAgGrid size={this.ceksize()}/>
+                    <div className="row f-12 contentOrderList d-none">
+                        <div className={"col-md-2 pl-5 text-left align-self-center"}>
+                            <span>10</span> Order(s) Selected
+                        </div>
+                        <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                            Total Match Volume(Lot): <span>250</span>
+                        </div>
+                        <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                            Total Match Amnt: <span>2,500,000,000</span>
+                        </div>
+                        <div className={"col-md-3 pl-5 text-left align-self-center"}>
+                            Total Volume: 250,000
+                        </div>
+                        <div className={"col-md-1 pb-2 text-right"}>
+                            <Popup content='Refresh' position='top center' trigger={
+                                <button
+                                    className={`btn btn-primary`}
+                                    style={{"font-size": "14px", "width": "38px", "margin-top": "2px"}}>
+                                    <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                </button>
+                            }/>
                         </div>
                     </div>
-                    <div className="col-sm-6 pl-2 pr-0">
-                        <div className="cssmenu d-border-bottom d-border-top d-border-left small h-30">
-                            <ul className="ul-menu h-30">
-                                <li name="stockDaily"
-                                    className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 1) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 1})}>
-                                    <a className="linkCustomStockTab h-30">
+                    <div className="col-sm-12 px-0 card-310-odlist contentOrderList d-none">
+                        <OrderListAgGrid
+                            size={this.ceksize()}
+                            clickorderdetail={this.buttonClickOrderDetail}
+                            clickamend={this.buttonClickAmend}
+                            clickwithdraw={this.buttonClickWithdraw}/>
+                    </div>
+                    <div className="col-sm-12 row px-0 ml-0 mt-0 pt-1 contentOrderList d-none" style={{'width':'100%'}}>
+                        <div className="col-sm-6 pl-0 pr-2">
+                            <div className="col-sm-12 pl-0 pr-0">
+                                <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
+                                    <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE LIST</div>
+                                </div>
+                                <TradeListOrderListAgGrid size={this.ceksize()}/>
+                            </div>
+                        </div>
+                        <div className="col-sm-6 pl-2 pr-0">
+                            <div className="cssmenu d-border-bottom d-border-top d-border-left small h-30">
+                                <ul className="ul-menu h-30">
+                                    <li name="stockDaily"
+                                        className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 1) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 1})}>
+                                        <a className="linkCustomStockTab h-30">
                                                     <span
                                                         className="f-12">ORDER SUMMARY</span></a></li>
-                                <li name="stockPage"
-                                    className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 2) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 2})}>
-                                    <a className="linkCustomStockTab h-30">
+                                    <li name="stockPage"
+                                        className={`col-sm-6 click-pointer d-border-right text-center${(this.state.activeTab == 2) ? ' active' : ''}`} onClick={() => this.setState({activeTab: 2})}>
+                                        <a className="linkCustomStockTab h-30">
                                                     <span
                                                         className="f-12">TRADE SUMMARY</span></a></li>
-                            </ul>
-                            <div style={{display: this.state.activeTab == 1 ? "block" : "none"}}>
-                                <TradeOrderSummaryAgGrid size={this.ceksize()}/>
+                                </ul>
+                                <div style={{display: this.state.activeTab == 1 ? "block" : "none"}}>
+                                    <TradeOrderSummaryAgGrid size={this.ceksize()}/>
 
-                            </div>
-                            <div style={{display: this.state.activeTab == 2 ? "block" : "none"}}>
-                                <TradeTradeSummaryAgGrid size={this.ceksize()}/>
+                                </div>
+                                <div style={{display: this.state.activeTab == 2 ? "block" : "none"}}>
+                                    <TradeTradeSummaryAgGrid size={this.ceksize()}/>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         )
     };
@@ -1222,8 +1227,10 @@ class TradeOrderBookList extends React.PureComponent{
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
-
-                <div className="col-sm-12 px-0 card-310">
+                <div id={"orderListPinHist"}>
+                    <VerifyPINPortofolio pos="orderList"/>
+                </div>
+                <div className="col-sm-12 px-0 card-310 contentOrderList d-none">
                     <TradeOrderBookListAgGrid
                         clickdetail={this.clickdetail}
                         size={this.ceksize()}/>

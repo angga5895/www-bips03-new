@@ -639,9 +639,9 @@ class AnalyticChart_Base extends React.PureComponent {
                 plot.crosshair().displayMode("float");
                 plot.height('77%');
                 plot.yGrid().enabled(true);
-                plot.yGrid().stroke({color: "#2b2b2b", dash: "3 4"});
+                plot.yGrid().stroke({color: "#555555", dash: "3 4"});
                 plot.xMinorGrid().enabled(true);
-                plot.xMinorGrid().stroke({color: "#2b2b2b", dash: "2 4"});
+                plot.xMinorGrid().stroke({color: "#555555", dash: "2 4"});
                 // plot.xMinorGrid().stroke({color: "#717171", dash: "1 3"});
 
 

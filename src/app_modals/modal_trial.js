@@ -30,7 +30,19 @@ class ModalTrial extends React.Component{
                 this.setState({selected: 3});
             }
         }else{
-            this.refs.frameAction.closeModal(100);
+            if(this.state.selected == 1){
+                this.setState({selected: 5});
+            }else{
+                this.setState({selected: 6});
+            }
+            // this.refs.frameAction.closeModal(100);
+        }
+    }
+    closeClickToTrial = (e) => {
+        if(this.state.selected == 4){
+            this.setState({selected: 5});
+        }else{
+            this.setState({selected: 6});
         }
     }
     render() {
@@ -68,17 +80,23 @@ class ModalTrial extends React.Component{
                             <br/>
                             <p className={"p-migrate"}>
                                 Terima kasih atas kepercayaan Anda untuk senantiasa menggunakan Online Trading Bahana Sekuritas.<br/><br/>
-                                Sebagai bentuk komitmen kami untuk meningkatkan kenyamanan Anda,
-                                maka dengan kami informasikan bahwa kami telah melakukan pembaharuan sistem <i>online trading</i> kami
-                                menjadi DX Trade. Saat ini DX Trade hanya dapat digunakan melalui <i>web browser</i>.
-                                Platform DX Trade di <i>platform</i> lainnya akan segera tersedia pada bulan September 2020.<br/><br/>
+                                Sebagai bentuk komitmen kami untuk meningkatkan kenyamanan Anda bertransaksi,
+                                kami informasikan bahwa saat ini kami telah melakukan pembaharuan terhadap sistem <i>online trading</i>
+                                yang kami miliki dengan mengganti aplikasi DT Next G dengan aplikasi DX Trade.<br/>
+                                Untuk tahap awal aplikasi DX Trade hanya dapat diakses melalui <i>web browser</i> dari komputer Anda.
+                                Untuk <i>Platform mobile</i> dan <i>tablet</i>, akan segera tersedia pada bulan September 2020.<br/><br/>
 
-                                Anda sudah dapat menggunakan DX Trade dengan menggunakan User ID yang Anda miliki.<br/>
+                                Saat ini Anda sudah dapat menggunakan DX Trade dengan menggunakan User ID lama yang Anda miliki.<br/>
                             <ul>
-                                <li>Silahkan pilih “Ya, Saya bersedia.” untuk menggunakan DX Trade untuk transaksi Anda selanjutnya, atau</li>
-                                <li>Silahkan pilih “Pelajari DXTrade” untuk mendapatkan akun trial <i>online trading</i></li>
-                            </ul>
-                                Pada akhir Agustus 2020, DXTrade akan menjadi <i>Official Online Trading</i> PT. Bahana Sekuritas dan akan sepenuhnya menggantikan DTNextG.
+                                <li>Silahkan pilih “Ya, Saya bersedia.” untuk menggunakan DX Trade pada transaksi Anda selanjutnya, atau</li>
+                                <li>Silahkan pilih “Pelajari DXTrade” untuk melakukan  trial terlebih dahulu <i>online trading</i></li>
+                            </ul><br/>
+                                Sebagai informasi, kami akan melakukan migrasi secara bertahap mulai bulan Agustus terhadap akun-akun yang
+                                masih menggunakan <i>system online trading</i> Kami yang lama, dan melakukan penghentian operasi
+                                aplikasi online trading yang lama secara keseluruhan pada tanggal 1 Oktober 2020.<br/>
+                                Besar harapan kami untuk Anda dapat menjadi nasabah kami yang lebih dulu dapat memakai aplikasi DX Trade
+                                untuk transaksi Anda.
+                                Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.
                                 <br/><br/>
                                 Terima kasih,<br/>
                                 PT. Bahana Sekuritas<br/><br/>
@@ -146,31 +164,107 @@ class ModalTrial extends React.Component{
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-center ${this.state.selected == 3?"d-block":"d-none"}`}
                         >
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Notification Alert</h3>
+                            <br/>
                             <p className={"p-migrate"}>
-                                Thank you for evaluating your current DXTrade application, your current DXTrade account is a trial.<br/>
-                                Please select a migration when you login to be able to activate your account on DXTrade.<br/>
+                            Thank you for being willing to migrate to the Dxtrade application.<br/>
+                            Here is the information that we have to submit:<br/><br/>
+                            1. Your account will be active starting H +, if you choose agree before 15.00 WIB.<br/>
+                            2. After you activate your DXTrade account, your account cannot be reused in the DT NextG application.<br/>
+                            3. At present the DXTrade application can only be accessed through a browser at the address <a href={"https://dxtrade.bahana.co.id/"} target={"_blank"}>https://dxtrade.bahana.co.id/</a> <br/>
+                            and the DXTrade application cannot be accessed by a mobile app device.<br/>
+                            4. The mobile version of the DXTrade application will be available in September 2020 after obtaining certification from the Market exchange<br/>
+                        </p>
+                        <p className={"p-migrate"}>
+                            All DT NextG customers who still use DT NextG application will be migrated to DXTRADE applcation at the end of August 2020.
+                            <br/><br/>
+                            Thank you.
+                            Are u sure about migration?
+                        </p>
+                        <div className={"text-center col-sm-12"}>
+                            <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
+                                    className="btn btn-primary form-control py-0 col-sm-2">
+                                <span id="text-login">Yes</span>
+                            </button>&nbsp;&nbsp;
+                            <button id="click_migrate" type="submit" onClick={this.closeClickToTrial}
+                                    className="btn btn-danger form-control py-0 col-sm-2">
+                                <span id="text-login">No</span>
+                            </button>
+                        </div>
+                        </div>
+                        <div
+                            className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 4?"d-block":"d-none"}`}
+                        >
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Peringatan Notifikasi</h3>
+                            <br/>
+                            <p className={"p-migrate"}>
+                                Nasabah yang terhormat terimakasih atas kepercayaan anda menggunakan Trading bersama DT nextG.
+                                Kami informasikan bahwa aplikasi DT NextG akan segera kami ganti dengan aplikasi baru yaitu DxTrade.<br/>
+                                Saat ini DxTrade hanya dapat diakses melalui web browser. Versi lain dari aplikasi ini
+                                akan segera tersedia pada bulan September 2020.
+                            </p>
+                            <p className={"p-migrate"}>
+                                Anda dapat mempergunakan User DT NextG anda di aplikasi DxTrade.
+                                Jika anda berkenan untuk kami migrasikan dari DT NextG ke DxTrade saat ini,
+                                silahkan pilih "Setuju Migrasi" atau "Masih ingin mencoba" bila belum anda tidak dapat
+                                lagi mengakses DT NextG, bilamana sudah dimigrasikan.<br/>
+                                Terimakasih anda telah bersedia kami migrasikan ke aplikasi Dxtrade.<br/>
+                                Berikut ini informasi yang harus kami sampaikan :<br/><br/>
+
+                                1. Account anda akan active mulai H + , jika pilih setuju sebelum Pukul 15.00 WIB.<br/>
+                                2. Setelah Account DXTrade anda kami Active-kan, Account anda tidak dapat di pergunakan kembali di aplikasi DT NextG.<br/>
+                                3. Saat ini aplikasi DXTrade hanya dapat di akses melalui browser di alamat <a href={"https://dxtrade.bahana.co.id/"} target={"_blank"}>https://dxtrade.bahana.co.id/</a> dan
+                                aplikasi DXTrade belum dapat di akses oleh mobile app device.<br/>
+                                4. Aplikasi DXTrade versi mobile akan tersedia pada bulan September 2020 setelah mendapatkan sertifikasi dari bursa. <br/>
+                            </p>
+                            <p className={"p-migrate"}>
+                                Seluruh nasabah DT NextG yang masih menggunakan aplikasi DT NextG akan kami migrasikan ke aplikasi DxTrade pada akhir agustus 2020.
+                                <br/>
+                                Terimakasih.<br/>
+                            </p>
+                            <p className={"p-migrate text-center"}>
+                                Apakah anda yakin untuk Migrasi
                             </p>
                             <div className={"text-center col-sm-12"}>
                                 <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
-                                        className="btn btn-primary form-control py-0 col-sm-3">
-                                    <span id="text-login">OK</span>
+                                        className="btn btn-primary form-control py-0 col-sm-2">
+                                    <span id="text-login">Ya</span>
+                                </button>&nbsp;&nbsp;
+                                <button id="click_migrate" type="submit" onClick={this.closeClickToTrial}
+                                        className="btn btn-danger form-control py-0 col-sm-2">
+                                    <span id="text-login">Tidak</span>
                                 </button>
                             </div>
                         </div>
                         <div
-                            className={`px-0 pt-3 col-sm-12 px-3 py-4 text-center ${this.state.selected == 4?"d-block":"d-none"}`}
+                            className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 5?"d-block":"d-none"}`}
                         >
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Peringatan Notifikasi</h3>
                             <br/>
                             <p className={"p-migrate"}>
-                                Terimakasih anda telah bersedia kami migrasikan ke aplikasi Dxtrade.
-                                <br/>
-                                Saat ini account DXTrade anda bersifat percobaan.<br/>
-                                Silahkan pilih migrasi saat anda login untuk dapat kami aktifasikan account anda ke DXTrade anda.
+                                Terimakasih anda telah bersedia mengevaluasi aplikasi DXTrade saat ini, Account DXTrade anda saat ini bersifat percobaan.
+                                Silahkan pilih migrasi saat anda login untuk dapat kami aktifasikan Account anda di DXTrade..<br/>
                             </p>
                             <div className={"text-center col-sm-12"}>
                                 <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
-                                        className="btn btn-primary form-control py-0 col-sm-3">
-                                    <span id="text-login">OK</span>
+                                        className="btn btn-primary form-control py-0 col-sm-2">
+                                    <span id="text-login">Ya</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 6?"d-block":"d-none"}`}
+                        >
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Notification Alert</h3>
+                            <br/>
+                            <p className={"p-migrate"}>
+                              Thank you for evaluating your current DXTrade Application, your current DXTrade account is a trial.<br/>
+                                Please select a migration when you login to be able to activate your account on DXTrade.
+                            </p>
+                            <div className={"text-center col-sm-12"}>
+                                <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
+                                        className="btn btn-primary form-control py-0 col-sm-2">
+                                    <span id="text-login">Yes</span>
                                 </button>
                             </div>
                         </div>

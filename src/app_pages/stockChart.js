@@ -32,35 +32,57 @@ class StockChart extends Component {
         });
 
         var chart = anychart.stock();
+
+        chart.scroller(true);
+        chart.scroller().enabled(false);
         var credits = chart.credits();
         credits.enabled(false);
 
         function createChart(data) {
-            var dataTable = anychart.data.table();
-            dataTable.addData(data);
+            // var dataTable = anychart.data.table();
+            // dataTable.addData(data);
+            //
+            // // map loaded data
+            // var mapping = dataTable.mapAs({
+            //     open: 1,
+            //     high: 2,
+            //     low: 3,
+            //     close: 4,
+            //     value: {
+            //         column: 6,
+            //         type: 'sum'
+            //     }
+            // });
 
-            // map loaded data
-            var mapping = dataTable.mapAs({
-                open: 1,
-                high: 2,
-                low: 3,
-                close: 4,
-                value: {
-                    column: 6,
-                    type: 'sum'
-                }
-            });
+            var table = anychart.data.table();
+            table.addData(data);
+            var mapping = table.mapAs();
+            mapping.addField('open', 1);
+            mapping.addField('high', 2);
+            mapping.addField('low', 3);
+            mapping.addField('close', 4);
 
             // create stock chart
             // var chart = anychart.stock();
             // set chart padding
+            // chart.crosshair().xLabel(false);
+            // chart.crosshair().yLabel(false);
+            // chart.crosshair().xStroke(null);
+            // chart.crosshair().yStroke(null);
+            // chart.crosshair().yLabel().axisIndex(0);
+            // chart.crosshair().yLabel().format(function() {
+            //     return this.value + "%";
+            // });
+
             chart.padding().right(60);
 
             // create plot on the chart
             var plot = chart.plot(0);
-
             // enabled x-grid/y-grid
-            plot.xGrid(true).yGrid(true);
+            plot.yGrid().enabled(true);
+            plot.yGrid().stroke({color: "#555555", dash: "3 4"});
+            plot.xMinorGrid().enabled(true);
+            plot.xMinorGrid().stroke({color: "#555555", dash: "2 4"});
 
             // set orientation y-axis to the right side
             plot.yAxis().orientation('right');
@@ -78,26 +100,26 @@ class StockChart extends Component {
             // ema.series().stroke('1.5 #5FB1EE');
 
             // create volume series on the plot
-            var volumeSeries = plot.column(mapping);
-            // set series settings
-            volumeSeries.name('Volume').zIndex(100).maxHeight('20%').bottom(0);
-            volumeSeries.legendItem({
-                iconEnabled: false,
-                textOverflow: ''
-            });
-
-            // create a logarithmic scale
-            var customScale = anychart.scales.log();
-            // sets y-scale
-            volumeSeries.yScale(customScale);
-
-            // set volume rising and falling stroke settings
-            volumeSeries.risingStroke('red');
-            volumeSeries.fallingStroke('green');
-
-            // set volume rising and falling fill settings
-            volumeSeries.risingFill('red .5');
-            volumeSeries.fallingFill('green .5');
+            // var volumeSeries = plot.column(mapping);
+            // // set series settings
+            // volumeSeries.name('Volume').zIndex(100).maxHeight('20%').bottom(0);
+            // volumeSeries.legendItem({
+            //     iconEnabled: false,
+            //     textOverflow: ''
+            // });
+            //
+            // // create a logarithmic scale
+            // var customScale = anychart.scales.log();
+            // // sets y-scale
+            // volumeSeries.yScale(customScale);
+            //
+            // // set volume rising and falling stroke settings
+            // volumeSeries.risingStroke('red');
+            // volumeSeries.fallingStroke('green');
+            //
+            // // set volume rising and falling fill settings
+            // volumeSeries.risingFill('red .5');
+            // volumeSeries.fallingFill('green .5');
 
             // set chart selected date/time range
             chart.selectRange('2016-07-01', '2016-12-30');
@@ -123,7 +145,7 @@ class StockChart extends Component {
 
         return (
             // <div id="container" style={chartDisplay}></div>
-            <AnyChart instance={chart} id="chart-container" title="Stock Info" />
+            <AnyChart instance={chart} id="chart-container" />
         );
     }
 }

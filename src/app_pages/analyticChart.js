@@ -80,7 +80,7 @@ class AnalyticChart_Base extends React.PureComponent {
 
     componentDidMount() {
 
-
+        $("#themeTemp").val("darkEarth");
         $('.stockOps').css({
             'color': '#000000',
             'width': '100px'
@@ -466,7 +466,8 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['scale'] = 'linear';
                     appSettingsCache['chartType'] = 'line';
                     appSettingsCache['annotation'] = 'remove';
-                    appSettingsCache['theme'] = 'defaultTheme';
+                    appSettingsCache['theme'] = 'darkEarth';
+                    $("#themeTemp").val('darkEarth');
 
                     $annotationType.val('default').selectpicker('refresh');
 
@@ -475,7 +476,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     // reset indicators select
                     $indicatorTypeSelect.val('').selectpicker('refresh');
                     // select chart theme
-                    $themeSelect.val('defaultTheme').selectpicker('refresh');
+                    $themeSelect.val('darkEarth').selectpicker('refresh');
 
                     // init, create chart
                     app.createChart(chartContainer);
@@ -578,7 +579,7 @@ class AnalyticChart_Base extends React.PureComponent {
                                         appSettingsCache['scale'] = 'linear';
                                         appSettingsCache['chartType'] = 'line';
                                         appSettingsCache['annotation'] = 'remove';
-                                        appSettingsCache['theme'] = 'defaultTheme';
+                                        appSettingsCache['theme'] = 'darkEarth';
                                         appSettingsCache['series'][to] = stok;
                                         appSettingsCache['data'][to] = res.data;
                                         $annotationType.val('default').selectpicker('refresh');
@@ -1201,7 +1202,7 @@ more.
                                     <div className="form-group">
                                         <li style={marginSelection}>
                                             <select id={"themeSelect" + this.state.stockType} data-size="10" data-dropup-auto="false" data-width="81" data-style="btn-dark" className="select selectpicker show-tick form-control" title="Theme">
-                                                <option value="defaultTheme" selected>Theme</option>
+                                                <option value="darkEarth" selected>Theme</option>
                                                 <option value="lightBlue">Light Blue</option>
                                                 <option value="lightEarth">Light Earth</option>
                                                 <option value="darkGlamour">Dark Glamour</option>
@@ -1230,7 +1231,7 @@ more.
                     </div>
                 </div>
                 {/*<input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>*/}
-                <input type="hidden" id={"themeTemp"} value={"defaultTheme"}/>
+                <input type="hidden" id={"themeTemp"}/>
 
                 <div id={"chart-container" + this.state.stockType} className={classChart} style={containerStyle}></div>
             </div>

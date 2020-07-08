@@ -3,6 +3,7 @@ import {AppFrameAction} from "./../appframe";
 
 import {ResizeResponsive} from "../app_pages/mainPage";
 // import {ForgotModal} from "../app_pages/loginPage";
+import marketImage from "../img/marketImage3.jpg";
 
 import $ from "jquery";
 import {Checkbox} from "semantic-ui-react";
@@ -50,9 +51,9 @@ class ModalTrial extends React.Component{
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="f-12">
-                        <div className={`col-sm-6 pb-3 ${this.state.selected < 3?"d-block":"d-none"}`}>
+                        <div className={`col-sm-6 pb-2 ${this.state.selected < 3?"d-block":"d-none"}`}>
                             <div
-                                className={`px-0 pt-3
+                                className={`px-0 pt-1
                                                   ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
                                 onClick={()=>this.setState({selected:1})}
                                 style={{display: "inline-block"}}
@@ -62,7 +63,7 @@ class ModalTrial extends React.Component{
                                 Bahasa Indonesia
                             </div>
                             <div
-                                className={`px-0 pt-3 pl-5
+                                className={`px-0 pt-1 pl-5
                                                    ${this.state.selected == 2?"livetradeMenuActive":"livetradeMenu"}`}
                                 onClick={()=>this.setState({selected:2})}
                                 style={{display: "inline-block"}}
@@ -74,14 +75,14 @@ class ModalTrial extends React.Component{
                         </div>
                     </div>
                     <div className={"col-sm-12 bg-gradi row ml-0 pr-0"}>
-                        <div className={`px-0 pt-3 col-sm-12 col-xs-12 px-3 py-4 ${this.state.selected == 1?"d-block":"d-none"}`}
+                        <div className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 1?"d-block":"d-none"}`}
                         >
                             <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Selamat Datang di DX Trade </h3>
                             <br/>
                             <p className={"p-migrate"}>
                                 Terima kasih atas kepercayaan Anda untuk senantiasa menggunakan Online Trading Bahana Sekuritas.<br/><br/>
                                 Sebagai bentuk komitmen kami untuk meningkatkan kenyamanan Anda bertransaksi,
-                                kami informasikan bahwa saat ini kami telah melakukan pembaharuan terhadap sistem <i>online trading</i>
+                                kami informasikan bahwa saat ini kami telah melakukan pembaharuan terhadap sistem <i>online trading</i>&nbsp;
                                 yang kami miliki dengan mengganti aplikasi DT Next G dengan aplikasi DX Trade.<br/>
                                 Untuk tahap awal aplikasi DX Trade hanya dapat diakses melalui <i>web browser</i> dari komputer Anda.
                                 Untuk <i>Platform mobile</i> dan <i>tablet</i>, akan segera tersedia pada bulan September 2020.<br/><br/>
@@ -97,9 +98,9 @@ class ModalTrial extends React.Component{
                                 Besar harapan kami untuk Anda dapat menjadi nasabah kami yang lebih dulu dapat memakai aplikasi DX Trade
                                 untuk transaksi Anda.
                                 Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.
-                                <br/><br/>
+                                <br/>
                                 Terima kasih,<br/>
-                                PT. Bahana Sekuritas<br/><br/>
+                                PT. Bahana Sekuritas<br/>
                             </p>
                             <p className={"p-migrate"}>
                                 Apakah anda yakin untuk Migrasi
@@ -121,7 +122,7 @@ class ModalTrial extends React.Component{
                             </div>
                         </div>
                         <div
-                            className={`px-0 pt-3 col-sm-12 col-xs-12 px-3 py-4 ${this.state.selected == 2?"d-block":"d-none"}`}
+                            className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 2?"d-block":"d-none"}`}
                         >
                             <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Welcome to DX Trade</h3>
                             <br/>
@@ -160,6 +161,9 @@ class ModalTrial extends React.Component{
                                     <span className={"f-18 text-danger pointer"} onClick={this.migrate}>OK</span>
                                 </div>
                             </div>
+                        </div>
+                        <div className={`col-sm-4 pr-0 ${(this.state.selected    < 3) ? "d-block":"d-none"}`}>
+                            <img src={marketImage} alt="" className={"imgMarketStream"}/>
                         </div>
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-center ${this.state.selected == 3?"d-block":"d-none"}`}
@@ -204,11 +208,6 @@ class ModalTrial extends React.Component{
                                 akan segera tersedia pada bulan September 2020.
                             </p>
                             <p className={"p-migrate"}>
-                                Anda dapat mempergunakan User DT NextG anda di aplikasi DxTrade.
-                                Jika anda berkenan untuk kami migrasikan dari DT NextG ke DxTrade saat ini,
-                                silahkan pilih "Setuju Migrasi" atau "Masih ingin mencoba" bila belum anda tidak dapat
-                                lagi mengakses DT NextG, bilamana sudah dimigrasikan.<br/>
-                                Terimakasih anda telah bersedia kami migrasikan ke aplikasi Dxtrade.<br/>
                                 Berikut ini informasi yang harus kami sampaikan :<br/><br/>
 
                                 1. Account anda akan active mulai H + , jika pilih setuju sebelum Pukul 15.00 WIB.<br/>

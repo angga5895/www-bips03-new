@@ -5352,5 +5352,6 @@ export { CustomFrameHeaderLanding, LandingPage,
     TradeListHistory,
     FundTransfer,
     InquryAccount,
-    tcAndSoa
+    tcAndSoa,
+    VerifyPINPortofolio,
 };

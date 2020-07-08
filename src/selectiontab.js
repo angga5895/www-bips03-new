@@ -740,8 +740,8 @@ class InfoCash_Base extends React.Component {
                                 {/*status disini*/}
                                 <td className={"text-success text-left"}>First Session</td>
                             </tr>
-                            <tr className="f-16 text-white cursor-menu" onClick={()=>this.setState({locked: !this.state.locked})}>
-                                <td colSpan={2}><i className={`fa ${(this.state.locked == true) ? "fa-unlock":"fa-lock"}`}></i> &nbsp; {(this.state.locked == true) ? "Lock":"Unlock"} Account</td>
+                            <tr className="f-16 text-white cursor-menu" onClick={()=>window.location.reload()}>
+                                <td className={"text-center"}><i className="icofont-sign-out"></i></td><td>Log out</td>
                             </tr>
                             </tbody>
                         </Table>

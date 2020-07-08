@@ -29,8 +29,8 @@ const stateOptions = [
     //untuk top active
     { key: 'value', value: 'value', text: 'by value' },
     { key: 'volume', value: 'volume', text: 'by volume' },
-    { key: 'frequency', value: 'frequency', text: 'by frequency' },
-    //untuk top gainer dan top looser --> tambahkan value
+    { key: 'frequentop gainercy', value: 'frequency', text: 'by frequency' },
+    //untuk  dan top looser --> tambahkan value
     { key: 'percentage', value: 'percentage', text: 'by percentage' },
 ];
 const summaryOptions = [
@@ -668,13 +668,20 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
         ];
 
         // Chart
+        anychart.theme('darkEarth');
         let chart = anychart.stock();
         let credits = chart.credits();
         credits.enabled(false);
         var dataset = anychart.data.table();
         dataset.addData(this.props.indexStreamChart);
         var data1 = dataset.mapAs({x: 0, value: 1,});
-        var series = chart.plot(0).line(data1);
+        var seriesRaw = chart.plot(0);
+        var series = seriesRaw.line(data1);
+        seriesRaw.yGrid().enabled(true);
+        seriesRaw.yGrid().stroke({color: "#555555", dash: "3 4"});
+        seriesRaw.xMinorGrid().enabled(true);
+        seriesRaw.xMinorGrid().stroke({color: "#555555", dash: "2 4"});
+
         series.stroke("#64B5F6");
         series.name("Price");
         var columnTooltip = series.tooltip();

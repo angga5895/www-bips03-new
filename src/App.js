@@ -26,7 +26,9 @@ import AccountBPage from './app_pages/accountB.js';
 
 import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     NewResearchMarketStatistikPage,TopBrokerMarketStatistikPage,IndiceMarketStatistikPage, IndiceMarketSecondStatistikPage,
-    StatisticMarketStatistikPage,GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage} from './app_pages/marketstatistikPage';
+    StatisticMarketStatistikPage,GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
+    NonSectoralStatistikPage}
+    from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
     TradeWatchlist, TradePageAdv, TradeOrderBookList,
@@ -60,7 +62,7 @@ class App extends React.Component {
             /*tree1*/ LandingPage, StockCash, TradeListHistory, FundTransfer, InquryAccount, tcAndSoa,
             //MarketStatistik Page
             /*tree2*/ MarketStatistikPage, NewResearchMarketStatistikPage,TopBrokerMarketStatistikPage,IndiceMarketStatistikPage,
-            IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage,
+            IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage, NonSectoralStatistikPage,
             /*tree3*/ GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
             //StockPage
             /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
@@ -108,6 +110,7 @@ class App extends React.Component {
             {className: 'MarketStatistikPage', title: '', instanceName: 'marketStatistikPage'},
             {className: 'StatisticMarketStatistikPage', title: '', instanceName: 'statisticMarketStatistikPage'},
               {className: 'IndiceMarketStatistikPage', title: '', instanceName: 'indiceMarketStatistikPage'},
+              {className: 'NonSectoralStatistikPage', title: '', instanceName: 'nonSectoralStatistikPage'},
               {className: 'IndiceMarketSecondStatistikPage', title: '', instanceName: 'indiceMarketSecondStatistikPage'},
             {className: 'TopBrokerMarketStatistikPage', title: '', instanceName: 'topBrokerMarketStatistikPage'},
             {className: 'NewResearchMarketStatistikPage', title: '', instanceName: 'newResearchMarketStatistikPage'},
@@ -186,6 +189,7 @@ class App extends React.Component {
                         'marketStatistikPage',
                         'statisticMarketStatistikPage',
                         'indiceMarketStatistikPage',
+                        'nonSectoralStatistikPage',
                         /*'indiceMarketSecondStatistikPage',*/
                         'topBrokerMarketStatistikPage',
                         {

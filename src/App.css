@@ -6396,7 +6396,7 @@ body{
 .p-migrate{
     font-weight: bold;
     color: black;
-    font-size: 16px;
+    font-size: 12px;
 }
 .card-448>tr>td{
     padding-top: 1.11vh;
@@ -6415,4 +6415,9 @@ body{
 .go-button{
     height: 65px;
     width: 65px;
+}
+.imgMarketStream{
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
 }

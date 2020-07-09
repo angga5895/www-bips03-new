@@ -52,7 +52,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             marketStatistikPage: 'SUMMARY',
                             statisticMarketStatistikPage: 'MARKET INDEX',
                             indiceMarketStatistikPage: 'SECTORAL INDEX',
-                            /*indiceMarketSecondStatistikPage: 'INDEX MOVER',*/
+                            nonSectoralStatistikPage: 'NON SECTORAL INDEX',
                             topBrokerMarketStatistikPage: 'TOP BROKER',
                             newResearchMarketStatistikPage: 'NEWS',
                         }
@@ -275,6 +275,83 @@ class IndiceMarketStatistikPage extends React.PureComponent{
 
                 <div className="card grid-294 bg-black-trading f-12">
                     <MarketIndicesAgGrid size={this.ceksize()}/>
+                    {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
+                </div>
+
+                <div className="card card-233 bg-black-trading f-12">
+                    <div className="card-header px-0 py-0">
+                        <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
+                            <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 h-30">
+                                FINANCE
+                                <Popup content='Refresh' position='top center' trigger={
+                                    <button
+                                        className="col-sm-1 pull-right btn btn-primary mr-2"
+                                        style={{"margin-top": "-8px", "width": "39px", "height": "28px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
+                                }/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="card-body">
+                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                    </div>
+                    {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
+                </div>
+            </>
+        );
+    }
+}
+
+class NonSectoralStatistikPage extends React.PureComponent{
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    buttonClickBuy = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: BuyModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    buttonClickSell = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: SellModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction />
+
+                <div className="card grid-294 bg-black-trading f-12">
+                    <MarketNonIndicesAgGrid size={this.ceksize()}/>
                     {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
 
@@ -2709,6 +2786,370 @@ class MarketIndicesAgGrid extends React.PureComponent {
     }
 }
 
+class MarketNonIndicesAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "index", headerName: "Index Name", resizable: true,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?150:125,
+                    minWidth: 125,
+                    lockVisible:true, lockPosition:true,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12 text-primary locked-col locked-visible";
+                    },suppressSizeToFit: true, pinned: 'left'},
+                { field: "last", headerName: "Last", filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?140:128,
+                    minWidth: 128,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "change", headerName: "Change", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "persen", headerName: "%" , resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?155:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "prevclosed", headerName: "Prev. Closed", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?135:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "open", headerName: "Open", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?145:s=="s75"?133:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "high", headerName: "High", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?143:s=="s75"?133:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "low", headerName: "Low", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?170:s=="s60"?160:s=="s67"?145:s=="s75"?135:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        var change = parseFloat(params.data.change.replace(/,/g,""));
+                        return change < 0 ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            change > 0 ? "text-success text-right grid-table d-border-aggrid-right f-12" :
+                                "text-warning text-right grid-table d-border-aggrid-right f-12";
+                    }},
+                { field: "volume", headerName: "Volume", resizable: true, width: 122,
+                    minWidth: 122, filter: "agNumberColumnFilter",
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    } },
+                { field: "value", headerName: "Value (T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?162:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    } },
+                { field: "fbuy", headerName: "F.Buy (T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?140:s=="s75"?132:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    } },
+                { field: "fsell", headerName: "F.Sell (T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?180:s=="s60"?170:s=="s75"?150:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    } },
+                { field: "fnet", headerName: "F.Net (T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?230:s=="s50"?220:s=="s75"?150:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    } },
+            ],
+            defaultColDef: {
+                sortable: false,
+                filter: true,
+            },
+            rowData: [
+                {
+                    index : "AGRI",
+                    last : "1,450,595",
+                    change : "12,139",
+                    persen : "12",
+                    prevclosed : "1,462,73",
+                    open : "1,462,73",
+                    high: "1,488,19",
+                    low : "1,450,07",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "BASIC-IND",
+                    last : "764,357",
+                    change : "8,727",
+                    persen : "8",
+                    prevclosed : "773,084",
+                    open : "773,084",
+                    high: "773,837",
+                    low : "765,718",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "CONSUMER",
+                    last : "2,401,342",
+                    change : "3,777",
+                    persen : "3",
+                    prevclosed : "2,405,119",
+                    open : "2,405,119",
+                    high: "2,420,738",
+                    low : "2,395,573",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "FINANCE",
+                    last : "1,289,866",
+                    change : "1,492",
+                    persen : "1",
+                    prevclosed : "1,291,358",
+                    open : "1,291,358",
+                    high: "1,291,937",
+                    low : "1,288,628",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "INFRASTUCTUR",
+                    last : "1,184,857",
+                    change : "6,146",
+                    persen : "6",
+                    prevclosed : "1,191,003",
+                    open : "1,191,003",
+                    high: "1,198,257",
+                    low : "1,188,002",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "MINING",
+                    last : "16,452",
+                    change : "84,267",
+                    persen : "8",
+                    prevclosed : "1,729,467",
+                    open : "1,729,467",
+                    high: "1,729,911",
+                    low : "1,646,26",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "MISC-IND",
+                    last : "1,275,075",
+                    change : "-1,017",
+                    persen : "-1",
+                    prevclosed : "1,274,058",
+                    open : "1,274,058",
+                    high: "1,283,462",
+                    low : "1,261,231",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "PROPERTY",
+                    last : "4,883",
+                    change : "-1,769",
+                    persen : "-17",
+                    prevclosed : "486,531",
+                    open : "486,531",
+                    high: "491,971",
+                    low : "485,299",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "TRADE",
+                    last : "799,128",
+                    change : "3,053",
+                    persen : "3",
+                    prevclosed : "802,181",
+                    open : "802,181",
+                    high: "803,575",
+                    low : "798,562",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "TRADE",
+                    last : "799,128",
+                    change : "3,053",
+                    persen : "3",
+                    prevclosed : "802,181",
+                    open : "802,181",
+                    high: "803,575",
+                    low : "798,562",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "TRADE",
+                    last : "799,128",
+                    change : "3,053",
+                    persen : "3",
+                    prevclosed : "802,181",
+                    open : "802,181",
+                    high: "803,575",
+                    low : "798,562",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },
+                {
+                    index : "TRADE",
+                    last : "799,128",
+                    change : "3,053",
+                    persen : "3",
+                    prevclosed : "802,181",
+                    open : "802,181",
+                    high: "803,575",
+                    low : "798,562",
+                    volume : "10,454,100",
+                    value : "73,000,000,100",
+                    fbuy : "6K",
+                    fsell : "2K",
+                    fnet : "4K",
+                },e
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className="grid-294 ag-theme-balham-dark ag-striped-even"
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
 class TopBrokerAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -3255,4 +3696,5 @@ export {CustomFrameHeaderMarketStatistik, MarketStatistik,
     IndiceMarketSecondStatistikPage,
     TopBrokerMarketStatistikPage,
     NewResearchMarketStatistikPage,
+    NonSectoralStatistikPage,
     GeneralNewResearchPage, StockNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage};

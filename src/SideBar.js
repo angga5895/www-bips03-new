@@ -108,9 +108,6 @@ class SideBar_Base extends React.Component{
     }
     clickMigrate = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right text-white">
-                <i className="icofont icofont-close text-icofont-close text-white click-pointer"
-                   onClick={this.closeClickNoAlert}></i></div>,
             size: 'large',
             contentClass: ModalTrial,
             onClose: (result) => {console.log('Modal 1 result = ', result)}

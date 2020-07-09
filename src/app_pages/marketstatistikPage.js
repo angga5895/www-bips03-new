@@ -3077,7 +3077,7 @@ class MarketNonIndicesAgGrid extends React.PureComponent {
                     fbuy : "6K",
                     fsell : "2K",
                     fnet : "4K",
-                },e
+                },
             ],
             sideBar: {
                 toolPanels: [

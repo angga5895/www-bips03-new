@@ -6394,7 +6394,6 @@ body{
     border-bottom: white solid 2px!important;
 }
 .p-migrate{
-    font-weight: bold;
     color: black;
     font-size: 12px;
 }
@@ -6408,13 +6407,13 @@ body{
     color: black !important;
 }
 .go-button>i{
-    padding-top: 10px;
-    padding-left: 7px;
-    font-size: 35px;
+    padding-top: 6px;
+    padding-left: 5px;
+    font-size: 27px;
 }
 .go-button{
-    height: 65px;
-    width: 65px;
+    height: 50px;
+    width: 50px;
 }
 .imgMarketStream{
     height: 100%;

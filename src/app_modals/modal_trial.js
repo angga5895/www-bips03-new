@@ -80,25 +80,34 @@ class ModalTrial extends React.Component{
                             <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Selamat Datang di DX Trade </h3>
                             <br/>
                             <p className={"p-migrate"}>
-                                Terima kasih atas kepercayaan Anda untuk senantiasa menggunakan Online Trading Bahana Sekuritas.<br/><br/>
-                                Sebagai bentuk komitmen kami untuk meningkatkan kenyamanan Anda bertransaksi,
-                                kami informasikan bahwa saat ini kami telah melakukan pembaharuan terhadap sistem <i>online trading</i>&nbsp;
-                                yang kami miliki dengan mengganti aplikasi DT Next G dengan aplikasi DX Trade.<br/>
-                                Untuk tahap awal aplikasi DX Trade hanya dapat diakses melalui <i>web browser</i> dari komputer Anda.
-                                Untuk <i>Platform mobile</i> dan <i>tablet</i>, akan segera tersedia pada bulan September 2020.<br/><br/>
+                                Terima kasih atas kepercayaan Anda untuk senantiasa bertransaksi melalui Online Trading Bahana Sekuritas.
+                                Saat ini Anda tengah mengakses aplikasi online trading kami yang baru, DXTrade.
+                                <br/><br/>
 
-                                Saat ini Anda sudah dapat menggunakan DX Trade dengan menggunakan User ID lama yang Anda miliki.<br/>
-                            <ul>
-                                <li>Silahkan pilih “Ya, Saya bersedia.” untuk menggunakan DX Trade pada transaksi Anda selanjutnya, atau</li>
-                                <li>Silahkan pilih “Pelajari DXTrade” untuk melakukan  trial terlebih dahulu <i>online trading</i></li>
-                            </ul><br/>
-                                Sebagai informasi, kami akan melakukan migrasi secara bertahap mulai bulan Agustus terhadap akun-akun yang
-                                masih menggunakan <i>system online trading</i> Kami yang lama, dan melakukan penghentian operasi
-                                aplikasi online trading yang lama secara keseluruhan pada tanggal 1 Oktober 2020.<br/>
-                                Besar harapan kami untuk Anda dapat menjadi nasabah kami yang lebih dulu dapat memakai aplikasi DX Trade
-                                untuk transaksi Anda.
-                                Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.
-                                <br/>
+                                Sebagai bentuk komitmen kami untuk terus meningkatkan kenyamanan Anda bertransaki saham,
+                                kami hadirkan aplikasi online trading DXTrade sebagai pengganti apliasi online trading DT NextG
+                                yang akan berakhir masa operasi nya pada tanggal <b><i>1 Oktober 2020</i></b><br/>
+
+                                Untuk itu kami mengundang Anda untuk  mengenal dan mencoba aplikasi DXTrade<br/><br/>
+
+                                Untuk tahap awal aplikasi DX Trade hanya dapat diakses melalui web browser dari komputer Anda.
+                                Selanjutnya, kami akan menghadirkan DXTrade dalam bentuk aplikasi mobile/tablet pada pertengahan bulan September 2020.<br/>
+                                Silahkan Anda login dengan menggunakan user id anda saat ini dan password baru yang sudah kami kirimkan lewat email<br/><br/>
+
+                                Bila Anda bersedia beralih menggunakan aplikasi DXTrade sekarang dan selanjutnya, silahkan pilih <b>“Ya, Saya bersedia.”</b><br/>
+
+                                Namun bila Anda masih ingin mencoba nya lebih lanjut, Silahkan pilih <b>“Mencoba DXTrade”</b><br/>
+
+                                Kami informasikan juga bahwa bagi nasabah yang masih belum beralih ke aplikasi DXTrade,
+                                akan kami pindahkan secara otomatis ke aplikasi DXTrade selambat-lambatnya <b>30 September 2020</b>.<br/><br/>
+
+                                Besar harapan kami untuk Anda dapat mencoba dan segera beralih ke aplikasi DXTrade<br/>
+
+                                Bila Anda membutuhkan bantuan untuk mengakses / menggunakan aplikasi DXTrade,
+                                dapat menghubungi  customer service kami di 14009 | Email cs@bahana.co.id.<br/><br/>
+
+                                Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.<br/><br/>
+
                                 Terima kasih,<br/>
                                 PT. Bahana Sekuritas<br/>
                             </p>
@@ -202,35 +211,30 @@ class ModalTrial extends React.Component{
                             <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Peringatan Notifikasi</h3>
                             <br/>
                             <p className={"p-migrate"}>
-                                Nasabah yang terhormat terimakasih atas kepercayaan anda menggunakan Trading bersama DT nextG.
-                                Kami informasikan bahwa aplikasi DT NextG akan segera kami ganti dengan aplikasi baru yaitu DxTrade.<br/>
-                                Saat ini DxTrade hanya dapat diakses melalui web browser. Versi lain dari aplikasi ini
-                                akan segera tersedia pada bulan September 2020.
+                                Terima kasih atas kesediaan Anda untuk beralih ke aplikasi DXTrade.<br/>
                             </p>
                             <p className={"p-migrate"}>
                                 Berikut ini informasi yang harus kami sampaikan :<br/><br/>
 
-                                1. Account anda akan active mulai H + , jika pilih setuju sebelum Pukul 15.00 WIB.<br/>
-                                2. Setelah Account DXTrade anda kami Active-kan, Account anda tidak dapat di pergunakan kembali di aplikasi DT NextG.<br/>
-                                3. Saat ini aplikasi DXTrade hanya dapat di akses melalui browser di alamat <a href={"https://dxtrade.bahana.co.id/"} target={"_blank"}>https://dxtrade.bahana.co.id/</a> dan
-                                aplikasi DXTrade belum dapat di akses oleh mobile app device.<br/>
-                                4. Aplikasi DXTrade versi mobile akan tersedia pada bulan September 2020 setelah mendapatkan sertifikasi dari bursa. <br/>
+                                1. Akun DXTrade Anda akan kami aktivasi sehari setelah konfirmasi anda bila konfirmasi kami terima sebelum Pukul 15.00 WIB.<br/>
+                                2. Setelah akun DXTrade anda kami aktifkan, anda tidak akan dapat mengakses kembali di aplikasi DT NextG dengan akun lama Anda.<br/>
+                                3. Saat ini aplikasi DXTrade hanya dapat di akses melalui browser di alamat dari komputer Anda .<br/>
+                                4. Aplikasi DXTrade versi mobile akan tersedia pada pertengahan bulan September 2020 setelah mendapatkan sertifikasi dari bursa.<br/>
                             </p>
                             <p className={"p-migrate"}>
-                                Seluruh nasabah DT NextG yang masih menggunakan aplikasi DT NextG akan kami migrasikan ke aplikasi DxTrade pada akhir agustus 2020.
-                                <br/>
+                                Seluruh nasabah DT NextG yang masih menggunakan aplikasi DT NextG akan kami alihkan secara otomatis selambat-lambatnya 30 September 2020.<br/>
                                 Terimakasih.<br/>
                             </p>
                             <p className={"p-migrate text-center"}>
-                                Apakah anda yakin untuk Migrasi
+                                Apakah anda yakin untuk beralih ke DXTrade
                             </p>
                             <div className={"text-center col-sm-12"}>
                                 <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
-                                        className="btn btn-primary form-control py-0 col-sm-2">
+                                        className="btn btn-primary form-control py-0 col-sm-1">
                                     <span id="text-login">Ya</span>
                                 </button>&nbsp;&nbsp;
                                 <button id="click_migrate" type="submit" onClick={this.closeClickToTrial}
-                                        className="btn btn-danger form-control py-0 col-sm-2">
+                                        className="btn btn-danger form-control py-0 col-sm-1">
                                     <span id="text-login">Tidak</span>
                                 </button>
                             </div>

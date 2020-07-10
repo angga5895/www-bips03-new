@@ -1487,7 +1487,7 @@ class InquryAccount_Base extends React.PureComponent {
                                 <div className="container-fluid mx-0" style={{ paddingTop : "10px" }}>
                                     <div className="row">
                                         <div className={"col-sm-6 pl-0"}>
-                                            <table width="100%" className={"table table-bordered table-responsive mb-0 card-448"}>
+                                            <table width="100%" className={"table table-bordered table-responsive mb-0 card-290"}>
                                                 <tr>
                                                     <td className={"d-border"}>Account Name</td>
                                                     <td width="50%" className={"d-border hover-tables"} ></td>
@@ -1505,20 +1505,9 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"} ></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>User ID</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>A/C Status Name</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
                                                     <td className={"d-border"}>A/C Status</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
+
                                                 </tr>
                                                 <tr>
                                                     <td className={"d-border"}>ID Type</td>
@@ -1533,52 +1522,68 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Country</td>
+                                                    <td className={"d-border"}>Dividend Tax</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Job</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Opening Date</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>Opening Branch</td>
+                                                    <td className={"d-border"}>Comission Rate</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div className={"col-sm-6 pr-0"}>
-                                            <table width="100%" className={"table table-bordered table-responsive mb-0 card-448"}>
+                                            <table width="100%" className={"table table-bordered table-responsive mb-0 card-290"}>
 
                                                 <tr>
-                                                    <td width="50%" className={"d-border"} >Divindend Tax</td>
+                                                    <td width="50%" className={"d-border"} >Managing Branch</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Commission Rate</td>
+                                                    <td className={"d-border"}>Country</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Tax Rate</td>
+                                                    <td className={"d-border"}>Job</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Managing Branch</td>
+                                                    <td className={"d-border"}>Opening Date</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
+                                                    <td className={"d-border"}>Opening Branch</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr className={"bg-tableheader"}>
+                                                    <td className={""}>&nbsp;</td>
+                                                    <td className={""}>&nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>Bank Code</td>
+                                                    <td className={"d-border"}>RDI Bank</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Branch</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Account No</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>RDI Account Name</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div className={"col-md-4 px-0 pt-4"}>
+                                            <table width="100%"
+                                                   className={"table table-bordered table-responsive mb-0"}>
+                                                <tr className={"bg-tableheader"}>
+                                                    <td colSpan="2" className={"text-center"}>Bank Account 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%" className={"d-border"}>Bank Code</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
@@ -1593,36 +1598,57 @@ class InquryAccount_Base extends React.PureComponent {
                                                     <td className={"d-border"}>Bank Account Name</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
+                                            </table>
+                                        </div>
+                                        <div className={"col-md-4 px-0 pt-4"}>
+                                            <table width="100%"
+                                                   className={"table table-bordered table-responsive mb-0"}>
+                                                <tr className={"bg-tableheader"}>
+                                                    <td colSpan="2" className={"text-center"}>Bank Account 2</td>
+                                                </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>&nbsp;</td>
+                                                    <td width="50%" className={"d-border"}>Bank Code</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>&nbsp;</td>
+                                                    <td className={"d-border"}>Branch</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>&nbsp;</td>
-                                                    <td>&nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI BANK</td>
+                                                    <td className={"d-border"}>Bank Account No</td>
                                                     <td width="50%" className={"even-td d-border hover-tables"}></td>
                                                 </tr>
                                                 <tr>
-                                                    <td className={"d-border"}>RDI Branch</td>
-                                                    <td width="50%" className={"d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI Account No</td>
-                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
-                                                </tr>
-                                                <tr>
-                                                    <td className={"d-border"}>RDI Account Name</td>
+                                                    <td className={"d-border"}>Bank Account Name</td>
                                                     <td width="50%" className={"d-border hover-tables"}></td>
                                                 </tr>
                                             </table>
                                         </div>
+                                        <div className={"col-md-4 px-0 pt-4"}>
+                                            <table width="100%"
+                                                   className={"table table-bordered table-responsive mb-0"}>
+                                                <tr className={"bg-tableheader"}>
+                                                    <td colSpan="2" className={"text-center"}>Bank Account 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%" className={"d-border"}>Bank Code</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>Branch</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>Bank Account No</td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"}></td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={"d-border"}>Bank Account Name</td>
+                                                    <td width="50%" className={"d-border hover-tables"}></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -4495,7 +4521,7 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
-                }, { field: "originNo", headerName: "Origin No", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                }, { field: "marketNoC", headerName: "Market No", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -4541,7 +4567,7 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "restvol", headerName: "Rest Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                { field: "leaveVolC", headerName: "Leave Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?180:s=="s50"?160:s=="s67"?155:130, minWidth:130,comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
@@ -4561,7 +4587,7 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "orderer", headerName: "Orderer", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "userOrderC", headerName: "User Order", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?140:130, minWidth:130,comparator: stringComparator,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
@@ -4574,7 +4600,7 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
             rowData: [
                 {
                     order: "0001",
-                    originNo: "011",
+                    marketNoC: "011",
                     code: 'AALI',
                     cmd: 'Buy',
                     type: 'Day',
@@ -4583,14 +4609,14 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     price: 12.000,
                     mvol: 100,
                     mprice: 1000,
-                    restvol: 0,
+                    leavelVolC: 0,
                     status: "Done",
                     time: '09:03:10',
                     rejectreason: '-',
-                    ordered: '',
+                    userOrderC: '',
                 },{
                     order: "0001",
-                    originNo: "011",
+                    marketNoC: "011",
                     code: 'AALI',
                     cmd: 'Buy',
                     type: 'Day',
@@ -4599,15 +4625,15 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     price: 12.000,
                     mvol: 100,
                     mprice: 1000,
-                    restvol: 0,
+                    leavelVolC: 0,
                     status: "Done",
                     time: '10:03:10',
                     rejectreason: '-',
-                    ordered: '',
+                    userOrderC: '',
                 },
                 {
                     order: "",
-                    originNo: "",
+                    marketNoC: "",
                     code: "",
                     cmd: "",
                     type: "",
@@ -4616,11 +4642,11 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     price: "",
                     mvol: "",
                     mprice: "",
-                    restvol: "",
+                    leavelVolC: "",
                     status: "",
                     time: "",
                     rejectreason: "",
-                    ordered: "",
+                    userOrderC: "",
                 },
             ],
             sideBar: {

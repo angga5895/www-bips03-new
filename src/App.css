@@ -6421,3 +6421,6 @@ body{
     width: 100%;
     opacity: 0.6;
 }
+.ag-header-row >[col-id~="marketNoC"],.ag-header-row >[col-id~="leaveVolC"],.ag-header-row >[col-id~="userOrderC"]{
+    background: linear-gradient(#3fb2ff,#00406b) !important;
+}

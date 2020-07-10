@@ -51,28 +51,28 @@ class ModalTrial extends React.Component{
             <>
                 <AppFrameAction ref="frameAction" />
                 <div className="f-12">
-                        <div className={`col-sm-6 pb-2 ${this.state.selected < 3?"d-block":"d-none"}`}>
-                            <div
-                                className={`px-0 pt-1
-                                                  ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
-                                onClick={()=>this.setState({selected:1})}
-                                style={{display: "inline-block"}}
-                            >
-                                <i className={this.state.selected == 1 ? "far fa-dot-circle" : "far fa-circle"}></i>
-                                &nbsp;
-                                Bahasa Indonesia
-                            </div>
-                            <div
-                                className={`px-0 pt-1 pl-5
-                                                   ${this.state.selected == 2?"livetradeMenuActive":"livetradeMenu"}`}
-                                onClick={()=>this.setState({selected:2})}
-                                style={{display: "inline-block"}}
-                            >
-                                <i className={this.state.selected == 2 ? "far fa-dot-circle" : "far fa-circle"}></i>
-                                &nbsp;
-                                English
-                            </div>
-                        </div>
+                        {/*<div className={`col-sm-6 pb-2 ${this.state.selected < 3?"d-block":"d-none"}`}>*/}
+                            {/*<div*/}
+                                {/*className={`px-0 pt-1*/}
+                                                  {/*${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}*/}
+                                {/*onClick={()=>this.setState({selected:1})}*/}
+                                {/*style={{display: "inline-block"}}*/}
+                            {/*>*/}
+                                {/*<i className={this.state.selected == 1 ? "far fa-dot-circle" : "far fa-circle"}></i>*/}
+                                {/*&nbsp;*/}
+                                {/*Bahasa Indonesia*/}
+                            {/*</div>*/}
+                            {/*<div*/}
+                                {/*className={`px-0 pt-1 pl-5*/}
+                                                   {/*${this.state.selected == 2?"livetradeMenuActive":"livetradeMenu"}`}*/}
+                                {/*onClick={()=>this.setState({selected:2})}*/}
+                                {/*style={{display: "inline-block"}}*/}
+                            {/*>*/}
+                                {/*<i className={this.state.selected == 2 ? "far fa-dot-circle" : "far fa-circle"}></i>*/}
+                                {/*&nbsp;*/}
+                                {/*English*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
                     </div>
                     <div className={"col-sm-12 bg-gradi row ml-0 pr-0"}>
                         <div className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 1?"d-block":"d-none"}`}

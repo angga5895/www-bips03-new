@@ -18,8 +18,8 @@ import FixedIncomePage from './app_pages/fixedIncome.js';
 import Stocks, { CustomFrameHeaderStock, StockPage,
     StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
     TableStockInfo,
-    // TableProfil,
-    // TableCorpAction
+    TableProfil,
+    TableCorpAction
 } from './app_pages/stockPage';
 import AccountAPage from './app_pages/accountA.js';
 import AccountBPage from './app_pages/accountB.js';
@@ -67,7 +67,7 @@ class App extends React.Component {
             //StockPage
             /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
             /*tree3*/ TableStockInfo,
-            // TableProfil, TableCorpAction,
+            TableProfil, TableCorpAction,
             //TradePage
             /*tree2*/
             OrderbookPage, TradeWatchlist,
@@ -129,8 +129,8 @@ class App extends React.Component {
 
             //tree 3 In Stock
             {className: 'TableStockInfo', title: '', instanceName: 'stockInfoTable'},
-            // {className: 'TableProfil', title: '', instanceName: 'profilTable'},
-            // {className: 'TableCorpAction', title: '', instanceName: 'corpActionTable'},
+            {className: 'TableProfil', title: '', instanceName: 'profilTable'},
+            {className: 'TableCorpAction', title: '', instanceName: 'corpActionTable'},
 
             //tree 2 In Trade
             {className: 'TradeWatchlist', title: 'WATCHLIST PAGES', instanceName: 'tradePageManOrderbook'},
@@ -209,8 +209,8 @@ class App extends React.Component {
                             name: 'stockInfoPage',
                             pages : [
                                 'stockInfoTable',
-                                // 'profilTable',
-                                // 'corpActionTable'
+                                'profilTable',
+                                'corpActionTable'
                             ]
                         },
                         'stockWatchlistPage',

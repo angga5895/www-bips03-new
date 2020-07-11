@@ -148,8 +148,8 @@ const StockInfo = (props) => {
                     <MenuOfContent treeName="/stockPage/stockInfoPage" linkTitles={
                         {
                             stockInfoTable : 'STOCK INFO',
-                            // profilTable : 'PROFIL',
-                            // corpActionTable : 'CORP ACTION'
+                            profilTable : 'PROFIL',
+                            corpActionTable : 'CORP ACTION'
                         }
                     } />
                 </div>
@@ -4458,7 +4458,7 @@ export { CustomFrameHeaderStock, BuyPage , AmendGroupNameAgGrid, AmendGroupCodeA
 export {
     StockWatchlist, StockHistoryPage, StockPage,
     TableStockInfo,
-    // TableProfil,
-    // TableCorpAction,
+    TableProfil,
+    TableCorpAction,
     StockTradeSummaryPage,
 };

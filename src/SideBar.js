@@ -258,9 +258,15 @@ class SideBar_Base extends React.Component{
                             } />
                         </div>
                         <div className="align-self-center text-center px-1 py-0 h-25">
-                            <button className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
-                                <i className="icofont icofont-edit"></i> &nbsp; Modify
-                            </button>
+                            <Popup content='Modify Watchlist'
+                                   mouseEnterDelay={900}
+                                   mouseLeaveDelay={100}
+                                   position='top center'
+                                   trigger={
+                                        <button className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
+                                            <i className="icofont icofont-edit"></i> &nbsp; Modify
+                                        </button>
+                                   } />
                         </div>
                         <span
                             onClick={this.clickOpen}

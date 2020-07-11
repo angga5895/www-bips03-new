@@ -112,7 +112,7 @@ class ModalTrial extends React.Component{
                                 PT. Bahana Sekuritas<br/>
                             </p>
                             <p className={"p-migrate"}>
-                                Apakah anda yakin untuk Migrasi
+                                Apakah Anda bersedia kami alihkan ke DXTrade sekarang?
                             </p>
                             <div className={"row"}>
                                 <div className={"text-center col-sm-9"}>
@@ -208,7 +208,7 @@ class ModalTrial extends React.Component{
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 4?"d-block":"d-none"}`}
                         >
-                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Peringatan Notifikasi</h3>
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Konfirmasi</h3>
                             <br/>
                             <p className={"p-migrate"}>
                                 Terima kasih atas kesediaan Anda untuk beralih ke aplikasi DXTrade.<br/>
@@ -226,7 +226,7 @@ class ModalTrial extends React.Component{
                                 Terimakasih.<br/>
                             </p>
                             <p className={"p-migrate text-center"}>
-                                Apakah anda yakin untuk beralih ke DXTrade
+                                Kami alihkan anda ke DXTrade?
                             </p>
                             <div className={"text-center col-sm-12"}>
                                 <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}

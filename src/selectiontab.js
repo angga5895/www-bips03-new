@@ -744,7 +744,7 @@ class InfoCash_Base extends React.Component {
                                 {/*status disini*/}
                                 <td className={"text-success text-left"}>First Session</td>
                             </tr>
-                            <tr className="f-16 text-white cursor-menu" onClick={this.clickLogout}>
+                            <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
                                 <td className={"text-center"}><i className="icofont-sign-out"></i></td><td>Log out</td>
                             </tr>
                             </tbody>

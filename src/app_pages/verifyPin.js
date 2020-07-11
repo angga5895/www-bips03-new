@@ -333,7 +333,9 @@ class detailBuyModal extends React.Component {
                         </Table>
                     </div>
                 </div><br/>
-                <div className="col-sm-12 text-center mx-0 px-0">Do you want to buy this stock ?</div><br/>
+            <div className="col-sm-12 text-center mx-0 px-0">
+                This order is marked as Order Booking, will be sent once market opened.<br/>
+                Do you want to buy this stock ?</div><br/>
                 <div className="col-sm-12 row mx-0 px-0">
                     <div className="col-sm-6 text-right">
                         <button className="btn btn-dark col-sm-12" onClick={

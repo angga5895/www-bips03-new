@@ -638,6 +638,10 @@ class AnalyticChart_Base extends React.PureComponent {
                 credits.enabled(false);
                 // create plot on the chart
                 var plot = chart.plot(0);
+                if($("#themeTemp").val() == "lightGlamour"){
+                    var background = chart.tooltip().background();
+                    background.fill("#3C3C3C 0.8");
+                }
                 plot.crosshair().displayMode("float");
                 plot.height('77%');
                 plot.yGrid().enabled(true);

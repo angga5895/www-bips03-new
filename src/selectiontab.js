@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContextConnector } from './appcontext.js';
 import { AppFrameContext } from './appframe.js';
-import { Menu, Input, Dropdown } from 'semantic-ui-react';
+import { Menu, Input, Dropdown, Popup } from 'semantic-ui-react';
 import Select from 'react-select';
 import user_avatar from './img/man.png';
 import {cssmode} from "./App";
@@ -11,6 +11,8 @@ import { Table, Navbar, Collapse } from 'react-bootstrap';
 import ModalPortofolio from "./app_modals/modal_portofolio";
 import ModalChangePassPin from "./app_modals/modal_changepasspin";
 import ModalSetting from "./app_modals/modal_setting";
+import ModalLogout from './app_modals/modal_logout';
+
 import ModalHistorical from "./app_modals/modal_historical";
 import ModalFund from "./app_modals/modal_fund";
 import ModalTransactionHistory from "./app_modals/modal_transaction_history";
@@ -30,11 +32,11 @@ import dxtrade_logo from './img/logo_black_medium.png';
 import WminiLogo from './img/logo_white_mini.png';
 import BminiLogo from './img/logo_black_mini.png';
 // import dxtrade_logo from './img/LOGO DX TRADE-01-mini.png';
-
 import './selectiontab.css';
 
 import $ from 'jquery';
 import {WSConnectionAction} from "./appnetwork";
+import {ModalTrial} from "./app_modals/modal_trial";
 window.$ = window.jQuery = $;
 
 const options = [
@@ -718,7 +720,9 @@ class InfoCash_Base extends React.Component {
             locked: false,
         }
     }
-
+    clickLogout = (e) => {
+        $("#clickLogout").click();
+    }
     render() {
         const changeBalanceOpt = (props) => {
             var value = (props == 'cashBalance') ? document.getElementById('cashBalanceVal').innerHTML:document.getElementById('buyLimitVal').innerHTML;
@@ -740,7 +744,7 @@ class InfoCash_Base extends React.Component {
                                 {/*status disini*/}
                                 <td className={"text-success text-left"}>First Session</td>
                             </tr>
-                            <tr className="f-16 text-white cursor-menu" onClick={()=>window.location.reload()}>
+                            <tr className="f-16 text-white cursor-menu" onClick={this.clickLogout}>
                                 <td className={"text-center"}><i className="icofont-sign-out"></i></td><td>Log out</td>
                             </tr>
                             </tbody>
@@ -793,6 +797,13 @@ class UserInfo_Base extends React.Component {
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
+    popupLogout = (e) => {
+        this.refs.frameAction.showModal({
+            size: 'tiny',
+            contentClass: ModalLogout,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
 
     render(){
         const changeGeneralState = (props) => {
@@ -813,6 +824,7 @@ class UserInfo_Base extends React.Component {
         return(
             <div className="nav-link px-0 mx-0 py-0 text-white">
                 <AppFrameAction ref="frameAction" />
+                <input type="hidden" id={"clickLogout"} onClick={this.popupLogout}/>
                 <table>
                     <tr>
                         <td className="py-0">

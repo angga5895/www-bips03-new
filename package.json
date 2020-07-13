@@ -11,6 +11,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "^1.6.4",
     "bootstrap-select": "^1.13.10",
+    "emailjs-com": "^2.4.1",
     "jquery": "^1.12.4",
     "react": "^16.9.0",
     "react-alerts-plus": "^1.0.0",

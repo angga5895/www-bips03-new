@@ -5,12 +5,13 @@ import { Input,Popup } from 'semantic-ui-react';
 import {BuyModal, SellModal} from './../app_pages/stockPage';
 import {AppFrameAction, AppModal} from "../appframe";
 import {WSConnectionAction} from "../appnetwork";
+import $ from 'jquery';
+
 
 class TableInfoTransaction extends React.PureComponent{
     constructor(props){
         super(props);
     }
-
     render(){
         return(
             <>
@@ -108,6 +109,7 @@ class TableInfoTransaction extends React.PureComponent{
                                 <Table
                                     responsive
                                     bordered size="sm"
+                                    id={"cmp"}
                                     className={`text-white bg-dark-grey px-0 mx-0
                                      ${(this.props.lotshare == 'stockInfoBuy') ? 'card-323':
                                           (this.props.lotshare == 'buyPage') ? 'card-356':

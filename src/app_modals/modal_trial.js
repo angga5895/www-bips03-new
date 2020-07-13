@@ -10,19 +10,40 @@ import {Checkbox} from "semantic-ui-react";
 
 
 class ModalTrial extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            activeTab: '1',
+            name: 'cs bahana',
+            email: 'zaky@vsi.co.id',
+            selected: 1,
+            selectedMigrate: true,
+        };
+    }
+    handleSubmit = () => {
+        const templateId = 'template_PvJzOAuw';
+        var variables = {from_name: this.state.name,from_email: this.state.email};
+        window.emailjs.send(
+            'mailjet', templateId,
+            variables
+        ).then(res => {
+            console.log('Email successfully sent!');
+             this.closeClickNoAlert();
+        })
+        // Handle errors here however you like, or use a React error boundary
+            .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+    }
     componentDidMount(){
         ResizeResponsive();
     }
+
     closeClickNoAlert = (e) => {
         this.refs.frameAction.closeModal(100);
     }
     leaveButton = (e) =>{
         $("#reconnectxbutton").click();
     }
-    state = {
-        selected: 1,
-        selectedMigrate: true,
-    }
+
     migrate = () => {
         if(this.state.selectedMigrate){
             if(this.state.selected == 1){
@@ -229,7 +250,7 @@ class ModalTrial extends React.Component{
                                 Kami alihkan anda ke DXTrade?
                             </p>
                             <div className={"text-center col-sm-12"}>
-                                <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
+                                <button id="click_migrate" type="submit" onClick={this.handleSubmit}
                                         className="btn btn-primary form-control py-0 col-sm-1">
                                     <span id="text-login">Ya</span>
                                 </button>&nbsp;&nbsp;

@@ -24,7 +24,7 @@ class ModalLogout extends React.Component{
                     <div className={"col-sm-12 row ml-0 px-0"}>
                         <div className={`px-0 pt-3 col-sm-12 col-xs-8 px-3 py-4`}
                         >
-                            <h3 className={"text-center pb-2 b-title"}>Are you sure exiting DX TRADE application?</h3>
+                            <h3 className={"text-center pb-2 b-title"}>Are you sure you want to log out from DXTrade?</h3>
                             <br/>
                                 <div className={"text-center col-sm-12"}>
                                      <button id="clickExit" type="submit" onClick={()=>window.location.reload()}

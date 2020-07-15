@@ -278,10 +278,19 @@ class SideBar_Base extends React.Component{
                         </span>
 
                         <div className="nav flex-lg-column">
-                            <div className={this.isFireFox() ? "nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0" :
-                                "nav-link align-self-center text-center px-0 d-border col-sm-12 my-1 py-0"}>
-                                <Dropdown placeholder='Group' search selection options={option} className={"f-9 text-center align-self-center col-sm-12 grey h-31"} defaultValue="groupA"/>
-                            </div>
+                            <Popup content='Watchlist Group'
+                                   mouseEnterDelay={900}
+                                   mouseLeaveDelay={100}
+                                   position='top center'
+                                   trigger={
+                                       <div
+                                           className={this.isFireFox() ? "nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0" :
+                                               "nav-link align-self-center text-center px-0 d-border col-sm-12 my-1 py-0"}>
+                                           <Dropdown placeholder='Group' search selection options={option}
+                                                     className={"f-9 text-center align-self-center col-sm-12 grey h-31"}
+                                                     defaultValue="groupA"/>
+                                       </div>
+                                   }/>
                             <div className="d-sidebar-potrait px-0">
                                 <Table size="sm" borderless className="table-sidebar card-452 mb-0">
                                     <tbody>
@@ -348,66 +357,72 @@ class SideBar_Base extends React.Component{
                                 <i className="icofont icofont-edit"></i> &nbsp; Modify
                             </buttom>
                         </div>
-                        <div className="nav flex-lg-column">
-                            <div className="nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0">
-                                <Dropdown placeholder='Group' search selection options={option} className={"f-9 text-center align-self-center col-sm-12 grey h-31"} defaultValue="groupA"/>
-                            </div>
 
-                            <div className="row col-sm-12 mx-0 px-0">
+                                   <div className="nav flex-lg-column">
 
-                                <div className="col-sm-1 align-self-center mx-0">
-                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
-                                        <div className="align-self-center text-center click-pointer">
-                                            <i className="glyphicon glyphicon-refresh"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                       <div
+                                           className="nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0 tooltip">
+                                           <Dropdown placeholder='Group' search selection options={option}
+                                                     className={"f-9 text-center align-self-center col-sm-12 grey h-31"}
+                                                     defaultValue="groupB"/>
 
-                                <div className="col-sm-1 align-self-center mx-0">
-                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
-                                        <div className="align-self-center text-center click-disabled">
-                                            <i className="icofont icofont-ui-previous text-bips-dark-disabled f-16"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                       </div>
 
-                                <div className="row col-sm-9 mx-0 px-0" style={{justifyContent : 'center'}}>
-                                    {
-                                        this.state.rowData.map((charx, index) => {
-                                            if(charx.percent < 0){
-                                                var warna = " text-danger";
-                                                var icon = " icofont icofont-caret-down f-8";
-                                            } else if (charx.percent > 0) {
-                                                var warna = " text-success";
-                                                var icon = " icofont icofont-caret-up f-8";
-                                            } else {
-                                                var warna = " text-warning";
-                                                var icon = " icofont icofont-minus f-8";
-                                            }
+                                       <div className="row col-sm-12 mx-0 px-0">
 
-                                            return (
-                                                <div
-                                                    className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover noselect">
-                                                    <h5 className="mb-1">{charx.name}</h5>
-                                                    <div className={"f-10 mb-1 text-right"+warna}>
-                                                        <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
-                                                    </div>
-                                                    <p className={"f-11 mb-1 text-right"+warna}>{charx.last}</p>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div>
+                                           <div className="col-sm-1 align-self-center mx-0">
+                                               <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                                   <div className="align-self-center text-center click-pointer">
+                                                       <i className="glyphicon glyphicon-refresh"></i>
+                                                   </div>
+                                               </div>
+                                           </div>
 
-                                <div className="col-sm-1 align-self-center mx-0">
-                                    <div className="align-self-center text-center px-sidebar py-0 px-0">
-                                        <div className="align-self-center text-center click-pointer">
-                                            <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                           <div className="col-sm-1 align-self-center mx-0">
+                                               <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                                   <div className="align-self-center text-center click-disabled">
+                                                       <i className="icofont icofont-ui-previous text-bips-dark-disabled f-16"></i>
+                                                   </div>
+                                               </div>
+                                           </div>
+
+                                           <div className="row col-sm-9 mx-0 px-0" style={{justifyContent: 'center'}}>
+                                               {
+                                                   this.state.rowData.map((charx, index) => {
+                                                       if (charx.percent < 0) {
+                                                           var warna = " text-danger";
+                                                           var icon = " icofont icofont-caret-down f-8";
+                                                       } else if (charx.percent > 0) {
+                                                           var warna = " text-success";
+                                                           var icon = " icofont icofont-caret-up f-8";
+                                                       } else {
+                                                           var warna = " text-warning";
+                                                           var icon = " icofont icofont-minus f-8";
+                                                       }
+
+                                                       return (
+                                                           <div
+                                                               className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover noselect">
+                                                               <h5 className="mb-1">{charx.name}</h5>
+                                                               <div className={"f-10 mb-1 text-right" + warna}>
+                                                                   <i className={icon}></i>{charx.change + "(" + charx.percent + "%)"}
+                                                               </div>
+                                                               <p className={"f-11 mb-1 text-right" + warna}>{charx.last}</p>
+                                                           </div>
+                                                       )
+                                                   })
+                                               }
+                                           </div>
+
+                                           <div className="col-sm-1 align-self-center mx-0">
+                                               <div className="align-self-center text-center px-sidebar py-0 px-0">
+                                                   <div className="align-self-center text-center click-pointer">
+                                                       <i className="icofont icofont-ui-next text-bips-dark f-16"></i>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
                     </div>
                 </div>
             </>

@@ -618,7 +618,7 @@ class SelectItem1 extends React.PureComponent {
                         theme={this.selectSelectionTab}
                     />*/}
                 </div>
-                <label className="col-sm-12 text-center text-white text-jam pt-1 my-0 pb-0 f-12 px-0">Local Time {fullDate(2)} | {fullDate(1)} | IDX Time <span>{fullDate(2)}</span></label>
+                <label className="col-sm-12 text-center text-white text-jam pt-1 my-0 pb-0 f-12 px-0">Local Time {fullDate(2)} | {fullDate(1)} | JKT Time <span>{fullDate(2)}</span></label>
 
                 {/*<label className="col-sm-12 text-center text-jam pt-1 my-0 pb-0 f-12 px-0">{fullDate(0)} WIB <span className="text-white">|</span> <span className={fullDate(1) === 'Open' ? 'text-success' : 'text-danger'}>{fullDate(1)}</span></label>*/}
             </div>
@@ -718,6 +718,7 @@ class InfoCash_Base extends React.Component {
             balanceOpt : this.props.balanceOpt,
             balanceVal : this.props.balanceVal,
             locked: false,
+            connectionStatus: true,
         }
     }
     clickLogout = (e) => {
@@ -740,13 +741,49 @@ class InfoCash_Base extends React.Component {
                             <thead></thead>
                             <tbody>
                             <tr className="f-12-fix text-center">
-                                <td className="text-success"><i className="fa fa-square"></i></td>
+                                {
+                                    (this.state.connectionStatus) ? (
+                                    <Popup content='Connected'
+                                        mouseEnterDelay={900}
+                                        mouseLeaveDelay={100}
+                                        position='top center'
+                                        trigger={
+                                        <td className="text-success">
+                                        <i className="fa fa-square"></i>
+                                        </td>
+                                    }/>
+                                    ) : (
+                                        <Popup content='Not Connected'
+                                               mouseEnterDelay={900}
+                                               mouseLeaveDelay={100}
+                                               position='top center'
+                                               trigger={
+                                                   <td className="text-danger">
+                                                       <i className="fa fa-square"></i>
+                                                   </td>
+                                               }/>
+                                    )}
+
                                 {/*status disini*/}
-                                <td className={"text-success text-left"}>First Session</td>
+                                <Popup content='First Session'
+                                       mouseEnterDelay={900}
+                                       mouseLeaveDelay={100}
+                                       position='top center'
+                                       trigger={
+                                           <td className={"text-success text-left"}>First Session</td>
+                                       }/>
                             </tr>
-                            <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
-                                <td className={"text-center"}><i className="icofont-sign-out"></i></td><td>Log out</td>
-                            </tr>
+                            <Popup content='Logout'
+                                   mouseEnterDelay={900}
+                                   mouseLeaveDelay={100}
+                                   position='top center'
+                                   trigger={
+                                    <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
+                                        <td className={"text-center"}><i className="icofont-sign-out"></i></td>
+                                        <td>Log out</td>
+
+                                    </tr>
+                                   }/>
                             </tbody>
                         </Table>
                     </div>

@@ -464,7 +464,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     // reset saved settings
                     appSettingsCache['indicators'] = {};
                     appSettingsCache['scale'] = 'linear';
-                    appSettingsCache['chartType'] = 'line';
+                    appSettingsCache['chartType'] = 'candelstick';
                     appSettingsCache['annotation'] = 'remove';
                     appSettingsCache['theme'] = 'darkEarth';
                     $("#themeTemp").val('darkEarth');
@@ -577,7 +577,7 @@ class AnalyticChart_Base extends React.PureComponent {
                                         app.removeChart();
                                         appSettingsCache['indicators'] = {};
                                         appSettingsCache['scale'] = 'linear';
-                                        appSettingsCache['chartType'] = 'line';
+                                        appSettingsCache['chartType'] = 'candlestick';
                                         appSettingsCache['annotation'] = 'remove';
                                         appSettingsCache['theme'] = 'darkEarth';
                                         appSettingsCache['series'][to] = stok;
@@ -664,12 +664,19 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
-                    series.normal().fallingFill("#ffffff", 0.8);
-                    series.normal().fallingStroke("#ffffff", 0.8);
-                    series.hovered().fallingFill("#ffffff", 1);
-                    series.hovered().fallingStroke("#ffffff", 1);
-                    series.selected().fallingFill("#ffffff", 0.9);
-                    series.selected().fallingStroke("#ffffff",0.9);
+                    series.normal().fallingFill("#ff0000", 0.8);
+                    series.normal().fallingStroke("#ff0000", 0.8);
+                    series.hovered().fallingFill("#ff0000", 1);
+                    series.hovered().fallingStroke("#ff0000", 1);
+                    series.selected().fallingFill("#ff0000", 0.9);
+                    series.selected().fallingStroke("#ff0000",0.9);
+
+                    series.normal().risingFill("#00ff00", 0.8);
+                    series.normal().risingStroke("#00ff00", 0.8);
+                    series.hovered().risingFill("#00ff00", 1);
+                    series.hovered().risingStroke("#00ff00", 1);
+                    series.selected().risingFill("#00ff00", 0.9);
+                    series.selected().risingStroke("#00ff00", 0.9);
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
                     // series.name(appSettingsCache['series'][stockName].toUpperCase());
                     // series.name("A");
@@ -708,8 +715,24 @@ class AnalyticChart_Base extends React.PureComponent {
                             indicatorPlot.yAxis(1).orientation('right');
                         }
                     }
+                    var volumePlot = chart.plot(1);
+                    volumePlot.height('23%');
+                    volumePlot.yAxis().labels().format('{%Value}{scale:(1000)(1)|(k)}');
+                    volumePlot.crosshair().yLabel().format('{%Value}{scale:(1000)(1)|(k)}');
 
-                } else {
+                    // create volume series on the plot
+                    var volumeSeries1 = volumePlot.column(mapping);
+                    // set series settings
+                    volumeSeries1.name('Volume');
+                    volumeSeries1.fill("#ff6d00");
+                    // volumeSeries1.maxHeight('30%');
+                    // volumeSeries1.bottom(0);
+                    volumeSeries1.stroke("#ff6d00");
+                    // volumeSeries1.height('30%');
+                    volumeSeries1.bottom(0);
+
+                }
+                else {
                     // create line series
                     series = plot[seriesType](mapping);
                     series.normal().fallingFill("#ff0000", 0.8);
@@ -757,7 +780,6 @@ class AnalyticChart_Base extends React.PureComponent {
                     var volumeSeries1 = volumePlot.column(mapping);
                     // set series settings
                     volumeSeries1.name('Volume');
-                    volumeSeries1.stroke(null);
                     volumeSeries1.fill("#ff6d00");
                     // volumeSeries1.maxHeight('30%');
                     // volumeSeries1.bottom(0);

@@ -522,7 +522,6 @@
             <item name='accelerationFactorStart' value='0.02' type='number'/>
             <item name='accelerationFactorincrement' value='0.02' type='number'/>
             <item name='accelerationFactorMaximum' value='0.02' type='number'/>
-            <item name='seriesType' value='marker' type='string'/>
             <item name='plotIndex' value='14' type='number'/>
         </defaults>
     </indicator>

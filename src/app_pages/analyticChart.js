@@ -534,7 +534,16 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['indicators'][indicatorsSettings.name]['plotIndex'] = indicatorsSettings.plotIndex;
                     if(indicatorName == "psar"){
                         var plot = chart.plot(0);
-                        plot[indicatorName].apply(plot, settings);
+                        var accelerationFactorStart = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
+                        var accelerationFactorincrement = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][2];
+                        var accelerationFactorMaximum = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][3];
+                        var indicator = plot.psar(mapping, accelerationFactorStart, accelerationFactorincrement, accelerationFactorMaximum).series();
+                        indicator.fill("#2bccf3");
+                        indicator.stroke("#2bccf3");
+
+                        // set indicator settings
+
+                        indicator.type('circle').size(1);
                         // adding extra Y axis to the right side
                         plot.yAxis(1).orientation('right');
 

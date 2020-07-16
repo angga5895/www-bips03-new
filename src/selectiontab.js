@@ -773,17 +773,17 @@ class InfoCash_Base extends React.Component {
                                            <td className={"text-success text-left"}>First Session</td>
                                        }/>
                             </tr>
-                            <Popup content='Logout'
-                                   mouseEnterDelay={900}
-                                   mouseLeaveDelay={100}
-                                   position='top center'
-                                   trigger={
-                                    <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
-                                        <td className={"text-center"}><i className="icofont-sign-out"></i></td>
-                                        <td>Log out</td>
 
+                                    <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
+                                        <Popup content='Logout'
+                                               mouseEnterDelay={900}
+                                               mouseLeaveDelay={100}
+                                               position='top center'
+                                               trigger={
+                                                    <td className={"text-center"}><i className="icofont-sign-out"></i></td>
+                                               }/>
+                                        <td>&nbsp;</td>
                                     </tr>
-                                   }/>
                             </tbody>
                         </Table>
                     </div>

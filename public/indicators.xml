@@ -599,9 +599,9 @@
             ]]>
         </description>
         <defaults>
-            <item name='period' value='14' type='number'/>
-            <item name='seriesType' value='line' type='string'/>
-            <item name='plotIndex' value='0' type='number'/>
+            <item name='period_1' value='5' type='number'/>
+            <item name='period_2' value='20' type='number'/>
+            <item name='period_3' value='60' type='number'/>
         </defaults>
     </indicator>
     <indicator type='adl'>

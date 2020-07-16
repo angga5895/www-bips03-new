@@ -515,6 +515,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     var settings = [mapping];
                     var indicatorName = indicatorsSettings.name;
 
+
                     // for slow/fast stochastic
                     if (~indicatorName.toLowerCase().indexOf('stochastic')) {
                         indicatorName = 'stochastic';
@@ -532,6 +533,7 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['indicators'][indicatorsSettings.name] = {};
                     appSettingsCache['indicators'][indicatorsSettings.name]['settings'] = settings;
                     appSettingsCache['indicators'][indicatorsSettings.name]['plotIndex'] = indicatorsSettings.plotIndex;
+                    console.log("ini nama indicator"+indicatorName);
                     if(indicatorName == "psar"){
                         var plot = chart.plot(0);
                         var accelerationFactorStart = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
@@ -549,7 +551,25 @@ class AnalyticChart_Base extends React.PureComponent {
 
                         // hide indicator settings modal
                         $indicatorSettingsModal.hide();
-                    }else {
+                    }else if(indicatorName == "sma"){
+                        console.log(appSettingsCache['indicators'][indicatorsSettings.name]['settings']);
+                         var periode_1 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
+                        var periode_2 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][2];
+                        var periode_3 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][3];
+                        var plot = chart.plot(0);
+                        var sma20 = plot.sma(mapping, periode_1).series();
+                        sma20.name('SMA('+periode_1+')').stroke('#6745bf');
+
+                        // create SMA indicator with period 20
+                        var sma50 = plot.sma(mapping, periode_2).series();
+                        sma50.name('SMA('+periode_2+')').stroke('#bf549b');
+
+                        var sma60 = plot.sma(mapping, periode_3).series();
+                        sma60.name('SMA('+periode_3+')').stroke('#6cb8c2');
+
+                        // hide indicator settings modal
+                        $indicatorSettingsModal.hide();
+                    } else {
                         var plot = chart.plot(indicatorsSettings.plotIndex);
                         plot[indicatorName].apply(plot, settings);
                         // adding extra Y axis to the right side

@@ -6226,6 +6226,29 @@ body{
     color: white !important;
     background-image: linear-gradient(#0071BC,#122b40)
 }
+@media (max-width: 1024px){
+    .btn-custom-nav{
+        margin-top: 3px;
+        font-size: 8px !important;
+        height: 16px;
+        width: 16px;
+        background-image: linear-gradient(#C3C3C3, #5B5B5C) !important;
+        color: white;
+        padding: 0;
+    }
+    .btn-custom-nav:enabled:active{
+        background-image: linear-gradient(#5B5B5C, #C3C3C3) !important;
+    }
+    .btn-custom-primary{
+        margin-top: 3px;
+        font-size: 8px !important;
+        height: 16px;
+        width: 16px;
+        padding: 0;
+        color: white !important;
+        background-image: linear-gradient(#0071BC,#122b40)
+    }
+}
 @media (min-width: 1225px) and (max-width: 1409px) {
     .btn-custom-nav{
         margin-top: 2px;
@@ -6428,4 +6451,10 @@ body{
 }
 .ag-header-row >[col-id~="marketNoC"],.ag-header-row >[col-id~="leaveVolC"],.ag-header-row >[col-id~="userOrderC"]{
     background: linear-gradient(#3fb2ff,#00406b) !important;
+}
+
+@media (max-width: 1024px) {
+    .box-selection-login {
+        max-width: 100% !important;
+    }
 }

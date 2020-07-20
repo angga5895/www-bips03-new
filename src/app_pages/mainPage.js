@@ -617,6 +617,8 @@ const ResizeResponsive = () => {
         var marketwidth = $('html').width() * 0.532;
     }else if(window.innerWidth > 2559){
         var marketwidth = $('html').width() * 0.534;
+    }else if(window.innerWidth < 1025){
+        var marketwidth = $('html').width() * 0.50;
     }else{
         var marketwidth = $('html').width() * 0.5285;
     }
@@ -1379,7 +1381,10 @@ class MainPage_Base extends React.Component {
                 var marketwidth = $('html').width() * 0.532;
             }else if(window.innerWidth > 2559){
                 var marketwidth = $('html').width() * 0.534;
-            }else{
+            }else if(window.innerWidth < 1025){
+                var marketwidth = $('html').width() * 0.50;
+            }
+            else{
                 var marketwidth = $('html').width() * 0.5285;
             }
             $('.addmorewidth').css("min-width", marketwidth);

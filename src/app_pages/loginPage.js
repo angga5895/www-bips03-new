@@ -409,7 +409,7 @@ class SlideBarLogin extends React.PureComponent{
             }
         }
         return(
-            <div className="box-selection">
+            <div className="box-selection box-selection-login">
                 <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
                     <table width="100%" height="100%">
                         <tr>

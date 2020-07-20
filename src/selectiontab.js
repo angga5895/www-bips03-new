@@ -567,7 +567,7 @@ class SelectItem1 extends React.PureComponent {
                 <div className="col-sm-12 px-0 text-center" style={{ borderRadius : "5px" }}>
                     {/*zaky
                     Element Flipped*/}
-                    <div className="box-selection">
+                    <div className="box-selection ">
                         <div className={"box-inside " +colorLabelFront(this.state.firstbox.change)}>
                             <table width="100%" height="100%">
                                 <tr>
@@ -765,7 +765,8 @@ class InfoCash_Base extends React.Component {
                                     )}
 
                                 {/*status disini*/}
-                                <Popup content='First Session'
+                                {/*Ini statis aja tulisan market statusnya*/}
+                                <Popup content='Market Status'
                                        mouseEnterDelay={900}
                                        mouseLeaveDelay={100}
                                        position='top center'
@@ -773,17 +774,16 @@ class InfoCash_Base extends React.Component {
                                            <td className={"text-success text-left"}>First Session</td>
                                        }/>
                             </tr>
-
+                            <Popup content='Logout'
+                                   mouseEnterDelay={900}
+                                   mouseLeaveDelay={100}
+                                   position='top center'
+                                   trigger={
                                     <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
-                                        <Popup content='Logout'
-                                               mouseEnterDelay={900}
-                                               mouseLeaveDelay={100}
-                                               position='top center'
-                                               trigger={
                                                     <td className={"text-center"}><i className="icofont-sign-out"></i></td>
-                                               }/>
-                                        <td>&nbsp;</td>
+                                                    <td>Logout</td>
                                     </tr>
+                                   }/>
                             </tbody>
                         </Table>
                     </div>

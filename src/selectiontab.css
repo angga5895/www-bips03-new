@@ -203,6 +203,22 @@ input[type="radio"]:checked .radioAccount ~ label{
         text-transform: uppercase!important;
     }
 }
+@media (min-width: 1351px) and (max-width: 1370px){
+    .box-selection {
+        height: 48px;
+        border-radius: 6px;
+        overflow: hidden;
+        max-width: 330px;
+        width: 100%;
+        display: inline-block;
+        color: var(--warna-black-white-semantic);
+        text-align: center;
+        font-weight: bold;
+        font-size: 10px;
+        padding-top: 0px;
+        text-transform: uppercase!important;
+    }
+}
 .box-selection > .box-inside{
     height: 48px;
 }

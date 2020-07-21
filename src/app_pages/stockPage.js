@@ -97,6 +97,12 @@ const summaryOptions = [
     { key: 'tn', value: 'tn', text: 'TN' },
     { key: 'ng', value: 'ng', text: 'NG' },
 ];
+const yearOptions = [
+    { key: 'satu', value: 'satu', text: '1 Qty' },
+    { key: 'dua', value: 'dua', text: '2 Qty' },
+    { key: 'tiga', value: 'tiga', text: '3 Qty' },
+    { key: 'empat', value: 'empat', text: '4 Qty' },
+]
 
 const CustomFrameHeaderStock = (props) => {
     return (
@@ -108,6 +114,7 @@ const CustomFrameHeaderStock = (props) => {
                     <FillHeaderTab treeName="/stockPage" linkTitles={
                         {
                             stockInfoPage : 'STOCK INFO',
+                            stockFinancialStatement : 'FINANCIAL STATEMENT',
                             stockWatchlistPage: 'STOCK WATCHLIST',
                             stockHistoryPage: 'STOCK TRADE HISTORY',
                             stockTradeSummaryPage: 'STOCK TRADE SUMMARY'
@@ -213,6 +220,7 @@ class TableStockInfo extends React.PureComponent{
         );
     }
 }
+
 
 class TableProfil extends React.PureComponent{
     render() {
@@ -431,6 +439,319 @@ class StockPage_Base extends React.PureComponent {
                                         <StockChart/>
                                     </div>
                                     <StockInfo/>
+                                </div>
+                                <div className="col-md-5 px-1 py-0 card-482">
+                                    <TableInfoTransaction lotshare="stockInfoBuy" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        );
+    }
+}
+
+class StockFinancialStatement_Base extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: 1,
+        }
+    }
+
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    buttonClickBuy = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: BuyModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    buttonClickSell = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            size: 'large',
+            contentClass: SellModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#CDCDCE',
+            neutral20: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral30: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#878787',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#ece9ea',
+            primary: '#0071BC',
+        },
+    });
+
+    render () {
+        const stockOptions = [
+            { value:'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama ' },
+            { value:'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' },
+            { value:'bumi', code: 'BUMI', saham: 'Bumi Resource ' },
+            { value:'asii', code: 'ASII', saham: 'Argo Astra Lestari ' },
+            { value:'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' },
+            { value:'wskt', code: 'WSKT', saham: 'Waskita ' },
+            { value:'indf', code: 'INDF', saham: 'Indofood ' },
+            { value:'bbca', code: 'BBCA', saham: 'Bank BCA ' },
+            { value:'smrg', code: 'SMGR', saham: 'Semen Indonesia ' },
+            { value:'bbri', code: 'BBRI', saham: 'Bank BRI ' }
+        ];
+
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid"
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0
+            })
+        };
+
+        //Add your search logic here.
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
+
+        return (
+            <div className="bg-black-trading card card-75">
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction ref="wsAction" /> {/* websocket connection component*/}
+                <main>
+                    <div className="container-fluid f-12 card-527">
+                        <div className="py-0">
+                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40 mt-2">
+                                <div className="col-sm-3 px-0 mx-0 row">
+                                    <label className="align-self-center col-sm-2 px-0 mx-0">Code</label>
+                                    {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
+                                    <div className="col-sm-10 text-left align-self-center">
+                                        <Select
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            filterOption={customFilter}
+                                            isSearchable={true}
+                                            maxMenuHeight={155}
+                                            styles={customStyles}
+                                            placeholder={<div>Search..</div>}
+                                            options={stockOptions}
+                                            className="stockPageSelect text-left"
+                                            theme={this.selectSelectionTab}
+                                        />
+                                    </div>
+                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
+                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
+                                </div>
+                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
+                                    <label className="col-sm-6 f-13 f-xs-14 align-middle align-self-center pr-0">
+                                        Astra Argo Lestari Tbk.
+                                    </label>
+                                    <label className="col-sm-3 f-13 f-xs-14 align-middle align-self-center px-2 text-left">
+                                        Last <span className="text-danger">12,650</span>
+                                    </label>
+                                    <label className="col-sm-3 text-danger f-13 f-xs-14 align-middle align-self-center px-0 text-left">
+                                        <i className="oi oi-caret-bottom"></i>
+                                        -175 (-1.36%)
+                                    </label>
+                                </div>
+                                <div className="col-sm-3 align-self-center mx-0 px-0">
+                                    <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
+                                    <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                                </div>
+                            </div>
+                            <div className="px-1 mx-0 col-sm-12 row">
+                                <div className="col-md-7 pr-1 pl-0 py-2 card-482">
+                                        <div className="row pl-4 h-48 f-livetrade">
+                                            <div
+                                                className={`col-sm-2 px-0 pt-3 text-center f-12
+                                                ${this.state.selected == 1?"livetradeMenuActive":"livetradeMenu"}`}
+                                                onClick={()=>this.setState({selected:1})}
+                                                >
+                                                <i className={this.state.selected == 1 ? "far fa-dot-circle" : "far fa-circle"}></i>
+                                                &nbsp;&nbsp;&nbsp;
+                                                Quarter
+                                            </div>
+                                            <div
+                                                className={`col-sm-2 px-0 pt-3 text-center f-12
+                                                ${this.state.selected == 2?"livetradeMenuActive":"livetradeMenu"}`}
+                                                onClick={()=>this.setState({selected:2})}
+                                                >
+                                                <i className={this.state.selected == 2 ? "far fa-dot-circle" : "far fa-circle"}></i>
+                                                &nbsp;
+                                                Year
+                                            </div>
+                                            <div className={`col-sm-2 ${this.state.selected == 1?"d-block":"d-none"}`}>
+                                                <Dropdown
+                                                    placeholder='Choose'
+                                                    search selection
+                                                    options={yearOptions}
+                                                    defaultValue={yearOptions[0].value}
+                                                    className="col-sm-12 f-12"/>
+                                            </div>
+                                            <div className={`col-sm-2 ${this.state.selected == 2?"d-block":"d-none"}`}>
+                                                <input type="text" className="form-control f-12"
+                                                       value="2020" style={{borderRadius: "0px", height: "32.84px"}}/>
+                                            </div>
+                                            <div className={"col-sm-12 pl-0 pt-2 card-444"}>
+                                                <table className="table text-white d-border-table bg-dark-grey table-sm table-borderless mb-0 tb-align-center" style={{height: "100%"}}>
+                                                    <tbody>
+                                                    <tr className="bg-tableheader">
+                                                        <td className="d-border-tr-grey-all py-0">Last Statement</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">Book Value</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">EPS</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">PER</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">PBV</td>
+                                                    </tr>
+                                                    <tr >
+                                                        <td className="d-border-tr-gray-all py-0 text-center">1</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">1,754</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">78</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">6,9</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">1,3</td>
+                                                    </tr>
+                                                    <tr className="bg-tableheader">
+                                                        <td className="d-border-tr-gray-all py-0 text-center">Quarter/Year</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">1st Qty 2020</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">2nd Qty 2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">3rd Qty 2018</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">4th Qty 2017</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">Sales Profit</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">383,0</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">0</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">0</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td">Gross Profit</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">EBITDA</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td">NET Income</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">EPS</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr className="bg-tableheader">
+                                                        <td colspan="5" className="no-wrap d-border-tr-black py-0">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">Total Asset</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td">Total Liabilities</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">Total Equity</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr className="bg-tableheader">
+                                                        <td colspan="5" className="no-wrap d-border-tr-black py-0">&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">PER</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td">PBV</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">ROA</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td">ROE</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right even-td">24/6/2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td className="d-border-tr-gray-all py-0 even-td-blue">Book Value</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">22/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">23/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-right">24/6/2019</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                 </div>
                                 <div className="col-md-5 px-1 py-0 card-482">
                                     <TableInfoTransaction lotshare="stockInfoBuy" />
@@ -4424,6 +4745,11 @@ const RegisterAmendModal = ContextConnector(BIPSAppContext,
     }),
     ["handleStatusAlert3"]
 )(RegisterAmendModal_Base);
+const StockFinancialStatement = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        thememode: vars.thememode
+    }),
+)(StockFinancialStatement_Base);
 
 const StockPage = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
@@ -4459,6 +4785,7 @@ export {
     StockWatchlist, StockHistoryPage, StockPage,
     TableStockInfo,
     TableProfil,
+    StockFinancialStatement,
     TableCorpAction,
     StockTradeSummaryPage,
 };

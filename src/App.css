@@ -6452,9 +6452,15 @@ body{
 .ag-header-row >[col-id~="marketNoC"],.ag-header-row >[col-id~="leaveVolC"],.ag-header-row >[col-id~="userOrderC"]{
     background: linear-gradient(#3fb2ff,#00406b) !important;
 }
-
-@media (max-width: 1024px) {
-    .box-selection-login {
+.box-selection-login {
         max-width: 100% !important;
-    }
+}
+.even-td-blue{
+    background-color: rgba(0, 56, 255, 0.1);
+}
+table .tb-align-center>tr>td{
+    vertical-align: center !important;
+}
+.card-444{
+    height: 444px;
 }

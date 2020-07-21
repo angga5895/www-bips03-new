@@ -17,7 +17,7 @@ import StockSummaryPage from './app_pages/stockSummary.js';
 import FixedIncomePage from './app_pages/fixedIncome.js';
 import Stocks, { CustomFrameHeaderStock, StockPage,
     StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
-    TableStockInfo,
+    TableStockInfo, StockFinancialStatement,
     TableProfil,
     TableCorpAction
 } from './app_pages/stockPage';
@@ -65,7 +65,7 @@ class App extends React.Component {
             IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage, NonSectoralStatistikPage,
             /*tree3*/ GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
             //StockPage
-            /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage,
+            /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage, StockFinancialStatement,
             /*tree3*/ TableStockInfo,
             TableProfil, TableCorpAction,
             //TradePage
@@ -93,6 +93,7 @@ class App extends React.Component {
 
             {className: 'PortfolioPage', title: '', instanceName: 'portfolioPage'},
             {className: 'StockSummaryPage', title: 'STOCK SUMMARY', instanceName: 'stockSummaryPage'},
+            {className: 'StockFinancialStatement', title: 'FINANCIAL STATEMENT', instanceName: 'stockFinancialStatement'},
             {className: 'FixedIncomePage', title: 'FIXED INCOME', instanceName: 'fixedIncomePage'},
             {className: 'StockPage', title: 'STOCK', instanceName: 'stockAPage'},
             {className: 'AccountAPage', title: 'ACCOUNT A', instanceName: 'accountAPage'},
@@ -121,7 +122,8 @@ class App extends React.Component {
             {className: 'MutualNewResearchPage', title: '', instanceName: 'newsMutualFund'},
             
             //tree 2 In Stock
-            {className: 'StockPage', title: '', instanceName: 'stockInfoPage'},
+              {className: 'StockPage', title: '', instanceName: 'stockInfoPage'},
+              {className: 'StockFinancialStatement', title: '', instanceName: 'stockFinancialStatement'},
             {className: 'StockWatchlist', title: '', instanceName: 'stockWatchlistPage'},
               {className: 'StockHistoryPage', title: '', instanceName: 'stockHistoryPage'},
               {className: 'StockTradeSummaryPage', title: '', instanceName: 'stockTradeSummaryPage'},
@@ -213,6 +215,7 @@ class App extends React.Component {
                                 'corpActionTable'
                             ]
                         },
+                        'stockFinancialStatement',
                         'stockWatchlistPage',
                         'stockHistoryPage',
                         'stockTradeSummaryPage',

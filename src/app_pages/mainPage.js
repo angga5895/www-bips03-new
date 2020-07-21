@@ -650,6 +650,10 @@ const ResizeResponsive = () => {
     $('.card-194').css('min-height', (height194));
     var height448 = height527-77-2;
     $('.card-448').css('min-height', (height448));
+
+    var height444 = height527-77-2-4;
+    $('.card-444').css('min-height', (height444));
+
     var height57 = (height448/8)+1.1;
     $('.list-group-item-portofolio').css('min-height', (height57));
 
@@ -1416,6 +1420,10 @@ class MainPage_Base extends React.Component {
             $('.card-194').css('min-height', (height194));
             var height448 = height527-77-2;
             $('.card-448').css('min-height', (height448));
+
+            var height444 = height527-77-2-4;
+            $('.card-444').css('min-height', (height444));
+
             var height57 = (height448/8)+1.1;
             $('.list-group-item-portofolio').css('min-height', (height57));
 

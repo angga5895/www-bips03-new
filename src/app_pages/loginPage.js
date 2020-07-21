@@ -707,7 +707,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
                                                                 <input type={this.state.passlogin} ref="password" placeholder="Password"
                                                                        id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="apih1234"/>
+                                                                       defaultValue="password"/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>

@@ -34,9 +34,9 @@ const FillHeaderTab_Base = (props) => {
 
                                                     e.instanceName.search('stock') >= 0 ?
                                                         e.instanceName.search('stockTradeSummary') >= 0?
-                                                            'active col-sm-3 click-pointer text-center bg-blue-white'
+                                                            'active col-mn-5 click-pointer text-center bg-blue-white'
                                                             :
-                                                            'active col-sm-3 click-pointer d-border-right text-center bg-blue-white'
+                                                            'active col-mn-5 click-pointer d-border-right text-center bg-blue-white'
                                                         :
 
                                                         e.instanceName.search('StatistikPage') >= 0 ?
@@ -101,9 +101,9 @@ const FillHeaderTab_Base = (props) => {
 
                                                     e.instanceName.search('stock') >= 0 ?
                                                         e.instanceName.search('stockTradeSummary') >= 0?
-                                                            'col-sm-3 click-pointer text-center'
+                                                            'col-mn-5 click-pointer text-center'
                                                             :
-                                                            'col-sm-3 click-pointer d-border-right text-center'
+                                                            'col-mn-5 click-pointer d-border-right text-center'
 
                                                         :
 

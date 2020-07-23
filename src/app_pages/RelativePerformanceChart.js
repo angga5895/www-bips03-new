@@ -82,6 +82,8 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
     }
 
     componentDidMount() {
+        $("#themeTemp").val("darkEarth");
+
         $('.stockOps').css({
             'color': '#000000',
             'width': '100px'
@@ -494,6 +496,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 $themeSelect.on('change', function () {
                     app.removeChart();
                     // save scale type
+                    $("#themeTemp").val($(this).val());
                     appSettingsCache['theme'] = $(this).val();
                     $currTheme = $(this).val();
                     $showBtn.click();
@@ -617,7 +620,9 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     appSettingsCache['scale'] = 'linear';
                     appSettingsCache['chartType'] = 'line';
                     appSettingsCache['annotation'] = 'remove';
-                    appSettingsCache['theme'] = $currTheme;
+                    appSettingsCache['theme'] = 'darkEarth';
+                    $("#themeTemp").val('darkEarth');
+
 
                     $annotationType.val('default').selectpicker('refresh');
 
@@ -691,11 +696,12 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 dataTable = anychart.data.table();
                 dataTable2 = anychart.data.table();
 
-                if (appSettingsCache['theme'] == 'defaultTheme') {
-                    anychart.theme(anychart.themes.darkEarth);
-                } else {
-                    anychart.theme($currTheme);
-                }
+                // if (appSettingsCache['theme'] == 'defaultTheme') {
+                //     anychart.theme(anychart.themes.darkEarth);
+                // } else {
+                //     anychart.theme(appSettingsCache['theme']);
+                // }
+                anychart.theme($("#themeTemp").val());
 
                 var series;
                 var series2;
@@ -704,12 +710,15 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                 var mapping = dataTable.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
                 var mapping2 = dataTable2.mapAs({ 'value': 1, 'volume': 1, 'open': 1, 'high': 2, 'low': 3, 'close': 4 });
 
-
-                // create stock chart
-
                 chart = anychart.stock();
                 var credits = chart.credits();
                 credits.enabled(false);
+
+                // create stock chart
+                if($("#themeTemp").val() == "lightGlamour"){
+                    var background = chart.tooltip().background();
+                    background.fill("#3C3C3C 0.8");
+                }
 
                 // create plot on the chart
                 var plot = chart.plot(0);
@@ -1143,6 +1152,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     </div>
                 </div>
                 <input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>
+                <input type="hidden" id={"themeTemp"}/>
                 <div id={"chart-container" + this.state.stockType} className="card-452" style={containerStyle}></div>
             </div>
         );

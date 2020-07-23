@@ -533,7 +533,6 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['indicators'][indicatorsSettings.name] = {};
                     appSettingsCache['indicators'][indicatorsSettings.name]['settings'] = settings;
                     appSettingsCache['indicators'][indicatorsSettings.name]['plotIndex'] = indicatorsSettings.plotIndex;
-                    console.log("ini nama indicator"+indicatorName);
                     if(indicatorName == "psar"){
                         var plot = chart.plot(0);
                         var accelerationFactorStart = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
@@ -552,8 +551,7 @@ class AnalyticChart_Base extends React.PureComponent {
                         // hide indicator settings modal
                         $indicatorSettingsModal.hide();
                     }else if(indicatorName == "sma"){
-                        console.log(appSettingsCache['indicators'][indicatorsSettings.name]['settings']);
-                         var periode_1 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
+                        var periode_1 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][1];
                         var periode_2 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][2];
                         var periode_3 = appSettingsCache['indicators'][indicatorsSettings.name]['settings'][3];
                         var plot = chart.plot(0);
@@ -780,7 +778,6 @@ class AnalyticChart_Base extends React.PureComponent {
                     // series.name(appSettingsCache['seriesName']);
                     // series.name(appSettingsCache['seriesName'][stockName].toUpperCase());
                     // series.name(appSettingsCache[stockName].toUpperCase());
-                    console.log(appSettingsCache['series'],stockName);
                     if(stockName == "chrtStock"){
                         series.name(appSettingsCache['series']['analytic stock']);
                     }else if(stockName == "chrtIndice"){
@@ -978,7 +975,6 @@ class AnalyticChart_Base extends React.PureComponent {
 
     changelist = event => {
         // $("#stockoption "+selop).change();
-        console.log(event);
         // if(e.target.value.length > 0) {
         $valueAnalyticChart = event.value;
         $("#stockoption"+event.id).change();

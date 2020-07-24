@@ -6,6 +6,7 @@ import AmendArrow from "./../img/amend-arrow.svg";
 import $ from "jquery";
 import {ContextConnector} from "../appcontext";
 import {BIPSAppContext} from "../AppData";
+import {WSConnectionAction} from "../appnetwork";
 
 class AlertPinSalah extends React.PureComponent{
     render() {
@@ -172,10 +173,11 @@ class VerifyPIN_Base extends React.PureComponent{
         this.pin.clear();
     }
 
-    forgotPIN = (e) =>{
+    forgotPIN = (e) => {
         var frameAction = this.refs.frameAction;
         frameAction.showModal({
-            headerClass: () => <div className="text-white text-center"><h1 className="text-center">DX TRADE</h1></div>,
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
             contentClass: ForgotPINModal,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"
@@ -676,40 +678,32 @@ class ForgotPINModal extends React.Component {
 
     render() {
         return (
-            <div className="f-12">
+            <div className="card-325">
                 <AppFrameAction ref="frameAction" />
-                <label className="col-sm-12 px-5 py-2 col-form-label text-gray-tradding">Forgot PIN</label>
-                <div className="text-white">
-                    <div className="form-group">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Enter your email address and we'll
-                            send link to reset your PIN
+                <WSConnectionAction ref="wsAction" />
+                <label className="col-sm-12 px-5 py-2 col-form-label text-center text-gray-tradding f-25 mt-4">Forgot PIN</label>
+                <div className="text-white f-12 mt-5">
+                    <div className="form-group mb-3 text-center f-15">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">Please contact our customer service
                         </label>
                     </div>
-                    <div className="form-group mb-0">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">Email</label>
-                        <div className="col-sm-12 px-5 py-0">
-                            <input type="email" className="text-white input-login col-sm-12"/>
-                        </div>
+                    <div className="form-group mb-5 text-center f-25">
+                        <label className="col-sm-12 px-5 py-2 col-form-label">14009</label>
                     </div>
 
                     <div className="form-group py-3">
                         <div className="justify-content-center align-items-center d-flex py-0 px-5">
-                            <button type="submit" className="btn btn-primary form-control py-0">
-                                Submit
+                            <button type="submit" className="btn btn-primary form-control py-0" id="btn_pass" onClick={this.closeClick}>
+                                Back
                             </button>
                         </div>
-                    </div>
-
-                    <div className="form-group text-center">
-                        <label className="col-sm-12 px-5 py-2 col-form-label">
-                            <span className="click-pointer btn btn-link text-primary" onClick={this.closeClick}> Back to Verify PIN</span>
-                        </label>
                     </div>
                 </div>
             </div>
         );
     }
 }
+
 const VerifyPIN = ContextConnector(BIPSAppContext,
     (vars, actions) => ({
         pinStatus: vars.pinStatus,

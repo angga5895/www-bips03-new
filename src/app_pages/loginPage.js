@@ -513,12 +513,10 @@ class LoginUserPage_Base extends React.PureComponent {
         })
     }
     buttonClickHelp = (e) => {
-        this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-white text-center">Help</div>,
-            closeIcon: false,
-            contentClass: HelpModal,
-            onClose: (result) => {console.log('Modal help result = ', result)}
-        })
+            // window.open("http://online.bahana.co.id/dxtrade/manual.pdf");
+            var height = window.innerHeight;
+            var width = window.innerWidth;
+            window.open("http://online.bahana.co.id/dxtrade/manual.pdf","User Manual","height="+height+",width="+width+",location=true");
     }
     buttonFindHelp = (e) => {
         this.refs.frameAction.showModal({
@@ -765,7 +763,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         <td>www.directtrading.co.id</td>
                                                         <td>
                                                             <button
-                                                                // onClick={this.buttonClickHelp}
+                                                                onClick={this.buttonClickHelp}
                                                                 className="btn btn-sm px-1 py-0 btn-block btn-default btn-dark">
                                                                 <i className="icofont-exclamation"></i>
                                                                 &nbsp;Help</button>

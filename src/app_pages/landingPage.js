@@ -139,9 +139,9 @@ class LandingPage_Base extends React.PureComponent {
             //     x: "Portfolio Equity", value: 207166
             // },
             {
-                x: "Portfolio Equity", value: 100173,
+                x: "Equity Portfolio", value: 100173,
                 normal:  {
-                    fill: (["#64b5f6","#abd3e9"]),
+                    fill: (["#88C800","#A3E601"]),
                 },
                 hovered: {
                     outline: {
@@ -207,7 +207,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Cash", value: 100173,
                 normal:  {
-                    fill: (["#02aad2","#1976d2"]),
+                    fill: (["#F8A32F","#FECF37"]),
                 },
                 hovered: {
                     outline: {
@@ -450,7 +450,7 @@ class LandingPage_Base extends React.PureComponent {
                                         <div className="card-header card-header-investment bg-grey h-40">
                                             <div className="row col-sm-12 px-0 mx-0 py-1">
                                                 <div className="col-sm-3 px-4 mx-0 f-14">
-                                                    <b>Portofolio Equity</b>
+                                                    <b>Equity Portfolio</b>
                                                 </div>
                                                 <div className="col-sm-4 px-4 mx-0 f-14">
                                                     Stock Val : <span className="text-primary">15,234,000</span>
@@ -3319,7 +3319,7 @@ class StockCashAgGrid extends React.PureComponent {
                     },
                     ],
                 },
-                { field: "port", headerName: "Portofolio", comparator: stringComparator, sortable: true, filter: "agTextColumnFilter", resizable: true,
+                { field: "port", headerName: "Portfolio", comparator: stringComparator, sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: 160, minWidth: 160,
                     cellClass : function (params) {
                         return " text-center grid-table f-12 d-border-aggrid-right";

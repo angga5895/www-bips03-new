@@ -7,6 +7,8 @@ import marketImage from "../img/marketImage3.jpg";
 
 import $ from "jquery";
 import {Checkbox} from "semantic-ui-react";
+import WminiLogo from "../img/logo_white_mini.png";
+import BminiLogo from "../img/logo_black_mini.png";
 
 
 class ModalTrial extends React.Component{
@@ -98,51 +100,39 @@ class ModalTrial extends React.Component{
                     <div className={"col-sm-12 bg-gradi row ml-0 pr-0"}>
                         <div className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 1?"d-block":"d-none"}`}
                         >
-                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Selamat Datang di DX Trade </h3>
+                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>
+                                <img src={(this.props.thememode === true) ? WminiLogo : BminiLogo} alt="Bips Logo" className="logo-trial"/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selamat Datang di DX Trade
+                            </h3>
                             <br/>
                             <p className={"p-migrate"}>
-                                Terima kasih atas kepercayaan Anda untuk senantiasa bertransaksi melalui Online Trading Bahana Sekuritas.
-                                Saat ini Anda tengah mengakses aplikasi online trading kami yang baru, DXTrade.
-                                <br/><br/>
+                                Untuk memulai, Anda dapat memilih satu pilihan di bawah ini:
+                            </p>
+                            <div className={"row"}>
+                                <div className={"text-center col-sm-9"}>
+                                    <div className={"text-left"}>
+                                        <Checkbox label='Ya, Aktifkan DX Trade saya' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} defaultChecked checked={(this.state.selectedMigrate)?true:false}/>
+                                    </div>
+                                    <div className={"text-left"}>
+                                        <Checkbox label='Saya masih ingin mempelajari dengan menggunakan trial account' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} checked={(this.state.selectedMigrate)?false:true}/>
+                                    </div>
+                                </div>
+                            </div><br/>
+                            <p className={"p-migrate"}>
+                                Untuk saat ini DX Trade hanya dapat digunakan melalui web browser dari computer Anda. Versi mobile/tablet akan hadir pada bulan September 2020.<br/><br/>
 
-                                Sebagai bentuk komitmen kami untuk terus meningkatkan kenyamanan Anda bertransaki saham,
-                                kami hadirkan aplikasi online trading DXTrade sebagai pengganti apliasi online trading DT NextG
-                                yang akan berakhir masa operasi nya pada tanggal <b><i>1 Oktober 2020</i></b><br/>
+                                Pada tanggal 24 Agustus 2020 transaksi pembelian atau penjualan saham melalui web browser akan dialihkan secara otomatis ke DX Trade.<br/><br/>
 
-                                Untuk itu kami mengundang Anda untuk  mengenal dan mencoba aplikasi DXTrade<br/><br/>
-
-                                Untuk tahap awal aplikasi DX Trade hanya dapat diakses melalui web browser dari komputer Anda.
-                                Selanjutnya, kami akan menghadirkan DXTrade dalam bentuk aplikasi mobile/tablet pada pertengahan bulan September 2020.<br/>
-                                Silahkan Anda login dengan menggunakan user id anda saat ini dan password baru yang sudah kami kirimkan lewat email<br/><br/>
-
-                                Bila Anda bersedia beralih menggunakan aplikasi DXTrade sekarang dan selanjutnya, silahkan pilih <b>“Ya, Saya bersedia.”</b><br/>
-
-                                Namun bila Anda masih ingin mencoba nya lebih lanjut, Silahkan pilih <b>“Mencoba DXTrade”</b><br/>
-
-                                Kami informasikan juga bahwa bagi nasabah yang masih belum beralih ke aplikasi DXTrade,
-                                akan kami pindahkan secara otomatis ke aplikasi DXTrade selambat-lambatnya <b>30 September 2020</b>.<br/><br/>
-
-                                Besar harapan kami untuk Anda dapat mencoba dan segera beralih ke aplikasi DXTrade<br/>
-
-                                Bila Anda membutuhkan bantuan untuk mengakses / menggunakan aplikasi DXTrade,
-                                dapat menghubungi  customer service kami di 14009 | Email cs@bahana.co.id.<br/><br/>
+                                Bila Anda membutuhkan bantuan untuk mengakses/menggunakan aplikasi DX Trade, Anda dapat menghubungi <b>customer service kami di 14009 | Email cs@bahana.co.id </b><br/><br/>
 
                                 Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.<br/><br/>
 
                                 Terima kasih,<br/>
                                 PT. Bahana Sekuritas<br/>
                             </p>
-                            <p className={"p-migrate"}>
-                                Apakah Anda bersedia kami alihkan ke DXTrade sekarang?
-                            </p>
                             <div className={"row"}>
                                 <div className={"text-center col-sm-9"}>
-                                    <div className={"text-left"}>
-                                        <Checkbox label='Ya, Saya bersedia' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} defaultChecked checked={(this.state.selectedMigrate)?true:false}/>
-                                    </div>
-                                    <div className={"text-left"}>
-                                        <Checkbox label='Pelajari DXTrade' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} checked={(this.state.selectedMigrate)?false:true}/>
-                                    </div>
+                                    &nbsp;
                                 </div>
                                 <div className={"col-sm-3 text-center"}>
                                     <button className="ui icon button red go-button circular" onClick={this.migrate}><i aria-hidden="true" className="play icon"></i>
@@ -151,6 +141,7 @@ class ModalTrial extends React.Component{
                                 </div>
                             </div>
                         </div>
+
                         <div
                             className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 2?"d-block":"d-none"}`}
                         >

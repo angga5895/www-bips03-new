@@ -131,6 +131,13 @@ class LandingPage_Base extends React.PureComponent {
     }
 
     componentDidMount() {
+        var input = document.getElementById("press_login");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("click_login").click();
+            }
+        });
         var props = this.props;
         $('#pieChart').css('height', '100%');
         // create data
@@ -139,7 +146,7 @@ class LandingPage_Base extends React.PureComponent {
             //     x: "Portfolio Equity", value: 207166
             // },
             {
-                x: "Equity Portfolio", value: 100173,
+                x: "Equity Portfolio", value: 190173,
                 normal:  {
                     fill: (["#88C800","#A3E601"]),
                 },
@@ -154,58 +161,8 @@ class LandingPage_Base extends React.PureComponent {
                     }
                 }
             },
-
-            /*{
-                x: "Pegadaian", value: 208173,
-                normal:  {
-                    fill: (["#a4bdc6","#455a64"]),
-                },
-                hovered: {
-                    outline: {
-                        enabled: true,
-                    }
-                },
-                selected: {
-                    outline: {
-                        enabled: true,
-                    }
-                }
-            },*/
-
-            // {
-            //     x: "Fixed Income", value: 0,
-            //     normal:  {
-            //         fill: (["#dac39e","#ef6c00"]),
-            //     },
-            //     hovered: {
-            //         outline: {
-            //             enabled: true,
-            //         }
-            //     },
-            //     selected: {
-            //         outline: {
-            //             enabled: true,
-            //         }
-            //     }
-            // },
-            // {
-            //     x: "Mutual Fund", value: 0,
-            //     normal:  {
-            //         fill: (["#fffc8d","#ffd64f"]),
-            //     },
-            //     hovered: {
-            //         outline: {
-            //             enabled: true,
-            //         }
-            //     },
-            //     selected: {
-            //         outline: {
-            //             enabled: true,
-            //         }
-            //     }
-            // },
             {
-                x: "Cash", value: 100173,
+                x: "Cash", value: 40173,
                 normal:  {
                     fill: (["#F8A32F","#FECF37"]),
                 },
@@ -222,16 +179,13 @@ class LandingPage_Base extends React.PureComponent {
             },
         ];
 
-        var chart = anychart.pie(data);
-        var credits = chart.credits();
-        credits.enabled(false);
 
         anychart.onDocumentReady(function () {
-            createpie();
-        });
-
-
-        function createpie() {
+            // createpie();
+            var chart = anychart.pie3d(data);
+            var credits = chart.credits();
+            credits.enabled(false);
+            // set the container id
             // create a chart and set the data
             // set the position of the legend
             chart.legend().position("bottom");
@@ -243,23 +197,18 @@ class LandingPage_Base extends React.PureComponent {
             chart.legend().itemsLayout("horizontal-expandable");
 
             var legends = chart.legend();
-            // set the padding of the legend
+
             legends.padding(10);
-            // background settings
+
             legends.fontColor("white");
             var backgrounds = legends.background();
-            // background inner color settings
-            /*backgrounds.fill(["#67AAD7","#0071BC"], 0);*/
+
             backgrounds.fill("#8597B0");
             backgrounds.enabled(true);
-            backgrounds.stroke("#96a6a6");
+            // backgrounds.stroke("#96a6a6");
             backgrounds.cornerType("round");
             backgrounds.corners(10);
 
-            // set the explosion range in different states
-            /*chart.selected().explode("3%");
-            chart.hovered().explode("3%");*/
-            // configure outlines
             chart.normal().outline().enabled(true);
             chart.normal().outline().width("5%");
             chart.hovered().outline().width("10%");
@@ -299,34 +248,6 @@ class LandingPage_Base extends React.PureComponent {
                         chart.select(1);
                     }
                 }
-                // else if (points === 2){
-                //     props.changeStateLanding('2');
-                //     if (e.point.selected()) {
-                //         chart.unselect([0,1,3,4]);
-                //     } else {
-                //         chart.unselect([0,1,3,4]);
-                //         chart.select(2);
-                //     }
-                // } else if (points === 3){
-                //     // props.changeStateLanding('3');
-                //     props.changeStateLanding('2');
-                //     if (e.point.selected()) {
-                //         chart.select(1);
-                //         chart.unselect([0,1,2,3]);
-                //     } else {
-                //         chart.select(1);
-                //         chart.unselect([0,1,2,3]);
-                //     }
-                // }
-                /*else if (points === 4){
-                    props.changeStateLanding('4');
-                    if (e.point.selected()) {
-                        chart.unselect([0,1,2,3]);
-                    } else {
-                        chart.unselect([0,1,2,3]);
-                        chart.select(4);
-                    }
-                }*/
             });
 
             chart.legend().listen("legendItemClick", function(e) {
@@ -341,32 +262,13 @@ class LandingPage_Base extends React.PureComponent {
                     props.changeStateLanding('1');
                     chart.unselect([0]);
                 }
-                // else if (legend === 2){
-                //     props.changeStateLanding('2');
-                //     chart.unselect([0,1,3,4]);
-                // }
-                // else if (legend === 3){
-                //     props.changeStateLanding('2');
-                //     // alert('keclick');
-                //     // return ;
-                //     chart.select(1);
-                //     // chart.unselect([0,1,2,3,4]);
-                // }
-                /*else if (legend === 4){
-                    props.changeStateLanding('4');
-                    chart.unselect([0,1,2,3]);
-                }*/
+
             });
-
-            /*chart.unselect([1,2,3]);
-            chart.select(0);*/
-
-            // set the container id
-            chart.container("pieChart");
+            chart.container("pieChart2");
 
             // initiate drawing the chart
             chart.draw();
-        }
+        });
     }
 
     closeClick = (e) => {
@@ -427,10 +329,11 @@ class LandingPage_Base extends React.PureComponent {
         return (
             <div className="container-fluid px-0 bg-black-trading">
                 <div className="card-527 col-sm-12 px-0 mx-0 row">
-                    <div id="pieChart" className="col-sm-4 px-0"></div>
+                    <div id="pieChart2" className="col-sm-4 px-0"></div>
                     <div className="col-sm-8 px-0 d-border-left">
                         <AppFrameAction ref="frameActions"></AppFrameAction>
                         <main>
+
                             <div className="container-fluid px-0">
                                 <div className="container px-0 mx-0 col-sm-12 bg-grey" style={{display : this.props.stateLanding === '' ? 'block' : 'none'}}>
                                     <div className="card-body card-527 align-self-center text-center bg-grey f-14 py-3">

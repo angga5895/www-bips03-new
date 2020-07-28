@@ -148,7 +148,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Equity Portfolio", value: 190173,
                 normal:  {
-                    fill: (["#88C800","#A3E601"]),
+                    fill: "#88C800",
                 },
                 hovered: {
                     outline: {
@@ -164,7 +164,7 @@ class LandingPage_Base extends React.PureComponent {
             {
                 x: "Cash", value: 40173,
                 normal:  {
-                    fill: (["#F8A32F","#FECF37"]),
+                    fill: "#F8A32F",
                 },
                 hovered: {
                     outline: {
@@ -242,9 +242,9 @@ class LandingPage_Base extends React.PureComponent {
                 } else if (points === 1){
                     props.changeStateLanding('1');
                     if (e.point.selected()) {
-                        chart.unselect([0,2,3,4]);
+                        chart.unselect([0]);
                     } else {
-                        chart.unselect([0,2,3,4]);
+                        chart.unselect([0]);
                         chart.select(1);
                     }
                 }

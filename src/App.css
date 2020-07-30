@@ -6470,6 +6470,13 @@ table .tb-align-center>tr>td{
 .logo-trial{
     width: 75px;
     height: 75px;
-    background: #00000099;
+    background: #6a7788;
     border-radius: 10%;
+}
+.ui.modal.large2>.content,.ui.modal.large2>.header{
+    background: #ffffff !important;
+}
+.bg-content-trial{
+    background: #EBEEF3 !important;
+    padding: 23px 35px 13px 35px !important;
 }

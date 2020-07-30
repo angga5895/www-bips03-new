@@ -108,7 +108,7 @@ class SideBar_Base extends React.Component{
     }
     clickMigrate = (e) => {
         this.refs.frameAction.showModal({
-            size: 'large',
+            size: 'large2',
             contentClass: ModalTrial,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })

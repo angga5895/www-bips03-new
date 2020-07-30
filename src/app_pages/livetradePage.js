@@ -252,8 +252,8 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                         var buyer = params.data.buyer;
                         var sBuyer = buyer.split('-');
 
-                        return sBuyer[0].includes('F') === true ? '<span class="text-success">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1] :
-                            '<span class="text-warning">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1];
+                        return sBuyer[0].includes('F') === true ? '<span className="text-success">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1] :
+                            '<span className="text-warning">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1];
                     } },
                 { field: "seller", headerName: "Seller", resizable: true,
                     width: s=="s49"?155:s=="s50"?140:s=="s67"?125:s=="s75"?125:s=="s80"?110:s=="s90"?110:s=="s110"?78:85,

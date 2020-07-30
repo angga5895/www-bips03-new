@@ -353,9 +353,9 @@ class SideBar_Base extends React.Component{
                             </div>
                         </div>
                         <div className="align-self-center text-center px-1 py-0 h-25">
-                            <buttom className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
+                            <button className="f-9 col-sm-12 px-0 my-0 py-2 btn btn-sm btn-dark h-22" onClick={this.buttonClickAmendRegister}>
                                 <i className="icofont icofont-edit"></i> &nbsp; Modify
-                            </buttom>
+                            </button>
                         </div>
 
                                    <div className="nav flex-lg-column">

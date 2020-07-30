@@ -155,10 +155,12 @@ class ModalTrial extends React.Component{
                                 Other version of DXTrade will be available on September 2020.<br/><br/>
 
                                 Now, you can access DXTrade by using your current User ID for online trading.<br/>
+                            </p>
                                 <ul>
                                     <li>Please choose “Yes, I want DX Trade” to use DXTrade for your next transaction, or</li>
                                     <li>Please choose “I want to know more” to get your DXTrade trial account</li>
                                 </ul>
+                            <p className={"p-migrate"}>
                                 By the end of August 2020, DXTrade will officially replacing DTNextG as PT. Bahana Sekuritas online trading.
                                 <br/><br/>
                                 Thank you,<br/>

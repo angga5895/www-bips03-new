@@ -972,13 +972,13 @@ class StockHistoryPage_Base extends React.PureComponent {
 
                                     <div className="input-group h-35" style={{"z-index":0}}>
                                         <span className="input-group-addon h-35 bg-tableheader">Start</span>
-                                            <input placeholder='dd/mm/yy' id="datepickerstartSH" className="form-control h-35  date-clear col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <input placeholder='dd/mm/yy' id="datepickerstartSH" className="form-control  date-clear col-sm-12 pl-0 pr-0 text-center align-self-center "/>
 
                                         <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>
                                         <span className="input-group-addon bg-tableheader">to</span>
-                                        <input placeholder='dd/mm/yy' id="datepickerendSH" style={{height: "31px;"}} className="form-control h-35 col-sm-12 pl-0 pr-0 text-center date-clear align-self-center "/>
+                                        <input placeholder='dd/mm/yy' id="datepickerendSH" className="form-control col-sm-12 pl-0 pr-0 text-center date-clear align-self-center "/>
                                         <span className="input-group-addon h-35 bg-tableheader">
                                             <span className="fa fa-calendar-alt"></span>
                                         </span>

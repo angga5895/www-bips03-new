@@ -412,6 +412,7 @@ class SlideBarLogin extends React.PureComponent{
             <div className="box-selection box-selection-login">
                 <div className={"box-inside"+' '+colorLabelFront(this.state.barSatu.change)} id="show-box">
                     <table width="100%" height="100%">
+                        <tbody>
                         <tr>
                             <td className="spanSymbol px-0">{this.state.barSatu.symbol}</td>
                             <td className=" px-0">{this.state.barSatu.last}</td>
@@ -426,12 +427,14 @@ class SlideBarLogin extends React.PureComponent{
                                     </span>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div className={"hid-box"+' '
                          +colorLabelFront(this.state.barDua.change)
                          +" "+(this.state.flipped===true ? 'active' : '')} id="hid-box">
                     <table width="100%" height="100%">
+                        <tbody>
                         <tr>
                             <td className="spanSymbol px-0">{this.state.barDua.symbol}</td>
                             <td className="px-0">{this.state.barDua.last}</td>
@@ -446,6 +449,7 @@ class SlideBarLogin extends React.PureComponent{
                                     </span>
                             </td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -758,6 +762,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                         <div className="col-sm-12 mh-45 px-0 f-11">
                                             <div className="card_help">
                                                 <table width="100%" height="100%">
+                                                    <tbody>
                                                     <tr>
                                                         <td>CALL CENTER 14009</td>
                                                         <td>www.directtrading.co.id</td>
@@ -770,6 +775,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                         </td>
                                                         <td><u className="click-pointer" onClick={this.buttonClickDisclaimer}>Disclaimer</u></td>
                                                     </tr>
+                                                    </tbody>
                                                 </table>
                                             </div>
                                         </div>

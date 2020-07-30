@@ -207,7 +207,7 @@ const UISelectionTab_Base = (props) => {
     // activateFrame: (instanceName) => {} hook to activate selected frame ID
     // linkTitles: object, mapping instanceName to link title
     return (
-        <div class="h-84 mb-1">
+        <div className="h-84 mb-1">
             <div className="d-xxl-none d-xxl-block d-border-bottom mb-1">
                 <div>
                     <Menu className="row">
@@ -570,6 +570,7 @@ class SelectItem1 extends React.PureComponent {
                     <div className="box-selection ">
                         <div className={"box-inside " +colorLabelFront(this.state.firstbox.change)}>
                             <table width="100%" height="100%">
+                                <tbody>
                                 <tr>
                                     <td rowSpan="2" className="spanSymbol px-0">{this.state.firstbox.symbol}</td>
                                     <td rowSpan="2" className="lastColor px-0">{this.state.firstbox.last}</td>
@@ -584,11 +585,13 @@ class SelectItem1 extends React.PureComponent {
                                         <span className="white">({this.state.firstbox.percentage}%)</span>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div className={"hid-box " +colorLabelFront(this.state.secondbox.change)+" "
                         +(this.state.flipped===true ? 'active' : '')} id={"hid-box-selection"}>
                             <table width="100%" height="100%">
+                                <tbody>
                                 <tr>
                                     <td rowSpan="2" className="spanSymbol px-0">{this.state.secondbox.symbol}</td>
                                     <td rowSpan="2" className="lastColor px-0">{this.state.secondbox.last}</td>
@@ -603,6 +606,7 @@ class SelectItem1 extends React.PureComponent {
                                         <span className="white">({this.state.secondbox.percentage}%)</span>
                                     </td>
                                 </tr>
+                                </tbody>
                             </table>
                         </div>
                         {/*<div className={switchPanel()}>*/}
@@ -863,6 +867,7 @@ class UserInfo_Base extends React.Component {
                 <AppFrameAction ref="frameAction" />
                 <input type="hidden" id={"clickLogout"} onClick={this.popupLogout}/>
                 <table>
+                    <tbody>
                     <tr>
                         <td className="py-0">
                             <Dropdown icon={null} text={
@@ -942,6 +947,7 @@ class UserInfo_Base extends React.Component {
                             <kbd>{(this.props.GeneralType === true) ? "ACTIVE" : "SUSPEND"}</kbd>
                         </td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         );

@@ -6414,10 +6414,13 @@ body{
     background: rgb(138,221,109);
     background: linear-gradient(90deg, rgba(138,221,109,1) 0%, rgba(107,138,115,1) 58%, rgba(81,66,147,1) 100%);
 }
+.bg-gradi2{
+    background-image: url("img/bggradi2.jpg");
+}
 /*untuk modal migrasi*/
 .b-title{
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .d-border-bottom-bold-migrate {
     border-bottom: white solid 2px!important;
@@ -6467,4 +6470,6 @@ table .tb-align-center>tr>td{
 .logo-trial{
     width: 75px;
     height: 75px;
+    background: #00000099;
+    border-radius: 10%;
 }

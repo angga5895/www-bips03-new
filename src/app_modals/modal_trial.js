@@ -62,6 +62,14 @@ class ModalTrial extends React.Component{
             // this.refs.frameAction.closeModal(100);
         }
     }
+    migrateStep2 = () => {
+            if(this.state.selectedMigrate){
+                this.closeClickNoAlert();
+            }else{
+                this.setState({selected: 7});
+            }
+
+    }
     closeClickToTrial = (e) => {
         if(this.state.selected == 4){
             this.setState({selected: 5});
@@ -97,47 +105,49 @@ class ModalTrial extends React.Component{
                             {/*</div>*/}
                         {/*</div>*/}
                     </div>
-                    <div className={"col-sm-12 bg-gradi row ml-0 pr-0"}>
+                    <div className={`col-sm-12 ${this.state.selected < 3?"bg-gradi":"bg-gradi2"} row ml-0 pr-0 `}>
                         <div className={`px-0 pt-3 col-sm-8 col-xs-8 px-3 py-4 ${this.state.selected == 1?"d-block":"d-none"}`}
                         >
-                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>
-                                <img src={(this.props.thememode === true) ? WminiLogo : BminiLogo} alt="Bips Logo" className="logo-trial"/>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selamat Datang di DX Trade
-                            </h3>
-                            <br/>
-                            <p className={"p-migrate"}>
-                                Untuk memulai, Anda dapat memilih satu pilihan di bawah ini:
-                            </p>
-                            <div className={"row"}>
-                                <div className={"text-center col-sm-9"}>
-                                    <div className={"text-left"}>
-                                        <Checkbox label='Ya, Aktifkan DX Trade saya' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} defaultChecked checked={(this.state.selectedMigrate)?true:false}/>
+                            <img src={WminiLogo} alt="DX TRADE Logo" className="logo-trial"/>
+
+                            <div className={"mt-4"}>
+                                <h3 className={"text-left pb-2 b-title"}>
+                                    Selamat Datang di DX Trade
+                                </h3>
+                                <p className={"p-migrate"}>
+                                    Untuk memulai, Anda dapat memilih satu pilihan di bawah ini:
+                                </p>
+                                <div className={"row"}>
+                                    <div className={"text-center col-sm-9"}>
+                                        <div className={"text-left"}>
+                                            <Checkbox label='Ya, Aktifkan DX Trade saya' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} defaultChecked checked={(this.state.selectedMigrate)?true:false}/>
+                                        </div>
+                                        <div className={"text-left"}>
+                                            <Checkbox label='Saya masih ingin mempelajari dengan menggunakan trial account' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} checked={(this.state.selectedMigrate)?false:true}/>
+                                        </div>
                                     </div>
-                                    <div className={"text-left"}>
-                                        <Checkbox label='Saya masih ingin mempelajari dengan menggunakan trial account' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} checked={(this.state.selectedMigrate)?false:true}/>
+                                </div><br/>
+                                <p className={"p-migrate"}>
+                                    Untuk saat ini DX Trade hanya dapat digunakan melalui web browser dari computer Anda. Versi mobile/tablet akan hadir pada bulan September 2020.<br/><br/>
+
+                                    Pada tanggal <b><u className={"text-white"}>24 Agustus 2020</u></b> transaksi pembelian atau penjualan saham melalui web browser akan dialihkan secara otomatis ke DX Trade.<br/><br/>
+
+                                    Bila Anda membutuhkan bantuan untuk mengakses/menggunakan aplikasi DX Trade, Anda dapat menghubungi <b>customer service kami di 14009 | Email cs@bahana.co.id </b><br/>
+                                </p>
+                                <div className={"row"}>
+                                    <div className={"text-left col-sm-9"}>
+                                        <p className={"p-migrate"}>
+                                            Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.<br/><br/>
+
+                                            Terima kasih,<br/>
+                                            PT. Bahana Sekuritas<br/><br/><br/>
+                                        </p>
                                     </div>
-                                </div>
-                            </div><br/>
-                            <p className={"p-migrate"}>
-                                Untuk saat ini DX Trade hanya dapat digunakan melalui web browser dari computer Anda. Versi mobile/tablet akan hadir pada bulan September 2020.<br/><br/>
-
-                                Pada tanggal 24 Agustus 2020 transaksi pembelian atau penjualan saham melalui web browser akan dialihkan secara otomatis ke DX Trade.<br/><br/>
-
-                                Bila Anda membutuhkan bantuan untuk mengakses/menggunakan aplikasi DX Trade, Anda dapat menghubungi <b>customer service kami di 14009 | Email cs@bahana.co.id </b><br/><br/>
-
-                                Semoga investasi Anda dapat lebih menguntungkan dan tidak terkendala dengan menggunakan aplikasi DX Trade yang baru.<br/><br/>
-
-                                Terima kasih,<br/>
-                                PT. Bahana Sekuritas<br/>
-                            </p>
-                            <div className={"row"}>
-                                <div className={"text-center col-sm-9"}>
-                                    &nbsp;
-                                </div>
-                                <div className={"col-sm-3 text-center"}>
-                                    <button className="ui icon button red go-button circular" onClick={this.migrate}><i aria-hidden="true" className="play icon"></i>
-                                    </button><br/>
-                                    <span className={"f-18 text-danger pointer"} onClick={this.migrate}>OK</span>
+                                    <div className={"col-sm-3 text-center mt-5"}>
+                                        <button className="ui icon button red go-button circular" onClick={this.migrate}><i aria-hidden="true" className="play icon"></i>
+                                        </button><br/>
+                                        <span className={"f-18 text-danger pointer"} onClick={this.migrate}>OK</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -222,53 +232,69 @@ class ModalTrial extends React.Component{
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 4?"d-block":"d-none"}`}
                         >
-                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Konfirmasi</h3>
-                            <br/>
-                            <p className={"p-migrate"}>
-                                Terima kasih atas kesediaan Anda untuk beralih ke aplikasi DXTrade.<br/>
-                            </p>
-                            <p className={"p-migrate"}>
-                                Berikut ini informasi yang harus kami sampaikan :<br/><br/>
+                            <img src={WminiLogo} alt="DX TRADE Logo" className="logo-trial"/>
 
-                                1. Akun DXTrade Anda akan kami aktivasi sehari setelah konfirmasi anda bila konfirmasi kami terima sebelum Pukul 15.00 WIB.<br/>
-                                2. Setelah akun DXTrade anda kami aktifkan, anda tidak akan dapat mengakses kembali di aplikasi DT NextG dengan akun lama Anda.<br/>
-                                3. Saat ini aplikasi DXTrade hanya dapat di akses melalui browser di alamat dari komputer Anda .<br/>
-                                4. Aplikasi DXTrade versi mobile akan tersedia pada pertengahan bulan September 2020 setelah mendapatkan sertifikasi dari bursa.<br/>
-                            </p>
-                            <p className={"p-migrate"}>
-                                Seluruh nasabah DT NextG yang masih menggunakan aplikasi DT NextG akan kami alihkan secara otomatis selambat-lambatnya 30 September 2020.<br/>
-                                Terimakasih.<br/>
-                            </p>
-                            <p className={"p-migrate text-center"}>
-                                Kami alihkan anda ke DXTrade?
-                            </p>
-                            <div className={"text-center col-sm-12"}>
-                                <button id="click_migrate" type="submit" onClick={this.handleSubmit}
-                                        className="btn btn-primary form-control py-0 col-sm-1">
-                                    <span id="text-login">Ya</span>
-                                </button>&nbsp;&nbsp;
-                                <button id="click_migrate" type="submit" onClick={this.closeClickToTrial}
-                                        className="btn btn-danger form-control py-0 col-sm-1">
-                                    <span id="text-login">Tidak</span>
-                                </button>
+                            <h3 className={"text-center pb-2 b-title"}>Aktivasi DX Trade<br/>
+                            Informasi Aktivasi DX Trade</h3>
+                            <br/>
+                            <div className={"row "}>
+                                <div className={"col-sm-2"}>&nbsp;</div>
+                                <div className={"col-sm-8"}>
+                                    <p className={"p-migrate"}>
+                                        1. Untuk transaksi saham melalui DX Trade hanya dapat diakses melalui web-based.<br/>
+                                        2. Untuk saat ini Mobile Apps DX Trade belum tersedia.<br/>
+                                        3. Akun DTNext G sudah tidak dapat diakses setelah aktivasi DX Trade telah berhasil.<br/>
+                                        4. DX Trade dapat digunakan H+1(paling lambat 15.00 WIB) setelah Anda menyetujui permintaan Aktivasi.<br/>
+                                        5. Riwayat transkasi yang dilakukan melalui DTNext G tidak dapat diakses melalui DX Trade.<br/><br/>
+                                        Dengan ini, saya menyutujui untuk aktivasi DX Trade.<br/>
+                                    </p>
+                                    <div className={"row"}>
+                                        <div className={"text-center col-sm-9"}>
+                                            <div className={"text-left"}>
+                                                <Checkbox label='Ya, saya setuju' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} defaultChecked checked={(this.state.selectedMigrate)?true:false}/>
+                                            </div>
+                                            <div className={"text-left"}>
+                                                <Checkbox label='Saya masih ingin mempelajari dengan menggunakan trial account' className={"text-black"} onChange={()=>this.setState({selectedMigrate: !this.state.selectedMigrate})} checked={(this.state.selectedMigrate)?false:true}/>
+                                            </div>
+                                        </div>
+                                    </div><br/>
+                                    <div className={"text-center col-sm-12 mt-5"}>
+                                        <button id="click_migrate" type="submit" onClick={this.migrateStep2}
+                                                className="btn btn-primary form-control py-0 col-sm-2">
+                                            <span id="text-login">Submit</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
+
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 5?"d-block":"d-none"}`}
                         >
-                            <h3 className={"text-center d-border-bottom-bold-migrate pb-2 b-title"}>Peringatan Notifikasi</h3>
+                            <img src={WminiLogo} alt="DX TRADE Logo" className="logo-trial"/>
                             <br/>
-                            <p className={"p-migrate"}>
-                                Terimakasih anda telah bersedia mengevaluasi aplikasi DXTrade saat ini, Account DXTrade anda saat ini bersifat percobaan.
-                                Silahkan pilih migrasi saat anda login untuk dapat kami aktifasikan Account anda di DXTrade..<br/>
-                            </p>
-                            <div className={"text-center col-sm-12"}>
-                                <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
-                                        className="btn btn-primary form-control py-0 col-sm-2">
-                                    <span id="text-login">Ya</span>
-                                </button>
+                            <div className={"row "}>
+                                <div className={"col-sm-2"}>&nbsp;</div>
+                                <div className={"col-sm-8"}>
+
+                                    <p className={"p-migrate"}>
+                                        Terimakasih anda telah bersedia mengevaluasi aplikasi DXTrade saat ini, Account DXTrade anda saat ini bersifat percobaan.
+                                        Silahkan pilih migrasi saat anda login untuk dapat kami aktifasikan Account anda di DXTrade..<br/>
+                                    </p>
+                                    <div className={"text-center col-sm-12 mt-5"}>
+                                        <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
+                                                className="btn btn-primary form-control py-0 col-sm-2">
+                                            <span id="text-login">Ok</span>
+                                        </button>
+                                    </div>
+
+                                </div>
                             </div>
+
+
                         </div>
+
                         <div
                             className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 6?"d-block":"d-none"}`}
                         >
@@ -284,6 +310,40 @@ class ModalTrial extends React.Component{
                                     <span id="text-login">Yes</span>
                                 </button>
                             </div>
+                        </div>
+                        <div
+                            className={`px-0 pt-3 col-sm-12 px-3 py-4 text-left ${this.state.selected == 7?"d-block":"d-none"}`}
+                        >
+                            <img src={WminiLogo} alt="DX TRADE Logo" className="logo-trial"/>
+                            <br/>
+
+                            <h3 className={"text-center pb-2 b-title"}>Trial Account<br/>
+                                Informasi Trial Account DX Trade</h3>
+                            <br/>
+                            <div className={"row "}>
+                                <div className={"col-sm-2"}>&nbsp;</div>
+                                <div className={"col-sm-8"}>
+                                    <p className={"p-migrate"}>
+                                        1. Trial hanya berlaku hingga 23 Agustus 2020.<br/>
+                                        2. Trial Account hanya dapat diakses melalui web-based.<br/>
+                                        3. Apabila anda tidak melakukan aktivasi DX Trade hingga tanggal Trial Account
+                                        berakhir, maka akun DX Trade anda akan diaktifkan secara otomatis pada tanggal
+                                        24 Agustus 2020.<br/>
+
+                                    </p>
+                                    <p className={"p-migrate text-center b-title"}>
+                                        <b>Terima kasih telah memilih untuk mempelajari DX Trade</b>
+                                    </p>
+                                    <div className={"text-center col-sm-12 mt-5"}>
+                                        <button id="click_migrate" type="submit" onClick={this.closeClickNoAlert}
+                                                className="btn btn-primary form-control py-0 col-sm-2">
+                                            <span id="text-login">Ok</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                 </div>
             </>

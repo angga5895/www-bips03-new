@@ -6474,9 +6474,9 @@ table .tb-align-center>tr>td{
     border-radius: 10%;
 }
 .ui.modal.large2>.content,.ui.modal.large2>.header{
-    background: #ffffff !important;
+    background: white !important;
 }
 .bg-content-trial{
-    background: #EBEEF3 !important;
+    /*background: #EBEEF3 !important;*/
     padding: 23px 35px 13px 35px !important;
 }

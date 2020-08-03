@@ -98,10 +98,10 @@ const summaryOptions = [
     { key: 'ng', value: 'ng', text: 'NG' },
 ];
 const yearOptions = [
-    { key: 'satu', value: 'satu', text: '1 Qty' },
-    { key: 'dua', value: 'dua', text: '2 Qty' },
-    { key: 'tiga', value: 'tiga', text: '3 Qty' },
-    { key: 'empat', value: 'empat', text: '4 Qty' },
+    { key: 'satu', value: 'satu', text: '1\'st Qtr ' },
+    { key: 'dua', value: 'dua', text: '2\'nd Qtr' },
+    { key: 'tiga', value: 'tiga', text: '3\'rd Qtr' },
+    { key: 'empat', value: 'empat', text: '4\'th Qtr' },
 ]
 
 const CustomFrameHeaderStock = (props) => {
@@ -114,7 +114,7 @@ const CustomFrameHeaderStock = (props) => {
                     <FillHeaderTab treeName="/stockPage" linkTitles={
                         {
                             stockInfoPage : 'STOCK INFO',
-                            stockFinancialStatement : 'FINANCIAL STATEMENT',
+                            stockFinancialStatement : 'FINANCIAL REPORT',
                             stockWatchlistPage: 'STOCK WATCHLIST',
                             stockHistoryPage: 'STOCK TRADE HISTORY',
                             stockTradeSummaryPage: 'STOCK TRADE SUMMARY'
@@ -627,6 +627,18 @@ class StockFinancialStatement_Base extends React.PureComponent {
                                                 <input type="text" className="form-control f-12"
                                                        value="2020" style={{borderRadius: "0px", height: "32.84px"}}/>
                                             </div>
+                                            <div className={"col-sm-5"}></div>
+                                            <div className={`col-sm-1 pl-0 pr-0`}>
+                                                <Popup content='Refresh' position='top center' trigger={
+                                                    <button
+                                                        className={`btn btn-primary btn-refresh-2-right`}
+                                                        style={{"font-size":"12px","width":"38px"
+                                                        }}>
+                                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                                    </button>
+                                                } />
+                                            </div>
+
                                             <div className={"col-sm-12 pl-0 pt-2 card-444"}>
                                                 <table className="table text-white d-border-table bg-dark-grey table-sm table-borderless mb-0 tb-align-center" style={{height: "100%"}}>
                                                     <tbody>

@@ -7,7 +7,7 @@ import { ContextConnector } from '../appcontext.js';
 import { BIPSAppContext } from '../AppData.js';
 import Flash from '../flash';
 import Bus from '../bus';
-
+import { Base64 } from 'js-base64';
 import {Dropdown} from 'semantic-ui-react';
 import $ from "jquery";
 
@@ -461,6 +461,11 @@ class LoginUserPage_Base extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+
+            username: '',
+            password: '',
+            isChecked: false,
+
             isLoading: false,
             passlogin : 'password',
             seconds: 0,
@@ -558,7 +563,28 @@ class LoginUserPage_Base extends React.PureComponent {
         $("#buttonLogin").css("display","block");
         $("#loader").css("display","none");
     }
+
+    onChangeValue = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    onChangeCheckbox = () => {this.setState((prevState) => ({ isChecked: !prevState.isChecked }))}
+
     buttonClickLogin = () => {
+        const { username, password, isChecked } = this.state
+           if (isChecked && username !== "") {
+
+                var crypted = Base64.encode(password);
+
+                localStorage.username = username
+                localStorage.password = crypted
+                localStorage.checkbox = isChecked
+           }else{
+               localStorage.clear();
+           }
+
         var r = this.refs;
         var p = this.props;
         $("#loader").css("display","block");
@@ -627,6 +653,14 @@ class LoginUserPage_Base extends React.PureComponent {
     }
 
     componentDidMount() {
+        if (localStorage.checkbox && localStorage.username !== "") {
+            this.setState({
+                isChecked: true,
+                username: localStorage.username,
+                password: Base64.decode(localStorage.password),
+            })
+        }
+
       var input = document.getElementById("press_login");
         input.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
@@ -634,6 +668,7 @@ class LoginUserPage_Base extends React.PureComponent {
                 document.getElementById("click_login").click();
             }
         });
+
     }
 
     clickOjk = (e) => {
@@ -693,9 +728,9 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     {/*<input type="text" ref="userID" className="text-white input-login col-sm-12"/>*/}
                                                     <div className={"py-2"}>
                                                         <div id="input-user" className="ui left icon input col-sm-12 text-white px-0 dark mx-0 my-0">
-                                                            <input type="text" ref="userID" placeholder="User ID" id="inputuser" ref="userID"
-                                                                   onChange={this.onChangeUser}
-                                                                   defaultValue="apihtx"/>
+                                                            <input type="text" name={"username"} ref="userID" placeholder="User ID" id="inputuser" ref="userID"
+                                                                   onChange={this.onChangeValue}
+                                                                   defaultValue={this.state.username}/>
                                                             <i aria-hidden="true" className="icon py-3">
                                                                 <i className="icon-icon-user-login"></i>&nbsp;&nbsp;|
                                                             </i>
@@ -707,9 +742,9 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     <div className={"pt-2"}>
                                                         <div className="buttonInside">
                                                             <div id="input-pass" className="ui left icon input col-sm-12 text-white px-0 mx-0 my-0 dark">
-                                                                <input type={this.state.passlogin} ref="password" placeholder="Password"
-                                                                       id="inputpass" onChange={this.onChangePass}
-                                                                       defaultValue="password"/>
+                                                                <input type="password" ref="password" placeholder="Password"
+                                                                       id="inputpass" name={"password"} onChange={this.onChangeValue}
+                                                                       defaultValue={this.state.password}/>
                                                                 <i aria-hidden="true" className="icon py-3">
                                                                     <i className="icon-icon-lock-login"></i>&nbsp;&nbsp;|
                                                                 </i>
@@ -722,7 +757,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             </div>
                                                         </div>
                                                         <div className={"text-left"}>
-                                                            <Checkbox label='Remember Me' />
+                                                            <Checkbox label='Remember Me' checked={this.state.isChecked} name={"rememberMe"} onChange={this.onChangeCheckbox}/>
                                                         </div>
                                                     </div>
                                                 </div>

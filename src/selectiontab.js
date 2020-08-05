@@ -783,7 +783,7 @@ class InfoCash_Base extends React.Component {
                                    mouseLeaveDelay={100}
                                    position='top center'
                                    trigger={
-                                    <tr className="f-16 text-danger cursor-menu" onClick={this.clickLogout}>
+                                    <tr className="f-16 text-danger cursor-menu" onClick={()=>window.location.reload()}>
                                                     <td className={"text-center"}><i className="icofont-sign-out"></i></td>
                                                     <td>Logout</td>
                                     </tr>

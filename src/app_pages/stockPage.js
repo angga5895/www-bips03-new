@@ -658,10 +658,10 @@ class StockFinancialStatement_Base extends React.PureComponent {
                                                     </tr>
                                                     <tr className="bg-tableheader">
                                                         <td className="d-border-tr-gray-all py-0 text-center">Quarter/Year</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-center">1st Qty 2020</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-center">2nd Qty 2019</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-center">3rd Qty 2018</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-center">4th Qty 2017</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">1st Qtr 2020</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">2nd Qtr 2019</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">3rd Qtr 2018</td>
+                                                        <td className="d-border-tr-gray-all py-0 text-center">4th Qtr 2017</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="d-border-tr-gray-all py-0 even-td-blue">Sales Profit</td>

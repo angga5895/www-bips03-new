@@ -6422,6 +6422,11 @@ body{
     font-weight: bold;
     color: black;
 }
+.b-title-sm{
+    font-weight: bold;
+    color: black !important;
+    font-size: 15px;
+}
 .d-border-bottom-bold-migrate {
     border-bottom: white solid 2px!important;
 }
@@ -6479,4 +6484,17 @@ table .tb-align-center>tr>td{
 .bg-content-trial{
     /*background: #EBEEF3 !important;*/
     padding: 23px 35px 13px 35px !important;
+}
+/*div border bottom*/
+.dbb{
+    background: #6a7788;
+    -webkit-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.63);
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.63);
+    height: 3px;
+    margin: 8px 15px 10px 15px;
+    width: 100%;
+}
+.ui.large2>.header{
+    display: none;
 }

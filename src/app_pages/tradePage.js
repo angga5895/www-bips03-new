@@ -118,7 +118,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                                 {
                                     tradePageManOrderbook : 'ORDERLIST',
                                     tradePageManWatchlist: 'BID/OFFER',
-                                    // tradePagePL : 'TRADE P/L',
+                                    tradePagePL : 'TRADE P/L',
                                     tradePageOrderBookList : 'ORDER BOOKING LIST',
                                     tradePageAdvertisement : 'TRADEADV',
                                 }
@@ -3992,6 +3992,6 @@ const TradePageAdv = ContextConnector(BIPSAppContext,
 )(TradePageAdv_Base);
 export {CustomFrameHeaderTrade, Trade,
     OrderbookPage, TradeWatchlist, TradePageAdv, TradeOrderBookList, SettingInWatchlist,
-    OrderSetting,SentOrder,
+    OrderSetting,SentOrder, TradePL,
 
 };

@@ -31,7 +31,7 @@ import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
-    TradeWatchlist, TradePageAdv, TradeOrderBookList,
+    TradeWatchlist, TradePageAdv, TradeOrderBookList, TradePL,
     OrderSetting,SentOrder } from './app_pages/tradePage';
 import AnalyticPage, { CustomFrameHeaderAnalytic, Analytic,
     StockAnalyticPage,
@@ -70,7 +70,7 @@ class App extends React.Component {
             TableProfil, TableCorpAction,
             //TradePage
             /*tree2*/
-            OrderbookPage, TradeWatchlist,
+            OrderbookPage, TradeWatchlist, TradePL,
             OrderSetting,SentOrder,TradePageAdv, TradeOrderBookList,
             //AnalyticPage
             /*tree1*/
@@ -138,7 +138,8 @@ class App extends React.Component {
             {className: 'TradeWatchlist', title: 'WATCHLIST PAGES', instanceName: 'tradePageManOrderbook'},
             {className: 'OrderbookPage', title: 'ORDERBOOK PAGE', instanceName: 'tradePageManWatchlist'},
             {className: 'TradePageAdv', title: 'ADVERTISEMENT LIST', instanceName: 'tradePageAdv'},
-            {className: 'TradeOrderBookList', title: 'ORDER BOOKING LIST', instanceName: 'tradePageOrderBookList'},
+              {className: 'TradeOrderBookList', title: 'ORDER BOOKING LIST', instanceName: 'tradePageOrderBookList'},
+              {className: 'TradePL', title: 'TRADE P/L', instanceName: 'tradePagePL'},
 
             {className: 'OrderSetting', title: 'ORDER SETTING', instanceName: 'AutOrderSetting'},
             {className: 'SentOrder', title: 'SEND ORDER', instanceName: 'AutSentOrder'},
@@ -226,7 +227,7 @@ class App extends React.Component {
                     pages : [
                         'tradePageManOrderbook',
                         'tradePageManWatchlist',
-                        // 'tradePagePL',
+                        'tradePagePL',
                         'tradePageOrderBookList',
                         'tradePageAdv',
                         'AutOrderSetting',

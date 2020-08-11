@@ -364,7 +364,7 @@ class LandingPage_Base extends React.PureComponent {
                                                 <div className={"col-sm-1 px-4 mx-0 f-14"}>
                                                     <button
                                                         className="pull-right btn btn-primary"
-                                                        style={{"font-size":"12px","margin-top":"-7px","width":"38px"}}>
+                                                        style={{"fontSize":"12px","marginTop":"-7px","width":"38px"}}>
                                                         <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
                                                     </button>
                                                 </div>

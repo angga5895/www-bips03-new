@@ -3438,7 +3438,7 @@ class StockWatchlistAgGrid extends React.PureComponent {
             &nbsp;&nbsp;
         </button>);
        for (let i = 1; i < pages+1; i++) {
-            paginationtext.push(<button
+            paginationtext.push(<button key={i}
                 className={`btn btn-sm py-1 px-1 mr-1 btn-page ${(this.state.activePage == i)?"active":""}`}
                 onClick={
                     () => this.changeActive(i)}

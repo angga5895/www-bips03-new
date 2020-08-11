@@ -309,7 +309,7 @@ class SideBar_Base extends React.Component{
                                             }
 
                                             return (
-                                                <tr className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
+                                                <tr key={index} className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
                                                         <div onClick={()=>this.stockClick(charx.name+"-"+charx.fullname)} className="align-self-center text-left click-pointer noselect">
                                                             <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
@@ -402,7 +402,7 @@ class SideBar_Base extends React.Component{
                                                        }
 
                                                        return (
-                                                           <div
+                                                           <div key={index}
                                                                className="align-self-center text-left px-sidebar py-sidebar click-pointer d-sidebar-landscape-hover noselect">
                                                                <h5 className="mb-1">{charx.name}</h5>
                                                                <div className={"f-10 mb-1 text-right" + warna}>

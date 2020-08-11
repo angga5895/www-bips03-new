@@ -772,11 +772,11 @@ class LoginUserPage_Base extends React.PureComponent {
                                                     </div>
                                                 </div>
                                                 <div className={"col-sm-12 text-right px-5 mt-4 text-center"}>
-                                                    <text 
+                                                    <span
                                                         className="text-primary text-right click-pointer mt-2 " 
                                                         onClick={this.buttonClickForgot}>Forgot your password?
-                                                    </text>
-                                                    <text
+                                                    </span>
+                                                    <span
                                                         className="text-right mt-2 dot-login">
                                                         New DX TRADE?&nbsp;
                                                         <span 
@@ -784,7 +784,7 @@ class LoginUserPage_Base extends React.PureComponent {
                                                             {/*onClick={this.buttonClickSignUp}>*/}
                                                             Sign Up
                                                         </span>
-                                                    </text>
+                                                    </span>
                                                     
                                                 </div>
 

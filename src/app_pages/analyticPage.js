@@ -116,7 +116,7 @@ class AnalyticPage_Base extends React.PureComponent {
                         <div className="container px-1 mx-0 col-sm-12 row">
                             {this.state.stockSource.map((charx, index) => {
                                 return (
-                                    <div className={(this.props.addressMultiVal == (index+1)) ? "d-active col-md-" + this.state.colMd + " px-1 pt-2 pb-0 ": "col-md-" + this.state.colMd + " px-1 pt-2 pb-0"} onClick={()=>this.props.handleMultiChart(index + 1)} id={"chartContent" + charx.stockName}>
+                                    <div key={index} className={(this.props.addressMultiVal == (index+1)) ? "d-active col-md-" + this.state.colMd + " px-1 pt-2 pb-0 ": "col-md-" + this.state.colMd + " px-1 pt-2 pb-0"} onClick={()=>this.props.handleMultiChart(index + 1)} id={"chartContent" + charx.stockName}>
                                         <div className={"d-border-inactive card " + classChart} style={boxScroll} id={"chartBox" + charx.stockName}>
                                             <i onClick={() => this.expandView(charx.stockName)} className="icon-icon-fullscreen-in pull-right" style={btnExpPost} data-toggle="tooltip" data-placement="left" title="Expand/Condense chart"></i>
                                             <AnalyticChart viewMode={charx.expandView} key={index.stockName} charVal={charx.stockName} chartData={charx.srcData} chartAlias={charx.dataAlias}/>

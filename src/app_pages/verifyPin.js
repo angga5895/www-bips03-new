@@ -40,10 +40,6 @@ function tanggal() {
 }
 
 class VerifyPIN_Base extends React.PureComponent{
-    constructor(props){
-        super(props);
-    }
-
     state = {
         value: "",
         visible:false,
@@ -59,8 +55,8 @@ class VerifyPIN_Base extends React.PureComponent{
     }
 
     onClickSubmit = (e) => {
-        if(this.state.value.length >= '6' || this.props.pinStatus == true){
-            if(this.props.pinStatus == true) {
+        if(this.state.value.length >= '6' || this.props.pinStatus === true){
+            if(this.props.pinStatus === true) {
                 // if(this.state.value === '123456' || this.props.pinStatus == true) {
                 //     this.props.changePinStatus(true);
                 if (this.props.tipe === 'buy'){
@@ -186,11 +182,11 @@ class VerifyPIN_Base extends React.PureComponent{
 
     componentDidMount(){
         $(".pincode-input-text").on('keypress',function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#pin-click-verify").click();
             }
         });
-        if(this.props.pinStatus == true){
+        if(this.props.pinStatus === true){
             $("#pin-click-verify").click();
         }
     }
@@ -274,7 +270,7 @@ class VerifyPIN_Base extends React.PureComponent{
 class detailBuyModal extends React.Component {
     componentDidMount(){
         $(document).keypress(function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#enter-ok").click();
             }
         });
@@ -365,7 +361,7 @@ class detailBuyModal extends React.Component {
 class detailSellModal extends React.Component {
     componentDidMount(){
         $(document).keypress(function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#enter-ok").click();
             }
         });
@@ -453,7 +449,7 @@ class detailSellModal extends React.Component {
 class detailWithdrawModal extends React.Component {
     componentDidMount(){
         $(document).keypress(function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#enter-ok").click();
             }
         });
@@ -541,7 +537,7 @@ class detailWithdrawModal extends React.Component {
 class detailAmendModal extends React.Component {
     componentDidMount(){
         $(document).keypress(function(e) {
-            if(e.which == 13) {
+            if(e.which === 13) {
                 $("#enter-ok").click();
             }
         });

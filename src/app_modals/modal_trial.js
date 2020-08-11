@@ -55,7 +55,7 @@ class ModalTrial extends React.Component{
             }
         }else{
             if(this.state.selected == 1){
-                this.setState({selected: 5});
+                this.setState({selected: 7});
             }else{
                 this.setState({selected: 6});
             }

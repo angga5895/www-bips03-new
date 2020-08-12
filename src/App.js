@@ -226,8 +226,8 @@ class App extends React.Component {
                     name: 'tradePage',
                     pages : [
                         'tradePageManOrderbook',
-                        'tradePageManWatchlist',
                         'tradePagePL',
+                        'tradePageManWatchlist',
                         'tradePageOrderBookList',
                         'tradePageAdv',
                         'AutOrderSetting',

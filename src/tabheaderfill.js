@@ -73,9 +73,9 @@ const FillHeaderTab_Base = (props) => {
                                                                             trademore === 'manual' ?
                                                                                 e.instanceName.search('tradePage') >= 0 ?
                                                                                     e.instanceName.search('tradePageAdv') >= 0?
-                                                                                        'active col-sm-3 bg-blue-white click-pointer text-center bg-blue-white'
+                                                                                        'active col-mn-5 bg-blue-white click-pointer text-center bg-blue-white'
                                                                                         :
-                                                                                        'active col-sm-3 bg-blue-white click-pointer text-center d-border-right bg-blue-white'
+                                                                                        'active col-mn-5 bg-blue-white click-pointer text-center d-border-right bg-blue-white'
                                                                                     :
                                                                                     'd-none'
                                                                                 :
@@ -149,9 +149,9 @@ const FillHeaderTab_Base = (props) => {
                                                                                 trademore === 'manual' ?
                                                                                     e.instanceName.search('tradePage') >= 0 ?
                                                                                         e.instanceName.search('tradePageAdv') >= 0?
-                                                                                            'col-sm-3 click-pointer text-center'
+                                                                                            'col-mn-5 click-pointer text-center'
                                                                                             :
-                                                                                            'col-sm-3 click-pointer text-center d-border-right'
+                                                                                            'col-mn-5 click-pointer text-center d-border-right'
                                                                                         :
                                                                                         'd-none'
                                                                                     :

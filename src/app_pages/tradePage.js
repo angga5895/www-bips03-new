@@ -117,8 +117,8 @@ const CustomFrameHeaderTrade_Base = (props) => {
                             <FillHeaderTab tradeMode="manual" treeName="/tradePage" linkTitles={
                                 {
                                     tradePageManOrderbook : 'ORDERLIST',
-                                    tradePageManWatchlist: 'BID/OFFER',
                                     tradePagePL : 'TRADE P/L',
+                                    tradePageManWatchlist: 'BID/OFFER',
                                     tradePageOrderBookList : 'ORDER BOOKING LIST',
                                     tradePageAdvertisement : 'TRADEADV',
                                 }
@@ -1064,27 +1064,9 @@ class TradePageAdv_Base extends React.PureComponent{
 class TradePL extends React.PureComponent{
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             activeTab: '1',
         };
-
-    }
-    componentDidMount() {
-        $(document).ready(function() {
-            var sd = new Date(), ed = new Date();
-            var isRtl = $('html').attr('dir') === 'rtl';
-            $('#datepickerTrade').datepicker({
-                orientation: isRtl ? 'auto right' : 'auto left',
-                format: "dd/mm/yyyy",
-                changeMonth: true,
-                changeYear: true,
-                startDate: '01/01/1920',
-                autoclose: true,
-                endDate : sd,
-                todayHighlight: true,
-                todayBtn: "linked",
-            });
-        });
     }
     ceksize(){
         if(window.innerWidth > 1290 && window.innerWidth <= 1370){
@@ -1112,56 +1094,30 @@ class TradePL extends React.PureComponent{
                 <AppFrameAction ref="frameAction"/>
                 <div className="row f-12">
                                     <div className="col-md-12">
-                                           
-                                           <div className="row p-3">
-                                                <div className="col-md-3 ui input" style={{paddingRight:'53px'}}>
-                                                    <Input placeholder='dd/mm/yy' id="datepickerTrade" className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
-                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
-                                                        className="fa fa-calendar-alt"></span></span>
-                                                </div>
-                                                <div className={"col-sm-4 text-left mb-0 px-3"}>
-                                                <Checkbox className="my-0 mr-3" label='Fee Tax' /> 
-                                                    <button 
-                                                    onClick={this.buttonClickPIN} 
-                                                    className={"btn btn-primary"}>&nbsp;Search
-                                                    </button>
-                                                </div>
-                                            </div>
-                                           
-                                           
-                                           
                                             <div className="col-md-12 p-3">
                                                 <div className="row p-3">
-                                                    <div className="col-md-1 mt-3 mb-5">
+                                                    <div className="col-md-3 mt-3 mb-5">
                                                         Sell Amount
                                                     </div>
                                                     <div className="col-md-3">
                                                         <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
                                                         className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
-                                                    <div className="col-md-1 mt-3">
+                                                    <div className="col-md-3 mt-3">
                                                         Sales PL
                                                     </div>
                                                     <div className="col-md-3">
                                                         <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
                                                         className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
-                                                    <div className="col-md-1 mt-3">
-                                                        Fee & Tax
-                                                    </div>
-                                                    <div className="col-md-3">
-                                                        <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
-                                                        className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
-                                                    </div>
-
-                                                    <div className="col-md-1 mt-3">
+                                                    <div className="col-md-3 mt-3">
                                                         Buy Amount
                                                     </div>
                                                     <div className="col-md-3">
                                                         <Input readonly defaultValue='0,00.' placeholder='SellAmount' 
                                                         className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                                     </div>
-                                                    <div className="col-md-1 mt-3">
+                                                    <div className="col-md-3 mt-3">
                                                         Sales PL(%)
                                                     </div>
                                                     <div className="col-md-3">
@@ -3188,12 +3144,12 @@ class TradePLAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "code", headerName: "Code", sortable: true, resizable: true,comparator: stringComparator,
-                    width: s=="s49"?280:s=="s50"?260:s=="s67"?260:s=="s75"?240:s=="s80"?200:s=="s90"?165:s=="s100"?160:150,
+                    width: s=="s49"?210:s=="s50"?195:s=="s67"?180:s=="s75"?160:s=="s80"?135:s=="s90"?110:s=="s100"?105:100,
                     minWidth:140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
-                },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "buyVol", headerName: "Buy Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?290:s=="s50"?255:s=="s67"?230:s=="s75"?210:s=="s80"?180:s=="s90"?165:s=="s100"?160:150, minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -3204,31 +3160,37 @@ class TradePLAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                },{ field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?210:s=="s50"?195:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?115:s=="s100"?110:100,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150, minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?310:s=="s50"?270:s=="s67"?230:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "pl", headerName: "P/L(%)", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?255:s=="s75"?240:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "PL", headerName: "P/L(+/-)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?220:s=="s75"?220:s=="s80"?185:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?160:s=="s50"?150:s=="s67"?140:s=="s75"?135:s=="s80"?120:s=="s90"?110:s=="s100"?100:95,
                     minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";

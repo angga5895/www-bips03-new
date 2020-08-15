@@ -226,11 +226,11 @@ const UISelectionTab_Base = (props) => {
                         </div>
 
                         <div className="col-sm-header-user row mx-0">
-                            <Menu.Menu className="col-sm-8 px-2 mx-0">
+                            <Menu.Menu className="col-sm-7 px-2 mx-0">
                                 <InfoCash/>
                             </Menu.Menu>
 
-                            <Menu.Menu className="px-0 mx-0">
+                            <Menu.Menu className="col-sm-5 px-0 mx-0">
                                 <UserInfo/>
                             </Menu.Menu>
                         </div>
@@ -866,12 +866,12 @@ class UserInfo_Base extends React.Component {
             <div className="nav-link px-0 mx-0 py-0 text-white">
                 <AppFrameAction ref="frameAction" />
                 <input type="hidden" id={"clickLogout"} onClick={this.popupLogout}/>
-                <table>
+                <table align="center">
                     <tbody>
                     <tr>
-                        <td className="py-0">
+                        <td className="py-0 text-center">
                             <Dropdown icon={null} text={
-                                <div className="cursor-menu pt-1">
+                                <div className="cursor-menu pt-1 mb-2">
                                     <img src={user_avatar} alt="User" className="img-avatar d-border mr-2"/>
                                     <i className="f-11-center text-gray-tradding oi oi-caret-bottom"></i>
                                 </div>
@@ -943,8 +943,8 @@ class UserInfo_Base extends React.Component {
                         </td>
                     </tr>
                     <tr>
-                        <td className="py-0 px-0 text-center text-primary f-16">
-                            <kbd>{(this.props.GeneralType === true) ? "ACTIVE" : "SUSPEND"}</kbd>
+                        <td className="py-0 px-0 text-center text-primary f-15">
+                            <kbd>{(this.props.GeneralType === true) ? "SUSPEND TRADE" : "SUSPEND"}</kbd>
                         </td>
                     </tr>
                     </tbody>

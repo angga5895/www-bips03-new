@@ -483,9 +483,19 @@ class StockCash_Base extends React.Component{
                 <div className="container-fluid px-0 bg-black-trading f-12 d-none" id="contentPinStockCash">
                     <div className="card-527 col-sm-12 px-0 mx-0 row">
                         <div className="col-sm-2 px-1">
-                            <div className="stockcash-header h-77" style={imgUser}>
-                                <div className="col-sm-12 h-77" style={imgdisplay}>
-                                    <img src={user_avatar} alt="User" className="img-avatar d-border mr-2" /><p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
+                            <div class="row mx-0">
+                                <div className="col-sm-10 stockcash-header h-77 mx-0 px-0" style={imgUser}>
+                                    <div className="col-sm-12 pr-0 h-77" style={imgdisplay}>
+                                        <img src={user_avatar} alt="User" className="img-avatar d-border" />
+                                        <p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
+                                    </div>
+                                </div>
+                                <div className={"col-sm-2 mx-0 px-0"} style={{"backgroundColor":"var(--warna-bg-trading-gray)"}}>
+                                    <button
+                                        className="pull-right btn btn-primary"
+                                        style={{"fontSize":"12px","width":"30px","paddingLeft":"8px","height":"30px","marginTop":"5px","marginRight":"5px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
                                 </div>
                             </div>
                             <div className="col-sm-12 px-0">

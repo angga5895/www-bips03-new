@@ -690,7 +690,8 @@ class ModalHistorical extends React.Component {
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
                     <div className="col-sm-12 px-0 pt-0" >
-                        <TradeListAgGrid size={this.ceksize()}/>
+                        <TradeListAgGrid
+                            size={this.ceksize()}/>
                     </div>
 
                 </div>
@@ -698,6 +699,19 @@ class ModalHistorical extends React.Component {
         );
     }
 }
+
+class OrderDetailModal extends React.Component {
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <ModalOrderDetail/>
+            </>
+        );
+    }
+}
+
 class ModalOrderHistory extends React.Component {
     componentDidMount() {
         $(document).ready(function() {
@@ -741,6 +755,20 @@ class ModalOrderHistory extends React.Component {
         }else{
             return "s100";
         }
+    }
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+    buttonClickOrderDetail = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () =>
+                <div className="col-sm-12 px-0 mx-0 text-right">
+                    <i className="icofont icofont-close text-icofont-close text-white click-pointer" onClick={this.closeClick}></i>
+                </div>,
+            size: 'large',
+            contentClass: OrderDetailModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
     }
     render() {
         const paddingParagraphBottom = {
@@ -819,7 +847,10 @@ class ModalOrderHistory extends React.Component {
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
                     <div className="col-sm-12 px-0 pt-0" >
-                        <TransactionOrderHistoryAgGrid size={this.ceksize()}/>
+                        <TransactionOrderHistoryAgGrid
+                            clickorderdetail={this.buttonClickOrderDetail}
+                            size={this.ceksize()}
+                        />
                     </div>
                 </div>
             </>
@@ -4432,8 +4463,18 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                 { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth: 100, comparator: stringComparator,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-left f-12";
-                    }, suppressSizeToFit: true
+                        return " grid-table d-border-aggrid-right text-left f-12 click-pointer";
+                    },
+                    cellRenderer : function (params) {
+                        var order = params.data.order;
+                        var eDiv = document.createElement('div');
+                        eDiv.innerHTML = '<span class="btn-cellorder px-1">' +order+ '</span>';
+                        var aButton = eDiv.querySelectorAll('.btn-cellorder')[0];
+
+                        aButton.addEventListener('dblclick', self.props.clickorderdetail);
+                        return eDiv;
+                    },
+                    suppressSizeToFit: true
                 }, { field: "marketNoC", headerName: "Market No", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?130:s=="s50"?120:100, minWidth: 100,comparator: stringComparator,
                     cellClass : function (params) {

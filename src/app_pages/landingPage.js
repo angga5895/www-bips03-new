@@ -4546,6 +4546,24 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     },},
+                { field: "userId", headerName: "UserID", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s49"?130:100, minWidth:100, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },
+                { field: "method", headerName: "Method", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s49"?130:100, minWidth:100, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },
+                { field: "terminal", headerName: "Terminal", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s49"?130:100, minWidth:100, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },
             ],
             defaultColDef: {
                 sortable: true,
@@ -4568,6 +4586,9 @@ class TransactionOrderHistoryAgGrid extends React.PureComponent {
                     time: '09:03:10',
                     rejectreason: '-',
                     userOrderC: '',
+                    userId: "A9088",
+                    terminal: "Web",
+                    method: "Direct",
                 },{
                     order: "0001",
                     marketNoC: "011",

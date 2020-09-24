@@ -22,7 +22,7 @@ import bahana_logo from './../img/bs-white-transparent_small.png';
 import ojk_logo from './../img/ojk_small.png';
 import idx_logo from './../img/idx_mini.png';
 // import dxtrade_logo from './../img/dxtradelogos.png';
-import dxtrade_logo from './../img/logo_white_small_medium.png';
+import dxtrade_logo from './../img/logo_white_small_medium(2).png';
 
 class DisclaimerModal extends React.Component {
     closeClick = (e) => {

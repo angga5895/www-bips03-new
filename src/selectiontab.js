@@ -28,9 +28,10 @@ import bahana_logo from './img/bs-white-transparent_small.png';
 import ojk_logo from './img/ojk_small.png';
 import idx_logo from './img/idx_mini.png';
 
-import dxtrade_logo from './img/logo_black_medium.png';
-import WminiLogo from './img/logo_white_mini.png';
-import BminiLogo from './img/logo_black_mini.png';
+import dxtrade_logo from './img/logo_black_medium(2).png';
+import WminiLogo from './img/logo_white_mini(2).png';
+import BminiLogo from './img/logo_black_mini(2).png';
+
 // import dxtrade_logo from './img/LOGO DX TRADE-01-mini.png';
 import './selectiontab.css';
 

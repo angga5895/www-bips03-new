@@ -7,8 +7,7 @@ import marketImage from "../img/marketImage3.jpg";
 
 import $ from "jquery";
 import {Checkbox} from "semantic-ui-react";
-import WminiLogo from "../img/logo_white_mini.png";
-import BminiLogo from "../img/logo_black_mini.png";
+import WminiLogo from "../img/logo_white_mini(2).png";
 
 
 class ModalTrial extends React.Component{

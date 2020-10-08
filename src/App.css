@@ -1283,6 +1283,10 @@ thead tr:nth-child(1) th {
         width: 450%!important;
     }
 }
+.col-mn-7{
+    flex: 0 0 14.285% !important;
+    max-width: 14.285% !important;
+}
 
 @media (max-width: 575px){
     .w-input {
@@ -1301,7 +1305,7 @@ thead tr:nth-child(1) th {
     border: #565252 solid .7px!important;
 }
 
-.col-mn-5 {
+.col-mn-5, .col-mn-7 {
     position: relative!important;
     width: 100%!important;
     padding-right: 15px;
@@ -6494,4 +6498,13 @@ table .tb-align-center>tr>td{
 }
 .ui.large2>.header{
     display: none;
+}
+.bb-blue{
+    border-bottom: 2px solid darkblue;
+}
+.bg-currencies{
+    background: #232730;
+}
+.col-mn-7>a{
+    padding: 15px 5px!important;
 }

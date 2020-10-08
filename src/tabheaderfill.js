@@ -42,10 +42,10 @@ const FillHeaderTab_Base = (props) => {
                                                         e.instanceName.search('StatistikPage') >= 0 ?
                                                             e.instanceName.search('newResearch') >= 0?
                                                                 // 'active col-sm-4 click-pointer text-center bg-blue-white'
-                                                                'active col-sm-2 click-pointer text-center bg-blue-white'
+                                                                'active col-mn-7 click-pointer text-center bg-blue-white'
                                                                 :
                                                                 // 'active col-sm-4 click-pointer d-border-right text-center bg-blue-white'
-                                                                'active col-sm-2 click-pointer d-border-right text-center bg-blue-white'
+                                                                'active col-mn-7 click-pointer d-border-right text-center bg-blue-white'
                                                             :
 
                                                             e.instanceName.search('Chat') >= 0 ?
@@ -110,10 +110,10 @@ const FillHeaderTab_Base = (props) => {
                                                         e.instanceName.search('StatistikPage') >= 0 ?
                                                             e.instanceName.search('newResearch') >= 0?
                                                                 // 'col-mn-5 click-pointer text-center'
-                                                                'col-sm-2 click-pointer text-center'
+                                                                'col-mn-7 click-pointer text-center'
                                                                 :
                                                                 // 'col-sm-4 click-pointer d-border-right text-center'
-                                                                'col-sm-2 click-pointer d-border-right text-center'
+                                                                'col-mn-7 click-pointer d-border-right text-center'
 
                                                             :
 

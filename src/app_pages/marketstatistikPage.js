@@ -41,6 +41,52 @@ const summaryOptions = [
     // { key: 'ng', value: 'ng', text: 'NG' },
 ];
 
+function stringComparator(valueA, valueB){
+    if(valueA !== null && valueB !== null){
+        if(valueA.length < 2){
+            return null;
+        }else if(valueB.length < 2){
+            return null;
+        }else{
+            return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+        }
+    }
+
+}
+function integerComparator(valueA, valueB){
+    if(valueA == ""){
+        return null;
+    }else if(valueB == ""){
+        return null;
+    }else{
+        return valueA - valueB;
+    }
+}
+
+function dateComparator(date1, date2) {
+    var date1Number = monthToComparableNumber(date1);
+    var date2Number = monthToComparableNumber(date2);
+    if (date1Number === null && date2Number === null) {
+        return date1;
+    }
+    if (date1Number === null) {
+        return date1;
+    }
+    if (date2Number === null) {
+        return date2;
+    }
+    return date1Number - date2Number;
+}
+function monthToComparableNumber(date) {
+    if (date === undefined || date === null || date.length !== 10) {
+        return null;
+    }
+    var yearNumber = date.substring(6, 10);
+    var monthNumber = date.substring(3, 5);
+    var dayNumber = date.substring(0, 2);
+    var result = yearNumber * 10000 + monthNumber * 100 + dayNumber;
+    return result;
+}
 
 const CustomFrameHeaderMarketStatistik= (props) =>{
     return (
@@ -54,6 +100,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             indiceMarketStatistikPage: 'SECTORAL INDEX',
                             nonSectoralStatistikPage: 'NON SECTORAL INDEX',
                             topBrokerMarketStatistikPage: 'TOP BROKER',
+                            currenciesMarketStatistikPage: 'CURRENCIES & INT.INDICES',
                             newResearchMarketStatistikPage: 'NEWS',
                         }
                     }/>
@@ -1077,6 +1124,448 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
         );
     }
 }
+
+class CurrenciesMarketStatistikPage extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state={
+            activeTab: '1',
+        };
+
+    }
+
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#CDCDCE',
+            neutral20: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral30: this.props.thememode === true ? '#333332' : '#E9E9E9',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#878787',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#ece9ea',
+            primary: '#0071BC',
+        },
+    });
+    render() {
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid",
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0
+            })
+        };
+        const stockOptions = [
+            { value:'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama ' },
+            { value:'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra ' },
+            { value:'bumi', code: 'BUMI', saham: 'Bumi Resource ' },
+            { value:'asii', code: 'ASII', saham: 'Argo Astra Lestari ' },
+            { value:'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia ' },
+            { value:'wskt', code: 'WSKT', saham: 'Waskita ' },
+            { value:'indf', code: 'INDF', saham: 'Indofood ' },
+            { value:'bbca', code: 'BBCA', saham: 'Bank BCA ' },
+            { value:'smrg', code: 'SMGR', saham: 'Semen Indonesia ' },
+            { value:'bbri', code: 'BBRI', saham: 'Bank BRI ' }
+        ];
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
+        return (
+            <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+                <div className={"row pl-4 pr-4 mt-2"}>
+                    <div className="col-sm-4 px-0 mb-3 bg-currencies">
+                        <div className="col-sm-12 mx-0 text-center row px-2">
+                            <div className="col-sm-11 px-0 text-left text-primary pt-3 pb-2">
+                                <h1>USD/IDR</h1>
+                            </div>
+                            <div className={"col-sm-1 px-0"}>
+                                <Popup content='Refresh' position='top center' trigger={
+                                    <button
+                                        className={`btn btn-primary pull-right`}
+                                        style={{"font-size": "12px", "marginTop": "6px", "width": "38px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
+                                }/>
+                            </div>
+                            <div className={"col-sm-5 px-0 mx-0 text-left"}>
+                                14,850
+                            </div>
+                            <div className={"col-sm-1 f-12 px-0 mx-0 pt-3 text-success text-left"}>
+                                <i className="oi oi-caret-bottom"></i>
+                            </div>
+                            <div className={"col-sm-6 f-12 px-0 mx-0 pt-3 text-success text-left"}>
+                                +5 (+0.03%)
+                            </div>
+                            <div className={"col-sm-12 px-0 mb-3 py-2 f-12 text-left bb-blue"}>
+                                Last Updated: 11:42::00 WIB | 28/09/2020
+                            </div>
+                        </div>
+                        <CurrenciesAgGrid size={this.ceksize()}/>
+                    </div>
+
+                    <div className="col-sm-8 pl-1 pr-0 mb-3 ">
+                        <div className="col-sm-12 px-2 mx-0 text-center row ">
+                            <div className="col-sm-12 px-3 pt-3 mx-0 text-left f-15 bg-currencies">
+                                INTERNATIONAL INDICES
+                                <Popup content='Refresh' position='top center' trigger={
+                                    <button
+                                        className={`btn btn-primary pull-right col-sm-1`}
+                                        style={{"font-size": "14px", "width": "38px", "margin-top": "-8px"}}>
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                    </button>
+                                }/>
+                            </div>
+
+                        </div>
+                        <InternationalIndicesAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
+
+
+            </div>
+        )
+    };
+}
+class CurrenciesAgGrid extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "other", headerName: "Other Currencies", sortable: true, resizable: true,comparator: stringComparator,
+                    width: 140, minWidth:140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 90, minWidth: 90,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100, minWidth: 100,
+                    cellClass : function (params) {
+                        return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 75, minWidth: 75,
+                    cellClass : function (params) {
+                        return params.data.change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    other: "USD/IDR",
+                    last: 14.233,
+                    change: "-5",
+                    percentage: "0.003%",
+                },{
+                    other: "SGD/IDR",
+                    last: 10003,
+                    change: "13",
+                    percentage: "0.05%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div className={"px-3"} style={{ width: "100%", height: "100%" }}>
+                <p className={"text-primary f-15"}>PREV CLOSE
+                &nbsp;<span className={"text-success"}>14,876</span></p>
+                <div
+                    className={"card-220 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+class InternationalIndicesAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "symbol", headerName: "Symbol", sortable: true, resizable: true,comparator: stringComparator,
+                    width: 135,
+                    minWidth:135,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "name", headerName: "Name", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?230:145,
+                    minWidth: 230,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "lastUpdated", headerName: "Last Updated", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    minWidth: 145,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12";
+                    },
+                },{ field: "lastPrice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    minWidth: 145,
+                    cellClass : function (params) {
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 60,
+                    minWidth: 60,
+                    cellClass : function (params) {
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    symbol: "GSPC",
+                    name: 123232131,
+                    lastUpdated: 12,
+                    lastPrice: 5,
+                    change: "-23",
+                    percentage: "1.6%",
+                },{
+                    symbol: "DJI",
+                    name: "Dow jones Industrial Average",
+                    lastUpdated: "10/8/2020 10:39",
+                    lastPrice: "334.32",
+                    change: "-23",
+                    percentage: "1.6%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }} className={"px-2"}>
+                <div
+                    className={"card-tradeAdv ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+
 
 class NewResearchMarketStatistikPage extends React.PureComponent {
     render(){
@@ -3695,6 +4184,7 @@ export {CustomFrameHeaderMarketStatistik, MarketStatistik,
     IndiceMarketStatistikPage,
     IndiceMarketSecondStatistikPage,
     TopBrokerMarketStatistikPage,
+    CurrenciesMarketStatistikPage,
     NewResearchMarketStatistikPage,
     NonSectoralStatistikPage,
     GeneralNewResearchPage, StockNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage};

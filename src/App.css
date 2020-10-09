@@ -6152,7 +6152,7 @@ textarea {
     border-bottom: 1px solid var(--warna-d-border);
 }
 .card-tradePL{
-    height: 343px;
+    height: 393px;
 }
 .card-tradeAdv{
     height: 343px;
@@ -6507,4 +6507,8 @@ table .tb-align-center>tr>td{
 }
 .col-mn-7>a{
     padding: 15px 5px!important;
+}
+.card-354{
+    width: 100%;
+    height: 354px;
 }

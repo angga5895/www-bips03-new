@@ -1285,12 +1285,14 @@ class CurrenciesAgGrid extends React.PureComponent{
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 90, minWidth: 90,
+                    width: s=="s49"?280:s=="s50"?235:s=="s67"?205:s=="s75"?170:s=="s80"?140:s=="s90"?107:s=="s100"?107:90,
+                    minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100, minWidth: 100,
+                    width: s=="s49"?278:s=="s50"?240:s=="s67"?190:s=="s75"?180:s=="s80"?140:s=="s90"?100:s=="s100"?100:100,
+                     minWidth: 100,
                     cellClass : function (params) {
                         return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
@@ -1388,7 +1390,7 @@ class CurrenciesAgGrid extends React.PureComponent{
                 <p className={"text-primary f-15"}>PREV CLOSE
                 &nbsp;<span className={"text-success"}>14,876</span></p>
                 <div
-                    className={"card-220 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-354 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1420,19 +1422,19 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "name", headerName: "Name", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?230:145,
+                    width: s=="s49"?420:s=="s50"?375:s=="s67"?320:s=="s75"?290:s=="s80"?230:s=="s90"?190:s=="s100"?230:145,
                     minWidth: 230,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "lastUpdated", headerName: "Last Updated", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?420:s=="s50"?360:s=="s67"?313:s=="s75"?290:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "lastPrice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?440:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -1466,7 +1468,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     symbol: "GSPC",
                     name: 123232131,
                     lastUpdated: 12,
-                    lastPrice: 5,
+                    lastPrice: 5+" "+s,
                     change: "-23",
                     percentage: "1.6%",
                 },{
@@ -1546,7 +1548,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }} className={"px-2"}>
                 <div
-                    className={"card-tradeAdv ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"

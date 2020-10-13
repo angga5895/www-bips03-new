@@ -20,6 +20,7 @@ import user_avatar from "../img/man.png";
 import '../bootstrap-3.3.7/bootstrap-datepicker.min.css';
 import PinInput from "react-pin-input";
 import {Table} from "react-bootstrap";
+import {WSConnectionAction} from "../appnetwork";
 
 const stateOptionsLp = [
     { key: 'lastprice', value: 'lastprice', text: 'Last Price' },
@@ -90,6 +91,7 @@ const CustomFrameHeaderLanding = (props) =>{
                             tradeListHistoryPageInvboard: 'HISTORICAL',
                             fundTransferPageInvboard: 'FUND TRANSFER',
                             inquryAccountPageInvboard: 'ACCOUNT INFO',
+                            tradePLPageInvboard: 'TRADE P/L',
                             // InvboardTcAndSoa: 'TC & SOA',
                         }
                     }/>
@@ -2152,6 +2154,325 @@ class TradeConfirmPageAgGrid extends React.PureComponent{
                         rowData={this.state.rowData}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+class TradePLPage extends React.PureComponent{
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeTab: '1',
+        };
+    }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerstartTrade').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendTrade').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
+    render() {
+        return (
+            <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+                <div className="row f-12">
+                    <div className={"col-sm-12"}>
+                        <table>
+                            <tr>
+                                <td className={"px-0 py-0"}>
+                                    <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                </td>
+                                <td className={"px-0  py-0"}>
+                                    <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                        <Input placeholder='dd/mm/yy' id="datepickerstartTrade" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                        <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                    </div>
+                                </td>
+                                <td className={"px-0  py-0"}>
+                                    <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
+                                </td>
+                                <td className={"px-0 py-0" }>
+
+                                    <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                        <Input placeholder='dd/mm/yy' id="datepickerendTrade" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                        <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                        <div className="col-md-12">
+                            <div className="row p-3">
+                                <div className="col-md-3 mt-3 mb-5">
+                                    Sell Amount
+                                </div>
+                                <div className="col-md-3">
+                                    <Input readonly defaultValue='0,00.' placeholder='SellAmount'
+                                           className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                </div>
+                                <div className="col-md-3 mt-3">
+                                    Sales PL
+                                </div>
+                                <div className="col-md-3">
+                                    <Input readonly defaultValue='0,00.' placeholder='SellAmount'
+                                           className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                </div>
+                                <div className="col-md-3 mt-3">
+                                    Buy Amount
+                                </div>
+                                <div className="col-md-3">
+                                    <Input readonly defaultValue='0,00.' placeholder='SellAmount'
+                                           className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                </div>
+                                <div className="col-md-3 mt-3">
+                                    Sales PL(%)
+                                </div>
+                                <div className="col-md-3">
+                                    <Input readonly defaultValue='0,00.' placeholder='SellAmount'
+                                           className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <div className="col-sm-12 px-0">
+                    <TradePLAgGrid
+                        size={this.ceksize()}/>
+                </div>
+            </div>
+        )
+    };
+}
+
+class TradePLAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "code", headerName: "Code", sortable: true, resizable: true,comparator: stringComparator,
+                    width: s=="s49"?210:s=="s50"?195:s=="s67"?180:s=="s75"?160:s=="s80"?135:s=="s90"?110:s=="s100"?105:100,
+                    minWidth:140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "buyVol", headerName: "Buy Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?290:s=="s50"?255:s=="s67"?230:s=="s75"?210:s=="s80"?180:s=="s90"?165:s=="s100"?160:150, minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "buyAmount", headerName: "Buy Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?230:s=="s75"?210:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?210:s=="s50"?195:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?115:s=="s100"?110:100,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "sellAmount", headerName: "Sell Amount", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?220:s=="s80"?200:s=="s90"?170:s=="s100"?160:150, minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?310:s=="s50"?270:s=="s67"?230:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?300:s=="s50"?270:s=="s67"?255:s=="s75"?240:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "PL", headerName: "P/L(+/-)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?220:s=="s75"?220:s=="s80"?185:s=="s90"?160:s=="s100"?150:140,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "percentage", headerName: "(%)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?160:s=="s50"?150:s=="s67"?140:s=="s75"?135:s=="s80"?120:s=="s90"?110:s=="s100"?100:95,
+                    minWidth: 140,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    code :"AALI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",
+                },{
+                    code :"BUMI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",
+                },{
+                    code :"BUDI"+s,
+                    vol: 3,
+                    buyAmount : "13.000",
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",
+                },{
+                    code :"SMGR"+s,
+                    vol: 3,
+                    buyAmount : "13.000",
+                    sellAmount: "14.000",
+                    feeTax: "15.000",
+                    avgPrice: "222",
+                    pl: "123",
+                    percentage: "1000",
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-tradePL ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
                     </AgGridReact>
                 </div>
@@ -5355,4 +5676,5 @@ export { CustomFrameHeaderLanding, LandingPage,
     InquryAccount,
     tcAndSoa,
     VerifyPINPortofolio,
+    TradePLPage,
 };

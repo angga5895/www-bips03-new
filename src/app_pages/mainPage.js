@@ -1985,23 +1985,23 @@ class MarqueeMac extends React.PureComponent{
                     change: -0.05,
                     percentage: -0.04,
                 },{
-                    symbol: 'TLPM',
+                    symbol: 'USD/IDR',
                     last: '78.14',
                     change: 0.05,
                     percentage: 0.05,
                 },
                 {
-                    symbol: 'BBCA',
+                    symbol: 'SGD/IDR',
                     last: '12849',
                     change: -0.99,
                     percentage: -0.30,
                 },{
-                    symbol: 'BBRI',
+                    symbol: 'DJIA',
                     last: '108.59',
                     change: 0,
                     percentage: 0,
                 },{
-                    symbol: 'BUMI',
+                    symbol: 'NASDAQ',
                     last: '0.9874',
                     change: -0.05,
                     percentage: -0.04,

@@ -291,46 +291,46 @@ class TabAppearance_Base extends React.PureComponent {
 
                     <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>
 
-                    <div className="form-group row mb-0">
-                        <div class="col-sm-6 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">
-                                Balance/Limit displayed at the top
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="form-group row mb-0">*/}
+                        {/*<div class="col-sm-6 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center text-white">*/}
+                                {/*Balance/Limit displayed at the top*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
 
-                    <div className="form-group row mb-0 pl-4">
-                        <div class="col-sm-4 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center border-gray-tradding p-2 w-300">
-                            <input class="magic-radio" type="radio" name="balance" id="a" value="option" onClick={
-                                (e) => {
-                                    this.setState({
-                                        valueBalance: "0"
-                                    });
-                                }
-                            } checked={this.state.valueBalance === "0" ? true : false}/>
-                                <label htmlFor="a" className="text-white f-10-center">
-                                Always show the "Total" amount
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 mx-0 mb-2 ">
-                            <div class="ui small input col-sm-12 f-12 text-center align-self-center border-gray-tradding p-2 w-300">
-                            <input class="magic-radio" type="radio" name="balance" id="b" value="option" onClick={
-                                (e) => {
-                                    this.setState({
-                                        valueBalance: "1"
-                                    });
-                                }
-                            } checked={this.state.valueBalance === "1" ? true : false}/>
-                                <label htmlFor="b" className="text-white f-10-center">
-                                Hide account balance/limit
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="form-group row mb-0 pl-4">*/}
+                        {/*<div class="col-sm-4 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center border-gray-tradding p-2 w-300">*/}
+                            {/*<input class="magic-radio" type="radio" name="balance" id="a" value="option" onClick={*/}
+                                {/*(e) => {*/}
+                                    {/*this.setState({*/}
+                                        {/*valueBalance: "0"*/}
+                                    {/*});*/}
+                                {/*}*/}
+                            {/*} checked={this.state.valueBalance === "0" ? true : false}/>*/}
+                                {/*<label htmlFor="a" className="text-white f-10-center">*/}
+                                {/*Always show the "Total" amount*/}
+                                {/*</label>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                        {/*<div class="col-sm-4 mx-0 mb-2 ">*/}
+                            {/*<div class="ui small input col-sm-12 f-12 text-center align-self-center border-gray-tradding p-2 w-300">*/}
+                            {/*<input class="magic-radio" type="radio" name="balance" id="b" value="option" onClick={*/}
+                                {/*(e) => {*/}
+                                    {/*this.setState({*/}
+                                        {/*valueBalance: "1"*/}
+                                    {/*});*/}
+                                {/*}*/}
+                            {/*} checked={this.state.valueBalance === "1" ? true : false}/>*/}
+                                {/*<label htmlFor="b" className="text-white f-10-center">*/}
+                                {/*Hide account balance/limit*/}
+                                {/*</label>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
 
-                    <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>
+                    {/*<div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div>*/}
 
                    
                 </div>
@@ -353,7 +353,7 @@ class TabPrivacy extends React.Component {
     }
 
     state = {
-        valuePinUsage : "0",
+        valuePinUsage : "1",
         ImgProfil:""
     }
     onChangeAvatar = (e) => {

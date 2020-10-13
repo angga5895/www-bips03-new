@@ -6512,3 +6512,6 @@ table .tb-align-center>tr>td{
     width: 100%;
     height: 354px;
 }
+.mx-width{
+    max-width: 200px;
+}

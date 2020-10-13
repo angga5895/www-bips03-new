@@ -1244,7 +1244,7 @@ more.
 
                                     <div className="form-group">
                                         <li style={marginSelection}>
-                                            <select className="select show-tick form-control" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" id={"indicatorTypeSelect" + this.state.stockType}
+                                            <select className="select show-tick form-control mx-width" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" id={"indicatorTypeSelect" + this.state.stockType}
                                                 title="Add Indicator">
                                             </select>
                                         </li>

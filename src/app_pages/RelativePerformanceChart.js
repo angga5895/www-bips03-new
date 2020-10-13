@@ -741,6 +741,21 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
+
+                    series.normal().fallingFill("#ff0000", 0.8);
+                    series.normal().fallingStroke("#ff0000", 0.8);
+                    series.hovered().fallingFill("#ff0000", 1);
+                    series.hovered().fallingStroke("#ff0000", 1);
+                    series.selected().fallingFill("#ff0000", 0.9);
+                    series.selected().fallingStroke("#ff0000",0.9);
+
+                    series.normal().risingFill("#ff0000", 0.8);
+                    series.normal().risingStroke("#ff0000", 0.8);
+                    series.hovered().risingFill("#ff0000", 1);
+                    series.hovered().risingStroke("#ff0000", 1);
+                    series.selected().risingFill("#ff0000", 0.9);
+                    series.selected().risingStroke("#ff0000", 0.9);
+
                     series.name(dataName.toUpperCase());
 
                     plot.yScale(appSettingsCache['scale']);
@@ -771,11 +786,41 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                     series = plot['line'](mapping);
                     series.name(dataName.toUpperCase());
 
+                    series.fill("#ff0000");
+                    series.normal().fallingFill("#ff0000", 0.8);
+                    series.normal().fallingStroke("#ff0000", 0.8);
+                    series.hovered().fallingFill("#ff0000", 1);
+                    series.hovered().fallingStroke("#ff0000", 1);
+                    series.selected().fallingFill("#ff0000", 0.9);
+                    series.selected().fallingStroke("#ff0000",0.9);
+
+                    series.normal().risingFill("#ff0000", 0.8);
+                    series.normal().risingStroke("#ff0000", 0.8);
+                    series.hovered().risingFill("#ff0000", 1);
+                    series.hovered().risingStroke("#ff0000", 1);
+                    series.selected().risingFill("#ff0000", 0.9);
+                    series.selected().risingStroke("#ff0000", 0.9);
+
                     series2 = plot['line'](mapping2);
                     series2.name(dataName2.toUpperCase());
+                    series2.fill("#ffbf00");
+                    series2.normal().fallingFill("#ffbf00", 0.8);
+                    series2.normal().fallingStroke("#ffbf00", 0.8);
+                    series2.hovered().fallingFill("#ffbf00", 1);
+                    series2.hovered().fallingStroke("#ffbf00", 1);
+                    series2.selected().fallingFill("#ffbf00", 0.9);
+                    series2.selected().fallingStroke("#ffbf00",0.9);
+
+                    series2.normal().risingFill("#ffbf00", 0.8);
+                    series2.normal().risingStroke("#ffbf00", 0.8);
+                    series2.hovered().risingFill("#ffbf00", 1);
+                    series2.hovered().risingStroke("#ffbf00", 1);
+                    series2.selected().risingFill("#ffbf00", 0.9);
+                    series2.selected().risingStroke("#ffbf00", 0.9);
                 }
 
-                series.stroke('2px #64b5f6');
+                series.stroke('2px #ff0000');
+                series2.stroke('2px #ffbf00');
 
                 // setting chart padding to fit both Y axes
                 chart.padding(10, 50, 20, 50);
@@ -1114,7 +1159,7 @@ class RelativePerfomanceChart_Base extends React.PureComponent {
                                     </div>
                                     <div className="form-group">
                                         <li style={marginSelection}>
-                                            <select className="select show-tick form-control" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" data-width={elemWidthIndicator} id={"indicatorTypeSelect" + this.state.stockType}
+                                            <select className="select show-tick form-control mx-width" data-size="10" data-dropup-auto="false" data-style="btn-dark" multiple name="" data-width={elemWidthIndicator} id={"indicatorTypeSelect" + this.state.stockType}
                                                 title="Add Indicator">
                                             </select>
                                         </li>

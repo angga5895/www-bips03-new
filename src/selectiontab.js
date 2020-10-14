@@ -24,7 +24,7 @@ import bipslogo_black from './img/bahanas_black.png';
 // import bahana_logo from './img/bahanalogos.png';
 import bahana_logo_black from './img/bahanalogos_black.png';
 
-import bahana_logo from './img/bs-white-transparent_small.png';
+import bahana_logo from './img/bs-white-transparent(2).png';
 import ojk_logo from './img/ojk_small.png';
 import idx_logo from './img/idx_mini.png';
 

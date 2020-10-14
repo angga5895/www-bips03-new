@@ -18,7 +18,7 @@ import FormAddress        from "../app_sign_up/form_address";
 import FormSource         from "../app_sign_up/form_source";
 import FormAdditonal      from "../app_sign_up/form_additional";
 import { Checkbox } from 'semantic-ui-react'
-import bahana_logo from './../img/bs-white-transparent_small.png';
+import bahana_logo from './../img/Bahana_Sekuritas_Reverse_BW.png';
 import ojk_logo from './../img/ojk_small.png';
 import idx_logo from './../img/idx_mini.png';
 // import dxtrade_logo from './../img/dxtradelogos.png';

@@ -2296,7 +2296,7 @@ class TradePLPage extends React.PureComponent{
         )
     };
 }
-
+// acc. avg. buy price. sell vol, sell amount. avg. Sell Price. P/L(+/-), (%)
 class TradePLAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -2321,6 +2321,12 @@ class TradePLAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
+                },{ field: "accAvgBuyPrice", headerName: "Acc. Avg. Buy Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?310:s=="s50"?270:s=="s67"?230:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
                 },{ field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?210:s=="s50"?195:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?115:s=="s100"?110:100,
                     minWidth: 150,
@@ -2332,13 +2338,7 @@ class TradePLAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "feeTax", headerName: "Fee & Tax", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?310:s=="s50"?270:s=="s67"?230:s=="s75"?230:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
-                    minWidth: 150,
-                    cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
-                    },
-                },{ field: "avgPrice", headerName: "Avg. Price", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: integerComparator,
+                },{ field: "avgSellPrice", headerName: "Avg. Sell Price", sortable: true, filter: "agTextColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?300:s=="s50"?270:s=="s67"?255:s=="s75"?240:s=="s80"?200:s=="s90"?170:s=="s100"?160:150,
                     minWidth: 150,
                     cellClass : function (params) {
@@ -2368,8 +2368,8 @@ class TradePLAgGrid extends React.PureComponent {
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
+                    accAvgBuyPrice: "15.000",
+                    avgSellPrice: "222",
                     pl: "123",
                     percentage: "1000",
                 },{
@@ -2377,8 +2377,8 @@ class TradePLAgGrid extends React.PureComponent {
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
+                    accAvgBuyPrice: "15.000",
+                    avgSellPrice: "222",
                     pl: "123",
                     percentage: "1000",
                 },{
@@ -2386,8 +2386,8 @@ class TradePLAgGrid extends React.PureComponent {
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
+                    accAvgBuyPrice: "15.000",
+                    avgSellPrice: "222",
                     pl: "123",
                     percentage: "1000",
                 },{
@@ -2395,8 +2395,8 @@ class TradePLAgGrid extends React.PureComponent {
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
-                    feeTax: "15.000",
-                    avgPrice: "222",
+                    accAvgBuyPrice: "15.000",
+                    avgSellPrice: "222",
                     pl: "123",
                     percentage: "1000",
                 },

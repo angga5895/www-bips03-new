@@ -1280,25 +1280,25 @@ class CurrenciesAgGrid extends React.PureComponent{
         this.state = {
             columnDefs: [
                 { field: "other", headerName: "Other Currencies", sortable: true, resizable: true,comparator: stringComparator,
-                    width: 140, minWidth:140,
+                    width: s=="s49"?160:s=="s50"?160:s=="s67"?160:s=="s75"?160:s=="s80"?155:s=="s90"?145:s=="s100"?140:130, minWidth:130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?280:s=="s50"?235:s=="s67"?205:s=="s75"?170:s=="s80"?140:s=="s90"?107:s=="s100"?107:90,
-                    minWidth: 90,
+                    width: s=="s49"?270:s=="s50"?225:s=="s67"?185:s=="s75"?165:s=="s80"?130:s=="s90"?100:s=="s100"?90:80,
+                    minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?278:s=="s50"?240:s=="s67"?190:s=="s75"?180:s=="s80"?140:s=="s90"?100:s=="s100"?100:100,
-                     minWidth: 100,
+                    width: s=="s49"?265:s=="s50"?230:s=="s67"?185:s=="s75"?165:s=="s80"?130:s=="s90"?100:s=="s100"?90:85,
+                     minWidth: 85,
                     cellClass : function (params) {
                         return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 75, minWidth: 75,
+                    width: 70, minWidth: 70,
                     cellClass : function (params) {
                         return params.data.change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
@@ -1320,6 +1320,46 @@ class CurrenciesAgGrid extends React.PureComponent{
                     last: 10003,
                     change: "13",
                     percentage: "0.05%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
+                },{
+                    other: "JPY/IDR",
+                    last: 150,
+                    change: "-1",
+                    percentage: "0.001%",
                 },{
                     other: "JPY/IDR",
                     last: 150,
@@ -1422,19 +1462,19 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "name", headerName: "Name", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?375:s=="s67"?320:s=="s75"?290:s=="s80"?230:s=="s90"?190:s=="s100"?230:145,
-                    minWidth: 230,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "lastUpdated", headerName: "Last Updated", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?360:s=="s67"?313:s=="s75"?290:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
+                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "lastPrice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?440:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
+                    width: s=="s49"?430:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -1478,6 +1518,97 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "334.32",
                     change: "-23",
                     percentage: "1.6%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
+                },{
+                    symbol: "^NYA",
+                    name: "Nasdaq Jones Industrial Average",
+                    lastUpdated: "10/9/2020 10:33",
+                    lastPrice: "2213.11",
+                    change: "10",
+                    percentage: "3%",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",

@@ -371,6 +371,8 @@ class AnalyticChart_Base extends React.PureComponent {
 
                         app.removeChart();
 
+                        console.log('/chart magic note/');
+
                         if ($(this).val() !== null) {
                             for (var keyIndicator in appSettingsCache.indicators) {
                                 if (!~$(this).val().indexOf(keyIndicator)) {

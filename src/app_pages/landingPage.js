@@ -130,6 +130,9 @@ class Landing extends React.PureComponent {
 class LandingPage_Base extends React.PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            activeLive: false,
+        };
     }
 
     componentDidMount() {
@@ -276,6 +279,11 @@ class LandingPage_Base extends React.PureComponent {
     closeClick = (e) => {
         this.refs.frameActions.closeModal(100);
     }
+    clickLiveUpdate = (e)=>{
+        this.setState({
+            activeLive: !this.state.activeLive,
+        });
+    }
 
     buttonClickBuy = (e) => {
         this.refs.frameActions.showModal({
@@ -357,11 +365,20 @@ class LandingPage_Base extends React.PureComponent {
                                                 <div className="col-sm-3 px-4 mx-0 f-14">
                                                     <b>Equity Portfolio</b>
                                                 </div>
-                                                <div className="col-sm-4 px-4 mx-0 f-14">
+                                                <div className="col-sm-3 px-4 mx-0 f-14">
                                                     Stock Val : <span className="text-primary">15,234,000</span>
                                                 </div>
-                                                <div className="col-sm-4 px-4 mx-0 f-14">
+                                                <div className="col-sm-3 px-4 mx-0 f-14">
                                                     P/L : <span className="text-success">{pl('1,222,222','7.5')}</span>
+                                                </div>
+                                                <div className={"col-sm-2 px-4 mx-0 f-14"}>
+                                                    <button
+                                                        className={ this.state.activeLive === false ? 'btn btn-danger' : 'btn btn-success' }
+                                                        style={{"fontSize":"12px","marginTop":"-7px"}}
+                                                        onClick={this.clickLiveUpdate}
+                                                    >
+                                                        {(this.state.activeLive === false) ? 'Stop Live Update':'Start Live Update'}
+                                                    </button>
                                                 </div>
                                                 <div className={"col-sm-1 px-4 mx-0 f-14"}>
                                                     <button

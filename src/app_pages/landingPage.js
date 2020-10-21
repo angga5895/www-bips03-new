@@ -279,9 +279,16 @@ class LandingPage_Base extends React.PureComponent {
     closeClick = (e) => {
         this.refs.frameActions.closeModal(100);
     }
+
     clickLiveUpdate = (e)=>{
         this.setState({
             activeLive: !this.state.activeLive,
+        });
+    }
+
+    clickStopUpdate = (e)=>{
+        this.setState({
+            activeLive: true,
         });
     }
 
@@ -372,10 +379,12 @@ class LandingPage_Base extends React.PureComponent {
                                                     P/L : <span className="text-success">{pl('1,222,222','7.5')}</span>
                                                 </div>
                                                 <div className={"col-sm-2 px-4 mx-0 f-14"}>
+                                                    <span id={"HLiveEquity"} onClick={this.clickStopUpdate}></span>
                                                     <button
                                                         className={ this.state.activeLive === false ? 'btn btn-danger' : 'btn btn-success' }
                                                         style={{"fontSize":"12px","marginTop":"-7px"}}
                                                         onClick={this.clickLiveUpdate}
+                                                        id={"buttonLiveEquity"}
                                                     >
                                                         {(this.state.activeLive === false) ? 'Stop Live Update':'Start Live Update'}
                                                     </button>
@@ -3026,6 +3035,13 @@ class PortofolioAgGrid extends React.PureComponent {
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
+    onBodyScroll(params){
+        if(params.direction == "vertical"){
+            if(params.top > 10){
+                $("#HLiveEquity").click();
+            }
+        }
+    }
 
     changeActive(i){
         this.setState({activePage: i});
@@ -3103,7 +3119,9 @@ class PortofolioAgGrid extends React.PureComponent {
                         rowHeight={32}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
-                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        onBodyScroll={this.onBodyScroll}
+                    >
                     </AgGridReact>
                 </div>
                 <div className={"text-center mt-0"}>
@@ -3339,7 +3357,8 @@ class FixedIncomeAgGrid extends React.PureComponent {
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         rowHeight={32}
-                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                    >
                     </AgGridReact>
                 </div>
             </div>

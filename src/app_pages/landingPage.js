@@ -386,7 +386,7 @@ class LandingPage_Base extends React.PureComponent {
                                                         onClick={this.clickLiveUpdate}
                                                         id={"buttonLiveEquity"}
                                                     >
-                                                        {(this.state.activeLive === false) ? 'Stop Live Update':'Start Live Update'}
+                                                        {(this.state.activeLive === false) ? 'Stop Live Update':'Resume Live Update'}
                                                     </button>
                                                 </div>
                                                 <div className={"col-sm-1 px-4 mx-0 f-14"}>

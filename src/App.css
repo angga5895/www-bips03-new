@@ -6515,3 +6515,19 @@ table .tb-align-center>tr>td{
 .mx-width{
     max-width: 200px;
 }
+.btn-live-update{
+    display: inline-block;
+    padding: 7px 7px;
+    margin-bottom: 0;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

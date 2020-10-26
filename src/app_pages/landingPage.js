@@ -461,6 +461,19 @@ class LandingPage_Base extends React.PureComponent {
 class StockCash_Base extends React.Component{
     constructor(props) {
         super(props);
+        this.state={
+            'activeLive' : false,
+        }
+    }
+    clickLiveUpdate = (e)=>{
+        this.setState({
+            activeLive: !this.state.activeLive,
+        });
+    }
+    clickStop = (e) => {
+        this.setState({
+            activeLive: true,
+        });
     }
     ceksize(){
         if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
@@ -487,7 +500,7 @@ class StockCash_Base extends React.Component{
         };
 
         const paddingParagraph = {
-            padding: '10px'
+            padding: '3px'
         }
 
         const divMargin = {
@@ -512,18 +525,36 @@ class StockCash_Base extends React.Component{
                     <div className="card-527 col-sm-12 px-0 mx-0 row">
                         <div className="col-sm-2 px-1">
                             <div class="row mx-0">
-                                <div className="col-sm-10 stockcash-header h-77 mx-0 px-0" style={imgUser}>
-                                    <div className="col-sm-12 pr-0 h-77" style={imgdisplay}>
-                                        <img src={user_avatar} alt="User" className="img-avatar d-border" />
-                                        <p style={paddingParagraph}>Mr. John Doe<br /><i>001-01-008538</i></p>
+                                <div className="col-sm-12 stockcash-header h-77 mx-0 px-0" style={imgUser}>
+                                    <div className="col-sm-12 pr-0 pt-1 h-77" style={imgdisplay}>
+                                        <img src={user_avatar} alt="User" className="img-avatar d-border mt-4" />
+                                        <p style={paddingParagraph}>
+
+                                            Mr. John Doe<br />
+
+                                            <i>001-01-008538</i>
+
+
+
+                                            <button
+                                                className={ this.state.activeLive === false ? 'btn-live-update btn-danger' : 'btn-live-update btn btn-success' }
+                                                // className={'btn-live-update btn-danger'}
+                                                onClick={this.clickLiveUpdate}
+                                                style={{"fontSize":"90px !important"}}
+                                            id={"buttonLiveStock"}
+                                            >
+                                                {(this.state.activeLive === false) ? 'Stop Live Update':'Resume Live Update'}
+                                            </button>
+
+                                            <button
+                                                className="btn-live-update btn-primary"
+                                                style={{"paddingLeft":"5px"}}>
+                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                            </button>
+                                        </p>
+
+
                                     </div>
-                                </div>
-                                <div className={"col-sm-2 mx-0 px-0"} style={{"backgroundColor":"var(--warna-bg-trading-gray)"}}>
-                                    <button
-                                        className="pull-right btn btn-primary"
-                                        style={{"fontSize":"12px","width":"30px","paddingLeft":"8px","height":"30px","marginTop":"5px","marginRight":"5px"}}>
-                                        <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                    </button>
                                 </div>
                             </div>
                             <div className="col-sm-12 px-0">
@@ -542,7 +573,10 @@ class StockCash_Base extends React.Component{
                         </div>
                         <div className="col-sm-10 px-0">
                             <div className="col-sm-12 px-0">
-                                <StockCashAgGrid size={this.ceksize()}/>
+                                <span id={"liveUpdateStockStop"} onClick={this.clickStop}></span>
+                                <StockCashAgGrid
+                                    size={this.ceksize()}
+                                />
                             </div>
                             <div className="col-sm-12 card-221 px-0">
                                 <p className="text-center mt-3 mb-0 h-17 bg-tableheader">Settlement</p>
@@ -2615,7 +2649,7 @@ class PortofolioAgGrid extends React.PureComponent {
                             "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     },
                 },
-                { field: "stockval", headerName: "Stock Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                { field: "mktval", headerName: "Market Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?250:s=="s50"?225:s=="s67"?220:s=="s75"?190:s=="80"? 190:120, comparator: integerComparator,
                     minWidth: 120,
                     cellClass : function (params) {
@@ -2707,7 +2741,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "12,650",
                     lot: "12",
                     shares: "122",
-                    stockval: 12650000,
+                    mktval: 12650000,
                     pl: "-60,240"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-0,40%",
                     remark: ""   ,
                     action:""   },
@@ -2716,7 +2750,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,429",
                     lot: "10",
                     shares: "100",
-                    stockval: 152000,
+                    mktval: 152000,
                     pl: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
                     remark: "",
                     action:""   },
@@ -2725,7 +2759,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,025",
                     lot: "2",
                     shares: "210",
-                    stockval: "1,025,000",
+                    mktval: "1,025,000",
                     pl: "-25,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-2,50%",
                     remark: ""   ,
                     action:""   },
@@ -2734,7 +2768,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2743,7 +2777,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""   },
@@ -2752,7 +2786,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "12,650",
                     lot: "12",
                     shares: "122",
-                    stockval: "12,650,000",
+                    mktval: "12,650,000",
                     pl: "-60,240"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-0,40%",
                     remark: ""   ,
                     action:""   },
@@ -2761,7 +2795,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2770,7 +2804,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""   },
@@ -2779,7 +2813,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "12,650",
                     lot: "12",
                     shares: "122",
-                    stockval: "12,650,000",
+                    mktval: "12,650,000",
                     pl: "-60,240"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-0,40%",
                     remark: ""   ,
                     action:""   },
@@ -2788,7 +2822,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,429",
                     lot: "10",
                     shares: "100",
-                    stockval: "1,529,000",
+                    mktval: "1,529,000",
                     pl: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
                     remark: ""   ,
                     action:""   },
@@ -2797,7 +2831,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,025",
                     lot: "2",
                     shares: "210",
-                    stockval: "1,025,000",
+                    mktval: "1,025,000",
                     pl: "-25,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-2,50%",
                     remark: ""   ,
                     action:""   },
@@ -2806,7 +2840,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2815,7 +2849,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""   },{ code: "AALI",
@@ -2823,7 +2857,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "12,650",
                     lot: "12",
                     shares: "122",
-                    stockval: "12,650,000",
+                    mktval: "12,650,000",
                     pl: "-60,240"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-0,40%",
                     remark: "",
                     action:""   },
@@ -2832,7 +2866,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,429",
                     lot: "10",
                     shares: "100",
-                    stockval: "1,529,000",
+                    mktval: "1,529,000",
                     pl: "-15,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-1,50%",
                     remark: ""   ,
                     action:""   },
@@ -2841,7 +2875,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "1,025",
                     lot: "2",
                     shares: "210",
-                    stockval: "1,025,000",
+                    mktval: "1,025,000",
                     pl: "-25,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-2,50%",
                     remark: "",
                     action: ""},
@@ -2850,7 +2884,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2859,7 +2893,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""
@@ -2869,7 +2903,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2878,7 +2912,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""
@@ -2888,7 +2922,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2897,7 +2931,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""
@@ -2907,7 +2941,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "7,125",
                     lot: "9",
                     shares: "930",
-                    stockval: "7,125,000",
+                    mktval: "7,125,000",
                     pl: "-50,000"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"-5,78%",
                     remark: ""   ,
                     action:""   },
@@ -2916,7 +2950,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "27,400",
                     lot: "4",
                     shares: "410",
-                    stockval: "27,400,000",
+                    mktval: "27,400,000",
                     pl: "+250,650"+ "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +"+2,50%",
                     remark: ""   ,
                     action:""
@@ -2926,7 +2960,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "",
                     lot: "",
                     shares: "",
-                    stockval: "",
+                    mktval: "",
                     pl: "",
                     remark: ""   ,
                     action:""
@@ -2936,7 +2970,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "",
                     lot: "",
                     shares: "",
-                    stockval: "",
+                    mktval: "",
                     pl: "",
                     remark: ""   ,
                     action:""
@@ -2946,7 +2980,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "",
                     lot: "",
                     shares: "",
-                    stockval: "",
+                    mktval: "",
                     pl: "",
                     remark: ""   ,
                     action:""
@@ -2956,7 +2990,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "",
                     lot: "",
                     shares: "",
-                    stockval: "",
+                    mktval: "",
                     pl: "",
                     remark: ""   ,
                     action:""
@@ -2966,7 +3000,7 @@ class PortofolioAgGrid extends React.PureComponent {
                     lastprice: "",
                     lot: "",
                     shares: "",
-                    stockval: "",
+                    mktval: "",
                     pl: "",
                     remark: ""   ,
                     action:""
@@ -3958,7 +3992,9 @@ class StockCashAgGrid extends React.PureComponent {
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
-
+    onBodyScroll(){
+        $("#liveUpdateStockStop").click();
+    }
     render() {
         return (
             <div style={{ width: "100%", height: "100%" }}>
@@ -3973,7 +4009,9 @@ class StockCashAgGrid extends React.PureComponent {
                         rowData={this.state.rowData}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
-                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        onBodyScroll={this.onBodyScroll}
+                    >
                     </AgGridReact>
                 </div>
             </div>

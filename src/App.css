@@ -6531,3 +6531,7 @@ table .tb-align-center>tr>td{
     border: 1px solid transparent;
     border-radius: 4px;
 }
+.td-gradient-yellow{
+    background: rgb(255,212,68);
+    background: linear-gradient(90deg, rgba(255,212,68,1) 0%, rgba(231,121,12,1) 84%);
+}

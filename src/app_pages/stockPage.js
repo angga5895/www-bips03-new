@@ -650,11 +650,11 @@ class StockFinancialStatement_Base extends React.PureComponent {
                                                         <td className="d-border-tr-gray-all py-0 text-center">PBV</td>
                                                     </tr>
                                                     <tr >
-                                                        <td className="d-border-tr-gray-all py-0 text-center">1</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-right">1,754</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-right">78</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-right">6,9</td>
-                                                        <td className="d-border-tr-gray-all py-0 text-right">1,3</td>
+                                                        <td className="td-gradient-yellow py-0 text-center">1</td>
+                                                        <td className="td-gradient-yellow py-0 text-right">1,754</td>
+                                                        <td className="td-gradient-yellow py-0 text-right">78</td>
+                                                        <td className="td-gradient-yellow py-0 text-right">6,9</td>
+                                                        <td className="td-gradient-yellow py-0 text-right">1,3</td>
                                                     </tr>
                                                     <tr className="bg-tableheader">
                                                         <td className="d-border-tr-gray-all py-0 text-center">Quarter/Year</td>

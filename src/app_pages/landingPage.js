@@ -2275,6 +2275,11 @@ class TradePLPage extends React.PureComponent{
     render() {
         return (
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
+                <div id="TradePLPIN" className="text-center align-self-center">
+                    <VerifyPINPortofolio pos="tradePL"/>
+                </div>
+                <div id="ContentTradePL" className="d-none">
+
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
                 <AppFrameAction ref="frameAction"/>
                 <div className="row f-12">
@@ -2352,6 +2357,7 @@ class TradePLPage extends React.PureComponent{
                     <TradePLAgGrid
                         size={this.ceksize()}/>
                 </div>
+            </div>
             </div>
         )
     };
@@ -5581,6 +5587,9 @@ class VerifyPINPortofolio extends React.PureComponent{
                 $("#FundPin").addClass("d-none");
                 $("#ContentFund").removeClass("d-none");
                 $("#ContentFund").addClass("d-block");
+
+                $("#pinTradePL").addClass("d-none");
+                $("#detailTradePL").addClass("d-block");
 
 
             } else{

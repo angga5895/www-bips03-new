@@ -1848,6 +1848,7 @@ class OrderListAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
+
                 { field: "-", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width: s=="s49"?50:35, comparator: stringComparator,
                     minWidth: 35,
@@ -1861,6 +1862,12 @@ class OrderListAgGrid extends React.PureComponent {
                         return <text>&nbsp;</text>
                     },
                     suppressSizeToFit: true
+                },
+                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width:s=="s49"?135:s=="s50"?115:100, minWidth:100, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left  f-12";
+                    },
                 },
                 { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?85:85, minWidth: 85,
@@ -1981,12 +1988,7 @@ class OrderListAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
-                { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width:s=="s49"?135:s=="s50"?115:100, minWidth:100, comparator: stringComparator,
-                    cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-left  f-12";
-                    },
-                },
+
                 { field: "userId", headerName: "UserID", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     width:s=="s49"?130:100, minWidth:100, comparator: stringComparator,
                     cellClass : function (params) {

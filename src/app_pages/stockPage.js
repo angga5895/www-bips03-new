@@ -861,7 +861,7 @@ class StockHistoryPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyModal,
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -974,7 +974,7 @@ class StockHistoryPage_Base extends React.PureComponent {
                                 <div className="col-sm-3 row mx-0 px-0 align-self-center">
                                     <div className="col-sm-12 align-self-center mx-0 px-0">
                                         <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSellHP}><span>Sell</span></button>
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuyHP}><span>Buy</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuyHP}><span>Buy(Test)</span></button>
                                     </div>
                                 </div>
                             </div>

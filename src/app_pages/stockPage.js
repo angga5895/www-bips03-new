@@ -856,7 +856,7 @@ class StockHistoryPage_Base extends React.PureComponent {
         this.refs.frameAction.closeModal(100);
     }
 
-    buttonClickBuy = (e) => {
+    buttonClickBuyHP = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
@@ -866,7 +866,7 @@ class StockHistoryPage_Base extends React.PureComponent {
         })
     }
 
-    buttonClickSell = (e) => {
+    buttonClickSellHP = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
@@ -973,8 +973,8 @@ class StockHistoryPage_Base extends React.PureComponent {
                                 </div>
                                 <div className="col-sm-3 row mx-0 px-0 align-self-center">
                                     <div className="col-sm-12 align-self-center mx-0 px-0">
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSellHP}><span>Sell</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuyHP}><span>Buy</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -1275,7 +1275,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                 <div className="col-sm-3 row mx-0 px-0 align-self-center">
                                     <div className="col-sm-12 align-self-center mx-0 px-0">
                                         <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy Ini</span></button>
                                     </div>
                                 </div>
                             </div>

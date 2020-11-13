@@ -308,7 +308,7 @@ class StockPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyModal,
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -318,7 +318,7 @@ class StockPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: SellModal,
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -469,7 +469,7 @@ class StockFinancialStatement_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyModal,
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -479,7 +479,7 @@ class StockFinancialStatement_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: SellModal,
+            contentClass: SellPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -856,22 +856,22 @@ class StockHistoryPage_Base extends React.PureComponent {
         this.refs.frameAction.closeModal(100);
     }
 
-    buttonClickBuyHP = (e) => {
+    buttonClickBuy = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyPageIpad,
+            contentClass: BuyPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
 
-    buttonClickSellHP = (e) => {
+    buttonClickSell = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: SellPageIpad,
+            contentClass: SellPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -973,8 +973,8 @@ class StockHistoryPage_Base extends React.PureComponent {
                                 </div>
                                 <div className="col-sm-3 row mx-0 px-0 align-self-center">
                                     <div className="col-sm-12 align-self-center mx-0 px-0">
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSellHP}><span>Sell</span></button>
-                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuyHP}><span>Buy(Test)</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-success" onClick={this.buttonClickSell}><span>Sell</span></button>
+                                        <button className="d-border mx-1 pull-right col-sm-5 col-md-3 btn btn-danger" onClick={this.buttonClickBuy}><span>Buy</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -1191,7 +1191,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: SellModal,
+            contentClass: SellPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -1900,7 +1900,7 @@ class TableStockWatchlist_Base extends React.Component{
     }
 }
 
-class BuyPage extends React.Component{
+class BuyPageOld extends React.Component{
     constructor(props) {
         super(props);
         this.state= {
@@ -1967,7 +1967,7 @@ class BuyPage extends React.Component{
 
 }
 
-class BuyPageIpad extends React.Component{
+class BuyPage extends React.Component{
     constructor(props) {
         super(props);
     }
@@ -1999,7 +1999,7 @@ class BuyPageIpad extends React.Component{
     }
 
 }
-class SellPageIpad extends React.Component{
+class SellPage extends React.Component{
     constructor(props) {
         super(props);
     }

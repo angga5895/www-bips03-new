@@ -26,6 +26,8 @@ import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
 import {VerifyPINPortofolio} from "./landingPage";
+import {ResizeResponsive} from "./mainPage";
+import FormAmend from "../app_transaction/form_amend";
 
 function stringComparator(valueA, valueB){
     if(valueA !== null && valueB !== null){
@@ -220,7 +222,7 @@ class OrderbookPage extends React.PureComponent {
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'tiny',
-            contentClass: RegisterAmendModal,
+            contentClass: RegisterAmendPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -800,7 +802,7 @@ class TradeWatchlist extends React.PureComponent{
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: AmendModal,
+            contentClass: AmendPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -3656,7 +3658,7 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: AmendModal,
+            contentClass: AmendPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -4018,6 +4020,29 @@ class AmendModal extends React.Component {
             <>
                 <AppFrameAction ref="frameAction" />
                 <ModalAmend/>
+            </>
+        );
+    }
+}
+class AmendPage extends React.Component{
+    componentDidMount(){
+        ResizeResponsive();
+    }
+
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+                <div className="text-white f-12">
+                    <div className="col sm-8 px-0 mx-0 row card-520">
+                        <div className="col-sm-6 px-2 mt-0 card-520 d-border bg-blackgrey">
+                            <TableInfoTransaction lotshare="modalamend" />
+                        </div>
+                        <div className="col-sm-6 mt-0 d-border-active bg-amend card-520 d-border">
+                            <FormAmend idPrice="modalAmendPrice" idVol="modalAmendVol" idValue="modalAmendValue" columnSm="col-sm-11"/>
+                        </div>
+                    </div>
+                </div>
             </>
         );
     }

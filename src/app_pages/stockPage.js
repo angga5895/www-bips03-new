@@ -318,7 +318,7 @@ class StockPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyPage,
+            contentClass: SellPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }

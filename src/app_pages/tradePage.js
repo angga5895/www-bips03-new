@@ -222,7 +222,7 @@ class OrderbookPage extends React.PureComponent {
                 <i className="icofont icofont-close text-icofont-close text-white click-pointer"
                    onClick={this.closeClick}></i></div>,
             size: 'tiny',
-            contentClass: RegisterAmendPage,
+            contentClass: RegisterAmendModal,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }

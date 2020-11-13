@@ -22,6 +22,10 @@ import newsImg5 from './../img/noimage.png';
 import {ContextConnector} from "../appcontext";
 import anychart from 'anychart';
 import $ from 'jquery';
+import {ResizeResponsive} from "./mainPage";
+import TableInfoTransaction from "../app_transaction/tableInfoTransaction";
+import FormBuy from "../app_transaction/form_buy";
+import FormSell from "../app_transaction/form_sell";
 window.$ = window.jQuery = $;
 
 
@@ -2213,32 +2217,63 @@ class SelectChoose extends React.Component {
 }
 
 class BuyModal extends React.Component {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
+    constructor(props) {
+        super(props);
     }
-
-    render() {
-        return (
+    componentDidMount(){
+        ResizeResponsive();
+    }
+    render(){
+        return(
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction /> {/* websocket connection component */}
-                <ModalBuy/>
+                <div className="col-sm-12 px-0 py-0 mx-0 row">
+                    <div className="col-sm-6 pr-3 pl-0 f-12">
+                        <TableInfoTransaction lotshare="buyPage"/>
+                    </div>
+                    <div className={"col-sm-6 mt-0 d-border-active bg-buy card-520 d-border"}>
+                        <FormBuy
+                            idPrice="stockBuyPrice"
+                            part="stockInfo"
+                            idVol="stockBuyVol"
+                            idValue="stockBuyValue"
+                            columnSm="col-sm-12"
+                            part="stock"
+                        />
+                    </div>
+                </div>
             </>
         );
     }
 }
 
 class SellModal extends React.Component  {
-    closeClick = (e) => {
-        this.refs.frameAction.closeModal(100);
+    constructor(props) {
+        super(props);
     }
-
-    render() {
-        return (
+    componentDidMount(){
+        ResizeResponsive();
+    }
+    render(){
+        return(
             <>
                 <AppFrameAction ref="frameAction" />
                 <WSConnectionAction /> {/* websocket connection component */}
-                <ModalSell/>
+                <div className="col-sm-12 px-0 py-0 mx-0 row">
+                    <div className="col-sm-6 pr-3 pl-0 f-12">
+                        <TableInfoTransaction lotshare="buyPage"/>
+                    </div>
+                    <div className="col-sm-6 mt-0 d-border-active bg-sell card-520 d-border">
+                        <FormSell
+                            idPrice="stockSellPrice"
+                            part="stockInfo"
+                            idVol="stockSellVol"
+                            idValue="stockSellValue"
+                            columnSm="col-sm-12"
+                            part={"stock"}/>
+                    </div>
+                </div>
             </>
         );
     }

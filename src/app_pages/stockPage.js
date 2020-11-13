@@ -861,7 +861,7 @@ class StockHistoryPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: BuyPage,
+            contentClass: BuyPageIpad,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -871,7 +871,7 @@ class StockHistoryPage_Base extends React.PureComponent {
             headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-white click-pointer"
                                                               onClick={this.closeClick}></i></div>,
             size: 'large',
-            contentClass: SellModal,
+            contentClass: SellPageIpad,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -1959,6 +1959,70 @@ class BuyPage extends React.Component{
                             </ul>
                         </div>
                         {swapContent()}
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+}
+
+class BuyPageIpad extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        ResizeResponsive();
+    }
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction /> {/* websocket connection component */}
+                <div className="col-sm-12 px-0 py-0 mx-0 row">
+                    <div className="col-sm-6 pr-3 pl-0 f-12">
+                        <TableInfoTransaction lotshare="buyPage"/>
+                    </div>
+                    <div className={"col-sm-6 mt-0 d-border-active bg-buy card-520 d-border"}>
+                        <FormBuy
+                            idPrice="stockBuyPrice"
+                            part="stockInfo"
+                            idVol="stockBuyVol"
+                            idValue="stockBuyValue"
+                            columnSm="col-sm-12"
+                            part="stock"
+                        />
+                    </div>
+                </div>
+            </>
+        );
+    }
+
+}
+class SellPageIpad extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        ResizeResponsive();
+    }
+    render(){
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction /> {/* websocket connection component */}
+                <div className="col-sm-12 px-0 py-0 mx-0 row">
+                    <div className="col-sm-6 pr-3 pl-0 f-12">
+                        <TableInfoTransaction lotshare="buyPage"/>
+                    </div>
+                    <div className="col-sm-6 mt-0 d-border-active bg-sell card-520 d-border">
+                        <FormSell
+                            idPrice="stockSellPrice"
+                            part="stockInfo"
+                            idVol="stockSellVol"
+                            idValue="stockSellValue"
+                            columnSm="col-sm-12"
+                            part={"stock"}/>
                     </div>
                 </div>
             </>

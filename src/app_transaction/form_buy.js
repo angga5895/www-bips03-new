@@ -23,7 +23,7 @@ class FormBuy extends React.PureComponent{
     buttonClickPIN = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"></div>,
-            contentClass: PINVerify,
+            contentClass: VerifyPIN,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"
         });

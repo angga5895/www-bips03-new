@@ -128,8 +128,8 @@ const CustomFrameHeaderTrade_Base = (props) => {
                         </div>
                         <div className="col-sm-2 pr-4 mx-0 text-right d-border-bottom d-border-left cssmenu">
                             {/*<Popup content='Move to Automatic Order' position='bottom center' trigger={*/}
-                            <button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark">{"Manual Order"}</button>
-                            {/*<button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark" onClick={()=>{props.handleManual(props.isManual)}}>{"Manual Order"}</button>*/}
+                            {/*<button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark">{"Manual Order"}</button>*/}
+                            <button className="my-2 mx-0 col-sm-12 btn btn-md btn-dark" onClick={()=>{props.handleManual(props.isManual)}}>{"Manual Order"}</button>
                             {/*} />*/}
                         </div>
                     </div>

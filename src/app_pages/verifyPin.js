@@ -271,6 +271,152 @@ class VerifyPIN_Base extends React.PureComponent{
     }
 }
 
+class VerifyPINBuy_Base extends React.PureComponent{
+    state = {
+        value: "",
+        visible:false,
+        isEmpty: false,
+    }
+
+    onChange = value =>{
+        this.setState({ value });
+    };
+
+    onAutoSubmit = () => {
+        $("#pin-click-verify").click();
+    }
+
+    onClickSubmit = (e) => {
+        if(this.state.value.length >= '6' || this.props.pinStatus === true){
+            if(this.props.pinStatus === true) {
+                    this.refs.frameAction.closeModal(100);
+                    var frameAction = this.refs.frameAction;
+                    frameAction.showModal({
+                        headerClass: () => <div className="text-white f-12 text-right"><i className="fa fa-calendar-alt"></i> &nbsp; {tanggal()}</div>,
+                        contentClass: detailBuyModal,
+                        onClose: (result) => console.log('Second modal result = ', result),
+                        size: "mini"
+                    });
+            } else{
+                this.props.changePinStatus(this.state.value);
+                // var visible = true;
+                // this.setState({ visible });
+                // var isEmpty = false;
+                // this.setState({ isEmpty });
+            }
+        }else{
+            var isEmpty = true;
+            this.setState({ isEmpty });
+
+            var visible = false;
+            this.setState({ visible });
+        }
+    };
+
+    onClickCloseAlert = (e) => {
+        this.props.closeAlert(false);
+        var visible = false;
+        var value = "";
+        this.setState({ visible });
+        this.pin.clear();
+        this.setState({ value });
+    };
+    onClickCloseFullFill = (e) => {
+        var isEmpty = false;
+        this.setState({ isEmpty });
+        this.pin.clear();
+    }
+
+    forgotPIN = (e) => {
+        var frameAction = this.refs.frameAction;
+        frameAction.showModal({
+            headerClass: () => <div className="text-right"><i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i></div>,
+            contentClass: ForgotPINModal,
+            onClose: (result) => console.log('Second modal result = ', result),
+            size: "mini"
+        });
+    }
+
+    componentDidMount(){
+        $(".pincode-input-text").on('keypress',function(e) {
+            if(e.which === 13) {
+                $("#pin-click-verify").click();
+            }
+        });
+        if(this.props.pinStatus === true){
+            $("#pin-click-verify").click();
+        }
+    }
+
+    render(){
+        const {value} = this.state;
+        return(
+            <>
+                <AppFrameAction ref="frameAction" />
+
+                <div className="text-white f-12">
+                    <div className="text-center align-self-center align-middle">
+                        <div className="d-border-bold img-round-icon">
+                            <i className="icofont icofont-lock icofont-4x"></i>
+                        </div>
+                    </div>
+                    <div className="form-group text-center pt-5">
+                        <label className="col-sm-12 px-5 py-2 col-form-label f-14 font-weight-bold">Please insert 6 digit PIN Security</label>
+                        {/*<label className="col-sm-12 px-5 py-2 col-form-label">Please fullfill with 6 digit security*/}
+                        {/*PIN to verify your transaction</label>*/}
+                    </div>
+                    <div className="form-group mb-0">
+                        <PinInput
+                            inputStyle={{"color":/*cssmode == 'night' ? '#FFFFFF':*/'#999999', "border":"#565252 1px solid","border-radius":"10%","width":"15.25%"}}
+                            inputFocusStyle={{"color":/*cssmode == 'night' ? '#FFFFFF':*/'#999999', "border":"#065A96 1px solid", "border-radius":"10%","width":"15.25%"}}
+                            length={6}
+                            focus
+                            secret
+                            ref={p => (this.pin = p)}
+                            type="numeric"
+                            onComplete={this.onAutoSubmit}
+                            onChange={this.onChange}
+                        />
+                    </div>
+                    <div className="form-group mx-0 my-0 py-2">
+                        <label className="col-sm-12 my-0 py-0 px-1 col-form-label">Forgot your PIN?
+                            <span className="click-pointer btn btn-link text-primary" onClick={this.forgotPIN}> Click here</span>
+                        </label>
+                    </div>
+
+                    <div className="form-group pt-1 pb-1 mb-0 pb-0">
+                        <div className="justify-content-center align-items-center d-flex py-0">
+                            <button id="pin-click-verify" type="submit" className='btn btn-danger form-control py-0'
+                                    onClick={this.onClickSubmit}>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                    <div className="form-group text-center f-12 mb-0 mt-2">
+                        <span className="click-pointer btn btn-link text-primary text-underline"
+                              onClick={(e) => {
+                                  this.refs.frameAction.closeModal(100)
+                                  this.props.closeAlert(false)
+                              }}> Cancel</span>
+                    </div>
+                    <div className={ this.props.checkPinErrState ? "col-sm-12 text-center bg-danger fade-in" : "col-sm-12 text-center bg-danger fade-out"}>
+                        <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
+                            <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseAlert}></i>
+                            {this.props.checkPinErrReason}
+                        </div>
+                    </div>
+                    <div className={this.state.isEmpty ? "col-sm-12 text-center bg-info fade-in" : "col-sm-12 text-center bg-info fade-out"}>
+                        <div className={/*cssmode == 'night'? */"px-1 py-2 text-white" /*: "px-2 py-4 text-black"*/}>
+                            <i className="click-pointer icofont icofont-close pull-right pt-1" onClick={this.onClickCloseFullFill}></i>
+                            Please fullfil pin number.
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
 class detailBuyModal extends React.Component {
     componentDidMount(){
         $(document).keypress(function(e) {
@@ -714,5 +860,16 @@ const VerifyPIN = ContextConnector(BIPSAppContext,
         
     }),
 )(VerifyPIN_Base);
+const VerifyPINBuy = ContextConnector(BIPSAppContext,
+    (vars, actions) => ({
+        pinStatus: vars.pinStatus,
+        checkPinErrState:vars.checkPinErrState,
+        checkPinErrReason:vars.checkPinErrReason,
+        changePinStatus: (pinStatus) => { actions.sendAction('changePinStatus', { pinStatus }) },
+        closeAlert: (erStatus) => { actions.sendAction('closeAlert',{erStatus}) },
+
+    }),
+)(VerifyPINBuy_Base);
+
 export default VerifyPIN;
-export {tanggal};
+export {tanggal,VerifyPINBuy,VerifyPIN};

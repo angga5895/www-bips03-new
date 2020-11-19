@@ -3,7 +3,8 @@ import {Button, InputGroup, Table} from "react-bootstrap";
 import {Input, Checkbox, Dropdown, Popup} from "semantic-ui-react";
 import Select from "react-select";
 import {AppFrameAction} from "./../appframe";
-import VerifyPIN, {tanggal} from "../app_pages/verifyPin";
+import {VerifyPIN, VerifyPINBuy} from "../app_pages/verifyPin";
+import {tanggal} from "../app_pages/verifyPin";
 import NumberInput from "./../numberinput";
 
 const stateOptions = [
@@ -23,7 +24,7 @@ class FormBuy extends React.PureComponent{
     buttonClickPIN = (e) => {
         this.refs.frameAction.showModal({
             headerClass: () => <div className="text-right"></div>,
-            contentClass: VerifyPIN,
+            contentClass: VerifyPINBuy,
             onClose: (result) => console.log('Second modal result = ', result),
             size: "mini"
         });

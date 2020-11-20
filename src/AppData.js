@@ -54,6 +54,12 @@ var BIPSAppVars = {
     portfolio: false,
     runningTrace: false,
     statisticMarketStatistikPage:false,
+
+    //trade page
+      tradePage: false,
+      tradePageManOrderbook: false,
+      AutOrderSetting: false,
+      AutSentOrder: false,
   },
   stockSummary: {
     'AALI': {
@@ -187,7 +193,14 @@ var BIPSAppActions = {
     handleMultiChart:(vars, {addressMultiVal})=>({...vars, addressMultiVal: addressMultiVal}),
 
   // action trade
-  handleManual:(vars, {isManual})=>({...vars, isManual:!vars.isManual}),
+  handleManual:(vars, {isManual})=>{
+    if(isManual){
+      vars.frameAction.switchPage("AutOrderSetting","/tradePage")
+    }else{
+      vars.frameAction.switchPage("TradePageManOrderbook","/tradePage")
+    }
+    return {...vars,isManual: !vars.isManual}
+  },
 
   // action login
   getLogin:(vars, {loginState})=>({...vars, loginState:!vars.loginState}),
@@ -415,7 +428,16 @@ class BIPSAppProvider extends React.Component {
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: true});
     if (instance.instanceName == 'statisticMarketStatistikPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: true});
-      
+
+      if(instance.instanceName == "tradePage")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePage', flag: true});
+      if(instance.instanceName == "tradePageManOrderbook")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePageManOrderbook', flag: true});
+      if(instance.instanceName == "autOrderSetting")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autOrderSetting', flag: true});
+      if(instance.instanceName == "autSentOrder")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autSentOrder', flag: true});
+
   }
 
   frameClose = (instance) => {
@@ -424,6 +446,17 @@ class BIPSAppProvider extends React.Component {
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
     if (instance.instanceName == 'statisticMarketStatistikPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: false});
+
+      if(instance.instanceName == "tradePage")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePage', flag: true});
+      if(instance.instanceName == "tradePageManOrderbook")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePageManOrderbook', flag: true});
+      if(instance.instanceName == "autOrderSetting")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autOrderSetting', flag: true});
+      if(instance.instanceName == "autSentOrder")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autSentOrder', flag: true});
+
+
   }
 
   frameHide = (instance) => {
@@ -432,6 +465,16 @@ class BIPSAppProvider extends React.Component {
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'stockSummary', flag: false});
     if (instance.instanceName == 'statisticMarketStatistikPage')
       this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'statisticMarketStatistikPage', flag: false});
+
+      if(instance.instanceName == "tradePage")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePage', flag: true});
+      if(instance.instanceName == "tradePageManOrderbook")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'tradePageManOrderbook', flag: true});
+      if(instance.instanceName == "autOrderSetting")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autOrderSetting', flag: true});
+      if(instance.instanceName == "autSentOrder")
+          this.appProvider.sendAction('doSetSubscription', {subscriptionID: 'autSentOrder', flag: true});
+
   }
 
   componentDidMount () {

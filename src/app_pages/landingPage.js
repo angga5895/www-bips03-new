@@ -5760,4 +5760,5 @@ export { CustomFrameHeaderLanding, LandingPage,
     tcAndSoa,
     VerifyPINPortofolio,
     TradePLPage,
+    PinModal,
 };

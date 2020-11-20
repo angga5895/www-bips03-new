@@ -695,8 +695,10 @@ const AppFrameActionF = ContextConnector(AppFrameContext,
       }),
     createPage: (className, instanceName, title, isUnique, treeName) => actions.sendAction('createPageInstance', {className, isUnique, instanceName, title, treeName}),
     deletePage: (instanceName) => actions.sendAction('deletePageInstance', {instanceName}),
-    switchPage: (instanceName) => actions.sendAction('switchPage', {instanceName}),
-    showModal: (params) => actions.sendAction('showModal', params),
+
+      // switchPage: (instanceName) => actions.sendAction('switchPage', {instanceName}),
+      switchPage: (instanceName, treeName,) => actions.sendAction('switchPage', {instanceName, treeName}),
+      showModal: (params) => actions.sendAction('showModal', params),
     /* 
       available params:  
       headerClass, contentClass*, descClass, onClose, size, dimmer, closeIcon,

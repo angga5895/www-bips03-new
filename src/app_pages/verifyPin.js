@@ -136,6 +136,13 @@ class VerifyPIN_Base extends React.PureComponent{
                     $("#ContentTradePL").removeClass("d-none");
                     $("#ContentTradePL").addClass("d-block");
 
+                    $("#AutOrderPIN").addClass("d-none");
+                    $("#ContentAutOrder").removeClass("d-none");
+                    $("#ContentAutOrder").addClass("d-block");
+
+                    $("#AutSentOrderPIN").addClass("d-none");
+                    $("#ContentSentAutOrder").removeClass("d-none");
+                    $("#ContentSentAutOrder").addClass("d-block");
                 } else {
                     var visible = false;
                     var value = "";

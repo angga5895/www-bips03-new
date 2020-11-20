@@ -25,7 +25,7 @@ import $ from "jquery";
 import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
-import {VerifyPINPortofolio} from "./landingPage";
+import {VerifyPINPortofolio, PinModal} from "./landingPage";
 import {ResizeResponsive} from "./mainPage";
 import FormAmend from "../app_transaction/form_amend";
 
@@ -268,19 +268,25 @@ class OrderSetting extends React.PureComponent {
     }
     render(){
         return(
-            <AppFrameProvider>
+            <>
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
                 <div className="col-sm-12">
-
-                    <div className="row pt-1">
-                        <div className="col-sm-4 pr-3 pl-3 f-12">
-                            <TableInfoTransactionLayout/>
-                        </div>
-                        <div className="col-sm-8 pr-3 pl-0 mt-0">
-                            <TableInfoTransactionLayout2/>
+                    <div id={"AutOrderPIN"} className="col-sm-12">
+                        <VerifyPINPortofolio pos="AutOrder"/>
+                    </div>
+                    <div id="ContentAutOrder" className={"d-none"}>
+                        <div className="pt-1 row" >
+                            <div className="col-sm-4 pr-3 pl-3 f-12">
+                                <TableInfoTransactionLayout/>
+                            </div>
+                            <div className="col-sm-8 pr-3 pl-0 mt-0">
+                                <TableInfoTransactionLayout2/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </AppFrameProvider>
+            </>
         )
     }
 
@@ -310,12 +316,21 @@ class SentOrder extends React.PureComponent{
     }
     render(){
         return(
-            <AppFrameProvider>
-                <div className="col-sm-12 pl-2 mt-2 pr-3">
-                    <OrderHistoryAgGrid size={this.ceksize()}/>
-                </div>
-            </AppFrameProvider>
-        )
+            <>
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+                    <div className="col-sm-12">
+                        <div id={"AutSentOrderPIN"} className="col-sm-12">
+                        <VerifyPINPortofolio pos="AutSentOrder"/>
+                        </div>
+                    <div id="ContentSentAutOrder" className={"d-none"}>
+                        <div className="col-sm-12 pl-2 mt-2 pr-3">
+                            <OrderHistoryAgGrid size={this.ceksize()}/>
+                        </div>
+                    </div>
+                    </div>
+            </>
+                )
     }
 
 }
@@ -338,9 +353,22 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
         super(props);
         this.state = {
             value: "1",
+            statusOrder: "0",
         };
     }
-    handleChange = (e, { value }) => this.setState({ value: value })
+    handleChange = (e, { value }) => this.setState({ statusOrder: value })
+
+    buttonClickPin = (e) => {
+        // alert('clicked');
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-right">
+                {/*<i className="icofont icofont-close text-icofont-close text-border click-pointer"
+                                                              onClick={this.closeClick}></i>*/}</div>,
+            size: 'mini',
+            contentClass: PinModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
 
     componentDidMount() {
         $(document).ready(function() {
@@ -379,20 +407,18 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
             return "s100";
         }
     }
+    changeOrderPrice = (e,{value}) => {
+           this.setState({ value: value })
+    }
     render(){
         return(
             <>
+                {/*<WSConnectionAction ref="wsAction"/> /!* websocket connection component *!/*/}
+                {/*<AppFrameAction ref="frameAction"/>*/}
+
                 <div className="bg-dark-grey d-border card-520">
                     <div className="row">
                         <div className="col-sm-6 f-12 pt-3">
-                            <div className="col-sm-4 mb-5">
-                                <Dropdown placeholder='Buy'
-                                          defaultValue={"Buy"}
-                                          search selection options={[{key:'Buy',value:'Buy',text: 'Buy'},{key:'Sell',value:'Sell',text: 'Sell'}]}
-                                          className={"f-12 text-center align-self-center col-sm-12"}
-                                />
-                            </div>
-                            <div className="col-sm-8"></div>
                             <div className="col-sm-12 row mb-2 pr-0">
                                 <div className="col-sm-12">
                                     <label>Set Condition</label>
@@ -426,43 +452,74 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 <div className="col-sm-4 pr-0">
                                     <NumberInput idclassname="tradeAtSetCondition" defaultValue={"0"}/>
                                 </div>
-                                <div className="col-sm-12 row pt-3 pr-0">
-                                    <div className="col-sm-12 mb-2">
-                                        <label htmlFor="">Order Val</label>
-                                    </div>
-                                    <div className="col-sm-10 mb-3">
-                                        <NumberInput idclassname="tradeAtOrderVal" defaultValue={"0"} />
-                                    </div>
-                                    <div className="col-sm-2 f-16 pt-3">
-                                        Lot
-                                    </div>
+                                <div className="col-sm-12">
+                                <label htmlFor="">Expired Date (max day 30)</label>
+                                </div>
+                                <div className="col-sm-12 ui input mb-3" style={{paddingRight:'53px'}}>
+                                <Input placeholder='dd/mm/yy' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
+                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
+                                className="fa fa-calendar-alt"></span></span>
+                                </div>
+                                <div className="col-sm-12">
+                                    <Form>
+                                        <Form.Field>
+                                            <Radio
+                                            label='Disable'
+                                            name='statusOrder'
+                                            value='0'
+                                            checked={this.state.statusOrder === "0"}
+                                            onChange={this.handleChange}
+                                            />
+                                        </Form.Field>
+                                        <Form.Field>
+                                            <Radio
+                                                label='Enable'
+                                                name='statusOrder'
+                                                value='1'
+                                                checked={this.state.statusOrder === "1"}
+                                                onChange={this.handleChange}
+                                            />
+                                        </Form.Field>
+                                    </Form>
+                                    {/*<Checkbox label='Order Price'/>*/}
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-6 f-12">
+                        <div className="col-sm-6 f-12 pt-3">
                             <div className="col-sm-12">
-                                {/*disini*/}
-                                <Form>
-                                    <Form.Field>
-                                        <Radio
-                                            label='Order Price'
-                                            name='radioGroup'
-                                            value='1'
-                                            checked={this.state.value === "1"}
-                                            onChange={this.handleChange}
-                                        />
-                                    </Form.Field>
-                                </Form>
-                                {/*<Checkbox label='Order Price'/>*/}
+                                <label>Set Condition</label>
+                            </div>
+                            <div className="col-sm-6">
+                                <Dropdown placeholder='Buy'
+                                          defaultValue={"Buy"}
+                                          search selection options={[{key:'Buy',value:'Buy',text: 'Buy'},{key:'Sell',value:'Sell',text: 'Sell'}]}
+                                          className={"f-12 text-center align-self-center col-sm-12"}
+                                />
+                            </div>
+                            <div className="col-sm-12 row pt-3 pr-0">
+                                <div className="col-sm-12">
+                                    <label htmlFor="">Order Vol</label>
+                                </div>
+                                <div className="col-sm-5 mb-3">
+                                    <NumberInput idclassname="tradeAtOrderVol" defaultValue={"0"} />
+                                </div>
+                                <div className="col-sm-2 f-16 pt-3">
+                                    Lot
+                                </div>
+                            </div>
+
+                            <div className="col-sm-12">
+                                <label>Order Price</label>
                             </div>
                             <div className="col-sm-12 mb-2">
                                 <Dropdown placeholder='Offer + 5 ticks'
                                           defaultValue={"Offer5"}
                                           search
                                           selection
-                                          disabled={(this.state.value === "2")}
+                                          onChange={this.changeOrderPrice}
                                           options={
                                               [
+                                                  {key:'14',value:'Manual',text: 'Manual Input'},
                                                   {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
                                                   {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
                                                   {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
@@ -482,34 +539,15 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 />
 
                             </div>
-                            <div className="col-sm-12">
-                                <Form>
-                                    <Form.Field>
-                                        <Radio
-                                            label='Manual Input'
-                                            name='radioGroup'
-                                            value='2'
-                                            checked={this.state.value === "2"}
-                                            onChange={this.handleChange}
-                                        />
-                                    </Form.Field>
-                                </Form>
-                            </div>
                             <div className="col-sm-12 row mb-3 pr-0">
                                 <div className="col-sm-2 f-16 pt-3">
                                     IDR
                                 </div>
                                 <div className="col-sm-10 pr-0">
-                                    <NumberInput disabled={this.state.value == "1"} idclassname="tradeAtIdr" defaultValue="0"/>
+                                    <NumberInput
+                                        status={this.state.value == "Manual" ? false:true}
+                                        idclassname="tradeAtIdr" defaultValue="0"/>
                                 </div>
-                            </div>
-                            <div className="col-sm-12">
-                                <label htmlFor="">Expired Date</label>
-                            </div>
-                            <div className="col-sm-12 ui input mb-3" style={{paddingRight:'53px'}}>
-                                <Input placeholder='dd/mm/yy' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
-                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
-                                    className="fa fa-calendar-alt"></span></span>
                             </div>
                             <div className="col-sm-12 mb-3 text-right">
                                 <button className="btn btn-primary">Save Settings</button>
@@ -540,15 +578,20 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     },
                     cellRendererFramework: function(params) {
                         var cmd = params.data.on;
-                        var idorder = params.data.orderId;
+                        var ruleID = params.data.ruleID;
                         if(cmd){
-                            return <button className="btn-cellOn btn btn-sm btn-success mx-1 f-9" onClick={() => self.onUpdateItem(idorder) }> On </button>
+                            return <button className="btn-cellOn btn btn-sm btn-primary mx-1 f-9" onClick={() => self.onUpdateItem(ruleID) }> Enable </button>
                         }else{
-                            return <button className="btn-cellOn btn btn-sm btn-danger mx-1 f-9" onClick={() => self.onUpdateItem(idorder) }> Off </button>
+                            return <button className="btn-cellOn btn btn-sm btn-dark mx-1 f-9" onClick={() => self.onUpdateItem(ruleID) }> Disable </button>
                         }
                     },
                     suppressSizeToFit: true,
                 },
+                { field: "ruleID", headerName: "#Rule.ID", sortable: true, resizable: true, comparator: stringComparator,
+                    width: s=="s49"?175:s=="s50"?160:s=="s67"?140:s=="s75"?120:100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
+                    }, suppressSizeToFit: true},
                 { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?175:s=="s50"?160:s=="s67"?140:s=="s75"?120:100,
                     cellClass : function (params) {
@@ -588,7 +631,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                         var eDiv = document.createElement('div');
                         eDiv.innerHTML = '<span class="px-1">' +
                             '<button class="btn-cellwithdraw btn btn-sm btn-primary mx-1 f-9">Edit</button>'+
-                            '<button class="btn-cellamend btn btn-sm btn-danger mx-1 f-9">Delete</button>' +
+                            '<button class="btn-cellamend btn btn-sm btn-danger mx-1 f-9">Cancel</button>' +
                             '</span>';
                         var aButton = eDiv.querySelectorAll('.btn-cellamend')[0];
                         var wButton = eDiv.querySelectorAll('.btn-cellwithdraw')[0];
@@ -609,7 +652,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
             },
             rowData: [
                 {
-                    orderId: "12344112",
+                    ruleID: "1",
                     on: true,
                     price: "3,870",
                     code: "AALI",
@@ -619,7 +662,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     vol: "10 Lot",
                 },
                 {
-                    orderId: "12344113",
+                    ruleID: "2",
                     on: true,
                     price: "3,870",
                     cmd: "Buy",
@@ -629,7 +672,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     vol: "3 Lot",
                 },
                 {
-                    orderId: "12344114",
+                    ruleID: "3",
                     on: false,
                     price: "3,870",
                     cmd: "Buy",
@@ -639,7 +682,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     vol: "1 Lot",
                 },
                 {
-                    orderId: "12344115",
+                    ruleID: "4",
                     on: true,
                     price: "3,870",
                     cmd: "Sell",
@@ -649,7 +692,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     vol: "4 Lot",
                 },
                 {
-                    orderId: "12344116",
+                    ruleID: "5",
                     on: false,
                     price: "3,870",
                     code: "AALI",
@@ -659,7 +702,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     vol: "7 Lot",
                 },
                 {
-                    orderId: "12344117",
+                    ruleID: "6",
                     on: true,
                     price: "3,870",
                     code: "AALI",
@@ -732,13 +775,12 @@ class OrderSettingListAgGrid extends React.PureComponent{
         params.api.sizeColumnsToFit();
     }
     onUpdateItem = i => {
-        console.log('kepencet '+i);
         this.setState(state => {
             const rowData = state.rowData.map((item, j) => {
-                if (item.orderId === i) {
+                if (item.ruleID === i) {
                     console.log('ketemu');
                     var baru = {
-                        'orderId': item.orderId,
+                        'ruleID': item.ruleID,
                         'on': !item.on,
                         'price': item.price,
                         'code': item.code,
@@ -749,7 +791,6 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     };
                     return baru;
                 } else {
-                    console.log('engga');
                     return item;
                 }
             });
@@ -765,7 +806,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
                 </div>
                 <div
-                    className="card-234 ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
+                    className="card-Aut-Order ag-theme-balham-dark ag-header-border d-border ag-striped-odd"
                     style={{
                         width: 'auto' }}>
 
@@ -1301,7 +1342,7 @@ class SettingInWatchlist extends React.Component{
                 <WSConnectionAction /> {/* websocket connection component */}
                 <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
                     <div className="col-sm-4 px-0 mx-0 card-514">
-                        <TradeWatchlistAgGrid size={this.ceksize()}/>
+                        <fTradeWatchlistAgGrid size={this.ceksize()}/>
                     </div>
                     <div className="col-sm-8 pl-3 pr-0 mx-0 card-514">
                         <div className="col-sm-12 px-0 pt-0">
@@ -1670,7 +1711,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "order", headerName: "Order#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
+                { field: "ruleID", headerName: "#Rule.ID", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?200:s=="s67"?155:s=="s75"?150:135,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
@@ -1736,7 +1777,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
             rowData: [
                 { date: "28/11/2018"+s+s+s+s+s,
                     time: "08:21:33",
-                    order : "001",
+                    ruleID : "001",
                     code: "AALI",
                     qty: "2",
                     cmd: "BUY",
@@ -1748,7 +1789,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
                     dateuntil: "13/11/2019",
                 },{ date: "28/11/2018",
                     time: "08:21:33",
-                    order : "001",
+                    ruleID : "001",
                     code: "AALI",
                     qty: "2",
                     cmd: "SELL",

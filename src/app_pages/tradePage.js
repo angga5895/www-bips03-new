@@ -358,14 +358,20 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
     }
     handleChange = (e, { value }) => this.setState({ statusOrder: value })
 
-    buttonClickPin = (e) => {
-        // alert('clicked');
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    buttonClickEdit = (e) => {
         this.refs.frameAction.showModal({
-            headerClass: () => <div className="text-right">
-                {/*<i className="icofont icofont-close text-icofont-close text-border click-pointer"
-                                                              onClick={this.closeClick}></i>*/}</div>,
-            size: 'mini',
-            contentClass: PinModal,
+            headerClass: () => <div className="text-white text-center pb-5">
+                                    <i className="icofont icofont-close text-icofont-close text-white click-pointer pull-right"
+                                       onClick={this.closeClick}>
+                                    </i>
+                                    <h1 className="text-center">Edit Automatic Order</h1>
+                                </div>,
+            size: 'large',
+            contentClass: EditPage,
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
@@ -410,11 +416,32 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
     changeOrderPrice = (e,{value}) => {
            this.setState({ value: value })
     }
+
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            ed.setDate(ed.getDate() + 30);
+
+            var isRtl = $('html').attr('dir') === 'rtl';
+
+            // Zaky Update
+            $('#datepickerAut').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                startDate: sd,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+        });
+    }
     render(){
         return(
             <>
-                {/*<WSConnectionAction ref="wsAction"/> /!* websocket connection component *!/*/}
-                {/*<AppFrameAction ref="frameAction"/>*/}
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
 
                 <div className="bg-dark-grey d-border card-520">
                     <div className="row">
@@ -456,7 +483,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 <label htmlFor="">Expired Date (max day 30)</label>
                                 </div>
                                 <div className="col-sm-12 ui input mb-3" style={{paddingRight:'53px'}}>
-                                <Input placeholder='dd/mm/yy' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
+                                <Input placeholder='dd/mm/yy' id="datepickerAut" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
                                 <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
                                 className="fa fa-calendar-alt"></span></span>
                                 </div>
@@ -554,9 +581,172 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                             </div>
                         </div>
                     </div>
-                    <OrderSettingListAgGrid size={this.ceksize()}/>
+                    <OrderSettingListAgGrid
+                        clickedit={this.buttonClickEdit}
+                        size={this.ceksize()}/>
                 </div>
             </>
+        );
+    }
+}
+
+class EditPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: "1",
+            statusOrder: "0",
+        };
+    }
+    handleChange = (e, { value }) => this.setState({ statusOrder: value })
+
+    changeOrderPrice = (e,{value}) => {
+        this.setState({ value: value })
+    }
+
+    render(){
+        return(
+            <div className="bg-dark-grey d-border">
+                <div className="row">
+                    <div className="col-sm-6 f-12 pt-3">
+                        <div className="col-sm-12 row mb-2 pr-0">
+                            <div className="col-sm-12">
+                                <label>Set Condition</label>
+                            </div>
+                            <div className="col-sm-6 mb-3">
+                                <Dropdown placeholder='Last Price'
+                                          search selection
+                                          defaultValue={"Last Price"}
+                                          options={
+                                              [
+                                                  {key:'1',value:'Last Price',text: 'Last Price'},
+                                                  {key:'2',value:'Best Offer Price',text: 'Best Offer Price'},
+                                                  {key:'3',value:'Best Bid',text: 'Best Bid Price'},
+                                              ]
+                                          }
+                                          className={"f-12 text-center align-self-center col-sm-12"}
+                                />
+                            </div>
+                            <div className="col-sm-2 pr-0 pl-0">
+                                <Dropdown placeholder='Type'
+                                          defaultValue={"<="}
+                                          search selection options={
+                                    [
+                                        {key:'1',value:'<=',text: '<='},
+                                        {key:'2',value:'>=',text: '>='},
+                                    ]
+                                }
+                                          className={"f-12 text-center align-self-center col-sm-12"}
+                                />
+                            </div>
+                            <div className="col-sm-4 pr-0">
+                                <NumberInput idclassname="tradeAtSetCondition" defaultValue={"0"}/>
+                            </div>
+                            <div className="col-sm-12">
+                                <label htmlFor="">Expired Date (max day 30)</label>
+                            </div>
+                            <div className="col-sm-12 ui input mb-3" style={{paddingRight:'53px'}}>
+                                <Input placeholder='dd/mm/yy' id="datepickerTest2" className="col-sm-12 pl-0 pr-0 text-center align-self-center"/>
+                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}><span
+                                    className="fa fa-calendar-alt"></span></span>
+                            </div>
+                            <div className="col-sm-12">
+                                <Form>
+                                    <Form.Field>
+                                        <Radio
+                                            label='Disable'
+                                            name='statusOrder'
+                                            value='0'
+                                            checked={this.state.statusOrder === "0"}
+                                            onChange={this.handleChange}
+                                        />
+                                    </Form.Field>
+                                    <Form.Field>
+                                        <Radio
+                                            label='Enable'
+                                            name='statusOrder'
+                                            value='1'
+                                            checked={this.state.statusOrder === "1"}
+                                            onChange={this.handleChange}
+                                        />
+                                    </Form.Field>
+                                </Form>
+                                {/*<Checkbox label='Order Price'/>*/}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-6 f-12 pt-3">
+                        <div className="col-sm-12">
+                            <label>Set Condition</label>
+                        </div>
+                        <div className="col-sm-6">
+                            <Dropdown placeholder='Buy'
+
+                                      disabled
+                                      defaultValue={"Buy"}
+                                      search selection options={[{key:'Buy',value:'Buy',text: 'Buy'},{key:'Sell',value:'Sell',text: 'Sell'}]}
+                                      className={"f-12 text-center align-self-center col-sm-12"}
+                            />
+                        </div>
+                        <div className="col-sm-12 row pt-3 pr-0">
+                            <div className="col-sm-12">
+                                <label htmlFor="">Order Vol</label>
+                            </div>
+                            <div className="col-sm-5 mb-3">
+                                <NumberInput idclassname="tradeAtOrderVol" defaultValue={"0"} />
+                            </div>
+                            <div className="col-sm-2 f-16 pt-3">
+                                Lot
+                            </div>
+                        </div>
+
+                        <div className="col-sm-12">
+                            <label>Order Price</label>
+                        </div>
+                        <div className="col-sm-12 mb-2">
+                            <Dropdown placeholder='Offer + 5 ticks'
+                                      defaultValue={"Offer5"}
+                                      search
+                                      selection
+                                      onChange={this.changeOrderPrice}
+                                      options={
+                                          [
+                                              {key:'14',value:'Manual',text: 'Manual Input'},
+                                              {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
+                                              {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
+                                              {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
+                                              {key:'4',value:'Offer2',text: 'Offer + 2 ticks'},
+                                              {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
+                                              {key:'6',value:'BestOffer',text: 'Best Offer Price'},
+                                              {key:'7',value:'LastPrice',text: 'Last Price'},
+                                              {key:'8',value:'BestBid',text: 'Best Bid Price'},
+                                              {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
+                                              {key:'10',value:'Bid2',text: 'Bid - 2 ticks'},
+                                              {key:'11',value:'Bid3',text: 'Bid - 3 ticks'},
+                                              {key:'12',value:'Bid4',text: 'Bid - 4 ticks'},
+                                              {key:'13',value:'Bid5',text: 'Bid - 5 ticks'},
+                                          ]
+                                      }
+                                      className={"f-12 text-center align-self-center col-sm-12"}
+                            />
+
+                        </div>
+                        <div className="col-sm-12 row mb-3 pr-0">
+                            <div className="col-sm-2 f-16 pt-3">
+                                IDR
+                            </div>
+                            <div className="col-sm-10 pr-0">
+                                <NumberInput
+                                    status={this.state.value == "Manual" ? false:true}
+                                    idclassname="tradeAtIdr" defaultValue="0"/>
+                            </div>
+                        </div>
+                        <div className="col-sm-12 mb-3 text-right">
+                            <button className="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
@@ -633,11 +823,11 @@ class OrderSettingListAgGrid extends React.PureComponent{
                             '<button class="btn-cellwithdraw btn btn-sm btn-primary mx-1 f-9">Edit</button>'+
                             '<button class="btn-cellamend btn btn-sm btn-danger mx-1 f-9">Cancel</button>' +
                             '</span>';
-                        var aButton = eDiv.querySelectorAll('.btn-cellamend')[0];
-                        var wButton = eDiv.querySelectorAll('.btn-cellwithdraw')[0];
+                        var cButton = eDiv.querySelectorAll('.btn-cellamend')[0];
+                        var eButton = eDiv.querySelectorAll('.btn-cellwithdraw')[0];
 
-                        aButton.addEventListener('click', self.props.clickamend);
-                        wButton.addEventListener('click', self.props.clickwithdraw);
+                        eButton.addEventListener('click', self.props.clickedit);
+                        // cButton.addEventListener('click', self.props.clickedit);
 
                         return eDiv;
                     }, suppressSizeToFit: true
@@ -4088,6 +4278,8 @@ class AmendPage extends React.Component{
         );
     }
 }
+
+
 
 class WithdrawModal extends React.Component {
     closeClick = (e) => {

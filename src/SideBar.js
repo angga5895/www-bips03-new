@@ -39,6 +39,8 @@ class SideBar_Base extends React.Component{
                     last: "41,560",
                     change: 0.55,
                     percent: 3.56,
+                    own: 12.240,
+                    ownPercent: 0.4,
                 },
                 {
                     name: "ADHI",
@@ -46,6 +48,8 @@ class SideBar_Base extends React.Component{
                     last: "12,750",
                     change: -1.95,
                     percent: -0.06,
+                    own: 12.000,
+                    ownPercent: 0.1,
                 },
                 {
                     name: "ANTM",
@@ -53,6 +57,8 @@ class SideBar_Base extends React.Component{
                     last: "15,350",
                     change: 4.50,
                     percent: 0.56,
+                    own: 14.740,
+                    ownPercent: 0.2,
                 },
                 {
                     name: "ASII",
@@ -60,6 +66,8 @@ class SideBar_Base extends React.Component{
                     last: "30,540",
                     change: -1.45,
                     percent: -3.56,
+                    own: 2.240,
+                    ownPercent: 0.12,
                 },
                 {
                     name: "TLKM",
@@ -67,6 +75,8 @@ class SideBar_Base extends React.Component{
                     last: "70,000",
                     change: 0,
                     percent: 0,
+                    own: 19.440,
+                    ownPercent: 0.3,
                 },
                 {
                     name: "WSKT",
@@ -74,13 +84,8 @@ class SideBar_Base extends React.Component{
                     last: "12,500",
                     change: 11.05,
                     percent: 20.52,
-                },
-                {
-                    name: "INDF",
-                    fullname: "Indofood",
-                    last: "24,600",
-                    change: 2.5,
-                    percent: 3.90,
+                    own: 12.940,
+                    ownPercent: 0.23,
                 },
             ],
             showAlert:false,
@@ -307,18 +312,29 @@ class SideBar_Base extends React.Component{
                                                 var warna = " text-warning";
                                                 var icon = " icofont icofont-minus f-8";
                                             }
-
+                                            var nameText = "You have '"+charx.name+"' @"+charx.own+"("+charx.ownPercent+"%)";
                                             return (
                                                 <tr key={index} className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
-                                                    <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
-                                                        <div onClick={()=>this.stockClick(charx.name+"-"+charx.fullname)} className="align-self-center text-left click-pointer noselect">
-                                                            <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-1"}>{charx.name}</h5>
-                                                            <div  className={this.isFireFox() ? "f-10 mb3 text-right"+warna : "f-10 mb-1 text-right"+warna}>
-                                                                <i className={icon}></i>{charx.change+"("+charx.percent+"%)"}
-                                                            </div>
-                                                            <p className={this.isFireFox() ? "f-11 mb3 text-right"+warna : "f-11 mb-1 text-right"+warna}>{charx.last}</p>
-                                                        </div>
-                                                    </td>
+                                                    <Popup content={nameText}
+                                                           mouseEnterDelay={900}
+                                                           mouseLeaveDelay={100}
+                                                           position='top left'
+                                                           size='tiny'
+                                                           trigger={
+                                                               <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
+                                                                   <div
+                                                                       onClick={() => this.stockClick(charx.name + "-" + charx.fullname)}
+                                                                       className="align-self-center text-left click-pointer noselect">
+                                                                       <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-0"}>{charx.name}</h5>
+                                                                       <div
+                                                                           className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-10 mb-1 text-right" + warna}>
+                                                                           <i className={icon}></i>{charx.change + "(" + charx.percent + "%)"}
+                                                                       </div>
+                                                                       <p className={this.isFireFox() ? "f-11 mb3 text-right" + warna : "f-10 mb-0 text-right" + warna}>{charx.last}</p>
+                                                                       <p className={this.isFireFox() ? "f-11 mb3 text-right" + warna : "f-10 mb-0 text-right" + warna}>@{charx.own}({charx.ownPercent}%)</p>
+                                                                   </div>
+                                                               </td>
+                                                           }/>
                                                 </tr>
                                             )
                                         })

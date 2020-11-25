@@ -1289,7 +1289,7 @@ class FundTransfer_Base extends React.PureComponent {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <div className="p-2">If the above bank Information is wrong, please contact our call center at 14099 or by website www.directtrading.co.id</div>
+                                        <div className="p-2">If the above bank Information is wrong, please contact our call center at 14009 or by website www.directtrading.co.id</div>
                                         <div className="d-border bg-gray-tradding">
                                             <div className="col-md-12 p-3">
                                                 <div className="row p-3">
@@ -2348,8 +2348,11 @@ class TradePLPage extends React.PureComponent{
                                     <Input readonly defaultValue='0,00.' placeholder='SellAmount'
                                            className="col-sm-12 pl-4 pr-0 text-center align-self-center"/>
                                 </div>
-                            </div>
 
+                                <div className={"col-sm-12"}>
+                                    <p id={"selectedRows"}>Test</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2430,7 +2433,7 @@ class TradePLAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    code :"AALI"+s,
+                    code :"AALI",
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
@@ -2439,7 +2442,7 @@ class TradePLAgGrid extends React.PureComponent {
                     pl: "123",
                     percentage: "1000",
                 },{
-                    code :"BUMI"+s,
+                    code :"BUMI",
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
@@ -2448,7 +2451,7 @@ class TradePLAgGrid extends React.PureComponent {
                     pl: "123",
                     percentage: "1000",
                 },{
-                    code :"BUDI"+s,
+                    code :"BUDI",
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
@@ -2457,7 +2460,7 @@ class TradePLAgGrid extends React.PureComponent {
                     pl: "123",
                     percentage: "1000",
                 },{
-                    code :"SMGR"+s,
+                    code :"SMGR",
                     vol: 3,
                     buyAmount : "13.000",
                     sellAmount: "14.000",
@@ -2498,6 +2501,7 @@ class TradePLAgGrid extends React.PureComponent {
                 ],
                 defaultToolPanel: ""
             },
+            rowSelection: 'multiple',
         }
         function isFirstColumn(params) {
             var displayedColumns = params.columnApi.getAllDisplayedColumns();
@@ -2519,6 +2523,27 @@ class TradePLAgGrid extends React.PureComponent {
 
         params.api.sizeColumnsToFit();
     };
+    onSelectionChanged = () => {
+        var selectedRows = this.gridApi.getSelectedRows();
+        var selectedRowsString = '';
+        var maxToShow = 5;
+        selectedRows.forEach(function (selectedRow, index) {
+            if (index >= maxToShow) {
+                return;
+            }
+            if (index > 0) {
+                selectedRowsString += ', ';
+            }
+            selectedRowsString += selectedRow.code;
+        });
+        if (selectedRows.length > maxToShow) {
+            var othersCount = selectedRows.length - maxToShow;
+            selectedRowsString +=
+                ' and ' + othersCount + ' other' + (othersCount !== 1 ? 's' : '');
+        }
+        document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+        console.log(selectedRowsString);
+    };
 
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
@@ -2536,6 +2561,8 @@ class TradePLAgGrid extends React.PureComponent {
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.rowData}
+                        onSelectionChanged={this.onSelectionChanged.bind(this)}
+                        rowSelection={this.state.rowSelection}
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         getRowHeight={this.state.getRowHeight}
@@ -5567,36 +5594,6 @@ class VerifyPINPortofolio extends React.PureComponent{
 
     onChange = value =>{
         this.setState({ value });
-    };
-
-
-    onClickSubmit = (e) => {
-        if(this.state.value.length >= '6'){
-            if(this.state.value === '123456') {
-                $("#pinPortofolio").removeClass("d-block");
-                $("#pinPortofolio").addClass("d-none");
-                $("#detailPortofolio").addClass("d-block");
-                $("#detailPortofolio").removeClass("d-none");
-
-                $("#contentPinStockCash").removeClass("d-none");
-                $("#contentPinStockCash").addClass("d-block");
-
-                $("#verifyPinStockCash").removeClass("d-block");
-                $("#verifyPinStockCash").addClass("d-none");
-
-                $("#FundPin").addClass("d-none");
-                $("#ContentFund").removeClass("d-none");
-                $("#ContentFund").addClass("d-block");
-
-                $("#pinTradePL").addClass("d-none");
-                $("#detailTradePL").addClass("d-block");
-
-
-            } else{
-                var visible = true;
-                this.setState({ visible });
-            }
-        }
     };
 
     onClickCloseAlert = (e) => {

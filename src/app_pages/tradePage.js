@@ -514,7 +514,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                         </div>
                         <div className="col-sm-6 f-12 pt-3">
                             <div className="col-sm-12">
-                                <label>Set Condition</label>
+                                <label>Action</label>
                             </div>
                             <div className="col-sm-6">
                                 <Dropdown placeholder='Buy'

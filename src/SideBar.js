@@ -86,6 +86,14 @@ class SideBar_Base extends React.Component{
                     percent: 20.52,
                     own: 12.940,
                     ownPercent: 0.23,
+                },{
+                    name: "WSKT",
+                    fullname: "Waskita Karya",
+                    last: "12,500",
+                    change: 11.05,
+                    percent: 20.52,
+                    own: 12.940,
+                    ownPercent: 0.23,
                 },
             ],
             showAlert:false,
@@ -291,7 +299,7 @@ class SideBar_Base extends React.Component{
                                    trigger={
                                        <div
                                            className={this.isFireFox() ? "nav-link align-self-center text-center px-0 d-border col-sm-12 mt-0 mb-0 py-0" :
-                                               "nav-link align-self-center text-center px-0 d-border col-sm-12 my-1 py-0"}>
+                                               "nav-link align-self-center text-center px-0 d-border col-sm-12 my-0 py-0"}>
                                            <Dropdown placeholder='Group' search selection options={option}
                                                      className={"f-9 text-center align-self-center col-sm-12 grey h-31"}
                                                      defaultValue="groupA"/>
@@ -321,17 +329,17 @@ class SideBar_Base extends React.Component{
                                                            position='top left'
                                                            size='tiny'
                                                            trigger={
-                                                               <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1"}>
+                                                               <td className={this.isFireFox() ? "pl-0 pr-1" : "px-1 pb-0"}>
                                                                    <div
                                                                        onClick={() => this.stockClick(charx.name + "-" + charx.fullname)}
                                                                        className="align-self-center text-left click-pointer noselect">
-                                                                       <h5 className={this.isFireFox() ? "pl-2 mb-0" : "pl-2 mb-0"}>{charx.name}</h5>
+                                                                       <p className={this.isFireFox() ? "pl-2 mb-0 f-11" : "pl-2 mb-0 f-sdb-m"}>{charx.name}</p>
                                                                        <div
-                                                                           className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-10 mb-1 text-right" + warna}>
+                                                                           className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>
                                                                            <i className={icon}></i>{charx.change + "(" + charx.percent + "%)"}
                                                                        </div>
-                                                                       <p className={this.isFireFox() ? "f-11 mb3 text-right" + warna : "f-10 mb-0 text-right" + warna}>{charx.last}</p>
-                                                                       <p className={this.isFireFox() ? "f-11 mb3 text-right" + warna : "f-10 mb-0 text-right" + warna}>@{charx.own}({charx.ownPercent}%)</p>
+                                                                       <p className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>{charx.last}</p>
+                                                                       <p className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>@{charx.own}({charx.ownPercent}%)</p>
                                                                    </div>
                                                                </td>
                                                            }/>

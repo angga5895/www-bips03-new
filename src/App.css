@@ -6539,3 +6539,20 @@ table .tb-align-center>tr>td{
     width: 100%;
     height: 209px;
 }
+
+@media (min-width: 1360px) and (max-width: 1440px) {
+    .f-sdb{
+        font-size: 8px;
+    }
+    .f-sdb-m{
+        font-size: 10px;
+    }
+}
+@media (min-width: 1441px) and (max-width: 1680px) {
+    .f-sdb{
+        font-size: 10px;
+    }
+    .f-sdb-m{
+        font-size: 12px;
+    }
+}

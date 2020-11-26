@@ -798,7 +798,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
-                { field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                { field: "vol", headerName: "Vol. (Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:80, comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
@@ -849,7 +849,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cmd: "Sell"+s,
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "10 Lot",
+                    vol: "10",
                 },
                 {
                     ruleID: "2",
@@ -859,7 +859,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     code: "AALI",
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "3 Lot",
+                    vol: "3",
                 },
                 {
                     ruleID: "3",
@@ -869,7 +869,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     code: "AALI",
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "1 Lot",
+                    vol: "1",
                 },
                 {
                     ruleID: "4",
@@ -879,7 +879,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     code: "AALI",
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "4 Lot",
+                    vol: "4",
                 },
                 {
                     ruleID: "5",
@@ -889,7 +889,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cmd: "Buy",
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "7 Lot",
+                    vol: "7",
                 },
                 {
                     ruleID: "6",
@@ -899,7 +899,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                     cmd: "Buy",
                     condition: "Last price <= 12,750",
                     exp: "4/7/2019",
-                    vol: "6 Lot",
+                    vol: "6",
                 },
 
             ],

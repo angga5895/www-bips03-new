@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Input, Popup, Dropdown} from 'semantic-ui-react';
+import {Input, Popup, Dropdown, Radio} from 'semantic-ui-react';
 import { AppFrameAction } from '../appframe.js';
 
 import {AppFrame, AppFrameProvider, AppModal} from "../appframe";
@@ -21,6 +21,10 @@ import '../bootstrap-3.3.7/bootstrap-datepicker.min.css';
 import PinInput from "react-pin-input";
 import {Table} from "react-bootstrap";
 import {WSConnectionAction} from "../appnetwork";
+import Select from "react-select";
+import NumberInput from "../numberinput";
+import {Form} from "semantic-ui-react/dist/commonjs/collections/Form/Form";
+import TableInfoTransaction from "../app_transaction/tableInfoTransaction";
 
 const stateOptionsLp = [
     { key: 'lastprice', value: 'lastprice', text: 'Last Price' },
@@ -1137,8 +1141,29 @@ class FundTransfer_Base extends React.PureComponent {
         this.toggle = this.toggle.bind(this);
         this.state = {
             activeTab: '1',
+            code: 'Please Select Code',
+            broker: 'Please Select Broker',
+            code2: 'Please Select Code',
+            broker2: 'Please Select Broker',
         };
     }
+
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#3D3E3F',
+            neutral20: this.props.thememode === true ? '#333332' : '#333332',
+            neutral30: this.props.thememode === true ? '#333332' : '#333332',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#202020',
+            primary: '#0071BC',
+        },
+    });
 
     toggle(tab) {
         if (this.state.activeTab !== tab) {
@@ -1160,7 +1185,25 @@ class FundTransfer_Base extends React.PureComponent {
                 autoclose: true,
                 todayBtn: "linked",
             });
+            $('#datepickerstartSTL').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
             $('#datepickerendFT').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendSTL').datepicker({
                 orientation: isRtl ? 'auto right' : 'auto left',
                 format: "dd/mm/yyyy",
                 changeMonth: true,
@@ -1199,31 +1242,76 @@ class FundTransfer_Base extends React.PureComponent {
             size: "mini"
         });
     }
-    render () {
-        const imgdisplay = {
-            display: 'inline-flex',
-            paddingTop: '3px'
-        };
 
+    render () {
         const paddingParagraph = {
             paddingTop: '10px'
         }
-        const paddingParagraphBottom = {
-            paddingBottom: '10px'
-        }
 
-        const divMargin = {
-            marginBottom: '15px'
-        }
+        const stockOptions = [
+            {value: 'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama '},
+            {value: 'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra '},
+            {value: 'bumi', code: 'BUMI', saham: 'Bumi Resource '},
+            {value: 'asii', code: 'ASII', saham: 'Argo Astra Lestari '},
+            {value: 'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia '},
+            {value: 'wskt', code: 'WSKT', saham: 'Waskita '},
+            {value: 'indf', code: 'INDF', saham: 'Indofood '},
+            {value: 'bbca', code: 'BBCA', saham: 'Bank BCA '},
+            {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
+            {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
+        ];
 
-        const imgUser = {
-            margin: 'auto',
-            backgroundColor: 'var(--warna-bg-trading-gray)',
-            // borderBottom: '2px solid var(--warna-inactive-gradient)'
-        }
+        const brokerOptions = [
+            {value: 'AF', code: 'AF', saham: 'Harita Kencana Sekuritas'},
+            {value: 'AG', code: 'AG', saham: 'Kiwoom Sekuritas Indonesia'},
+            {value: 'GA', code: 'GA', saham: 'BNC Sekuritas Indonesia'},
+            {value: 'IP', code: 'IP', saham: 'Indosurya Bersinar Sekuritas'},
+            {value: 'KI', code: 'KI', saham: 'Ciptadana Sekuritas Asia'},
+            {value: 'DX', code: 'DX', saham: 'Bahana Sekuritas'},
+            {value: 'OD', code: 'OD', saham: 'BRI Danareksa Sekuritas'},
+            {value: 'PP', code: 'PP', saham: 'Aldiracita Sekuritas Indonesia'},
+        ]
+
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid"
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0
+            })
+        };
+
+        const customFilter = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if (searchText.toLowerCase().includes(' ')) {
+                if (saham) {
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
+
+
 
         return (
             <>
+                <div className="bg-black-trading card card-75">
+
                 <AppFrameAction ref="frameAction" />
                 <div className="container-fluid px-1 f-12" id="FundPin">
                     <VerifyPINPortofolio pos="fund"/>
@@ -1235,14 +1323,17 @@ class FundTransfer_Base extends React.PureComponent {
 
                     <div className="col-sm-12 px-0" style={paddingParagraph}>
                         {/* <PortofolioAgGrid/> */}
-                        <div className="cssmenu col-sm-5 mx-0 px-0 h-45">
+                        <div className="cssmenu col-sm-12 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
+                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER</span></a></li>
+                                <li className={ this.state.activeTab === '4' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('4'); }}><a><span className="f-11">&nbsp; STOCK RECEIVE</span></a></li>
+                                <li className={ this.state.activeTab === '5' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('5'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER LIST</span></a></li>
                                 {/*<li className={ this.state.activeTab === '3' ? 'active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Cancel</span></a></li>*/}
                             </ul>
                         </div>
-                        <div className="col-sm-12 px-4 bg-grey bg-black-trading pt-0 d-border card-472">
+                        <div className="col-sm-12 px-4 bg-black-trading pt-0 d-border card-472">
 
                             <div className={this.state.activeTab === '1' ? 'd-block f-12' : 'd-none'}>
                                 <div className="container mx-0 pt-3">
@@ -1408,6 +1499,238 @@ class FundTransfer_Base extends React.PureComponent {
                                     </div>
                                 </div>
                             </div>
+                            <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
+                                <div className="d-border-transparent-grey">
+                                    <div className="mb-3">
+                                        <div className="form-group mb-3 px-0">
+                                            <div className="col-sm-12 pl-0 mt-3 pb-3">
+                                                <h3>Stock Transfer</h3>
+                                            </div>
+                                            <div className="bg-dark-grey pt-2 col-sm-7 d-border">
+                                                <div className="row">
+                                                    <div className="col-sm-12 f-12 pt-3">
+                                                        <div className="col-sm-12 row mb-2 pr-0">
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label
+                                                                    className="f-13 f-xs-14 mt-3 align-middle align-self-center pr-0">
+                                                                    Stock
+                                                                </label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0 z99">
+                                                                <Select
+                                                                    getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                                                    filterOption={customFilter}
+                                                                    isSearchable={true}
+                                                                    maxMenuHeight={155}
+                                                                    styles={customStyles}
+                                                                    placeholder={<div>Search..</div>}
+                                                                    options={stockOptions}
+                                                                    onChange={(e)=>this.setState({code: e.saham})}
+                                                                    className="LandingPageSelectCode text-left"
+                                                                    theme={this.selectSelectionTab}
+                                                                />
+                                                            </div>
+                                                            <div className="col-sm-4 pr-0">
+                                                                <label
+                                                                    className="f-13 f-xs-14 mt-3 align-middle align-self-center pr-0">
+                                                                    { this.state.code }
+                                                                </label>
+                                                            </div>
+
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Vol(Shr)</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0">
+                                                                <NumberInput idclassname="MyAccountVolShr" defaultValue={"0"}/>
+                                                            </div>
+                                                            <div className="col-sm-1 pr-0">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Price</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0">
+                                                                <div
+                                                                    className="ui input col-sm-12 pl-4 pr-0 text-right align-self-center input-right">
+                                                                    <input placeholder="Name" type="text"
+                                                                           value="1,000,000"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Broker Destination</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0">
+                                                                <Select
+                                                                    getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                                                    filterOption={customFilter}
+                                                                    isSearchable={true}
+                                                                    maxMenuHeight={155}
+                                                                    styles={customStyles}
+                                                                    placeholder={<div>Search..</div>}
+                                                                    options={brokerOptions}
+                                                                    onChange={(e)=>this.setState({broker: e.saham})}
+                                                                    className="LandingPageSelectBroker text-left"
+                                                                    theme={this.selectSelectionTab}
+                                                                />
+                                                            </div>
+                                                            <div className="col-sm-4 pr-0">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>
+                                                                    {this.state.broker}
+                                                                </label>
+                                                            </div>
+
+
+                                                            <div className="col-sm-12 mb-3 pr-0 text-right">
+                                                                <button className="btn btn-primary"><i className={"fa fa-paper-plane"}></i>&nbsp;Send</button>
+                                                            </div>
+                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={this.state.activeTab === '4' ? 'd-block f-12' : 'd-none'}>
+                                <div className="d-border-transparent-grey">
+                                    <div className="mb-3">
+                                        <div className="form-group mb-3 px-0">
+                                            <div className="col-sm-12 pl-0 mt-3 pb-3">
+                                                <h3>Stock Receive</h3>
+                                            </div>
+                                            <div className="bg-dark-grey pt-2 col-sm-7 d-border">
+                                                <div className="row">
+                                                    <div className="col-sm-12 f-12 pt-3">
+                                                        <div className="col-sm-12 row mb-2 pr-0">
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label
+                                                                    className="f-13 f-xs-14 mt-3 align-middle align-self-center pr-0">
+                                                                    Stock
+                                                                </label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0 z99">
+                                                                <Select
+                                                                    getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                                                    filterOption={customFilter}
+                                                                    isSearchable={true}
+                                                                    maxMenuHeight={155}
+                                                                    styles={customStyles}
+                                                                    placeholder={<div>Search..</div>}
+                                                                    options={stockOptions}
+                                                                    onChange={(e)=>this.setState({code2: e.saham})}
+                                                                    className="LandingPageSelectCode text-left"
+                                                                    theme={this.selectSelectionTab}
+                                                                />
+                                                            </div>
+                                                            <div className="col-sm-4 pr-0">
+                                                                <label
+                                                                    className="f-13 f-xs-14 mt-3 align-middle align-self-center pr-0">
+                                                                    { this.state.code2 }
+                                                                </label>
+                                                            </div>
+
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Vol(Shr)</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0">
+                                                                <NumberInput idclassname="MyAccountVolReceipt" defaultValue={"0"}/>
+                                                            </div>
+                                                            <div className="col-sm-1 pr-0">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Price</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0">
+                                                                <div
+                                                                    className="ui input col-sm-12 pl-4 pr-0 text-right align-self-center input-right">
+                                                                    <input placeholder="Name" type="text"
+                                                                           value="1,000,000"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="col-sm-5 mb-3 f-14">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Broker Destination</label>
+                                                            </div>
+                                                            <div className="col-sm-3 pr-0 pl-0">
+                                                                <Select
+                                                                    getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                                                    filterOption={customFilter}
+                                                                    isSearchable={true}
+                                                                    maxMenuHeight={155}
+                                                                    styles={customStyles}
+                                                                    placeholder={<div>Search..</div>}
+                                                                    options={brokerOptions}
+                                                                    onChange={(e)=>this.setState({broker2: e.saham})}
+                                                                    className="LandingPageSelectBroker text-left"
+                                                                    theme={this.selectSelectionTab}
+                                                                />
+                                                            </div>
+                                                            <div className="col-sm-4 pr-0">
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>
+                                                                    {this.state.broker2}
+                                                                </label>
+                                                            </div>
+
+
+                                                            <div className="col-sm-12 mb-3 pr-0 text-right">
+                                                                <button className="btn btn-primary"><i className={"fa fa-paper-plane"}></i>&nbsp;Send</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={this.state.activeTab === '5' ? 'd-block f-12' : 'd-none'}>
+                                <div className="d-border-transparent-grey">
+                                    <div className="d-border-bottom mb-3">
+                                        <div className="form-group mb-3 px-0">
+                                            <div className="col-sm-9 pl-0 h-62">
+                                                <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
+                                                    <table>
+                                                        <tr>
+                                                            <td className={"px-0"}>
+                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                                    <Input placeholder='dd/mm/yy' id="datepickerstartSTL" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                                    <span
+                                                                        className="fa fa-calendar-alt"></span>
+                                                                </span>
+                                                                </div>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
+                                                            </td>
+                                                            <td className={"px-0"}>
+                                                                <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                                    <Input placeholder='dd/mm/yy' id="datepickerendSTL" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                                    <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                                    <span
+                                                                        className="fa fa-calendar-alt"></span>
+                                                                </span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+
+                                                </div>
+                                            </div>
+                                            <FundStockAgGrid size={this.ceksize()}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             {/*<div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>*/}
                                 {/*<div className="d-border-transparent-grey">*/}
                                         {/*<div className="form-group px-0 pt-5" style={{marginBottom : "10px"}}>*/}
@@ -1422,6 +1745,7 @@ class FundTransfer_Base extends React.PureComponent {
                             {/*</div>*/}
                         </div>
                     </div>
+                </div>
                 </div>
             </>
         );
@@ -5242,6 +5566,183 @@ class FundAgGrid extends React.PureComponent {
                     reqData: "",
                     reqTime: "",
                     status:"N",
+                },
+
+            ],
+
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-381 ag-theme-balham-dark ag-bordered table-bordered ag-striped-odd"}
+                    id="myGrid"
+                    style={{
+                        width: "100%",
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+class FundStockAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = this.props.size;
+        this.state = {
+            columnDefs: [
+                { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?260:s=="s50"?200:s=="s67"?190:s=="s75"?180:120, minWidth: 120, comparator: dateComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    }, suppressSizeToFit: true
+                },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?250:s=="s50"?190:s=="s67"?160:s=="s75"?143:s=="s80"?135:60, comparator: integerComparator,
+                    minWidth: 60,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?235:s=="s80"?210:s=="s90"?130:130, comparator: integerComparator,
+                    minWidth: 130,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "vol", headerName: "Vol(Shr)", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?300:s=="s50"?280:s=="s67"?240:s=="s75"?260:s=="s80"?230:s=="s90"?185:170, comparator: integerComparator,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center f-12";
+                    },
+                },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?315:s=="s50"?310:s=="s67"?300:s=="s75"?290:s=="s80"?230:s=="s90"?155:150, comparator: integerComparator,
+                    minWidth: 150,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "brokerDestination", headerName: "Broker Destination", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:160, minWidth: 160, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "brokerReceive", headerName: "Broker Receive", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:160, minWidth: 160, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "status", headerName: "Status", sortable: true, resizable: true,
+                    width: s=="s49"?210:s=="s50"?190:s=="s75"?160:150, minWidth: 150, comparator: stringComparator,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "action", headerName: "Action", sortable: true, filter: "agTextColumnFilter", width:140,
+                    pinned: "right", lockPosition: true, lockVisible: true,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-center locked-col locked-visible";
+                    },
+                    cellRenderer : function (params) {
+                        var eDiv = document.createElement('div');
+                        var option = ""
+                        if(params.status == "N"){
+                            option = "disabled";
+                        }
+                        eDiv.innerHTML = '<span class="px-1">' +
+                            '<button class="'+option+' btn-cellamend btn btn-sm btn-primary mx-1 f-9">Cancel</button>'+
+                            '</span>';
+                        var aButton = eDiv.querySelectorAll('.btn-cellamend')[0];
+
+                        // kalo mau nambah action
+                        // aButton.addEventListener('click', self.props.clickdetail);
+
+                        return eDiv;
+                    }, suppressSizeToFit: true
+                },
+
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            getRowHeight : function (params) {
+                return 32;
+            },
+            rowData: [
+                {
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
                 },
 
             ],

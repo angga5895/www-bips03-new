@@ -297,6 +297,33 @@ class SentOrder extends React.PureComponent{
         super(props);
 
     }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerstartSO').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendSO').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+
+
+        });
+    }
+
     ceksize(){
         if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
             return "s90";
@@ -324,7 +351,47 @@ class SentOrder extends React.PureComponent{
                         <VerifyPINPortofolio pos="AutSentOrder"/>
                         </div>
                     <div id="ContentSentAutOrder" className={"d-none"}>
-                        <div className="col-sm-12 pl-2 mt-2 pr-3">
+                        <div className="col-sm-12 h-62">
+                            <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
+                                <table>
+                                    <tr>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerstartSO" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
+                                        </td>
+                                        <td className={"px-0"}>
+
+                                            <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerendSO" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                        <div className="col-sm-12 pl-2 pr-3">
                             <OrderHistoryAgGrid size={this.ceksize()}/>
                         </div>
                     </div>
@@ -2051,7 +2118,7 @@ class OrderHistoryAgGrid extends React.PureComponent {
             <>
                 {/*senttttt*/}
                 <div
-                    className="card-520 ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
+                    className="card-tradeSO ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
                     >
                     <AgGridReact
                         columnDefs={this.state.columnDefs}

@@ -67,6 +67,68 @@ class DisclaimerModal extends React.Component {
     }
 }
 
+class RequirementModal extends React.Component {
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction ref="wsAction" />
+                <div className="text-white f-12">
+                    <table
+                        className={"table text-white bg-dark-grey px-0 mx-0 mb-0 table-hover table-striped-trans table-sm table-bordered"}>
+                        <thead>
+                            <th></th>
+                            <th>MINIMUM</th>
+                            <th>RECOMMENDED</th>
+                            <th>HIGH</th>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td>RESOLUTION</td>
+                            <td>1080p</td>
+                            <td>1440p</td>
+                            <td>2160p</td>
+                        </tr>
+                        <tr>
+                            <td>PROCESSOR</td>
+                            <td>Intel Core i5-3570K AMD FX-8310</td>
+                            <td>Intel Core i7-4790 AMD RYZEN 3 3200G</td>
+                            <td>Intel Core i7-4790 AMD RYZEN 3 3200G</td>
+                        </tr>
+                        <tr>
+                            <td>MEMORY</td>
+                            <td>4 GB</td>
+                            <td>6 GB</td>
+                            <td>8 GB</td>
+                        </tr>
+                        <tr>
+                            <td>OS</td>
+                            <td>64-Bit Windows 7</td>
+                            <td>64-Bit Windows 10</td>
+                            <td>64-Bit Windows 10</td>
+                        </tr>
+                        <tr>
+                            <td>STORAGE</td>
+                            <td>50 GB HDD</td>
+                            <td>100 GB HDD</td>
+                            <td>200 GB HDD</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div className="text-center mt-4">
+                        <button className="btn btn-primary col-sm-3" onClick={this.closeClick}>Close</button>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
+
 class HelpModal extends React.Component {
     closeClick = (e) => {
         this.refs.frameAction.closeModal(100);
@@ -521,6 +583,16 @@ class LoginUserPage_Base extends React.PureComponent {
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
+
+    buttonClickRequirement = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-white text-center f-15">System Requirements</div>,
+            closeIcon: false,
+            contentClass: RequirementModal,
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
+    }
+
     buttonClickHelp = (e) => {
             // window.open("http://online.bahana.co.id/dxtrade/manual.pdf");
             var height = window.innerHeight;
@@ -808,7 +880,9 @@ class LoginUserPage_Base extends React.PureComponent {
                                                                 <i className="icofont-exclamation"></i>
                                                                 &nbsp;Help</button>
                                                         </td>
+
                                                         <td><u className="click-pointer" onClick={this.buttonClickDisclaimer}>Disclaimer</u></td>
+                                                        <td><i className={"fa fa-tasks button-pointer cursor-menu"} onClick={this.buttonClickRequirement}></i> </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

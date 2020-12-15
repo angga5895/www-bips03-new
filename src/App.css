@@ -6559,3 +6559,6 @@ table .tb-align-center>tr>td{
 .z99{
     z-index: 99 !important;
 }
+.card-tradeSO{
+    height: 460px;
+}

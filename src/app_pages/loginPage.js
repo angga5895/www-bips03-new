@@ -84,7 +84,6 @@ class RequirementModal extends React.Component {
                             <th></th>
                             <th>MINIMUM</th>
                             <th>RECOMMENDED</th>
-                            <th>HIGH</th>
                         </thead>
                         <tbody>
 
@@ -92,31 +91,26 @@ class RequirementModal extends React.Component {
                             <td>RESOLUTION</td>
                             <td>1080p</td>
                             <td>1440p</td>
-                            <td>2160p</td>
                         </tr>
                         <tr>
                             <td>PROCESSOR</td>
                             <td>Intel Core i5-3570K AMD FX-8310</td>
                             <td>Intel Core i7-4790 AMD RYZEN 3 3200G</td>
-                            <td>Intel Core i7-4790 AMD RYZEN 3 3200G</td>
                         </tr>
                         <tr>
                             <td>MEMORY</td>
-                            <td>4 GB</td>
-                            <td>6 GB</td>
                             <td>8 GB</td>
+                            <td>16 GB</td>
                         </tr>
                         <tr>
                             <td>OS</td>
                             <td>64-Bit Windows 7</td>
-                            <td>64-Bit Windows 10</td>
                             <td>64-Bit Windows 10</td>
                         </tr>
                         <tr>
                             <td>STORAGE</td>
                             <td>50 GB HDD</td>
                             <td>100 GB HDD</td>
-                            <td>200 GB HDD</td>
                         </tr>
                         </tbody>
                     </table>

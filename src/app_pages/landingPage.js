@@ -1646,7 +1646,7 @@ class FundTransfer_Base extends React.PureComponent {
                                                             </div>
 
                                                             <div className="col-sm-5 mb-3 f-14">
-                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Broker Destination</label>
+                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Broker Receive</label>
                                                             </div>
                                                             <div className="col-sm-3 pr-0 pl-0">
                                                                 <Select

@@ -415,12 +415,52 @@ class TableInfoTransactionLayout extends React.PureComponent{
     }
 }
 
+const OfferOptions = [
+        {key:'14',value:'Manual',text: 'Manual Input'},
+        {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
+        {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
+        {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
+        {key:'4',value:'Offer2',text: 'Offer + 2 ticks'},
+        {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
+        {key:'6',value:'BestOffer',text: 'Best Offer Price'},
+        {key:'7',value:'LastPrice',text: 'Last Price'},
+]
+
+const BidOptions = [
+        {key:'14',value:'Manual',text: 'Manual Input'},
+        {key:'7',value:'LastPrice',text: 'Last Price'},
+        {key:'8',value:'BestBid',text: 'Best Bid Price'},
+        {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
+        {key:'10',value:'Bid2',text: 'Bid - 2 ticks'},
+        {key:'11',value:'Bid3',text: 'Bid - 3 ticks'},
+        {key:'12',value:'Bid4',text: 'Bid - 4 ticks'},
+        {key:'13',value:'Bid5',text: 'Bid - 5 ticks'},
+]
+
+const BidOfferOptions = [
+        {key:'14',value:'Manual',text: 'Manual Input'},
+        {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
+        {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
+        {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
+        {key:'4',value:'Offer2',text: 'Offer + 2 ticks'},
+        {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
+        {key:'6',value:'BestOffer',text: 'Best Offer Price'},
+        {key:'7',value:'LastPrice',text: 'Last Price'},
+        {key:'8',value:'BestBid',text: 'Best Bid Price'},
+        {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
+        {key:'10',value:'Bid2',text: 'Bid - 2 ticks'},
+        {key:'11',value:'Bid3',text: 'Bid - 3 ticks'},
+        {key:'12',value:'Bid4',text: 'Bid - 4 ticks'},
+        {key:'13',value:'Bid5',text: 'Bid - 5 ticks'},
+]
+
 class TableInfoTransactionLayout2 extends React.PureComponent{
     constructor(props) {
         super(props);
         this.state = {
             value: "1",
             statusOrder: "0",
+            statusStock: "bidOffer",
         };
     }
     handleChange = (e, { value }) => this.setState({ statusOrder: value })
@@ -604,32 +644,23 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
 
                             <div className="col-sm-12">
                                 <label>Order Price</label>
+                                {/*For sample un-noted this code below*/}
+
+                                {/*<button onClick={() => this.setState({statusStock: "bid"})}>Bid</button>*/}
+                                {/*<button onClick={() => this.setState({statusStock: "offer"})}>Offer</button>*/}
+                                {/*<button onClick={() => this.setState({statusStock: "bidOffer"})}>BidOffer</button>*/}
+
+                                {/*End*/}
                             </div>
-                            <div className="col-sm-12 mb-2">
-                                <Dropdown placeholder='Offer + 5 ticks'
+                            <div className={"col-sm-12 mb-2"}>
+                            <Dropdown placeholder='Offer + 5 ticks'
                                           defaultValue={"Offer5"}
                                           search
                                           selection
                                           onChange={this.changeOrderPrice}
-                                          options={
-                                              [
-                                                  {key:'14',value:'Manual',text: 'Manual Input'},
-                                                  {key:'1',value:'Offer5',text: 'Offer + 5 ticks'},
-                                                  {key:'2',value:'Offer4',text: 'Offer + 4 ticks'},
-                                                  {key:'3',value:'Offer3',text: 'Offer + 3 ticks'},
-                                                  {key:'4',value:'Offer2',text: 'Offer + 2 ticks'},
-                                                  {key:'5',value:'Offer1',text: 'Offer + 1 tick'},
-                                                  {key:'6',value:'BestOffer',text: 'Best Offer Price'},
-                                                  {key:'7',value:'LastPrice',text: 'Last Price'},
-                                                  {key:'8',value:'BestBid',text: 'Best Bid Price'},
-                                                  {key:'9',value:'Bid1',text: 'Bid - 1 tick'},
-                                                  {key:'10',value:'Bid2',text: 'Bid - 2 ticks'},
-                                                  {key:'11',value:'Bid3',text: 'Bid - 3 ticks'},
-                                                  {key:'12',value:'Bid4',text: 'Bid - 4 ticks'},
-                                                  {key:'13',value:'Bid5',text: 'Bid - 5 ticks'},
-                                              ]
-                                          }
-                                          className={"f-12 text-center align-self-center col-sm-12"}
+                                          options={ (this.state.statusStock == "bid" ? BidOptions:
+                                                        (this.state.statusStock == "offer") ? OfferOptions : BidOfferOptions) }
+                                          className="f-12 text-center align-self-center col-sm-12"
                                 />
 
                             </div>

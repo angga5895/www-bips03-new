@@ -460,7 +460,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
         this.state = {
             value: "1",
             statusOrder: "0",
-            statusStock: "bidOffer",
+            statusStock: null,
         };
     }
     handleChange = (e, { value }) => this.setState({ statusOrder: value })
@@ -656,10 +656,11 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                             <Dropdown placeholder='Offer + 5 ticks'
                                           defaultValue={"Offer5"}
                                           search
+                                          disabled={(this.state.statusStock == null) ? true: false}
                                           selection
                                           onChange={this.changeOrderPrice}
                                           options={ (this.state.statusStock == "bid" ? BidOptions:
-                                                        (this.state.statusStock == "offer") ? OfferOptions : BidOfferOptions) }
+                                                        (this.state.statusStock == "offer") ? OfferOptions: BidOfferOptions) }
                                           className="f-12 text-center align-self-center col-sm-12"
                                 />
 

@@ -8,7 +8,7 @@ import '../../node_modules/anychart/dist/js/anychart-data-adapter.min.js';
 import { ContextConnector } from '../appcontext.js';
 import { BIPSAppContext } from '../AppData.js';
 
-// import '../../node_modules/anychart/dist/js/dark_earth.min.js';
+import '../../node_modules/anychart/dist/js/dark_earth.min.js';
 import '../../node_modules/anychart/dist/js/coffee.min.js';
 import '../../node_modules/anychart/dist/js/dark_blue.min.js';
 import '../../node_modules/anychart/dist/js/dark_glamour.min.js';

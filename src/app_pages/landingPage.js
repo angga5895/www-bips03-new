@@ -1820,7 +1820,7 @@ class InquryAccount_Base extends React.PureComponent {
                                             <table width="100%" className={"table table-bordered table-responsive mb-0 card-290"}>
                                                 <tr>
                                                     <td className={"d-border"}>Account Name</td>
-                                                    <td width="50%" className={"d-border hover-tables"} ></td>
+                                                    <td width="50%" className={"even-td d-border hover-tables"} ></td>
                                                 </tr>
                                                 <tr>
                                                     <td className={"d-border"}>KSEI A/C No</td>

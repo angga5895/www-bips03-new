@@ -1801,6 +1801,12 @@ class MainPage_Base extends React.Component {
                                                </div>
                                            } />
                                     ,
+                                brokerPage:
+                                    <div className="text-align-center">
+                                        <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>
+                                        <span className="fs-text-bips padding-11">BROKER</span><br/>
+                                    </div>
+                                ,
                                 stockPage:
                                     <Popup content='STOCK'
                                            mouseEnterDelay={900}
@@ -1881,12 +1887,7 @@ class MainPage_Base extends React.Component {
                                                </div>
                                            } />
                                     ,
-                                chatsupportPage:
-                                    <div className="text-align-center">
-                                        <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>
-                                        <span className="fs-text-bips padding-11">CHATS &</span><br/>
-                                        <span className="fs-text-bips">SUPPORT</span>
-                                    </div>
+
                             }
                         }/>
 

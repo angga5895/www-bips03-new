@@ -244,14 +244,14 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 }
 
 .col-sm-header-menu-scale {
-    flex: 0 0 73%;
-    max-width: 73%;
+    flex: 0 0 75%;
+    max-width: 75%;
 
 }
 
 .col-sm-header-user-scale {
-    flex: 0 0 21%;
-    max-width: 21%;
+    flex: 0 0 19%;
+    max-width: 19%;
 }
 
 .mb3{
@@ -779,14 +779,14 @@ div.main-header > .ui.menu .item{
 }
 
 .col-sm-header-menu {
-    flex: 0 0 74%;
-    max-width: 74%;
+    flex: 0 0 76%;
+    max-width: 76%;
 
 }
 
 .col-sm-header-user {
-    flex: 0 0 19%;
-    max-width: 19%;
+    flex: 0 0 18%;
+    max-width: 18%;
 }
 
 .col-sm-sidebar{

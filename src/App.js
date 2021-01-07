@@ -45,6 +45,9 @@ import ChatSupportPage, { CustomFrameHeaderChatSupportPage,
     ChatUserPage, ChatSuppPage, ChatCommentPage
 } from './app_pages/chatsupportPage';
 
+import BrokerPage, { CustomFrameHeaderBrokerPage,
+    BrokerInfo, BrokerTradeSummary, BrokerTradeHistory, BrokerTopListPage
+} from './app_pages/brokerPage';
 
 class App extends React.Component {
   /*
@@ -77,13 +80,15 @@ class App extends React.Component {
             AnalyticPage, StockAnalyticPage, IndiceAnalyticPage, RelativePerformanceAnalyticPage,
             //ChatUserPage
             /*tree1*/
-            ChatUserPage, ChatSuppPage, ChatCommentPage
+            ChatUserPage, ChatSuppPage, ChatCommentPage,
+            BrokerPage, BrokerInfo, BrokerTradeSummary, BrokerTradeHistory, BrokerTopListPage,
         }}
         initialFrames={
           [
             { className: 'Landing', title: <CustomFrameHeaderLanding/>, instanceName: 'landingPage'},
             { className: 'MarketStatistik', title: <CustomFrameHeaderMarketStatistik/>, instanceName: 'marketstatistikPage' },
-            { className: 'Stocks', title: <CustomFrameHeaderStock/>, instanceName: 'stockPage' },
+              { className: 'BrokerPage', title: <CustomFrameHeaderBrokerPage/>, instanceName: 'brokerPage' },
+              { className: 'Stocks', title: <CustomFrameHeaderStock/>, instanceName: 'stockPage' },
             { className: 'Trade', title: <CustomFrameHeaderTrade />, instanceName: 'tradePage' },
             { className: 'Analytic', title: <CustomFrameHeaderAnalytic />, instanceName: 'analyticPage' },
             { className: 'LiveTradePage', title: '', instanceName: 'livetradePage' },
@@ -155,6 +160,11 @@ class App extends React.Component {
             {className: 'ChatUserPage', title: 'Chat User', instanceName: 'ChatUserPage'},
             {className: 'ChatSuppPage', title: 'Chat Support', instanceName: 'ChatSuppPage'},
             {className: 'ChatCommentPage', title: 'Chat Comment', instanceName: 'ChatCommentPage'},
+
+              {className: 'BrokerInfo', title: 'Broker Info', instanceName: 'brokerInfo'},
+              {className: 'BrokerTradeSummary', title: 'Broker Trade Summary', instanceName: 'brokerTradeSummary'},
+              {className: 'BrokerTradeHistory', title: 'Broker Trade History', instanceName: 'brokerTradeHistory'},
+              {className: 'BrokerTopListPage', title: 'TOP Broker', instanceName: 'brokerTopListPage'},
           ]
         }
         treeData={
@@ -206,6 +216,15 @@ class App extends React.Component {
                                 'newsMutualFund',
                             ]
                         }
+                    ]
+                },
+                {
+                    name: 'brokerPage',
+                    pages: [
+                        'brokerInfo',
+                        'brokerTradeSummary',
+                        'brokerTradeHistory',
+                        'brokerTopListPage',
                     ]
                 },
                 {

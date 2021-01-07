@@ -944,7 +944,7 @@ class UserInfo_Base extends React.Component {
                         </td>
                     </tr>
                     <tr>
-                        <td className="py-0 px-0 text-center text-primary f-15">
+                        <td className="py-0 px-0 text-center text-primary f-12">
                             <kbd>{(this.props.GeneralType === true) ? "SUSPEND TRADE" : "SUSPEND"}</kbd>
                         </td>
                     </tr>

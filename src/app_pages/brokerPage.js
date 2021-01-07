@@ -1914,11 +1914,59 @@ class ChatSupport2 extends React.PureComponent {
     }
 }
 class BrokerTopListPage extends React.PureComponent {
-    render () {
-
-        return (
-            //hanya memanggil headernya saja
-            <div className="bg-black-trading px-0 mx-0">d
+    ceksize(){
+        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s100";
+        }
+    }
+    render(){
+        return(
+            <div className="f-12 px-0">
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction />
+                <div className="card bg-black-trading f-12">
+                    <div className="card-header bg-tableheader h-37 pt-3">
+                        TOP BROKER
+                        <Popup content='Refresh' position='top center' trigger={
+                            <button
+                                className="col-sm-1 pull-right btn btn-primary"
+                                style={{"font-size": "12px", "margin-top": "-7px", "width": "38px"}}>
+                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                            </button>
+                        }/>
+                    </div>
+                    <div className="card-body">
+                        <TopBrokerAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
+                <div className="card card-175 bg-black-trading f-12">
+                    <div className="card-header bg-tableheader h-37 pt-3">
+                        TOP BUYER
+                    </div>
+                    <div className="card-body">
+                        <TopBrokerBAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
+                <div className="card card-175 bg-black-trading f-12">
+                    <div className="card-header bg-tableheader h-37 pt-3">
+                        TOP SELLER
+                    </div>
+                    <div className="card-body">
+                        <TopBrokerSAgGrid size={this.ceksize()}/>
+                    </div>
+                </div>
             </div>
         );
     }

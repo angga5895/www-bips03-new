@@ -23,6 +23,28 @@ import {Table as TableBS} from "react-bootstrap";
 window.$ = window.jQuery = $;
 require('../../node_modules/bootstrap/dist/js/bootstrap.js');
 
+function stringComparator(valueA, valueB){
+    if(valueA !== null && valueB !== null){
+        if(valueA.length < 2){
+            return null;
+        }else if(valueB.length < 2){
+            return null;
+        }else{
+            return valueA.toLowerCase().localeCompare(valueB.toLowerCase());
+        }
+    }
+
+}
+function integerComparator(valueA, valueB){
+    if(valueA == ""){
+        return null;
+    }else if(valueB == ""){
+        return null;
+    }else{
+        return valueA - valueB;
+    }
+}
+
 class CustomFrameHeaderBrokerPage_Base extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -1982,15 +2004,526 @@ class BrokerTradeHistory extends React.PureComponent {
     }
 }
 class BrokerTradeSummary extends React.PureComponent {
-    render () {
+    constructor(props){
+        super(props);
+        this.state = {
+            tabNumber: 1,
+            startRow: 0,
+            currStock: 'TLKM',
+        }
+    }
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
 
+    render () {
+        const stockOptions = [
+            {value: 'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama '},
+            {value: 'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra '},
+            {value: 'bumi', code: 'BUMI', saham: 'Bumi Resource '},
+            {value: 'asii', code: 'ASII', saham: 'Argo Astra Lestari '},
+            {value: 'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia '},
+            {value: 'wskt', code: 'WSKT', saham: 'Waskita '},
+            {value: 'indf', code: 'INDF', saham: 'Indofood '},
+            {value: 'bbca', code: 'BBCA', saham: 'Bank BCA '},
+            {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
+            {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
+        ];
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid",
+                color : "white!important"
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+                color : "white!important"
+            })
+        };
+
+        //Add your search logic here.
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
         return (
-            //hanya memanggil headernya saja
-            <div className="bg-black-trading px-0 mx-0">b
+            <div className="bg-black-trading">
+                <AppFrameAction ref="frameAction" />
+                <main>
+                    {/*outer*/}
+                    {/*<div className="container-fluid f-12 card-520">*/}
+                    <div className="container-fluid px-0 f-12">
+                        {/*card 520*/}
+                        <div className="py-2 px-2 pb-0">
+                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
+                                <div className="col-sm-4 px-0 mx-0 row">
+                                    <label className="align-self-center col-sm-4 px-0 mx-0">Broker Code</label>
+                                    {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
+                                    <div className="col-sm-8 text-left align-self-center">
+                                        <Select
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            filterOption={customFilter} isSearchable={true}
+                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
+                                    </div>
+                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
+                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
+                                </div>
+                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
+                                    <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
+                                        Astra Argo Lestari Tbk.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="px-1 mx-0 col-sm-12 row">
+                            <div className="col-md-8 pr-1 pl-0 py-2 card-482">
+                                <BrokerTradeSummaryAgGrid size={this.ceksize()}/>
+                            </div>
+
+                            <div className="col-md-4 pr-1 pl-0 py-2 card-482">
+                                <div className="col-sm-12 px-0 mx-0 text-center row ">
+                                    <div className="col-sm-12 px-2 pt-3 mx-0 text-center f-15 bg-currencies">
+                                        TRADE SUMMARY "{ this.state.currStock }"
+                                        <Popup content='Refresh' position='top center' trigger={
+                                            <button
+                                                className={`btn btn-primary pull-right col-sm-1`}
+                                                style={{"font-size": "14px", "width": "38px", "margin-top": "-8px"}}>
+                                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
+                                            </button>
+                                        }/>
+                                    </div>
+                                    <div className="col-sm-12 px-0 mx-0 bg-trading-gray" style={{marginBottom : "10px"}}>
+                                        <BrokerTradeSummary2AgGrid size={this.ceksize()}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+
+        );
+    }
+}
+
+class BrokerTradeSummary2AgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?145:s=="s80"?115:s=="s90"?105:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    },},
+                { field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?150:s=="s75"?140:s=="s80"?130:s=="s90"?105:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "freq", headerName: "Freq", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "netQty", headerName: "Net QTY", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            getRowHeight : function(params){
+                return 27;
+            },
+            rowData: [
+                { price: "10,870",
+                    freq: "9",
+                    vol: "20",
+                    value: "156",
+                    netQty: "2",
+                },
+                { price: "10,860",
+                    freq: "8",
+                    vol: "21",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,850",
+                    freq: "7",
+                    vol: "22",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,840",
+                    freq: "6",
+                    vol: "23",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,830",
+                    freq: "5",
+                    vol: "24",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,820",
+                    freq: "4",
+                    vol: "25",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,810",
+                    freq: "3",
+                    vol: "26",
+                    value: "156",
+                    netQty: "2",},
+                { price: "10,800",
+                    freq: "2",
+                    vol: "27",
+                    value: "156",
+                    netQty: "2",},
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    className={
+                        this.props.type === "tradeHistory" ?
+                            (this.props.changethis == "active") ?
+                                "card card-406 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                                "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                            "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
+                    style={{
+                        width: 'auto' }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        getRowHeight={this.state.getRowHeight}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered}>
+                    </AgGridReact>
+                </div>
+            </>
+        );
+    }
+}
+
+
+class BrokerTradeSummaryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "stock", headerName: "Stock", resizable: true,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?150:125,
+                    minWidth: 125,
+                    lockVisible:true, lockPosition:true,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12 text-primary locked-col locked-visible";
+                    },
+                },
+                { field: "buyVol", headerName: "Buy Vol", filter: "agNumberColumnFilter", resizable: true,
+                    width: s=="s49"?200:s=="s50"?180:s=="s67"?160:s=="s75"?140:128,
+                    minWidth: 128,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "buyVal", headerName: "Buy Val(T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "avgBuyPrice", headerName: "Avg. Buy Price", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "sellVol", headerName: "Sell Vol", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "sellVal", headerName: "Sell Val(T)" , resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?155:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return "grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "avgSellPrice", headerName: "Avg. Sell Price" , resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?155:s=="s75"?140:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "netVol", headerName: "Net Vol", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?160:s=="s75"?135:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+                { field: "netVal", headerName: "Net Val(T)", resizable: true, filter: "agNumberColumnFilter",
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?145:s=="s75"?133:122,
+                    minWidth: 122,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                    },},
+            ],
+            defaultColDef: {
+                sortable: false,
+                filter: true,
+                headerCheckboxSelection: isFirstColumn,
+                checkboxSelection: isFirstColumn,
+            },
+            rowSelection: "multiple",
+            rowData: [
+                {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,595",
+                    buyVal : "12,139",
+                    avgBuyPrice : "12",
+                    sellVol : "1,462,73",
+                    sellVal : "1,462,73",
+                    avgSellPrice: "1,488,19",
+                    netVol : "1,450,07",
+                    netVal : "10,454,100",
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className="grid-294 ag-theme-balham-dark ag-striped-even"
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        rowSelection={this.state.rowSelection}
+                        groupSelectsFiltered={true}>
+                    </AgGridReact>
+                </div>
             </div>
         );
     }
 }
+
 class BrokerInfo extends React.PureComponent {
     constructor(props){
         super(props);

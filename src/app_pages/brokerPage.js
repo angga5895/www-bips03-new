@@ -1994,12 +1994,185 @@ class BrokerTopListPage extends React.PureComponent {
     }
 }
 class BrokerTradeHistory extends React.PureComponent {
-    render () {
+    constructor(props){
+        super(props);
+        this.state = {
+            tabNumber: 1,
+            startRow: 0,
+            currStock: 'TLKM',
+        }
+    }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerstartBroker').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendBroker').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
 
+
+        });
+    }
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
+
+    render () {
+        const stockOptions = [
+            {value: 'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama '},
+            {value: 'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra '},
+            {value: 'bumi', code: 'BUMI', saham: 'Bumi Resource '},
+            {value: 'asii', code: 'ASII', saham: 'Argo Astra Lestari '},
+            {value: 'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia '},
+            {value: 'wskt', code: 'WSKT', saham: 'Waskita '},
+            {value: 'indf', code: 'INDF', saham: 'Indofood '},
+            {value: 'bbca', code: 'BBCA', saham: 'Bank BCA '},
+            {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
+            {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
+        ];
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                // match with the menu
+                borderRadius: 0,
+                border: "var(--warna-d-border) 1px solid",
+                color : "white!important"
+            }),
+            menu: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+            }),
+            menuList: base => ({
+                ...base,
+                // override border radius to match the box
+                borderRadius: 0,
+                color : "white!important"
+            })
+        };
+
+        //Add your search logic here.
+        const customFilter  = (option, searchText) => {
+            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
+            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
+
+            if(searchText.toLowerCase().includes(' ')){
+                if(saham){
+                    return true;
+                }
+            } else {
+                if (code) {
+                    return true;
+                }
+            }
+        };
         return (
-            //hanya memanggil headernya saja
-            <div className="bg-black-trading px-0 mx-0">c
+            <div className="bg-black-trading">
+                <AppFrameAction ref="frameAction" />
+                <main>
+                    {/*outer*/}
+                    {/*<div className="container-fluid f-12 card-520">*/}
+                    <div className="container-fluid px-0 f-12">
+                        {/*card 520*/}
+                        <div className="py-2 px-2 pb-0">
+                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
+                                <div className="col-sm-4 px-0 mx-0 row">
+                                    <label className="align-self-center col-sm-4 px-0 mx-0">Broker Code</label>
+                                    {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
+                                    <div className="col-sm-8 text-left align-self-center">
+                                        <Select
+                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
+                                            filterOption={customFilter} isSearchable={true}
+                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
+                                    </div>
+                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
+                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
+                                </div>
+                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
+                                    <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
+                                        Astra Argo Lestari Tbk.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-sm-12 mx-0 px-0 align-self-center">
+                            <table className={"ml-2"}>
+                                <tr>
+                                    <td className={"px-0 py-1"}>
+                                        <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                    </td>
+                                    <td className={"px-0 py-1"}>
+                                        <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                            <Input placeholder='dd/mm/yy' id="datepickerstartBroker" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td className={"px-0 py-1"}>
+                                        <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
+                                    </td>
+                                    <td className={"px-0 py-1"}>
+
+                                        <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                            <Input placeholder='dd/mm/yy' id="datepickerendBroker" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                            <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div className="px-1 mx-0 col-sm-12 row">
+                            <div className="col-md-12 pr-1 pl-0 py-2">
+                                <BrokerTradeHistoryAgGrid size={this.ceksize()}/>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
             </div>
+
+
         );
     }
 }
@@ -2112,11 +2285,11 @@ class BrokerTradeSummary extends React.PureComponent {
                             </div>
                         </div>
                         <div className="px-1 mx-0 col-sm-12 row">
-                            <div className="col-md-8 pr-1 pl-0 py-2 card-482">
+                            <div className="col-md-12 pr-1 pl-0 py-2 card-482">
                                 <BrokerTradeSummaryAgGrid size={this.ceksize()}/>
                             </div>
 
-                            <div className="col-md-4 pr-1 pl-0 py-2 card-482">
+                            <div className="col-md-4 pr-1 pl-0 py-2 card-482 d-none">
                                 <div className="col-sm-12 px-0 mx-0 text-center row ">
                                     <div className="col-sm-12 px-2 pt-3 mx-0 text-center f-15 bg-currencies">
                                         TRADE SUMMARY "{ this.state.currStock }"
@@ -2139,6 +2312,259 @@ class BrokerTradeSummary extends React.PureComponent {
             </div>
 
 
+        );
+    }
+}
+
+class BrokerTradeHistoryAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "date", headerName: "Date ", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?155:s=="s75"?145:s=="s80"?115:s=="s90"?105:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "grid-table d-border-aggrid-right f-12 text-left";
+                    },},
+                { field: "code", headerName: "Code", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?195:s=="s50"?175:s=="s67"?150:s=="s75"?140:s=="s80"?130:s=="s90"?105:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "grid-table d-border-aggrid-right f-12 text-left";
+                    }, },
+                { field: "buyVol", headerName: "Buy Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
+                    }, },
+                { field: "buyVal", headerName: "Buy Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
+                    }, },
+                { field: "avgBuy", headerName: "Avg. Buy", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
+                    }, },
+                { field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "sellVal", headerName: "Sell Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "avgSell", headerName: "Avg. Sell", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                    }, },
+                { field: "netVol", headerName: "Net Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "netVal", headerName: "Net Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?190:s=="s50"?170:s=="s67"?150:s=="s75"?140:s=="s80"?135:s=="s90"?110:100, minWidth: 100,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }, },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            getRowHeight : function(params){
+                return 27;
+            },
+            rowData: [
+                {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "123",
+                    netVal: "2317",
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <>
+                <div
+                    className={
+                        this.props.type === "tradeHistory" ?
+                            (this.props.changethis == "active") ?
+                                "card card-406 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                                "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
+                            "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
+                    style={{
+                        width: 'auto' }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        getRowHeight={this.state.getRowHeight}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered}>
+                    </AgGridReact>
+                </div>
+            </>
         );
     }
 }
@@ -2300,7 +2726,6 @@ class BrokerTradeSummary2AgGrid extends React.PureComponent {
         );
     }
 }
-
 
 class BrokerTradeSummaryAgGrid extends React.PureComponent {
     constructor(props) {

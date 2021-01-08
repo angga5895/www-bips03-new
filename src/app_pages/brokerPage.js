@@ -362,478 +362,6 @@ class ChatListPage_Base extends React.PureComponent {
     }
 }
 
-
-class BrokerInfo2 extends React.PureComponent {
-    constructor(props){
-        super(props);
-        this.state = {
-            tabNumber: 1,
-            startRow: 0,
-        }
-    }
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }
-        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
-
-    render () {
-        const stockOptions = [
-            {value: 'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama '},
-            {value: 'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra '},
-            {value: 'bumi', code: 'BUMI', saham: 'Bumi Resource '},
-            {value: 'asii', code: 'ASII', saham: 'Argo Astra Lestari '},
-            {value: 'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia '},
-            {value: 'wskt', code: 'WSKT', saham: 'Waskita '},
-            {value: 'indf', code: 'INDF', saham: 'Indofood '},
-            {value: 'bbca', code: 'BBCA', saham: 'Bank BCA '},
-            {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
-            {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
-        ];
-        const customStyles = {
-            control: (base, state) => ({
-                ...base,
-                // match with the menu
-                borderRadius: 0,
-                border: "var(--warna-d-border) 1px solid",
-                color : "white!important"
-            }),
-            menu: base => ({
-                ...base,
-                // override border radius to match the box
-                borderRadius: 0,
-            }),
-            menuList: base => ({
-                ...base,
-                // override border radius to match the box
-                borderRadius: 0,
-                color : "white!important"
-            })
-        };
-
-        //Add your search logic here.
-        const customFilter  = (option, searchText) => {
-            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
-            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
-
-            if(searchText.toLowerCase().includes(' ')){
-                if(saham){
-                    return true;
-                }
-            } else {
-                if (code) {
-                    return true;
-                }
-            }
-        };
-        return (
-            <div className="bg-black-trading">
-                <AppFrameAction ref="frameAction" />
-                <main>
-                    {/*outer*/}
-                    {/*<div className="container-fluid f-12 card-520">*/}
-                    <div className="container-fluid px-0 f-12">
-                        {/*card 520*/}
-                        <div className="py-2 px-2 pb-0">
-                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
-                                <div className="col-sm-4 px-0 mx-0 row">
-                                    <label className="align-self-center col-sm-4 px-0 mx-0">Broker Code</label>
-                                    {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
-                                    <div className="col-sm-8 text-left align-self-center">
-                                        <Select
-                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
-                                            filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
-                                    </div>
-                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
-                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
-                                </div>
-                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
-                                    <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
-                                        Astra Argo Lestari Tbk.
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 pl-1 card-472 mt-2 bg-dark-grey pr-0">
-                            <div className="col-sm-12 px-0 mx-0 text-center row ">
-                                <div className="col-sm-12 px-2 pt-3 mx-0 text-left f-15 bg-currencies">
-                                    PROFILE BROKER
-                                    <Popup content='Refresh' position='top center' trigger={
-                                        <button
-                                            className={`btn btn-primary pull-right col-sm-1`}
-                                            style={{"font-size": "14px", "width": "38px", "margin-top": "-8px"}}>
-                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                        </button>
-                                    }/>
-                                </div>
-                            </div>
-                            <div className="container-fluid mx-0" style={{ paddingTop : "10px" }}>
-                                <div className="row">
-                                    <div className={"col-sm-12 pl-0"}>
-                                        <table width="100%" className={"table table-bordered table-responsive mb-0 ml-2 card-350"}>
-                                            <tr>
-                                                <td className={"d-border"}>Nama Member</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"} ></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>No Akte</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Modal Dasar*
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Modal Disetor*</td>
-                                                <td width="70%" className={"d-border hover-tables"} ></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Status Perusahaan
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Status Operasiona</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Ijin Usaha
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Nilai MKBD Terakhir
-                                                </td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Kantor Pusat
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Nomor Telepon</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Faks</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Kode Pos</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Situs</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-
-                                        </table>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            {/*<InternationalIndicesAgGrid size={this.ceksize()}/>*/}
-                        </div>
-                    </div>
-                </main>
-            </div>
-
-
-        );
-    }
-}
-
-class BrokerTradeSummary2 extends React.PureComponent {
-    constructor(props){
-        super(props);
-        this.state = {
-            tabNumber: 1,
-            startRow: 0,
-        }
-    }
-
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }
-        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
-
-    render () {
-        const stockOptions = [
-            {value: 'bmpt', code: 'BMPT', saham: 'Bumi Mega Pertama '},
-            {value: 'bnmp-ppt', code: 'BNMP-PPT', saham: 'Bumi Nusa Putra '},
-            {value: 'bumi', code: 'BUMI', saham: 'Bumi Resource '},
-            {value: 'asii', code: 'ASII', saham: 'Argo Astra Lestari '},
-            {value: 'tlkm', code: 'TLKM', saham: 'Telekomunikasi Indonesia '},
-            {value: 'wskt', code: 'WSKT', saham: 'Waskita '},
-            {value: 'indf', code: 'INDF', saham: 'Indofood '},
-            {value: 'bbca', code: 'BBCA', saham: 'Bank BCA '},
-            {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
-            {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
-        ];
-
-        const customStyles = {
-            control: (base, state) => ({
-                ...base,
-                // match with the menu
-                borderRadius: 0,
-                border: "var(--warna-d-border) 1px solid",
-                color : "white!important"
-            }),
-            menu: base => ({
-                ...base,
-                // override border radius to match the box
-                borderRadius: 0,
-            }),
-            menuList: base => ({
-                ...base,
-                // override border radius to match the box
-                borderRadius: 0,
-                color : "white!important"
-            })
-        };
-
-        //Add your search logic here.
-        const customFilter  = (option, searchText) => {
-            var code = option.data.code.toLowerCase().includes(searchText.toLowerCase());
-            var saham = option.data.saham.toLowerCase().includes(searchText.toLowerCase());
-
-            if(searchText.toLowerCase().includes(' ')){
-                if(saham){
-                    return true;
-                }
-            } else {
-                if (code) {
-                    return true;
-                }
-            }
-        };
-        return (
-            <div className="bg-black-trading">
-                <AppFrameAction ref="frameAction" />
-                <main>
-                    {/*outer*/}
-                    {/*<div className="container-fluid f-12 card-520">*/}
-                    <div className="container-fluid px-0 f-12">
-                        {/*card 520*/}
-                        <div className="py-2 px-2 pb-0">
-                            <div className="px-1 mx-0 my-0 col-sm-12 row h-40">
-                                <div className="col-sm-4 px-0 mx-0 row">
-                                    <label className="align-self-center col-sm-4 px-0 mx-0">Broker Code</label>
-                                    {/*<Input defaultValue='AALI' placeholder='Code' size='small' className="col-sm-8 text-center align-self-center"/>*/}
-                                    <div className="col-sm-8 text-left align-self-center">
-                                        <Select
-                                            getOptionLabel={(option) => `${option.code} - ${option.saham}`}
-                                            filterOption={customFilter} isSearchable={true}
-                                            maxMenuHeight={155} styles={customStyles} placeholder={<div>Search..</div>} options={stockOptions} className="stockPageSelect" theme={this.selectSelectionTab}/>
-                                    </div>
-                                    {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
-                                    {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
-                                </div>
-                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
-                                    <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
-                                        Astra Argo Lestari Tbk.
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 pl-1 card-472 mt-2 bg-dark-grey pr-0">
-                            <div className="col-sm-12 px-0 mx-0 text-center row ">
-                                <div className="col-sm-12 px-2 pt-3 mx-0 text-left f-15 bg-currencies">
-                                    PROFILE BROKER
-                                    <Popup content='Refresh' position='top center' trigger={
-                                        <button
-                                            className={`btn btn-primary pull-right col-sm-1`}
-                                            style={{"font-size": "14px", "width": "38px", "margin-top": "-8px"}}>
-                                            <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                                        </button>
-                                    }/>
-                                </div>
-                            </div>
-                            <div className="container-fluid mx-0" style={{ paddingTop : "10px" }}>
-                                <div className="row">
-                                    <div className={"col-sm-12 pl-0"}>
-                                        <table width="100%" className={"table table-bordered table-responsive mb-0 ml-2 card-350"}>
-                                            <tr>
-                                                <td className={"d-border"}>Nama Member</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"} ></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>No Akte</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Modal Dasar*
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Modal Disetor*</td>
-                                                <td width="70%" className={"d-border hover-tables"} ></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Status Perusahaan
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Status Operasiona</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Ijin Usaha
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Nilai MKBD Terakhir
-                                                </td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Kantor Pusat
-                                                </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Nomor Telepon</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Faks</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Kode Pos</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Situs</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-
-                                        </table>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            {/*<InternationalIndicesAgGrid size={this.ceksize()}/>*/}
-                        </div>
-                    </div>
-                </main>
-            </div>
-
-
-        );
-    }
-}
-
-class BrokerTradeHistory2 extends React.PureComponent {
-    constructor(props){
-        super(props);
-        this.state = {
-            tabNumber: 1,
-            startRow: 0,
-        }
-    }
-}
-
-class BrokerTopListPage2 extends React.PureComponent {
-    ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s100";
-        }
-    }
-    render(){
-        return(
-            <div className="f-12 px-0">
-                <AppFrameAction ref="frameAction" />
-                <WSConnectionAction />
-                <div className="card bg-black-trading f-12">
-                    <div className="card-header bg-tableheader h-37 pt-3">
-                        TOP BROKER
-                        <Popup content='Refresh' position='top center' trigger={
-                            <button
-                                className="col-sm-1 pull-right btn btn-primary"
-                                style={{"font-size": "12px", "margin-top": "-7px", "width": "38px"}}>
-                                <i className="glyphicon glyphicon-refresh" aria-hidden={"true"}></i>
-                            </button>
-                        }/>
-                    </div>
-                    <div className="card-body">
-                        <TopBrokerAgGrid size={this.ceksize()}/>
-                    </div>
-                </div>
-                <div className="card card-175 bg-black-trading f-12">
-                    <div className="card-header bg-tableheader h-37 pt-3">
-                        TOP BUYER
-                    </div>
-                    <div className="card-body">
-                        <TopBrokerBAgGrid size={this.ceksize()}/>
-                    </div>
-                </div>
-                <div className="card card-175 bg-black-trading f-12">
-                    <div className="card-header bg-tableheader h-37 pt-3">
-                        TOP SELLER
-                    </div>
-                    <div className="card-body">
-                        <TopBrokerSAgGrid size={this.ceksize()}/>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
 class TopBrokerAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -2163,7 +1691,7 @@ class BrokerTradeHistory extends React.PureComponent {
                         </div>
 
                         <div className="px-1 mx-0 col-sm-12 row">
-                            <div className="col-md-12 pr-1 pl-0 py-2">
+                            <div className="col-md-12 pr-1 pl-0">
                                 <BrokerTradeHistoryAgGrid size={this.ceksize()}/>
                             </div>
                         </div>
@@ -2285,11 +1813,11 @@ class BrokerTradeSummary extends React.PureComponent {
                             </div>
                         </div>
                         <div className="px-1 mx-0 col-sm-12 row">
-                            <div className="col-md-12 pr-1 pl-0 py-2 card-482">
+                            <div className="col-md-12 pr-1 pl-0">
                                 <BrokerTradeSummaryAgGrid size={this.ceksize()}/>
                             </div>
 
-                            <div className="col-md-4 pr-1 pl-0 py-2 card-482 d-none">
+                            <div className="col-md-4 pr-1 pl-0 py-2 d-none">
                                 <div className="col-sm-12 px-0 mx-0 text-center row ">
                                     <div className="col-sm-12 px-2 pt-3 mx-0 text-center f-15 bg-currencies">
                                         TRADE SUMMARY "{ this.state.currStock }"
@@ -2301,7 +1829,7 @@ class BrokerTradeSummary extends React.PureComponent {
                                             </button>
                                         }/>
                                     </div>
-                                    <div className="col-sm-12 px-0 mx-0 bg-trading-gray" style={{marginBottom : "10px"}}>
+                                    <div className="col-sm-12 px-0 mx-0 bg-trading-gray " style={{marginBottom : "10px"}}>
                                         <BrokerTradeSummary2AgGrid size={this.ceksize()}/>
                                     </div>
                                 </div>
@@ -2547,12 +2075,7 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className={
-                        this.props.type === "tradeHistory" ?
-                            (this.props.changethis == "active") ?
-                                "card card-406 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
-                                "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
-                            "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
+                    className={"card card-brokerInfo ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -2705,12 +2228,7 @@ class BrokerTradeSummary2AgGrid extends React.PureComponent {
         return (
             <>
                 <div
-                    className={
-                        this.props.type === "tradeHistory" ?
-                            (this.props.changethis == "active") ?
-                                "card card-406 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
-                                "card card-129 ag-theme-balham-dark ag-header-border-gray ag-striped-odd" :
-                            "card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
+                    className={"card card-215 ag-theme-balham-dark ag-header-border-gray ag-striped-odd"}
                     style={{
                         width: 'auto' }}>
                     <AgGridReact
@@ -2929,7 +2447,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className="grid-294 ag-theme-balham-dark ag-striped-even"
+                    className="grid-294 ag-header-border-gray ag-theme-balham-dark ag-striped-even card-brokerTradeSummary"
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -3072,7 +2590,7 @@ class BrokerInfo extends React.PureComponent {
                             <div className="container-fluid mx-0" style={{ paddingTop : "10px" }}>
                                 <div className="row">
                                     <div className={"col-sm-12 pl-0"}>
-                                        <table width="100%" className={"table table-bordered table-responsive mb-0 ml-2 card-350"}>
+                                        <table width="100%" className={"table table-bordered table-responsive mb-0 ml-2 card-brokerInfo"}>
                                             <tr>
                                                 <td className={"d-border"}>Nama Member</td>
                                                 <td width="70%" className={"even-td d-border hover-tables"} ></td>

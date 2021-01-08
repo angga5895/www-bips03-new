@@ -6562,3 +6562,9 @@ table .tb-align-center>tr>td{
 .card-tradeSO{
     height: 460px;
 }
+.card-brokerInfo{
+    height: 420px;
+}
+.card-brokerTradeSummary{
+    height: 475px;
+}

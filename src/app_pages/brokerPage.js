@@ -1530,6 +1530,22 @@ class BrokerTradeHistory extends React.PureComponent {
             currStock: 'TLKM',
         }
     }
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#3D3E3F',
+            neutral20: this.props.thememode === true ? '#333332' : '#333332',
+            neutral30: this.props.thememode === true ? '#333332' : '#333332',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#202020',
+            primary: '#0071BC',
+        },
+    });
     componentDidMount() {
         $(document).ready(function() {
             var sd = new Date(), ed = new Date();
@@ -1713,6 +1729,22 @@ class BrokerTradeSummary extends React.PureComponent {
             currStock: 'TLKM',
         }
     }
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#3D3E3F',
+            neutral20: this.props.thememode === true ? '#333332' : '#333332',
+            neutral30: this.props.thememode === true ? '#333332' : '#333332',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#202020',
+            primary: '#0071BC',
+        },
+    });
     ceksize(){
         if(window.innerWidth > 1290 && window.innerWidth <= 1370){
             return "s100";
@@ -1747,6 +1779,7 @@ class BrokerTradeSummary extends React.PureComponent {
             {value: 'smrg', code: 'SMGR', saham: 'Semen Indonesia '},
             {value: 'bbri', code: 'BBRI', saham: 'Bank BRI '}
         ];
+
         const customStyles = {
             control: (base, state) => ({
                 ...base,
@@ -2466,6 +2499,22 @@ class BrokerInfo extends React.PureComponent {
             startRow: 0,
         }
     }
+    selectSelectionTab = theme => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+            ...theme.colors,
+            neutral0: this.props.thememode === true ? '#3D3E3F' : '#3D3E3F',
+            neutral20: this.props.thememode === true ? '#333332' : '#333332',
+            neutral30: this.props.thememode === true ? '#333332' : '#333332',
+            neutral40: this.props.thememode === true ? '#1A1A1A' : '#1A1A1A',
+            neutral80: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary75: this.props.thememode === true ? '#FFFFFF' : '#FFFFFF',
+            primary50: this.props.thememode === true ? '#4D4D4E' : '#4D4D4E',
+            primary25: this.props.thememode === true ? '#202020' : '#202020',
+            primary: '#0071BC',
+        },
+    });
     ceksize(){
         if(window.innerWidth > 1290 && window.innerWidth <= 1370){
             return "s100";

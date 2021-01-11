@@ -26,8 +26,8 @@ import AccountBPage from './app_pages/accountB.js';
 
 import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
     NewResearchMarketStatistikPage,TopBrokerMarketStatistikPage,IndiceMarketStatistikPage, IndiceMarketSecondStatistikPage,
-    StatisticMarketStatistikPage, CurrenciesMarketStatistikPage, GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
-    NonSectoralStatistikPage}
+    StatisticMarketStatistikPage, CurrenciesMarketStatistikPage, CurrencyCommodityMarketStatistikPage, GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
+    NonSectoralStatistikPage, IntIndicesMarketStatistikPage}
     from './app_pages/marketstatistikPage';
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
@@ -64,8 +64,8 @@ class App extends React.Component {
             //Landing Page
             /*tree1*/ LandingPage, StockCash, TradeListHistory, FundTransfer, InquryAccount, tcAndSoa, TradePLPage,
             //MarketStatistik Page
-            /*tree2*/ MarketStatistikPage, NewResearchMarketStatistikPage, CurrenciesMarketStatistikPage, TopBrokerMarketStatistikPage,IndiceMarketStatistikPage,
-            IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage, NonSectoralStatistikPage,
+            /*tree2*/ MarketStatistikPage, NewResearchMarketStatistikPage, IntIndicesMarketStatistikPage, TopBrokerMarketStatistikPage,IndiceMarketStatistikPage,
+            IndiceMarketSecondStatistikPage, StatisticMarketStatistikPage, NonSectoralStatistikPage, CurrencyCommodityMarketStatistikPage,
             /*tree3*/ GeneralNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage, StockNewResearchPage,
             //StockPage
             /*tree2*/ StockPage, StockWatchlist, StockHistoryPage, StockTradeSummaryPage, StockFinancialStatement,
@@ -120,8 +120,8 @@ class App extends React.Component {
               {className: 'NonSectoralStatistikPage', title: '', instanceName: 'nonSectoralStatistikPage'},
               {className: 'IndiceMarketSecondStatistikPage', title: '', instanceName: 'indiceMarketSecondStatistikPage'},
             {className: 'TopBrokerMarketStatistikPage', title: '', instanceName: 'topBrokerMarketStatistikPage'},
-            {className: 'CurrenciesMarketStatistikPage', title: '', instanceName: 'currenciesMarketStatistikPage'},
-            {className: 'NewResearchMarketStatistikPage', title: '', instanceName: 'newResearchMarketStatistikPage'},
+            {className: 'IntIndicesMarketStatistikPage', title: '', instanceName: 'intIndicesMarketStatistikPage'},
+            {className: 'CurrencyCommodityMarketStatistikPage', title: '', instanceName: 'currencyCommodityMarketStatistikPage'},
 
             //tree 3 In MarketStatistik
             {className: 'GeneralNewResearchPage', title: '', instanceName: 'newsGeneral'},
@@ -207,15 +207,8 @@ class App extends React.Component {
                         'nonSectoralStatistikPage',
                         /*'indiceMarketSecondStatistikPage',*/
                         'topBrokerMarketStatistikPage',
-                        'currenciesMarketStatistikPage',
-                        {
-                            name: 'newResearchMarketStatistikPage',
-                            pages : [
-                                'newsGeneral',
-                                'newsStock',
-                                'newsMutualFund',
-                            ]
-                        }
+                        'intIndicesMarketStatistikPage',
+                        'currencyCommodityMarketStatistikPage',
                     ]
                 },
                 {

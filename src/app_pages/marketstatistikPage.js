@@ -26,6 +26,7 @@ import {ResizeResponsive} from "./mainPage";
 import TableInfoTransaction from "../app_transaction/tableInfoTransaction";
 import FormBuy from "../app_transaction/form_buy";
 import FormSell from "../app_transaction/form_sell";
+import {VerifyPINPortofolio} from "./landingPage";
 window.$ = window.jQuery = $;
 
 
@@ -104,8 +105,9 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             indiceMarketStatistikPage: 'SECTORAL INDEX',
                             nonSectoralStatistikPage: 'NON SECTORAL INDEX',
                             topBrokerMarketStatistikPage: 'TOP BROKER',
-                            currenciesMarketStatistikPage: 'CURRENCIES & INT.INDICES',
-                            newResearchMarketStatistikPage: 'NEWS',
+                            intIndicesMarketStatistikPage: 'INT.INDICES',
+                            currencyCommodityMarketStatistikPage: 'CURRENCY & COMMODITY',
+                            // newResearchMarketStatistikPage: 'NEWS',
                         }
                     }/>
                 </div>
@@ -1128,6 +1130,92 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
         );
     }
 }
+// Currencies change to indices IntIndicesMarketStatistikPage
+class IntIndicesMarketStatistikPage extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state={
+            activeTab: '1',
+        }
+    }
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
+    }
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }
+        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
+
+    render () {
+        const paddingParagraph = {
+            paddingTop: '10px'
+        }
+
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+
+                <div className="container-fluid px-1 f-12" >
+
+
+                    {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
+                    <div className="col-sm-12 px-0" style={paddingParagraph}>
+                        {/* <PortofolioAgGrid/> */}
+                        <div className="cssmenu col-sm-8 mx-0 px-0 h-45">
+                            <ul className={"d-border-top d-border-left d-border-right"}>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; Stock</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-sm-6 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-sm-6 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; Indices Futures</span></a></li>
+                            </ul>
+                        </div>
+                        <div className="col-sm-12 px-0 py-0 mx-0 my-0 bg-grey bg-black-trading d-border card-472">
+
+                            <div className={this.state.activeTab === '1' ? 'd-block f-12' : 'd-none'}>
+                                <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
+                                    <div className="bg-tableheader text-center py-3 h-30">
+                                        <button className="pull-right btn btn-primary btn-10">
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                                        <span>International Indices Futures</span>
+                                    </div>
+                                    <InternationalIndicesFuturesAgGrid size={this.ceksize()}/>
+                                </div>
+                            </div>
+                            <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
+                                <div className="container-fluid mx-0 px-0 my-0 mx-0 py-0" style={{ paddingTop : "10px" }}>
+                                    <div className="bg-tableheader text-center py-3 h-30">
+                                        <button className="pull-right btn btn-primary btn-10">
+                                            <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                                        <span>International Indices</span>
+                                    </div>
+                                    <InternationalIndicesAgGrid size={this.ceksize()}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
+    }
+}
 
 class CurrenciesMarketStatistikPage extends React.PureComponent{
     constructor(props) {
@@ -1276,6 +1364,7 @@ class CurrenciesMarketStatistikPage extends React.PureComponent{
         )
     };
 }
+
 class CurrenciesAgGrid extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -1431,8 +1520,6 @@ class CurrenciesAgGrid extends React.PureComponent{
     render() {
         return (
             <div className={"px-3"} style={{ width: "100%", height: "100%" }}>
-                <p className={"text-primary f-15"}>PREV CLOSE
-                &nbsp;<span className={"text-success"}>14,876</span></p>
                 <div
                     className={"card-354 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
@@ -1452,6 +1539,7 @@ class CurrenciesAgGrid extends React.PureComponent{
         );
     }
 }
+
 class InternationalIndicesAgGrid extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -1471,11 +1559,29 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
+                },{ field: "prev", headerName: "Prev", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
                 },{ field: "lastUpdated", headerName: "Last Updated", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "high", headerName: "High", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "low", headerName: "Low", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "lastPrice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?430:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
@@ -1515,6 +1621,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: 5+" "+s,
                     change: "-23",
                     percentage: "1.6%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "DJI",
                     name: "Dow jones Industrial Average",
@@ -1522,6 +1631,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "334.32",
                     change: "-23",
                     percentage: "1.6%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1529,6 +1641,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1536,6 +1651,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1543,6 +1661,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1550,6 +1671,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1557,6 +1681,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1564,6 +1691,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1571,6 +1701,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1578,6 +1711,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1585,6 +1721,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1592,6 +1731,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1599,6 +1741,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1606,6 +1751,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1613,6 +1761,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },{
                     symbol: "^NYA",
                     name: "Nasdaq Jones Industrial Average",
@@ -1620,6 +1771,9 @@ class InternationalIndicesAgGrid extends React.PureComponent {
                     lastPrice: "2213.11",
                     change: "10",
                     percentage: "3%",
+                    prev: "2000.23",
+                    high: "2022.44",
+                    low: "1820.33",
                 },
             ],
             getRowHeight : function (params) {
@@ -1681,7 +1835,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
 
     render() {
         return (
-            <div style={{ width: "100%", height: "100%" }} className={"px-2"}>
+            <div style={{ width: "100%", height: "100%" }}>
                 <div
                     className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
@@ -1702,7 +1856,393 @@ class InternationalIndicesAgGrid extends React.PureComponent {
     }
 }
 
+class CommodityAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "name", headerName: "Name", sortable: true, resizable: true,comparator: stringComparator,
+                    width: 135,
+                    minWidth:135,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
+                    minWidth: 145,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    name: "ACBB",
+                    last: "2000.2",
+                    change: "-23",
+                    percentage: "1.6%",
+                },{
+                    name: "ASBB",
+                    last: "2030.2",
+                    change: "23",
+                    percentage: "1.6%",
+                },{
+                    name: 123232131,
+                    last: "2000.2",
+                    change: "-23",
+                    percentage: "1.6%",
+                },{
+                    name: 123232131,
+                    last: "2000.2",
+                    change: "-23",
+                    percentage: "1.6%",
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
 
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+class InternationalIndicesFuturesAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "index", headerName: "Index", sortable: true, resizable: true,comparator: stringComparator,
+                    width: 135,
+                    minWidth:135,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-primary f-12";
+                    },
+                },{ field: "month", headerName: "Month", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    minWidth: 180,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-left f-12";
+                    },
+                },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
+                    minWidth: 145,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "high", headerName: "High", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: s=="s49"?430:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
+                    minWidth: 145,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "low", headerName: "Low", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        var change = params.data.change;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "changePercent", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        var change = params.data.changePercent;
+                        return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                    }
+                },{ field: "time", headerName: "Time", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
+                    width: 100,
+                    minWidth: 100,
+                    cellClass : function (params) {
+                        return " grid-table d-border-aggrid-right text-right f-12";
+                    },
+                },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+            },
+            rowData: [
+                {
+                    index: "US500",
+                    month: "20-Dec",
+                    last: "2000.10",
+                    high: "2213.11",
+                    low: "2232.12",
+                    change: "-13.00",
+                    changePercent: "-1.2",
+                    time: "0:04:49",
+                },
+                {
+                    index: "US500",
+                    month: "20-Dec",
+                    last: "2000.10",
+                    high: "2213.11",
+                    low: "2232.12",
+                    change: "13.00",
+                    changePercent: "1.2",
+                    time: "0:04:49",
+                },{
+                    index: "US500",
+                    month: "20-Dec",
+                    last: "2000.10",
+                    high: "2213.11",
+                    low: "2232.12",
+                    change: "-13.00",
+                    changePercent: "-1.2",
+                    time: "0:04:49",
+                },
+                {
+                    index: "US500",
+                    month: "20-Dec",
+                    last: "2000.10",
+                    high: "2213.11",
+                    low: "2232.12",
+                    change: "13.00",
+                    changePercent: "1.2",
+                    time: "0:04:49",
+                },
+                {
+                    index: "US500",
+                    month: "20-Dec",
+                    last: "2000.10",
+                    high: "2213.11",
+                    low: "2232.12",
+                    change: "-13.00",
+                    changePercent: "-1.2",
+                    time: "0:04:49",
+                },
+            ],
+            getRowHeight : function (params) {
+                return 32;
+            },
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <div style={{ width: "100%", height: "100%" }}>
+                <div
+                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    id="myGrid"
+                    style={{
+                        width: "100%"
+                    }}>
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        onGridReady={this.onGridReady}
+                        getRowHeight={this.state.getRowHeight}
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                    </AgGridReact>
+                </div>
+            </div>
+        );
+    }
+}
+
+class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
+    render(){
+        return(
+            <div>
+                {/*<BIPSAppProvider>*/}
+                {/*<WSConnectionAction />*/}
+                    <div className="col-sm-12 row px-0 mx-0 row">
+                        <div className="col-sm-7 px-2 mx-0 card-520">
+                            <div className="bg-trading-gray">
+                                <div className="bg-tableheader text-center py-3 h-30">
+                                    <button className="pull-right btn btn-primary btn-10">
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                                </div>
+                                <table className={"col-sm-12"}>
+                                    <tr>
+                                        <td colSpan="3" className="px-1 py-1">Cooper</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-1 py-1">105.45</td>
+                                        <td className={"text-danger px-1 py-1"}>-1.43</td>
+                                        <td className={"text-danger px-1 py-1"}>(-1.24)</td>
+                                    </tr>
+                                </table>
+                                <CurrenciesAgGrid/>
+                            </div>
+                        </div>
+                        <div className="col-sm-5 px-2 mx-0 bg-grey card-520 f-12">
+                            <div className="bg-trading-gray">
+                                <div className="bg-tableheader text-center py-3 h-30">
+                                    <button className="pull-right btn btn-primary btn-10">
+                                        <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
+                                </div>
+                                <table className={"col-sm-12"}>
+                                    <tr>
+                                        <td colspan="3">Cooper</td>
+                                    </tr>
+                                    <tr>
+                                        <td>105.45</td>
+                                        <td className={"text-danger"}>-1.43</td>
+                                        <td className={"text-danger"}>(-1.24)</td>
+                                    </tr>
+                                </table>
+                                <CommodityAgGrid/>
+                            </div>
+                        </div>
+                    </div>
+                {/*</BIPSAppProvider>*/}
+            </div>
+        );
+    }
+}
 
 class NewResearchMarketStatistikPage extends React.PureComponent {
     render(){
@@ -4350,9 +4890,11 @@ export default MarketStatistikPage;
 export {CustomFrameHeaderMarketStatistik, MarketStatistik,
     StatisticMarketStatistikPage,
     IndiceMarketStatistikPage,
+    IntIndicesMarketStatistikPage,
     IndiceMarketSecondStatistikPage,
     TopBrokerMarketStatistikPage,
     CurrenciesMarketStatistikPage,
+    CurrencyCommodityMarketStatistikPage,
     NewResearchMarketStatistikPage,
     NonSectoralStatistikPage,
     GeneralNewResearchPage, StockNewResearchPage, MutualNewResearchPage, ReseacrhNewResearchPage};

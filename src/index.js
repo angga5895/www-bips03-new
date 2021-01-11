@@ -9,6 +9,7 @@ import './icons/linearicons.css';
 import './icons/open-iconic.css';
 import './icons/pe-icon-7-stroke.css';
 import './icons/icofont.css';
+import './icons/brokerInfo.css';
 import './icons/bips-icon/css/bips-icon.css';
 import './semantic-dist/semantic.min.css';
 import './bootstrap-3.3.7/bootstrap/dist/css/bootstrap_node.css';

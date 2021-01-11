@@ -1816,7 +1816,7 @@ class MainPage_Base extends React.Component {
                                     ,
                                 brokerPage:
                                     <div className="text-align-center">
-                                        <i className="icon-icon-chat-support fs-icon-bips"></i> <br/><br/>
+                                        <i className="iconbi-broker-icon fs-icon-bips"></i> <br/><br/>
                                         <span className="fs-text-bips padding-11">BROKER</span><br/>
                                     </div>
                                 ,

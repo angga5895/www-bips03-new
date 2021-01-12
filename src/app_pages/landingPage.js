@@ -1452,8 +1452,8 @@ class FundTransfer_Base extends React.PureComponent {
                                     </div>
                                 </div>
                             </div>
+
                             <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
-                                <div className="d-border-transparent-grey">
                                     <div className="d-border-bottom mb-3">
                                         <div className="form-group mb-3 px-0">
                                             <div className="col-sm-9 pl-0 h-62">
@@ -1497,10 +1497,9 @@ class FundTransfer_Base extends React.PureComponent {
                                             <FundAgGrid size={this.ceksize()}/>
                                         </div>
                                     </div>
-                                </div>
                             </div>
+
                             <div className={this.state.activeTab === '3' ? 'd-block f-12' : 'd-none'}>
-                                <div className="d-border-transparent-grey">
                                     <div className="mb-3">
                                         <div className="form-group mb-3 px-0">
                                             <div className="col-sm-12 pl-0 mt-3 pb-3">
@@ -1588,11 +1587,10 @@ class FundTransfer_Base extends React.PureComponent {
 
                                         </div>
                                     </div>
-                                </div>
                             </div>
+
                             <div className={this.state.activeTab === '4' ? 'd-block f-12' : 'd-none'}>
-                                <div className="d-border-transparent-grey">
-                                    <div className="mb-3">
+                                   <div className="mb-3">
                                         <div className="form-group mb-3 px-0">
                                             <div className="col-sm-12 pl-0 mt-3 pb-3">
                                                 <h3>Stock Receive</h3>
@@ -1679,11 +1677,9 @@ class FundTransfer_Base extends React.PureComponent {
 
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
                             <div className={this.state.activeTab === '5' ? 'd-block f-12' : 'd-none'}>
-                                <div className="d-border-transparent-grey">
                                     <div className="d-border-bottom mb-3">
                                         <div className="form-group mb-3 px-0">
                                             <div className="col-sm-9 pl-0 h-62">
@@ -1727,7 +1723,6 @@ class FundTransfer_Base extends React.PureComponent {
                                             <FundStockAgGrid size={this.ceksize()}/>
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
 
@@ -5650,41 +5645,41 @@ class FundStockAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?260:s=="s50"?200:s=="s67"?190:s=="s75"?180:120, minWidth: 120, comparator: dateComparator,
+                    width: s=="s49"?280:s=="s50"?260:s=="s67"?220:s=="s75"?200:s=="s80"?180:s=="s90"?140:135, minWidth: 130, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?250:s=="s50"?190:s=="s67"?160:s=="s75"?143:s=="s80"?135:60, comparator: integerComparator,
+                    width: s=="s49"?280:s=="s50"?245:s=="s67"?215:s=="s75"?200:s=="s80"?190:s=="s90"?140:130, comparator: integerComparator,
                     minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?310:s=="s50"?280:s=="s67"?240:s=="s75"?235:s=="s80"?210:s=="s90"?130:130, comparator: integerComparator,
+                    width: s=="s49"?310:s=="s50"?270:s=="s67"?250:s=="s75"?240:s=="s80"?190:s=="s90"?150:140, comparator: integerComparator,
                     minWidth: 130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(Shr)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?300:s=="s50"?280:s=="s67"?240:s=="s75"?260:s=="s80"?230:s=="s90"?185:170, comparator: integerComparator,
+                    width: s=="s49"?380:s=="s50"?320:s=="s67"?300:s=="s75"?280:s=="s80"?250:s=="s90"?200:190, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-center f-12";
+                        return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?315:s=="s50"?310:s=="s67"?300:s=="s75"?290:s=="s80"?230:s=="s90"?155:150, comparator: integerComparator,
+                    width: s=="s49"?345:s=="s50"?320:s=="s67"?300:s=="s75"?280:s=="s80"?250:s=="s90"?185:170, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "brokerDestination", headerName: "Broker Destination", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:160, minWidth: 160, comparator: stringComparator,
+                    width: s=="s49"?325:s=="s50"?300:s=="s67"?240:s=="s75"?220:170, minWidth: 170, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, resizable: true,
-                    width: s=="s49"?210:s=="s50"?190:s=="s75"?160:150, minWidth: 150, comparator: stringComparator,
+                    width: s=="s49"?295:s=="s50"?260:s=="s67"?210:s=="s75"?190:s=="s80"?160:s=="s90"?180:160, minWidth: 150, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -5721,6 +5716,330 @@ class FundStockAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
+                    date: "22/06/2019"+s,
+                    no: "12",
+                    stock: 'TLKM',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "DX",
+                    brokerReceive: "NW",
+                    status:"New",
+                }, {
+                    date: "22/06/2019",
+                    no: "13",
+                    stock: 'BBCA',
+                    vol: 100.000,
+                    amount: 540.000000,
+                    brokerDestination: "AE",
+                    brokerReceive: "SP",
+                    status:"New",
+                },{
                     date: "22/06/2019"+s,
                     no: "12",
                     stock: 'TLKM',

@@ -1216,7 +1216,7 @@ class IntIndicesMarketStatistikPage extends React.PureComponent {
         );
     }
 }
-
+//unused
 class CurrenciesMarketStatistikPage extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -1523,7 +1523,7 @@ class CurrenciesAgGrid extends React.PureComponent{
                 <p className={"text-primary f-15"}>PREV CLOSE
                     &nbsp;<span className={"text-success"}>14,876</span></p>
                 <div
-                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-currencies ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1839,7 +1839,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-intIndices ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1979,7 +1979,7 @@ class CommodityAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-commodity ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2175,7 +2175,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-intIndices ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2221,7 +2221,7 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                 {/*<WSConnectionAction />*/}
                     <div className="col-sm-12 row px-0 mx-0 row">
                         <div className="col-sm-7 px-2 mx-0 card-520 mt-2">
-                            <div className="bg-trading-gray">
+                            <div className="bg-trading-gray pb-2">
                                 <div className="bg-tableheader text-center py-3 h-30">
                                     <button className="pull-right btn btn-primary btn-10">
                                         <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>

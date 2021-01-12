@@ -5683,11 +5683,6 @@ class FundStockAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "brokerReceive", headerName: "Broker Receive", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?210:160, minWidth: 160, comparator: stringComparator,
-                    cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
-                    },
                 },{ field: "status", headerName: "Status", sortable: true, resizable: true,
                     width: s=="s49"?210:s=="s50"?190:s=="s75"?160:150, minWidth: 150, comparator: stringComparator,
                     cellClass : function (params) {

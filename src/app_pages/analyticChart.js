@@ -585,8 +585,10 @@ class AnalyticChart_Base extends React.PureComponent {
 
                 function getStock(stok,to){
 
-                    // var sessidbaru = $("#sessIdAhay").val();
-                    var sessidbaru = 1;
+                    var sessionID = $("#sessIdAhay").val();
+                    //temporary id delete later
+                    var sessidbaru = localStorage.username+"."+sessionID;
+                    // var sessidbaru = 1;
 
                     // url: "https://bahana.ihsansolusi.co.id:5050/stock/chart/"+stok,
 
@@ -1283,7 +1285,7 @@ more.
                         </div>
                     </div>
                 </div>
-                {/*<input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>*/}
+                <input type="hidden" value={this.props.sessId} id={"sessIdAhay"}/>
                 <input type="hidden" id={"themeTemp"}/>
 
                 <div id={"chart-container" + this.state.stockType} className={classChart} style={containerStyle}></div>

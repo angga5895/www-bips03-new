@@ -1520,8 +1520,10 @@ class CurrenciesAgGrid extends React.PureComponent{
     render() {
         return (
             <div className={"px-3"} style={{ width: "100%", height: "100%" }}>
+                <p className={"text-primary f-15"}>PREV CLOSE
+                    &nbsp;<span className={"text-success"}>14,876</span></p>
                 <div
-                    className={"card-354 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1837,7 +1839,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -1977,7 +1979,7 @@ class CommodityAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2173,7 +2175,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
         return (
             <div style={{ width: "100%", height: "100%" }}>
                 <div
-                    className={"card-watchlistcust ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
+                    className={"card-240 ag-theme-balham-dark ag-bordered ag-striped-odd d-border"}
                     id="myGrid"
                     style={{
                         width: "100%"
@@ -2193,48 +2195,65 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
 }
 
 class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
+    ceksize(){
+        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
+            return "s100";
+        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+            return "s90";
+        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
+            return "s80";
+        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
+            return "s75";
+        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+            return "s67";
+        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+            return "s50";
+        }else if(window.innerWidth > 2559){
+            return "s49";
+        }else{
+            return "s110";
+        }
+    }
     render(){
         return(
             <div>
                 {/*<BIPSAppProvider>*/}
                 {/*<WSConnectionAction />*/}
                     <div className="col-sm-12 row px-0 mx-0 row">
-                        <div className="col-sm-7 px-2 mx-0 card-520">
+                        <div className="col-sm-7 px-2 mx-0 card-520 mt-2">
                             <div className="bg-trading-gray">
                                 <div className="bg-tableheader text-center py-3 h-30">
                                     <button className="pull-right btn btn-primary btn-10">
                                         <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
                                 </div>
-                                <table className={"col-sm-12"}>
+                                <table className={"col-sm-12 f-15"}>
                                     <tr>
-                                        <td colSpan="3" className="px-1 py-1">Cooper</td>
-                                    </tr>
-                                    <tr>
+                                        <td className="px-3 py-3 f-18">Cooper</td>
                                         <td className="px-1 py-1">105.45</td>
-                                        <td className={"text-danger px-1 py-1"}>-1.43</td>
-                                        <td className={"text-danger px-1 py-1"}>(-1.24)</td>
+                                        <td className={"text-success px-1 py-1"}>
+                                            <i className={"icofont icofont-caret-up"}></i>&nbsp;1.43</td>
+                                        <td className={"text-success px-1 py-1"}>(1.24)</td>
                                     </tr>
                                 </table>
-                                <CurrenciesAgGrid/>
+                                <CurrenciesAgGrid size={this.ceksize()}/>
                             </div>
                         </div>
-                        <div className="col-sm-5 px-2 mx-0 bg-grey card-520 f-12">
+                        <div className="col-sm-5 pl-0 pr-3 mx-0 card-520 f-12 mt-2">
                             <div className="bg-trading-gray">
                                 <div className="bg-tableheader text-center py-3 h-30">
                                     <button className="pull-right btn btn-primary btn-10">
                                         <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
                                 </div>
-                                <table className={"col-sm-12"}>
-                                    <tr>
-                                        <td colspan="3">Cooper</td>
-                                    </tr>
-                                    <tr>
-                                        <td>105.45</td>
-                                        <td className={"text-danger"}>-1.43</td>
-                                        <td className={"text-danger"}>(-1.24)</td>
+                                <table className={"col-sm-12 f-15 px-2"}>
+                                   <tr>
+                                        <td className={"px-3 py-3 text-bold f-18"}>Cooper</td>
+                                        <td className={"text-danger text-right px-1 py-1"}>
+                                            <i className={"icofont icofont-caret-down"}></i>&nbsp;
+                                                -1.43</td>
+                                        <td className={"text-danger text-right px-1 py-1"}>(-1.24)</td>
                                     </tr>
                                 </table>
-                                <CommodityAgGrid/>
+                                <CommodityAgGrid size={this.ceksize()}/>
                             </div>
                         </div>
                     </div>

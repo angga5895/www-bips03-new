@@ -1194,9 +1194,10 @@ class IntIndicesMarketStatistikPage extends React.PureComponent {
                                     <div className="bg-tableheader text-center py-3 h-30">
                                         <button className="pull-right btn btn-primary btn-10">
                                             <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
-                                        <span>International Indices Futures</span>
+                                        <span>International Indices </span>
                                     </div>
-                                    <InternationalIndicesFuturesAgGrid size={this.ceksize()}/>
+                                    <InternationalIndicesAgGrid size={this.ceksize()}/>
+
                                 </div>
                             </div>
                             <div className={this.state.activeTab === '2' ? 'd-block f-12' : 'd-none'}>
@@ -1204,9 +1205,9 @@ class IntIndicesMarketStatistikPage extends React.PureComponent {
                                     <div className="bg-tableheader text-center py-3 h-30">
                                         <button className="pull-right btn btn-primary btn-10">
                                             <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
-                                        <span>International Indices</span>
+                                        <span>International Indices Futures</span>
                                     </div>
-                                    <InternationalIndicesAgGrid size={this.ceksize()}/>
+                                    <InternationalIndicesFuturesAgGrid size={this.ceksize()}/>
                                 </div>
                             </div>
                         </div>
@@ -2006,37 +2007,37 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "index", headerName: "Index", sortable: true, resizable: true,comparator: stringComparator,
-                    width: 135,
+                    width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?165:160,
                     minWidth:135,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-primary f-12";
                     },
                 },{ field: "month", headerName: "Month", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?165:160,
                     minWidth: 180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
+                    width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?170:170,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "high", headerName: "High", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?430:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
+                    width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?170:155,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "low", headerName: "Low", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100,
+                    width: s=="s49"?290:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?200:s=="s90"?170:155,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100,
+                    width: s=="s49"?320:s=="s50"?290:s=="s67"?245:s=="s75"?240:s=="s80"?200:s=="s90"?160:150,
                     minWidth: 100,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -2044,7 +2045,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "changePercent", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100,
+                    width: s=="s49"?325:s=="s50"?290:s=="s67"?250:s=="s75"?240:s=="s80"?200:s=="s90"?170:160,
                     minWidth: 100,
                     cellClass : function (params) {
                         var change = params.data.changePercent;
@@ -2052,7 +2053,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "time", headerName: "Time", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100,
+                    width: s=="s49"?330:s=="s50"?300:s=="s67"?250:s=="s75"?240:s=="s80"?200:s=="s90"?170:160,
                     minWidth: 100,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -2065,7 +2066,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    index: "US500",
+                    index: "US500"+s+" "+s,
                     month: "20-Dec",
                     last: "2000.10",
                     high: "2213.11",

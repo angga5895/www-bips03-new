@@ -1374,25 +1374,27 @@ class CurrenciesAgGrid extends React.PureComponent{
         this.state = {
             columnDefs: [
                 { field: "other", headerName: "Other Currencies", sortable: true, resizable: true,comparator: stringComparator,
-                    width: s=="s49"?160:s=="s50"?160:s=="s67"?160:s=="s75"?160:s=="s80"?155:s=="s90"?145:s=="s100"?140:130, minWidth:130,
+                    width: s=="s49"?340:s=="s50"?310:s=="s67"?270:s=="s75"?260:s=="s80"?220:s=="s90"?185:s=="s100"?180:180,
+                    minWidth:180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?270:s=="s50"?225:s=="s67"?185:s=="s75"?165:s=="s80"?130:s=="s90"?100:s=="s100"?90:80,
-                    minWidth: 80,
+                    width: s=="s49"?340:s=="s50"?310:s=="s67"?270:s=="s75"?250:s=="s80"?220:s=="s90"?190:s=="s100"?180:180,
+                    minWidth: 180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?265:s=="s50"?230:s=="s67"?185:s=="s75"?165:s=="s80"?130:s=="s90"?100:s=="s100"?90:85,
-                     minWidth: 85,
+                    width: s=="s49"?340:s=="s50"?300:s=="s67"?270:s=="s75"?250:s=="s80"?220:s=="s90"?190:s=="s100"?180:180,
+                     minWidth: 180,
                     cellClass : function (params) {
                         return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 70, minWidth: 70,
+                    width: s=="s49"?340:s=="s50"?300:s=="s67"?270:s=="s75"?250:s=="s80"?220:s=="s90"?190:s=="s100"?170:170,
+                    minWidth: 170,
                     cellClass : function (params) {
                         return params.data.change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
@@ -1551,60 +1553,60 @@ class InternationalIndicesAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "symbol", headerName: "Symbol", sortable: true, resizable: true,comparator: stringComparator,
-                    width: 135,
-                    minWidth:135,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?150:s=="s90"?130:120,
+                    minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "name", headerName: "Name", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
-                    minWidth: 180,
+                    width: s=="s49"?400:s=="s50"?350:s=="s67"?300:s=="s75"?250:s=="s80"?210:s=="s90"?200:190,
+                    minWidth: 190,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "prev", headerName: "Prev", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
-                    minWidth: 180,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?200:s=="s80"?170:s=="s90"?150:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "lastUpdated", headerName: "Last Updated", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
-                    minWidth: 145,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?195:s=="s80"?180:s=="s90"?150:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "high", headerName: "High", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
-                    minWidth: 180,
+                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "low", headerName: "Low", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
-                    minWidth: 180,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "lastPrice", headerName: "Last Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?430:s=="s50"?385:s=="s67"?330:s=="s75"?300:s=="s80"?250:s=="s90"?200:s=="s100"?155:145,
-                    minWidth: 145,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 100,
-                    minWidth: 100,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?145:140,
+                    minWidth: 140,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: 60,
-                    minWidth: 60,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?170:s=="s90"?130:120,
+                    minWidth: 120,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -1618,7 +1620,7 @@ class InternationalIndicesAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    symbol: "GSPC",
+                    symbol: "GSPC"+" "+s+" "+s,
                     name: 123232131,
                     lastUpdated: 12,
                     lastPrice: 5+" "+s,
@@ -1867,25 +1869,25 @@ class CommodityAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "name", headerName: "Name", sortable: true, resizable: true,comparator: stringComparator,
-                    width: 135,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?160:s=="s90"?140:s=="s100"?130:180,
                     minWidth:135,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?180:s=="s80"?160:s=="s90"?140:s=="s100"?130:180,
                     minWidth: 180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?370:s=="s67"?310:s=="s75"?290:s=="s80"?230:s=="s90"?185:s=="s100"?220:180,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?160:s=="s90"?130:s=="s100"?130:180,
                     minWidth: 180,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?420:s=="s50"?360:s=="s67"?310:s=="s75"?280:s=="s80"?245:s=="s90"?190:s=="s100"?155:145,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?160:s=="s90"?130:s=="s100"?125:180,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -1898,7 +1900,7 @@ class CommodityAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    name: "ACBB",
+                    name: "ACBB"+s+" "+s,
                     last: "2000.2",
                     change: "-23",
                     percentage: "1.6%",
@@ -2008,37 +2010,37 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
             columnDefs: [
                 { field: "index", headerName: "Index", sortable: true, resizable: true,comparator: stringComparator,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?165:160,
-                    minWidth:135,
+                    minWidth:160,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-primary f-12";
                     },
                 },{ field: "month", headerName: "Month", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?165:160,
-                    minWidth: 180,
+                    minWidth: 160,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "last", headerName: "Last", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?170:170,
-                    minWidth: 145,
+                    minWidth: 170,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "high", headerName: "High", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?280:s=="s50"?250:s=="s67"?230:s=="s75"?210:s=="s80"?190:s=="s90"?170:155,
-                    minWidth: 145,
+                    minWidth: 155,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "low", headerName: "Low", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?290:s=="s50"?270:s=="s67"?240:s=="s75"?230:s=="s80"?200:s=="s90"?170:155,
-                    minWidth: 100,
+                    minWidth: 155,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "change", headerName: "Change", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?320:s=="s50"?290:s=="s67"?245:s=="s75"?240:s=="s80"?200:s=="s90"?160:150,
-                    minWidth: 100,
+                    minWidth: 150,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2046,7 +2048,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
                     }
                 },{ field: "changePercent", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?325:s=="s50"?290:s=="s67"?250:s=="s75"?240:s=="s80"?200:s=="s90"?170:160,
-                    minWidth: 100,
+                    minWidth: 160,
                     cellClass : function (params) {
                         var change = params.data.changePercent;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
@@ -2054,7 +2056,7 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
                     }
                 },{ field: "time", headerName: "Time", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?330:s=="s50"?300:s=="s67"?250:s=="s75"?240:s=="s80"?200:s=="s90"?170:160,
-                    minWidth: 100,
+                    minWidth: 160,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },

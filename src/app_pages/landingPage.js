@@ -1262,14 +1262,26 @@ class FundTransfer_Base extends React.PureComponent {
         ];
 
         const brokerOptions = [
-            {value: 'AF', code: 'AF', saham: 'Harita Kencana Sekuritas'},
-            {value: 'AG', code: 'AG', saham: 'Kiwoom Sekuritas Indonesia'},
-            {value: 'GA', code: 'GA', saham: 'BNC Sekuritas Indonesia'},
-            {value: 'IP', code: 'IP', saham: 'Indosurya Bersinar Sekuritas'},
-            {value: 'KI', code: 'KI', saham: 'Ciptadana Sekuritas Asia'},
-            {value: 'DX', code: 'DX', saham: 'Bahana Sekuritas'},
-            {value: 'OD', code: 'OD', saham: 'BRI Danareksa Sekuritas'},
-            {value: 'PP', code: 'PP', saham: 'Aldiracita Sekuritas Indonesia'},
+            {value: 'C-BCA', code: 'C-BCA', saham: 'Bank Central Asia Kustodian'},
+            {value: 'C-BALI', code: 'C-BALI', saham: ' Bank Permata Tbk Kustodian'},
+            {value: 'C-BKPN', code: 'C-BKPN', saham: 'Bank Bukopin Tbk Kustodian'},
+            {value: 'C-CBNA', code: 'C-CBNA', saham: 'Citibank N.A Kustodian'},
+            {value: 'C-DBAG', code: 'C-DBAG', saham: 'Deutsche Bank AG Jakarta Branch Kustodian'},
+            {value: 'C-SCBI', code: 'C-SCBI', saham: 'Standard Chartered Bank Kustodian'},
+            {value: 'C-BBJB', code: 'C-BBJB', saham: 'Bank Pembangunan Daerah Jawa Barat dan Banten Tbk Kustodian'},
+            {value: 'C-BBNI', code: 'C-BBNI', saham: 'Bank Negara Indonesia (Persero) Tbk Kustodian'},
+            {value: 'C-BBRI', code: 'C-BBRI', saham: 'Bank Rakyat Indonesia (Persero) Kustodian'},
+            {value: 'C-BDMN', code: 'C-BDMN', saham: 'Bank Danamon Indonesia Tbk Kustodian'},
+            {value: 'C-BII', code: 'C-BII', saham: 'Bank Maybank Indonesia Tbk Kustodian'},
+            {value: 'C-BMDR', code: 'C-BMDR', saham: 'Bank Mandiri (Persero) Tbk Kustodian'},
+            {value: 'C-BNGA', code: 'C-BNGA', saham: 'Bank CIMB Niaga Tbk Kustodian'},
+            {value: 'C-DBSB', code: 'C-DBSB', saham: 'Bank DBS Indonesia Kustodian'},
+            {value: 'C-HNBN', code: 'C-HNBN', saham: 'Bank KEB Hana Indonesia'},
+            {value: 'C-HSBC', code: 'C-HSBC', saham: 'Bank HSBC Indonesia Kustodian'},
+            {value: 'C-MEGA', code: 'C-MEGA', saham: 'Bank Mega Tbk Kustodian'},
+            {value: 'C-PNBN', code: 'C-PNBN', saham: 'Bank Pan Indonesia Tbk Kustodian'},
+            {value: 'C-UOBB', code: 'C-UOBB', saham: 'Bank UOB Indonesia Kustodian'},
+            {value: 'C-BJTM', code: 'CBJTM-', saham: 'Bank Pembangunan Daerah Jawa Timur Tbk Kustodian'},
         ]
 
         const customStyles = {
@@ -1325,11 +1337,11 @@ class FundTransfer_Base extends React.PureComponent {
                         {/* <PortofolioAgGrid/> */}
                         <div className="cssmenu col-sm-12 mx-0 px-0 h-45">
                             <ul className={"d-border-top d-border-left d-border-right"}>
-                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
-                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
-                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER</span></a></li>
-                                <li className={ this.state.activeTab === '4' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('4'); }}><a><span className="f-11">&nbsp; STOCK RECEIVE</span></a></li>
-                                <li className={ this.state.activeTab === '5' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('5'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER LIST</span></a></li>
+                                <li className={ this.state.activeTab === '1' ? 'd-border-right active click-pointer col-md-3 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-md-3 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('1'); }}><a><span className="f-11">&nbsp; FUND TRANSFER</span></a></li>
+                                <li className={ this.state.activeTab === '2' ? 'd-border-right active click-pointer col-md-3 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-md-3 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('2'); }}><a><span className="f-11">&nbsp; F/T LIST</span></a></li>
+                                <li className={ this.state.activeTab === '3' ? 'd-border-right active click-pointer col-md-3 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-md-3 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER</span></a></li>
+                                {/*<li className={ this.state.activeTab === '4' ? 'd-border-right active click-pointer col-mn-5 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-mn-5 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('4'); }}><a><span className="f-11">&nbsp; STOCK RECEIVE</span></a></li>*/}
+                                <li className={ this.state.activeTab === '5' ? 'd-border-right active click-pointer col-md-3 px-0 mx-0 f-12 text-center' : 'd-border-right text-white click-pointer col-md-3 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('5'); }}><a><span className="f-11">&nbsp; STOCK TRANSFER LIST</span></a></li>
                                 {/*<li className={ this.state.activeTab === '3' ? 'active click-pointer col-sm-4 px-0 mx-0 f-12 text-center' : 'text-white click-pointer col-sm-4 px-0 mx-0 f-12 text-center' } onClick={() => { this.toggle('3'); }}><a><span className="f-11">&nbsp; Cancel</span></a></li>*/}
                             </ul>
                         </div>
@@ -1554,7 +1566,10 @@ class FundTransfer_Base extends React.PureComponent {
                                                             </div>
 
                                                             <div className="col-sm-5 mb-3 f-14">
-                                                                <label htmlFor="" className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>Broker Destination</label>
+                                                                <label htmlFor=""
+                                                                       className={"f-13 f-xs-14 mt-3 align-middle align-self-center pr-0"}>
+                                                                    Custodian Bank Destination
+                                                                </label>
                                                             </div>
                                                             <div className="col-sm-3 pr-0 pl-0">
                                                                 <Select
@@ -5645,41 +5660,35 @@ class FundStockAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "date", headerName: "Date", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?260:s=="s67"?220:s=="s75"?200:s=="s80"?180:s=="s90"?140:135, minWidth: 130, comparator: dateComparator,
+                    width: s=="s49"?330:s=="s50"?310:s=="s67"?270:s=="s75"?250:s=="s80"?180:s=="s90"?140:155, minWidth: 130, comparator: dateComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     }, suppressSizeToFit: true
                 },{ field: "no", headerName: "No", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?280:s=="s50"?245:s=="s67"?215:s=="s75"?200:s=="s80"?190:s=="s90"?140:130, comparator: integerComparator,
+                    width: s=="s49"?360:s=="s50"?285:s=="s67"?235:s=="s75"?210:s=="s80"?250:s=="s90"?160:140, comparator: integerComparator,
                     minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "fee", headerName: "Fee", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?310:s=="s50"?270:s=="s67"?250:s=="s75"?240:s=="s80"?190:s=="s90"?150:140, comparator: integerComparator,
-                    minWidth: 130,
-                    cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
-                    },
                 },{ field: "vol", headerName: "Vol(Shr)", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?380:s=="s50"?320:s=="s67"?300:s=="s75"?280:s=="s80"?250:s=="s90"?200:190, comparator: integerComparator,
+                    width: s=="s49"?415:s=="s50"?345:s=="s67"?325:s=="s75"?315:s=="s80"?275:s=="s90"?225:200, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "amount", headerName: "Amount", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?345:s=="s50"?320:s=="s67"?300:s=="s75"?280:s=="s80"?250:s=="s90"?185:170, comparator: integerComparator,
+                    width: s=="s49"?380:s=="s50"?345:s=="s67"?325:s=="s75"?315:s=="s80"?275:s=="s90"?210:200, comparator: integerComparator,
                     minWidth: 150,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
-                },{ field: "brokerDestination", headerName: "Broker Destination", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?325:s=="s50"?300:s=="s67"?240:s=="s75"?220:170, minWidth: 170, comparator: stringComparator,
+                },{ field: "custodianBankDestination", headerName: "Custodian Bank Destination", sortable: true, filter: "agTextColumnFilter", resizable: true,
+                    width: s=="s49"?405:s=="s50"?380:s=="s67"?320:s=="s75"?300:s=="s80"?225:s=="s90"?225:200, minWidth: 170, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, resizable: true,
-                    width: s=="s49"?295:s=="s50"?260:s=="s67"?210:s=="s75"?190:s=="s80"?160:s=="s90"?180:160, minWidth: 150, comparator: stringComparator,
+                    width: s=="s49"?345:s=="s50"?310:s=="s67"?260:s=="s75"?240:s=="s80"?175:s=="s90"?215:200, minWidth: 150, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -5721,7 +5730,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5730,7 +5739,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5739,7 +5748,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5748,7 +5757,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5757,7 +5766,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5766,7 +5775,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5775,7 +5784,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5784,7 +5793,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5793,7 +5802,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5802,7 +5811,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5811,7 +5820,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5820,7 +5829,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5829,7 +5838,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5838,7 +5847,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5847,7 +5856,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5856,7 +5865,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5865,7 +5874,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5874,7 +5883,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5883,7 +5892,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5892,7 +5901,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5901,7 +5910,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5910,7 +5919,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5919,7 +5928,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5928,7 +5937,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5937,7 +5946,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5946,7 +5955,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5955,7 +5964,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5964,7 +5973,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5973,7 +5982,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -5982,7 +5991,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -5991,7 +6000,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -6000,7 +6009,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -6009,7 +6018,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -6018,7 +6027,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -6027,7 +6036,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -6036,7 +6045,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },{
@@ -6045,7 +6054,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'TLKM',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "DX",
+                    custodianBankDestination: "DX",
                     brokerReceive: "NW",
                     status:"New",
                 }, {
@@ -6054,7 +6063,7 @@ class FundStockAgGrid extends React.PureComponent {
                     stock: 'BBCA',
                     vol: 100.000,
                     amount: 540.000000,
-                    brokerDestination: "AE",
+                    custodianBankDestination: "AE",
                     brokerReceive: "SP",
                     status:"New",
                 },

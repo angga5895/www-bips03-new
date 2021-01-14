@@ -6578,5 +6578,11 @@ table .tb-align-center>tr>td{
     height: 450px;
 }
 .card-currencies{
-    height: 405px;
+    height: 400px;
+}
+.f-19{
+    font-size: 19px;
+}
+.f-30{
+    font-size: 30px;
 }

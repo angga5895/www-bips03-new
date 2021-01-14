@@ -1390,14 +1390,14 @@ class CurrenciesAgGrid extends React.PureComponent{
                      minWidth: 180,
                     cellClass : function (params) {
                         return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
-                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                                params.data.change == "0" ? "text-success text-right grid-table d-border-aggrid-right f-12" : "text-warning text-right grid-table d-border-aggrid-right f-12";
                     }
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?340:s=="s50"?300:s=="s67"?270:s=="s75"?250:s=="s80"?220:s=="s90"?190:s=="s100"?170:170,
                     minWidth: 170,
                     cellClass : function (params) {
-                        return params.data.change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
-                            "text-success text-right grid-table d-border-aggrid-right f-12";
+                        return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            params.data.change == "0" ? "text-success text-right grid-table d-border-aggrid-right f-12" : "text-warning text-right grid-table d-border-aggrid-right f-12";
                     }
                 },
             ],
@@ -1419,8 +1419,8 @@ class CurrenciesAgGrid extends React.PureComponent{
                 },{
                     other: "JPY/IDR",
                     last: 150,
-                    change: "-1",
-                    percentage: "0.001%",
+                    change: "0",
+                    percentage: "0",
                 },{
                     other: "JPY/IDR",
                     last: 150,
@@ -1516,6 +1516,14 @@ class CurrenciesAgGrid extends React.PureComponent{
         params.api.sizeColumnsToFit();
     };
 
+    onRowDoubleClicked(params) {
+        $("#currenciesName").html(params.data.other);
+        $("#currenciesPrice").html(params.data.last);
+        $("#currenciesChange").html(params.data.change);
+        $("#currenciesPercent").html(params.data.percentage);
+        $("#currenciesButton").click();
+    }
+
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
@@ -1539,7 +1547,9 @@ class CurrenciesAgGrid extends React.PureComponent{
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         getRowHeight={this.state.getRowHeight}
-                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        onRowDoubleClicked={this.onRowDoubleClicked}
+                    >
                     </AgGridReact>
                 </div>
             </div>
@@ -1886,13 +1896,15 @@ class CommodityAgGrid extends React.PureComponent {
                     width: s=="s49"?240:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?160:s=="s90"?130:s=="s100"?130:130,
                     minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
+                        return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            params.data.change == "0" ? "text-success text-right grid-table d-border-aggrid-right f-12" : "text-warning text-right grid-table d-border-aggrid-right f-12";
                     },
                 },{ field: "percentage", headerName: "%", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?210:s=="s50"?190:s=="s67"?160:s=="s75"?150:s=="s80"?140:s=="s90"?120:s=="s100"?105:105,
                     minWidth: 105,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12";
+                        return params.data.change.includes("-") === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
+                            params.data.change == "0" ? "text-success text-right grid-table d-border-aggrid-right f-12" : "text-warning text-right grid-table d-border-aggrid-right f-12";
                     },
                 },
             ],
@@ -1902,25 +1914,20 @@ class CommodityAgGrid extends React.PureComponent {
             },
             rowData: [
                 {
-                    name: "ACBB"+s+" "+s,
+                    name: "ACBB",
                     last: "2000.2",
                     change: "-23",
-                    percentage: "1.6%",
+                    percentage: "-1.6%",
                 },{
                     name: "ASBB",
-                    last: "2030.2",
+                    last: "110",
                     change: "23",
-                    percentage: "1.6%",
+                    percentage: "1.9%",
                 },{
                     name: 123232131,
                     last: "2000.2",
-                    change: "-23",
-                    percentage: "1.6%",
-                },{
-                    name: 123232131,
-                    last: "2000.2",
-                    change: "-23",
-                    percentage: "1.6%",
+                    change: "0",
+                    percentage: "0",
                 },
             ],
             getRowHeight : function (params) {
@@ -1975,7 +1982,13 @@ class CommodityAgGrid extends React.PureComponent {
 
         params.api.sizeColumnsToFit();
     };
-
+    onRowDoubleClicked(params) {
+        $("#commodityName").html(params.data.name);
+        $("#commodityPrice").html(params.data.last);
+        $("#commodityChange").html(params.data.change);
+        $("#commodityPercent").html(params.data.percentage);
+        $("#commodityButton").click();
+    }
     onFirstDataRendered(params) {
         params.api.sizeColumnsToFit();
     }
@@ -1998,7 +2011,9 @@ class CommodityAgGrid extends React.PureComponent {
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         getRowHeight={this.state.getRowHeight}
-                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}>
+                        onFirstDataRendered={this.onFirstDataRendered.bind(this)}
+                        onRowDoubleClicked={this.onRowDoubleClicked}
+                    >
                     </AgGridReact>
                 </div>
             </div>
@@ -2203,6 +2218,14 @@ class InternationalIndicesFuturesAgGrid extends React.PureComponent {
 }
 
 class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            'changeType' : 0,
+            'changeCurrType' : 0,
+        }
+    }
+
     ceksize(){
         if(window.innerWidth > 1290 && window.innerWidth <= 1370){
             return "s100";
@@ -2222,6 +2245,26 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
             return "s110";
         }
     }
+    commoditySettings(){
+        var Comchange = $("#commodityChange").html();
+        if(Comchange.includes("-")){
+            this.setState({ changeType: 2 });
+        }else if(Comchange == 0){
+            this.setState({ changeType: 3 });
+        }else{
+            this.setState({ changeType: 1 });
+        }
+    }
+    currenciesSettings(){
+        var Currchange = $("#currenciesChange").html();
+        if(Currchange.includes("-")){
+            this.setState({ changeCurrType: 2 });
+        }else if(Currchange == 0){
+            this.setState({ changeCurrType: 3 });
+        }else{
+            this.setState({ changeCurrType: 1 });
+        }
+    }
     render(){
         return(
             <div>
@@ -2231,8 +2274,9 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                         <div className="col-sm-7 px-2 mx-0 card-520 mt-2">
                             <div className="bg-trading-gray pb-2">
                                 <div className="bg-tableheader pr-2 pl-3 py-2">
-                                    <span className={"f-30"}>
-                                        Cooper
+                                    <span id={"currenciesButton"} onClick={()=>this.currenciesSettings()}></span>
+                                    <span className={"f-30"} id={"currenciesName"}>
+                                        [Choose Currencies Name]
                                     </span>
                                     <button className="pull-right btn btn-primary">
                                         <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i>
@@ -2240,10 +2284,33 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                 </div>
                                 <table className={"col-sm-12 pl-3 f-19"}>
                                     <tr>
-                                        <td className="bold pl-3 py-3">105.45</td>
-                                        <td className={"text-success px-1 py-3"}>
-                                            <i className={"icofont icofont-caret-up"}></i>&nbsp;1.43</td>
-                                        <td className={"text-success px-1 py-3"}>(1.24)</td>
+                                        <td
+                                            className={"bold pl-3 py-3"}
+                                            width="50%"
+                                            id={"currenciesPrice"}></td>
+                                        <td
+                                            width="25%"
+                                            className={`px-1 py-3
+                                            ${  this.state.changeCurrType == 1 ? "text-success" :
+                                                this.state.changeCurrType == 2 ? "text-danger" :
+                                                    this.state.changeCurrType == 3 ? "text-warning" : ""
+                                                }`}
+                                        >
+                                            <i className={
+                                                this.state.changeCurrType == 1 ? "icofont icofont-caret-up":
+                                                    this.state.changeCurrType == 2 ? "icofont icofont-caret-down":
+                                                        this.state.changeCurrType == 3 ? "icofont icofont-minus" : ""}></i>&nbsp;
+                                            <span id="currenciesChange" >
+                                            </span>
+                                        </td>
+                                        <td
+                                            width="25%"
+                                            className={`px-1 py-3
+                                            ${  this.state.changeCurrType == 1 ? "text-success" :
+                                                this.state.changeCurrType == 2 ? "text-danger" :
+                                                    this.state.changeCurrType == 3 ? "text-warning" : ""
+                                                }`}
+                                            id={"currenciesPercent"}></td>
                                     </tr>
                                 </table>
                                 <CurrenciesAgGrid size={this.ceksize()}/>
@@ -2251,9 +2318,10 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                         </div>
                         <div className="col-sm-5 pl-0 pr-3 mx-0 card-520 mt-2">
                             <div className="bg-trading-gray pb-2">
+                                <span id={"commodityButton"} onClick={()=>this.commoditySettings()}></span>
                                 <div className="bg-tableheader pr-2 pl-3 py-2">
-                                    <span className={"f-30"}>
-                                        Cooper
+                                    <span className={"f-30"} id={"commodityName"}>
+                                        [Choose Commodity Name]
                                     </span>
                                     <button className="pull-right btn btn-primary">
                                         <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i>
@@ -2261,10 +2329,33 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                 </div>
                                 <table className={"col-sm-12 pl-3 f-19"}>
                                     <tr>
-                                        <td className="bold pl-3 py-3">105.45</td>
-                                        <td className={"text-success px-1 py-3"}>
-                                            <i className={"icofont icofont-caret-up"}></i>&nbsp;1.43</td>
-                                        <td className={"text-success px-1 py-3"}>(1.24)</td>
+                                        <td
+                                            className={"bold pl-3 py-3"}
+                                            width="50%"
+                                            id={"commodityPrice"}></td>
+                                        <td
+                                            width="25%"
+                                            className={`px-1 py-3
+                                            ${  this.state.changeType == 1 ? "text-success" :
+                                                this.state.changeType == 2 ? "text-danger" :
+                                                this.state.changeType == 3 ? "text-warning" : ""
+                                            }`}
+                                        >
+                                            <i className={
+                                                this.state.changeType == 1 ? "icofont icofont-caret-up":
+                                                this.state.changeType == 2 ? "icofont icofont-caret-down":
+                                                    this.state.changeType == 3 ? "icofont icofont-minus" : ""}></i>&nbsp;
+                                            <span id="commodityChange" >
+                                            </span>
+                                        </td>
+                                        <td
+                                            width="25%"
+                                            className={`px-1 py-3
+                                            ${  this.state.changeType == 1 ? "text-success" :
+                                                this.state.changeType == 2 ? "text-danger" :
+                                                this.state.changeType == 3 ? "text-warning" : ""
+                                            }`}
+                                            id={"commodityPercent"}></td>
                                     </tr>
                                 </table>
                                     <CommodityAgGrid size={this.ceksize()}/>

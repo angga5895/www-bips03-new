@@ -353,9 +353,13 @@ class AnalyticChart_Base extends React.PureComponent {
                     var type = $(this).val();
 
                     // set chart type
-                    chart.plot().getSeries(0).seriesType(type);
+                    // chart.plot().getSeries(0).seriesType(type);
+                    // chart.plot().getSeries('lineSeries');
                     // save chart type
                     appSettingsCache['chartType'] = type;
+
+                    app.removeChart();
+                    app.createChart(chartContainer);
                 });
 
                 // event to show modal indicator settings
@@ -662,7 +666,9 @@ class AnalyticChart_Base extends React.PureComponent {
                 // map loaded data
                 // var mapping = dataTable.mapAs({ 'value': 1, 'volume': 5});
                 var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4,'value': 5,'volume':5,});
+                var mapping2 = dataTable.mapAs({'open': 3, 'high': 3, 'low': 3, 'close': 3,'value': 3,'volume':3,});
 
+                console.log("Berapa kali mapping!");
                 // create stock chart
                 chart = anychart.stock();
                 var credits = chart.credits();
@@ -684,7 +690,10 @@ class AnalyticChart_Base extends React.PureComponent {
 
                 dataTable.addData(appSettingsCache['data'][dataName.toLowerCase()]);
 
+                var time = new Date();
+                var time2 = time.getTime();
                 if (updateChart) {
+                    console.log("a");
                     var indicatorName;
                     var indicatorPlot;
                     var indicatorSettings = [];
@@ -695,6 +704,7 @@ class AnalyticChart_Base extends React.PureComponent {
 
                     // create line series
                     series = plot[appSettingsCache['chartType']](mapping);
+
                     series.normal().fallingFill("#ff0000", 0.8);
                     series.normal().fallingStroke("#ff0000", 0.8);
                     series.hovered().fallingFill("#ff0000", 1);
@@ -747,6 +757,7 @@ class AnalyticChart_Base extends React.PureComponent {
                         }
                     }
                     var volumePlot = chart.plot(1);
+
                     volumePlot.height('23%');
                     volumePlot.yAxis().labels().format('{%Value}{scale:(1000)(1)|(k)}');
                     volumePlot.crosshair().yLabel().format('{%Value}{scale:(1000)(1)|(k)}');
@@ -764,8 +775,14 @@ class AnalyticChart_Base extends React.PureComponent {
 
                 }
                 else {
+                    console.log('b'+time2);
                     // create line series
-                    series = plot[seriesType](mapping);
+                    if(seriesType == "line"){
+                        series = plot[seriesType](mapping2);
+                    }else{
+                        series = plot[seriesType](mapping);
+                    }
+
                     series.normal().fallingFill("#ff0000", 0.8);
                     series.normal().fallingStroke("#ff0000", 0.8);
                     series.hovered().fallingFill("#ff0000", 1);

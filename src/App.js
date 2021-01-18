@@ -206,7 +206,7 @@ class App extends React.Component {
                         'indiceMarketStatistikPage',
                         'nonSectoralStatistikPage',
                         /*'indiceMarketSecondStatistikPage',*/
-                        'topBrokerMarketStatistikPage',
+                        // 'topBrokerMarketStatistikPage',
                         'intIndicesMarketStatistikPage',
                         'currencyCommodityMarketStatistikPage',
                     ]

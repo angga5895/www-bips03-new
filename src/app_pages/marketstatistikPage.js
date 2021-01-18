@@ -104,7 +104,7 @@ const CustomFrameHeaderMarketStatistik= (props) =>{
                             statisticMarketStatistikPage: 'MARKET INDEX',
                             indiceMarketStatistikPage: 'SECTORAL INDEX',
                             nonSectoralStatistikPage: 'NON SECTORAL INDEX',
-                            topBrokerMarketStatistikPage: 'TOP BROKER',
+                            // topBrokerMarketStatistikPage: 'TOP BROKER',
                             intIndicesMarketStatistikPage: 'INT.INDICES',
                             currencyCommodityMarketStatistikPage: 'CURRENCY & COMMODITY',
                             // newResearchMarketStatistikPage: 'NEWS',

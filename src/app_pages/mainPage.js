@@ -19,8 +19,10 @@ import {Popup} from "semantic-ui-react";
 window.$ = window.jQuery = $;
 
 function widthSize(){
-    if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+    if(window.innerWidth > 1370 && window.innerWidth <= 1440) {
         return "s90";
+    }else if(window.innerWidth > 1441 && window.innerWidth <= 1520) {
+        return "s85";
     }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
         return "s80";
     }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){

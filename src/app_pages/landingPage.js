@@ -23,6 +23,7 @@ import {Table} from "react-bootstrap";
 import {WSConnectionAction} from "../appnetwork";
 import Select from "react-select";
 import NumberInput from "../numberinput";
+import {widthSize} from "./mainPage.js";
 import {Form} from "semantic-ui-react/dist/commonjs/collections/Form/Form";
 import TableInfoTransaction from "../app_transaction/tableInfoTransaction";
 
@@ -435,7 +436,7 @@ class LandingPage_Base extends React.PureComponent {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <FixedIncomeAgGrid size={this.ceksize()} gridView="tab" classView="f-12"/>
+                                        <FixedIncomeAgGrid size={widthSize()} gridView="tab" classView="f-12"/>
                                     </div>
                                 </div>
                                 <div className="container px-0 mx-0 col-sm-12" style={{display : this.props.stateLanding === '2' ? 'block' : 'none'}}>
@@ -450,7 +451,7 @@ class LandingPage_Base extends React.PureComponent {
                                         </div>
                                     </div>
                                     <div className="card-body">
-                                        <MutualFundAgGrid size={this.ceksize()} gridView="tab" classView="f-12" />
+                                        <MutualFundAgGrid size={widthSize()} gridView="tab" classView="f-12" />
                                     </div>
                                 </div>
                             </div>
@@ -579,7 +580,7 @@ class StockCash_Base extends React.Component{
                             <div className="col-sm-12 px-0">
                                 <span id={"liveUpdateStockStop"} onClick={this.clickStop}></span>
                                 <StockCashAgGrid
-                                    size={this.ceksize()}
+                                    size={widthSize()}
                                 />
                             </div>
                             <div className="col-sm-12 card-221 px-0">
@@ -757,7 +758,7 @@ class ModalHistorical extends React.Component {
 
                     <div className="col-sm-12 px-0 pt-0" >
                         <TradeListAgGrid
-                            size={this.ceksize()}/>
+                            size={widthSize()}/>
                     </div>
 
                 </div>
@@ -915,7 +916,7 @@ class ModalOrderHistory extends React.Component {
                     <div className="col-sm-12 px-0 pt-0" >
                         <TransactionOrderHistoryAgGrid
                             clickorderdetail={this.buttonClickOrderDetail}
-                            size={this.ceksize()}
+                            size={widthSize()}
                         />
                     </div>
                 </div>
@@ -1047,13 +1048,13 @@ class ModalTransactionHistory extends React.Component {
                     <div className={"col-sm-6 pr-2"}>
                         <div className="bg-tableheader text-center py-3 h-30"><span>STOCK TRANSACTION</span>
                         </div>
-                        <StockTransactionHistoryAgGrid size={this.ceksize()}/>
+                        <StockTransactionHistoryAgGrid size={widthSize()}/>
                     </div>
 
                     <div className={"col-sm-6 pl-2"}>
                         <div className="bg-tableheader text-center py-3 h-30"><span>CASH TRANSACTION</span>
                         </div>
-                        <CashTransactionHistoryAgGrid size={this.ceksize()}/>
+                        <CashTransactionHistoryAgGrid size={widthSize()}/>
                     </div>
                 </div>
 
@@ -1115,7 +1116,7 @@ class ModalTransaction extends React.Component {
                     {/* <div class="ui section divider small  col-sm-12 f-12 text-center align-self-center"></div> */}
 
                     <div className="col-sm-12 px-0 pt-0" >
-                        <TransactionAgGrid size={this.ceksize()}/>
+                        <TransactionAgGrid size={widthSize()}/>
                     </div>
                 </div>
             </>
@@ -1506,7 +1507,7 @@ class FundTransfer_Base extends React.PureComponent {
 
                                                 </div>
                                             </div>
-                                            <FundAgGrid size={this.ceksize()}/>
+                                            <FundAgGrid size={widthSize()}/>
                                         </div>
                                     </div>
                             </div>
@@ -1735,7 +1736,7 @@ class FundTransfer_Base extends React.PureComponent {
 
                                                 </div>
                                             </div>
-                                            <FundStockAgGrid size={this.ceksize()}/>
+                                            <FundStockAgGrid size={widthSize()}/>
                                         </div>
                                     </div>
                             </div>

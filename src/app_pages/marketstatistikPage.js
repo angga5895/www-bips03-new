@@ -22,7 +22,7 @@ import newsImg5 from './../img/noimage.png';
 import {ContextConnector} from "../appcontext";
 import anychart from 'anychart';
 import $ from 'jquery';
-import {ResizeResponsive} from "./mainPage";
+import {ResizeResponsive, widthSize} from "./mainPage";
 import TableInfoTransaction from "../app_transaction/tableInfoTransaction";
 import FormBuy from "../app_transaction/form_buy";
 import FormSell from "../app_transaction/form_sell";
@@ -271,7 +271,7 @@ class MarketStatistikPage extends React.PureComponent {
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="summary" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="summary" size={widthSize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                 </div>
             </>
@@ -327,7 +327,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                 <WSConnectionAction />
 
                 <div className="card grid-294 bg-black-trading f-12">
-                    <MarketIndicesAgGrid size={this.ceksize()}/>
+                    <MarketIndicesAgGrid size={widthSize()}/>
                     {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
 
@@ -347,7 +347,7 @@ class IndiceMarketStatistikPage extends React.PureComponent{
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="indices" size={widthSize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                     {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
@@ -404,7 +404,7 @@ class NonSectoralStatistikPage extends React.PureComponent{
                 <WSConnectionAction />
 
                 <div className="card grid-294 bg-black-trading f-12">
-                    <MarketNonIndicesAgGrid size={this.ceksize()}/>
+                    <MarketNonIndicesAgGrid size={widthSize()}/>
                     {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
 
@@ -424,7 +424,7 @@ class NonSectoralStatistikPage extends React.PureComponent{
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="indices" size={widthSize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                     {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
@@ -481,7 +481,7 @@ class IndiceMarketSecondStatistikPage extends React.PureComponent{
                 <WSConnectionAction />
 
                 <div className="card grid-294 bg-black-trading f-12">
-                    <MarketIndicesAgGrid size={this.ceksize()}/>
+                    <MarketIndicesAgGrid size={widthSize()}/>
                     {/*<MarketIndicesGrid clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
 
@@ -492,7 +492,7 @@ class IndiceMarketSecondStatistikPage extends React.PureComponent{
                         </div>
                     </div>
                     <div className="card-body">
-                        <MarketStatistikAgGrid typegrid="indices" size={this.ceksize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
+                        <MarketStatistikAgGrid typegrid="indices" size={widthSize()} clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />
                     </div>
                     {/*<MarketStatistikGrid typegrid="indices" clickbuy={this.buttonClickBuy} clicksell={this.buttonClickSell} />*/}
                 </div>
@@ -1107,7 +1107,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                         }/>
                     </div>
                     <div className="card-body">
-                        <TopBrokerAgGrid size={this.ceksize()}/>
+                        <TopBrokerAgGrid size={this.widthSize()()}/>
                     </div>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
@@ -1115,7 +1115,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                         TOP BUYER
                     </div>
                     <div className="card-body">
-                        <TopBrokerBAgGrid size={this.ceksize()}/>
+                        <TopBrokerBAgGrid size={this.widthSize()()}/>
                     </div>
                 </div>
                 <div className="card card-175 bg-black-trading f-12">
@@ -1123,7 +1123,7 @@ class TopBrokerMarketStatistikPage extends React.PureComponent {
                         TOP SELLER
                     </div>
                     <div className="card-body">
-                        <TopBrokerSAgGrid size={this.ceksize()}/>
+                        <TopBrokerSAgGrid size={this.widthSize()()}/>
                     </div>
                 </div>
             </div>
@@ -1196,7 +1196,7 @@ class IntIndicesMarketStatistikPage extends React.PureComponent {
                                             <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
                                         <span>International Indices </span>
                                     </div>
-                                    <InternationalIndicesAgGrid size={this.ceksize()}/>
+                                    <InternationalIndicesAgGrid size={widthSize()}/>
 
                                 </div>
                             </div>
@@ -1207,7 +1207,7 @@ class IntIndicesMarketStatistikPage extends React.PureComponent {
                                             <i className="glyphicon glyphicon-refresh" aria-hidden="true"></i></button>
                                         <span>International Indices Futures</span>
                                     </div>
-                                    <InternationalIndicesFuturesAgGrid size={this.ceksize()}/>
+                                    <InternationalIndicesFuturesAgGrid size={widthSize()}/>
                                 </div>
                             </div>
                         </div>
@@ -1339,7 +1339,7 @@ class CurrenciesMarketStatistikPage extends React.PureComponent{
                                 Last Updated: 11:42::00 WIB | 28/09/2020
                             </div>
                         </div>
-                        <CurrenciesAgGrid size={this.ceksize()}/>
+                        <CurrenciesAgGrid size={widthSize()}/>
                     </div>
 
                     <div className="col-sm-8 pl-1 pr-0 mb-3 ">
@@ -1356,7 +1356,7 @@ class CurrenciesMarketStatistikPage extends React.PureComponent{
                             </div>
 
                         </div>
-                        <InternationalIndicesAgGrid size={this.ceksize()}/>
+                        <InternationalIndicesAgGrid size={widthSize()}/>
                     </div>
                 </div>
 
@@ -2313,7 +2313,7 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                             id={"currenciesPercent"}></td>
                                     </tr>
                                 </table>
-                                <CurrenciesAgGrid size={this.ceksize()}/>
+                                <CurrenciesAgGrid size={widthSize()}/>
                             </div>
                         </div>
                         <div className="col-sm-5 pl-0 pr-3 mx-0 card-520 mt-2">
@@ -2358,7 +2358,7 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                             id={"commodityPercent"}></td>
                                     </tr>
                                 </table>
-                                    <CommodityAgGrid size={this.ceksize()}/>
+                                    <CommodityAgGrid size={widthSize()}/>
                             </div>
                         </div>
                     </div>

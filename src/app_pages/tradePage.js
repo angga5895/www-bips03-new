@@ -26,7 +26,7 @@ import Select from "react-select";
 import 'ag-grid-enterprise';
 import CustomTooltip from "./CustomTooltip";
 import {VerifyPINPortofolio, PinModal} from "./landingPage";
-import {ResizeResponsive} from "./mainPage";
+import {ResizeResponsive, widthSize} from "./mainPage";
 import FormAmend from "../app_transaction/form_amend";
 
 function stringComparator(valueA, valueB){
@@ -324,23 +324,6 @@ class SentOrder extends React.PureComponent{
         });
     }
 
-    ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s100";
-        }
-    }
     render(){
         return(
             <>
@@ -392,7 +375,7 @@ class SentOrder extends React.PureComponent{
                         </div>
 
                         <div className="col-sm-12 pl-2 pr-3">
-                            <OrderHistoryAgGrid size={this.ceksize()}/>
+                            <OrderHistoryAgGrid size={widthSize()}/>
                         </div>
                     </div>
                     </div>
@@ -503,23 +486,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
             });
         });
     }
-    ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s100";
-        }
-    }
+
     changeOrderPrice = (e,{value}) => {
            this.setState({ value: value })
     }
@@ -682,7 +649,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                     </div>
                     <OrderSettingListAgGrid
                         clickedit={this.buttonClickEdit}
-                        size={this.ceksize()}/>
+                        size={widthSize()}/>
                 </div>
             </>
         );
@@ -1208,7 +1175,7 @@ class TradeWatchlist extends React.PureComponent{
                     </div>
                     <div className="col-sm-12 px-0 card-310-odlist contentOrderList d-none">
                         <OrderListAgGrid
-                            size={this.ceksize()}
+                            size={widthSize()}
                             clickorderdetail={this.buttonClickOrderDetail}
                             clickamend={this.buttonClickAmend}
                             clickwithdraw={this.buttonClickWithdraw}/>
@@ -1219,7 +1186,7 @@ class TradeWatchlist extends React.PureComponent{
                                 <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
                                     <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">TRADE LIST</div>
                                 </div>
-                                <TradeListOrderListAgGrid size={this.ceksize()}/>
+                                <TradeListOrderListAgGrid size={widthSize()}/>
                             </div>
                         </div>
                         <div className="col-sm-6 pl-2 pr-0">
@@ -1237,11 +1204,11 @@ class TradeWatchlist extends React.PureComponent{
                                                         className="f-12">TRADE SUMMARY</span></a></li>
                                 </ul>
                                 <div style={{display: this.state.activeTab == 1 ? "block" : "none"}}>
-                                    <TradeOrderSummaryAgGrid size={this.ceksize()}/>
+                                    <TradeOrderSummaryAgGrid size={widthSize()}/>
 
                                 </div>
                                 <div style={{display: this.state.activeTab == 2 ? "block" : "none"}}>
-                                    <TradeTradeSummaryAgGrid size={this.ceksize()}/>
+                                    <TradeTradeSummaryAgGrid size={widthSize()}/>
                                 </div>
                             </div>
                         </div>
@@ -1374,7 +1341,7 @@ class TradePageAdv_Base extends React.PureComponent{
                                 BID
                             </div>
                         </div>
-                        <TradeAdvBidAgGrid size={this.ceksize()}/>
+                        <TradeAdvBidAgGrid size={widthSize()}/>
                     </div>
 
                     <div className="col-sm-6 pl-1 pr-0 mb-3">
@@ -1383,7 +1350,7 @@ class TradePageAdv_Base extends React.PureComponent{
                                 OFFER
                             </div>
                         </div>
-                        <TradeAdvOfferAgGrid size={this.ceksize()}/>
+                        <TradeAdvOfferAgGrid size={widthSize()}/>
                     </div>
                 </div>
 
@@ -1464,7 +1431,7 @@ class TradePL extends React.PureComponent{
                                 
                 <div className="col-sm-12 px-0">
                     <TradePLAgGrid
-                        size={this.ceksize()}/>
+                        size={widthSize()}/>
                 </div>
             </div>
         )
@@ -1521,7 +1488,7 @@ class TradeOrderBookList extends React.PureComponent{
                 <div className="col-sm-12 px-0 card-310 contentOrderList d-none">
                     <TradeOrderBookListAgGrid
                         clickdetail={this.clickdetail}
-                        size={this.ceksize()}/>
+                        size={widthSize()}/>
                 </div>
             </div>
         )
@@ -1631,7 +1598,7 @@ class SettingInWatchlist extends React.Component{
                 <WSConnectionAction /> {/* websocket connection component */}
                 <div className="row col-sm-12 card-527 px-2 mx-0 pt-2 pb-0">
                     <div className="col-sm-4 px-0 mx-0 card-514">
-                        <TradeWatchlistAgGrid size={this.ceksize()}/>
+                        <TradeWatchlistAgGrid size={widthSize()}/>
                     </div>
                     <div className="col-sm-8 pl-3 pr-0 mx-0 card-514">
                         <div className="col-sm-12 px-0 pt-0">

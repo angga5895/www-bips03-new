@@ -18,6 +18,24 @@ import $ from 'jquery';
 import {Popup} from "semantic-ui-react";
 window.$ = window.jQuery = $;
 
+function widthSize(){
+    if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
+        return "s90";
+    }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+        return "s80";
+    }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
+        return "s75";
+    }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
+        return "s67";
+    }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
+        return "s50";
+    }else if(window.innerWidth > 2559){
+        return "s49";
+    }else{
+        return "s100";
+    }
+}
+
 const CustomFrameHeader = (props) => {
   return (
     <div className="bg-black-trading f-12">
@@ -2889,4 +2907,4 @@ const MainPage = ContextConnector(BIPSAppContext,
 )(MainPage_Base);
 
 export default MainPage;
-export {ResizeResponsive};
+export {ResizeResponsive, widthSize};

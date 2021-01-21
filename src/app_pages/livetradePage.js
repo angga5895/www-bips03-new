@@ -9,7 +9,7 @@ import {ContextConnector} from "../appcontext";
 import {BIPSAppContext} from "../AppData";
 import Switch from "react-switch";
 import $ from 'jquery';
-import {ResizeResponsive} from "./mainPage";
+import {ResizeResponsive, widthSize} from "./mainPage";
 import FormSell from "../app_transaction/form_sell";
 import FormBuy from "../app_transaction/form_buy";
 window.$ = window.jQuery = $;
@@ -65,28 +65,6 @@ class LiveTradePage extends React.PureComponent {
             selected: "1",
         }
     }
-
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }
-        else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
-
     render () {
         return (
             <div>
@@ -151,7 +129,7 @@ class LiveTradePage extends React.PureComponent {
                 <div className="col-sm-12 row px-0 mx-0 row">
                     <div className="col-sm-7 px-2 mx-0 card-520">
                         <div className="bg-trading-gray">
-                            <LiveTradeAgGrid size={this.ceksize()}/>
+                            <LiveTradeAgGrid size={widthSize()}/>
                         </div>
                     </div>
                     <div className="col-sm-5 px-2 mx-0 bg-grey card-520 f-12">

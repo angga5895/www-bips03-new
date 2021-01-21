@@ -9,6 +9,8 @@ import {BIPSAppProvider, BIPSAppContext } from "../AppData";
 import FillHeaderTab from "../tabheaderfill";
 import { NetAppContext, WSConnectionAction } from '../appnetwork.js';
 import { ContextConnector } from '../appcontext.js';
+import {widthSize} from "./mainPage.js";
+
 
 import ModalAlertN from "./../app_modals/modal_Alert";
 
@@ -279,7 +281,7 @@ class TableCorpAction extends React.PureComponent{
                 <main>
                     <div className="container px-0 mx-0 col-sm-12">
                         <div className="bg-black-inactive card card-161-2">
-                            <CorpActionAgGrid size={this.ceksize()}/>
+                            <CorpActionAgGrid size={widthSize()}/>
                         </div>
                     </div>
                 </main>
@@ -891,7 +893,7 @@ class StockHistoryPage_Base extends React.PureComponent {
         }
         const changeActiveGridHistory = () => {
             if(this.state.tabNumber === 1){
-                return <HistoryBrokerAgGridThird size={this.ceksize()}/>
+                return <HistoryBrokerAgGridThird size={widthSize()}/>
             } else if(this.state.tabNumber === 2){
                 return <HistoryBrokerAgGrid/>
             }else if(this.state.tabNumber === 3){
@@ -1080,19 +1082,19 @@ class StockHistoryPage_Base extends React.PureComponent {
 
                                 <div className="col-sm-4 px-1 pt-2 pb-0">
                                     <div className="bg-trading-gray" style={{marginBottom : "10px"}}>
-                                        <HistoryPriceAgGrid changethis={(this.state.tabNumber == "4") ? "active" : "none"} size={this.ceksize()} type="tradeHistory"/>
+                                        <HistoryPriceAgGrid changethis={(this.state.tabNumber == "4") ? "active" : "none"} size={widthSize()} type="tradeHistory"/>
                                     </div>
                                     <div
                                         className="bg-trading-gray mb-3"
                                         style={{"display": (this.state.tabNumber == "4")?"none":"block"}}
                                     >
-                                        <HistoryBuyerAgGrid size={this.ceksize()}/>
+                                        <HistoryBuyerAgGrid size={widthSize()}/>
                                     </div>
                                     <div
                                         className="bg-trading-gray"
                                         style={{"display": (this.state.tabNumber == "4")?"none":"block"}}
                                     >
-                                        <HistorySellerAgGrid size={this.ceksize()}/>
+                                        <HistorySellerAgGrid size={widthSize()}/>
                                     </div>
                                 </div>
                             </div>
@@ -1338,14 +1340,14 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
                                             </div>
                                         </div>
 
-                                        <StockTickAgGrid size={this.ceksize()}/>
+                                        <StockTickAgGrid size={widthSize()}/>
                                     </div>
                                     <div className={"row"}>
                                         <div className={"col-sm-6 pr-1"}>
-                                            <SummaryBuyerAgGrid size={this.ceksize()}/>
+                                            <SummaryBuyerAgGrid size={widthSize()}/>
                                         </div>
                                         <div className={"col-sm-6 pl-1"}>
-                                            <SummarySellerAgGrid size={this.ceksize()}/>
+                                            <SummarySellerAgGrid size={widthSize()}/>
                                         </div>
                                     </div>
 
@@ -1366,7 +1368,7 @@ class StockTradeSummaryPage_Base extends React.PureComponent {
 
                                     </div>
 
-                                    <TradeSummaryAgGrid size={this.ceksize()}/>
+                                    <TradeSummaryAgGrid size={widthSize()}/>
 
                                 </div>
                             </div>
@@ -1892,7 +1894,7 @@ class TableStockWatchlist_Base extends React.Component{
                 <div className="bg-black-trading f-12">
                     <AppFrameAction ref="frameAction" />
                     <div className="px-0 py-0">
-                        <StockWatchlistAgGrid size={this.ceksize()}/>
+                        <StockWatchlistAgGrid size={widthSize()}/>
                     </div>
                 </div>
             </>

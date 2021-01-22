@@ -217,14 +217,14 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                         return "text-left grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "code", headerName: "Code", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s110"?80:70,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s85"?80:s=="s110"?80:70,
                     minWidth: 70,
                     suppressSizeToFit:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-left grid-table d-border-aggrid-right f-12 locked-visible";
                     }},
                 { field: "price", headerName: "Price", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s110"?70:80,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s85"?75:s=="s110"?70:80,
                     minWidth: 80,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -232,7 +232,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "change", headerName: "Change", resizable: true,
-                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:85,
+                    width: s=="s49"?160:s=="s50"?145:s=="s67"?125:s=="s75"?120:s=="s80"?100:s=="s85"?85:85,
                     minWidth: 85,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -240,7 +240,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "percent", headerName: "%", resizable: true,
-                    width: s=="s49"?145:s=="s50"?120:s=="s67"?105:s=="s75"?100:s=="s80"?80:63,
+                    width: s=="s49"?145:s=="s50"?120:s=="s67"?105:s=="s75"?100:s=="s80"?80:s=="s85"?65:63,
                     minWidth: 63,
                     cellClass : function (params) {
                         var change = params.data.change;
@@ -248,14 +248,14 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     } },
                 { field: "vol", headerName: "Vol", resizable: true,
-                    width: s=="s49"?140:s=="s50"?120:s=="s67"?115:s=="s75"?110:s=="s80"?90:70, minWidth: 70,
+                    width: s=="s49"?140:s=="s50"?120:s=="s67"?115:s=="s75"?110:s=="s80"?90:s=="s85"?70:70, minWidth: 70,
                     cellClass : function (params) {
                         var change = params.data.change;
                         return change.includes('-') === true ? "text-danger text-right  grid-table d-border-aggrid-right f-12":
                             "text-success text-right grid-table d-border-aggrid-right f-12";
                     }},
                 { field: "buyer", headerName: "Buyer", resizable: true,
-                    width: s=="s49"?155:s=="s50"?145:s=="s67"?130:s=="s75"?125:s=="s80"?105:s=="s90"?110:s=="s110"?78:85,
+                    width: s=="s49"?155:s=="s50"?145:s=="s67"?130:s=="s75"?125:s=="s80"?105:s=="s85"?110:s=="s90"?110:s=="s110"?78:85,
                     minWidth: 85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
@@ -268,7 +268,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span className="text-warning">'+sBuyer[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sBuyer[1];
                     } },
                 { field: "seller", headerName: "Seller", resizable: true,
-                    width: s=="s49"?155:s=="s50"?140:s=="s67"?125:s=="s75"?125:s=="s80"?110:s=="s90"?110:s=="s110"?78:85,
+                    width: s=="s49"?155:s=="s50"?140:s=="s67"?125:s=="s75"?125:s=="s80"?110:s=="s85"?110:s=="s90"?110:s=="s110"?78:85,
                     minWidth: 85,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
@@ -281,7 +281,7 @@ class LiveTradeAgGrid_Base extends React.PureComponent {
                             '<span class="text-warning">'+sSeller[0]+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+sSeller[1];
                     } },
                 { field: "board", headerName: "Board", resizable: true,
-                    width: s=="s49"?155:s=="s50"?155:s=="s67"?135:s=="75"?130:s=="s80"?120:s=="s90"?120:s=="s110"?80:90,
+                    width: s=="s49"?155:s=="s50"?155:s=="s67"?135:s=="75"?130:s=="s80"?120:s=="s85"?120:s=="s90"?120:s=="s110"?80:90,
                     minWidth: 90,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";

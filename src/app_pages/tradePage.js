@@ -1125,24 +1125,7 @@ class TradeWatchlist extends React.PureComponent{
             onClose: (result) => {console.log('Modal 1 result = ', result)}
         })
     }
-    ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth < 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1521 && window.innerWidth < 1800){
-            return "s80";
-        }else if(window.innerWidth > 1801 && window.innerWidth < 2030){
-            return "s75";
-        }else if(window.innerWidth > 2045 && window.innerWidth < 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth < 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s100";
-        }
-    }
-    render() {
+     render() {
         return (
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
@@ -1228,25 +1211,6 @@ class TradePageAdv_Base extends React.PureComponent{
 
     }
 
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
     selectSelectionTab = theme => ({
         ...theme,
         borderRadius: 5,
@@ -1367,25 +1331,6 @@ class TradePL extends React.PureComponent{
             activeTab: '1',
         };
     }
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
     render() {
         return (
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
@@ -1458,26 +1403,7 @@ class TradeOrderBookList extends React.PureComponent{
             contentClass: DetailTradeOrderBook,
         })
     }
-    ceksize(){
-        if(window.innerWidth > 1290 && window.innerWidth <= 1370){
-            return "s100";
-        }else if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s110";
-        }
-    }
-    render() {
+   render() {
         return (
             <div className="container-fluid px-2 mx-0 pb-0 pt-1 card-527">
                 <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
@@ -1574,23 +1500,6 @@ class DetailTradeOrderBook extends React.Component {
 
 
 class SettingInWatchlist extends React.Component{
-    ceksize(){
-        if(window.innerWidth > 1370 && window.innerWidth <= 1520) {
-            return "s90";
-        }else if(window.innerWidth > 1520 && window.innerWidth <= 1800){
-            return "s80";
-        }else if(window.innerWidth > 1800 && window.innerWidth <= 2030){
-            return "s75";
-        }else if(window.innerWidth > 2030 && window.innerWidth <= 2303){
-            return "s67";
-        }else if(window.innerWidth > 2303 && window.innerWidth <= 2559){
-            return "s50";
-        }else if(window.innerWidth > 2559){
-            return "s49";
-        }else{
-            return "s100";
-        }
-    }
     render(){
         return(
             <>
@@ -2000,22 +1909,25 @@ class OrderHistoryAgGrid extends React.PureComponent {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "mprice", headerName: "M Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?220:s=="s67"?215:s=="s75"?210:s=="s80"?173:s=="s90"?133:120,
+                    width: s=="s49"?220:s=="s67"?215:s=="s75"?210:s=="s80"?173:s=="s85"?120:s=="s90"?133:120,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "result", headerName: "Result", sortable: true, filter: "agNumberColumnFilter", comparator: stringComparator,
-                    resizable: true, width: s=="s49"?260:s=="s50"?240:s=="s67"?230:s=="s75"?220:s=="s80"?200:s=="s90"?160:120,
+                    resizable: true,
+                    width: s=="s49"?260:s=="s50"?240:s=="s67"?230:s=="s75"?220:s=="s80"?200:s=="s85"?130:s=="s90"?160:120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "setdate", headerName: "Set Date", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
-                    resizable: true, width: s=="s49"?270:s=="s50"?250:s=="s67"?245:s=="s75"?240:s=="s80"?210:s=="s90"?160:110,
+                    resizable: true,
+                    width: s=="s49"?270:s=="s50"?250:s=="s67"?245:s=="s75"?240:s=="s80"?210:s=="s85"?165:s=="s90"?160:110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "dateuntil", headerName: "Date Until", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
-                    resizable: true, width: s=="s50"?360:s=="s50"?340:s=="s67"?250:s=="s75"?240:s=="s80"?210:s=="s90"?160:110,
+                    resizable: true,
+                    width: s=="s50"?360:s=="s50"?340:s=="s67"?250:s=="s75"?240:s=="s80"?210:s=="s85"?160:s=="s90"?160:110,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
@@ -3080,42 +2992,42 @@ class TradeListOrderListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "time", headerName: "Time", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?172:s=="s50"?170:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s90"?90:80, minWidth: 80,
+                    width: s=="s49"?172:s=="s50"?170:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s85"?105:s=="s90"?90:80, minWidth: 80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "code", headerName: "Code", sortable: true, resizable: true,
-                    width: s=="s49"?205:s=="s50"?200:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s90"?90:78, minWidth:78, comparator: stringComparator,
+                    width: s=="s49"?205:s=="s50"?200:s=="s67"?140:s=="s75"?120:s=="s80"?105:s=="s85"?90:s=="s90"?90:78, minWidth:78, comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?245:s=="s50"?240:s=="s67"?100:s=="s75"?95:s=="s80"?105:s=="s90"?90:86, minWidth: 86,
+                    width: s=="s49"?245:s=="s50"?240:s=="s67"?100:s=="s75"?95:s=="s80"?105:s=="s85"?90:s=="s90"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table text-right d-border-aggrid-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s67"?190:s=="s75"?90:s=="s80"?105:s=="s90"?70:60, minWidth: 60,
+                    width: s=="s67"?190:s=="s75"?90:s=="s80"?105:s=="s85"?70:s=="s90"?70:60, minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "val", headerName: "Val", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?125:s=="s67"?120:s=="s75"?100:s=="s80"?80:s=="s90"?70:60, minWidth: 60,
+                    width: s=="s49"?125:s=="s67"?120:s=="s75"?100:s=="s80"?80:s=="s85"?70:s=="s90"?70:60, minWidth: 60,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "buyer", headerName: "Buyer", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
-                    width: s=="s49"?105:s=="s67"?100:s=="s75"?100:s=="s80"?95:s=="s90"?90:86, minWidth: 86,
+                    width: s=="s49"?105:s=="s67"?100:s=="s75"?100:s=="s80"?95:s=="s85"?90:s=="s90"?90:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "seller", headerName: "Seller", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
-                    width: s=="s49"?102:s=="s67"?100:s=="s75"?100:s=="s80"?90:86, minWidth: 86,
+                    width: s=="s49"?102:s=="s67"?100:s=="s75"?100:s=="s80"?90:s=="s85"?85:86, minWidth: 86,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "tradeId", headerName: "TradeID", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: stringComparator,
-                    width: s=="s49"?173:s=="s50"?175:s=="s67"?170:s=="s75"?167:s=="s80"?100:90, minWidth: 90,
+                    width: s=="s49"?173:s=="s50"?175:s=="s67"?170:s=="s75"?167:s=="s80"?100:s=="s85"?90:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
@@ -3275,25 +3187,25 @@ class TradeAdvBidAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: stringComparator,
-                    width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s90"?160:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s85"?170:s=="s90"?160:s=="s100"?155:145,
                     minWidth:145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s85"?165:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s85"?180:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },},
                 { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s85"?180:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -3401,25 +3313,25 @@ class TradeAdvOfferAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "broker", headerName: "Broker", sortable: true, resizable: true,comparator: stringComparator,
-                    width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s90"?160:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?263:s=="s67"?235:s=="s75"?215:s=="s80"?190:s=="s85"?175:s=="s90"?160:s=="s100"?155:145,
                     minWidth:145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?225:s=="s80"?190:s=="s85"?175:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(SHR)", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s85"?172:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
-                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s90"?165:s=="s100"?155:145,
+                    width: s=="s49"?295:s=="s50"?265:s=="s67"?235:s=="s75"?220:s=="s80"?195:s=="s85"?170:s=="s90"?165:s=="s100"?155:145,
                     minWidth: 145,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
@@ -3730,35 +3642,35 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true,
-                    width: s=="s49"?140:s=="s50"?130:s=="s67"?120:s=="s75"?110:s=="s80"?100:s=="s90"?60:s=="s100"?60:60,
+                    width: s=="s49"?140:s=="s50"?130:s=="s67"?120:s=="s75"?110:s=="s80"?100:s=="s85"?80:s=="s90"?60:s=="s100"?60:60,
                     minWidth:60,comparator: stringComparator,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
                     },
                 },{ field: "bookingNo", headerName: "Booking No", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     comparator: stringComparator,
-                    width: s=="s49"?210:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:s=="s90"?140:s=="s100"?130:120,
+                    width: s=="s49"?210:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:s=="s85"?130:s=="s90"?140:s=="s100"?130:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "status", headerName: "Status", sortable: true, filter: "agTextColumnFilter", resizable: true,
                     comparator: stringComparator,
-                    width: s=="s49"?210:s=="s50"?200:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?120:s=="s100"?120:120,
+                    width: s=="s49"?210:s=="s50"?200:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s85"?130:s=="s90"?120:s=="s100"?120:120,
                     minWidth:120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "cmd", headerName: "Cmd", sortable: true, resizable: true,
                     comparator: stringComparator,
-                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?110:s=="s100"?90:80,
+                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s85"?130:s=="s90"?110:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "mkt", headerName: "Mkt", sortable: true, resizable: true,
                     comparator: stringComparator,
-                    width: s=="s49"?210:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
+                    width: s=="s49"?210:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?140:s=="s85"?120:s=="s90"?100:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
@@ -3766,7 +3678,7 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                 },
                 { field: "code", headerName: "Code", sortable: true, resizable: true,
                     comparator: stringComparator,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?140:s=="s90"?100:s=="s100"?90:80,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?140:s=="s85"?113:s=="s90"?100:s=="s100"?90:80,
                     minWidth:80,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
@@ -3774,28 +3686,28 @@ class TradeOrderBookListAgGrid extends React.PureComponent {
                 },
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     comparator: integerComparator,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?150:s=="s90"?140:s=="s100"?140:140,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?190:s=="s75"?180:s=="s80"?150:s=="s85"?140:s=="s90"?140:s=="s100"?140:140,
                     minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     comparator: integerComparator,
-                    width: s=="s49"?250:s=="s50"?220:s=="s67"?180:s=="s75"?170:s=="s80"?140:s=="s90"?130:s=="s100"?130:120,
+                    width: s=="s49"?250:s=="s50"?220:s=="s67"?180:s=="s75"?170:s=="s80"?140:s=="s85"?130:s=="s90"?130:s=="s100"?130:120,
                     minWidth: 120,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vollot", headerName: "Vol(Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
                     comparator: integerComparator,
-                    width: s=="s49"?240:s=="s50"?220:s=="s67"?180:s=="s75"?160:s=="s80"?150:s=="s90"?130:s=="s100"?120:110,
+                    width: s=="s49"?240:s=="s50"?220:s=="s67"?180:s=="s75"?160:s=="s80"?150:s=="s85"?130:s=="s90"?130:s=="s100"?120:110,
                     minWidth: 110,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "bookingDate", headerName: "Booking Date", sortable: true, filter: "agNumberColumnFilter",
                     resizable: true, comparator: dateComparator,
-                    width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?190:s=="s80"?170:s=="s90"?160:s=="s100"?150:140,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?210:s=="s75"?190:s=="s80"?170:s=="s85"?160:s=="s90"?160:s=="s100"?150:140,
                     minWidth: 140,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
@@ -4025,18 +3937,18 @@ class TradeOrderSummaryAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol(Lot)", filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?152:s=="s50"?150:s=="s67"?90:70, minWidth: 70,
+                    width: s=="s49"?152:s=="s50"?150:s=="s67"?90:90, minWidth: 90,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },
                 { field: "avgPrice", headerName: "Avg. Price", filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?302:s=="s50"?300:s=="s67"?250:s=="s75"?245:s=="s80"?205:s=="s90"?185:130, minWidth: 130,
+                    width: s=="s49"?302:s=="s50"?300:s=="s67"?250:s=="s75"?245:s=="s80"?205:s=="s85"?135:s=="s90"?185:130, minWidth: 130,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "cmd", headerName: "Cmd", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?220:s=="s67"?230:s=="s75"?225:s=="s80"?210:s=="s90"?130:80, minWidth: 80,
+                    width: s=="s49"?220:s=="s67"?230:s=="s75"?225:s=="s80"?210:s=="s85"?130:s=="s90"?130:80, minWidth: 80,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
                         return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
@@ -4174,25 +4086,25 @@ class TradeTradeSummaryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "code", headerName: "Code", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?340:s=="s50"?310:s=="s67"?250:155, minWidth: 155,
+                    width: s=="s49"?340:s=="s50"?310:s=="s67"?250:s=="s85"?155:155, minWidth: 155,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-left f-12";
                     },
                 },{ field: "cmd", headerName: "Cmd", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?340:s=="s50"?310:s=="s67"?125:150, minWidth: 150,
+                    width: s=="s49"?340:s=="s50"?310:s=="s67"?125:s=="s85"?150:150, minWidth: 150,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
                         return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
                             " text-center text-success grid-table d-border-aggrid-right f-12";
                     },
                 },{ field: "price", headerName: "Price", filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?440:s=="s50"?410:s=="s67"?355:s=="s75"?335:s=="s80"?277:s=="s90"?227:160, minWidth: 160,
+                    width: s=="s49"?440:s=="s50"?410:s=="s67"?355:s=="s75"?335:s=="s80"?277:s=="s85"?200:s=="s90"?227:160, minWidth: 160,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },
                 },{ field: "vol", headerName: "Vol", filter: "agNumberColumnFilter", comparator: integerComparator,
-                    resizable: true, width: s=="s49"?400:s=="s50"?350:s=="s67"?340:s=="s75"?335:s=="s80"?290:s=="s90"?250:160,
-                    minWidth: 160,
+                    width: s=="s49"?400:s=="s50"?350:s=="s67"?340:s=="s75"?335:s=="s80"?290:s=="s85"?190:s=="s90"?250:160,
+                    minWidth: 160,  resizable: true,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-right f-12";
                     },

@@ -1882,7 +1882,7 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                         return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "netVol", headerName: "Net Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "netVol", headerName: "Net Vol(Shr)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2495,14 +2495,14 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                         return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "netVol", headerName: "Net Vol", resizable: true, filter: "agNumberColumnFilter",
+                { field: "netVol", headerName: "Net Vol(Shr)", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
                         return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "netVal", headerName: "Net Val(T)", resizable: true, filter: "agNumberColumnFilter",
+                { field: "netVal", headerName: "Net Val", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;

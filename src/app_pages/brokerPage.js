@@ -1830,55 +1830,71 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
         const s = props.size;
         this.state = {
             columnDefs: [
-                { field: "date", headerName: "Date ", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?170:s=="s75"?165:s=="s80"?135:s=="s85"?125:s=="s90"?105:120, minWidth: 100,
-                    cellClass : function (params) {
-                        return "grid-table d-border-aggrid-right f-12 text-left";
-                    },},
+                // { field: "date", headerName: "Date ", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                //     width: s=="s49"?120:s=="s50"?0:s=="s67"?0:s=="s75"?0:s=="s80"?0:s=="s85"?0:s=="s90"?0:0, minWidth: 100,
+                //     cellClass : function (params) {
+                //         return "grid-table d-border-aggrid-right f-12 text-left";
+                //     },},
                 { field: "code", headerName: "Code", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?195:s=="s50"?175:s=="s67"?170:s=="s75"?165:s=="s80"?150:s=="s85"?130:s=="s90"?125:120, minWidth: 120,
+                    width: s=="s49"?225:s=="s50"?220:s=="s67"?200:s=="s75"?190:s=="s80"?175:s=="s85"?155:s=="s90"?150:150, minWidth: 120,
                     cellClass : function (params) {
                         return "grid-table d-border-aggrid-right f-12 text-left";
                     }, },
                 { field: "buyVol", headerName: "Buy Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?195:s=="s50"?180:s=="s67"?170:s=="s75"?160:s=="s80"?150:s=="s85"?130:s=="s90"?130:120, minWidth: 120,
+                    width: s=="s49"?230:s=="s50"?200:s=="s67"?170:s=="s75"?190:s=="s80"?170:s=="s85"?160:s=="s90"?150:150, minWidth: 120,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
-                    }, },
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                    },},
                 { field: "buyVal", headerName: "Buy Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?140:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?280:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?170:s=="s90"?160:150, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "avgBuy", headerName: "Avg. Buy", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?250:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?140:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?280:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?160:s=="s90"?160:160, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-danger";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?140:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?160:s=="s90"?160:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "sellVal", headerName: "Sell Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?145:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?290:s=="s50"?250:s=="s67"?230:s=="s75"?205:s=="s80"?160:s=="s85"?145:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "avgSell", headerName: "Avg. Sell", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?260:s=="s50"?230:s=="s67"?220:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12 text-success";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "netVol", headerName: "Net Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "netVal", headerName: "Net Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?165:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     }, },
             ],
             defaultColDef: {
@@ -1898,7 +1914,7 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     sellVol: "123",
                     sellVal: "111",
                     avgSell: "123123123",
-                    netVol: "123",
+                    netVol: "-123",
                     netVal: "2317",
                 }, {
                     date: "10,870",
@@ -1920,7 +1936,7 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     sellVol: "123",
                     sellVal: "111",
                     avgSell: "123123123",
-                    netVol: "123",
+                    netVol: "-123",
                     netVal: "2317",
                 }, {
                     date: "10,870",
@@ -1942,7 +1958,18 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     sellVol: "123",
                     sellVal: "111",
                     avgSell: "123123123",
-                    netVol: "123",
+                    netVol: "-123",
+                    netVal: "2317",
+                }, {
+                    date: "10,870",
+                    code: "9",
+                    buyVol: "20",
+                    buyVal: "20",
+                    avgBuy: "156",
+                    sellVol: "123",
+                    sellVal: "111",
+                    avgSell: "123123123",
+                    netVol: "-123",
                     netVal: "2317",
                 }, {
                     date: "10,870",
@@ -1964,7 +1991,7 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     sellVol: "123",
                     sellVal: "111",
                     avgSell: "123123123",
-                    netVol: "123",
+                    netVol: "-123",
                     netVal: "2317",
                 }, {
                     date: "10,870",
@@ -1986,19 +2013,206 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     sellVol: "123",
                     sellVal: "111",
                     avgSell: "123123123",
-                    netVol: "123",
+                    netVol: "-123",
                     netVal: "2317",
                 }, {
-                    date: "10,870",
-                    code: "9",
-                    buyVol: "20",
-                    buyVal: "20",
-                    avgBuy: "156",
-                    sellVol: "123",
-                    sellVal: "111",
-                    avgSell: "123123123",
-                    netVol: "123",
-                    netVal: "2317",
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
+                },{
+                    date: "",
+                    code: "",
+                    buyVol: "",
+                    buyVal: "",
+                    avgBuy: "",
+                    sellVol: "",
+                    sellVal: "",
+                    avgSell: "",
+                    netVol: "",
+                    netVal: "",
                 },
             ],
             sideBar: {
@@ -2235,57 +2449,74 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?215:s=="s75"?190:s=="s80"?180:s=="s85"?160:s=="s90"?150:150, minWidth: 130,
                     lockVisible:true, lockPosition:true,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-left f-12 text-primary locked-col locked-visible";
+                        return " grid-table d-border-aggrid-right text-left f-12 text-white locked-col locked-visible";
                     },
                 },
                 { field: "buyVol", headerName: "Buy Vol", filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?140:150, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
-                    },},
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                    },
+                },
                 { field: "buyVal", headerName: "Buy Val(T)", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:150, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgBuyPrice", headerName: "Avg. Buy Price", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?155:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "sellVol", headerName: "Sell Vol", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "sellVal", headerName: "Sell Val(T)" , resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
-                        return "grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgSellPrice", headerName: "Avg. Sell Price" , resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVol", headerName: "Net Vol", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVal", headerName: "Net Val(T)", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
-                        return " grid-table d-border-aggrid-right text-right f-12 locked-col locked-visible";
+                        var cmd = params.data.netVol;
+                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
                     },},
             ],
             defaultColDef: {
                 sortable: false,
                 filter: true,
-                headerCheckboxSelection: isFirstColumn,
-                checkboxSelection: isFirstColumn,
+                // headerCheckboxSelection: isFirstColumn,
+                // checkboxSelection: isFirstColumn,
             },
-            rowSelection: "multiple",
+            // rowSelection: "multiple",
             rowData: [
                 {
                     stock : "AGRI"+s,
@@ -2295,7 +2526,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
                 }, {
                     stock : "AGRI",
@@ -2315,7 +2546,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
                 }, {
                     stock : "AGRI",
@@ -2325,7 +2556,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
                 }, {
                     stock : "AGRI",
@@ -2335,7 +2566,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
                 }, {
                     stock : "AGRI",
@@ -2345,7 +2576,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
                 }, {
                     stock : "AGRI",
@@ -2355,8 +2586,168 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     sellVol : "1,462,73",
                     sellVal : "1,462,73",
                     avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
+                    netVol : "-1,450,07",
                     netVal : "10,454,100",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
+                },{
+                    stock : "",
+                    buyVol : "",
+                    buyVal : "",
+                    avgBuyPrice : "",
+                    sellVol : "",
+                    sellVal : "",
+                    avgSellPrice: "",
+                    netVol : "",
+                    netVal : "",
                 },
             ],
             sideBar: {
@@ -2428,7 +2819,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                         defaultColDef={this.state.defaultColDef}
                         onGridReady={this.onGridReady}
                         onFirstDataRendered={this.onFirstDataRendered.bind(this)}
-                        rowSelection={this.state.rowSelection}
+                        // rowSelection={this.state.rowSelection}
                         groupSelectsFiltered={true}>
                     </AgGridReact>
                 </div>
@@ -2589,31 +2980,31 @@ class BrokerInfo extends React.PureComponent {
                                                 </td>
                                                 <td width="70%" className={"even-td d-border hover-tables"}></td>
                                             </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Nilai MKBD Terakhir
-                                                </td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
-                                            </tr>
+                                            {/*<tr>*/}
+                                                {/*<td className={"d-border"}>Nilai MKBD Terakhir*/}
+                                                {/*</td>*/}
+                                                {/*<td width="70%" className={"d-border hover-tables"}></td>*/}
+                                            {/*</tr>*/}
                                             <tr>
                                                 <td className={"d-border"}>Kantor Pusat
                                                 </td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
+                                                <td width="70%" className={"d-border hover-tables"}></td>
                                             </tr>
                                             <tr>
                                                 <td className={"d-border"}>Nomor Telepon</td>
-                                                <td width="70%" className={"d-border hover-tables"}></td>
+                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
                                             </tr>
                                             <tr>
                                                 <td className={"d-border"}>Faks</td>
-                                                <td width="70%" className={"even-td d-border hover-tables"}></td>
-                                            </tr>
-                                            <tr>
-                                                <td className={"d-border"}>Kode Pos</td>
                                                 <td width="70%" className={"d-border hover-tables"}></td>
                                             </tr>
                                             <tr>
-                                                <td className={"d-border"}>Situs</td>
+                                                <td className={"d-border"}>Kode Pos</td>
                                                 <td width="70%" className={"even-td d-border hover-tables"}></td>
+                                            </tr>
+                                            <tr>
+                                                <td className={"d-border"}>Situs</td>
+                                                <td width="70%" className={"d-border hover-tables"}></td>
                                             </tr>
 
                                         </table>

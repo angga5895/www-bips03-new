@@ -40,9 +40,9 @@ const FillHeaderTab_Base = (props) => {
                                                         :
                                                         e.instanceName.search('broker') >= 0 ?
                                                             e.instanceName.search('brokerTopListPage') >= 0?
-                                                                'active col-md-3 click-pointer text-center bg-blue-white'
+                                                                'active col-md-4 click-pointer text-center bg-blue-white'
                                                                 :
-                                                                'active col-md-3 click-pointer d-border-right text-center bg-blue-white'
+                                                                'active col-md-4 click-pointer d-border-right text-center bg-blue-white'
                                                             :
 
                                                         e.instanceName.search('StatistikPage') >= 0 ?
@@ -114,9 +114,9 @@ const FillHeaderTab_Base = (props) => {
                                                         :
                                                         e.instanceName.search('broker') >= 0 ?
                                                             e.instanceName.search('brokerTopListPage') >= 0?
-                                                                'col-md-3 click-pointer text-center'
+                                                                'col-md-4 click-pointer text-center'
                                                                 :
-                                                                'col-md-3 click-pointer d-border-right text-center'
+                                                                'col-md-4 click-pointer d-border-right text-center'
 
                                                             :
 

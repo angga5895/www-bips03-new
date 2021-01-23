@@ -214,7 +214,7 @@ class App extends React.Component {
                 {
                     name: 'brokerPage',
                     pages: [
-                        'brokerInfo',
+                        // 'brokerInfo',
                         'brokerTradeSummary',
                         'brokerTradeHistory',
                         'brokerTopListPage',

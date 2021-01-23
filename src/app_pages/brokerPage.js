@@ -1840,61 +1840,61 @@ class BrokerTradeHistoryAgGrid extends React.PureComponent {
                     cellClass : function (params) {
                         return "grid-table d-border-aggrid-right f-12 text-left";
                     }, },
-                { field: "buyVol", headerName: "Buy Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "buyVol", headerName: "Buy Vol(Shr)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?230:s=="s50"?200:s=="s67"?170:s=="s75"?190:s=="s80"?170:s=="s85"?160:s=="s90"?150:150, minWidth: 120,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "buyVal", headerName: "Buy Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "buyVal", headerName: "Buy Val", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?280:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?170:s=="s90"?160:150, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "avgBuy", headerName: "Avg. Buy", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?280:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?160:s=="s90"?160:160, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "sellVol", headerName: "Sell Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "sellVol", headerName: "Sell Vol(Shr)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?290:s=="s50"?260:s=="s67"?230:s=="s75"?215:s=="s80"?190:s=="s85"?160:s=="s90"?160:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "sellVal", headerName: "Sell Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "sellVal", headerName: "Sell Val", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?290:s=="s50"?250:s=="s67"?230:s=="s75"?205:s=="s80"?160:s=="s85"?145:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "avgSell", headerName: "Avg. Sell", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?220:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "netVol", headerName: "Net Vol", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?160:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "netVal", headerName: "Net Val(T)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                { field: "netVal", headerName: "Net Val", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?230:s=="s67"?200:s=="s75"?185:s=="s80"?165:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     }, },
             ],
             defaultColDef: {
@@ -2452,62 +2452,62 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                         return " grid-table d-border-aggrid-right text-left f-12 text-white locked-col locked-visible";
                     },
                 },
-                { field: "buyVol", headerName: "Buy Vol", filter: "agNumberColumnFilter", resizable: true,
+                { field: "buyVol", headerName: "Buy Vol(Shr)", filter: "agNumberColumnFilter", resizable: true,
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?140:150, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },
                 },
-                { field: "buyVal", headerName: "Buy Val(T)", resizable: true, filter: "agNumberColumnFilter",
+                { field: "buyVal", headerName: "Buy Val", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:150, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgBuyPrice", headerName: "Avg. Buy Price", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?155:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "sellVol", headerName: "Sell Vol", resizable: true, filter: "agNumberColumnFilter",
+                { field: "sellVol", headerName: "Sell Vol(Shr)", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
-                { field: "sellVal", headerName: "Sell Val(T)" , resizable: true, filter: "agNumberColumnFilter",
+                { field: "sellVal", headerName: "Sell Val" , resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgSellPrice", headerName: "Avg. Sell Price" , resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVol", headerName: "Net Vol", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVal", headerName: "Net Val(T)", resizable: true, filter: "agNumberColumnFilter",
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
-                        return cmd.includes('-') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('-') === true ? " text-right text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
             ],
             defaultColDef: {

@@ -162,9 +162,9 @@ const ResizeResponsive = () => {
         $('.slidee > div').css('font-size','22px');
         $('.slidee > div').css('padding-top','2px');
     }else{
-        $('.slidee > div').css('font-size','11.5px');
-        $('.slidee > div').css('padding-top','6px');
-        $('.slidee > div').css('padding-right','1px');
+        $('.slidee > div').css('font-size','10px');
+        $('.slidee > div').css('padding-top','7px');
+        $('.slidee > div').css('padding-right','0px');
         $('.slidee > div').css('padding-left','1px');
     }
 

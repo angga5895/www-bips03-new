@@ -2169,6 +2169,11 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                                 }`}
                                             id={"currenciesPercent"}></td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="3" className={"pl-3 py-1 f-12"}>
+                                            <span>Last Updated: 12:00:00 WIB</span> | <span>02/03/2021</span>
+                                        </td>
+                                    </tr>
                                 </table>
                                 <CurrenciesAgGrid size={widthSize()}/>
                             </div>
@@ -2213,6 +2218,11 @@ class CurrencyCommodityMarketStatistikPage extends React.PureComponent {
                                                 this.state.changeType == 3 ? "text-warning" : ""
                                             }`}
                                             id={"commodityPercent"}></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="3" className={"pl-3 py-1 f-12"}>
+                                            <span>Last Updated: 12:00:00 WIB</span> | <span>02/03/2021</span>
+                                        </td>
                                     </tr>
                                 </table>
                                     <CommodityAgGrid size={widthSize()}/>

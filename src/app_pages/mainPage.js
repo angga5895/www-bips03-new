@@ -444,7 +444,7 @@ const ResizeResponsive = () => {
     var cardIntIndices = $('html').height() - 255;
     $('.card-intIndices').css('min-height', cardIntIndices);
 
-    var cardCurrencies = $('html').height() - 295;
+    var cardCurrencies = $('html').height() - 310;
     $('.card-currencies').css('min-height', cardCurrencies);
 
     var heightbarchart = $('html').height() - 360;
@@ -1228,7 +1228,7 @@ class MainPage_Base extends React.Component {
             var cardIntIndices = $('html').height() - 255;
             $('.card-intIndices').css('min-height', cardIntIndices);
 
-            var cardCurrencies = $('html').height() - 295;
+            var cardCurrencies = $('html').height() - 310;
             $('.card-currencies').css('min-height', cardCurrencies);
 
             var cardCommodity = $('html').height() - 245;

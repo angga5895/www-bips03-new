@@ -320,7 +320,7 @@ class SideBar_Base extends React.Component{
                                                 var warna = " text-warning";
                                                 var icon = " icofont icofont-minus f-8";
                                             }
-                                            var nameText = "You have '"+charx.name+"' @"+charx.own+"("+charx.ownPercent+"%)";
+                                            var nameText = "You have '"+charx.name+"' "+charx.own+"("+charx.ownPercent+"%)";
                                             return (
                                                 <tr key={index} className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <Popup content={nameText}
@@ -333,13 +333,13 @@ class SideBar_Base extends React.Component{
                                                                    <div
                                                                        onClick={() => this.stockClick(charx.name + "-" + charx.fullname)}
                                                                        className="align-self-center text-left click-pointer noselect">
-                                                                       <p className={this.isFireFox() ? "pl-2 mb-0 f-11" : "pl-2 mb-0 f-sdb-m"}>{charx.name}</p>
+                                                                       <p className={this.isFireFox() ? "pl-2 mb-0 f-sdb-m" : "pl-2 mb-0 f-sdb-m"}>{charx.name}</p>
                                                                        <div
-                                                                           className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>
+                                                                           className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}>
                                                                            <i className={icon}></i>{charx.change + "(" + charx.percent + "%)"}
                                                                        </div>
-                                                                       <p className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>{charx.last}</p>
-                                                                       <p className={this.isFireFox() ? "f-10 mb3 text-right" + warna : "f-sdb mb-0 text-right" + warna}>@{charx.own}({charx.ownPercent}%)</p>
+                                                                       <p className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}>{charx.last}</p>
+                                                                       <p className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}> {charx.own}({charx.ownPercent}%)</p>
                                                                    </div>
                                                                </td>
                                                            }/>

@@ -6540,11 +6540,11 @@ table .tb-align-center>tr>td{
     height: 209px;
 }
 .f-sdb{
-    font-size:6px;
+    font-size:10px;
 }
 @media(min-width: 1279px) and (max-width: 1359px){
     .f-sdb{
-        font-size:8px;
+        font-size:9px;
     }
     .f-sdb-m{
         font-size:11px;
@@ -6552,7 +6552,7 @@ table .tb-align-center>tr>td{
 }
 @media(min-width: 1360px) and (max-width: 1440px) {
     .f-sdb{
-        font-size: 8px;
+        font-size: 9px;
     }
     .f-sdb-m{
         font-size: 10px;
@@ -6563,34 +6563,18 @@ table .tb-align-center>tr>td{
         font-size: 10px;
     }
     .f-sdb-m{
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 @media(min-width: 1680px) and (max-width: 1919px){
     .f-sdb{
-        font-size: 11px;
+        font-size: 12px;
     }
     .f-sdb-m{
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 @media(min-width: 1920px) and (max-width:  2047px){
-    .f-sdb{
-        font-size: 12.5px;
-    }
-    .f-sdb-m{
-        font-size: 14.5px;
-    }
-}
-@media(min-width: 2048px) and (max-width:  2303px){
-    .f-sdb{
-        font-size: 13px;
-    }
-    .f-sdb-m{
-        font-size: 15px;
-    }
-}
-@media(min-width: 2304px) and (max-width:  2559px){
     .f-sdb{
         font-size: 14px;
     }
@@ -6598,12 +6582,28 @@ table .tb-align-center>tr>td{
         font-size: 16px;
     }
 }
-@media(min-width: 2560px){
+@media(min-width: 2048px) and (max-width:  2303px){
     .f-sdb{
         font-size: 15px;
     }
     .f-sdb-m{
         font-size: 17px;
+    }
+}
+@media(min-width: 2304px) and (max-width:  2559px){
+    .f-sdb{
+        font-size: 19px;
+    }
+    .f-sdb-m{
+        font-size: 20px;
+    }
+}
+@media(min-width: 2560px) and (max-width: 2900px){
+    .f-sdb{
+        font-size: 20px;
+    }
+    .f-sdb-m{
+        font-size: 22px;
     }
 }
 .z99{

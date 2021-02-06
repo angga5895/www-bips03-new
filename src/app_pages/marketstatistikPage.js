@@ -838,7 +838,7 @@ class StatisticMarketStatistikPage_Base extends React.PureComponent {
                             </div>
                             <div className="card-body">
                                 <div className="col-sm-12">
-                                    <div className="card card-399 text-white bg-trading-gray delayTransition">
+                                    <div className="card card-399 text-white delayTransition">
                                         <div>
                                             <button id="streamButton" onClick={()=>this.props.handleStreamChart(this.props.streamStatus)}
                                                     className="btn btn-sm btn-grey py-3 px-3 d-border h-40 ml-3 mt-3">{this.props.streamStatus ? "Stop Stream" : "Start Stream"}</button>

@@ -6558,12 +6558,52 @@ table .tb-align-center>tr>td{
         font-size: 10px;
     }
 }
-@media(min-width: 1441px) and (max-width: 1680px) {
+@media(min-width: 1441px) and (max-width: 1679px) {
     .f-sdb{
         font-size: 10px;
     }
     .f-sdb-m{
         font-size: 12px;
+    }
+}
+@media(min-width: 1680px) and (max-width: 1919px){
+    .f-sdb{
+        font-size: 11px;
+    }
+    .f-sdb-m{
+        font-size: 13px;
+    }
+}
+@media(min-width: 1920px) and (max-width:  2047px){
+    .f-sdb{
+        font-size: 12.5px;
+    }
+    .f-sdb-m{
+        font-size: 14.5px;
+    }
+}
+@media(min-width: 2048px) and (max-width:  2303px){
+    .f-sdb{
+        font-size: 13px;
+    }
+    .f-sdb-m{
+        font-size: 15px;
+    }
+}
+@media(min-width: 2304px) and (max-width:  2559px){
+    .f-sdb{
+        font-size: 14px;
+    }
+    .f-sdb-m{
+        font-size: 16px;
+    }
+}
+@media(min-width: 2560px){
+    .f-sdb{
+        font-size: 15px;
+    }
+    .f-sdb-m{
+        font-size: 17px;
     }
 }
 .z99{

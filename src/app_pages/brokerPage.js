@@ -371,6 +371,7 @@ class TopBrokerAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "no", headerName: "#", sortable: true,
+                   filter: "agNumberColumnFilter", resizable: true,comparator: integerComparator,
                     width: s=="s49"?140:s=="s50"?90:s=="s67"?70:50, minWidth:50,
                     cellClass : function (params) {
                         return " grid-table d-border-aggrid-right text-center f-12";
@@ -2446,6 +2447,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "stock", headerName: "Stock", resizable: true,
+                    sortable: true, filter: "agNumberColumnFilter", comparator: stringComparator,
                     width: s=="s49"?250:s=="s50"?230:s=="s67"?215:s=="s75"?190:s=="s80"?180:s=="s85"?160:s=="s90"?150:150, minWidth: 130,
                     lockVisible:true, lockPosition:true,
                     cellClass : function (params) {
@@ -2453,6 +2455,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "buyVol", headerName: "Buy Vol(Shr)", filter: "agNumberColumnFilter", resizable: true,
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?140:150, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2461,6 +2464,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                     },
                 },
                 { field: "buyVal", headerName: "Buy Val", resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?260:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:150, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2468,6 +2472,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgBuyPrice", headerName: "Avg. Buy Price", resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?155:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2475,6 +2480,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "sellVol", headerName: "Sell Vol(Shr)", resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2482,6 +2488,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "sellVal", headerName: "Sell Val" , resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?215:s=="s75"?200:s=="s80"?170:s=="s85"?150:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2489,6 +2496,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "avgSellPrice", headerName: "Avg. Sell Price" , resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?170:s=="s85"?160:s=="s90"?150:140, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2496,6 +2504,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVol", headerName: "Net Vol(Shr)", resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2503,6 +2512,7 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                             " text-right text-success grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "netVal", headerName: "Net Val", resizable: true, filter: "agNumberColumnFilter",
+                    sortable: true,  comparator: integerComparator,
                     width: s=="s49"?270:s=="s50"?240:s=="s67"?210:s=="s75"?200:s=="s80"?180:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
                         var cmd = params.data.netVol;
@@ -2521,73 +2531,73 @@ class BrokerTradeSummaryAgGrid extends React.PureComponent {
                 {
                     stock : "AGRI"+s,
                     buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
+                    buyVal : "2,139",
+                    avgBuyPrice : "10",
+                    sellVol : "1,452,73",
+                    sellVal : "1,422,73",
+                    avgSellPrice: "4,488,19",
                     netVol : "-1,450,07",
-                    netVal : "10,454,100",
+                    netVal : "10,154,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,460,595",
+                    buyVal : "11,139",
+                    avgBuyPrice : "32",
+                    sellVol : "1,762,73",
+                    sellVal : "1,162,73",
+                    avgSellPrice: "3,488,19",
+                    netVol : "1,440,07",
+                    netVal : "10,474,100",
+                }, {
+                    stock : "AGRI1",
+                    buyVol : "1,440,595",
+                    buyVal : "12,239",
+                    avgBuyPrice : "72",
+                    sellVol : "1,461,73",
+                    sellVal : "1,461,73",
+                    avgSellPrice: "1,188,19",
+                    netVol : "-1,450,17",
+                    netVal : "10,414,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,420,595",
+                    buyVal : "22,239",
+                    avgBuyPrice : "21",
+                    sellVol : "1,422,73",
+                    sellVal : "1,422,73",
+                    avgSellPrice: "2,488,19",
+                    netVol : "-1,430,07",
+                    netVal : "10,434,100",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,490,595",
+                    buyVal : "12,939",
+                    avgBuyPrice : "19",
+                    sellVol : "1,462,79",
+                    sellVal : "1,462,79",
+                    avgSellPrice: "1,498,19",
+                    netVol : "-1,450,09",
+                    netVal : "10,454,900",
+                }, {
+                    stock : "AGRI",
+                    buyVol : "1,450,575",
+                    buyVal : "12,136",
+                    avgBuyPrice : "62",
+                    sellVol : "1,466,73",
+                    sellVal : "1,466,73",
+                    avgSellPrice: "6,488,19",
+                    netVol : "-1,456,07",
+                    netVal : "10,456,100",
                 }, {
                     stock : "AGRI",
                     buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "1,450,07",
-                    netVal : "10,454,100",
-                }, {
-                    stock : "AGRI",
-                    buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "-1,450,07",
-                    netVal : "10,454,100",
-                }, {
-                    stock : "AGRI",
-                    buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "-1,450,07",
-                    netVal : "10,454,100",
-                }, {
-                    stock : "AGRI",
-                    buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "-1,450,07",
-                    netVal : "10,454,100",
-                }, {
-                    stock : "AGRI",
-                    buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "-1,450,07",
-                    netVal : "10,454,100",
-                }, {
-                    stock : "AGRI",
-                    buyVol : "1,450,595",
-                    buyVal : "12,139",
-                    avgBuyPrice : "12",
-                    sellVol : "1,462,73",
-                    sellVal : "1,462,73",
-                    avgSellPrice: "1,488,19",
-                    netVol : "-1,450,07",
-                    netVal : "10,454,100",
+                    buyVal : "12,135",
+                    avgBuyPrice : "52",
+                    sellVol : "1,465,73",
+                    sellVal : "1,465,73",
+                    avgSellPrice: "5,488,19",
+                    netVol : "-1,455,07",
+                    netVal : "10,455,100",
                 },{
                     stock : "",
                     buyVol : "",

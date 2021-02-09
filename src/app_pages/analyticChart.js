@@ -490,28 +490,31 @@ class AnalyticChart_Base extends React.PureComponent {
                     appSettingsCache['annotation'] = 'remove';
                 });
 
-                $("#stockoptionchrtStock").change(function() {
-                    getStock($valueAnalyticChart,'analytic stock');
-                });
-
-                $("#stockoptionchart1").change(function() {
-                    getStock($valueAnalyticChart,'chart 1');
-                });
-
-                $("#stockoptionchart2").change(function() {
-                    getStock($valueAnalyticChart,'chart 2');
-                });
-
-                $("#stockoptionchart3").change(function() {
-                    getStock($valueAnalyticChart,'chart 3');
-                });
-
-                $("#stockoptionchart4").change(function() {
-                    getStock($valueAnalyticChart,'chart 4');
-                });
-                $("#stockoptionchrtIndice").change(function() {
-                    getStock($valueAnalyticChart,'indice stock');
-                });
+                if(stockName == "chrtStock"){
+                    $("#stockoptionchrtStock").change(function() {
+                        getStock($valueAnalyticChart,'analytic stock');
+                    });
+                }else if(stockName == "chart1"){
+                    $("#stockoptionchart1").change(function() {
+                        getStock($valueAnalyticChart,'chart 1');
+                    });
+                }else if(stockName == "chart2"){
+                    $("#stockoptionchart2").change(function() {
+                        getStock($valueAnalyticChart,'chart 2');
+                    });
+                }else if(stockName == "chart3"){
+                    $("#stockoptionchart3").change(function() {
+                        getStock($valueAnalyticChart,'chart 3');
+                    });
+                }else if(stockName == "chart4"){
+                    $("#stockoptionchart4").change(function() {
+                        getStock($valueAnalyticChart,'chart 4');
+                    });
+                }else if(stockName == "chrtIndice"){
+                    $("#stockoptionchrtIndice").change(function() {
+                        getStock($valueAnalyticChart,'indice stock');
+                    });
+                }
 
 
                 // event to add indicator

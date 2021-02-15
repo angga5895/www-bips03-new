@@ -21,9 +21,9 @@ window.$ = window.jQuery = $;
 function widthSize(){
     if(window.innerWidth > 1370 && window.innerWidth <= 1440) {
         return "s90";
-    }else if(window.innerWidth > 1441 && window.innerWidth <= 1520) {
+    }else if(window.innerWidth > 1441 && window.innerWidth <= 1540) {
         return "s85";
-    }else if(window.innerWidth > 1521 && window.innerWidth <= 1800){
+    }else if(window.innerWidth > 1540 && window.innerWidth <= 1800){
         return "s80";
     }else if(window.innerWidth > 1801 && window.innerWidth <= 2030){
         return "s75";

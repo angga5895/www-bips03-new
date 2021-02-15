@@ -47,7 +47,7 @@ class SideBar_Base extends React.Component{
                     fullname: "Adhi Karya",
                     last: "12,750",
                     change: -1.95,
-                    percent: -0.06,
+                    percent: -0.1,
                     own: 12.000,
                     ownPercent: 0.1,
                 },
@@ -56,7 +56,7 @@ class SideBar_Base extends React.Component{
                     fullname: "Aneka Tambang",
                     last: "15,350",
                     change: 4.50,
-                    percent: 0.56,
+                    percent: 0.5,
                     own: 14.740,
                     ownPercent: 0.2,
                 },
@@ -65,9 +65,9 @@ class SideBar_Base extends React.Component{
                     fullname: "Astar Motor",
                     last: "30,540",
                     change: -1.45,
-                    percent: -3.56,
+                    percent: -3.5,
                     own: 2.240,
-                    ownPercent: 0.12,
+                    ownPercent: 0.1,
                 },
                 {
                     name: "TLKM",
@@ -83,17 +83,17 @@ class SideBar_Base extends React.Component{
                     fullname: "Waskita Karya",
                     last: "12,500",
                     change: 11.05,
-                    percent: 20.52,
+                    percent: 20.5,
                     own: 12.940,
-                    ownPercent: 0.23,
+                    ownPercent: 0.2,
                 },{
                     name: "WSKT",
                     fullname: "Waskita Karya",
                     last: "12,500",
                     change: 11.05,
-                    percent: 20.52,
+                    percent: 20.5,
                     own: 12.940,
-                    ownPercent: 0.23,
+                    ownPercent: 0.2,
                 },
             ],
             showAlert:false,
@@ -320,7 +320,7 @@ class SideBar_Base extends React.Component{
                                                 var warna = " text-warning";
                                                 var icon = " icofont icofont-minus f-8";
                                             }
-                                            var nameText = "You have '"+charx.name+"' "+charx.own+"("+charx.ownPercent+"%)";
+                                            var nameText = "You have '"+charx.name+"' @"+charx.own+"("+charx.ownPercent+"%)";
                                             return (
                                                 <tr key={index} className={this.isFireFox() ? "pl-0 pr-1 d-border-bottom" : "px-1 d-border-bottom"}>
                                                     <Popup content={nameText}
@@ -339,7 +339,7 @@ class SideBar_Base extends React.Component{
                                                                            <i className={icon}></i>{charx.change + "(" + charx.percent + "%)"}
                                                                        </div>
                                                                        <p className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}>{charx.last}</p>
-                                                                       <p className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}> {charx.own}({charx.ownPercent}%)</p>
+                                                                       <p className={this.isFireFox() ? "f-sdb mb-0 text-right" + warna : "f-sdb mb-0 text-right" + warna}>@{charx.own}({charx.ownPercent}%)</p>
                                                                    </div>
                                                                </td>
                                                            }/>

@@ -458,7 +458,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                     <i className="icofont icofont-close text-icofont-close text-white click-pointer pull-right"
                                        onClick={this.closeClick}>
                                     </i>
-                                    <h1 className="text-center">Edit Automatic Order</h1>
+                                    <h2 className="text-center">Edit Automatic Order</h2>
                                 </div>,
             size: 'large',
             contentClass: EditPage,
@@ -489,6 +489,15 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
 
     changeOrderPrice = (e,{value}) => {
            this.setState({ value: value })
+    }
+    saveDisclaimer = (e) => {
+        this.refs.frameAction.showModal({
+            headerClass: () => <div className="text-white text-center"><h2>Disclaimer</h2></div>,
+            closeIcon: false,
+            contentClass: saveDisclaimerCard,
+            size: "tiny",
+            onClose: (result) => {console.log('Modal 1 result = ', result)}
+        })
     }
 
     componentDidMount() {
@@ -642,14 +651,67 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                         idclassname="tradeAtIdr" defaultValue="0"/>
                                 </div>
                             </div>
-                            <div className="col-sm-12 mb-3 text-right">
-                                <button className="btn btn-primary">Save Settings</button>
+                            <div className="col-sm-12 row mb-3 pr-0">
+                                <div className="col-sm-2 f-16 pt-3">
+                                   Value
+                                </div>
+                                <div className="col-sm-7 pr-0">
+                                    <NumberInput
+                                        idclassname="tradeValue" defaultValue="0"/>
+                                </div>
+                                <div className="col-sm-3 pl-1" style={{marginTop:"1px"}}>
+                                    <button className="btn btn-primary" onClick={this.saveDisclaimer}>Save Settings</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <OrderSettingListAgGrid
                         clickedit={this.buttonClickEdit}
                         size={widthSize()}/>
+                </div>
+            </>
+        );
+    }
+}
+
+class saveDisclaimerCard extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    closeClick = (e) => {
+        this.refs.frameAction.closeModal(100);
+    }
+    confirmClick = (e) => {
+        console.log("oke dokii your next action write here please!");
+    }
+
+    render() {
+        return (
+            <>
+                <AppFrameAction ref="frameAction" />
+                <WSConnectionAction ref="wsAction" />
+                <div className="text-white">
+                   <div className="col-sm-12 f-15 py-2">
+                    Automatic order ini bekerja untuk evaluasi kondisi di market tetapi bisa terjadi "literacy" 
+                    sehingga eksekusi ini tidak menjamin terjadi trade.<br/>
+                        <ul className="pl-4 mt-3 f-12">
+                            <li>
+                                Order ter-<i>save</i> tidak menjamin automatic order langsung terjadi match.
+                            </li>
+                            <li>
+                                Order terkirim tidak masuk ke dalam blank auction.
+                            </li>
+                            <li>Order yang tersimpan akan tetapi tereksekusi jika Bid/Offer 
+                                dalam kondisi kosong dan sesuai bata waktu yang dipililih (max date 30 hari).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="text-center pt-5">
+                        <button className="btn btn-danger col-sm-3 mr-2" onClick={this.closeClick}>Close</button>
+                        <button className="btn btn-primary col-sm-3" onClick={this.confirmClick}>OK</button>
+                    </div>
                 </div>
             </>
         );
@@ -670,6 +732,7 @@ class EditPage extends React.Component{
         this.setState({ value: value })
     }
 
+    
     render(){
         return(
             <div className="bg-dark-grey d-border">
@@ -817,6 +880,8 @@ class EditPage extends React.Component{
     }
 }
 
+
+
 class OrderSettingListAgGrid extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -865,7 +930,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
                 { field: "vol", headerName: "Vol. (Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                    width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:80, comparator: integerComparator,
+                    width: s=="s49"?230:s=="s50"?200:s=="s67"?175:s=="s75"?170:s=="s80"?150:100, comparator: integerComparator,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12 locked-col locked-visible";
                     }, suppressSizeToFit: true},
@@ -1059,7 +1124,7 @@ class OrderSettingListAgGrid extends React.PureComponent{
         return (
             <>
                 <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
-                    <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-3 f-16">ORDER SETTINGS LIST</div>
+                    <div className="bg-tableheader col-sm-12 px-0 mx-0 text-center py-2 f-16">ORDER SETTINGS LIST</div>
                 </div>
                 <div
                     className="card-Aut-Order ag-theme-balham-dark ag-header-border d-border ag-striped-odd"

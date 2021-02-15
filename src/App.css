@@ -6636,3 +6636,8 @@ table .tb-align-center>tr>td{
 .f-30{
     font-size: 30px;
 }
+@media (min-width: 1365px) AND (max-width: 1370px){
+    .card-520{
+        height: 513px;
+    }
+}

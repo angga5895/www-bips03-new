@@ -6641,3 +6641,6 @@ table .tb-align-center>tr>td{
         height: 513px;
     }
 }
+#tradeValue{
+    text-align: right !important;
+}

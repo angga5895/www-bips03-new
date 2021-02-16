@@ -656,11 +656,13 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                    Value
                                 </div>
                                 <div className="col-sm-7 pr-0">
-                                    <NumberInput
-                                        idclassname="tradeValue" defaultValue="0"/>
+                                    <Input placeholder='0' id="tradeValue" className="col-sm-12 px-0" 
+                                    style={{textAlign:"right !important"}}/>
                                 </div>
                                 <div className="col-sm-3 pl-1" style={{marginTop:"1px"}}>
-                                    <button className="btn btn-primary" onClick={this.saveDisclaimer}>Save Settings</button>
+                                    <button className="btn btn-primary" onClick={this.saveDisclaimer}>
+                                        Save Settings
+                                    </button>
                                 </div>
                             </div>
                         </div>

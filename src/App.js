@@ -32,7 +32,7 @@ import MarketStatistikPage, { CustomFrameHeaderMarketStatistik, MarketStatistik,
 import Stock from './app_pages/stockPage.js';
 import { Trade, CustomFrameHeaderTrade, OrderbookPage,
     TradeWatchlist, TradePageAdv, TradeOrderBookList,
-    OrderSetting,SentOrder } from './app_pages/tradePage';
+    OrderSetting,SentOrder, ExpOrder } from './app_pages/tradePage';
 import AnalyticPage, { CustomFrameHeaderAnalytic, Analytic,
     StockAnalyticPage,
     IndiceAnalyticPage,
@@ -74,7 +74,7 @@ class App extends React.Component {
             //TradePage
             /*tree2*/
             OrderbookPage, TradeWatchlist,
-            OrderSetting,SentOrder,TradePageAdv, TradeOrderBookList,
+            OrderSetting,SentOrder, ExpOrder,TradePageAdv, TradeOrderBookList,
             //AnalyticPage
             /*tree1*/
             AnalyticPage, StockAnalyticPage, IndiceAnalyticPage, RelativePerformanceAnalyticPage,
@@ -148,6 +148,7 @@ class App extends React.Component {
               {className: 'TradeOrderBookList', title: 'ORDER BOOKING LIST', instanceName: 'tradePageOrderBookList'},
 
             {className: 'OrderSetting', title: 'ORDER SETTING', instanceName: 'AutOrderSetting'},
+            {className: 'ExpOrder', title: 'EXPIRE AUTOMATIC ORDER', instanceName: 'AutExpOrder'},
             {className: 'SentOrder', title: 'SEND ORDER', instanceName: 'AutSentOrder'},
 
             //tree 2 In Analytic
@@ -245,6 +246,7 @@ class App extends React.Component {
                         'tradePageOrderBookList',
                         'tradePageAdv',
                         'AutOrderSetting',
+                        'AutExpOrder',
                         'AutSentOrder'
                     ]
                 },

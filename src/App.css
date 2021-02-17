@@ -6644,3 +6644,6 @@ table .tb-align-center>tr>td{
 #tradeValue{
     text-align: right !important;
 }
+.card-tradeEO{
+    height: 430px;
+}

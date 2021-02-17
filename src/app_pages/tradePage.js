@@ -140,6 +140,7 @@ const CustomFrameHeaderTrade_Base = (props) => {
                             <FillHeaderTab tradeMode="auto" treeName="/tradePage" linkTitles={
                                 {
                                     AutOrderSetting: 'AUTOMATIC ORDER SETTING',
+                                    AutExpOrder: 'EXPIRE AUTOMATIC ORDER',
                                     AutSentOrder : 'SENT ORDER',
                                 }
                             } />
@@ -384,6 +385,103 @@ class SentOrder extends React.PureComponent{
     }
 
 }
+
+class ExpOrder extends React.PureComponent{
+    constructor(props) {
+        super(props);
+
+    }
+    componentDidMount() {
+        $(document).ready(function() {
+            var sd = new Date(), ed = new Date();
+            var isRtl = $('html').attr('dir') === 'rtl';
+            $('#datepickerstartEO').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+            $('#datepickerendEO').datepicker({
+                orientation: isRtl ? 'auto right' : 'auto left',
+                format: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true,
+                endDate: ed,
+                autoclose: true,
+                todayBtn: "linked",
+            });
+
+
+        });
+    }
+
+    render(){
+        return(
+            <>
+                <WSConnectionAction ref="wsAction"/> {/* websocket connection component */}
+                <AppFrameAction ref="frameAction"/>
+                    <div className="col-sm-12">
+                        <div id={"AutExpOrderPIN"} className="col-sm-12">
+                        <VerifyPINPortofolio pos="AutExpOrder"/>
+                        </div>
+                    <div id="ContentExpAutOrder" className={"d-none"}>
+                        <div className="col-sm-12 h-62">
+                            <div className="ui small input col-sm-8 pl-0 f-12 text-center align-self-center black ver-center">
+                                <table>
+                                    <tr>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>Periode</span>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <div className="ui input pl-0" style={{paddingRight:'37px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerstartEO" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td className={"px-0"}>
+                                            <span className="input-group-addon h-35 bg-tableheader" style={{height:'31px',border: "1px solid var(--warna-d-border)"}}>To</span>
+                                        </td>
+                                        <td className={"px-0"}>
+
+                                            <div className="ui input" style={{paddingRight:'40px',marginLeft:'-1px'}}>
+                                                <Input placeholder='dd/mm/yy' id="datepickerendEO" className="col-sm-12 pl-0 pr-0 text-center align-self-center "/>
+                                                <span className="input-group-addon h-35 no-border-radius bg-tableheader" style={{width: '100%'}}>
+                                                <span
+                                                    className="fa fa-calendar-alt"></span>
+                                            </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" style={{height:'30px !important'}} className="btn btn-md btn-block btn-dark btnDatePick">Go</button>
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                        <div className="col-sm-12 pl-2 pr-3">
+                            <div className="col-sm-12 px-0 mx-0 bg-gray-tradding text-center">
+                                    <div className="col-sm-12 px-0 mx-0 text-center pt-3 pb-2 h-30 f-12 bg-tableheader">Rule Expire Automatic Order</div>
+                            </div>
+                            <ExpireOrderAgGrid size={widthSize()}/>
+                        </div>
+                    </div>
+                    </div>
+            </>
+                )
+    }
+
+}
+
 class TableInfoTransactionLayout extends React.PureComponent{
     constructor(props) {
         super(props);
@@ -645,7 +743,7 @@ class TableInfoTransactionLayout2 extends React.PureComponent{
                                 <div className="col-sm-2 f-16 pt-3">
                                     IDR
                                 </div>
-                                <div className="col-sm-10 pr-0">
+                                <div className="col-sm-7 pr-0">
                                     <NumberInput
                                         status={this.state.value == "Manual" ? false:true}
                                         idclassname="tradeAtIdr" defaultValue="0"/>
@@ -866,14 +964,24 @@ class EditPage extends React.Component{
                             <div className="col-sm-2 f-16 pt-3">
                                 IDR
                             </div>
-                            <div className="col-sm-10 pr-0">
+                            <div className="col-sm-7 pr-0">
                                 <NumberInput
                                     status={this.state.value == "Manual" ? false:true}
                                     idclassname="tradeAtIdr" defaultValue="0"/>
                             </div>
                         </div>
-                        <div className="col-sm-12 mb-3 text-right">
-                            <button className="btn btn-primary">Save Settings</button>
+                        <div className="col-sm-12 row mb-3 pr-0">
+                            <div className="col-sm-2 f-16 pt-3">
+                                Value
+                            </div>
+                            <div className="col-sm-7 pr-0">
+                            <Input placeholder='0' id="tradeValue" className="col-sm-12 px-0" 
+                                    style={{textAlign:"right !important"}}/>
+                        
+                            </div>
+                            <div className="col-sm-3 mb-3 text-right">
+                                <button className="btn btn-primary">Save Settings</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2097,6 +2205,188 @@ class OrderHistoryAgGrid extends React.PureComponent {
                 {/*senttttt*/}
                 <div
                     className="card-tradeSO ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
+                    >
+                    <AgGridReact
+                        columnDefs={this.state.columnDefs}
+                        rowData={this.state.rowData}
+                        defaultColDef={this.state.defaultColDef}
+                        getRowHeight={this.state.getRowHeight}
+                        rowSelection={this.state.rowSelection}
+                        onGridReady={this.onGridReady}
+                        onFirstDataRendered={this.onFirstDataRendered}>
+                    </AgGridReact>
+                </div>
+            </>
+        );
+    }
+}
+
+class ExpireOrderAgGrid extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        const self = this;
+        const s = props.size;
+        this.state = {
+            columnDefs: [
+                { field: "hastag", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
+                    width: s=="s49"?180:90, lockPosition:true, lockVisible:true,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "ruleID", headerName: "#Rule.ID", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
+                    width: s=="s49"?250:s=="s50"?200:s=="s67"?155:s=="s75"?150:135,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "date", headerName: "Date", sortable: true, resizable: true, comparator: stringComparator,
+                    width: s=="s49"?250:s=="s50"?200:s=="s67"?100:s=="s75"?80:75,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: stringComparator,
+                    width: s=="s49"?250:s=="s50"?200:s=="s67"?110:s=="s75"?100:80,
+                    cellClass : function (params) {
+                        var cmd = params.data.cmd;
+                        return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "condition", headerName: "Condition", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?150:s=="s50"?120:s=="s67"?110:s=="s75"?100:80,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "vol", headerName: "Vol(Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?170:s=="s75"?160:140,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    },},
+                { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?180:s=="s67"?140:s=="s75"?130:110,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
+                    width: s=="s49"?220:s=="s67"?215:s=="s75"?210:s=="s80"?173:s=="s85"?120:s=="s90"?133:120,
+                    cellClass : function (params) {
+                        return "text-right grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "expireDate", headerName: "Expire Date", sortable: true, filter: "agNumberColumnFilter", comparator: stringComparator,
+                    resizable: true,
+                    width: s=="s49"?260:s=="s50"?240:s=="s67"?230:s=="s75"?220:s=="s80"?200:s=="s85"?130:s=="s90"?160:120,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "executeStatus", headerName: "Execute Status", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
+                    resizable: true,
+                    width: s=="s49"?270:s=="s50"?250:s=="s67"?245:s=="s75"?240:s=="s80"?210:s=="s85"?165:s=="s90"?160:110,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    }, },
+                { field: "orderStatus", headerName: "Order Status", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
+                    resizable: true,
+                    width: s=="s50"?360:s=="s50"?340:s=="s67"?250:s=="s75"?240:s=="s80"?210:s=="s85"?160:s=="s90"?160:110,
+                    cellClass : function (params) {
+                        return "text-center grid-table d-border-aggrid-right f-12";
+                    }, },
+            ],
+            defaultColDef: {
+                sortable: true,
+                filter: true,
+                //     headerCheckboxSelection: isFirstColumn,
+                //     checkboxSelection: isFirstColumn,
+            },
+            rowSelection: "multiple",
+            getRowHeight : function(params){
+                return 27;
+            },
+            rowData: [
+                { date: "28/11/2018"+s+s+s+s+s,
+                    time: "08:21:33",
+                    ruleID : "001",
+                    code: "AALI",
+                    qty: "2",
+                    cmd: "BUY",
+                    price: "12.000",
+                    mqty: "2",
+                    mprice: "3.000",
+                    result: "Match",
+                    setdate: "12/11/2019",
+                    dateuntil: "13/11/2019",
+                },{ date: "28/11/2018",
+                    time: "08:21:33",
+                    ruleID : "001",
+                    code: "AALI",
+                    qty: "2",
+                    cmd: "SELL",
+                    price: "12.000",
+                    mqty: "2",
+                    mprice: "3.000",
+                    result: "Match",
+                    setdate: "12/11/2019",
+                    dateuntil: "13/11/2019",
+                },
+            ],
+            sideBar: {
+                toolPanels: [
+                    {
+                        id: "columns",
+                        labelDefault: "Columns",
+                        labelKey: "columns",
+                        iconKey: "columns",
+                        toolPanel: "agColumnsToolPanel",
+                        toolPanelParams: {
+                            suppressRowGroups: true,
+                            suppressValues: true,
+                            suppressPivots: true,
+                            suppressPivotMode: true,
+                            suppressSideButtons: true,
+                            suppressColumnFilter: true,
+                            suppressColumnSelectAll: true,
+                            suppressColumnExpandAll: true
+                        },
+                    }, {
+                        id: "filters",
+                        labelDefault: "Filters",
+                        labelKey: "filters",
+                        iconKey: "filter",
+                        toolPanel: "agFiltersToolPanel"
+                    }
+                ],
+                defaultToolPanel: ""
+            },
+        }
+
+        function isFirstColumn(params) {
+            var displayedColumns = params.columnApi.getAllDisplayedColumns();
+            var thisIsFirstColumn = displayedColumns[0] === params.column;
+            return thisIsFirstColumn;
+        }
+    }
+
+    onGridReady = params => {
+        this.gridApi = params.api;
+        this.gridColumnApi = params.columnApi;
+
+        params.api.sizeColumnsToFit();
+        window.addEventListener("resize", function() {
+            setTimeout(function() {
+                params.api.sizeColumnsToFit();
+            });
+        });
+
+        params.api.sizeColumnsToFit();
+    };
+
+    onFirstDataRendered(params) {
+        params.api.sizeColumnsToFit();
+    }
+
+    render() {
+        return (
+            <>
+                {/*senttttt*/}
+                <div
+                    className="card-tradeEO ag-theme-balham-dark d-border bg-dark-grey ag-bordered ag-striped-odd d-border"
                     >
                     <AgGridReact
                         columnDefs={this.state.columnDefs}
@@ -4360,6 +4650,6 @@ const TradePageAdv = ContextConnector(BIPSAppContext,
 )(TradePageAdv_Base);
 export {CustomFrameHeaderTrade, Trade,
     OrderbookPage, TradeWatchlist, TradePageAdv, TradeOrderBookList, SettingInWatchlist,
-    OrderSetting,SentOrder, TradePL,
+    OrderSetting,SentOrder, ExpOrder, TradePL,
 
 };

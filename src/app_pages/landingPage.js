@@ -3953,7 +3953,7 @@ class StockCashAgGrid extends React.PureComponent {
                         var pl = params.data.pl;
                         return "text-success text-right  grid-table f-12 d-border-aggrid-right";
                     },children:[ { field: "stockValR", headerName: "Stock Val (Avg.)", sortable: true, filter: "agNumberColumnFilter", resizable: true,
-                        width: s=="s49"?260:s=="s50"?220:s=="s67"?195:s=="s85"?175:s=="s75"?160:s=="s80"?180:130,
+                        width: s=="s49"?260:s=="s50"?220:s=="s67"?195:s=="s85"?195:s=="s75"?160:s=="s80"?180:130,
                         minWidth: 130,
                         cellClass : function (params) {
                             var pl = params.data.pl;

@@ -1637,7 +1637,8 @@ class BrokerTradeHistory extends React.PureComponent {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-12 mx-0 px-0 align-self-center">
+                        <div className="row container-fluid">
+                        <div className="col-sm-6 mx-0 px-0 align-self-center">
                             <table className={"ml-2"}>
                                 <tr>
                                     <td className={"px-0 py-1"}>
@@ -1671,7 +1672,19 @@ class BrokerTradeHistory extends React.PureComponent {
                                 </tr>
                             </table>
                         </div>
-
+                        <div className="col-sm-6 pt-3 mx-0">
+                                    <table className="table bg-black-trading mb-0 h-35 table-sm table-borderless">
+                                        <thead></thead>
+                                        <tbody className="d-border-top d-border-bottom">
+                                            <tr>
+                                                <td>T. Buy Val. :<span className="text-danger"> 22,113 (Mn)</span></td>
+                                                <td>T. Sell Val. :<span className="text-danger"> 41,231 (Mn)</span></td>
+                                                <td>Total Value :<span className="text-danger"> 75,431 (Mn)</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
                         <div className="px-1 mx-0 col-sm-12 row">
                             <div className="col-md-12 pr-1 pl-0">
                                 <BrokerTradeHistoryAgGrid size={widthSize()}/>
@@ -1785,10 +1798,22 @@ class BrokerTradeSummary extends React.PureComponent {
                                     {/*<div className="col-sm-2 text-left align-self-center px-2"><i className="fa fa-search fa-2x click-pointer text-dark"></i></div>*/}
                                     {/*<Input defaultValue='Arga Argo Lestari Tbk.' placeholder='Name' size='small' className="col-sm-3 align-self-center"/>*/}
                                 </div>
-                                <div className="col-sm-6 row mx-0 px-0 align-self-center">
+                                <div className="col-sm-3 row mx-0 px-0 align-self-center">
                                     <label className="col-sm-12 f-13 f-xs-14 align-middle align-self-center pr-0">
                                         Astra Argo Lestari Tbk.
                                     </label>
+                                </div>
+                                <div class="col-sm-5 pl-0 pr-0 mx-0">
+                                    <table className="table bg-black-trading mb-0 h-35 table-sm table-borderless">
+                                        <thead></thead>
+                                        <tbody className="d-border-top d-border-bottom">
+                                            <tr>
+                                                <td>T. Buy Val. :<span className="text-danger"> 22,113 (Mn)</span></td>
+                                                <td>T. Sell Val. :<span className="text-danger"> 41,231 (Mn)</span></td>
+                                                <td>Total Value :<span className="text-danger"> 75,431 (Mn)</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

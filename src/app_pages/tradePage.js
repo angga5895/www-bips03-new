@@ -2229,64 +2229,69 @@ class ExpireOrderAgGrid extends React.PureComponent {
         this.state = {
             columnDefs: [
                 { field: "hastag", headerName: "#", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?180:50, minWidth: 50, lockPosition:true, lockVisible:true,
+                    width: s=="s49"?130:50, minWidth: 50, lockPosition:true, lockVisible:true,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "ruleID", headerName: "#Rule.ID", sortable: true, filter: "agTextColumnFilter", resizable: true, comparator: stringComparator,
-                    width: s=="s49"?180:s=="s50"?160:s=="s67"?155:s=="s75"?160:s=="s80"?140:s=="s85"?130:s=="s90"?120:110, minWidth: 110,
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?155:s=="s75"?160:s=="s80"?140:s=="s85"?130:s=="s90"?120:100, minWidth: 110,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "date", headerName: "Date", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?140:s=="s50"?130:s=="s67"?120:s=="s75"?150:s=="s80"?130:s=="s85"?120:s=="s90"?110:110, minWidth: 110,
                     cellClass : function (params) {
-                        return "text-left grid-table d-border-aggrid-right f-12";
+                        return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
-                { field: "cmd", headerName: "Cmd", sortable: true, resizable: true, comparator: stringComparator,
+                { field: "cmd", headerName: "Cmd.", sortable: true, resizable: true, comparator: stringComparator,
                     width: s=="s49"?170:s=="s50"?160:s=="s67"?110:s=="s75"?110:s=="s80"?90:s=="s85"?80:70, minWidth: 70,
                     cellClass : function (params) {
                         var cmd = params.data.cmd;
-                        return cmd.includes('BUY') === true ? " text-center text-danger grid-table d-border-aggrid-right f-12" :
-                            " text-center text-success grid-table d-border-aggrid-right f-12";
+                        return cmd.includes('BUY') === true ? " text-left text-danger grid-table d-border-aggrid-right f-12" :
+                            " text-left text-success grid-table d-border-aggrid-right f-12";
                     },},
+                { field: "code", headerName: "Code", sortable: true, resizable: true, comparator: stringComparator,
+                    width: s=="s49"?170:s=="s50"?160:s=="s67"?110:s=="s75"?110:s=="s80"?90:s=="s85"?80:70, minWidth: 70,
+                    cellClass : function (params) {
+                        return "text-left grid-table d-border-aggrid-right f-12";
+                }, },
                 { field: "condition", headerName: "Condition", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
                     width: s=="s49"?180:s=="s50"?170:s=="s67"?160:s=="s75"?180:s=="s80"?170:s=="s85"?160:s=="s90"?150:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-right grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "vol", headerName: "Vol(Lot)", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?190:s=="s50"?180:s=="s67"?170:s=="s75"?170:s=="s80"?160:s=="s85"?150:s=="s90"?145:140, minWidth: 140,
+                    width: s=="s49"?190:s=="s50"?180:s=="s67"?170:s=="s75"?170:s=="s80"?160:s=="s85"?120:s=="s90"?110:100, minWidth: 100,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     },},
                 { field: "price", headerName: "Price", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?210:s=="s50"?190:s=="s67"?170:s=="s75"?170:s=="s80"?150:s=="s85"?140:130, minWidth: 130,
+                    width: s=="s49"?200:s=="s50"?190:s=="s67"?200:s=="s75"?170:s=="s80"?150:s=="s85"?140:113, minWidth: 113,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "value", headerName: "Value", sortable: true, filter: "agNumberColumnFilter", resizable: true, comparator: integerComparator,
-                    width: s=="s49"?220:s=="s50"?210:s=="s67"?210:s=="s75"?180:s=="s80"?140:s=="s85"?120:s=="s90"?110:100, minWidth: 100,
+                    width: s=="s49"?220:s=="s50"?210:s=="s67"?200:s=="s75"?180:s=="s80"?130:s=="s85"?120:s=="s90"?110:100, minWidth: 100,
                     cellClass : function (params) {
                         return "text-right grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "expireDate", headerName: "Expire Date", sortable: true, filter: "agNumberColumnFilter", comparator: stringComparator,
                     resizable: true,
-                    width: s=="s49"?250:s=="s50"?240:s=="s67"?230:s=="s75"?180:s=="s80"?130:s=="s85"?120:s=="s90"?110:110, minWidth: 110,
+                    width: s=="s49"?220:s=="s50"?200:s=="s67"?190:s=="s75"?150:s=="s80"?130:s=="s85"?120:s=="s90"?110:120, minWidth: 120,
                     cellClass : function (params) {
                         return "text-center grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "executeStatus", headerName: "Execute Status", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
                     resizable: true,
-                    width: s=="s49"?260:s=="s50"?250:s=="s67"?245:s=="s75"?200:s=="s80"?180:s=="s85"?150:s=="s90"?140:130, minWidth: 130,
+                    width: s=="s49"?220:s=="s50"?200:s=="s67"?200:s=="s75"?170:s=="s80"?140:s=="s85"?140:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }, },
                 { field: "orderStatus", headerName: "Order Status", sortable: true, filter: "agTextColumnFilter", comparator: dateComparator,
                     resizable: true,
-                    width: s=="s49"?370:s=="s50"?360:s=="s50"?300:s=="s67"?250:s=="s75"?200:s=="s80"?180:s=="s85"?165:s=="s90"?160:150, minWidth: 150,
+                    width: s=="s49"?330:s=="s50"?300:s=="s50"?300:s=="s67"?200:s=="s75"?150:s=="s80"?140:s=="s85"?130:s=="s90"?140:130, minWidth: 130,
                     cellClass : function (params) {
-                        return "text-center grid-table d-border-aggrid-right f-12";
+                        return "text-left grid-table d-border-aggrid-right f-12";
                     }, },
             ],
             defaultColDef: {

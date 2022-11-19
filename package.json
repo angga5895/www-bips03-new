@@ -22,7 +22,7 @@
     "react-data-grid-addons": "^6.1.0",
     "react-dom": "^16.9.0",
     "react-pin-input": "^0.9.0",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^3.0.4",
     "react-simple-chatbot": "^0.6.1",
     "react-switch": "^5.0.1",
